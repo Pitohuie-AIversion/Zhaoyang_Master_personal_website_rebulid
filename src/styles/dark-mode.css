@@ -1,0 +1,327 @@
+/* 深色模式样式 */
+
+/* CSS 变量定义 */
+:root {
+  /* 浅色模式颜色 */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8fafc;
+  --bg-tertiary: #f1f5f9;
+  --text-primary: #1e293b;
+  --text-secondary: #475569;
+  --text-tertiary: #64748b;
+  --border-primary: #e2e8f0;
+  --border-secondary: #cbd5e1;
+  --accent-primary: #3b82f6;
+  --accent-secondary: #1d4ed8;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --error: #ef4444;
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+}
+
+/* 深色模式颜色 */
+.dark {
+  --bg-primary: #0f172a;
+  --bg-secondary: #1e293b;
+  --bg-tertiary: #334155;
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-tertiary: #94a3b8;
+  --border-primary: #334155;
+  --border-secondary: #475569;
+  --accent-primary: #60a5fa;
+  --accent-secondary: #3b82f6;
+  --success: #34d399;
+  --warning: #fbbf24;
+  --error: #f87171;
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.3), 0 2px 4px -2px rgb(0 0 0 / 0.3);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.3), 0 4px 6px -4px rgb(0 0 0 / 0.3);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.3), 0 8px 10px -6px rgb(0 0 0 / 0.3);
+}
+
+/* 基础样式 */
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* 深色模式下的通用样式 */
+.dark-mode-transition {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* 卡片样式 */
+.card-dark {
+  background-color: var(--bg-secondary);
+  border-color: var(--border-primary);
+  box-shadow: var(--shadow-md);
+}
+
+.dark .card-dark {
+  background-color: var(--bg-secondary);
+  border-color: var(--border-primary);
+}
+
+/* 按钮样式 */
+.btn-primary-dark {
+  background-color: var(--accent-primary);
+  color: white;
+  border-color: var(--accent-primary);
+}
+
+.btn-primary-dark:hover {
+  background-color: var(--accent-secondary);
+  border-color: var(--accent-secondary);
+}
+
+.btn-secondary-dark {
+  background-color: transparent;
+  color: var(--text-primary);
+  border-color: var(--border-secondary);
+}
+
+.btn-secondary-dark:hover {
+  background-color: var(--bg-tertiary);
+}
+
+/* 输入框样式 */
+.input-dark {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  border-color: var(--border-primary);
+}
+
+.input-dark:focus {
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 3px rgb(59 130 246 / 0.1);
+}
+
+.dark .input-dark:focus {
+  box-shadow: 0 0 0 3px rgb(96 165 250 / 0.2);
+}
+
+/* 导航栏样式 */
+.navbar-dark {
+  background-color: var(--bg-primary);
+  border-bottom-color: var(--border-primary);
+  backdrop-filter: blur(10px);
+}
+
+.dark .navbar-dark {
+  background-color: rgba(15, 23, 42, 0.8);
+}
+
+/* 链接样式 */
+.link-dark {
+  color: var(--accent-primary);
+}
+
+.link-dark:hover {
+  color: var(--accent-secondary);
+}
+
+/* 文本样式 */
+.text-primary-dark {
+  color: var(--text-primary);
+}
+
+.text-secondary-dark {
+  color: var(--text-secondary);
+}
+
+.text-tertiary-dark {
+  color: var(--text-tertiary);
+}
+
+/* 边框样式 */
+.border-primary-dark {
+  border-color: var(--border-primary);
+}
+
+.border-secondary-dark {
+  border-color: var(--border-secondary);
+}
+
+/* 背景样式 */
+.bg-primary-dark {
+  background-color: var(--bg-primary);
+}
+
+.bg-secondary-dark {
+  background-color: var(--bg-secondary);
+}
+
+.bg-tertiary-dark {
+  background-color: var(--bg-tertiary);
+}
+
+/* 阴影样式 */
+.shadow-sm-dark {
+  box-shadow: var(--shadow-sm);
+}
+
+.shadow-md-dark {
+  box-shadow: var(--shadow-md);
+}
+
+.shadow-lg-dark {
+  box-shadow: var(--shadow-lg);
+}
+
+.shadow-xl-dark {
+  box-shadow: var(--shadow-xl);
+}
+
+/* 代码块样式 */
+.code-dark {
+  background-color: var(--bg-tertiary);
+  color: var(--text-primary);
+  border-color: var(--border-primary);
+}
+
+/* 表格样式 */
+.table-dark {
+  background-color: var(--bg-primary);
+}
+
+.table-dark th {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  border-color: var(--border-primary);
+}
+
+.table-dark td {
+  color: var(--text-primary);
+  border-color: var(--border-primary);
+}
+
+.table-dark tr:nth-child(even) {
+  background-color: var(--bg-secondary);
+}
+
+/* 模态框样式 */
+.modal-dark {
+  background-color: var(--bg-primary);
+  border-color: var(--border-primary);
+  box-shadow: var(--shadow-xl);
+}
+
+.modal-overlay-dark {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.dark .modal-overlay-dark {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* 工具提示样式 */
+.tooltip-dark {
+  background-color: var(--bg-tertiary);
+  color: var(--text-primary);
+  border-color: var(--border-primary);
+  box-shadow: var(--shadow-md);
+}
+
+/* 滚动条样式 */
+.dark ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: var(--border-secondary);
+  border-radius: 4px;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: var(--text-tertiary);
+}
+
+/* 选择文本样式 */
+.dark ::selection {
+  background-color: rgba(96, 165, 250, 0.3);
+  color: var(--text-primary);
+}
+
+/* 焦点样式 */
+.dark *:focus {
+  outline-color: var(--accent-primary);
+}
+
+/* 动画和过渡 */
+.theme-transition {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 深色模式下的图片处理 */
+.dark img {
+  opacity: 0.9;
+}
+
+.dark img:hover {
+  opacity: 1;
+}
+
+/* 深色模式下的图标 */
+.dark .icon-light {
+  filter: invert(1);
+}
+
+/* 深色模式下的渐变 */
+.gradient-dark {
+  background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
+}
+
+/* 深色模式下的玻璃效果 */
+.glass-dark {
+  background: rgba(30, 41, 59, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(148, 163, 184, 0.1);
+}
+
+.dark .glass-dark {
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(148, 163, 184, 0.1);
+}
+
+/* 响应式深色模式 */
+@media (max-width: 768px) {
+  .dark .mobile-dark {
+    background-color: var(--bg-primary);
+  }
+}
+
+/* 打印样式 */
+@media print {
+  .dark {
+    --bg-primary: #ffffff;
+    --bg-secondary: #ffffff;
+    --text-primary: #000000;
+    --text-secondary: #333333;
+  }
+}
+
+/* 高对比度模式支持 */
+@media (prefers-contrast: high) {
+  .dark {
+    --text-primary: #ffffff;
+    --text-secondary: #e2e8f0;
+    --border-primary: #64748b;
+  }
+}
+
+/* 减少动画偏好 */
+@media (prefers-reduced-motion: reduce) {
+  .theme-transition {
+    transition: none;
+  }
+}

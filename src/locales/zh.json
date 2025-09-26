@@ -1,0 +1,298 @@
+{
+  "nav": {
+    "home": "首页",
+    "research": "研究方向",
+    "projects": "项目展示",
+    "publications": "学术成果",
+    "skills": "技能工具",
+    "contact": "联系方式",
+    "ascii-demo": "ASCII演示"
+  },
+  "home": {
+    "viewMoreAchievements": "查看更多成果",
+    "researchAchievements": "研究成果",
+    "achievementsDesc": "在科学计算与机器人技术领域取得的研究成果统计",
+    "startCollaboration": "开启合作之旅",
+    "collaborationDesc": "期待与您在科学计算、机器人技术等领域开展深入合作",
+    "contactMe": "联系我",
+    "downloadResume": "下载简历"
+  },
+  "common": {
+    "about": "关于我",
+    "biography": "个人简介",
+    "education": "教育背景",
+    "experience": "工作经历",
+    "research-interests": "研究兴趣",
+    "honors": "获得荣誉",
+    "expertise": "技能专长",
+    "project-experience": "项目经验",
+    "chinese": "中文",
+    "english": "英文",
+    "dark-mode": "深色模式",
+    "light-mode": "浅色模式",
+    "menu": "菜单",
+    "close": "关闭",
+    "search": "搜索",
+    "filter": "筛选",
+    "sort": "排序",
+    "view-details": "查看详情",
+    "read-more": "阅读更多",
+    "back": "返回",
+    "next": "下一个",
+    "previous": "上一个",
+    "submit": "提交",
+    "cancel": "取消",
+    "confirm": "确认",
+    "loading": "加载中...",
+    "error": "错误",
+    "success": "成功",
+    "warning": "警告",
+    "info": "信息"
+  },
+  "contact": {
+    "title": "联系我",
+    "description": "期待与您的交流合作",
+    "contactInfo": "联系信息",
+    "email": "邮箱",
+    "phone": "电话",
+    "address": "地址",
+    "academicSocial": "学术社交",
+    "sendMessage": "发送消息",
+    "collaborationType": "合作类型",
+    "info": {
+      "email": "mzymuzhaoyang@gmail.com",
+      "phone": "+86 153 8213 0266",
+      "location": "辽宁省大连市甘井子区凌海路1号",
+      "university": "大连海事大学",
+      "department": "人工智能学院",
+      "office": "综合楼 B205",
+      "wechat": "zhaoyang_mou_2024",
+      "qq": "1234567890"
+    },
+    "social": {
+      "github": "GitHub",
+      "linkedin": "LinkedIn",
+      "csdn": "CSDN",
+      "researchgate": "ResearchGate",
+      "scholar": "Google Scholar"
+    },
+    "form": {
+      "name": {
+        "label": "姓名",
+        "placeholder": "请输入您的姓名"
+      },
+      "email": {
+        "label": "邮箱",
+        "placeholder": "请输入您的邮箱地址"
+      },
+      "subject": {
+        "label": "主题",
+        "placeholder": "请输入邮件主题"
+      },
+      "message": {
+        "label": "消息内容",
+        "placeholder": "请详细描述您的需求或想法..."
+      },
+      "budget": {
+        "label": "预算范围",
+        "options": [
+          { "value": "under-5k", "label": "5千以下" },
+          { "value": "5k-10k", "label": "5千-1万" },
+          { "value": "10k-50k", "label": "1万-5万" },
+          { "value": "50k-100k", "label": "5万-10万" },
+          { "value": "over-100k", "label": "10万以上" }
+        ]
+      },
+      "timeline": {
+        "label": "项目周期",
+        "options": [
+          { "value": "urgent", "label": "紧急（1周内）" },
+          { "value": "short", "label": "短期（1-4周）" },
+          { "value": "medium", "label": "中期（1-3个月）" },
+          { "value": "long", "label": "长期（3个月以上）" }
+        ]
+      },
+      "selectBudget": "请选择预算范围",
+      "selectTimeline": "请选择项目周期",
+      "submit": "发送消息",
+      "submitting": "发送中...",
+      "success": "发送成功",
+      "error": "发送失败",
+      "submitError": "发送失败，请稍后重试",
+      "validationError": "请检查表单信息"
+    },
+    "collaborationTypes": {
+      "academic": {
+        "title": "学术合作",
+        "description": "论文合作、研究项目、学术交流等"
+      },
+      "project": {
+        "title": "项目合作",
+        "description": "技术开发、系统设计、产品研发等"
+      },
+      "consulting": {
+        "title": "技术咨询",
+        "description": "技术方案、架构设计、问题解决等"
+      },
+      "teaching": {
+        "title": "教学培训",
+        "description": "技术培训、课程设计、知识分享等"
+      }
+    }
+  },
+  "publications": {
+    "title": "学术成果",
+    "description": "在科学计算、机器人技术和人工智能领域的研究成果与学术贡献",
+    "filters": {
+      "all": "全部",
+      "type": "类型",
+      "status": "状态",
+      "year": "年份"
+    },
+    "types": {
+      "journal": "期刊论文",
+      "conference": "会议论文",
+      "patent": "发明专利"
+    },
+    "status": {
+      "published": "已发表",
+      "underReview": "审稿中",
+      "inPreparation": "准备中",
+      "unknown": "未知"
+    },
+    "sort": {
+      "title": "标题",
+      "year": "年份",
+      "citations": "引用数",
+      "authors": "作者",
+      "journal": "期刊"
+    },
+    "search": {
+      "placeholder": "搜索论文标题、作者、期刊或关键词..."
+    },
+    "stats": {
+      "total": "总成果",
+      "published": "已发表",
+      "citations": "总引用",
+      "patents": "专利数"
+    },
+    "citations": "引用",
+    "modal": {
+      "authors": "作者",
+      "year": "年份",
+      "doi": "DOI",
+      "citationsCount": "引用次数",
+      "abstract": "摘要",
+      "keywords": "关键词"
+    }
+  },
+  "research": {
+    "title": "研究方向",
+    "description": "专注于科学计算与机器人技术的前沿研究",
+    "searchPlaceholder": "搜索研究内容...",
+    "filterAll": "全部",
+    "filterPublications": "论文",
+    "filterPatents": "专利",
+    "filterAwards": "奖项",
+    "academicAchievements": "学术成果",
+    "publications": "论文发表",
+    "patents": "专利申请",
+    "awards": "荣誉奖项",
+    "education": "教育背景",
+    "totalCount": "共 {{count}} {{unit}}",
+    "papers": "篇",
+    "items": "项",
+    "authors": "作者",
+    "patentNumber": "专利号",
+    "applicant": "申请人",
+    "publicDate": "公开日期",
+    "certificateNumber": "证书编号",
+    "viewDetails": "查看详情",
+    "status": {
+      "published": "已发表",
+      "accepted": "已接收",
+      "underReview": "审稿中",
+      "preparing": "准备中",
+      "granted": "已授权"
+    },
+    "type": {
+      "journal": "期刊论文",
+      "conference": "会议论文"
+    },
+    "patentType": {
+      "invention": "发明专利",
+      "utility": "实用新型",
+      "design": "外观设计"
+    },
+    "level": {
+      "national": "国家级",
+      "provincial": "省级",
+      "school": "校级"
+    },
+    "scientificComputing": {
+      "title": "科学计算",
+      "description": "基于深度学习的科学计算方法研究，包括物理信息神经网络(PINN)、神经算子等前沿技术的应用与优化。"
+    },
+    "robotics": {
+      "title": "机器人技术",
+      "description": "仿生机器人设计与控制，专注于波动鳍推进机理研究和水下机器人运动控制算法开发。"
+    }
+  },
+  "skills": {
+    "title": "技能专长",
+    "description": "在科学计算、机器人技术和软件开发领域的专业技能",
+    "categories": {
+      "programming": "编程语言",
+      "simulation": "仿真软件",
+      "aiMl": "人工智能",
+      "hardware": "硬件设计",
+      "tools": "开发工具"
+    },
+    "levels": {
+      "expert": "专家",
+      "proficient": "熟练",
+      "good": "良好",
+      "average": "一般",
+      "beginner": "初学"
+    },
+    "viewModes": {
+      "grid": "网格视图",
+      "radar": "雷达图",
+      "chart": "柱状图"
+    },
+    "filters": {
+      "all": "全部"
+    },
+    "radar": {
+      "theory": "理论基础"
+    },
+    "proficiency": "熟练度",
+    "relatedProjects": "相关项目",
+    "radarChart": "技能雷达图",
+    "skillLevel": "技能水平",
+    "proficiencyStats": "熟练度统计",
+    "proficiencyPercent": "熟练度(%)",
+    "avgProficiency": "平均熟练度",
+    "skillsCount": "项技能"
+  },
+  "projects": {
+    "title": "科研项目",
+    "description": "专注于Transformer/Neural Operator建模CFD时空场与水下机器人仿生感知技术研究",
+    "searchPlaceholder": "搜索项目标题、描述或技术栈...",
+    "category": "分类",
+    "status": "状态",
+    "year": "年份",
+    "noResults": "未找到匹配的项目",
+    "noResultsDesc": "尝试调整搜索条件或筛选器",
+    "code": "代码",
+    "demo": "演示",
+    "highlights": "项目亮点",
+    "techStack": "技术栈",
+     "status": {
+       "completed": "已完成",
+       "in-progress": "进行中",
+       "planned": "计划中",
+       "unknown": "未知"
+     }
+   }
+ }

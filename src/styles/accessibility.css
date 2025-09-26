@@ -1,0 +1,392 @@
+/* 可访问性增强样式 */
+
+/* 高对比度模式 */
+.high-contrast {
+  --bg-primary: #000000;
+  --bg-secondary: #1a1a1a;
+  --text-primary: #ffffff;
+  --text-secondary: #e0e0e0;
+  --border-color: #ffffff;
+  --link-color: #00ffff;
+  --link-hover: #ffff00;
+  --button-bg: #ffffff;
+  --button-text: #000000;
+  --focus-ring: #ffff00;
+}
+
+.high-contrast * {
+  background-color: var(--bg-primary) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--border-color) !important;
+}
+
+.high-contrast a {
+  color: var(--link-color) !important;
+  text-decoration: underline !important;
+}
+
+.high-contrast a:hover,
+.high-contrast a:focus {
+  color: var(--link-hover) !important;
+  background-color: var(--bg-secondary) !important;
+}
+
+.high-contrast button {
+  background-color: var(--button-bg) !important;
+  color: var(--button-text) !important;
+  border: 2px solid var(--border-color) !important;
+}
+
+.high-contrast button:hover,
+.high-contrast button:focus {
+  background-color: var(--link-hover) !important;
+  color: var(--bg-primary) !important;
+}
+
+/* 大字体模式 */
+.large-text {
+  font-size: 120% !important;
+}
+
+.large-text h1 {
+  font-size: 3rem !important;
+}
+
+.large-text h2 {
+  font-size: 2.5rem !important;
+}
+
+.large-text h3 {
+  font-size: 2rem !important;
+}
+
+.large-text h4 {
+  font-size: 1.75rem !important;
+}
+
+.large-text h5 {
+  font-size: 1.5rem !important;
+}
+
+.large-text h6 {
+  font-size: 1.25rem !important;
+}
+
+.large-text p,
+.large-text span,
+.large-text div {
+  font-size: 1.2rem !important;
+  line-height: 1.6 !important;
+}
+
+.large-text button {
+  font-size: 1.1rem !important;
+  padding: 0.75rem 1.5rem !important;
+}
+
+.large-text input,
+.large-text textarea,
+.large-text select {
+  font-size: 1.1rem !important;
+  padding: 0.75rem !important;
+}
+
+/* 减少动画模式 */
+.reduced-motion *,
+.reduced-motion *::before,
+.reduced-motion *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
+.reduced-motion .animate-spin {
+  animation: none !important;
+}
+
+.reduced-motion .animate-pulse {
+  animation: none !important;
+}
+
+.reduced-motion .animate-bounce {
+  animation: none !important;
+}
+
+/* 焦点可见增强 */
+.focus-visible *:focus {
+  outline: 3px solid #0066cc !important;
+  outline-offset: 2px !important;
+  box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.3) !important;
+}
+
+.focus-visible button:focus,
+.focus-visible a:focus,
+.focus-visible input:focus,
+.focus-visible textarea:focus,
+.focus-visible select:focus {
+  outline: 3px solid #0066cc !important;
+  outline-offset: 2px !important;
+  box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.3) !important;
+}
+
+/* 键盘导航增强 */
+.keyboard-navigation *:focus {
+  outline: 3px solid #0066cc !important;
+  outline-offset: 2px !important;
+}
+
+.keyboard-navigation button:focus,
+.keyboard-navigation a:focus {
+  background-color: rgba(0, 102, 204, 0.1) !important;
+}
+
+/* 色盲友好模式 */
+.colorblind-friendly {
+  --success-color: #0066cc;
+  --warning-color: #ff6600;
+  --error-color: #cc0000;
+  --info-color: #6600cc;
+}
+
+.colorblind-friendly .text-green-600,
+.colorblind-friendly .text-green-500,
+.colorblind-friendly .text-green-400 {
+  color: var(--success-color) !important;
+}
+
+.colorblind-friendly .text-yellow-600,
+.colorblind-friendly .text-yellow-500,
+.colorblind-friendly .text-yellow-400 {
+  color: var(--warning-color) !important;
+}
+
+.colorblind-friendly .text-red-600,
+.colorblind-friendly .text-red-500,
+.colorblind-friendly .text-red-400 {
+  color: var(--error-color) !important;
+}
+
+.colorblind-friendly .text-blue-600,
+.colorblind-friendly .text-blue-500,
+.colorblind-friendly .text-blue-400 {
+  color: var(--info-color) !important;
+}
+
+.colorblind-friendly .bg-green-100,
+.colorblind-friendly .bg-green-50 {
+  background-color: rgba(0, 102, 204, 0.1) !important;
+}
+
+.colorblind-friendly .bg-yellow-100,
+.colorblind-friendly .bg-yellow-50 {
+  background-color: rgba(255, 102, 0, 0.1) !important;
+}
+
+.colorblind-friendly .bg-red-100,
+.colorblind-friendly .bg-red-50 {
+  background-color: rgba(204, 0, 0, 0.1) !important;
+}
+
+.colorblind-friendly .bg-blue-100,
+.colorblind-friendly .bg-blue-50 {
+  background-color: rgba(102, 0, 204, 0.1) !important;
+}
+
+/* 屏幕阅读器专用 */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* 跳转链接 */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: #000;
+  color: #fff;
+  padding: 8px;
+  text-decoration: none;
+  z-index: 1000;
+  border-radius: 4px;
+}
+
+.skip-link:focus {
+  top: 6px;
+}
+
+/* 高对比度模式下的特殊元素 */
+.high-contrast img {
+  filter: contrast(150%) brightness(150%) !important;
+}
+
+.high-contrast .shadow-lg,
+.high-contrast .shadow-md,
+.high-contrast .shadow-sm {
+  box-shadow: 0 0 0 2px var(--border-color) !important;
+}
+
+.high-contrast .rounded-lg,
+.high-contrast .rounded-md,
+.high-contrast .rounded {
+  border: 2px solid var(--border-color) !important;
+}
+
+/* 表单元素增强 */
+.focus-visible input:focus,
+.focus-visible textarea:focus,
+.focus-visible select:focus {
+  border-width: 3px !important;
+  border-color: #0066cc !important;
+}
+
+.large-text label {
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+}
+
+/* 错误状态增强 */
+.high-contrast .border-red-500,
+.high-contrast .border-red-400 {
+  border-color: #ff0000 !important;
+  border-width: 3px !important;
+}
+
+.high-contrast .text-red-600,
+.high-contrast .text-red-500 {
+  color: #ff0000 !important;
+  font-weight: bold !important;
+}
+
+/* 成功状态增强 */
+.high-contrast .border-green-500,
+.high-contrast .border-green-400 {
+  border-color: #00ff00 !important;
+  border-width: 3px !important;
+}
+
+.high-contrast .text-green-600,
+.high-contrast .text-green-500 {
+  color: #00ff00 !important;
+  font-weight: bold !important;
+}
+
+/* 导航增强 */
+.keyboard-navigation nav a:focus {
+  background-color: rgba(0, 102, 204, 0.2) !important;
+  outline: 3px solid #0066cc !important;
+}
+
+/* 卡片和容器增强 */
+.high-contrast .bg-white,
+.high-contrast .bg-gray-50,
+.high-contrast .bg-gray-100 {
+  background-color: var(--bg-secondary) !important;
+  border: 2px solid var(--border-color) !important;
+}
+
+/* 按钮状态增强 */
+.high-contrast button:disabled {
+  background-color: #333333 !important;
+  color: #666666 !important;
+  border-color: #666666 !important;
+  cursor: not-allowed !important;
+}
+
+/* 链接状态增强 */
+.high-contrast a:visited {
+  color: #cc00cc !important;
+}
+
+/* 表格增强 */
+.high-contrast table {
+  border-collapse: collapse !important;
+}
+
+.high-contrast th,
+.high-contrast td {
+  border: 2px solid var(--border-color) !important;
+  padding: 0.75rem !important;
+}
+
+.high-contrast th {
+  background-color: var(--bg-secondary) !important;
+  font-weight: bold !important;
+}
+
+/* 响应式可访问性 */
+@media (max-width: 768px) {
+  .large-text {
+    font-size: 110% !important;
+  }
+  
+  .large-text button {
+    padding: 1rem 1.5rem !important;
+    font-size: 1rem !important;
+  }
+  
+  .focus-visible *:focus {
+    outline-width: 2px !important;
+  }
+}
+
+/* 打印样式 */
+@media print {
+  .high-contrast * {
+    background: white !important;
+    color: black !important;
+  }
+  
+  .skip-link,
+  .sr-only {
+    display: none !important;
+  }
+}
+
+/* 动画偏好设置 */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* 高对比度偏好设置 */
+@media (prefers-contrast: high) {
+  :root {
+    --bg-primary: #000000;
+    --text-primary: #ffffff;
+    --border-color: #ffffff;
+  }
+}
+
+/* 色彩方案偏好设置 */
+@media (prefers-color-scheme: dark) {
+  .high-contrast {
+    --bg-primary: #000000;
+    --bg-secondary: #1a1a1a;
+    --text-primary: #ffffff;
+    --text-secondary: #e0e0e0;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  .high-contrast {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f5f5f5;
+    --text-primary: #000000;
+    --text-secondary: #333333;
+  }
+}

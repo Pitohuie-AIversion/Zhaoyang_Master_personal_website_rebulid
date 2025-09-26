@@ -1,0 +1,306 @@
+{
+  "nav": {
+    "home": "Home",
+    "research": "Research",
+    "projects": "Projects",
+    "publications": "Publications",
+    "skills": "Skills",
+    "contact": "Contact",
+    "ascii-demo": "ASCII Demo"
+  },
+  "home": {
+    "viewMoreAchievements": "View More Achievements",
+    "researchAchievements": "Research Achievements",
+    "achievementsDesc": "Statistics of research achievements in scientific computing and robotics",
+    "startCollaboration": "Start Collaboration",
+    "collaborationDesc": "Looking forward to in-depth cooperation with you in scientific computing, robotics and other fields",
+    "contactMe": "Contact Me",
+    "downloadResume": "Download Resume"
+  },
+  "common": {
+    "about": "About Me",
+    "biography": "Biography",
+    "education": "Education",
+    "experience": "Experience",
+    "research-interests": "Research Interests",
+    "honors": "Honors & Awards",
+    "expertise": "Skills & Expertise",
+    "project-experience": "Project Experience",
+    "chinese": "Chinese",
+    "english": "English",
+    "dark-mode": "Dark Mode",
+    "light-mode": "Light Mode",
+    "menu": "Menu",
+    "close": "Close",
+    "search": "Search",
+    "filter": "Filter",
+    "sort": "Sort",
+    "view-details": "View Details",
+    "read-more": "Read More",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "warning": "Warning",
+    "info": "Information"
+  },
+  "contact": {
+    "title": "Contact Me",
+    "description": "Looking forward to in-depth cooperation with you in scientific computing, robotics and other fields",
+    "contactInfo": "Contact Information",
+    "email": "Email",
+    "phone": "Phone",
+    "address": "Address",
+    "academicSocial": "Academic Social",
+    "sendMessage": "Send Message",
+    "collaborationType": "Collaboration Type",
+    "info": {
+      "email": "mzymuzhaoyang@gmail.com",
+      "phone": "+86 153 8213 0266",
+      "location": "No.1 Linghai Road, Ganjingzi District, Dalian, Liaoning Province",
+      "university": "Dalian Maritime University",
+      "department": "School of Artificial Intelligence",
+      "office": "Comprehensive Building B205",
+      "wechat": "zhaoyang_mou_2024",
+      "qq": "1234567890"
+    },
+    "social": {
+      "github": "GitHub",
+      "linkedin": "LinkedIn",
+      "csdn": "CSDN",
+      "researchgate": "ResearchGate",
+      "scholar": "Google Scholar"
+    },
+    "form": {
+      "validationError": "Please check the error messages in the form",
+      "submitError": "Submission failed, please try again later",
+      "submitting": "Submitting...",
+      "submit": "Send Message",
+      "success": "Sent Successfully",
+      "error": "Send Failed",
+      "selectBudget": "Please select budget range",
+      "selectTimeline": "Please select project timeline",
+      "name": {
+        "label": "Name",
+        "placeholder": "Please enter your name"
+      },
+      "email": {
+        "label": "Email",
+        "placeholder": "Please enter your email address"
+      },
+      "subject": {
+        "label": "Subject",
+        "placeholder": "Please enter email subject"
+      },
+      "message": {
+        "label": "Message",
+        "placeholder": "Please describe your requirements or ideas in detail..."
+      },
+      "budget": {
+        "label": "Budget Range",
+        "options": [
+          { "value": "under-5k", "label": "Under $5K" },
+          { "value": "5k-10k", "label": "$5K-$10K" },
+          { "value": "10k-50k", "label": "$10K-$50K" },
+          { "value": "50k-100k", "label": "$50K-$100K" },
+          { "value": "over-100k", "label": "Over $100K" }
+        ]
+      },
+      "timeline": {
+        "label": "Project Timeline",
+        "options": [
+          { "value": "urgent", "label": "Urgent (Within 1 week)" },
+          { "value": "short", "label": "Short-term (1-4 weeks)" },
+          { "value": "medium", "label": "Medium-term (1-3 months)" },
+          { "value": "long", "label": "Long-term (3+ months)" }
+        ]
+      },
+      "selectBudget": "Please select budget range",
+      "selectTimeline": "Please select project timeline",
+      "submit": "Send Message",
+      "submitting": "Sending...",
+      "success": "Sent Successfully",
+      "error": "Send Failed",
+      "submitError": "Send failed, please try again later",
+      "validationError": "Please check form information"
+    },
+    "collaborationTypes": {
+      "academic": {
+        "title": "Academic Collaboration",
+        "description": "Paper collaboration, research projects, academic exchange, etc."
+      },
+      "project": {
+        "title": "Project Collaboration",
+        "description": "Technical development, system design, product development, etc."
+      },
+      "consulting": {
+        "title": "Technical Consulting",
+        "description": "Technical solutions, architecture design, problem solving, etc."
+      },
+      "teaching": {
+        "title": "Teaching & Training",
+        "description": "Technical training, course design, knowledge sharing, etc."
+      }
+    }
+  },
+  "publications": {
+    "title": "Publications",
+    "description": "Research achievements and academic contributions in scientific computing, robotics, and artificial intelligence",
+    "filters": {
+      "all": "All",
+      "type": "Type",
+      "status": "Status",
+      "year": "Year"
+    },
+    "types": {
+      "journal": "Journal Paper",
+      "conference": "Conference Paper",
+      "patent": "Patent"
+    },
+    "status": {
+      "published": "Published",
+      "underReview": "Under Review",
+      "inPreparation": "In Preparation",
+      "unknown": "Unknown"
+    },
+    "sort": {
+      "title": "Title",
+      "year": "Year",
+      "citations": "Citations",
+      "authors": "Authors",
+      "journal": "Journal"
+    },
+    "search": {
+      "placeholder": "Search paper title, authors, journal or keywords..."
+    },
+    "stats": {
+      "total": "Total",
+      "published": "Published",
+      "citations": "Citations",
+      "patents": "Patents"
+    },
+    "citations": "Citations",
+    "modal": {
+      "authors": "Authors",
+      "year": "Year",
+      "doi": "DOI",
+      "citationsCount": "Citation Count",
+      "abstract": "Abstract",
+      "keywords": "Keywords"
+    }
+  },
+  "research": {
+    "title": "Research",
+    "description": "Focused on cutting-edge research in scientific computing and robotics",
+    "searchPlaceholder": "Search research content...",
+    "filterAll": "All",
+    "filterPublications": "Publications",
+    "filterPatents": "Patents",
+    "filterAwards": "Awards",
+    "academicAchievements": "Academic Achievements",
+    "publications": "Publications",
+    "patents": "Patents",
+    "awards": "Awards",
+    "education": "Education",
+    "totalCount": "Total {{count}} {{unit}}",
+    "papers": "papers",
+    "items": "items",
+    "authors": "Authors",
+    "patentNumber": "Patent No.",
+    "applicant": "Applicant",
+    "publicDate": "Publication Date",
+    "certificateNumber": "Certificate No.",
+    "viewDetails": "View Details",
+    "status": {
+      "published": "Published",
+      "accepted": "Accepted",
+      "underReview": "Under Review",
+      "preparing": "Preparing",
+      "granted": "Granted"
+    },
+    "type": {
+      "journal": "Journal Paper",
+      "conference": "Conference Paper"
+    },
+    "patentType": {
+      "invention": "Invention Patent",
+      "utility": "Utility Model",
+      "design": "Design Patent"
+    },
+    "level": {
+      "national": "National",
+      "provincial": "Provincial",
+      "school": "School"
+    },
+    "scientificComputing": {
+      "title": "Scientific Computing",
+      "description": "Research on deep learning-based scientific computing methods, including applications and optimization of cutting-edge technologies such as Physics-Informed Neural Networks (PINN) and Neural Operators."
+    },
+    "robotics": {
+      "title": "Robotics",
+      "description": "Bionic robot design and control, focusing on undulatory fin propulsion mechanism research and underwater robot motion control algorithm development."
+    }
+  },
+  "skills": {
+    "title": "Skills Matrix",
+    "description": "Showcasing my technical capabilities and project experience in AI, simulation computing, hardware design, and other fields",
+    "categories": {
+      "programming": "Programming Languages",
+      "simulation": "Simulation Software",
+      "aiMl": "AI & Machine Learning",
+      "hardware": "Hardware Design",
+      "tools": "Development Tools"
+    },
+    "levels": {
+      "expert": "Expert",
+      "proficient": "Proficient",
+      "good": "Good",
+      "average": "Average",
+      "beginner": "Beginner"
+    },
+    "viewModes": {
+      "grid": "Grid View",
+      "radar": "Radar Chart",
+      "chart": "Bar Chart"
+    },
+    "filters": {
+      "all": "All"
+    },
+    "proficiency": "Proficiency",
+    "relatedProjects": "Related Projects",
+    "radarChart": "Skills Radar Chart",
+    "skillLevel": "Skill Level",
+    "proficiencyStats": "Proficiency Statistics",
+    "proficiencyPercent": "Proficiency (%)",
+    "avgProficiency": "Average Proficiency",
+    "skillsCount": "skills",
+    "radar": {
+      "theory": "Theoretical Foundation"
+    }
+  },
+  "projects": {
+    "title": "Research Projects",
+    "description": "Focusing on Transformer/Neural Operator modeling of CFD spatiotemporal fields and underwater robot biomimetic perception technology research",
+    "searchPlaceholder": "Search project titles, descriptions or tech stack...",
+    "category": "Category",
+    "status": "Status",
+    "year": "Year",
+    "noResults": "No matching projects found",
+    "noResultsDesc": "Try adjusting your search criteria or filters",
+    "code": "Code",
+    "demo": "Demo",
+    "highlights": "Project Highlights",
+    "techStack": "Tech Stack",
+    "status": {
+      "completed": "Completed",
+      "in-progress": "In Progress",
+      "planned": "Planned",
+      "unknown": "Unknown"
+    }
+  }
+}
