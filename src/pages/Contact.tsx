@@ -279,43 +279,48 @@ export default function Contact() {
             <div className="card-dark rounded-lg border border-gray-200 dark:border-gray-700 p-6 mb-6 theme-transition">
               <h2 className="text-xl md:text-2xl font-semibold text-primary-dark theme-transition mb-4 leading-tight">{t('contact.contactInfo')}</h2>
               
-              <div className="space-y-4">
-                <div className="flex items-center">
-                  <div className="w-10 h-10 bg-gray-900 rounded-md flex items-center justify-center mr-3">
-                    <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="space-y-6">
+                {/* 邮箱信息 */}
+                <div className="flex items-start sm:items-center">
+                  <div className="w-12 h-12 sm:w-10 sm:h-10 bg-gray-900 rounded-md flex items-center justify-center mr-4 sm:mr-3 flex-shrink-0">
+                    <svg className="w-6 h-6 sm:w-5 sm:h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
                   </div>
-                  <div>
-                    <h3 className="font-medium text-primary-dark theme-transition leading-snug">{t('contact.email')}</h3>
-                    <p className="text-sm text-secondary-dark theme-transition leading-relaxed">{t('contact.info.email')}</p>
+                  <div className="flex-1 min-w-0">
+                    <h3 className="font-medium text-primary-dark theme-transition leading-snug text-base sm:text-sm">{t('contact.email')}</h3>
+                    <p className="text-sm sm:text-sm text-secondary-dark theme-transition leading-relaxed break-all">{t('contact.info.email')}</p>
                   </div>
                 </div>
                 
-                <div className="flex items-center">
-                  <div className="w-10 h-10 bg-gray-900 rounded-md flex items-center justify-center mr-3">
-                    <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                {/* 电话信息 */}
+                <div className="flex items-start sm:items-center">
+                  <div className="w-12 h-12 sm:w-10 sm:h-10 bg-gray-900 rounded-md flex items-center justify-center mr-4 sm:mr-3 flex-shrink-0">
+                    <svg className="w-6 h-6 sm:w-5 sm:h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                     </svg>
                   </div>
-                  <div>
-                    <h3 className="font-medium text-primary-dark theme-transition leading-snug">{t('contact.phone')}</h3>
-                    <p className="text-sm text-secondary-dark theme-transition leading-relaxed">{t('contact.info.phone')}</p>
+                  <div className="flex-1 min-w-0">
+                    <h3 className="font-medium text-primary-dark theme-transition leading-snug text-base sm:text-sm">{t('contact.phone')}</h3>
+                    <p className="text-sm sm:text-sm text-secondary-dark theme-transition leading-relaxed">{t('contact.info.phone')}</p>
                   </div>
                 </div>
                 
-                <div className="flex items-center">
-                  <div className="w-10 h-10 bg-gray-900 rounded-md flex items-center justify-center mr-3">
-                    <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                {/* 地址信息 */}
+                <div className="flex items-start">
+                  <div className="w-12 h-12 sm:w-10 sm:h-10 bg-gray-900 rounded-md flex items-center justify-center mr-4 sm:mr-3 flex-shrink-0">
+                    <svg className="w-6 h-6 sm:w-5 sm:h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                     </svg>
                   </div>
-                  <div>
-                    <h3 className="font-medium text-primary-dark theme-transition leading-snug">{t('contact.address')}</h3>
-                    <p className="text-sm text-secondary-dark theme-transition leading-relaxed">{t('contact.info.location')}</p>
-                    <p className="text-xs text-gray-500 dark:text-gray-400 theme-transition">{t('contact.info.university')} {t('contact.info.department')}</p>
-                    <p className="text-xs text-gray-500 dark:text-gray-400 theme-transition">{t('contact.info.office')}</p>
+                  <div className="flex-1 min-w-0">
+                    <h3 className="font-medium text-primary-dark theme-transition leading-snug text-base sm:text-sm">{t('contact.address')}</h3>
+                    <div className="space-y-1">
+                      <p className="text-sm sm:text-sm text-secondary-dark theme-transition leading-relaxed break-words">{t('contact.info.location')}</p>
+                      <p className="text-xs text-gray-500 dark:text-gray-400 theme-transition leading-relaxed">{t('contact.info.university')} {t('contact.info.department')}</p>
+                      <p className="text-xs text-gray-500 dark:text-gray-400 theme-transition leading-relaxed">{t('contact.info.office')}</p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -324,19 +329,19 @@ export default function Contact() {
             {/* 社交媒体链接 */}
             <div className="card-dark rounded-lg border border-gray-200 dark:border-gray-700 p-6 theme-transition">
               <h2 className="text-xl md:text-2xl font-semibold text-primary-dark theme-transition mb-4 leading-tight">{t('contact.academicSocial')}</h2>
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 {socialLinks.map((link) => (
                   <a
                     key={link.name}
                     href={link.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center p-3 bg-gray-50 dark:bg-gray-800 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200 group theme-transition"
+                    className="flex items-center p-3 sm:p-4 bg-gray-50 dark:bg-gray-800 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200 group theme-transition min-h-[60px] sm:min-h-[56px]"
                   >
-                    <div className="text-gray-600 dark:text-gray-400 mr-3 theme-transition">
+                    <div className="text-gray-600 dark:text-gray-400 mr-3 sm:mr-4 theme-transition flex-shrink-0">
                       {link.icon}
                     </div>
-                    <span className="font-medium text-sm text-primary-dark theme-transition">{link.name}</span>
+                    <span className="font-medium text-sm sm:text-base text-primary-dark theme-transition leading-snug break-words flex-1 min-w-0">{link.name}</span>
                   </a>
                 ))}
               </div>
