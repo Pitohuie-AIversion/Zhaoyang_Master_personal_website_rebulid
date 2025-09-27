@@ -103,7 +103,7 @@ const getProjects = (t: (key: string, fallback?: string) => string): Project[] =
 ];
 
 const getCategories = (t: (key: string, fallback?: string) => string) => [t('projects.filters.all'), t('projects.categories.scientificComputing'), t('projects.categories.roboticsTechnology'), t('projects.categories.simulationAnalysis'), t('projects.categories.experimentalPlatform')];
-const getStatusOptions = (t: (key: string, fallback?: string) => string) => [t('projects.filters.all'), 'completed', 'ongoing', 'planned'];
+const getStatusOptions = (t: (key: string, fallback?: string) => string) => [t('projects.filters.all'), t('projects.status.completed'), t('projects.status.ongoing'), t('projects.status.planned')];
 const getYearOptions = (t: (key: string, fallback?: string) => string) => [t('projects.filters.all'), '2025', '2024', '2023', '2022'];
 
 export default function Projects() {
@@ -158,10 +158,10 @@ export default function Projects() {
 
   const getStatusText = (status: string) => {
     switch (status) {
-      case 'completed': return t('已完成', 'Completed');
-      case 'ongoing': return t('进行中', 'Ongoing');
-      case 'planned': return t('计划中', 'Planned');
-      default: return t('未知', 'Unknown');
+      case 'completed': return t('projects.status.completed');
+      case 'ongoing': return t('projects.status.ongoing');
+      case 'planned': return t('projects.status.planned');
+      default: return t('projects.status.unknown');
     }
   };
 
@@ -170,16 +170,16 @@ export default function Projects() {
     category: categories.slice(1).map(cat => ({ value: cat, label: cat })),
     status: statusOptions.slice(1).map(status => ({ 
       value: status, 
-      label: status === t('全部', 'All') ? t('全部', 'All') : getStatusText(status) 
+      label: getStatusText(status) 
     })),
     year: yearOptions.slice(1).map(year => ({ value: year, label: year }))
   };
   
   const sortOptions = [
-    { value: 'title', label: t('标题', 'Title'), direction: 'asc' as const },
-    { value: 'year', label: t('年份', 'Year'), direction: 'desc' as const },
-    { value: 'category', label: t('分类', 'Category'), direction: 'asc' as const },
-    { value: 'status', label: t('状态', 'Status'), direction: 'asc' as const }
+    { value: 'title', label: t('projects.sort.title'), direction: 'asc' as const },
+    { value: 'year', label: t('projects.sort.year'), direction: 'desc' as const },
+    { value: 'category', label: t('projects.sort.category'), direction: 'asc' as const },
+    { value: 'status', label: t('projects.sort.status'), direction: 'asc' as const }
   ];
 
   if (isLoading) {

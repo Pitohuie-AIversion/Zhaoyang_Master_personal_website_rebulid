@@ -153,7 +153,7 @@ function Home() {
             >
               <ScrollReveal direction="up" delay={0.2}>
                 <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-primary-dark theme-transition mb-4 leading-tight break-words">
-                  {t('牟昭阳', 'Zhaoyang Mu')}
+                  {t('home.hero.name')}
                   <ResponsiveText
                     as="span"
                     className="block text-secondary-dark theme-transition font-normal mt-2"
@@ -165,36 +165,33 @@ function Home() {
               </ScrollReveal>
               <ScrollReveal direction="up" delay={0.6}>
                 <p className="text-base md:text-lg lg:text-xl text-secondary-dark theme-transition mb-6 leading-loose break-words hyphens-auto">
-                  {t(
-                    '人工智能硕士研究生，专注于科学计算与机器人技术的交叉研究。运用Transformer/神经算子建模CFD时空场与水下机器人仿生感知，具备Star-CCM+/COMSOL/ANSYS工程仿真与SolidWorks/Shapr3D机械设计能力。目前在西湖大学工学院i⁴-FSI实验室进行访问学生研究。',
-                    'AI Master\'s student focusing on interdisciplinary research in scientific computing and robotics. Using Transformer/Neural Operator to model CFD spatiotemporal fields and underwater robot bionic perception, with expertise in Star-CCM+/COMSOL/ANSYS engineering simulation and SolidWorks/Shapr3D mechanical design. Currently conducting visiting student research at i⁴-FSI Lab, School of Engineering, Westlake University.'
-                  )}
+                  {t('home.hero.description')}
                 </p>
               </ScrollReveal>
               <div className="flex flex-wrap gap-2 sm:gap-3 mb-8">
                 <span className="px-3 py-1 bg-gray-100 text-gray-700 rounded-md text-sm font-medium">
-                  {t('Transformer/神经算子', 'Transformer/Neural Operator')}
+                  {t('home.hero.tags.transformerNeuralOperator')}
                 </span>
                 <span className="px-3 py-1 bg-gray-100 text-gray-700 rounded-md text-sm font-medium">
-                  {t('CFD仿真', 'CFD Simulation')}
+                  {t('home.hero.tags.cfdSimulation')}
                 </span>
                 <span className="px-3 py-1 bg-gray-100 text-gray-700 rounded-md text-sm font-medium">
-                  {t('水下机器人', 'Underwater Robotics')}
+                  {t('home.hero.tags.underwaterRobotics')}
                 </span>
                 <span className="px-3 py-1 bg-gray-100 text-gray-700 rounded-md text-sm font-medium">
-                  {t('仿生感知', 'Bionic Perception')}
+                  {t('home.hero.tags.bionicPerception')}
                 </span>
                 <span className="px-3 py-1 bg-gray-100 text-gray-700 rounded-md text-sm font-medium">
-                  {t('机械设计', 'Mechanical Design')}
+                  {t('home.hero.tags.mechanicalDesign')}
                 </span>
               </div>
               <ScrollReveal direction="up" delay={0.8}>
                 <div className="flex flex-wrap gap-2 sm:gap-3">
                   <Link to="/research" className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200">
-                    {t('研究方向', 'Research Areas')}
+                    {t('home.hero.buttons.research')}
                   </Link>
                   <Link to="/projects" className="px-6 py-3 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors duration-200">
-                    {t('项目展示', 'Projects')}
+                    {t('home.hero.buttons.projects')}
                   </Link>
                 </div>
               </ScrollReveal>
@@ -238,14 +235,14 @@ function Home() {
             className="text-center mb-12"
           >
             <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-primary-dark theme-transition mb-4 leading-tight">
-              {t('研究亮点', 'Research Highlights')}
+              {t('home.researchHighlights.title')}
             </h2>
             <ResponsiveText
               as="p"
               className="text-secondary-dark theme-transition max-w-2xl mx-auto"
               preset="body"
             >
-              {t('探索科学计算与机器人技术的前沿交叉领域', 'Exploring the cutting-edge intersection of scientific computing and robotics')}
+              {t('home.researchHighlights.description')}
             </ResponsiveText>
           </SimpleMotion>
 
@@ -325,14 +322,14 @@ function Home() {
               className="font-bold text-gray-900 mb-4"
               preset="section-title"
             >
-              {t('最新动态', 'Latest News')}
+              {t('home.latestNews.title')}
             </ResponsiveText>
             <ResponsiveText
               as="p"
               className="text-gray-600 max-w-2xl mx-auto"
               preset="body"
             >
-              {t('关注我的最新研究进展、学术活动和项目更新', 'Follow my latest research progress, academic activities and project updates')}
+              {t('home.latestNews.description')}
             </ResponsiveText>
           </SimpleMotion>
 

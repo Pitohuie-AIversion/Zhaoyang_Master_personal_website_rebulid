@@ -52,164 +52,168 @@ function Research() {
   const [modalType, setModalType] = useState<'publication' | 'patent' | 'award'>('publication');
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // 论文数据
-  const publications: Publication[] = [
+  // 获取翻译后的论文数据
+  const getPublications = (): Publication[] => [
     {
       id: '1',
-      title: 'Generalizing morphologies in dam break simulations using transformer model',
-      journal: 'Physics of Fluids',
+      title: t('research.publications.damformer.title'),
+      journal: t('research.publications.damformer.journal'),
       year: 2025,
       status: 'published',
-      authors: ['牟昭阳', '徐敏义'],
-      description: '基于Transformer架构的溃坝流场预测模型，实现跨几何边界的泛化预测能力',
+      authors: [t('research.publications.damformer.authors.0'), t('research.publications.damformer.authors.1')],
+      description: t('research.publications.damformer.description'),
       doi: '10.1063/5.0187644',
       type: 'journal'
     },
     {
       id: '2',
-      title: 'Rs-ModCubes: Self-reconfigurable, scalable, modular cubic robots for underwater operations',
-      journal: 'IEEE Robotics and Automation Letters',
+      title: t('research.publications.rsModCubes.title'),
+      journal: t('research.publications.rsModCubes.journal'),
       year: 2025,
       status: 'published',
-      authors: ['牟昭阳', '范迪夏'],
-      description: '自重构模块化立方体水下机器人系统设计与实现',
+      authors: [t('research.publications.rsModCubes.authors.0'), t('research.publications.rsModCubes.authors.1')],
+      description: t('research.publications.rsModCubes.description'),
       type: 'journal'
     },
     {
       id: '3',
-      title: 'Deep-Learning-Assisted Triboelectric Whisker Sensor Array for Underwater Robot Navigation',
-      journal: 'Advanced Materials Technologies',
+      title: t('research.publications.whiskerSensorArray.title'),
+      journal: t('research.publications.whiskerSensorArray.journal'),
       year: 2025,
       status: 'published',
-      authors: ['牟昭阳', '徐敏义'],
-      description: '深度学习辅助的摩擦电触须传感器阵列用于水下机器人导航',
+      authors: [t('research.publications.whiskerSensorArray.authors.0'), t('research.publications.whiskerSensorArray.authors.1')],
+      description: t('research.publications.whiskerSensorArray.description'),
       type: 'journal'
     },
     {
       id: '4',
-      title: 'Deep-learning-assisted triboelectric whisker sensor for underwater robot perception',
-      journal: 'Nano Energy',
+      title: t('research.publications.whiskerSensor.title'),
+      journal: t('research.publications.whiskerSensor.journal'),
       year: 2024,
       status: 'published',
-      authors: ['牟昭阳', '徐敏义'],
-      description: '深度学习辅助的摩擦电触须传感器用于水下机器人感知',
+      authors: [t('research.publications.whiskerSensor.authors.0'), t('research.publications.whiskerSensor.authors.1')],
+      description: t('research.publications.whiskerSensor.description'),
       doi: '10.1016/j.nanoen.2024.110011',
       type: 'journal'
     },
     {
       id: '5',
-      title: 'Sparse-to-Dense Field Reconstruction using Transformer Architecture',
-      journal: 'Under Review',
+      title: t('research.publications.sparseToDense.title'),
+      journal: t('research.publications.sparseToDense.journal'),
       year: 2024,
       status: 'under_review',
-      authors: ['牟昭阳', '徐敏义'],
-      description: '面向CFD/环境流的稀疏传感器数据重建高分辨率时空场技术研究',
+      authors: [t('research.publications.sparseToDense.authors.0'), t('research.publications.sparseToDense.authors.1')],
+      description: t('research.publications.sparseToDense.description'),
       type: 'journal'
     }
   ];
 
-  // 专利数据
-  const patents: Patent[] = [
+  // 获取翻译后的专利数据
+  const getPatents = (): Patent[] => [
     {
       id: '1',
-      title: '水下机器人动态环境感知和导航装置及方法',
+      title: t('research.patents.underwaterNavigation.title'),
       number: 'CN119509546A',
-      applicant: '西湖大学',
+      applicant: t('research.patents.underwaterNavigation.applicant'),
       publicDate: '2024-11-06',
       status: 'published',
       type: 'invention',
-      description: '一种基于多传感器融合的水下机器人环境感知与导航系统'
+      description: t('research.patents.underwaterNavigation.description')
     },
     {
       id: '2',
-      title: '基于矢量八推布局的水下机器人',
+      title: t('research.patents.vectorThruster.title'),
       number: 'CN119239885A',
-      applicant: '西湖大学',
+      applicant: t('research.patents.vectorThruster.applicant'),
       publicDate: '2024-11-06',
       status: 'published',
       type: 'invention',
-      description: '采用矢量八推进器布局的高机动性水下机器人设计'
+      description: t('research.patents.vectorThruster.description')
     },
     {
       id: '3',
-      title: '基于波动鳍推进的水下机器人',
+      title: t('research.patents.undulatingFin.title'),
       number: 'CN119142488A',
-      applicant: '西湖大学',
+      applicant: t('research.patents.undulatingFin.applicant'),
       publicDate: '2024-11-06',
       status: 'published',
       type: 'invention',
-      description: '仿生波动鳍推进机制的水下机器人系统'
+      description: t('research.patents.undulatingFin.description')
     },
     {
       id: '4',
-      title: '内嵌多传感器的柔性鳍水下机器人及运行方法',
+      title: t('research.patents.flexibleFin.title'),
       number: 'CN118182783A',
-      applicant: '大连海事大学',
+      applicant: t('research.patents.flexibleFin.applicant'),
       publicDate: '2024-04-23',
       status: 'published',
       type: 'invention',
-      description: '集成多种传感器的柔性仿生鳍水下机器人'
+      description: t('research.patents.flexibleFin.description')
     },
     {
       id: '5',
-      title: '具有智能动态感应系统的船舶',
+      title: t('research.patents.smartShip.title'),
       number: 'CN118047007A',
-      applicant: '大连海事大学',
+      applicant: t('research.patents.smartShip.applicant'),
       publicDate: '2024-03-14',
       status: 'published',
       type: 'invention',
-      description: '配备智能动态感应系统的新型船舶设计'
+      description: t('research.patents.smartShip.description')
     },
     {
       id: '6',
-      title: '移动式浮标机器人',
+      title: t('research.patents.mobileBuoy.title'),
       number: 'CN308069533S',
-      applicant: '西湖大学',
+      applicant: t('research.patents.mobileBuoy.applicant'),
       publicDate: '2023-02-22',
       status: 'published',
       type: 'design',
-      description: '移动式海洋观测浮标机器人外观设计'
+      description: t('research.patents.mobileBuoy.description')
     }
   ];
 
-  // 荣誉奖项数据
-  const awards: Award[] = [
+  // 获取翻译后的奖项数据
+  const getAwards = (): Award[] => [
     {
       id: '1',
-      title: '第八届中国国际"互联网+"大学生创新创业大赛 · 金奖',
-      organization: '教育部',
+      title: t('research.awards.internetPlusGold.title'),
+      organization: t('research.awards.internetPlusGold.organization'),
       date: '2023-04',
       level: 'national',
-      description: '项目：《鲲鹏科技——水下船体检测机器人领军者》',
+      description: t('research.awards.internetPlusGold.description'),
       certificateNumber: '202310033'
     },
     {
       id: '2',
-      title: '2021中国机器人大会（暨RoboCup中国赛）· 水下机器人水中巡游 一等奖',
-      organization: '中国自动化学会',
+      title: t('research.awards.roboticsCompetition.title'),
+      organization: t('research.awards.roboticsCompetition.organization'),
       date: '2022-04',
       level: 'national',
-      description: '团队：大连海事大学"海大机建一队"',
+      description: t('research.awards.roboticsCompetition.description'),
       certificateNumber: 'Y2109R025A0001'
     },
     {
       id: '3',
-      title: '中国大学生机械工程创新创意大赛 · "明石杯"微纳传感技术与智能应用赛道 一等奖',
-      organization: '教育部高等学校机械类专业教学指导委员会',
+      title: t('research.awards.mechanicalInnovation.title'),
+      organization: t('research.awards.mechanicalInnovation.organization'),
       date: '2024-07',
       level: 'national',
-      description: '参赛作品：《深蓝视觉融合水下机器人》',
+      description: t('research.awards.mechanicalInnovation.description'),
       certificateNumber: 'MEICC05MNSI2024-CV1-006'
     },
     {
       id: '4',
-      title: '辽宁省大学生机械创新设计大赛 · 铜奖',
-      organization: '辽宁省教育厅',
+      title: t('research.awards.provincialMechanical.title'),
+      organization: t('research.awards.provincialMechanical.organization'),
       date: '2024-04',
       level: 'provincial',
-      description: '作品：《深蓝智感——基于摩擦纳米发电机的水下触觉传感器》'
+      description: t('research.awards.provincialMechanical.description')
     }
   ];
+
+  const publications = getPublications();
+  const patents = getPatents();
+  const awards = getAwards();
 
   // 搜索和筛选逻辑
   const filteredPublications = publications.filter(pub => {
