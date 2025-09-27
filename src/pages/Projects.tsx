@@ -25,86 +25,86 @@ interface Project {
   demoUrl?: string;
 }
 
-const getProjects = (t: (zh: string, en: string) => string): Project[] => [
+const getProjects = (t: (key: string, fallback?: string) => string): Project[] => [
   {
     id: 1,
-    title: t('DamFormer: 溃坝仿真跨几何泛化 Transformer', 'DamFormer: Cross-Geometric Generalization Transformer for Dam Break Simulation'),
-    category: t('科学计算', 'Scientific Computing'),
-    description: t('构建多几何边界数据集，实现跨几何零样本预测，发表于 Physics of Fluids。基于Transformer架构解决传统CFD仿真计算成本高的问题', 'Built multi-geometric boundary dataset, achieved cross-geometric zero-shot prediction, published in Physics of Fluids. Solves high computational cost problem of traditional CFD simulation based on Transformer architecture'),
+    title: t('projects.damformer.title'),
+    category: t('projects.categories.scientificComputing'),
+    description: t('projects.damformer.description'),
     technologies: ['PyTorch', 'Transformer', 'CFD', 'Python', 'CUDA', 'Physics of Fluids'],
     image: 'https://trae-api-us.mchost.guru/api/ide/v1/text_to_image?prompt=dam%20break%20simulation%20transformer%20neural%20network%20CFD%20flow%20field%20prediction%20scientific%20computing&image_size=landscape_4_3',
     status: 'completed',
     year: '2024',
-    highlights: [t('跨几何零样本泛化', 'Cross-geometric zero-shot generalization'), t('Physics of Fluids发表', 'Published in Physics of Fluids'), t('Transformer架构创新', 'Transformer architecture innovation'), t('多几何边界数据集', 'Multi-geometric boundary dataset')],
+    highlights: [t('projects.damformer.highlights.crossGeometric'), t('projects.damformer.highlights.published'), t('projects.damformer.highlights.architecture'), t('projects.damformer.highlights.dataset')],
     githubUrl: 'https://github.com/zhaoyangmou',
     demoUrl: 'https://pitohuie-aiversion.github.io/Sparse_to_Dense_Transformer/'
   },
   {
     id: 2,
-    title: t('Sparse→Dense Transformer: 稀疏到稠密场重建', 'Sparse→Dense Transformer: Sparse to Dense Field Reconstruction'),
-    category: t('科学计算', 'Scientific Computing'),
-    description: t('面向CFD/环境流，稀疏传感重建高分辨率时空场。基于Transformer架构实现从稀疏观测到稠密场的智能重建', 'For CFD/environmental flows, sparse sensor reconstruction of high-resolution spatiotemporal fields. Intelligent reconstruction from sparse observations to dense fields based on Transformer architecture'),
+    title: t('projects.sparseToDense.title'),
+    category: t('projects.categories.scientificComputing'),
+    description: t('projects.sparseToDense.description'),
     technologies: ['PyTorch', 'Transformer', 'Neural Operator', 'Python', 'CFD'],
     image: 'https://trae-api-us.mchost.guru/api/ide/v1/text_to_image?prompt=sparse%20to%20dense%20field%20reconstruction%20transformer%20neural%20operator%20scientific%20visualization&image_size=landscape_4_3',
     status: 'ongoing',
     year: '2024',
-    highlights: [t('稀疏传感重建', 'Sparse sensor reconstruction'), t('高分辨率时空场', 'High-resolution spatiotemporal fields'), t('Transformer架构', 'Transformer architecture'), t('CFD/环境流应用', 'CFD/environmental flow applications')],
+    highlights: [t('projects.sparseToDense.highlights.sparseReconstruction'), t('projects.sparseToDense.highlights.highResolution'), t('projects.sparseToDense.highlights.transformer'), t('projects.sparseToDense.highlights.cfdApplication')],
     githubUrl: 'https://github.com/zhaoyangmou',
     demoUrl: 'https://pitohuie-aiversion.github.io/Sparse_to_Dense_Transformer/'
   },
   {
     id: 3,
-    title: t('仿生波动鳍推进仿真', 'Bionic Undulating Fin Propulsion Simulation'),
-    category: t('仿真分析', 'Simulation Analysis'),
-    description: t('西湖大学i⁴-FSI实验室项目。Star-CCM+ CFD/FSI仿真，Java Macro自动化参数扫描，探索仿生推进机理', 'Project at Westlake University i⁴-FSI Lab. Star-CCM+ CFD/FSI simulation, Java Macro automated parameter scanning, exploring bionic propulsion mechanisms'),
+    title: t('projects.bionicFin.title'),
+    category: t('projects.categories.simulationAnalysis'),
+    description: t('projects.bionicFin.description'),
     technologies: ['Star-CCM+', 'Java', 'CFD', 'FSI', 'Macro开发'],
     image: 'https://trae-api-us.mchost.guru/api/ide/v1/text_to_image?prompt=bionic%20undulating%20fin%20propulsion%20CFD%20FSI%20simulation%20fluid%20structure%20interaction&image_size=landscape_4_3',
     status: 'ongoing',
     year: '2024',
-    highlights: [t('西湖大学合作', 'Westlake University collaboration'), t('CFD/FSI耦合仿真', 'CFD/FSI coupled simulation'), t('Java Macro自动化', 'Java Macro automation'), t('仿生推进机理研究', 'Bionic propulsion mechanism research')],
+    highlights: [t('projects.bionicFin.highlights.westlakeCollaboration'), t('projects.bionicFin.highlights.cfdFsiSimulation'), t('projects.bionicFin.highlights.javaMacro'), t('projects.bionicFin.highlights.bionicMechanism')],
     githubUrl: 'https://github.com/zhaoyangmou'
   },
   {
     id: 4,
-    title: t('风扇阵列风洞（Fan-Wall）', 'Fan Array Wind Tunnel (Fan-Wall)'),
-    category: t('实验平台', 'Experimental Platform'),
-    description: t('模块化2.5m×2.5m阵列，STM32多板PWM/TACH闭环控制，VLAN/DHCP网络管理。用于流场控制和测试验证', 'Modular 2.5m×2.5m array, STM32 multi-board PWM/TACH closed-loop control, VLAN/DHCP network management. For flow field control and testing verification'),
+    title: t('projects.fanWall.title'),
+    category: t('projects.categories.experimentalPlatform'),
+    description: t('projects.fanWall.description'),
     technologies: ['STM32', 'PWM/TACH', 'VLAN', 'DHCP', '网络管理', '闭环控制'],
     image: 'https://trae-api-us.mchost.guru/api/ide/v1/text_to_image?prompt=fan%20array%20wind%20tunnel%20experimental%20platform%20flow%20control%20testing%20facility&image_size=landscape_4_3',
     status: 'ongoing',
     year: '2023',
-    highlights: [t('模块化2.5m×2.5m阵列', 'Modular 2.5m×2.5m array'), t('STM32多板控制', 'STM32 multi-board control'), t('PWM/TACH闭环', 'PWM/TACH closed-loop'), t('VLAN/DHCP网络', 'VLAN/DHCP network')],
+    highlights: [t('projects.fanWall.highlights.modularArray'), t('projects.fanWall.highlights.stm32Control'), t('projects.fanWall.highlights.pwmTach'), t('projects.fanWall.highlights.vlanDhcp')],
     githubUrl: 'https://github.com/zhaoyangmou'
   },
   {
     id: 5,
-    title: t('海洋观测浮标', 'Marine Observation Buoy'),
-    category: t('机械设计', 'Mechanical Design'),
-    description: t('西湖大学项目，担任机械设计负责人。负责结构、密封、防腐、浮力计算、BOM出图及池/海试', 'Westlake University project, served as mechanical design lead. Responsible for structure, sealing, anti-corrosion, buoyancy calculation, BOM drawing and pool/sea trials'),
+    title: t('projects.marineBuoy.title'),
+    category: t('projects.categories.mechanicalDesign'),
+    description: t('projects.marineBuoy.description'),
     technologies: ['SolidWorks', '机械设计', '密封设计', '防腐设计', 'BOM', '海试'],
     image: 'https://trae-api-us.mchost.guru/api/ide/v1/text_to_image?prompt=marine%20observation%20buoy%20mechanical%20design%20ocean%20engineering%20floating%20platform&image_size=landscape_4_3',
     status: 'completed',
     year: '2022',
-    highlights: [t('机械设计负责人', 'Mechanical design lead'), t('结构密封设计', 'Structure and sealing design'), t('浮力计算', 'Buoyancy calculation'), t('池/海试验证', 'Pool/sea trial verification')],
+    highlights: [t('projects.marineBuoy.highlights.designLead'), t('projects.marineBuoy.highlights.structureSealing'), t('projects.marineBuoy.highlights.buoyancyCalculation'), t('projects.marineBuoy.highlights.seaTrial')],
     githubUrl: 'https://github.com/zhaoyangmou'
   },
   {
     id: 6,
-    title: t('服务器/HPC训练与部署', 'Server/HPC Training and Deployment'),
-    category: t('高性能计算', 'High Performance Computing'),
-    description: t('PyTorch DDP/AMP分布式训练，SLURM作业调度，Miniconda环境管理，CUDA环境搭建与W&B实验记录', 'PyTorch DDP/AMP distributed training, SLURM job scheduling, Miniconda environment management, CUDA environment setup and W&B experiment logging'),
+    title: t('projects.serverHpc.title'),
+    category: t('projects.categories.highPerformanceComputing'),
+    description: t('projects.serverHpc.description'),
     technologies: ['PyTorch', 'DDP/AMP', 'SLURM', 'CUDA', 'NCCL', 'W&B', 'Linux'],
     image: 'https://trae-api-us.mchost.guru/api/ide/v1/text_to_image?prompt=high%20performance%20computing%20server%20cluster%20distributed%20training%20CUDA%20GPU&image_size=landscape_4_3',
     status: 'ongoing',
     year: '2023',
-    highlights: [t('分布式训练', 'Distributed training'), t('SLURM作业调度', 'SLURM job scheduling'), t('CUDA环境搭建', 'CUDA environment setup'), t('W&B实验记录', 'W&B experiment logging')],
+    highlights: [t('projects.serverHpc.highlights.distributedTraining'), t('projects.serverHpc.highlights.slurmScheduling'), t('projects.serverHpc.highlights.cudaSetup'), t('projects.serverHpc.highlights.wandbLogging')],
     githubUrl: 'https://github.com/zhaoyangmou'
   }
 ];
 
-const getCategories = (t: (zh: string, en: string) => string) => [t('全部', 'All'), t('科学计算', 'Scientific Computing'), t('机器人技术', 'Robotics Technology'), t('仿真分析', 'Simulation Analysis'), t('实验平台', 'Experimental Platform')];
-const getStatusOptions = (t: (zh: string, en: string) => string) => [t('全部', 'All'), 'completed', 'ongoing', 'planned'];
-const getYearOptions = (t: (zh: string, en: string) => string) => [t('全部', 'All'), '2025', '2024', '2023', '2022'];
+const getCategories = (t: (key: string, fallback?: string) => string) => [t('projects.filters.all'), t('projects.categories.scientificComputing'), t('projects.categories.roboticsTechnology'), t('projects.categories.simulationAnalysis'), t('projects.categories.experimentalPlatform')];
+const getStatusOptions = (t: (key: string, fallback?: string) => string) => [t('projects.filters.all'), 'completed', 'ongoing', 'planned'];
+const getYearOptions = (t: (key: string, fallback?: string) => string) => [t('projects.filters.all'), '2025', '2024', '2023', '2022'];
 
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);

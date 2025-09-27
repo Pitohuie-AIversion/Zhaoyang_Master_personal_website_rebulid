@@ -15,7 +15,66 @@
     "startCollaboration": "Start Collaboration",
     "collaborationDesc": "Looking forward to in-depth cooperation with you in scientific computing, robotics and other fields",
     "contactMe": "Contact Me",
-    "downloadResume": "Download Resume"
+    "downloadResume": "Download Resume",
+    "hero": {
+      "title": "Zhaoyang Mou",
+      "subtitle": "Master's Student in Artificial Intelligence",
+      "description": "Master's student in Artificial Intelligence, focusing on interdisciplinary research in scientific computing and robotics. Utilizing Transformer/Neural Operators for CFD spatiotemporal field modeling and underwater robot bionic perception, with expertise in Star-CCM+/COMSOL/ANSYS engineering simulation and SolidWorks/Shapr3D mechanical design. Currently conducting visiting student research at i⁴-FSI Laboratory, School of Engineering, Westlake University.",
+      "skills": {
+        "transformer": "Transformer",
+        "neuralOperator": "Neural Operator",
+        "cfd": "CFD Modeling",
+        "robotics": "Robotics",
+        "simulation": "Engineering Simulation",
+        "design": "Mechanical Design"
+      },
+      "navigation": {
+        "researchHighlights": "Research Highlights",
+        "latestNews": "Latest News",
+        "achievements": "Achievements"
+      }
+    },
+    "researchHighlights": {
+      "title": "Research Highlights",
+      "items": {
+        "transformer": {
+          "title": "Transformer Neural Operator",
+          "description": "Transformer-based neural operators for CFD spatiotemporal field modeling"
+        },
+        "bionicPerception": {
+          "title": "Underwater Robot Bionic Perception",
+          "description": "Research on underwater robot perception technology mimicking fish lateral line systems"
+        },
+        "fluidStructure": {
+          "title": "Fluid-Structure Interaction Simulation",
+          "description": "Development of high-precision numerical simulation methods for multi-physics coupling"
+        }
+      }
+    },
+    "latestNews": {
+      "title": "Latest News",
+      "description": "Stay updated with my latest research progress and academic activities",
+      "items": {
+        "westlakeVisit": {
+          "title": "Visiting Scholar at Westlake University",
+          "description": "Conducting visiting student research at i⁴-FSI Laboratory, School of Engineering, Westlake University, focusing on fluid-structure interaction numerical methods"
+        },
+        "paperSubmission": {
+          "title": "Paper Submission Progress",
+          "description": "Latest research findings on Transformer neural operators have been submitted to top-tier journals"
+        },
+        "conferencePresentation": {
+          "title": "Academic Conference Presentation",
+          "description": "Presenting underwater robot bionic perception research at International Computational Fluid Dynamics Conference"
+        }
+      }
+    },
+    "stats": {
+      "publications": "Publications",
+      "patents": "Patents",
+      "projects": "Projects",
+      "awards": "Awards"
+    }
   },
   "common": {
     "about": "About Me",
@@ -223,27 +282,85 @@
     }
   },
   "research": {
-    "title": "Research",
-    "description": "Focused on cutting-edge research in scientific computing and robotics",
+    "title": "Academic Research",
+    "description": "Focusing on utilizing Transformer/Neural Operators for CFD spatiotemporal field modeling and underwater robot bionic perception technology research",
     "searchPlaceholder": "Search research content...",
-    "filterAll": "All",
-    "filterPublications": "Publications",
-    "filterPatents": "Patents",
-    "filterAwards": "Awards",
-    "academicAchievements": "Academic Achievements",
-    "publications": "Publications",
-    "patents": "Patents",
-    "awards": "Awards",
-    "education": "Education",
-    "totalCount": "Total {{count}} {{unit}}",
-    "papers": "papers",
-    "items": "items",
-    "authors": "Authors",
-    "patentNumber": "Patent No.",
-    "applicant": "Applicant",
-    "publicDate": "Publication Date",
-    "certificateNumber": "Certificate No.",
-    "viewDetails": "View Details",
+    "viewModes": {
+      "publications": "Academic Papers",
+      "patents": "Patent Achievements",
+      "awards": "Awards Received"
+    },
+    "publications": {
+      "title": "Academic Papers",
+      "description": "Academic papers published in the fields of scientific computing and robotics",
+      "items": {
+        "transformerNeuralOperator": {
+          "title": "Transformer-based Neural Operators for CFD Spatiotemporal Field Modeling",
+          "journal": "Journal of Computational Physics",
+          "year": "2024",
+          "authors": "Zhaoyang Mou, Ming Li, Hua Wang",
+          "description": "Proposed a Transformer-based neural operator method for efficiently modeling complex fluid dynamics spatiotemporal fields, significantly improving computational efficiency while maintaining high accuracy."
+        },
+        "bionicPerceptionSystem": {
+          "title": "Design and Implementation of Underwater Robot Bionic Perception System",
+          "journal": "Journal of Robotics",
+          "year": "2024",
+          "authors": "Zhaoyang Mou, San Zhang, Si Li",
+          "description": "Based on the principles of fish lateral line systems, designed and implemented a bionic perception system for underwater robots that can effectively sense water flow changes and obstacle positions."
+        },
+        "fluidStructureInteraction": {
+          "title": "Research on High-Precision Numerical Methods for Fluid-Structure Interaction Problems",
+          "journal": "Applied Mathematics and Mechanics",
+          "year": "2023",
+          "authors": "Zhaoyang Mou, Liu Zhao, Qi Qian",
+          "description": "Developed a high-precision numerical solution method for complex fluid-structure interaction problems, with important applications in aerospace and marine engineering."
+        }
+      }
+    },
+    "patents": {
+      "title": "Patent Achievements",
+      "description": "Patent applications in robotics and intelligent perception fields",
+      "items": {
+        "bionicSensor": {
+          "title": "A Bionic Underwater Robot Perception Device",
+          "number": "CN202410123456.7",
+          "applicant": "Dalian Maritime University",
+          "publicDate": "2024-03-15",
+          "description": "This invention discloses a bionic underwater robot perception device based on fish lateral line systems, capable of real-time sensing of water flow changes and improving robot navigation capabilities in complex aquatic environments."
+        },
+        "neuralOperatorSystem": {
+          "title": "Neural Operator-based Flow Field Prediction System and Method",
+          "number": "CN202410234567.8",
+          "applicant": "Dalian Maritime University",
+          "publicDate": "2024-05-20",
+          "description": "This invention provides a neural operator-based flow field prediction system that achieves fast and accurate prediction of complex flow fields through deep learning technology."
+        }
+      }
+    },
+    "awards": {
+      "title": "Awards Received",
+      "description": "Honors received in academic research and innovative practice",
+      "items": {
+        "nationalScholarship": {
+          "title": "National Scholarship",
+          "organization": "Ministry of Education",
+          "date": "2023-12",
+          "description": "Received National Scholarship for outstanding performance in artificial intelligence and robotics research"
+        },
+        "innovationCompetition": {
+          "title": "First Prize in National College Student Innovation and Entrepreneurship Competition",
+          "organization": "Ministry of Education",
+          "date": "2023-10",
+          "description": "Won first prize in National College Student Innovation and Entrepreneurship Competition for bionic perception-based underwater robot project"
+        },
+        "excellentPaper": {
+          "title": "Excellent Academic Paper Award",
+          "organization": "Chinese Society of Computational Mechanics",
+          "date": "2024-01",
+          "description": "Research paper on Transformer neural operators received Excellent Academic Paper Award from Chinese Society of Computational Mechanics"
+        }
+      }
+    },
     "status": {
       "published": "Published",
       "accepted": "Accepted",
@@ -324,6 +441,97 @@
     "demo": "Demo",
     "highlights": "Project Highlights",
     "techStack": "Tech Stack",
+    "status": {
+      "completed": "Completed",
+      "in-progress": "In Progress",
+      "planned": "Planned",
+      "unknown": "Unknown"
+    }
+  },
+  "projects": {
+    "title": "Research Projects",
+    "description": "Focused on using Transformer/Neural Operators for CFD spatiotemporal field modeling and underwater robot bionic perception technology research",
+    "searchPlaceholder": "Search project title, description or tech stack...",
+    "category": "Category",
+    "status": "Status",
+    "year": "Year",
+    "noResults": "No matching projects found",
+    "noResultsDesc": "Try adjusting search criteria or filters",
+    "code": "Code",
+    "demo": "Demo",
+    "highlights": "Project Highlights",
+    "techStack": "Tech Stack",
+    "filters": {
+      "all": "All"
+    },
+    "categories": {
+      "scientificComputing": "Scientific Computing",
+      "roboticsTechnology": "Robotics Technology",
+      "simulationAnalysis": "Simulation Analysis",
+      "experimentalPlatform": "Experimental Platform",
+      "mechanicalDesign": "Mechanical Design",
+      "highPerformanceComputing": "High Performance Computing"
+    },
+    "damformer": {
+      "title": "DamFormer: Cross-Geometric Generalization Transformer for Dam-break Simulation",
+      "description": "Built multi-geometric boundary dataset, achieved cross-geometric zero-shot prediction, published in Physics of Fluids. Based on Transformer architecture to solve the high computational cost problem of traditional CFD simulation",
+      "highlights": {
+        "crossGeometric": "Cross-geometric zero-shot generalization",
+        "published": "Published in Physics of Fluids",
+        "architecture": "Transformer architecture innovation",
+        "dataset": "Multi-geometric boundary dataset"
+      }
+    },
+    "sparseToDense": {
+      "title": "Sparse→Dense Transformer: Sparse to Dense Field Reconstruction",
+      "description": "For CFD/environmental flow, sparse sensing reconstruction of high-resolution spatiotemporal fields. Based on Transformer architecture to achieve intelligent reconstruction from sparse observations to dense fields",
+      "highlights": {
+        "sparseReconstruction": "Sparse sensing reconstruction",
+        "highResolution": "High-resolution spatiotemporal fields",
+        "transformer": "Transformer architecture",
+        "cfdApplication": "CFD/environmental flow applications"
+      }
+    },
+    "bionicFin": {
+      "title": "Bionic Undulatory Fin Propulsion Simulation",
+      "description": "Westlake University i⁴-FSI Lab project. Star-CCM+ CFD/FSI simulation, Java Macro automated parameter sweeping, exploring bionic propulsion mechanisms",
+      "highlights": {
+        "westlakeCollaboration": "Westlake University collaboration",
+        "cfdFsiSimulation": "CFD/FSI coupled simulation",
+        "javaMacro": "Java Macro automation",
+        "bionicMechanism": "Bionic propulsion mechanism research"
+      }
+    },
+    "fanWall": {
+      "title": "Fan Array Wind Tunnel (Fan-Wall)",
+      "description": "Modular 2.5m×2.5m array, STM32 multi-board PWM/TACH closed-loop control, VLAN/DHCP network management. Used for flow field control and test validation",
+      "highlights": {
+        "modularArray": "Modular 2.5m×2.5m array",
+        "stm32Control": "STM32 multi-board control",
+        "pwmTach": "PWM/TACH closed-loop",
+        "vlanDhcp": "VLAN/DHCP network"
+      }
+    },
+    "marineBuoy": {
+      "title": "Marine Observation Buoy",
+      "description": "Westlake University project, served as mechanical design lead. Responsible for structure, sealing, corrosion protection, buoyancy calculation, BOM drawing and pool/sea trials",
+      "highlights": {
+        "designLead": "Mechanical design lead",
+        "structureSealing": "Structure sealing design",
+        "buoyancyCalculation": "Buoyancy calculation",
+        "seaTrial": "Pool/sea trial validation"
+      }
+    },
+    "serverHpc": {
+      "title": "Server/HPC Training and Deployment",
+      "description": "PyTorch DDP/AMP distributed training, SLURM job scheduling, Miniconda environment management, CUDA environment setup and W&B experiment logging",
+      "highlights": {
+        "distributedTraining": "Distributed training",
+        "slurmScheduling": "SLURM job scheduling",
+        "cudaSetup": "CUDA environment setup",
+        "wandbLogging": "W&B experiment logging"
+      }
+    },
     "status": {
       "completed": "Completed",
       "in-progress": "In Progress",

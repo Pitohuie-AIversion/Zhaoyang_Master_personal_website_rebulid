@@ -33,76 +33,76 @@ interface NewsItem {
   type: 'publication' | 'award' | 'conference' | 'project';
 }
 
-const getResearchHighlights = (t: (zh: string, en: string) => string): ResearchHighlight[] => [
+const getResearchHighlights = (t: (key: string, fallback?: string) => string): ResearchHighlight[] => [
   {
     id: '1',
-    title: t('DamFormer: 溃坝仿真跨几何泛化Transformer', 'DamFormer: Cross-Geometry Generalization Transformer for Dam Break Simulation'),
-    description: t('构建多几何边界数据集，实现跨几何零样本预测，发表于Physics of Fluids期刊', 'Built multi-geometry boundary dataset, achieved cross-geometry zero-shot prediction, published in Physics of Fluids'),
+    title: t('home.researchHighlights.items.damformer.title'),
+    description: t('home.researchHighlights.items.damformer.description'),
     image: 'https://trae-api-us.mchost.guru/api/ide/v1/text_to_image?prompt=dam%20break%20simulation%20transformer%20model%20cross%20geometry%20generalization%20computational%20fluid%20dynamics%20scientific%20visualization&image_size=landscape_4_3',
     category: 'Transformer/Neural Operator',
     link: '/projects'
   },
   {
     id: '2',
-    title: t('Sparse→Dense Transformer: 稀疏到稠密场重建', 'Sparse→Dense Transformer: Sparse-to-Dense Field Reconstruction'),
-    description: t('面向CFD/环境流，通过稀疏传感器数据重建高分辨率时空场的深度学习方法', 'Deep learning method for reconstructing high-resolution spatiotemporal fields from sparse sensor data for CFD/environmental flows'),
+    title: t('home.researchHighlights.items.sparseDense.title'),
+    description: t('home.researchHighlights.items.sparseDense.description'),
     image: 'https://trae-api-us.mchost.guru/api/ide/v1/text_to_image?prompt=sparse%20to%20dense%20field%20reconstruction%20transformer%20CFD%20environmental%20flow%20sensor%20data%20visualization&image_size=landscape_4_3',
-    category: t('科学计算', 'Scientific Computing'),
+    category: t('home.researchHighlights.items.sparseDense.category'),
     link: '/projects'
   },
   {
     id: '3',
-    title: t('仿生波动鳍推进仿真', 'Biomimetic Undulating Fin Propulsion Simulation'),
-    description: t('西湖大学合作项目，使用Star-CCM+ CFD/FSI仿真，Java Macro自动化参数扫描', 'Westlake University collaboration project, using Star-CCM+ CFD/FSI simulation with Java Macro automated parameter sweeping'),
+    title: t('home.researchHighlights.items.bionicFin.title'),
+    description: t('home.researchHighlights.items.bionicFin.description'),
     image: 'https://trae-api-us.mchost.guru/api/ide/v1/text_to_image?prompt=biomimetic%20undulating%20fin%20propulsion%20simulation%20CFD%20FSI%20underwater%20robot%20blue%20ocean%20theme&image_size=landscape_4_3',
-    category: t('仿生机器人', 'Biomimetic Robotics'),
+    category: t('home.researchHighlights.items.bionicFin.category'),
     link: '/projects'
   }
 ];
 
-const getNewsItems = (t: (zh: string, en: string) => string): NewsItem[] => [
+const getNewsItems = (t: (key: string, fallback?: string) => string): NewsItem[] => [
   {
     id: '1',
     date: '2025-01',
-    title: t('DamFormer论文发表于Physics of Fluids', 'DamFormer Paper Published in Physics of Fluids'),
-    description: t('"Generalizing morphologies in dam break simulations using transformer model"被Physics of Fluids期刊接收发表', '"Generalizing morphologies in dam break simulations using transformer model" accepted and published in Physics of Fluids'),
+    title: t('home.latestNews.items.damformerPaper.title'),
+    description: t('home.latestNews.items.damformerPaper.description'),
     type: 'publication'
   },
   {
     id: '2',
     date: '2025-01',
-    title: t('Rs-ModCubes机器人系统论文发表', 'Rs-ModCubes Robot System Paper Published'),
-    description: t('"Rs-ModCubes: Self-reconfigurable, scalable, modular cubic robots for underwater operations"发表于IEEE RA-L', '"Rs-ModCubes: Self-reconfigurable, scalable, modular cubic robots for underwater operations" published in IEEE RA-L'),
+    title: t('home.latestNews.items.rsModCubes.title'),
+    description: t('home.latestNews.items.rsModCubes.description'),
     type: 'publication'
   },
   {
     id: '3',
     date: '2024-11',
-    title: t('获得多项水下机器人相关专利', 'Received Multiple Underwater Robot Patents'),
-    description: t('水下机器人动态环境感知和导航装置、基于矢量八推布局的水下机器人等专利公开', 'Patents for underwater robot dynamic environment perception and navigation device, vector eight-thruster layout underwater robot, etc. published'),
+    title: t('home.latestNews.items.underwaterPatents.title'),
+    description: t('home.latestNews.items.underwaterPatents.description'),
     type: 'award'
   },
   {
     id: '4',
     date: '2024-07',
-    title: t('获得中国大学生机械工程创新创意大赛一等奖', 'Won First Prize in China University Mechanical Engineering Innovation Competition'),
-    description: t('"深蓝视觉融合水下机器人"作品在"明石杯"微纳传感技术与智能应用赛道获得一等奖', '"Deep Blue Vision Fusion Underwater Robot" won first prize in "Mingshi Cup" Micro-nano Sensing Technology and Intelligent Application track'),
+    title: t('home.latestNews.items.mechanicalCompetition.title'),
+    description: t('home.latestNews.items.mechanicalCompetition.description'),
     type: 'award'
   },
   {
     id: '5',
     date: '2024-06',
-    title: t('开始西湖大学访问学生研究', 'Started Visiting Student Research at Westlake University'),
-    description: t('在西湖大学工学院i⁴-FSI实验室开展仿生波动鳍推进仿真研究', 'Conducting biomimetic undulating fin propulsion simulation research at i⁴-FSI Lab, School of Engineering, Westlake University'),
+    title: t('home.latestNews.items.westlakeVisit.title'),
+    description: t('home.latestNews.items.westlakeVisit.description'),
     type: 'project'
   }
 ];
 
-const getStats = (t: (zh: string, en: string) => string) => [
-  { label: t('发表论文', 'Publications'), value: '10+', icon: '📄' },
-  { label: t('研究项目', 'Research Projects'), value: '5', icon: '🔬' },
-  { label: t('发明专利', 'Patents'), value: '8', icon: '💡' },
-  { label: t('荣誉奖项', 'Awards'), value: '3+', icon: '🏆' }
+const getStats = (t: (key: string, fallback?: string) => string) => [
+  { label: t('home.stats.publications'), value: '10+', icon: '📄' },
+  { label: t('home.stats.projects'), value: '5', icon: '🔬' },
+  { label: t('home.stats.patents'), value: '8', icon: '💡' },
+  { label: t('home.stats.awards'), value: '3+', icon: '🏆' }
 ];
 
 function Home() {

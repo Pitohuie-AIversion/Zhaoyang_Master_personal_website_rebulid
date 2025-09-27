@@ -278,7 +278,7 @@ function Research() {
         >
           <div className="flex items-center justify-center gap-3 sm:gap-4 mb-4">
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary-dark theme-transition leading-tight break-words">
-              {t('学术研究', 'Academic Research')}
+              {t('research.title')}
             </h1>
             <button
               onClick={() => setShowAnalytics(!showAnalytics)}
@@ -287,13 +287,13 @@ function Research() {
                   ? 'bg-blue-600 text-white shadow-lg' 
                   : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
               }`}
-              title={showAnalytics ? t('切换到列表视图', 'Switch to List View') : t('切换到分析视图', 'Switch to Analytics View')}
+              title={showAnalytics ? t('research.switchToListView') : t('research.switchToAnalyticsView')}
             >
               <BarChart3 className="w-6 h-6" />
             </button>
           </div>
           <p className="text-base md:text-lg lg:text-xl text-secondary-dark theme-transition max-w-2xl mx-auto mb-8 leading-loose break-words hyphens-auto">
-            {t('专注于运用Transformer/神经算子建模CFD时空场与水下机器人仿生感知技术研究', 'Focusing on Transformer/Neural Operator modeling of CFD spatiotemporal fields and underwater robot biomimimetic perception technology research')}
+            {t('research.description')}
           </p>
           
           {/* 搜索和筛选 */}
@@ -304,7 +304,7 @@ function Research() {
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
                 <input
                   type="text"
-                  placeholder={t('搜索论文、专利或奖项...', 'Search papers, patents or awards...')}
+                  placeholder={t('research.searchPlaceholder')}
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                   className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white text-gray-900 break-words"
@@ -318,10 +318,10 @@ function Research() {
                   onChange={(e) => setFilterType(e.target.value as any)}
                   className="px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white text-gray-900 break-words"
                 >
-                  <option value="all">{t('全部类型', 'All Types')}</option>
-                  <option value="publications">{t('论文发表', 'Publications')}</option>
-                  <option value="patents">{t('专利申请', 'Patents')}</option>
-                  <option value="awards">{t('荣誉奖项', 'Awards')}</option>
+                  <option value="all">{t('research.filters.allTypes')}</option>
+                  <option value="publications">{t('research.filters.publications')}</option>
+                  <option value="patents">{t('research.filters.patents')}</option>
+                  <option value="awards">{t('research.filters.awards')}</option>
                 </select>
                 
                 {filterType === 'publications' && (
@@ -330,9 +330,9 @@ function Research() {
                     onChange={(e) => setPublicationFilter(e.target.value as any)}
                     className="px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white text-gray-900 break-words"
                   >
-                    <option value="all">{t('全部状态', 'All Status')}</option>
-                    <option value="published">{t('已发表', 'Published')}</option>
-                    <option value="under_review">{t('审稿中', 'Under Review')}</option>
+                    <option value="all">{t('research.filters.allStatus')}</option>
+                    <option value="published">{t('research.filters.published')}</option>
+                    <option value="under_review">{t('research.filters.underReview')}</option>
                   </select>
                 )}
               </div>
@@ -353,20 +353,20 @@ function Research() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
                 </svg>
               </div>
-              <h2 className="text-xl md:text-2xl font-semibold text-primary-dark theme-transition leading-tight">{t('科学计算', 'Scientific Computing')}</h2>
+              <h2 className="text-xl md:text-2xl font-semibold text-primary-dark theme-transition leading-tight">{t('research.areas.scientificComputing.title')}</h2>
             </div>
             <div className="space-y-4">
               <div>
-                <h3 className="text-base md:text-lg font-medium text-primary-dark theme-transition mb-1 leading-snug">{t('Transformer/神经算子建模', 'Transformer/Neural Operator Modeling')}</h3>
-                <p className="text-sm md:text-base text-secondary-dark theme-transition leading-relaxed">{t('基于深度学习的CFD时空场建模，实现跨几何泛化预测', 'Deep learning-based CFD spatiotemporal field modeling with cross-geometry generalization prediction')}</p>
+                <h3 className="text-base md:text-lg font-medium text-primary-dark theme-transition mb-1 leading-snug">{t('research.areas.scientificComputing.transformer.title')}</h3>
+                <p className="text-sm md:text-base text-secondary-dark theme-transition leading-relaxed">{t('research.areas.scientificComputing.transformer.description')}</p>
               </div>
               <div>
-                <h3 className="text-base md:text-lg font-medium text-primary-dark theme-transition mb-1 leading-snug">{t('稀疏到稠密场重建', 'Sparse-to-Dense Field Reconstruction')}</h3>
-                <p className="text-sm md:text-base text-secondary-dark theme-transition leading-relaxed">{t('面向CFD/环境流，稀疏传感重建高分辨率时空场', 'For CFD/environmental flows, sparse sensing reconstruction of high-resolution spatiotemporal fields')}</p>
+                <h3 className="text-base md:text-lg font-medium text-primary-dark theme-transition mb-1 leading-snug">{t('research.areas.scientificComputing.sparseToDense.title')}</h3>
+                <p className="text-sm md:text-base text-secondary-dark theme-transition leading-relaxed">{t('research.areas.scientificComputing.sparseToDense.description')}</p>
               </div>
               <div>
-                <h3 className="text-base md:text-lg font-medium text-primary-dark theme-transition mb-1 leading-snug">{t('溃坝仿真研究', 'Dam Break Simulation Research')}</h3>
-                <p className="text-sm md:text-base text-secondary-dark theme-transition leading-relaxed">{t('DamFormer模型，构建多几何边界数据集', 'DamFormer model, building multi-geometry boundary datasets')}</p>
+                <h3 className="text-base md:text-lg font-medium text-primary-dark theme-transition mb-1 leading-snug">{t('research.areas.scientificComputing.damBreak.title')}</h3>
+                <p className="text-sm md:text-base text-secondary-dark theme-transition leading-relaxed">{t('research.areas.scientificComputing.damBreak.description')}</p>
               </div>
             </div>
           </SimpleMotion>
@@ -384,20 +384,20 @@ function Research() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
                 </svg>
               </div>
-              <h2 className="text-xl md:text-2xl font-semibold text-primary-dark theme-transition leading-tight">{t('机器人技术', 'Robotics Technology')}</h2>
+              <h2 className="text-xl md:text-2xl font-semibold text-primary-dark theme-transition leading-tight">{t('research.areas.robotics.title')}</h2>
             </div>
             <div className="space-y-4">
               <div>
-                <h3 className="text-base md:text-lg font-medium text-primary-dark theme-transition mb-1 leading-snug">{t('水下机器人仿生感知', 'Underwater Robot Biomimetic Perception')}</h3>
-                <p className="text-sm md:text-base text-secondary-dark theme-transition leading-relaxed">{t('TENG/人工侧线技术，深度学习辅助感知系统', 'TENG/artificial lateral line technology, deep learning-assisted perception systems')}</p>
+                <h3 className="text-base md:text-lg font-medium text-primary-dark theme-transition mb-1 leading-snug">{t('research.areas.robotics.underwaterPerception.title')}</h3>
+                <p className="text-sm md:text-base text-secondary-dark theme-transition leading-relaxed">{t('research.areas.robotics.underwaterPerception.description')}</p>
               </div>
               <div>
-                <h3 className="text-base md:text-lg font-medium text-primary-dark theme-transition mb-1 leading-snug">{t('仿生波动鳍推进', 'Biomimetic Undulating Fin Propulsion')}</h3>
-                <p className="text-sm md:text-base text-secondary-dark theme-transition leading-relaxed">{t('Star-CCM+ CFD/FSI仿真，Java Macro自动化参数扫描', 'Star-CCM+ CFD/FSI simulation with Java Macro automated parameter sweeping')}</p>
+                <h3 className="text-base md:text-lg font-medium text-primary-dark theme-transition mb-1 leading-snug">{t('research.areas.robotics.bionicFin.title')}</h3>
+                <p className="text-sm md:text-base text-secondary-dark theme-transition leading-relaxed">{t('research.areas.robotics.bionicFin.description')}</p>
               </div>
               <div>
-                <h3 className="text-base md:text-lg font-medium text-primary-dark theme-transition mb-1 leading-snug">{t('模块化机器人', 'Modular Robotics')}</h3>
-                <p className="text-sm md:text-base text-secondary-dark theme-transition leading-relaxed">{t('Rs-ModCubes自重构立方体机器人系统', 'Rs-ModCubes self-reconfigurable cubic robot system')}</p>
+                <h3 className="text-base md:text-lg font-medium text-primary-dark theme-transition mb-1 leading-snug">{t('research.areas.robotics.modularRobot.title')}</h3>
+                <p className="text-sm md:text-base text-secondary-dark theme-transition leading-relaxed">{t('research.areas.robotics.modularRobot.description')}</p>
               </div>
             </div>
           </SimpleMotion>

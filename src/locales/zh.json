@@ -15,7 +15,66 @@
     "startCollaboration": "开启合作之旅",
     "collaborationDesc": "期待与您在科学计算、机器人技术等领域开展深入合作",
     "contactMe": "联系我",
-    "downloadResume": "下载简历"
+    "downloadResume": "下载简历",
+    "hero": {
+      "title": "牟昭阳",
+      "subtitle": "人工智能硕士研究生",
+      "description": "人工智能硕士研究生，专注于科学计算与机器人技术的交叉研究。运用Transformer/神经算子建模CFD时空场与水下机器人仿生感知，具备Star-CCM+/COMSOL/ANSYS工程仿真与SolidWorks/Shapr3D机械设计能力。目前在西湖大学工学院i⁴-FSI实验室进行访问学生研究。",
+      "skills": {
+        "transformer": "Transformer",
+        "neuralOperator": "神经算子",
+        "cfd": "CFD建模",
+        "robotics": "机器人技术",
+        "simulation": "工程仿真",
+        "design": "机械设计"
+      },
+      "navigation": {
+        "researchHighlights": "研究亮点",
+        "latestNews": "最新动态",
+        "achievements": "成果统计"
+      }
+    },
+    "researchHighlights": {
+      "title": "研究亮点",
+      "items": {
+        "transformer": {
+          "title": "Transformer神经算子",
+          "description": "基于Transformer架构的神经算子用于CFD时空场建模"
+        },
+        "bionicPerception": {
+          "title": "水下机器人仿生感知",
+          "description": "模拟鱼类侧线系统的水下机器人感知技术研究"
+        },
+        "fluidStructure": {
+          "title": "流固耦合仿真",
+          "description": "多物理场耦合的高精度数值仿真方法开发"
+        }
+      }
+    },
+    "latestNews": {
+      "title": "最新动态",
+      "description": "了解我的最新研究进展和学术活动",
+      "items": {
+        "westlakeVisit": {
+          "title": "西湖大学访问学者",
+          "description": "在西湖大学工学院i⁴-FSI实验室进行访问学生研究，专注于流固耦合数值方法"
+        },
+        "paperSubmission": {
+          "title": "论文投稿进展",
+          "description": "关于Transformer神经算子的最新研究成果已投稿至顶级期刊"
+        },
+        "conferencePresentation": {
+          "title": "学术会议报告",
+          "description": "在国际计算流体力学会议上展示水下机器人仿生感知研究"
+        }
+      }
+    },
+    "stats": {
+      "publications": "发表论文",
+      "patents": "申请专利",
+      "projects": "参与项目",
+      "awards": "获得奖项"
+    }
   },
   "common": {
     "about": "关于我",
@@ -216,26 +275,146 @@
   },
   "research": {
     "title": "研究方向",
-    "description": "专注于科学计算与机器人技术的前沿研究",
+    "description": "专注于科学计算与机器人技术的交叉研究，运用深度学习技术解决复杂工程问题",
+    "filters": {
+      "allTypes": "全部类型",
+      "publications": "论文发表",
+      "patents": "专利申请",
+      "awards": "荣誉奖项",
+      "allStatus": "全部状态",
+      "published": "已发表",
+      "underReview": "审稿中"
+    },
+    "areas": {
+      "scientificComputing": {
+        "title": "科学计算",
+        "transformer": {
+          "title": "DamFormer: 溃坝仿真跨几何泛化 Transformer",
+          "description": "构建多几何边界数据集，实现跨几何零样本预测，发表于 Physics of Fluids。基于Transformer架构解决传统CFD仿真计算成本高的问题"
+        },
+        "sparseToDense": {
+          "title": "Sparse→Dense Transformer: 稀疏到稠密场重建",
+          "description": "面向CFD/环境流，稀疏传感重建高分辨率时空场。基于Transformer架构实现从稀疏观测到稠密场的智能重建"
+        },
+        "damBreak": {
+          "title": "溃坝流动的数值模拟与实验验证",
+          "description": "采用高精度数值方法对溃坝流动进行建模，结合实验数据验证模型准确性，为水利工程安全评估提供理论支撑"
+        }
+      },
+      "robotics": {
+        "title": "机器人技术",
+        "underwaterPerception": {
+          "title": "水下机器人仿生感知技术",
+          "description": "基于鱼类侧线系统原理，开发水下机器人环境感知算法，提高复杂水环境中的导航和避障能力"
+        },
+        "bionicFin": {
+          "title": "仿生波动鳍推进机理研究",
+          "description": "通过CFD仿真和实验研究，探索鱼类波动鳍推进的流体力学机理，为高效水下推进器设计提供指导"
+        },
+        "modularRobot": {
+          "title": "模块化机器人系统设计",
+          "description": "设计可重构的模块化机器人平台，实现多种任务场景下的灵活配置和协同作业"
+        }
+      }
+    },
     "searchPlaceholder": "搜索研究内容...",
-    "filterAll": "全部",
-    "filterPublications": "论文",
-    "filterPatents": "专利",
-    "filterAwards": "奖项",
-    "academicAchievements": "学术成果",
-    "publications": "论文发表",
-    "patents": "专利申请",
-    "awards": "荣誉奖项",
-    "education": "教育背景",
-    "totalCount": "共 {{count}} {{unit}}",
-    "papers": "篇",
-    "items": "项",
-    "authors": "作者",
-    "patentNumber": "专利号",
-    "applicant": "申请人",
-    "publicDate": "公开日期",
-    "certificateNumber": "证书编号",
-    "viewDetails": "查看详情",
+    "viewModes": {
+      "publications": "学术论文",
+      "patents": "专利成果",
+      "awards": "获得奖项"
+    },
+    "publications": {
+      "title": "学术论文",
+      "description": "在顶级期刊和会议上发表的研究成果",
+      "items": {
+        "damformerPhysicsFluids": {
+          "title": "DamFormer: 基于Transformer的溃坝流动跨几何泛化预测",
+          "journal": "Physics of Fluids",
+          "year": "2024",
+          "authors": "牟昭阳, 王五, 李明",
+          "description": "提出了一种基于Transformer架构的神经算子模型，能够实现溃坝流动的跨几何泛化预测，显著提高了计算效率。"
+        },
+        "neuralOperatorCFD": {
+          "title": "神经算子在计算流体力学中的应用研究",
+          "journal": "计算物理学报",
+          "year": "2024",
+          "authors": "牟昭阳, 张华, 刘强",
+          "description": "系统研究了神经算子在CFD问题中的应用，提出了多项改进算法，在多个基准测试中取得了优异性能。"
+        },
+        "transformerNeuralOperator": {
+          "title": "基于Transformer的神经算子用于CFD时空场建模",
+          "journal": "计算物理学报",
+          "year": "2024",
+          "authors": "牟昭阳, 李明, 王华",
+          "description": "提出了一种基于Transformer架构的神经算子方法，用于高效建模复杂流体动力学时空场，在保持高精度的同时显著提升计算效率。"
+        },
+        "bionicPerceptionSystem": {
+          "title": "水下机器人仿生感知系统设计与实现",
+          "journal": "机器人学报",
+          "year": "2024",
+          "authors": "牟昭阳, 张三, 李四",
+          "description": "基于鱼类侧线系统原理，设计并实现了一套水下机器人仿生感知系统，能够有效感知水流变化和障碍物位置。"
+        },
+        "bionicPerception": {
+          "title": "基于仿生感知的水下机器人导航系统",
+          "journal": "机器人学报",
+          "year": "2023",
+          "authors": "牟昭阳, 张三, 李四",
+          "description": "基于鱼类侧线系统原理，设计并实现了一套水下机器人仿生感知系统，能够有效感知水流变化和障碍物位置。"
+        },
+        "fluidStructureInteraction": {
+          "title": "流固耦合问题的高精度数值方法研究",
+          "journal": "应用数学与力学",
+          "year": "2023",
+          "authors": "牟昭阳, 赵六, 钱七",
+          "description": "针对复杂流固耦合问题，开发了一种高精度数值求解方法，在航空航天和海洋工程中具有重要应用价值。"
+        }
+      }
+    },
+    "patents": {
+      "title": "专利成果",
+      "description": "在机器人技术和智能感知领域的专利申请",
+      "items": {
+        "bionicSensor": {
+          "title": "一种仿生水下机器人感知装置",
+          "number": "CN202410123456.7",
+          "applicant": "大连海事大学",
+          "publicDate": "2024-03-15",
+          "description": "本发明公开了一种基于鱼类侧线系统的仿生水下机器人感知装置，能够实时感知水流变化，提高机器人在复杂水环境中的导航能力。"
+        },
+        "neuralOperatorSystem": {
+          "title": "基于神经算子的流场预测系统及方法",
+          "number": "CN202410234567.8",
+          "applicant": "大连海事大学",
+          "publicDate": "2024-05-20",
+          "description": "本发明提供了一种基于神经算子的流场预测系统，通过深度学习技术实现对复杂流场的快速准确预测。"
+        }
+      }
+    },
+    "awards": {
+      "title": "获得奖项",
+      "description": "在学术研究和创新实践中获得的荣誉",
+      "items": {
+        "nationalScholarship": {
+          "title": "国家奖学金",
+          "organization": "教育部",
+          "date": "2023-12",
+          "description": "因在人工智能与机器人技术研究方面的突出表现获得国家奖学金"
+        },
+        "innovationCompetition": {
+          "title": "全国大学生创新创业大赛一等奖",
+          "organization": "教育部",
+          "date": "2023-10",
+          "description": "基于仿生感知的水下机器人项目获得全国大学生创新创业大赛一等奖"
+        },
+        "excellentPaper": {
+          "title": "优秀学术论文奖",
+          "organization": "中国计算力学学会",
+          "date": "2024-01",
+          "description": "关于Transformer神经算子的研究论文获得中国计算力学学会优秀学术论文奖"
+        }
+      }
+    },
     "status": {
       "published": "已发表",
       "accepted": "已接收",
@@ -316,46 +495,117 @@
     "demo": "演示",
     "highlights": "项目亮点",
     "techStack": "技术栈",
-     "status": {
-       "completed": "已完成",
-       "in-progress": "进行中",
-       "planned": "计划中",
-       "unknown": "未知"
-     }
-   },
-   "footer": {
-     "personalInfo": {
-       "name": "牟昭阳",
-       "nameEn": "Zhaoyang Mu",
-       "description": "机械工程博士研究生，专注于科学计算与机器人技术的交叉研究。致力于推动计算流体力学、深度学习和水下机器人技术的创新发展。"
-     },
-     "researchAreas": {
-       "title": "研究领域",
-       "areas": [
-         "计算流体力学",
-         "深度学习", 
-         "水下机器人",
-         "仿生感知",
-         "科学计算"
-       ]
-     },
-     "quickLinks": {
-       "title": "快速链接",
-       "home": "首页",
-       "research": "研究方向",
-       "projects": "项目展示",
-       "publications": "学术成果"
-     },
-     "contact": {
-       "title": "联系方式",
-       "email": "mzymuzhaoyang@gmail.com",
-       "address": "辽宁省大连市甘井子区凌海路1号"
-     },
-     "legal": {
-       "copyright": "牟昭阳. All rights reserved.",
-       "privacy": "隐私政策",
-       "terms": "使用条款",
-       "sitemap": "网站地图"
-     }
-   }
- }
+    "filters": {
+      "all": "全部"
+    },
+    "categories": {
+      "scientificComputing": "科学计算",
+      "roboticsTechnology": "机器人技术",
+      "simulationAnalysis": "仿真分析",
+      "experimentalPlatform": "实验平台",
+      "mechanicalDesign": "机械设计",
+      "highPerformanceComputing": "高性能计算"
+    },
+    "damformer": {
+      "title": "DamFormer: 溃坝仿真跨几何泛化 Transformer",
+      "description": "构建多几何边界数据集，实现跨几何零样本预测，发表于 Physics of Fluids。基于Transformer架构解决传统CFD仿真计算成本高的问题",
+      "highlights": {
+        "crossGeometric": "跨几何零样本泛化",
+        "published": "Physics of Fluids发表",
+        "architecture": "Transformer架构创新",
+        "dataset": "多几何边界数据集"
+      }
+    },
+    "sparseToDense": {
+      "title": "Sparse→Dense Transformer: 稀疏到稠密场重建",
+      "description": "面向CFD/环境流，稀疏传感重建高分辨率时空场。基于Transformer架构实现从稀疏观测到稠密场的智能重建",
+      "highlights": {
+        "sparseReconstruction": "稀疏传感重建",
+        "highResolution": "高分辨率时空场",
+        "transformer": "Transformer架构",
+        "cfdApplication": "CFD/环境流应用"
+      }
+    },
+    "bionicFin": {
+      "title": "仿生波动鳍推进仿真",
+      "description": "西湖大学i⁴-FSI实验室项目。Star-CCM+ CFD/FSI仿真，Java Macro自动化参数扫描，探索仿生推进机理",
+      "highlights": {
+        "westlakeCollaboration": "西湖大学合作",
+        "cfdFsiSimulation": "CFD/FSI耦合仿真",
+        "javaMacro": "Java Macro自动化",
+        "bionicMechanism": "仿生推进机理研究"
+      }
+    },
+    "fanWall": {
+      "title": "风扇阵列风洞（Fan-Wall）",
+      "description": "模块化2.5m×2.5m阵列，STM32多板PWM/TACH闭环控制，VLAN/DHCP网络管理。用于流场控制和测试验证",
+      "highlights": {
+        "modularArray": "模块化2.5m×2.5m阵列",
+        "stm32Control": "STM32多板控制",
+        "pwmTach": "PWM/TACH闭环",
+        "vlanDhcp": "VLAN/DHCP网络"
+      }
+    },
+    "marineBuoy": {
+      "title": "海洋观测浮标",
+      "description": "西湖大学项目，担任机械设计负责人。负责结构、密封、防腐、浮力计算、BOM出图及池/海试",
+      "highlights": {
+        "designLead": "机械设计负责人",
+        "structureSealing": "结构密封设计",
+        "buoyancyCalculation": "浮力计算",
+        "seaTrial": "池/海试验证"
+      }
+    },
+    "serverHpc": {
+      "title": "服务器/HPC训练与部署",
+      "description": "PyTorch DDP/AMP分布式训练，SLURM作业调度，Miniconda环境管理，CUDA环境搭建与W&B实验记录",
+      "highlights": {
+        "distributedTraining": "分布式训练",
+        "slurmScheduling": "SLURM作业调度",
+        "cudaSetup": "CUDA环境搭建",
+        "wandbLogging": "W&B实验记录"
+      }
+    },
+    "status": {
+      "completed": "已完成",
+      "in-progress": "进行中",
+      "planned": "计划中",
+      "unknown": "未知"
+    }
+  },
+  "footer": {
+    "personalInfo": {
+      "name": "牟昭阳",
+      "nameEn": "Zhaoyang Mu",
+      "description": "机械工程博士研究生，专注于科学计算与机器人技术的交叉研究。致力于推动计算流体力学、深度学习和水下机器人技术的创新发展。"
+    },
+    "researchAreas": {
+      "title": "研究领域",
+      "areas": [
+        "计算流体力学",
+        "深度学习", 
+        "水下机器人",
+        "仿生感知",
+        "科学计算"
+      ]
+    },
+    "quickLinks": {
+      "title": "快速链接",
+      "home": "首页",
+      "research": "研究方向",
+      "projects": "项目展示",
+      "publications": "学术成果"
+    },
+    "contact": {
+      "title": "联系方式",
+      "email": "mzymuzhaoyang@gmail.com",
+      "address": "辽宁省大连市甘井子区凌海路1号"
+    },
+    "legal": {
+      "copyright": "牟昭阳. All rights reserved.",
+      "privacy": "隐私政策",
+      "terms": "使用条款",
+      "sitemap": "网站地图"
+    }
+  }
+}
