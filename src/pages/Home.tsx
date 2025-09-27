@@ -159,7 +159,7 @@ function Home() {
                     className="block text-secondary-dark theme-transition font-normal mt-2"
                     preset="card-title"
                   >
-                    {language === 'zh' ? 'Zhaoyang Mu' : '牟昭阳'}
+                    {t('home.hero.nameEn')}
                   </ResponsiveText>
                 </h1>
               </ScrollReveal>

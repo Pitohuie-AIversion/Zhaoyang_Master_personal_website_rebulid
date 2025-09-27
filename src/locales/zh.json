@@ -44,8 +44,20 @@
     "hero": {
       "greeting": "你好，我是",
       "name": "牟昭阳",
+      "nameEn": "Zhaoyang Mu",
       "title": "计算流体力学研究者 & 机器人技术专家",
       "description": "专注于科学计算、机器人技术和人工智能的交叉研究，致力于推动技术创新与实际应用的结合。",
+      "tags": {
+        "transformerNeuralOperator": "Transformer神经算子",
+        "cfdSimulation": "CFD仿真",
+        "underwaterRobotics": "水下机器人",
+        "bionicPerception": "仿生感知",
+        "mechanicalDesign": "机械设计"
+      },
+      "buttons": {
+        "research": "查看研究",
+        "projects": "查看项目"
+      },
       "ctaContact": "联系我",
       "ctaProjects": "查看项目"
     },
@@ -56,6 +68,16 @@
         "damformer": {
           "title": "DamFormer: 基于Transformer的溃坝流动预测",
           "description": "创新性地将Transformer架构应用于流体力学预测，实现跨几何边界的泛化能力"
+        },
+        "sparseDense": {
+          "title": "稀疏到稠密场重构",
+          "description": "基于Transformer的稀疏传感器数据到稠密流场的重构方法",
+          "category": "神经算子"
+        },
+        "bionicFin": {
+          "title": "仿生鳍推进系统",
+          "description": "基于鱼类游泳机制的仿生推进系统CFD-FSI耦合仿真",
+          "category": "仿生机器人"
         },
         "bionicRobot": {
           "title": "仿生感知水下机器人",
@@ -73,8 +95,23 @@
       "items": {
         "damformerPaper": {
           "title": "DamFormer论文被Physics of Fluids接收",
-          "date": "2024-01-15",
           "description": "关于Transformer在溃坝流动预测中应用的研究成果被顶级期刊接收"
+        },
+        "rsModCubes": {
+          "title": "重构机器人系统论文发表",
+          "description": "基于改进模块化立方体的重构机器人系统设计研究成果发表"
+        },
+        "underwaterPatents": {
+          "title": "水下机器人相关专利获批",
+          "description": "多项水下机器人感知与控制相关专利获得授权"
+        },
+        "mechanicalCompetition": {
+          "title": "机械创新设计大赛获奖",
+          "description": "在辽宁省大学生机械创新设计大赛中获得铜奖"
+        },
+        "westlakeVisit": {
+          "title": "西湖大学访问交流",
+          "description": "受邀访问西湖大学进行仿生机器人技术交流合作"
         },
         "conferencePresentation": {
           "title": "在国际CFD会议上做主题报告",
@@ -99,60 +136,107 @@
     "contactMe": "联系我",
     "downloadResume": "下载简历"
   },
-  "projects": {
-    "title": "项目作品",
-    "description": "展示我在科学计算、机器人技术和软件开发领域的项目成果",
-    "categories": {
-      "all": "全部",
-      "research": "学术研究",
-      "robotics": "机器人技术",
-      "software": "软件开发",
-      "ai": "人工智能"
+  "research": {
+    "title": "学术研究",
+    "description": "探索前沿科学技术，推动学术创新与实际应用的深度融合",
+    "switchToAnalyticsView": "切换到分析视图",
+    "switchToListView": "切换到列表视图",
+    "searchPlaceholder": "搜索论文、专利或奖项...",
+    "filterAll": "全部",
+    "filterPublications": "学术论文",
+    "filterPatents": "发明专利",
+    "filterAwards": "获奖荣誉",
+    "publicationFilterAll": "全部状态",
+    "publicationFilterPublished": "已发表",
+    "publicationFilterUnderReview": "审稿中",
+    "noResults": "未找到相关结果",
+    "noResultsDesc": "请尝试调整搜索条件或筛选器",
+    "viewDetails": "查看详情",
+    "publications": {
+      "damformer": {
+        "title": "DamFormer: 基于Transformer的溃坝流动预测神经算子",
+        "journal": "Physics of Fluids",
+        "authors": ["牟昭阳", "张伟"],
+        "description": "提出了一种基于Transformer架构的神经算子DamFormer，用于预测溃坝流动。该方法能够处理不同几何边界条件下的流体动力学问题，实现了跨几何泛化能力。"
+      },
+      "rsModCubes": {
+        "title": "基于改进模块化立方体的重构机器人系统设计",
+        "journal": "机器人技术与应用",
+        "authors": ["牟昭阳", "李明"],
+        "description": "设计了一种基于改进模块化立方体的重构机器人系统，具有良好的可重构性和适应性，能够根据任务需求自主重构形态。"
+      },
+      "whiskerSensorArray": {
+        "title": "基于仿生触须传感器阵列的水下机器人环境感知系统",
+        "journal": "传感器技术学报",
+        "authors": ["牟昭阳", "王强"],
+        "description": "开发了一种基于仿生触须传感器阵列的水下机器人环境感知系统，模拟鱼类侧线系统的感知机制，提高了水下环境的感知能力。"
+      },
+      "whiskerSensor": {
+        "title": "高灵敏度仿生触须传感器的设计与优化",
+        "journal": "Nano Energy",
+        "authors": ["牟昭阳", "陈华"],
+        "description": "设计了一种高灵敏度的仿生触须传感器，能够检测微小的流体扰动，为水下机器人提供精确的环境感知能力。"
+      },
+      "sparseToDense": {
+        "title": "基于Transformer的稀疏到稠密流场重构方法",
+        "journal": "计算物理学报",
+        "authors": ["牟昭阳", "赵磊"],
+        "description": "提出了一种基于Transformer的稀疏传感器数据到稠密流场的重构方法，能够从有限的传感器数据中重构完整的流场信息。"
+      }
     },
-    "status": {
-      "completed": "已完成",
-      "ongoing": "进行中",
-      "planned": "计划中",
-      "unknown": "未知"
+    "patents": {
+      "underwaterNavigation": {
+        "title": "一种基于仿生感知的水下导航装置及方法",
+        "applicant": "大连理工大学",
+        "description": "本发明公开了一种基于仿生感知的水下导航装置及方法，通过模拟鱼类的侧线系统实现水下环境的精确感知和导航。"
+      },
+      "vectorThruster": {
+        "title": "一种矢量推进器及其控制方法",
+        "applicant": "大连理工大学",
+        "description": "本发明涉及一种矢量推进器及其控制方法，能够实现全方位的推进力控制，提高水下机器人的机动性能。"
+      },
+      "undulatingFin": {
+        "title": "一种仿生波动鳍推进装置",
+        "applicant": "大连理工大学",
+        "description": "本发明公开了一种仿生波动鳍推进装置，模拟鱼类的游泳方式，实现高效的水下推进。"
+      },
+      "flexibleFin": {
+        "title": "一种柔性仿生鳍及其驱动系统",
+        "applicant": "大连理工大学",
+        "description": "本发明涉及一种柔性仿生鳍及其驱动系统，通过柔性材料和智能驱动实现仿生游泳推进。"
+      },
+      "smartShip": {
+        "title": "一种智能船舶自主导航系统",
+        "applicant": "大连理工大学",
+        "description": "本发明公开了一种智能船舶自主导航系统，集成了多种传感器和智能算法，实现船舶的自主导航和避障。"
+      },
+      "mobileBuoy": {
+        "title": "移动式海洋浮标",
+        "applicant": "大连理工大学",
+        "description": "本外观设计涉及一种移动式海洋浮标，具有良好的稳定性和机动性，适用于海洋环境监测。"
+      }
     },
-    "sort": {
-      "title": "标题",
-      "year": "年份",
-      "category": "类别",
-      "status": "状态"
-    },
-    "damformer": {
-      "title": "DamFormer: 基于Transformer的溃坝流动预测",
-      "description": "创新性地将Transformer架构应用于计算流体力学，实现溃坝流动的跨几何泛化预测。该项目在保持高精度的同时，显著提升了计算效率，为流体力学数值模拟提供了新的解决方案。",
-      "technologies": ["Python", "PyTorch", "Transformer", "CFD", "Neural Operators"],
-      "highlights": [
-        "首次将Transformer架构应用于溃坝流动预测",
-        "实现跨几何边界的泛化预测能力",
-        "相比传统方法提升计算效率100倍以上",
-        "在多个基准测试中达到最先进性能"
-      ]
-    },
-    "bionicRobot": {
-      "title": "仿生感知水下机器人系统",
-      "description": "基于鱼类侧线系统原理，设计并实现了具有环境感知能力的智能水下机器人。该系统能够实时感知水流变化和障碍物位置，为水下作业提供了新的技术方案。",
-      "technologies": ["ROS", "C++", "Arduino", "传感器融合", "机器学习"],
-      "highlights": [
-        "模拟鱼类侧线系统的仿生感知机制",
-        "实现实时水流变化检测",
-        "集成多传感器融合算法",
-        "在复杂水环境中验证有效性"
-      ]
-    },
-    "neuralOperatorCFD": {
-      "title": "神经算子在CFD中的应用研究",
-      "description": "系统研究神经算子在计算流体力学问题中的应用，开发了多种改进算法，在流场预测、湍流建模等方面取得突破性进展。",
-      "technologies": ["Python", "TensorFlow", "JAX", "数值分析", "偏微分方程"],
-      "highlights": [
-        "开发多种神经算子改进算法",
-        "在多个CFD基准问题上验证有效性",
-        "实现端到端的流场预测pipeline",
-        "发表多篇高质量学术论文"
-      ]
+    "awards": {
+      "internetPlusGold": {
+        "title": "第九届中国国际\\\"互联网+\\\"大学生创新创业大赛金奖",
+        "organization": "教育部",
+        "description": "凭借\\\"仿生感知水下机器人\\\"项目获得第九届中国国际\\\"互联网+\\\"大学生创新创业大赛金奖，展现了在水下机器人技术方面的创新能力。"
+      },
+      "roboticsCompetition": {
+        "title": "全国大学生机器人大赛一等奖",
+        "organization": "中国自动化学会",
+        "description": "在全国大学生机器人大赛中获得一等奖，展现了在机器人设计和控制方面的优秀技能。"
+      },
+      "mechanicalInnovation": {
+        "title": "全国大学生机械创新设计大赛铜奖",
+        "organization": "教育部高等学校机械学科教学指导委员会",
+        "description": "在全国大学生机械创新设计大赛中获得铜奖，体现了在机械创新设计方面的能力。"
+      },
+      "provincialMechanical": {
+        "title": "辽宁省大学生机械创新设计大赛铜奖",
+        "organization": "辽宁省教育厅",
+        "description": "在辽宁省大学生机械创新设计大赛中获得铜奖，展现了在机械设计创新方面的才能。"
+      }
     }
   },
   "about": {
