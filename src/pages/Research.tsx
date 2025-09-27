@@ -293,7 +293,7 @@ function Research() {
             </button>
           </div>
           <p className="text-base md:text-lg lg:text-xl text-secondary-dark theme-transition max-w-2xl mx-auto mb-8 leading-loose break-words hyphens-auto">
-            {t('专注于Transformer/Neural Operator建模CFD时空场与水下机器人仿生感知技术研究', 'Focusing on Transformer/Neural Operator modeling of CFD spatiotemporal fields and underwater robot biomimimetic perception technology research')}
+            {t('专注于运用Transformer/神经算子建模CFD时空场与水下机器人仿生感知技术研究', 'Focusing on Transformer/Neural Operator modeling of CFD spatiotemporal fields and underwater robot biomimimetic perception technology research')}
           </p>
           
           {/* 搜索和筛选 */}
@@ -357,7 +357,7 @@ function Research() {
             </div>
             <div className="space-y-4">
               <div>
-                <h3 className="text-base md:text-lg font-medium text-primary-dark theme-transition mb-1 leading-snug">{t('Transformer/Neural Operator建模', 'Transformer/Neural Operator Modeling')}</h3>
+                <h3 className="text-base md:text-lg font-medium text-primary-dark theme-transition mb-1 leading-snug">{t('Transformer/神经算子建模', 'Transformer/Neural Operator Modeling')}</h3>
                 <p className="text-sm md:text-base text-secondary-dark theme-transition leading-relaxed">{t('基于深度学习的CFD时空场建模，实现跨几何泛化预测', 'Deep learning-based CFD spatiotemporal field modeling with cross-geometry generalization prediction')}</p>
               </div>
               <div>

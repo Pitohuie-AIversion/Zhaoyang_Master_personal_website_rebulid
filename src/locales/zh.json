@@ -95,22 +95,28 @@
       },
       "budget": {
         "label": "预算范围",
-        "options": [
-          { "value": "under-5k", "label": "5千以下" },
-          { "value": "5k-10k", "label": "5千-1万" },
-          { "value": "10k-50k", "label": "1万-5万" },
-          { "value": "50k-100k", "label": "5万-10万" },
-          { "value": "over-100k", "label": "10万以上" }
-        ]
+        "placeholder": "请选择预算范围",
+        "options": {
+          "select": "请选择预算范围",
+          "under5k": "5千以下",
+          "5k10k": "5千-1万",
+          "10k50k": "1万-5万",
+          "50k100k": "5万-10万",
+          "over100k": "10万以上",
+          "discuss": "面议"
+        }
       },
       "timeline": {
         "label": "项目周期",
-        "options": [
-          { "value": "urgent", "label": "紧急（1周内）" },
-          { "value": "short", "label": "短期（1-4周）" },
-          { "value": "medium", "label": "中期（1-3个月）" },
-          { "value": "long", "label": "长期（3个月以上）" }
-        ]
+        "placeholder": "请选择项目周期",
+        "options": {
+          "select": "请选择项目周期",
+          "urgent": "紧急（1周内）",
+          "short": "短期（1-4周）",
+          "medium": "中期（1-3个月）",
+          "long": "长期（3个月以上）",
+          "flexible": "时间灵活"
+        }
       },
       "selectBudget": "请选择预算范围",
       "selectTimeline": "请选择项目周期",
@@ -137,6 +143,28 @@
       "teaching": {
         "title": "教学培训",
         "description": "技术培训、课程设计、知识分享等"
+      }
+    },
+    "collaboration": {
+      "research": {
+        "title": "科研合作",
+        "description": "学术研究、论文发表、科研项目合作"
+      },
+      "development": {
+        "title": "开发合作",
+        "description": "软件开发、系统集成、技术实现"
+      },
+      "consulting": {
+        "title": "咨询服务",
+        "description": "技术咨询、方案设计、专业建议"
+      },
+      "teaching": {
+        "title": "教学合作",
+        "description": "课程开发、培训服务、知识传授"
+      },
+      "other": {
+        "title": "其他合作",
+        "description": "定制化合作、特殊项目、其他需求"
       }
     }
   },
@@ -277,7 +305,7 @@
   },
   "projects": {
     "title": "科研项目",
-    "description": "专注于Transformer/Neural Operator建模CFD时空场与水下机器人仿生感知技术研究",
+    "description": "专注于运用Transformer/神经算子建模CFD时空场与水下机器人仿生感知技术研究",
     "searchPlaceholder": "搜索项目标题、描述或技术栈...",
     "category": "分类",
     "status": "状态",
@@ -293,6 +321,41 @@
        "in-progress": "进行中",
        "planned": "计划中",
        "unknown": "未知"
+     }
+   },
+   "footer": {
+     "personalInfo": {
+       "name": "牟昭阳",
+       "nameEn": "Zhaoyang Mu",
+       "description": "机械工程博士研究生，专注于科学计算与机器人技术的交叉研究。致力于推动计算流体力学、深度学习和水下机器人技术的创新发展。"
+     },
+     "researchAreas": {
+       "title": "研究领域",
+       "areas": [
+         "计算流体力学",
+         "深度学习", 
+         "水下机器人",
+         "仿生感知",
+         "科学计算"
+       ]
+     },
+     "quickLinks": {
+       "title": "快速链接",
+       "home": "首页",
+       "research": "研究方向",
+       "projects": "项目展示",
+       "publications": "学术成果"
+     },
+     "contact": {
+       "title": "联系方式",
+       "email": "mzymuzhaoyang@gmail.com",
+       "address": "辽宁省大连市甘井子区凌海路1号"
+     },
+     "legal": {
+       "copyright": "牟昭阳. All rights reserved.",
+       "privacy": "隐私政策",
+       "terms": "使用条款",
+       "sitemap": "网站地图"
      }
    }
  }

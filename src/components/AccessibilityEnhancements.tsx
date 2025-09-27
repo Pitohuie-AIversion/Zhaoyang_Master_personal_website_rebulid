@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useEffect, useState, useCallback, useRef } from 'react';
 import { Eye, EyeOff, Type, Contrast, Volume2, VolumeX, Keyboard, Mouse } from 'lucide-react';
+import { UnifiedButton } from './UnifiedButton';
 
 // 可访问性配置接口
 interface AccessibilityConfig {
@@ -245,14 +246,16 @@ export const AccessibilityToolbar: React.FC<{ className?: string }> = ({ classNa
   
   return (
     <div className={`fixed top-4 left-4 z-50 ${className}`}>
-      <button
+      <UnifiedButton
+        variant="primary"
+        size="md"
         onClick={() => setIsOpen(!isOpen)}
-        className="bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
         aria-label="打开可访问性工具栏"
         title="可访问性设置"
+        className="rounded-full shadow-lg"
       >
         <Eye className="w-5 h-5" />
-      </button>
+      </UnifiedButton>
       
       {isOpen && (
         <div className="absolute top-16 left-0 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 shadow-xl min-w-80">

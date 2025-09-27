@@ -66,7 +66,7 @@ function Skills() {
           level: 95,
           category: 'programming',
           description: 'PyTorch/NumPy/Pandas/Matplotlib，深度学习与科学计算',
-          projects: ['Transformer/Neural Operator建模', '深度强化学习算法', 'CFD时空场预测']
+          projects: ['Transformer/神经算子建模', '深度强化学习算法', 'CFD时空场预测']
         },
         {
           name: 'Java',

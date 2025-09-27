@@ -166,14 +166,14 @@ function Home() {
               <ScrollReveal direction="up" delay={0.6}>
                 <p className="text-base md:text-lg lg:text-xl text-secondary-dark theme-transition mb-6 leading-loose break-words hyphens-auto">
                   {t(
-                    '人工智能硕士研究生，专注于科学计算与机器人技术的交叉研究。以Transformer/Neural Operator建模CFD时空场与水下机器人仿生感知，具备Star-CCM+/COMSOL/ANSYS工程仿真与SolidWorks/Shapr3D机械设计能力。目前在西湖大学工学院i⁴-FSI实验室进行访问学生研究。',
+                    '人工智能硕士研究生，专注于科学计算与机器人技术的交叉研究。运用Transformer/神经算子建模CFD时空场与水下机器人仿生感知，具备Star-CCM+/COMSOL/ANSYS工程仿真与SolidWorks/Shapr3D机械设计能力。目前在西湖大学工学院i⁴-FSI实验室进行访问学生研究。',
                     'AI Master\'s student focusing on interdisciplinary research in scientific computing and robotics. Using Transformer/Neural Operator to model CFD spatiotemporal fields and underwater robot bionic perception, with expertise in Star-CCM+/COMSOL/ANSYS engineering simulation and SolidWorks/Shapr3D mechanical design. Currently conducting visiting student research at i⁴-FSI Lab, School of Engineering, Westlake University.'
                   )}
                 </p>
               </ScrollReveal>
               <div className="flex flex-wrap gap-2 sm:gap-3 mb-8">
                 <span className="px-3 py-1 bg-gray-100 text-gray-700 rounded-md text-sm font-medium">
-                  {t('Transformer/Neural Operator', 'Transformer/Neural Operator')}
+                  {t('Transformer/神经算子', 'Transformer/Neural Operator')}
                 </span>
                 <span className="px-3 py-1 bg-gray-100 text-gray-700 rounded-md text-sm font-medium">
                   {t('CFD仿真', 'CFD Simulation')}
@@ -294,10 +294,12 @@ function Home() {
             {/* 轮播指示器 */}
             <div className="flex justify-center mt-6 space-x-2">
               {researchHighlights.map((_, index) => (
-                <button
+                <UnifiedButton
                   key={index}
+                  variant="ghost"
+                  size="sm"
                   onClick={() => handleHighlightChange(index)}
-                  className={`w-2 h-2 rounded-full transition-all duration-200 ${
+                  className={`w-2 h-2 rounded-full transition-all duration-200 p-0 min-w-0 ${
                     index === currentHighlight
                       ? 'bg-gray-900 w-6'
                       : 'bg-gray-300 hover:bg-gray-400'

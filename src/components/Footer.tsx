@@ -1,12 +1,6 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-
-const quickLinks = [
-  { name: '首页', href: '/' },
-  { name: '研究方向', href: '/research' },
-  { name: '项目展示', href: '/projects' },
-  { name: '学术成果', href: '/publications' }
-];
+import { useTranslation } from './TranslationProvider';
 
 const socialLinks = [
   {
@@ -47,16 +41,24 @@ const socialLinks = [
   }
 ];
 
-const researchAreas = [
-  '计算流体力学',
-  '深度学习',
-  '水下机器人',
-  '仿生感知',
-  '科学计算'
-];
-
 export default function Footer() {
+  const { t } = useTranslation();
   const currentYear = new Date().getFullYear();
+
+  const quickLinks = [
+    { name: t('footer.quickLinks.home'), href: '/' },
+    { name: t('footer.quickLinks.research'), href: '/research' },
+    { name: t('footer.quickLinks.projects'), href: '/projects' },
+    { name: t('footer.quickLinks.publications'), href: '/publications' }
+  ];
+
+  const researchAreas = [
+    t('footer.researchAreas.areas.0'),
+    t('footer.researchAreas.areas.1'),
+    t('footer.researchAreas.areas.2'),
+    t('footer.researchAreas.areas.3'),
+    t('footer.researchAreas.areas.4')
+  ].filter(area => area && !area.startsWith('footer.'));
 
   return (
     <footer className="bg-secondary-dark border-t border-primary-dark theme-transition">
@@ -75,23 +77,22 @@ export default function Footer() {
                 <span className="text-white font-bold text-sm">ZY</span>
               </div>
               <div>
-                <div className="text-2xl font-bold text-primary-dark theme-transition">牟昭阳</div>
-                <div className="text-secondary-dark theme-transition">Zhaoyang Mu</div>
+                <div className="text-2xl font-bold text-primary-dark theme-transition">{t('footer.personalInfo.name')}</div>
+                <div className="text-secondary-dark theme-transition">{t('footer.personalInfo.nameEn')}</div>
               </div>
             </div>
             <p className="text-secondary-dark theme-transition mb-6 leading-relaxed max-w-md">
-              机械工程博士研究生，专注于科学计算与机器人技术的交叉研究。
-              致力于推动计算流体力学、深度学习和水下机器人技术的创新发展。
+              {t('footer.personalInfo.description')}
             </p>
-            <h3 className="font-semibold text-primary-dark theme-transition mb-4">研究领域</h3>
+            <h3 className="font-semibold text-primary-dark theme-transition mb-4">{t('footer.researchAreas.title')}</h3>
             <ul className="space-y-2">
-              {researchAreas.map((area) => (
-                <li key={area} className="text-secondary-dark theme-transition">
+              {researchAreas.map((area: string, index: number) => (
+                <li key={index} className="text-secondary-dark theme-transition">
                   {area}
                 </li>
               ))}
             </ul>
-            <div className="flex space-x-4">
+            <div className="flex space-x-4 mt-6">
               {socialLinks.map((link) => (
                 <a
                   key={link.name}
@@ -114,7 +115,7 @@ export default function Footer() {
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <h3 className="font-semibold text-primary-dark theme-transition mb-4">快速链接</h3>
+            <h3 className="font-semibold text-primary-dark theme-transition mb-4">{t('footer.quickLinks.title')}</h3>
             <ul className="space-y-2">
               {quickLinks.map((link) => (
                 <li key={link.name}>
@@ -136,17 +137,17 @@ export default function Footer() {
             transition={{ duration: 0.6, delay: 0.4 }}
             viewport={{ once: true }}
           >
-            <h3 className="font-semibold text-primary-dark theme-transition mb-4">联系方式</h3>
+            <h3 className="font-semibold text-primary-dark theme-transition mb-4">{t('footer.contact.title')}</h3>
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
                 <svg className="w-5 h-5 text-tertiary-dark theme-transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
                 <a
-                  href="mailto:mzymuzhaoyang@gmail.com"
+                  href={`mailto:${t('footer.contact.email')}`}
                   className="text-secondary-dark hover:text-blue-600 dark:hover:text-blue-400 theme-transition"
                 >
-                  mzymuzhaoyang@gmail.com
+                  {t('footer.contact.email')}
                 </a>
               </div>
               <div className="flex items-center space-x-3">
@@ -154,7 +155,7 @@ export default function Footer() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
-                <span className="text-secondary-dark theme-transition">辽宁省大连市甘井子区凌海路1号</span>
+                <span className="text-secondary-dark theme-transition">{t('footer.contact.address')}</span>
               </div>
             </div>
           </motion.div>
@@ -170,17 +171,17 @@ export default function Footer() {
         >
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-tertiary-dark theme-transition text-sm mb-4 md:mb-0">
-              &copy; {new Date().getFullYear()} 牟昭阳. All rights reserved.
+              &copy; {currentYear} {t('footer.legal.copyright')}
             </p>
             <div className="flex space-x-6 text-sm text-tertiary-dark theme-transition">
               <a href="#" className="hover:text-blue-600 dark:hover:text-blue-400 theme-transition">
-                隐私政策
+                {t('footer.legal.privacy')}
               </a>
               <a href="#" className="hover:text-blue-600 dark:hover:text-blue-400 theme-transition">
-                使用条款
+                {t('footer.legal.terms')}
               </a>
               <a href="#" className="hover:text-blue-600 dark:hover:text-blue-400 theme-transition">
-                网站地图
+                {t('footer.legal.sitemap')}
               </a>
             </div>
           </div>

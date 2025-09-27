@@ -219,25 +219,25 @@ export default function Contact() {
       
       {/* 浮动装饰元素 */}
       <FloatingElement 
-        className="absolute top-20 left-10 w-20 h-20 bg-blue-200/30 dark:bg-blue-800/30 rounded-full"
+        className="absolute top-20 left-10 w-20 h-20 bg-blue-200/30 dark:bg-blue-800/30 rounded-full pointer-events-none"
         duration={6}
       >
         <div />
       </FloatingElement>
       <FloatingElement 
-        className="absolute top-40 right-20 w-16 h-16 bg-indigo-200/30 dark:bg-indigo-800/30 rounded-full"
+        className="absolute top-40 right-20 w-16 h-16 bg-indigo-200/30 dark:bg-indigo-800/30 rounded-full pointer-events-none"
         duration={8}
       >
         <div />
       </FloatingElement>
       <FloatingElement
-        className="absolute top-20 right-10 text-blue-500/20 dark:text-blue-400/20"
+        className="absolute top-20 right-10 text-blue-500/20 dark:text-blue-400/20 pointer-events-none"
         duration={4}
       >
         <div className="w-8 h-8 rounded-full bg-current opacity-20" />
       </FloatingElement>
       <FloatingElement
-        className="absolute bottom-32 left-8 text-purple-500/20 dark:text-purple-400/20"
+        className="absolute bottom-32 left-8 text-purple-500/20 dark:text-purple-400/20 pointer-events-none"
         duration={5}
       >
         <div className="w-6 h-6 rounded-full bg-current opacity-20" />
@@ -269,46 +269,47 @@ export default function Contact() {
           </SimpleMotion>
         </AnimationContainer>
 
-        <div className="grid lg:grid-cols-2 gap-12 max-w-7xl mx-auto">
-          {/* 联系信息 */}
-          <SimpleMotion
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            <div className="card-dark rounded-lg border border-gray-200 dark:border-gray-700 p-6 mb-6 theme-transition">
+        <main className="grid grid-cols-1 xl:grid-cols-2 gap-6 sm:gap-8 lg:gap-10 xl:gap-12 max-w-7xl mx-auto">
+          {/* 联系信息区域 */}
+          <section className="space-y-6 order-2 xl:order-1">
+            <SimpleMotion
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              <article className="card-dark rounded-lg border border-gray-200 dark:border-gray-700 p-6 theme-transition">
               <h2 className="text-xl md:text-2xl font-semibold text-primary-dark theme-transition mb-4 leading-tight">{t('contact.contactInfo')}</h2>
               
-              <div className="space-y-6">
+              <address className="space-y-6 not-italic">
                 {/* 邮箱信息 */}
                 <div className="flex items-start sm:items-center">
-                  <div className="w-12 h-12 sm:w-10 sm:h-10 bg-gray-900 rounded-md flex items-center justify-center mr-4 sm:mr-3 flex-shrink-0">
+                  <div className="w-12 h-12 sm:w-10 sm:h-10 bg-gray-900 rounded-md flex items-center justify-center mr-4 sm:mr-3 flex-shrink-0" aria-hidden="true">
                     <svg className="w-6 h-6 sm:w-5 sm:h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
                   </div>
                   <div className="flex-1 min-w-0">
                     <h3 className="font-medium text-primary-dark theme-transition leading-snug text-base sm:text-sm">{t('contact.email')}</h3>
-                    <p className="text-sm sm:text-sm text-secondary-dark theme-transition leading-relaxed break-all">{t('contact.info.email')}</p>
+                    <a href={`mailto:${t('contact.info.email')}`} className="text-sm sm:text-sm text-secondary-dark hover:text-blue-600 dark:hover:text-blue-400 theme-transition leading-relaxed break-all underline-offset-2 hover:underline">{t('contact.info.email')}</a>
                   </div>
                 </div>
                 
                 {/* 电话信息 */}
                 <div className="flex items-start sm:items-center">
-                  <div className="w-12 h-12 sm:w-10 sm:h-10 bg-gray-900 rounded-md flex items-center justify-center mr-4 sm:mr-3 flex-shrink-0">
+                  <div className="w-12 h-12 sm:w-10 sm:h-10 bg-gray-900 rounded-md flex items-center justify-center mr-4 sm:mr-3 flex-shrink-0" aria-hidden="true">
                     <svg className="w-6 h-6 sm:w-5 sm:h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                     </svg>
                   </div>
                   <div className="flex-1 min-w-0">
                     <h3 className="font-medium text-primary-dark theme-transition leading-snug text-base sm:text-sm">{t('contact.phone')}</h3>
-                    <p className="text-sm sm:text-sm text-secondary-dark theme-transition leading-relaxed">{t('contact.info.phone')}</p>
+                    <a href={`tel:${t('contact.info.phone')}`} className="text-sm sm:text-sm text-secondary-dark hover:text-blue-600 dark:hover:text-blue-400 theme-transition leading-relaxed underline-offset-2 hover:underline">{t('contact.info.phone')}</a>
                   </div>
                 </div>
                 
                 {/* 地址信息 */}
                 <div className="flex items-start">
-                  <div className="w-12 h-12 sm:w-10 sm:h-10 bg-gray-900 rounded-md flex items-center justify-center mr-4 sm:mr-3 flex-shrink-0">
+                  <div className="w-12 h-12 sm:w-10 sm:h-10 bg-gray-900 rounded-md flex items-center justify-center mr-4 sm:mr-3 flex-shrink-0" aria-hidden="true">
                     <svg className="w-6 h-6 sm:w-5 sm:h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -323,38 +324,41 @@ export default function Contact() {
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
+              </address>
+              </article>
 
-            {/* 社交媒体链接 */}
-            <div className="card-dark rounded-lg border border-gray-200 dark:border-gray-700 p-6 theme-transition">
-              <h2 className="text-xl md:text-2xl font-semibold text-primary-dark theme-transition mb-4 leading-tight">{t('contact.academicSocial')}</h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-                {socialLinks.map((link) => (
-                  <a
-                    key={link.name}
-                    href={link.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center p-3 sm:p-4 bg-gray-50 dark:bg-gray-800 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200 group theme-transition min-h-[60px] sm:min-h-[56px]"
-                  >
-                    <div className="text-gray-600 dark:text-gray-400 mr-3 sm:mr-4 theme-transition flex-shrink-0">
-                      {link.icon}
-                    </div>
-                    <span className="font-medium text-sm sm:text-base text-primary-dark theme-transition leading-snug break-words flex-1 min-w-0">{link.name}</span>
-                  </a>
-                ))}
-              </div>
-            </div>
-          </SimpleMotion>
+              {/* 社交媒体链接 */}
+              <article className="card-dark rounded-lg border border-gray-200 dark:border-gray-700 p-6 theme-transition">
+                <h2 className="text-xl md:text-2xl font-semibold text-primary-dark theme-transition mb-4 leading-tight">{t('contact.academicSocial')}</h2>
+                <nav className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4" aria-label="社交媒体链接">
+                  {socialLinks.map((link) => (
+                    <a
+                      key={link.name}
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center p-3 sm:p-4 bg-gray-50 dark:bg-gray-800 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200 group theme-transition min-h-[60px] sm:min-h-[56px]"
+                      aria-label={`访问我的${link.name}主页`}
+                    >
+                      <div className="text-gray-600 dark:text-gray-400 mr-3 sm:mr-4 theme-transition flex-shrink-0" aria-hidden="true">
+                        {link.icon}
+                      </div>
+                      <span className="font-medium text-sm sm:text-base text-primary-dark theme-transition leading-snug break-words flex-1 min-w-0">{link.name}</span>
+                    </a>
+                  ))}
+                </nav>
+              </article>
+            </SimpleMotion>
+          </section>
 
-          {/* 联系表单 */}
-          <SimpleMotion
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="card-dark rounded-lg border border-gray-200 dark:border-gray-700 p-6 theme-transition"
-          >
+          {/* 联系表单区域 */}
+          <section className="space-y-6 order-1 xl:order-2">
+            <SimpleMotion
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+            >
+              <article className="card-dark rounded-lg border border-gray-200 dark:border-gray-700 p-6 theme-transition">
             <h2 className="text-xl md:text-2xl font-semibold text-primary-dark theme-transition mb-4 leading-tight">{t('contact.sendMessage')}</h2>
             
             {/* 合作类型选择 */}
@@ -382,15 +386,15 @@ export default function Contact() {
                               ? 'bg-blue-100 dark:bg-blue-800/30' 
                               : 'bg-gray-100 dark:bg-gray-800 group-hover:bg-blue-100 dark:group-hover:bg-blue-800/30'
                           } transition-colors duration-300`}>
-                            <span className={`text-xl ${
+                            <span className={`text-lg sm:text-xl ${
                               selectedCollaboration === type.id 
                                 ? 'text-blue-600 dark:text-blue-400' 
                                 : 'text-gray-600 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-400'
-                            } transition-colors duration-300`}>
+                            } transition-colors duration-300 flex-shrink-0`}>
                               {type.icon}
                             </span>
                           </div>
-                          <span className="ml-3 font-semibold text-gray-800 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
+                          <span className="ml-3 font-semibold text-sm sm:text-base lg:text-lg text-gray-800 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300 leading-tight break-words flex-1 min-w-0">
                             {type.title}
                           </span>
                         </div>
@@ -410,7 +414,7 @@ export default function Contact() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {/* 姓名 */}
                   <div>
-                    <label htmlFor="name" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+                    <label htmlFor="name" className="block text-xs sm:text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2 leading-tight break-words">
                       {formFieldConfig.name.label} *
                     </label>
                     <input
@@ -441,7 +445,7 @@ export default function Contact() {
 
                   {/* 邮箱 */}
                   <div>
-                    <label htmlFor="email" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+                    <label htmlFor="email" className="block text-xs sm:text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2 leading-tight break-words">
                       {formFieldConfig.email.label} *
                     </label>
                     <input
@@ -461,11 +465,11 @@ export default function Contact() {
                       <SimpleMotion 
                         initial={{ opacity: 0, y: -10 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="mt-2 text-sm text-red-500 flex items-center"
+                        className="mt-2 text-xs sm:text-sm text-red-500 flex items-center leading-tight break-words"
                         as="p"
                       >
-                        <AlertCircle className="w-4 h-4 mr-1" />
-                        {errors.email}
+                        <AlertCircle className="w-4 h-4 mr-1 flex-shrink-0" />
+                        <span className="flex-1 min-w-0">{errors.email}</span>
                       </SimpleMotion>
                     )}
                   </div>
@@ -473,7 +477,7 @@ export default function Contact() {
 
                 {/* 主题 */}
                 <div>
-                  <label htmlFor="subject" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+                  <label htmlFor="subject" className="block text-xs sm:text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2 leading-tight break-words">
                     {formFieldConfig.subject.label} *
                   </label>
                   <input
@@ -493,11 +497,11 @@ export default function Contact() {
                     <SimpleMotion 
                       initial={{ opacity: 0, y: -10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      className="mt-2 text-sm text-red-500 flex items-center"
+                      className="mt-2 text-xs sm:text-sm text-red-500 flex items-center leading-tight break-words"
                       as="p"
                     >
-                      <AlertCircle className="w-4 h-4 mr-1" />
-                      {errors.subject}
+                      <AlertCircle className="w-4 h-4 mr-1 flex-shrink-0" />
+                      <span className="flex-1 min-w-0">{errors.subject}</span>
                     </SimpleMotion>
                   )}
                 </div>
@@ -507,9 +511,9 @@ export default function Contact() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {/* 预算范围 */}
                     <div>
-                      <label htmlFor="budget" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
-                        <DollarSign className="w-4 h-4 inline mr-1" />
-                        {formFieldConfig.budget?.label || '预算范围'}
+                      <label htmlFor="budget" className="block text-xs sm:text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2 leading-tight break-words">
+                        <DollarSign className="w-3 h-3 sm:w-4 sm:h-4 inline mr-1 flex-shrink-0" />
+                        <span className="break-words">{formFieldConfig.budget?.label || t('contact.form.budget.label')}</span>
                       </label>
                       <select
                         id="budget"
@@ -529,9 +533,9 @@ export default function Contact() {
 
                     {/* 项目周期 */}
                     <div>
-                      <label htmlFor="timeline" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
-                        <Clock className="w-4 h-4 inline mr-1" />
-                        {formFieldConfig.timeline?.label || '项目周期'}
+                      <label htmlFor="timeline" className="block text-xs sm:text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2 leading-tight break-words">
+                        <Clock className="w-3 h-3 sm:w-4 sm:h-4 inline mr-1 flex-shrink-0" />
+                        <span className="break-words">{formFieldConfig.timeline?.label || t('contact.form.timeline.label')}</span>
                       </label>
                       <select
                         id="timeline"
@@ -553,7 +557,7 @@ export default function Contact() {
 
                 {/* 消息内容 */}
                 <div>
-                  <label htmlFor="message" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+                  <label htmlFor="message" className="block text-xs sm:text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2 leading-tight break-words">
                     {formFieldConfig.message.label} *
                   </label>
                   <textarea
@@ -573,11 +577,11 @@ export default function Contact() {
                     <SimpleMotion 
                       initial={{ opacity: 0, y: -10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      className="mt-2 text-sm text-red-500 flex items-center"
+                      className="mt-2 text-xs sm:text-sm text-red-500 flex items-center leading-tight break-words"
                       as="p"
                     >
-                      <AlertCircle className="w-4 h-4 mr-1" />
-                      {errors.message}
+                      <AlertCircle className="w-4 h-4 mr-1 flex-shrink-0" />
+                      <span className="flex-1 min-w-0">{errors.message}</span>
                     </SimpleMotion>
                   )}
                 </div>
@@ -627,8 +631,11 @@ export default function Contact() {
                    <p className="text-sm opacity-90">{submitMessage}</p>
                  </div>
                </SimpleMotion>
-             )}           </SimpleMotion>
-        </div>
+             )}
+               </article>
+             </SimpleMotion>
+           </section>
+        </main>
       </ResponsiveContainer>
     </div>
   );

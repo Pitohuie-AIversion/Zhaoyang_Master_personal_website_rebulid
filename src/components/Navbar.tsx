@@ -4,6 +4,7 @@ import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ThemeToggle } from './DarkModeProvider';
 import { LanguageToggle } from './LanguageToggle';
+import { UnifiedButton } from './UnifiedButton';
 import { Home, Microscope, Briefcase, FileText, Wrench, Mail, Terminal } from 'lucide-react';
 import { useResponsive, MobileMenu } from './ResponsiveEnhancements';
 import { useTranslation } from './TranslationProvider';
@@ -55,7 +56,7 @@ export default function Navbar() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6 }}
-      className={`fixed left-0 right-0 z-50 transition-all duration-300 top-0 ${
+      className={`fixed left-0 right-0 z-50 transition-all duration-300 top-0 pointer-events-auto ${
         scrolled
           ? 'navbar-dark border-b border-primary-dark theme-transition'
           : 'bg-transparent'
@@ -103,13 +104,15 @@ export default function Navbar() {
             <LanguageToggle variant="compact" showText={false} />
             <ThemeToggle />
             {(isMobile || isTablet) && (
-              <button
+              <UnifiedButton
+                variant="ghost"
+                size="sm"
                 onClick={() => setIsOpen(!isOpen)}
-                className="p-2 rounded-md text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500 theme-transition"
                 aria-label={t('common.menu')}
+                className="p-2"
               >
                 {isOpen ? <X size={24} /> : <Menu size={24} />}
-              </button>
+              </UnifiedButton>
             )}
           </div>
         </div>

@@ -103,22 +103,28 @@
       },
       "budget": {
         "label": "Budget Range",
-        "options": [
-          { "value": "under-5k", "label": "Under $5K" },
-          { "value": "5k-10k", "label": "$5K-$10K" },
-          { "value": "10k-50k", "label": "$10K-$50K" },
-          { "value": "50k-100k", "label": "$50K-$100K" },
-          { "value": "over-100k", "label": "Over $100K" }
-        ]
+        "placeholder": "Please select budget range",
+        "options": {
+          "select": "Please select budget range",
+          "under5k": "Under $5K",
+          "5k10k": "$5K-$10K",
+          "10k50k": "$10K-$50K",
+          "50k100k": "$50K-$100K",
+          "over100k": "Over $100K",
+          "discuss": "Negotiable"
+        }
       },
       "timeline": {
         "label": "Project Timeline",
-        "options": [
-          { "value": "urgent", "label": "Urgent (Within 1 week)" },
-          { "value": "short", "label": "Short-term (1-4 weeks)" },
-          { "value": "medium", "label": "Medium-term (1-3 months)" },
-          { "value": "long", "label": "Long-term (3+ months)" }
-        ]
+        "placeholder": "Please select project timeline",
+        "options": {
+          "select": "Please select project timeline",
+          "urgent": "Urgent (Within 1 week)",
+          "short": "Short-term (1-4 weeks)",
+          "medium": "Medium-term (1-3 months)",
+          "long": "Long-term (3+ months)",
+          "flexible": "Flexible"
+        }
       },
       "selectBudget": "Please select budget range",
       "selectTimeline": "Please select project timeline",
@@ -145,6 +151,28 @@
       "teaching": {
         "title": "Teaching & Training",
         "description": "Technical training, course design, knowledge sharing, etc."
+      }
+    },
+    "collaboration": {
+      "research": {
+        "title": "Research Collaboration",
+        "description": "Academic research, paper publication, research project cooperation"
+      },
+      "development": {
+        "title": "Development Collaboration",
+        "description": "Software development, system integration, technical implementation"
+      },
+      "consulting": {
+        "title": "Consulting Services",
+        "description": "Technical consulting, solution design, professional advice"
+      },
+      "teaching": {
+        "title": "Teaching Collaboration",
+        "description": "Course development, training services, knowledge transfer"
+      },
+      "other": {
+        "title": "Other Collaboration",
+        "description": "Customized cooperation, special projects, other requirements"
       }
     }
   },
@@ -301,6 +329,41 @@
       "in-progress": "In Progress",
       "planned": "Planned",
       "unknown": "Unknown"
+    }
+  },
+  "footer": {
+    "personalInfo": {
+      "name": "Zhaoyang Mu",
+      "nameEn": "牟昭阳",
+      "description": "PhD student in Mechanical Engineering, focusing on interdisciplinary research in scientific computing and robotics. Committed to advancing innovations in computational fluid dynamics, deep learning, and underwater robotics."
+    },
+    "researchAreas": {
+      "title": "Research Areas",
+      "areas": [
+        "Computational Fluid Dynamics",
+        "Deep Learning",
+        "Underwater Robotics",
+        "Bionic Perception",
+        "Scientific Computing"
+      ]
+    },
+    "quickLinks": {
+      "title": "Quick Links",
+      "home": "Home",
+      "research": "Research",
+      "projects": "Projects",
+      "publications": "Publications"
+    },
+    "contact": {
+      "title": "Contact",
+      "email": "mzymuzhaoyang@gmail.com",
+      "address": "No.1 Linghai Road, Ganjingzi District, Dalian, Liaoning Province"
+    },
+    "legal": {
+      "copyright": "Zhaoyang Mu. All rights reserved.",
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Use",
+      "sitemap": "Site Map"
     }
   }
 }

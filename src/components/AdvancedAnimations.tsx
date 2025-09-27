@@ -137,6 +137,14 @@ export const MagneticButton: React.FC<{
     buttonRef.current.style.transform = 'translate(0px, 0px) scale(1)';
     setIsHovered(false);
   }, []);
+
+  const handleClick = useCallback((e: React.MouseEvent<HTMLButtonElement>) => {
+    // 确保点击事件不被阻止
+    e.stopPropagation();
+    if (onClick) {
+      onClick();
+    }
+  }, [onClick]);
   
   useEffect(() => {
     const button = buttonRef.current;
@@ -155,8 +163,9 @@ export const MagneticButton: React.FC<{
   return (
     <button
       ref={buttonRef}
-      className={`transition-all duration-200 ease-out ${className}`}
-      onClick={onClick}
+      className={`transition-all duration-200 ease-out cursor-pointer relative ${className}`}
+      onClick={handleClick}
+      style={{ zIndex: 'auto' }}
     >
       {children}
     </button>
