@@ -48,20 +48,20 @@ const getProjects = (t: (key: string, fallback?: string) => string): Project[] =
     image: 'https://trae-api-us.mchost.guru/api/ide/v1/text_to_image?prompt=sparse%20to%20dense%20field%20reconstruction%20transformer%20neural%20operator%20scientific%20visualization&image_size=landscape_4_3',
     status: 'ongoing',
     year: '2024',
-    highlights: [t('projects.sparseToDense.highlights.sparseReconstruction'), t('projects.sparseToDense.highlights.highResolution'), t('projects.sparseToDense.highlights.transformer'), t('projects.sparseToDense.highlights.cfdApplication')],
+    highlights: [t('projects.sparseToDense.highlights.sparseReconstruction'), t('projects.sparseToDense.highlights.transformerBased'), t('projects.sparseToDense.highlights.highAccuracy'), t('projects.sparseToDense.highlights.realTimeProcessing')],
     githubUrl: 'https://github.com/zhaoyangmou',
     demoUrl: 'https://pitohuie-aiversion.github.io/Sparse_to_Dense_Transformer/'
   },
   {
     id: 3,
-    title: t('projects.bionicFin.title'),
-    category: t('projects.categories.simulationAnalysis'),
-    description: t('projects.bionicFin.description'),
-    technologies: ['Star-CCM+', 'Java', 'CFD', 'FSI', 'Macro开发'],
-    image: 'https://trae-api-us.mchost.guru/api/ide/v1/text_to_image?prompt=bionic%20undulating%20fin%20propulsion%20CFD%20FSI%20simulation%20fluid%20structure%20interaction&image_size=landscape_4_3',
-    status: 'ongoing',
-    year: '2024',
-    highlights: [t('projects.bionicFin.highlights.westlakeCollaboration'), t('projects.bionicFin.highlights.cfdFsiSimulation'), t('projects.bionicFin.highlights.javaMacro'), t('projects.bionicFin.highlights.bionicMechanism')],
+    title: t('projects.bionicRobot.title'),
+    category: t('projects.categories.roboticsTechnology'),
+    description: t('projects.bionicRobot.description'),
+    technologies: ['仿生学', '水下机器人', '传感器融合', '实时控制'],
+    image: 'https://trae-api-us.mchost.guru/api/ide/v1/text_to_image?prompt=bionic%20robot%20underwater%20perception%20sensor%20fusion%20real%20time%20control&image_size=landscape_4_3',
+    status: 'completed',
+    year: '2023',
+    highlights: [t('projects.bionicRobot.highlights.bionicPerception'), t('projects.bionicRobot.highlights.realTimeDetection'), t('projects.bionicRobot.highlights.sensorFusion'), t('projects.bionicRobot.highlights.complexEnvironment')],
     githubUrl: 'https://github.com/zhaoyangmou'
   },
   {
@@ -168,10 +168,11 @@ export default function Projects() {
   // 筛选选项
   const filterOptions = {
     category: categories.slice(1).map(cat => ({ value: cat, label: cat })),
-    status: statusOptions.slice(1).map(status => ({ 
-      value: status, 
-      label: getStatusText(status) 
-    })),
+    status: [
+      { value: 'completed', label: getStatusText('completed') },
+      { value: 'ongoing', label: getStatusText('ongoing') },
+      { value: 'planned', label: getStatusText('planned') }
+    ],
     year: yearOptions.slice(1).map(year => ({ value: year, label: year }))
   };
   

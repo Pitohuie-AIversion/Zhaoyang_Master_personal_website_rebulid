@@ -136,7 +136,10 @@
     "startCollaboration": "开始合作",
     "collaborationDesc": "让我们一起探索科技的无限可能",
     "contactMe": "联系我",
-    "downloadResume": "下载简历"
+    "downloadResume": "下载简历",
+    "viewMoreAchievements": "查看更多成果",
+    "researchAchievements": "科研成就",
+    "achievementsDesc": "在科学计算、机器人技术和人工智能领域取得的重要成果与突破"
   },
   "research": {
     "title": "学术研究",
@@ -348,91 +351,6 @@
       }
     }
   },
-  "research": {
-    "title": "学术研究",
-    "description": "探索科学计算与机器人技术的前沿交叉领域",
-    "switchToAnalyticsView": "切换到分析视图",
-    "switchToListView": "切换到列表视图",
-    "publications": {
-      "damformer": {
-        "title": "基于Transformer模型的溃坝流场跨几何泛化预测",
-        "journal": "Physics of Fluids",
-        "authors": ["牟昭阳", "徐敏义"],
-        "description": "基于Transformer架构的溃坝流场预测模型，实现跨几何边界的泛化预测能力"
-      },
-      "rsModCubes": {
-        "title": "基于改进模块化立方体的重构机器人系统设计",
-        "journal": "机器人技术与应用",
-        "authors": ["牟昭阳", "李明", "王强"],
-        "description": "设计了一种基于改进模块化立方体的重构机器人系统，提高了系统的灵活性和可扩展性"
-      }
-    },
-    "patents": {
-      "modularRobot": {
-        "title": "一种基于模块化立方体的重构机器人系统",
-        "patentNumber": "CN202310123456.7",
-        "applicant": "大连理工大学",
-        "description": "本发明提供了一种基于模块化立方体的重构机器人系统，包括多个标准化模块单元"
-      },
-      "fluidPrediction": {
-        "title": "基于深度学习的流体动力学预测方法及系统",
-        "patentNumber": "CN202310234567.8",
-        "applicant": "大连理工大学",
-        "description": "本发明涉及一种基于深度学习的流体动力学预测方法，能够实现跨几何边界的流场预测"
-      }
-    },
-    "awards": {
-      "mechanicalInnovation": {
-        "title": "辽宁省大学生机械创新设计大赛 · 铜奖",
-        "year": "2023",
-        "organization": "辽宁省教育厅",
-        "description": "基于模块化设计的智能机器人系统获得省级竞赛铜奖"
-      },
-      "roboticsCompetition": {
-        "title": "全国大学生机器人大赛 · 优秀奖",
-        "year": "2022",
-        "organization": "中国自动化学会",
-        "description": "参与全国大学生机器人大赛并获得优秀奖"
-      }
-    },
-    "searchPlaceholder": "搜索研究内容...",
-    "viewModes": {
-      "publications": "学术论文",
-      "patents": "专利成果",
-      "awards": "获得奖项"
-    },
-    "status": {
-      "published": "已发表",
-      "underReview": "审稿中",
-      "inPreparation": "准备中",
-      "unknown": "未知"
-    },
-    "sort": {
-      "title": "标题",
-      "year": "年份",
-      "citations": "引用数",
-      "authors": "作者",
-      "journal": "期刊"
-    },
-    "search": {
-      "placeholder": "搜索论文标题、作者、期刊或关键词..."
-    },
-    "stats": {
-      "total": "总成果",
-      "published": "已发表",
-      "citations": "总引用",
-      "patents": "专利数"
-    },
-    "citations": "引用",
-    "modal": {
-      "authors": "作者",
-      "year": "年份",
-      "doi": "DOI",
-      "citationsCount": "引用次数",
-      "abstract": "摘要",
-      "keywords": "关键词"
-    }
-  },
   "contact": {
     "title": "联系我",
     "description": "欢迎与我交流学术问题或合作机会",
@@ -552,7 +470,11 @@
         "cudaSetup": "CUDA环境配置和优化",
         "wandbLogging": "集成W&B实验管理"
       }
-    }
+    },
+    "code": "查看代码",
+    "demo": "在线演示",
+    "highlights": "项目亮点",
+    "techStack": "技术栈"
   },
   "footer": {
     "quickLinks": {

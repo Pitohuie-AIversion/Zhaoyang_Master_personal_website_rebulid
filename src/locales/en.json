@@ -135,7 +135,10 @@
     "startCollaboration": "Start Collaboration",
     "collaborationDesc": "Let's explore the infinite possibilities of technology together",
     "contactMe": "Contact Me",
-    "downloadResume": "Download Resume"
+    "downloadResume": "Download Resume",
+    "viewMoreAchievements": "View More Achievements",
+    "researchAchievements": "Research Achievements",
+    "achievementsDesc": "Significant achievements and breakthroughs in scientific computing, robotics, and artificial intelligence"
   },
   "research": {
     "title": "Academic Research",
@@ -373,7 +376,11 @@
         "cudaSetup": "CUDA environment configuration and optimization",
         "wandbLogging": "Integrated W&B experiment management"
       }
-    }
+    },
+    "code": "View Code",
+    "demo": "Live Demo",
+    "highlights": "Project Highlights",
+    "techStack": "Tech Stack"
   },
   "about": {
     "title": "About Me",
@@ -446,91 +453,6 @@
           "description": "Customized collaboration, special projects, other needs"
         }
       }
-    }
-  },
-  "research": {
-    "title": "Research",
-    "description": "Exploring the cutting-edge intersection of scientific computing and robotics",
-    "switchToAnalyticsView": "Switch to Analytics View",
-    "switchToListView": "Switch to List View",
-    "publications": {
-      "damformer": {
-        "title": "Cross-Geometric Generalization Prediction of Dam-break Flow Fields Based on Transformer Model",
-        "journal": "Physics of Fluids",
-        "authors": ["Zhaoyang Mu", "Minyi Xu"],
-        "description": "A dam-break flow field prediction model based on Transformer architecture, achieving cross-geometric boundary generalization prediction capability"
-      },
-      "rsModCubes": {
-        "title": "Design of Reconfigurable Robot System Based on Improved Modular Cubes",
-        "journal": "Robotics Technology and Applications",
-        "authors": ["Zhaoyang Mu", "Ming Li", "Qiang Wang"],
-        "description": "Designed a reconfigurable robot system based on improved modular cubes, improving system flexibility and scalability"
-      }
-    },
-    "patents": {
-      "modularRobot": {
-        "title": "A Reconfigurable Robot System Based on Modular Cubes",
-        "patentNumber": "CN202310123456.7",
-        "applicant": "Dalian University of Technology",
-        "description": "This invention provides a reconfigurable robot system based on modular cubes, including multiple standardized module units"
-      },
-      "fluidPrediction": {
-        "title": "Deep Learning-based Fluid Dynamics Prediction Method and System",
-        "patentNumber": "CN202310234567.8",
-        "applicant": "Dalian University of Technology",
-        "description": "This invention relates to a deep learning-based fluid dynamics prediction method capable of achieving cross-geometric boundary flow field prediction"
-      }
-    },
-    "awards": {
-      "mechanicalInnovation": {
-        "title": "Liaoning Province College Students Mechanical Innovation Design Competition · Bronze Award",
-        "year": "2023",
-        "organization": "Liaoning Provincial Department of Education",
-        "description": "Intelligent robot system based on modular design won provincial competition bronze award"
-      },
-      "roboticsCompetition": {
-        "title": "National College Student Robotics Competition · Excellence Award",
-        "year": "2022",
-        "organization": "Chinese Association of Automation",
-        "description": "Participated in National College Student Robotics Competition and won Excellence Award"
-      }
-    },
-    "searchPlaceholder": "Search research content...",
-    "viewModes": {
-      "publications": "Publications",
-      "patents": "Patents",
-      "awards": "Awards"
-    },
-    "status": {
-      "published": "Published",
-      "underReview": "Under Review",
-      "inPreparation": "In Preparation",
-      "unknown": "Unknown"
-    },
-    "sort": {
-      "title": "Title",
-      "year": "Year",
-      "citations": "Citations",
-      "authors": "Authors",
-      "journal": "Journal"
-    },
-    "search": {
-      "placeholder": "Search paper titles, authors, journals or keywords..."
-    },
-    "stats": {
-      "total": "Total Results",
-      "published": "Published",
-      "citations": "Total Citations",
-      "patents": "Patents"
-    },
-    "citations": "Citations",
-    "modal": {
-      "authors": "Authors",
-      "year": "Year",
-      "doi": "DOI",
-      "citationsCount": "Citation Count",
-      "abstract": "Abstract",
-      "keywords": "Keywords"
     }
   },
   "contact": {
