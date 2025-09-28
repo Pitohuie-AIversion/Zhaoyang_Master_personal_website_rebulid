@@ -60,7 +60,37 @@ export function getTranslation(
  * @returns 翻译函数
  */
 export function createTranslationFunction(language: Language) {
-  return (key: TranslationKey, fallback?: string): string => {
+  return (key: TranslationKey, options?: { returnObjects?: boolean; fallback?: string }): any => {
+    const fallback = options?.fallback;
+    
+    if (options?.returnObjects) {
+      const keys = key.split('.');
+      let value: any = translations[language];
+      
+      for (const k of keys) {
+        if (value && typeof value === 'object' && k in value) {
+          value = value[k];
+        } else {
+          // 如果找不到翻译，尝试使用备用语言
+          const fallbackLang = language === 'zh' ? 'en' : 'zh';
+          let fallbackValue: any = translations[fallbackLang];
+          
+          for (const fk of keys) {
+            if (fallbackValue && typeof fallbackValue === 'object' && fk in fallbackValue) {
+              fallbackValue = fallbackValue[fk];
+            } else {
+              fallbackValue = null;
+              break;
+            }
+          }
+          
+          return fallbackValue || fallback || [];
+        }
+      }
+      
+      return value || fallback || [];
+    }
+    
     return getTranslation(key, language, fallback);
   };
 }

@@ -33,7 +33,7 @@ interface NewsItem {
   type: 'publication' | 'award' | 'conference' | 'project';
 }
 
-const getResearchHighlights = (t: (key: string, fallback?: string) => string): ResearchHighlight[] => [
+const getResearchHighlights = (t: (key: string, options?: { returnObjects?: boolean; fallback?: string }) => any): ResearchHighlight[] => [
   {
     id: '1',
     title: t('home.researchHighlights.items.damformer.title'),
@@ -60,7 +60,7 @@ const getResearchHighlights = (t: (key: string, fallback?: string) => string): R
   }
 ];
 
-const getNewsItems = (t: (key: string, fallback?: string) => string): NewsItem[] => [
+const getNewsItems = (t: (key: string, options?: { returnObjects?: boolean; fallback?: string }) => any): NewsItem[] => [
   {
     id: '1',
     date: '2025-01',
@@ -98,7 +98,7 @@ const getNewsItems = (t: (key: string, fallback?: string) => string): NewsItem[]
   }
 ];
 
-const getStats = (t: (key: string, fallback?: string) => string) => [
+const getStats = (t: (key: string, options?: { returnObjects?: boolean; fallback?: string }) => any) => [
   { label: t('home.stats.publications'), value: '10+', icon: '📄' },
   { label: t('home.stats.projects'), value: '5', icon: '🔬' },
   { label: t('home.stats.patents'), value: '8', icon: '💡' },

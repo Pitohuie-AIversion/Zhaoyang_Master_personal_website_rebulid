@@ -9,7 +9,7 @@ interface TranslationContextType {
   language: Language;
   setLanguage: (lang: Language) => void;
   toggleLanguage: () => void;
-  t: (key: string, fallback?: string) => string;
+  t: (key: string, options?: { returnObjects?: boolean; fallback?: string }) => any;
   isTranslating: boolean;
 }
 

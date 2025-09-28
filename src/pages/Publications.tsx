@@ -19,88 +19,88 @@ interface Publication {
   citations?: number;
 }
 
-const publications: Publication[] = [
-  {
-    id: 1,
-    title: 'DamFormer: A Transformer-based Model for Dam-break Flow Prediction with Cross-geometry Generalization',
-    authors: '牟昭阳, 导师姓名, 合作者',
-    journal: 'Physics of Fluids',
-    year: '2024',
-    type: 'journal',
-    status: 'published',
-    abstract: '本文提出了基于Transformer架构的DamFormer模型，用于溃坝流场的跨几何边界预测。该模型能够在不同几何配置下实现高精度的流场预测，为溃坝灾害评估提供了新的技术手段。构建多几何边界数据集，实现跨几何零样本预测，解决传统CFD仿真计算成本高的问题。',
-    keywords: ['Transformer', 'Dam-break', 'CFD', 'Deep Learning', 'Cross-geometry', 'Physics of Fluids'],
-    doi: '10.1063/5.0123456',
-    citations: 5
-  },
-  {
-    id: 2,
-    title: 'Sparse→Dense Transformer: 稀疏到稠密场重建',
-    authors: '牟昭阳, 合作研究者',
-    journal: 'Physics of Fluids',
-    year: '2024',
-    type: 'journal',
-    status: 'in_preparation',
-    abstract: '面向CFD/环境流，稀疏传感重建高分辨率时空场。基于Transformer架构实现从稀疏观测到稠密场的智能重建，提供了一种高效的流场重建方法。',
-    keywords: ['Transformer', 'Neural Operator', 'Field Reconstruction', 'CFD', 'Environmental Flow'],
-    citations: 0
-  },
-  {
-    id: 3,
-    title: 'CFD-FSI Analysis of Bionic Undulating Fin Propulsion System',
-    authors: '牟昭阳, 西湖大学研究团队',
-    journal: 'International Conference on Robotics and Automation (ICRA)',
-    year: '2024',
-    type: 'conference',
-    status: 'in_preparation',
-    abstract: '西湖大学i⁴-FSI实验室项目。通过Star-CCM+ CFD/FSI耦合仿真分析仿生波动鳍推进系统，Java Macro自动化参数扫描，探索仿生推进机理。',
-    keywords: ['Star-CCM+', 'CFD-FSI', 'Bionic Propulsion', 'Java Macro', 'Westlake University'],
-    citations: 0
-  },
-  {
-    id: 4,
-    title: '一种基于模块化设计的自重构机器人系统',
-    authors: '牟昭阳, 发明团队',
-    journal: '中国发明专利',
-    year: '2023',
-    type: 'patent',
-    status: 'published',
-    abstract: '本发明公开了一种基于模块化设计的自重构立方体机器人系统Rs-ModCubes，具备自主重构能力和多种运动模式，适用于复杂环境下的机器人应用。',
-    keywords: ['模块化机器人', '自重构', '立方体结构', '机器人系统'],
-    doi: 'CN202310123456.7'
-  },
-  {
-    id: 5,
-    title: '水下机器人仿生感知装置及其感知方法',
-    authors: '牟昭阳, 专利团队',
-    journal: '中国发明专利',
-    year: '2023',
-    type: 'patent',
-    status: 'published',
-    abstract: '本发明提供了一种水下机器人仿生感知装置，基于TENG技术实现对水流变化的敏感检测，结合人工侧线结构提高感知精度。',
-    keywords: ['水下机器人', 'TENG', '仿生感知', '人工侧线'],
-    doi: 'CN202310234567.8'
-  },
-  {
-    id: 6,
-    title: '风扇阵列风洞实验平台控制系统',
-    authors: '牟昭阳, 研发团队',
-    journal: '中国实用新型专利',
-    year: '2023',
-    type: 'patent',
-    status: 'published',
-    abstract: '模块化2.5m×2.5m风扇阵列，STM32多板PWM/TACH闭环控制，VLAN/DHCP网络管理。用于流场控制和测试验证的实验平台。',
-    keywords: ['风扇阵列', 'STM32', 'PWM/TACH', 'VLAN', '实验平台'],
-    doi: 'CN202320345678.9'
-  }
-];
-
 const types = ['全部', 'journal', 'conference', 'patent'];
 
 export default function Publications() {
   const { t } = useTranslation();
   const { isMobile, isTablet } = useResponsive();
   const [selectedPublication, setSelectedPublication] = useState<Publication | null>(null);
+  
+  const publications: Publication[] = [
+    {
+      id: 1,
+      title: t('publications.data.publication1.title'),
+      authors: t('publications.data.publication1.authors'),
+      journal: t('publications.data.publication1.journal'),
+      year: '2024',
+      type: 'journal',
+      status: 'published',
+      abstract: t('publications.data.publication1.abstract'),
+      keywords: t('publications.data.publication1.keywords', { returnObjects: true }) as string[],
+      doi: '10.1063/5.0123456',
+      citations: 5
+    },
+    {
+      id: 2,
+      title: t('publications.data.publication2.title'),
+      authors: t('publications.data.publication2.authors'),
+      journal: t('publications.data.publication2.journal'),
+      year: '2024',
+      type: 'journal',
+      status: 'in_preparation',
+      abstract: t('publications.data.publication2.abstract'),
+      keywords: t('publications.data.publication2.keywords', { returnObjects: true }) as string[],
+      citations: 0
+    },
+    {
+      id: 3,
+      title: t('publications.data.publication3.title'),
+      authors: t('publications.data.publication3.authors'),
+      journal: t('publications.data.publication3.journal'),
+      year: '2024',
+      type: 'conference',
+      status: 'in_preparation',
+      abstract: t('publications.data.publication3.abstract'),
+      keywords: t('publications.data.publication3.keywords', { returnObjects: true }) as string[],
+      citations: 0
+    },
+    {
+      id: 4,
+      title: t('publications.data.patent1.title'),
+      authors: t('publications.data.patent1.authors'),
+      journal: t('publications.data.patent1.journal'),
+      year: '2023',
+      type: 'patent',
+      status: 'published',
+      abstract: t('publications.data.patent1.abstract'),
+      keywords: t('publications.data.patent1.keywords', { returnObjects: true }) as string[],
+      doi: 'CN202310123456.7'
+    },
+    {
+      id: 5,
+      title: t('publications.data.patent2.title'),
+      authors: t('publications.data.patent2.authors'),
+      journal: t('publications.data.patent2.journal'),
+      year: '2023',
+      type: 'patent',
+      status: 'published',
+      abstract: t('publications.data.patent2.abstract'),
+      keywords: t('publications.data.patent2.keywords', { returnObjects: true }) as string[],
+      doi: 'CN202310234567.8'
+    },
+    {
+      id: 6,
+      title: t('publications.data.patent3.title'),
+      authors: t('publications.data.patent3.authors'),
+      journal: t('publications.data.patent3.journal'),
+      year: '2023',
+      type: 'patent',
+      status: 'published',
+      abstract: t('publications.data.patent3.abstract'),
+      keywords: t('publications.data.patent3.keywords', { returnObjects: true }) as string[],
+      doi: 'CN202320345678.9'
+    }
+  ];
   
   const typeLabels = {
     '全部': t('publications.filters.all'),

@@ -163,9 +163,6 @@
       "underReview": "Under Review"
     },
     "academicAchievements": "Academic Achievements",
-    "publications": "Publications",
-    "patents": "Patents",
-    "awards": "Awards",
     "totalCount": "Total {{count}} {{unit}}",
     "papers": "papers",
     "items": "items",
@@ -225,12 +222,54 @@
           "description": "Applying Transformer architecture to PDE solving with cross-geometry generalization"
         },
         "sparseToDense": {
-          "title": "Sparse-to-Dense Reconstruction",
-          "description": "Deep learning-based sparse sensor data to dense flow field reconstruction"
+          "title": "Transformer-based Sparse-to-Dense Flow Field Reconstruction",
+          "journal": "Journal of Computational Physics",
+          "authors": ["Zhaoyang Mou", "Lei Zhao"],
+          "description": "Proposed a Transformer-based method for reconstructing dense flow fields from sparse sensor data, enabling complete flow field reconstruction from limited sensor measurements."
         },
-        "damBreak": {
-          "title": "Dam-break Flow Prediction",
-          "description": "High-precision numerical simulation and prediction of dam-break flows"
+        "data": {
+          "publication1": {
+            "title": "DamFormer: A Transformer-based Model for Dam-break Flow Prediction with Cross-geometry Generalization",
+            "authors": "Zhaoyang Mou, Supervisor Name, Collaborator",
+            "journal": "Physics of Fluids",
+            "abstract": "This paper proposes the DamFormer model based on Transformer architecture for cross-geometry dam-break flow prediction. The model achieves high-precision flow field prediction under different geometric configurations, providing new technical means for dam-break disaster assessment. A multi-geometry boundary dataset is constructed to achieve cross-geometry zero-shot prediction, solving the problem of high computational cost in traditional CFD simulations.",
+            "keywords": ["Transformer", "Dam-break", "CFD", "Deep Learning", "Cross-geometry", "Physics of Fluids"]
+          },
+          "publication2": {
+            "title": "Sparse→Dense Transformer: Sparse-to-Dense Field Reconstruction",
+            "authors": "Zhaoyang Mou, Collaborating Researcher",
+            "journal": "Physics of Fluids",
+            "abstract": "For CFD/environmental flow, sparse sensing reconstruction of high-resolution spatiotemporal fields. Based on Transformer architecture to achieve intelligent reconstruction from sparse observations to dense fields, providing an efficient flow field reconstruction method.",
+            "keywords": ["Transformer", "Neural Operator", "Field Reconstruction", "CFD", "Environmental Flow"]
+          },
+          "publication3": {
+            "title": "CFD-FSI Analysis of Bionic Undulating Fin Propulsion System",
+            "authors": "Zhaoyang Mou, Westlake University Research Team",
+            "journal": "International Conference on Robotics and Automation (ICRA)",
+            "abstract": "Westlake University i⁴-FSI Laboratory project. CFD/FSI coupled simulation analysis of bionic undulating fin propulsion system through Star-CCM+, Java Macro automated parameter sweeping, exploring bionic propulsion mechanisms.",
+            "keywords": ["Star-CCM+", "CFD-FSI", "Bionic Propulsion", "Java Macro", "Westlake University"]
+          },
+          "patent1": {
+            "title": "A Modular Self-reconfigurable Robot System",
+            "authors": "Zhaoyang Mou, Invention Team",
+            "journal": "Chinese Invention Patent",
+            "abstract": "This invention discloses a modular self-reconfigurable cubic robot system Rs-ModCubes with autonomous reconfiguration capability and multiple motion modes, suitable for robot applications in complex environments.",
+            "keywords": ["Modular Robot", "Self-reconfiguration", "Cubic Structure", "Robot System"]
+          },
+          "patent2": {
+            "title": "Underwater Robot Bionic Sensing Device and Sensing Method",
+            "authors": "Zhaoyang Mou, Patent Team",
+            "journal": "Chinese Invention Patent",
+            "abstract": "This invention provides an underwater robot bionic sensing device that achieves sensitive detection of water flow changes based on TENG technology, combined with artificial lateral line structure to improve sensing accuracy.",
+            "keywords": ["Underwater Robot", "TENG", "Bionic Sensing", "Artificial Lateral Line"]
+          },
+          "patent3": {
+            "title": "Fan Array Wind Tunnel Experimental Platform Control System",
+            "authors": "Zhaoyang Mou, Development Team",
+            "journal": "Chinese Utility Model Patent",
+            "abstract": "Modular 2.5m×2.5m fan array, STM32 multi-board PWM/TACH closed-loop control, VLAN/DHCP network management. Experimental platform for flow field control and test verification.",
+            "keywords": ["Fan Array", "STM32", "PWM/TACH", "VLAN", "Experimental Platform"]
+          }
         }
       },
       "robotics": {
@@ -251,8 +290,51 @@
     },
     "noResults": "No results found",
     "noResultsDesc": "Please try adjusting your search terms or filters",
-    "viewDetails": "View Details",
     "publications": {
+      "title": "Publications",
+      "description": "My research achievements and academic contributions",
+      "stats": {
+        "total": "Total",
+        "published": "Published",
+        "citations": "Citations",
+        "patents": "Patents"
+      },
+      "search": {
+        "placeholder": "Search papers, patents..."
+      },
+      "filters": {
+        "type": "Type",
+        "status": "Status",
+        "year": "Year",
+        "all": "All"
+      },
+      "types": {
+        "journal": "Journal Paper",
+        "conference": "Conference Paper",
+        "patent": "Patent"
+      },
+      "status": {
+        "published": "Published",
+        "underReview": "Under Review",
+        "inPreparation": "In Preparation",
+        "unknown": "Unknown"
+      },
+      "sort": {
+        "title": "Title",
+        "year": "Year",
+        "citations": "Citations",
+        "authors": "Authors",
+        "journal": "Journal"
+      },
+      "citations": "Citations",
+      "modal": {
+        "authors": "Authors",
+        "year": "Year",
+        "doi": "DOI",
+        "citationsCount": "Citations",
+        "abstract": "Abstract",
+        "keywords": "Keywords"
+      },
       "damformer": {
         "title": "DamFormer: A Transformer-based Neural Operator for Dam-break Flow Prediction",
         "journal": "Physics of Fluids",
@@ -278,7 +360,7 @@
         "description": "Designed a high-sensitivity bionic whisker sensor capable of detecting minute fluid disturbances, providing precise environmental perception capabilities for underwater robots."
       },
       "sparseToDense": {
-        "title": "Transformer-based Sparse-to-Dense Flow Field Reconstruction Method",
+        "title": "Transformer-based Sparse-to-Dense Flow Field Reconstruction",
         "journal": "Journal of Computational Physics",
         "authors": ["Zhaoyang Mu", "Lei Zhao"],
         "description": "Proposed a Transformer-based method for reconstructing dense flow fields from sparse sensor data, capable of reconstructing complete flow field information from limited sensor data."

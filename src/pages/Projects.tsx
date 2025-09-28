@@ -34,7 +34,7 @@ export const CATEGORY_CODES = {
   HIGH_PERFORMANCE_COMPUTING: 'highPerformanceComputing'
 } as const;
 
-const getProjects = (t: (key: string, fallback?: string) => string): Project[] => [
+const getProjects = (t: (key: string, options?: { returnObjects?: boolean; fallback?: string }) => any): Project[] => [
   {
     id: 1,
     title: t('projects.damformer.title'),
@@ -111,7 +111,7 @@ const getProjects = (t: (key: string, fallback?: string) => string): Project[] =
   }
 ];
 
-const getCategories = (t: (key: string, fallback?: string) => string) => [
+const getCategories = (t: (key: string, options?: { returnObjects?: boolean; fallback?: string }) => any) => [
   { value: 'all', label: t('projects.filters.all') },
   { value: CATEGORY_CODES.SCIENTIFIC_COMPUTING, label: t('projects.categories.scientificComputing') },
   { value: CATEGORY_CODES.ROBOTICS_TECHNOLOGY, label: t('projects.categories.roboticsTechnology') },
@@ -119,8 +119,8 @@ const getCategories = (t: (key: string, fallback?: string) => string) => [
   { value: CATEGORY_CODES.EXPERIMENTAL_PLATFORM, label: t('projects.categories.experimentalPlatform') },
   { value: CATEGORY_CODES.HIGH_PERFORMANCE_COMPUTING, label: t('projects.categories.highPerformanceComputing') }
 ];
-const getStatusOptions = (t: (key: string, fallback?: string) => string) => [t('projects.filters.all'), t('projects.status.completed'), t('projects.status.ongoing'), t('projects.status.planned')];
-const getYearOptions = (t: (key: string, fallback?: string) => string) => [t('projects.filters.all'), '2025', '2024', '2023', '2022'];
+const getStatusOptions = (t: (key: string, options?: { returnObjects?: boolean; fallback?: string }) => any) => [t('projects.filters.all'), t('projects.status.completed'), t('projects.status.ongoing'), t('projects.status.planned')];
+const getYearOptions = (t: (key: string, options?: { returnObjects?: boolean; fallback?: string }) => any) => [t('projects.filters.all'), '2025', '2024', '2023', '2022'];
 
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
