@@ -28,7 +28,20 @@
     "about": "About",
     "contact": "Contact",
     "privacy": "Privacy Policy",
-    "terms": "Terms of Service"
+    "terms": "Terms of Service",
+    "searchPlaceholder": "Search...",
+    "clearAllFilters": "Clear All Filters",
+    "activeFilters": "Active Filters:",
+    "clearAll": "Clear All",
+    "sortBy": "Sort by",
+    "searchResults": {
+      "found": "Found",
+      "results": "results",
+      "containing": "containing",
+      "showing": "Showing",
+      "of": "of",
+      "items": "items"
+    }
   },
   "navigation": {
     "home": "Home",

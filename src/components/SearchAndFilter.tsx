@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Search, Filter, X, ChevronDown, SortAsc, SortDesc, Calendar, Tag, User } from 'lucide-react';
 import { useDebounce } from '../hooks/useDebounce';
+import { useTranslation } from './TranslationProvider';
 
 // 搜索输入组件
 interface SearchInputProps {
@@ -16,11 +17,12 @@ interface SearchInputProps {
 export const SearchInput: React.FC<SearchInputProps> = ({
   value,
   onChange,
-  placeholder = '搜索...',
+  placeholder,
   className = '',
   onFocus,
   onBlur
 }) => {
+  const { t } = useTranslation();
   const [isFocused, setIsFocused] = useState(false);
 
   return (
@@ -39,7 +41,7 @@ export const SearchInput: React.FC<SearchInputProps> = ({
             setIsFocused(false);
             onBlur?.();
           }}
-          placeholder={placeholder}
+          placeholder={placeholder || t('common.searchPlaceholder')}
           className={`
             w-full pl-10 pr-4 py-2 rounded-lg border transition-all duration-200
             ${isFocused 
@@ -88,8 +90,9 @@ export const FilterDropdown: React.FC<FilterDropdownProps> = ({
   onChange,
   icon,
   multiple = true,
-  clearAllText = "Clear All Filters"
+  clearAllText
 }) => {
+  const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
 
   const handleOptionClick = (value: string) => {
@@ -165,11 +168,11 @@ export const FilterDropdown: React.FC<FilterDropdownProps> = ({
             {multiple && selectedCount > 0 && (
               <div className="border-t border-gray-200 dark:border-gray-700 p-2">
                 <button
-                  onClick={() => onChange([])}
-                  className="w-full px-3 py-2 text-sm text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-md transition-colors"
-                >
-                  {clearAllText}
-                </button>
+                   onClick={() => onChange([])}
+                   className="w-full px-3 py-2 text-sm text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-md transition-colors"
+                 >
+                   {clearAllText || t('common.clearAllFilters')}
+                 </button>
               </div>
             )}
           </motion.div>
@@ -205,6 +208,7 @@ export const SortDropdown: React.FC<SortDropdownProps> = ({
   selectedSort,
   onChange
 }) => {
+  const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   
   const selectedOption = options.find(opt => opt.value === selectedSort);
@@ -218,8 +222,8 @@ export const SortDropdown: React.FC<SortDropdownProps> = ({
       >
         <SortIcon className="w-4 h-4" />
         <span className="text-sm font-medium">
-          {selectedOption ? selectedOption.label : '排序'}
-        </span>
+           {selectedOption ? selectedOption.label : t('common.sortBy')}
+         </span>
         <ChevronDown className={`w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
       </button>
 
@@ -290,16 +294,19 @@ export const ActiveFilters: React.FC<ActiveFiltersProps> = ({
   optionLabels,
   onRemoveFilter,
   onClearAll,
-  activeFiltersText = "Active Filters:",
-  clearAllText = "Clear All"
+  activeFiltersText,
+  clearAllText
 }) => {
+  const { t } = useTranslation();
   const activeFilters = Object.entries(filters).filter(([_, values]) => values.length > 0);
   
   if (activeFilters.length === 0) return null;
 
   return (
     <div className="flex flex-wrap items-center gap-2">
-      <span className="text-sm text-gray-600 dark:text-gray-400">{activeFiltersText}</span>
+       <span className="text-sm text-gray-600 dark:text-gray-400">
+         {activeFiltersText || t('common.activeFilters')}
+       </span>
       {activeFilters.map(([filterKey, values]) => 
         values.map(value => {
           const filterLabel = filterLabels[filterKey] || filterKey;
@@ -325,11 +332,11 @@ export const ActiveFilters: React.FC<ActiveFiltersProps> = ({
         })
       )}
       <button
-        onClick={onClearAll}
-        className="text-sm text-red-600 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300 transition-colors"
-      >
-        {clearAllText}
-      </button>
+         onClick={onClearAll}
+         className="text-sm text-red-600 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300 transition-colors"
+       >
+         {clearAllText || t('common.clearAll')}
+       </button>
     </div>
   );
 };
@@ -348,19 +355,21 @@ export const SearchStats: React.FC<SearchStatsProps> = ({
   searchTerm,
   className = ''
 }) => {
+  const { t } = useTranslation();
+  
   return (
     <div className={`text-sm text-gray-600 dark:text-gray-400 ${className}`}>
       {searchTerm ? (
         <span>
-          找到 <strong className="text-gray-900 dark:text-white">{filteredResults}</strong> 个结果
+          {t('common.searchResults.found')} <strong className="text-gray-900 dark:text-white">{filteredResults}</strong> {t('common.searchResults.results')}
           {searchTerm && (
-            <span> 包含 "<strong className="text-blue-600 dark:text-blue-400">{searchTerm}</strong>"
+            <span> {t('common.searchResults.containing')} "<strong className="text-blue-600 dark:text-blue-400">{searchTerm}</strong>"
             </span>
           )}
         </span>
       ) : (
         <span>
-          显示 <strong className="text-gray-900 dark:text-white">{filteredResults}</strong> / {totalResults} 个项目
+          {t('common.searchResults.showing')} <strong className="text-gray-900 dark:text-white">{filteredResults}</strong> {t('common.searchResults.of')} {totalResults} {t('common.searchResults.items')}
         </span>
       )}
     </div>

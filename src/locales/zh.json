@@ -28,7 +28,20 @@
     "about": "关于",
     "contact": "联系",
     "privacy": "隐私政策",
-    "terms": "使用条款"
+    "terms": "使用条款",
+    "searchPlaceholder": "搜索...",
+    "clearAllFilters": "清除所有筛选",
+    "activeFilters": "当前筛选:",
+    "clearAll": "清除全部",
+    "sortBy": "排序",
+    "searchResults": {
+      "found": "找到",
+      "results": "个结果",
+      "containing": "包含",
+      "showing": "显示",
+      "of": "/",
+      "items": "个项目"
+    }
   },
   "navigation": {
     "home": "首页",
