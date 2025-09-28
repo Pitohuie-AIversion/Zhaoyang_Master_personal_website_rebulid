@@ -305,9 +305,40 @@
         "authors": "作者",
         "year": "年份",
         "doi": "DOI",
-        "citationsCount": "引用数",
+        "citationsCount": "引用次数",
         "abstract": "摘要",
-        "keywords": "关键词"
+        "keywords": "关键词",
+        "journal": "期刊",
+        "publishYear": "发表年份",
+        "patentNumber": "专利号",
+        "applicant": "申请人",
+        "publicDate": "公开日期",
+        "organization": "颁发机构",
+        "awardDate": "获奖日期",
+        "certificateNumber": "证书编号",
+        "publicationDetail": "论文详情",
+        "patentDetail": "专利详情",
+        "awardDetail": "奖项详情"
+      },
+      "status": {
+        "published": "已发表",
+        "accepted": "已接收",
+        "underReview": "审稿中",
+        "inPreparation": "准备中",
+        "granted": "已授权",
+        "pending": "审查中"
+      },
+      "types": {
+        "journal": "期刊论文",
+        "conference": "会议论文",
+        "invention": "发明专利",
+        "utility": "实用新型",
+        "design": "外观设计"
+      },
+      "levels": {
+        "national": "国家级",
+        "provincial": "省级",
+        "university": "校级"
       },
       "damformer": {
         "title": "DamFormer: 基于Transformer的溃坝流动预测神经算子",

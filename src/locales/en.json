@@ -355,37 +355,101 @@
         "doi": "DOI",
         "citationsCount": "Citations",
         "abstract": "Abstract",
-        "keywords": "Keywords"
+        "keywords": "Keywords",
+        "journal": "Journal",
+        "publishYear": "Publication Year",
+        "patentNumber": "Patent Number",
+        "applicant": "Applicant",
+        "publicDate": "Publication Date",
+        "organization": "Organization",
+        "awardDate": "Award Date",
+        "certificateNumber": "Certificate Number",
+        "publicationDetail": "Publication Details",
+        "patentDetail": "Patent Details",
+        "awardDetail": "Award Details"
       },
-      "damformer": {
-        "title": "DamFormer: A Transformer-based Neural Operator for Dam-break Flow Prediction",
-        "journal": "Physics of Fluids",
-        "authors": ["Zhaoyang Mu", "Wei Zhang"],
-        "description": "Proposed a Transformer-based neural operator DamFormer for predicting dam-break flows. This method can handle fluid dynamics problems under different geometric boundary conditions and achieve cross-geometric generalization capabilities."
+      "status": {
+        "published": "Published",
+        "accepted": "Accepted",
+        "underReview": "Under Review",
+        "inPreparation": "In Preparation",
+        "granted": "Granted",
+        "pending": "Pending"
       },
-      "rsModCubes": {
-        "title": "Design of Reconfigurable Robot System Based on Improved Modular Cubes",
-        "journal": "Robotics Technology and Applications",
-        "authors": ["Zhaoyang Mu", "Ming Li"],
-        "description": "Designed a reconfigurable robot system based on improved modular cubes with good reconfigurability and adaptability, capable of autonomously reconfiguring morphology according to task requirements."
+      "types": {
+        "journal": "Journal Paper",
+        "conference": "Conference Paper",
+        "invention": "Invention Patent",
+        "utility": "Utility Model",
+        "design": "Design Patent"
       },
-      "whiskerSensorArray": {
-        "title": "Underwater Robot Environmental Perception System Based on Bionic Whisker Sensor Array",
-        "journal": "Journal of Sensor Technology",
-        "authors": ["Zhaoyang Mu", "Qiang Wang"],
-        "description": "Developed an underwater robot environmental perception system based on bionic whisker sensor array, simulating the perception mechanism of fish lateral line system to improve underwater environmental perception capabilities."
+      "levels": {
+        "national": "National Level",
+        "provincial": "Provincial Level",
+        "university": "University Level"
       },
-      "whiskerSensor": {
-        "title": "Design and Optimization of High-Sensitivity Bionic Whisker Sensor",
-        "journal": "Nano Energy",
-        "authors": ["Zhaoyang Mu", "Hua Chen"],
-        "description": "Designed a high-sensitivity bionic whisker sensor capable of detecting minute fluid disturbances, providing precise environmental perception capabilities for underwater robots."
-      },
-      "sparseToDense": {
-        "title": "Transformer-based Sparse-to-Dense Flow Field Reconstruction",
-        "journal": "Journal of Computational Physics",
-        "authors": ["Zhaoyang Mu", "Lei Zhao"],
-        "description": "Proposed a Transformer-based method for reconstructing dense flow fields from sparse sensor data, capable of reconstructing complete flow field information from limited sensor data."
+      "data": {
+        "papers": {
+          "damformer": {
+            "title": "DamFormer: A Transformer-based Neural Operator for Dam-break Flow Prediction",
+            "journal": "Physics of Fluids",
+            "authors": ["Zhaoyang Mu", "Wei Zhang"],
+            "description": "Proposed a Transformer-based neural operator DamFormer for predicting dam-break flows. This method can handle fluid dynamics problems under different geometric boundary conditions and achieve cross-geometric generalization capabilities."
+          },
+          "rsModCubes": {
+            "title": "Design of Reconfigurable Robot System Based on Improved Modular Cubes",
+            "journal": "Robotics Technology and Applications",
+            "authors": ["Zhaoyang Mu", "Ming Li"],
+            "description": "Designed a reconfigurable robot system based on improved modular cubes with good reconfigurability and adaptability, capable of autonomously reconfiguring morphology according to task requirements."
+          },
+          "whiskerSensorArray": {
+            "title": "Underwater Robot Environmental Perception System Based on Bionic Whisker Sensor Array",
+            "journal": "Journal of Sensor Technology",
+            "authors": ["Zhaoyang Mu", "Qiang Wang"],
+            "description": "Developed an underwater robot environmental perception system based on bionic whisker sensor array, simulating the perception mechanism of fish lateral line system to improve underwater environmental perception capabilities."
+          },
+          "whiskerSensor": {
+            "title": "Design and Optimization of High-Sensitivity Bionic Whisker Sensor",
+            "journal": "Nano Energy",
+            "authors": ["Zhaoyang Mu", "Hua Chen"],
+            "description": "Designed a high-sensitivity bionic whisker sensor capable of detecting minute fluid disturbances, providing precise environmental perception capabilities for underwater robots."
+          },
+          "sparseToDense": {
+            "title": "Transformer-based Sparse-to-Dense Flow Field Reconstruction",
+            "journal": "Journal of Computational Physics",
+            "authors": ["Zhaoyang Mu", "Lei Zhao"],
+            "description": "Proposed a Transformer-based method for reconstructing dense flow fields from sparse sensor data, capable of reconstructing complete flow field information from limited sensor data."
+          }
+        },
+        "patents": {
+          "underwaterNavigation": {
+            "title": "Underwater Navigation Device and Method Based on Bionic Perception",
+            "applicant": "Dalian University of Technology",
+            "description": "This invention discloses an underwater navigation device and method based on bionic perception, achieving precise underwater environmental perception and navigation by simulating fish lateral line systems."
+          },
+          "vectorThruster": {
+            "title": "Vector Thruster and Its Control Method",
+            "applicant": "Dalian University of Technology",
+            "description": "This invention relates to a vector thruster and its control method, capable of achieving omnidirectional thrust control and improving the maneuverability of underwater robots."
+          }
+        },
+        "awards": {
+          "nationalScholarship": {
+            "title": "National Scholarship",
+            "organization": "Ministry of Education of China",
+            "description": "Awarded for outstanding academic performance and research achievements in the field of robotics and artificial intelligence."
+          },
+          "excellentGraduate": {
+            "title": "Outstanding Graduate",
+            "organization": "Dalian University of Technology",
+            "description": "Recognized as an outstanding graduate for exceptional academic performance and research contributions."
+          },
+          "innovationCompetition": {
+            "title": "First Prize in National Innovation Competition",
+            "organization": "Ministry of Education of China",
+            "description": "Won first prize in the national innovation competition for the bionic underwater robot project."
+          }
+        }
       }
     },
     "patents": {

@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { X, ExternalLink, Calendar, Users, FileText, Award, BookOpen, Copy, Check } from 'lucide-react';
 import { useState } from 'react';
 import { UnifiedButton } from './UnifiedButton';
+import { useTranslation } from './TranslationProvider';
 
 interface Publication {
   id: string;
@@ -53,6 +54,7 @@ export const ResearchDetailModal: React.FC<ResearchDetailModalProps> = ({
   onClose
 }) => {
   const [copiedField, setCopiedField] = useState<string | null>(null);
+  const { t } = useTranslation();
 
   if (!item) return null;
 
@@ -97,12 +99,12 @@ export const ResearchDetailModal: React.FC<ResearchDetailModalProps> = ({
           </h2>
           <div className="flex flex-wrap gap-2 mb-4">
             <span className={`px-3 py-1 rounded-full text-sm font-medium ${getStatusColor(pub.status)}`}>
-              {pub.status === 'published' ? '已发表' : 
-               pub.status === 'accepted' ? '已接收' :
-               pub.status === 'under_review' ? '审稿中' : '准备中'}
+              {pub.status === 'published' ? t('publications.status.published') : 
+               pub.status === 'accepted' ? t('publications.status.accepted') :
+               pub.status === 'under_review' ? t('publications.status.underReview') : t('publications.status.inPreparation')}
             </span>
             <span className="px-3 py-1 rounded-full text-sm font-medium bg-purple-100 text-purple-800 dark:bg-purple-900/20 dark:text-purple-300">
-              {pub.type === 'journal' ? '期刊论文' : '会议论文'}
+              {pub.type === 'journal' ? t('publications.types.journal') : t('publications.types.conference')}
             </span>
           </div>
         </div>
@@ -118,7 +120,7 @@ export const ResearchDetailModal: React.FC<ResearchDetailModalProps> = ({
         <div className="space-y-3">
           <div className="flex items-center gap-2">
             <FileText className="w-4 h-4 text-gray-500" />
-            <span className="font-medium text-gray-900 dark:text-white">期刊</span>
+            <span className="font-medium text-gray-900 dark:text-white">{t('publications.modal.journal')}</span>
           </div>
           <div className="flex items-center justify-between bg-white dark:bg-gray-800 rounded-lg p-3 border border-gray-200 dark:border-gray-700">
             <span className="text-gray-700 dark:text-gray-300">{pub.journal}</span>
@@ -138,7 +140,7 @@ export const ResearchDetailModal: React.FC<ResearchDetailModalProps> = ({
         <div className="space-y-3">
           <div className="flex items-center gap-2">
             <Calendar className="w-4 h-4 text-gray-500" />
-            <span className="font-medium text-gray-900 dark:text-white">发表年份</span>
+            <span className="font-medium text-gray-900 dark:text-white">{t('publications.modal.publishYear')}</span>
           </div>
           <div className="bg-white dark:bg-gray-800 rounded-lg p-3 border border-gray-200 dark:border-gray-700">
             <span className="text-gray-700 dark:text-gray-300">{pub.year}</span>
@@ -148,7 +150,7 @@ export const ResearchDetailModal: React.FC<ResearchDetailModalProps> = ({
         <div className="space-y-3">
           <div className="flex items-center gap-2">
             <Users className="w-4 h-4 text-gray-500" />
-            <span className="font-medium text-gray-900 dark:text-white">作者</span>
+            <span className="font-medium text-gray-900 dark:text-white">{t('publications.modal.authors')}</span>
           </div>
           <div className="flex items-center justify-between bg-white dark:bg-gray-800 rounded-lg p-3 border border-gray-200 dark:border-gray-700">
             <span className="text-gray-700 dark:text-gray-300">{pub.authors.join(', ')}</span>
@@ -210,12 +212,12 @@ export const ResearchDetailModal: React.FC<ResearchDetailModalProps> = ({
           </h2>
           <div className="flex flex-wrap gap-2 mb-4">
             <span className={`px-3 py-1 rounded-full text-sm font-medium ${getStatusColor(patent.status)}`}>
-              {patent.status === 'granted' ? '已授权' : 
-               patent.status === 'published' ? '已公开' : '审查中'}
+              {patent.status === 'granted' ? t('publications.status.granted') : 
+               patent.status === 'published' ? t('publications.status.published') : t('publications.status.pending')}
             </span>
             <span className="px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/20 dark:text-blue-300">
-              {patent.type === 'invention' ? '发明专利' : 
-               patent.type === 'utility' ? '实用新型' : '外观设计'}
+              {patent.type === 'invention' ? t('publications.types.invention') : 
+               patent.type === 'utility' ? t('publications.types.utility') : t('publications.types.design')}
             </span>
           </div>
         </div>
@@ -231,7 +233,7 @@ export const ResearchDetailModal: React.FC<ResearchDetailModalProps> = ({
         <div className="space-y-3">
           <div className="flex items-center gap-2">
             <FileText className="w-4 h-4 text-gray-500" />
-            <span className="font-medium text-gray-900 dark:text-white">专利号</span>
+            <span className="font-medium text-gray-900 dark:text-white">{t('publications.modal.patentNumber')}</span>
           </div>
           <div className="flex items-center justify-between bg-white dark:bg-gray-800 rounded-lg p-3 border border-gray-200 dark:border-gray-700">
             <span className="text-gray-700 dark:text-gray-300 font-mono">{patent.number}</span>
@@ -251,7 +253,7 @@ export const ResearchDetailModal: React.FC<ResearchDetailModalProps> = ({
         <div className="space-y-3">
           <div className="flex items-center gap-2">
             <Users className="w-4 h-4 text-gray-500" />
-            <span className="font-medium text-gray-900 dark:text-white">申请人</span>
+            <span className="font-medium text-gray-900 dark:text-white">{t('publications.modal.applicant')}</span>
           </div>
           <div className="bg-white dark:bg-gray-800 rounded-lg p-3 border border-gray-200 dark:border-gray-700">
             <span className="text-gray-700 dark:text-gray-300">{patent.applicant}</span>
@@ -261,7 +263,7 @@ export const ResearchDetailModal: React.FC<ResearchDetailModalProps> = ({
         <div className="space-y-3 md:col-span-2">
           <div className="flex items-center gap-2">
             <Calendar className="w-4 h-4 text-gray-500" />
-            <span className="font-medium text-gray-900 dark:text-white">公开日期</span>
+            <span className="font-medium text-gray-900 dark:text-white">{t('publications.modal.publicDate')}</span>
           </div>
           <div className="bg-white dark:bg-gray-800 rounded-lg p-3 border border-gray-200 dark:border-gray-700">
             <span className="text-gray-700 dark:text-gray-300">{patent.publicDate}</span>
@@ -283,8 +285,8 @@ export const ResearchDetailModal: React.FC<ResearchDetailModalProps> = ({
           </h2>
           <div className="flex flex-wrap gap-2 mb-4">
             <span className={`px-3 py-1 rounded-full text-sm font-medium ${getLevelColor(award.level)}`}>
-              {award.level === 'national' ? '国家级' : 
-               award.level === 'provincial' ? '省级' : '校级'}
+              {award.level === 'national' ? t('publications.levels.national') : 
+               award.level === 'provincial' ? t('publications.levels.provincial') : t('publications.levels.university')}
             </span>
           </div>
         </div>
@@ -300,7 +302,7 @@ export const ResearchDetailModal: React.FC<ResearchDetailModalProps> = ({
         <div className="space-y-3">
           <div className="flex items-center gap-2">
             <Award className="w-4 h-4 text-gray-500" />
-            <span className="font-medium text-gray-900 dark:text-white">颁发机构</span>
+            <span className="font-medium text-gray-900 dark:text-white">{t('publications.modal.organization')}</span>
           </div>
           <div className="bg-white dark:bg-gray-800 rounded-lg p-3 border border-gray-200 dark:border-gray-700">
             <span className="text-gray-700 dark:text-gray-300">{award.organization}</span>
@@ -310,7 +312,7 @@ export const ResearchDetailModal: React.FC<ResearchDetailModalProps> = ({
         <div className="space-y-3">
           <div className="flex items-center gap-2">
             <Calendar className="w-4 h-4 text-gray-500" />
-            <span className="font-medium text-gray-900 dark:text-white">获奖日期</span>
+            <span className="font-medium text-gray-900 dark:text-white">{t('publications.modal.awardDate')}</span>
           </div>
           <div className="bg-white dark:bg-gray-800 rounded-lg p-3 border border-gray-200 dark:border-gray-700">
             <span className="text-gray-700 dark:text-gray-300">{award.date}</span>
@@ -321,7 +323,7 @@ export const ResearchDetailModal: React.FC<ResearchDetailModalProps> = ({
           <div className="space-y-3 md:col-span-2">
             <div className="flex items-center gap-2">
               <FileText className="w-4 h-4 text-gray-500" />
-              <span className="font-medium text-gray-900 dark:text-white">证书编号</span>
+              <span className="font-medium text-gray-900 dark:text-white">{t('publications.modal.certificateNumber')}</span>
             </div>
             <div className="flex items-center justify-between bg-white dark:bg-gray-800 rounded-lg p-3 border border-gray-200 dark:border-gray-700">
               <span className="text-gray-700 dark:text-gray-300 font-mono">{award.certificateNumber}</span>
@@ -361,8 +363,8 @@ export const ResearchDetailModal: React.FC<ResearchDetailModalProps> = ({
           >
             <div className="sticky top-0 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 px-6 py-4 flex items-center justify-between rounded-t-2xl">
               <h1 className="text-lg font-semibold text-gray-900 dark:text-white">
-                {type === 'publication' ? '论文详情' : 
-                 type === 'patent' ? '专利详情' : '奖项详情'}
+                {type === 'publication' ? t('publications.modal.publicationDetail') : 
+                 type === 'patent' ? t('publications.modal.patentDetail') : t('publications.modal.awardDetail')}
               </h1>
               <UnifiedButton
                 onClick={onClose}
