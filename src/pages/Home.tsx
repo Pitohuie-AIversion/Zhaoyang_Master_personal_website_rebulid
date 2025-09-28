@@ -39,7 +39,7 @@ const getResearchHighlights = (t: (key: string, fallback?: string) => string): R
     title: t('home.researchHighlights.items.damformer.title'),
     description: t('home.researchHighlights.items.damformer.description'),
     image: 'https://trae-api-us.mchost.guru/api/ide/v1/text_to_image?prompt=dam%20break%20simulation%20transformer%20model%20cross%20geometry%20generalization%20computational%20fluid%20dynamics%20scientific%20visualization&image_size=landscape_4_3',
-    category: 'Transformer/Neural Operator',
+    category: t('home.researchHighlights.items.damformer.category'),
     link: '/projects'
   },
   {

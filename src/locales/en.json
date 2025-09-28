@@ -67,7 +67,8 @@
       "items": {
         "damformer": {
           "title": "DamFormer: Transformer-based Dam-break Flow Prediction",
-          "description": "Innovatively applying Transformer architecture to fluid mechanics prediction, achieving generalization across geometric boundaries"
+          "description": "Innovatively applying Transformer architecture to computational fluid dynamics, achieving cross-geometric generalization prediction of dam-break flows with high accuracy and efficiency.",
+          "category": "Transformer/Neural Operator"
         },
         "sparseDense": {
           "title": "Sparse-to-Dense Field Reconstruction",
@@ -128,7 +129,8 @@
       "publications": "Publications",
       "patents": "Patents",
       "citations": "Citations",
-      "projects": "Projects"
+      "projects": "Projects",
+      "awards": "Awards"
     },
     "startCollaboration": "Start Collaboration",
     "collaborationDesc": "Let's explore the infinite possibilities of technology together",
@@ -148,6 +150,47 @@
     "publicationFilterAll": "All Status",
     "publicationFilterPublished": "Published",
     "publicationFilterUnderReview": "Under Review",
+    "filters": {
+      "allTypes": "All Types",
+      "publications": "Publications",
+      "patents": "Patents",
+      "awards": "Awards",
+      "allStatus": "All Status",
+      "published": "Published",
+      "underReview": "Under Review"
+    },
+    "areas": {
+      "scientificComputing": {
+        "title": "Scientific Computing",
+        "transformer": {
+          "title": "Transformer Neural Operator",
+          "description": "Applying Transformer architecture to PDE solving with cross-geometry generalization"
+        },
+        "sparseToDense": {
+          "title": "Sparse-to-Dense Reconstruction",
+          "description": "Deep learning-based sparse sensor data to dense flow field reconstruction"
+        },
+        "damBreak": {
+          "title": "Dam-break Flow Prediction",
+          "description": "High-precision numerical simulation and prediction of dam-break flows"
+        }
+      },
+      "robotics": {
+        "title": "Robotics",
+        "underwaterPerception": {
+          "title": "Underwater Perception System",
+          "description": "Bionic-based underwater robot environmental perception and navigation technology"
+        },
+        "bionicFin": {
+          "title": "Bionic Propulsion System",
+          "description": "Fish-inspired undulating fin propulsion device design and control"
+        },
+        "modularRobot": {
+          "title": "Modular Robot",
+          "description": "Reconfigurable robot system design based on modular cubes"
+        }
+      }
+    },
     "noResults": "No results found",
     "noResultsDesc": "Please try adjusting your search terms or filters",
     "viewDetails": "View Details",
@@ -241,12 +284,23 @@
   "projects": {
     "title": "Projects",
     "description": "Showcasing my project achievements in scientific computing, robotics, and software development",
+    "searchPlaceholder": "Search projects...",
+    "category": "Category",
+    "status": "Status",
+    "year": "Year",
+    "noResults": "No projects found",
+    "noResultsDesc": "Please try adjusting your search criteria or filters",
+    "filters": {
+      "all": "All"
+    },
     "categories": {
       "all": "All",
-      "research": "Research",
-      "robotics": "Robotics",
-      "software": "Software",
-      "ai": "AI"
+      "scientificComputing": "Scientific Computing",
+      "roboticsTechnology": "Robotics Technology",
+      "simulationAnalysis": "Simulation Analysis",
+      "experimentalPlatform": "Experimental Platform",
+      "mechanicalDesign": "Mechanical Design",
+      "highPerformanceComputing": "High Performance Computing"
     },
     "status": {
       "completed": "Completed",
@@ -263,35 +317,62 @@
     "damformer": {
       "title": "DamFormer: Transformer-based Dam-break Flow Prediction",
       "description": "Innovatively applying Transformer architecture to computational fluid dynamics, achieving cross-geometric generalization prediction of dam-break flows. This project significantly improves computational efficiency while maintaining high accuracy, providing new solutions for fluid dynamics numerical simulation.",
-      "technologies": ["Python", "PyTorch", "Transformer", "CFD", "Neural Operators"],
-      "highlights": [
-        "First application of Transformer architecture to dam-break flow prediction",
-        "Achieved cross-geometric boundary generalization prediction capability",
-        "Improved computational efficiency by over 100x compared to traditional methods",
-        "Achieved state-of-the-art performance on multiple benchmark tests"
-      ]
+      "highlights": {
+        "crossGeometric": "First application of Transformer architecture to dam-break flow prediction",
+        "published": "Achieved cross-geometric boundary generalization prediction capability",
+        "architecture": "Improved computational efficiency by over 100x compared to traditional methods",
+        "dataset": "Achieved state-of-the-art performance on multiple benchmark tests"
+      }
+    },
+    "sparseToDense": {
+      "title": "Sparse-to-Dense Flow Field Reconstruction",
+      "description": "Transformer-based neural operator for high-precision reconstruction from sparse sensor data to dense flow fields, providing new technical pathways for fluid monitoring and prediction.",
+      "highlights": {
+        "sparseReconstruction": "Achieved dense flow field reconstruction from sparse sensor data",
+        "transformerBased": "Transformer-based neural operator design",
+        "highAccuracy": "Achieved high accuracy in various flow field reconstruction tasks",
+        "realTimeProcessing": "Supports real-time flow field reconstruction and prediction"
+      }
     },
     "bionicRobot": {
       "title": "Bionic Perception Underwater Robot System",
       "description": "Based on fish lateral line system principles, designed and implemented intelligent underwater robots with environmental perception capabilities. The system can detect water flow changes and obstacle positions in real-time, providing new technical solutions for underwater operations.",
-      "technologies": ["ROS", "C++", "Arduino", "Sensor Fusion", "Machine Learning"],
-      "highlights": [
-        "Simulated fish lateral line system bionic perception mechanism",
-        "Achieved real-time water flow change detection",
-        "Integrated multi-sensor fusion algorithms",
-        "Validated effectiveness in complex water environments"
-      ]
+      "highlights": {
+        "bionicPerception": "Simulated fish lateral line system bionic perception mechanism",
+        "realTimeDetection": "Achieved real-time water flow change detection",
+        "sensorFusion": "Integrated multi-sensor fusion algorithms",
+        "complexEnvironment": "Validated effectiveness in complex water environments"
+      }
     },
-    "neuralOperatorCFD": {
-      "title": "Neural Operator Applications in CFD Research",
-      "description": "Systematically studied neural operator applications in computational fluid dynamics problems, developed multiple improved algorithms, achieving breakthrough progress in flow field prediction and turbulence modeling.",
-      "technologies": ["Python", "TensorFlow", "JAX", "Numerical Analysis", "PDEs"],
-      "highlights": [
-        "Developed multiple improved neural operator algorithms",
-        "Validated effectiveness on multiple CFD benchmark problems",
-        "Implemented end-to-end flow field prediction pipeline",
-        "Published multiple high-quality academic papers"
-      ]
+    "fanWall": {
+      "title": "Fan Array Experimental Platform",
+      "description": "Designed and built a modular fan array experimental platform for flow control and turbulence research. The platform features high configurability and precise control capabilities, providing powerful tools for fluid mechanics experiments.",
+      "highlights": {
+        "modularArray": "Modular fan array design",
+        "stm32Control": "STM32-based precision control system",
+        "pwmTach": "PWM speed control and tachometer feedback",
+        "vlanDhcp": "Networked management and remote control"
+      }
+    },
+    "marineBuoy": {
+      "title": "Marine Observation Buoy",
+      "description": "Designed the mechanical structure of a marine observation buoy with excellent sealing and corrosion resistance, capable of stable long-term operation in harsh marine environments, providing reliable observation platforms for marine scientific research.",
+      "highlights": {
+        "designLead": "Led mechanical structure design",
+        "structureSealing": "Optimized structural sealing and anti-corrosion design",
+        "buoyancyCalculation": "Precise buoyancy calculation and stability analysis",
+        "seaTrial": "Successfully completed sea trials"
+      }
+    },
+    "serverHpc": {
+      "title": "High Performance Computing Server Cluster",
+      "description": "Built and maintained high-performance computing server clusters supporting large-scale deep learning training and scientific computing tasks. The cluster features efficient resource scheduling and task management capabilities, providing powerful computational support for research work.",
+      "highlights": {
+        "distributedTraining": "Distributed deep learning training support",
+        "slurmScheduling": "SLURM job scheduling system",
+        "cudaSetup": "CUDA environment configuration and optimization",
+        "wandbLogging": "Integrated W&B experiment management"
+      }
     }
   },
   "about": {

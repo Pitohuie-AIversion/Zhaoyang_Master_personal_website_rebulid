@@ -66,8 +66,9 @@
       "description": "探索前沿技术，推动科学进步",
       "items": {
         "damformer": {
-          "title": "DamFormer: 基于Transformer的溃坝流动预测",
-          "description": "创新性地将Transformer架构应用于流体力学预测，实现跨几何边界的泛化能力"
+          "title": "DamFormer: 基于Transformer的溃坝流动预测神经算子",
+          "description": "创新性地将Transformer架构应用于流体力学预测，实现跨几何边界的泛化能力",
+          "category": "Transformer/神经算子"
         },
         "sparseDense": {
           "title": "稀疏到稠密场重构",
@@ -129,7 +130,8 @@
       "publications": "学术论文",
       "patents": "发明专利",
       "citations": "论文引用",
-      "projects": "完成项目"
+      "projects": "完成项目",
+      "awards": "获得奖项"
     },
     "startCollaboration": "开始合作",
     "collaborationDesc": "让我们一起探索科技的无限可能",
@@ -142,16 +144,50 @@
     "switchToAnalyticsView": "切换到分析视图",
     "switchToListView": "切换到列表视图",
     "searchPlaceholder": "搜索论文、专利或奖项...",
-    "filterAll": "全部",
-    "filterPublications": "学术论文",
-    "filterPatents": "发明专利",
-    "filterAwards": "获奖荣誉",
-    "publicationFilterAll": "全部状态",
-    "publicationFilterPublished": "已发表",
-    "publicationFilterUnderReview": "审稿中",
     "noResults": "未找到相关结果",
     "noResultsDesc": "请尝试调整搜索条件或筛选器",
     "viewDetails": "查看详情",
+    "filters": {
+      "allTypes": "全部类型",
+      "publications": "学术论文",
+      "patents": "发明专利",
+      "awards": "获奖荣誉",
+      "allStatus": "全部状态",
+      "published": "已发表",
+      "underReview": "审稿中"
+    },
+    "areas": {
+      "scientificComputing": {
+        "title": "科学计算",
+        "transformer": {
+          "title": "Transformer神经算子",
+          "description": "将Transformer架构应用于偏微分方程求解，实现跨几何泛化预测"
+        },
+        "sparseToDense": {
+          "title": "稀疏到稠密重构",
+          "description": "基于深度学习的稀疏传感器数据到稠密流场重构方法"
+        },
+        "damBreak": {
+          "title": "溃坝流动预测",
+          "description": "高精度溃坝流动数值模拟与预测方法研究"
+        }
+      },
+      "robotics": {
+        "title": "机器人技术",
+        "underwaterPerception": {
+          "title": "水下感知系统",
+          "description": "基于仿生原理的水下机器人环境感知与导航技术"
+        },
+        "bionicFin": {
+          "title": "仿生推进系统",
+          "description": "模拟鱼类游泳的仿生波动鳍推进装置设计与控制"
+        },
+        "modularRobot": {
+          "title": "模块化机器人",
+          "description": "基于模块化立方体的可重构机器人系统设计"
+        }
+      }
+    },
     "publications": {
       "damformer": {
         "title": "DamFormer: 基于Transformer的溃坝流动预测神经算子",
@@ -422,6 +458,100 @@
       "twitter": "Twitter",
       "researchgate": "ResearchGate",
       "orcid": "ORCID"
+    }
+  },
+  "projects": {
+    "title": "项目展示",
+    "description": "展示我在科学计算、机器人技术和软件开发方面的项目成果",
+    "searchPlaceholder": "搜索项目...",
+    "category": "分类",
+    "status": "状态",
+    "year": "年份",
+    "noResults": "未找到相关项目",
+    "noResultsDesc": "请尝试调整搜索条件或筛选器",
+    "filters": {
+      "all": "全部"
+    },
+    "categories": {
+      "all": "全部",
+      "scientificComputing": "科学计算",
+      "roboticsTechnology": "机器人技术",
+      "simulationAnalysis": "仿真分析",
+      "experimentalPlatform": "实验平台",
+      "mechanicalDesign": "机械设计",
+      "highPerformanceComputing": "高性能计算"
+    },
+    "status": {
+      "completed": "已完成",
+      "ongoing": "进行中",
+      "planned": "计划中",
+      "unknown": "未知"
+    },
+    "sort": {
+      "title": "标题",
+      "year": "年份",
+      "category": "分类",
+      "status": "状态"
+    },
+    "damformer": {
+      "title": "DamFormer: 基于Transformer的溃坝流动预测",
+      "description": "创新性地将Transformer架构应用于计算流体力学，实现溃坝流动的跨几何泛化预测。该项目在保持高精度的同时显著提升了计算效率，为流体力学数值模拟提供了新的解决方案。",
+      "highlights": {
+        "crossGeometric": "首次将Transformer架构应用于溃坝流动预测",
+        "published": "实现跨几何边界泛化预测能力",
+        "architecture": "相比传统方法计算效率提升100倍以上",
+        "dataset": "在多个基准测试中达到最先进性能"
+      }
+    },
+    "sparseToDense": {
+      "title": "稀疏到稠密流场重构",
+      "description": "基于Transformer架构的神经算子，实现从稀疏传感器数据到稠密流场的高精度重构，为流体监测和预测提供新的技术路径。",
+      "highlights": {
+        "sparseReconstruction": "实现稀疏传感器数据的稠密流场重构",
+        "transformerBased": "基于Transformer架构的神经算子设计",
+        "highAccuracy": "在多种流场重构任务中达到高精度",
+        "realTimeProcessing": "支持实时流场重构和预测"
+      }
+    },
+    "bionicRobot": {
+      "title": "仿生感知水下机器人系统",
+      "description": "基于鱼类侧线系统原理，设计并实现了具有环境感知能力的智能水下机器人。系统能够实时检测水流变化和障碍物位置，为水下作业提供新的技术解决方案。",
+      "highlights": {
+        "bionicPerception": "模拟鱼类侧线系统仿生感知机制",
+        "realTimeDetection": "实现实时水流变化检测",
+        "sensorFusion": "集成多传感器融合算法",
+        "complexEnvironment": "在复杂水环境中验证有效性"
+      }
+    },
+    "fanWall": {
+      "title": "风扇阵列实验平台",
+      "description": "设计并搭建了模块化风扇阵列实验平台，用于流动控制和湍流研究。平台具有高度的可配置性和精确的控制能力，为流体力学实验提供了强大的工具。",
+      "highlights": {
+        "modularArray": "模块化风扇阵列设计",
+        "stm32Control": "基于STM32的精确控制系统",
+        "pwmTach": "PWM调速和转速反馈控制",
+        "vlanDhcp": "网络化管理和远程控制"
+      }
+    },
+    "marineBuoy": {
+      "title": "海洋观测浮标",
+      "description": "设计了一种海洋观测浮标的机械结构，具有良好的密封性和耐腐蚀性，能够在恶劣海洋环境中长期稳定工作，为海洋科学研究提供可靠的观测平台。",
+      "highlights": {
+        "designLead": "担任机械结构设计负责人",
+        "structureSealing": "优化结构密封和防腐设计",
+        "buoyancyCalculation": "精确的浮力计算和稳定性分析",
+        "seaTrial": "成功完成海试验证"
+      }
+    },
+    "serverHpc": {
+      "title": "高性能计算服务器集群",
+      "description": "搭建和维护高性能计算服务器集群，支持大规模深度学习训练和科学计算任务。集群具有高效的资源调度和任务管理能力，为研究工作提供强大的计算支持。",
+      "highlights": {
+        "distributedTraining": "分布式深度学习训练支持",
+        "slurmScheduling": "SLURM作业调度系统",
+        "cudaSetup": "CUDA环境配置和优化",
+        "wandbLogging": "集成W&B实验管理"
+      }
     }
   },
   "footer": {
