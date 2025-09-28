@@ -159,6 +159,61 @@
       "published": "已发表",
       "underReview": "审稿中"
     },
+    "academicAchievements": "学术成就",
+    "publications": "学术论文",
+    "patents": "发明专利",
+    "awards": "获奖荣誉",
+    "totalCount": "共 {{count}} {{unit}}",
+    "papers": "篇",
+    "items": "项",
+    "authors": "作者",
+    "applicant": "申请人",
+    "patentNumber": "专利号",
+    "publicDate": "公开日期",
+    "certificateNumber": "证书编号",
+    "viewDetails": "查看详情",
+    "education": "教育背景",
+    "educationItems": {
+      "master": {
+        "title": "大连海事大学 - 人工智能硕士",
+        "description": "专业：人工智能（0812J1）| 导师：徐敏义 教授 | 人工智能学院",
+        "period": "2023.08 - 2026.06（预计）",
+        "status": "在读"
+      },
+      "visiting": {
+        "title": "西湖大学 - 访问学生/研究助理",
+        "description": "工学院 i⁴-FSI 实验室（PI：范迪夏）| 方向：仿生波动鳍推进仿真",
+        "period": "2024.06 - 至今",
+        "status": "访问学者"
+      },
+      "bachelor": {
+        "title": "大连海事大学 - 材料科学与工程学士",
+        "description": "专业：材料科学与工程（高分子）| GPA 3.2/4.0（82/100）| 专业排名 7/100",
+        "period": "2019.09 - 2023.06",
+        "status": "工学学士"
+      }
+    },
+    "status": {
+      "published": "已发表",
+      "accepted": "已接收",
+      "underReview": "审稿中",
+      "preparing": "准备中",
+      "granted": "已授权"
+    },
+    "type": {
+      "journal": "期刊论文",
+      "conference": "会议论文"
+    },
+    "patentType": {
+      "invention": "发明专利",
+      "utility": "实用新型",
+      "design": "外观设计"
+    },
+    "level": {
+      "national": "国家级",
+      "provincial": "省级",
+      "school": "校级"
+    },
     "areas": {
       "scientificComputing": {
         "title": "科学计算",
@@ -385,6 +440,8 @@
     "category": "分类",
     "status": "状态",
     "year": "年份",
+    "activeFilters": "活跃筛选:",
+    "clearAll": "清除全部",
     "noResults": "未找到相关项目",
     "noResultsDesc": "请尝试调整搜索条件或筛选器",
     "filters": {

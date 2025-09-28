@@ -615,14 +615,14 @@ function Research() {
                 className="border-l-4 border-blue-600 pl-6 hover:bg-gray-50 p-4 rounded-r-lg transition-colors"
               >
                 <h4 className="text-lg font-medium text-primary-dark theme-transition mb-2">
-                  大连海事大学 - 人工智能硕士
+                  {t('research.educationItems.master.title')}
                 </h4>
                 <p className="text-sm text-secondary-dark theme-transition mb-3">
-                  专业：人工智能（0812J1）| 导师：徐敏义 教授 | 人工智能学院
+                  {t('research.educationItems.master.description')}
                 </p>
                 <div className="flex flex-wrap gap-2">
-                  <span className="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">2023.08 - 2026.06（预计）</span>
-                  <span className="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">在读</span>
+                  <span className="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">{t('research.educationItems.master.period')}</span>
+                  <span className="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">{t('research.educationItems.master.status')}</span>
                 </div>
               </SimpleMotion>
               
@@ -633,14 +633,14 @@ function Research() {
                 className="border-l-4 border-purple-600 pl-6 hover:bg-gray-50 p-4 rounded-r-lg transition-colors"
               >
                 <h4 className="text-lg font-medium text-primary-dark theme-transition mb-2">
-                  西湖大学 - 访问学生/研究助理
+                  {t('research.educationItems.visiting.title')}
                 </h4>
                 <p className="text-sm text-secondary-dark theme-transition mb-3">
-                  工学院 i⁴-FSI 实验室（PI：范迪夏）| 方向：仿生波动鳍推进仿真
+                  {t('research.educationItems.visiting.description')}
                 </p>
                 <div className="flex flex-wrap gap-2">
-                  <span className="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded">2024.06 - 至今</span>
-                  <span className="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded">访问学者</span>
+                  <span className="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded">{t('research.educationItems.visiting.period')}</span>
+                  <span className="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded">{t('research.educationItems.visiting.status')}</span>
                 </div>
               </SimpleMotion>
               
@@ -651,14 +651,14 @@ function Research() {
                 className="border-l-4 border-green-600 pl-6 hover:bg-gray-50 p-4 rounded-r-lg transition-colors"
               >
                 <h4 className="text-lg font-medium text-primary-dark theme-transition mb-2">
-                  大连海事大学 - 材料科学与工程学士
+                  {t('research.educationItems.bachelor.title')}
                 </h4>
                 <p className="text-sm text-secondary-dark theme-transition mb-3">
-                  专业：材料科学与工程（高分子）| GPA 3.2/4.0（82/100）| 专业排名 7/100
+                  {t('research.educationItems.bachelor.description')}
                 </p>
                 <div className="flex flex-wrap gap-2">
-                  <span className="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">2019.09 - 2023.06</span>
-                  <span className="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">工学学士</span>
+                  <span className="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">{t('research.educationItems.bachelor.period')}</span>
+                  <span className="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">{t('research.educationItems.bachelor.status')}</span>
                 </div>
               </SimpleMotion>
             </div>

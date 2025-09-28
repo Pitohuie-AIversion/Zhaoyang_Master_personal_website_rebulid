@@ -162,6 +162,61 @@
       "published": "Published",
       "underReview": "Under Review"
     },
+    "academicAchievements": "Academic Achievements",
+    "publications": "Publications",
+    "patents": "Patents",
+    "awards": "Awards",
+    "totalCount": "Total {{count}} {{unit}}",
+    "papers": "papers",
+    "items": "items",
+    "authors": "Authors",
+    "applicant": "Applicant",
+    "patentNumber": "Patent No.",
+    "publicDate": "Publication Date",
+    "certificateNumber": "Certificate No.",
+    "viewDetails": "View Details",
+    "education": "Education",
+    "educationItems": {
+      "master": {
+        "title": "Dalian Maritime University - Master of Artificial Intelligence",
+        "description": "Major: Artificial Intelligence (0812J1) | Supervisor: Prof. Xu Minyi | School of Artificial Intelligence",
+        "period": "2023.08 - 2026.06 (Expected)",
+        "status": "Current"
+      },
+      "visiting": {
+        "title": "Westlake University - Visiting Student/Research Assistant",
+        "description": "School of Engineering i⁴-FSI Lab (PI: Prof. Fan Dixia) | Focus: Bionic Undulating Fin Propulsion Simulation",
+        "period": "2024.06 - Present",
+        "status": "Visiting Scholar"
+      },
+      "bachelor": {
+        "title": "Dalian Maritime University - Bachelor of Materials Science and Engineering",
+        "description": "Major: Materials Science and Engineering (Polymer) | GPA 3.2/4.0 (82/100) | Rank 7/100",
+        "period": "2019.09 - 2023.06",
+        "status": "Bachelor of Engineering"
+      }
+    },
+    "status": {
+      "published": "Published",
+      "accepted": "Accepted",
+      "underReview": "Under Review",
+      "preparing": "Preparing",
+      "granted": "Granted"
+    },
+    "type": {
+      "journal": "Journal Paper",
+      "conference": "Conference Paper"
+    },
+    "patentType": {
+      "invention": "Invention Patent",
+      "utility": "Utility Model",
+      "design": "Design Patent"
+    },
+    "level": {
+      "national": "National",
+      "provincial": "Provincial",
+      "school": "School"
+    },
     "areas": {
       "scientificComputing": {
         "title": "Scientific Computing",
@@ -291,6 +346,8 @@
     "category": "Category",
     "status": "Status",
     "year": "Year",
+    "activeFilters": "Active Filters:",
+    "clearAll": "Clear All",
     "noResults": "No projects found",
     "noResultsDesc": "Please try adjusting your search criteria or filters",
     "filters": {

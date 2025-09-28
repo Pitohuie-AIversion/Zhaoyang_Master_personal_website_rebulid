@@ -78,6 +78,7 @@ interface FilterDropdownProps {
   onChange: (values: string[]) => void;
   icon?: React.ReactNode;
   multiple?: boolean;
+  clearAllText?: string;
 }
 
 export const FilterDropdown: React.FC<FilterDropdownProps> = ({
@@ -86,7 +87,8 @@ export const FilterDropdown: React.FC<FilterDropdownProps> = ({
   selectedValues,
   onChange,
   icon,
-  multiple = true
+  multiple = true,
+  clearAllText = "Clear All Filters"
 }) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -166,7 +168,7 @@ export const FilterDropdown: React.FC<FilterDropdownProps> = ({
                   onClick={() => onChange([])}
                   className="w-full px-3 py-2 text-sm text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-md transition-colors"
                 >
-                  清除所有筛选
+                  {clearAllText}
                 </button>
               </div>
             )}
@@ -278,6 +280,8 @@ interface ActiveFiltersProps {
   optionLabels: { [key: string]: { [value: string]: string } };
   onRemoveFilter: (filterKey: string, value: string) => void;
   onClearAll: () => void;
+  activeFiltersText?: string;
+  clearAllText?: string;
 }
 
 export const ActiveFilters: React.FC<ActiveFiltersProps> = ({
@@ -285,7 +289,9 @@ export const ActiveFilters: React.FC<ActiveFiltersProps> = ({
   filterLabels,
   optionLabels,
   onRemoveFilter,
-  onClearAll
+  onClearAll,
+  activeFiltersText = "Active Filters:",
+  clearAllText = "Clear All"
 }) => {
   const activeFilters = Object.entries(filters).filter(([_, values]) => values.length > 0);
   
@@ -293,7 +299,7 @@ export const ActiveFilters: React.FC<ActiveFiltersProps> = ({
 
   return (
     <div className="flex flex-wrap items-center gap-2">
-      <span className="text-sm text-gray-600 dark:text-gray-400">活跃筛选:</span>
+      <span className="text-sm text-gray-600 dark:text-gray-400">{activeFiltersText}</span>
       {activeFilters.map(([filterKey, values]) => 
         values.map(value => {
           const filterLabel = filterLabels[filterKey] || filterKey;
@@ -322,7 +328,7 @@ export const ActiveFilters: React.FC<ActiveFiltersProps> = ({
         onClick={onClearAll}
         className="text-sm text-red-600 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300 transition-colors"
       >
-        清除全部
+        {clearAllText}
       </button>
     </div>
   );

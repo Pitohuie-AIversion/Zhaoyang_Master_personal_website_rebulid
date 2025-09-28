@@ -51,7 +51,7 @@ const getProjects = (t: (key: string, fallback?: string) => string): Project[] =
   {
     id: 2,
     title: t('projects.sparseToDense.title'),
-    category: t('projects.categories.scientificComputing'),
+    category: CATEGORY_CODES.SCIENTIFIC_COMPUTING,
     description: t('projects.sparseToDense.description'),
     technologies: ['PyTorch', 'Transformer', 'Neural Operator', 'Python', 'CFD'],
     image: 'https://trae-api-us.mchost.guru/api/ide/v1/text_to_image?prompt=sparse%20to%20dense%20field%20reconstruction%20transformer%20neural%20operator%20scientific%20visualization&image_size=landscape_4_3',
@@ -283,9 +283,15 @@ export default function Projects() {
             }}
             optionLabels={{
               category: Object.fromEntries(categories.map(cat => [cat.value, cat.label])),
-              status: Object.fromEntries(statusOptions.map(status => [status, status])),
+              status: {
+                'completed': t('projects.status.completed'),
+                'ongoing': t('projects.status.ongoing'),
+                'planned': t('projects.status.planned')
+              },
               year: Object.fromEntries(yearOptions.map(year => [year, year]))
             }}
+            activeFiltersText={t('projects.activeFilters')}
+            clearAllText={t('projects.clearAll')}
             onRemoveFilter={removeFilter}
             onClearAll={() => {
               Object.keys(filters).forEach(key => {
