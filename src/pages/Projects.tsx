@@ -159,6 +159,14 @@ export default function Projects() {
       year: (item: Project) => item.year,
       category: (item: Project) => item.category,
       status: (item: Project) => item.status
+    },
+    // 添加搜索字段映射，让分类搜索支持文案匹配
+    searchFieldMappers: {
+      category: (item: Project) => {
+        // 根据分类代码获取对应的翻译文案
+        const categoryOption = categories.find(cat => cat.value === item.category);
+        return categoryOption ? [categoryOption.label] : [];
+      }
     }
   });
 

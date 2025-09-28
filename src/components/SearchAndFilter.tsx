@@ -211,8 +211,14 @@ export const SortDropdown: React.FC<SortDropdownProps> = ({
   const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   
-  const selectedOption = options.find(opt => opt.value === selectedSort);
-  const SortIcon = selectedOption?.direction === 'desc' ? SortDesc : SortAsc;
+  // 解析当前选中的排序值和方向
+  const [sortField, sortDirection] = selectedSort.includes('_desc') 
+    ? [selectedSort.replace('_desc', ''), 'desc'] 
+    : [selectedSort, 'asc'];
+  
+  const selectedOption = options.find(opt => opt.value === sortField);
+  const currentDirection = selectedOption?.direction || 'asc';
+  const SortIcon = currentDirection === 'desc' ? SortDesc : SortAsc;
 
   return (
     <div className="relative">
@@ -238,14 +244,18 @@ export const SortDropdown: React.FC<SortDropdownProps> = ({
           >
             <div className="p-2">
               {options.map((option) => {
-                const isSelected = selectedSort === option.value;
+                const isSelected = sortField === option.value;
                 const OptionIcon = option.direction === 'desc' ? SortDesc : SortAsc;
                 
                 return (
                   <button
                     key={option.value}
                     onClick={() => {
-                      onChange(option.value);
+                      // 根据选项的默认方向构建排序值
+                      const sortValue = option.direction === 'desc' 
+                        ? `${option.value}_desc` 
+                        : option.value;
+                      onChange(sortValue);
                       setIsOpen(false);
                     }}
                     className={`
@@ -383,6 +393,8 @@ interface UseAdvancedSearchProps<T> {
   filterFields?: { [key: string]: (item: T) => string | string[] };
   sortFields?: { [key: string]: (item: T) => any };
   debounceMs?: number;
+  // 新增：搜索字段映射函数，用于将代码值转换为可搜索的文本
+  searchFieldMappers?: { [key: string]: (item: T) => string[] };
 }
 
 export function useAdvancedSearch<T>({
@@ -390,7 +402,8 @@ export function useAdvancedSearch<T>({
   searchFields,
   filterFields = {},
   sortFields = {},
-  debounceMs = 300
+  debounceMs = 300,
+  searchFieldMappers = {}
 }: UseAdvancedSearchProps<T>) {
   const [searchTerm, setSearchTerm] = useState('');
   const [filters, setFilters] = useState<{ [key: string]: string[] }>({});
@@ -407,14 +420,32 @@ export function useAdvancedSearch<T>({
       result = result.filter(item => 
         searchFields.some(field => {
           const value = item[field];
+          
+          // 检查原始字段值
           if (typeof value === 'string') {
-            return value.toLowerCase().includes(searchLower);
+            if (value.toLowerCase().includes(searchLower)) {
+              return true;
+            }
           }
           if (Array.isArray(value)) {
-            return value.some(v => 
+            if (value.some(v => 
               typeof v === 'string' && v.toLowerCase().includes(searchLower)
-            );
+            )) {
+              return true;
+            }
           }
+          
+          // 检查映射后的搜索字段
+          const fieldKey = String(field);
+          if (searchFieldMappers[fieldKey]) {
+            const mappedValues = searchFieldMappers[fieldKey](item);
+            if (mappedValues.some(mappedValue => 
+              mappedValue.toLowerCase().includes(searchLower)
+            )) {
+              return true;
+            }
+          }
+          
           return false;
         })
       );
@@ -434,32 +465,33 @@ export function useAdvancedSearch<T>({
     });
 
     // 应用排序
-    if (sortBy && sortFields[sortBy]) {
-      result.sort((a, b) => {
-        const aValue = sortFields[sortBy](a);
-        const bValue = sortFields[sortBy](b);
-        
-        if (typeof aValue === 'string' && typeof bValue === 'string') {
-          return aValue.localeCompare(bValue);
-        }
-        if (typeof aValue === 'number' && typeof bValue === 'number') {
-          return aValue - bValue;
-        }
-        if (aValue instanceof Date && bValue instanceof Date) {
-          return aValue.getTime() - bValue.getTime();
-        }
-        
-        return 0;
-      });
+    if (sortBy && sortFields) {
+      // 解析排序字段和方向
+      const isDescending = sortBy.includes('_desc');
+      const sortField = isDescending ? sortBy.replace('_desc', '') : sortBy;
       
-      // 处理降序
-      if (sortBy.includes('_desc')) {
-        result.reverse();
+      if (sortFields[sortField]) {
+        result.sort((a, b) => {
+          const aValue = sortFields[sortField](a);
+          const bValue = sortFields[sortField](b);
+          
+          let comparison = 0;
+          if (typeof aValue === 'string' && typeof bValue === 'string') {
+            comparison = aValue.localeCompare(bValue);
+          } else if (typeof aValue === 'number' && typeof bValue === 'number') {
+            comparison = aValue - bValue;
+          } else if (aValue instanceof Date && bValue instanceof Date) {
+            comparison = aValue.getTime() - bValue.getTime();
+          }
+          
+          // 如果是降序，反转比较结果
+          return isDescending ? -comparison : comparison;
+        });
       }
     }
 
     return result;
-  }, [data, debouncedSearchTerm, filters, sortBy, searchFields, filterFields, sortFields]);
+  }, [data, debouncedSearchTerm, filters, sortBy, searchFields, filterFields, sortFields, searchFieldMappers]);
 
   const updateFilter = useCallback((filterKey: string, values: string[]) => {
     setFilters(prev => ({ ...prev, [filterKey]: values }));
