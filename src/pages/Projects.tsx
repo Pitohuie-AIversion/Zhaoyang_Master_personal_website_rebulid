@@ -25,11 +25,20 @@ interface Project {
   demoUrl?: string;
 }
 
+// 定义稳定的分类代码
+export const CATEGORY_CODES = {
+  SCIENTIFIC_COMPUTING: 'scientificComputing',
+  ROBOTICS_TECHNOLOGY: 'roboticsTechnology', 
+  SIMULATION_ANALYSIS: 'simulationAnalysis',
+  EXPERIMENTAL_PLATFORM: 'experimentalPlatform',
+  HIGH_PERFORMANCE_COMPUTING: 'highPerformanceComputing'
+} as const;
+
 const getProjects = (t: (key: string, fallback?: string) => string): Project[] => [
   {
     id: 1,
     title: t('projects.damformer.title'),
-    category: t('projects.categories.scientificComputing'),
+    category: CATEGORY_CODES.SCIENTIFIC_COMPUTING,
     description: t('projects.damformer.description'),
     technologies: ['PyTorch', 'Transformer', 'CFD', 'Python', 'CUDA', 'Physics of Fluids'],
     image: 'https://trae-api-us.mchost.guru/api/ide/v1/text_to_image?prompt=dam%20break%20simulation%20transformer%20neural%20network%20CFD%20flow%20field%20prediction%20scientific%20computing&image_size=landscape_4_3',
@@ -55,7 +64,7 @@ const getProjects = (t: (key: string, fallback?: string) => string): Project[] =
   {
     id: 3,
     title: t('projects.bionicRobot.title'),
-    category: t('projects.categories.roboticsTechnology'),
+    category: CATEGORY_CODES.ROBOTICS_TECHNOLOGY,
     description: t('projects.bionicRobot.description'),
     technologies: ['仿生学', '水下机器人', '传感器融合', '实时控制'],
     image: 'https://trae-api-us.mchost.guru/api/ide/v1/text_to_image?prompt=bionic%20robot%20underwater%20perception%20sensor%20fusion%20real%20time%20control&image_size=landscape_4_3',
@@ -67,7 +76,7 @@ const getProjects = (t: (key: string, fallback?: string) => string): Project[] =
   {
     id: 4,
     title: t('projects.fanWall.title'),
-    category: t('projects.categories.experimentalPlatform'),
+    category: CATEGORY_CODES.EXPERIMENTAL_PLATFORM,
     description: t('projects.fanWall.description'),
     technologies: ['STM32', 'PWM/TACH', 'VLAN', 'DHCP', '网络管理', '闭环控制'],
     image: 'https://trae-api-us.mchost.guru/api/ide/v1/text_to_image?prompt=fan%20array%20wind%20tunnel%20experimental%20platform%20flow%20control%20testing%20facility&image_size=landscape_4_3',
@@ -79,19 +88,19 @@ const getProjects = (t: (key: string, fallback?: string) => string): Project[] =
   {
     id: 5,
     title: t('projects.marineBuoy.title'),
-    category: t('projects.categories.mechanicalDesign'),
+    category: CATEGORY_CODES.SIMULATION_ANALYSIS,
     description: t('projects.marineBuoy.description'),
-    technologies: ['SolidWorks', '机械设计', '密封设计', '防腐设计', 'BOM', '海试'],
-    image: 'https://trae-api-us.mchost.guru/api/ide/v1/text_to_image?prompt=marine%20observation%20buoy%20mechanical%20design%20ocean%20engineering%20floating%20platform&image_size=landscape_4_3',
+    technologies: ['Star-CCM+', 'Java Macro', 'CFD', 'FSI', '海洋工程'],
+    image: 'https://trae-api-us.mchost.guru/api/ide/v1/text_to_image?prompt=marine%20buoy%20CFD%20simulation%20fluid%20structure%20interaction%20ocean%20engineering&image_size=landscape_4_3',
     status: 'completed',
     year: '2022',
-    highlights: [t('projects.marineBuoy.highlights.designLead'), t('projects.marineBuoy.highlights.structureSealing'), t('projects.marineBuoy.highlights.buoyancyCalculation'), t('projects.marineBuoy.highlights.seaTrial')],
+    highlights: [t('projects.marineBuoy.highlights.cfdSimulation'), t('projects.marineBuoy.highlights.fluidStructureInteraction'), t('projects.marineBuoy.highlights.javaMacro'), t('projects.marineBuoy.highlights.oceanEngineering')],
     githubUrl: 'https://github.com/zhaoyangmou'
   },
   {
     id: 6,
     title: t('projects.serverHpc.title'),
-    category: t('projects.categories.highPerformanceComputing'),
+    category: CATEGORY_CODES.HIGH_PERFORMANCE_COMPUTING,
     description: t('projects.serverHpc.description'),
     technologies: ['PyTorch', 'DDP/AMP', 'SLURM', 'CUDA', 'NCCL', 'W&B', 'Linux'],
     image: 'https://trae-api-us.mchost.guru/api/ide/v1/text_to_image?prompt=high%20performance%20computing%20server%20cluster%20distributed%20training%20CUDA%20GPU&image_size=landscape_4_3',
@@ -102,7 +111,14 @@ const getProjects = (t: (key: string, fallback?: string) => string): Project[] =
   }
 ];
 
-const getCategories = (t: (key: string, fallback?: string) => string) => [t('projects.filters.all'), t('projects.categories.scientificComputing'), t('projects.categories.roboticsTechnology'), t('projects.categories.simulationAnalysis'), t('projects.categories.experimentalPlatform')];
+const getCategories = (t: (key: string, fallback?: string) => string) => [
+  { value: 'all', label: t('projects.filters.all') },
+  { value: CATEGORY_CODES.SCIENTIFIC_COMPUTING, label: t('projects.categories.scientificComputing') },
+  { value: CATEGORY_CODES.ROBOTICS_TECHNOLOGY, label: t('projects.categories.roboticsTechnology') },
+  { value: CATEGORY_CODES.SIMULATION_ANALYSIS, label: t('projects.categories.simulationAnalysis') },
+  { value: CATEGORY_CODES.EXPERIMENTAL_PLATFORM, label: t('projects.categories.experimentalPlatform') },
+  { value: CATEGORY_CODES.HIGH_PERFORMANCE_COMPUTING, label: t('projects.categories.highPerformanceComputing') }
+];
 const getStatusOptions = (t: (key: string, fallback?: string) => string) => [t('projects.filters.all'), t('projects.status.completed'), t('projects.status.ongoing'), t('projects.status.planned')];
 const getYearOptions = (t: (key: string, fallback?: string) => string) => [t('projects.filters.all'), '2025', '2024', '2023', '2022'];
 
@@ -167,7 +183,7 @@ export default function Projects() {
 
   // 筛选选项
   const filterOptions = {
-    category: categories.slice(1).map(cat => ({ value: cat, label: cat })),
+    category: categories.slice(1),
     status: [
       { value: 'completed', label: getStatusText('completed') },
       { value: 'ongoing', label: getStatusText('ongoing') },
@@ -266,7 +282,7 @@ export default function Projects() {
               year: t('projects.year')
             }}
             optionLabels={{
-              category: Object.fromEntries(categories.map(cat => [cat, cat])),
+              category: Object.fromEntries(categories.map(cat => [cat.value, cat.label])),
               status: Object.fromEntries(statusOptions.map(status => [status, status])),
               year: Object.fromEntries(yearOptions.map(year => [year, year]))
             }}
@@ -323,7 +339,7 @@ export default function Projects() {
                   <div className="p-3 sm:p-4">
                     <div className="flex items-center justify-between mb-2">
                       <span className="text-xs font-medium text-gray-600 dark:text-gray-400 bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded theme-transition">
-                        {project.category}
+                        {t(`projects.categories.${project.category}`)}
                       </span>
                       <span className="text-xs text-gray-500 dark:text-gray-400 theme-transition">{project.year}</span>
                     </div>
@@ -382,7 +398,7 @@ export default function Projects() {
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
                   <div className="flex items-center gap-3">
                     <span className="text-xs sm:text-sm font-medium text-gray-600 dark:text-gray-400 bg-gray-100 dark:bg-gray-700 px-2 sm:px-3 py-1 rounded theme-transition">
-                      {selectedProject.category}
+                      {t(`projects.categories.${selectedProject.category}`)}
                     </span>
                     <span className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 theme-transition">{selectedProject.year}</span>
                   </div>
