@@ -41,6 +41,15 @@
       "showing": "Showing",
       "of": "of",
       "items": "items"
+    },
+    "technologies": {
+      "bionics": "Bionics",
+      "underwaterRobot": "Underwater Robot",
+      "sensorFusion": "Sensor Fusion",
+      "realTimeControl": "Real-time Control",
+      "networkManagement": "Network Management",
+      "closedLoopControl": "Closed-loop Control",
+      "oceanEngineering": "Ocean Engineering"
     }
   },
   "navigation": {

@@ -41,6 +41,15 @@
       "showing": "显示",
       "of": "/",
       "items": "个项目"
+    },
+    "technologies": {
+      "bionics": "仿生学",
+      "underwaterRobot": "水下机器人",
+      "sensorFusion": "传感器融合",
+      "realTimeControl": "实时控制",
+      "networkManagement": "网络管理",
+      "closedLoopControl": "闭环控制",
+      "oceanEngineering": "海洋工程"
     }
   },
   "navigation": {
