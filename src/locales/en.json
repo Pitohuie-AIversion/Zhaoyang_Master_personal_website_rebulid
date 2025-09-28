@@ -632,18 +632,133 @@
     },
     "skills": {
       "title": "Professional Skills",
+      "description": "Overview of my technical stack and professional capabilities",
       "categories": {
+        "programming": "Programming Languages",
+        "simulation": "Simulation & Analysis",
+        "aiMl": "Artificial Intelligence",
+        "hardware": "Hardware Design",
+        "tools": "Development Tools"
+      },
+      "levels": {
+        "expert": "Expert",
+        "proficient": "Proficient",
+        "good": "Good",
+        "average": "Average",
+        "beginner": "Beginner"
+      },
+      "proficiency": "Proficiency",
+      "relatedProjects": "Related Projects",
+      "radarChart": "Skills Radar Chart",
+      "skillLevel": "Skill Level",
+      "proficiencyStats": "Proficiency Statistics",
+      "avgProficiency": "Average Proficiency",
+      "skillsCount": "skills",
+      "radar": {
+        "theory": "Theoretical Foundation"
+      },
+      "skillData": {
         "programming": {
-          "title": "Programming Languages",
-          "items": ["Python", "C++", "MATLAB", "JavaScript", "R"]
+          "python": {
+            "description": "PyTorch/NumPy/Pandas/Matplotlib, deep learning and scientific computing",
+            "projects": ["Transformer/Neural Operator Modeling", "Deep Reinforcement Learning Algorithms", "CFD Spatiotemporal Field Prediction"]
+          },
+          "java": {
+            "description": "Star-CCM+ Macro/Workflow development",
+            "projects": ["CFD Automated Simulation", "Bionic Undulating Fin Propulsion Simulation"]
+          },
+          "matlab": {
+            "description": "Numerical computing, signal processing, control systems",
+            "projects": ["Fluid Mechanics Simulation", "Control Algorithm Design"]
+          },
+          "javascript": {
+            "description": "Frontend development, full-stack applications",
+            "projects": ["Personal Website", "Data Visualization Platform"]
+          },
+          "powershell": {
+            "description": "Automation scripts, system management",
+            "projects": ["Automated Flashing Scripts", "System Configuration Management"]
+          }
         },
-        "frameworks": {
-          "title": "Frameworks & Tools",
-          "items": ["PyTorch", "TensorFlow", "ROS", "OpenFOAM", "ANSYS Fluent"]
+        "simulation": {
+          "starccm": {
+            "description": "CFD/FSI simulation, Java Macro development",
+            "projects": ["Bionic Undulating Fin Propulsion Simulation", "Fluid-Structure Interaction Analysis"]
+          },
+          "comsol": {
+            "description": "Multiphysics coupling simulation",
+            "projects": ["Fluid-Structure Interaction Analysis", "Heat and Mass Transfer Simulation", "Verification and Validation"]
+          },
+          "ansys": {
+            "description": "Engineering simulation analysis",
+            "projects": ["Structural Analysis", "Fluid Simulation", "Multiphysics Coupling"]
+          },
+          "pdebench": {
+            "description": "Partial differential equation benchmarking",
+            "projects": ["Neural Operator Validation", "PDE Solver Comparison"]
+          }
         },
-        "research": {
-          "title": "Research Areas",
-          "items": ["Computational Fluid Dynamics", "Deep Learning", "Neural Operators", "Robotics", "Bionics"]
+        "aiMl": {
+          "transformer": {
+            "description": "Attention mechanisms, spatiotemporal sequence modeling",
+            "projects": ["CFD Spatiotemporal Field Prediction", "Sequence-to-Sequence Learning"]
+          },
+          "neuralOperator": {
+            "description": "FNO, DeepONet and other operator learning",
+            "projects": ["PDE Solving", "Scientific Computing Acceleration"]
+          },
+          "pytorch": {
+            "description": "Deep learning framework",
+            "projects": ["Neural Network Training", "DDP/AMP Parallel Computing"]
+          },
+          "reinforcementLearning": {
+            "description": "DQN, PPO and other algorithms",
+            "projects": ["Bionic Fish Control Strategy", "Robot Control"]
+          },
+          "computerVision": {
+            "description": "Bionic perception, image processing",
+            "projects": ["Underwater Robot Vision", "Bionic Perception System"]
+          }
+        },
+        "hardware": {
+          "solidworks": {
+            "description": "3D/2D design, BOM, interference checking",
+            "projects": ["Bionic Fish Robot Design", "Mechanical Structure Optimization", "Assembly Design"]
+          },
+          "shapr3d": {
+            "description": "Mobile 3D modeling design",
+            "projects": ["Rapid Prototyping", "Concept Modeling"]
+          },
+          "stm32": {
+            "description": "NUCLEO-F439ZI, PWM/TACH control",
+            "projects": ["Embedded Control Systems", "Sensor Interfaces"]
+          },
+          "tplink": {
+            "description": "Managed switch configuration management",
+            "projects": ["Network Architecture Design", "Device Management"]
+          }
+        },
+        "tools": {
+          "git": {
+            "description": "Version control and collaboration",
+            "projects": ["All Project Code Management"]
+          },
+          "docker": {
+            "description": "Containerized deployment",
+            "projects": ["Simulation Environment Deployment", "Microservice Architecture"]
+          },
+          "linux": {
+            "description": "System administration and scripting",
+            "projects": ["Server Operations", "Automation Scripts"]
+          },
+          "vscode": {
+            "description": "Integrated development environment",
+            "projects": ["Daily Development Tool"]
+          },
+          "jupyter": {
+            "description": "Interactive development",
+            "projects": ["Data Analysis", "Algorithm Prototyping"]
+          }
         }
       }
     },
@@ -705,6 +820,53 @@
       "twitter": "Twitter",
       "researchgate": "ResearchGate",
       "orcid": "ORCID"
+    }
+  },
+  "seo": {
+    "site": {
+      "title": "Zhaoyang Mu - Personal Website",
+      "author": "Zhaoyang Mu",
+      "language": "en-US",
+      "locale": "en_US"
+    },
+    "default": {
+      "title": "Zhaoyang Mu - Computer Science Researcher & Software Engineer",
+      "description": "Focused on research and practice in artificial intelligence, machine learning, and software engineering. Committed to solving real-world problems through technological innovation and advancing scientific progress.",
+      "keywords": ["Zhaoyang Mu", "牟昭阳", "Computer Science", "Artificial Intelligence", "Machine Learning", "Software Engineering", "Researcher"],
+      "jobTitle": "Computer Science Researcher & Software Engineer",
+      "organization": "Research Institution"
+    },
+    "pages": {
+      "home": {
+        "title": "Zhaoyang Mu - Computer Science Researcher & Software Engineer",
+        "description": "Welcome to Zhaoyang Mu's personal website. Focused on research and practice in artificial intelligence, machine learning, and software engineering, committed to solving real-world problems through technological innovation.",
+        "keywords": ["Zhaoyang Mu", "牟昭阳", "Personal Website", "Computer Science", "Artificial Intelligence", "Machine Learning", "Software Engineering"]
+      },
+      "research": {
+        "title": "Research Directions - Zhaoyang Mu",
+        "description": "Learn about Zhaoyang Mu's research directions and academic achievements in artificial intelligence, machine learning, deep learning, and related fields.",
+        "keywords": ["Research Directions", "AI Research", "Machine Learning", "Deep Learning", "Academic Research"]
+      },
+      "projects": {
+        "title": "Project Showcase - Zhaoyang Mu",
+        "description": "View Zhaoyang Mu's technical project portfolio, including AI applications, software development projects, and open-source contributions.",
+        "keywords": ["Project Showcase", "Technical Projects", "Software Development", "Open Source Projects", "Portfolio"]
+      },
+      "publications": {
+        "title": "Academic Publications - Zhaoyang Mu",
+        "description": "Browse Zhaoyang Mu's academic paper publications, conference presentations, and research achievements.",
+        "keywords": ["Academic Papers", "Research Publications", "Conference Papers", "Academic Achievements"]
+      },
+      "skills": {
+        "title": "Technical Skills - Zhaoyang Mu",
+        "description": "Learn about Zhaoyang Mu's technical skills, programming language proficiency, and professional tool experience.",
+        "keywords": ["Technical Skills", "Programming Languages", "Professional Skills", "Tool Usage"]
+      },
+      "contact": {
+        "title": "Contact Information - Zhaoyang Mu",
+        "description": "Get in touch with Zhaoyang Mu to explore collaboration opportunities or academic exchanges.",
+        "keywords": ["Contact Information", "Collaboration Opportunities", "Academic Exchange", "Contact Me"]
+      }
     }
   },
   "footer": {

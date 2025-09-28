@@ -495,18 +495,133 @@
     },
     "skills": {
       "title": "专业技能",
+      "description": "我的技术栈与专业能力概览",
       "categories": {
+        "programming": "编程语言",
+        "simulation": "仿真分析",
+        "aiMl": "人工智能",
+        "hardware": "硬件设计",
+        "tools": "开发工具"
+      },
+      "levels": {
+        "expert": "专家",
+        "proficient": "熟练",
+        "good": "良好",
+        "average": "一般",
+        "beginner": "初学"
+      },
+      "proficiency": "熟练度",
+      "relatedProjects": "相关项目",
+      "radarChart": "技能雷达图",
+      "skillLevel": "技能水平",
+      "proficiencyStats": "熟练度统计",
+      "avgProficiency": "平均熟练度",
+      "skillsCount": "项技能",
+      "radar": {
+        "theory": "理论基础"
+      },
+      "skillData": {
         "programming": {
-          "title": "编程语言",
-          "items": ["Python", "C++", "MATLAB", "JavaScript", "R"]
+          "python": {
+            "description": "PyTorch/NumPy/Pandas/Matplotlib，深度学习与科学计算",
+            "projects": ["Transformer/神经算子建模", "深度强化学习算法", "CFD时空场预测"]
+          },
+          "java": {
+            "description": "Star-CCM+ Macro/Workflow开发",
+            "projects": ["CFD自动化仿真", "仿生波动鳍推进仿真"]
+          },
+          "matlab": {
+            "description": "数值计算、信号处理、控制系统",
+            "projects": ["流体力学仿真", "控制算法设计"]
+          },
+          "javascript": {
+            "description": "前端开发、全栈应用",
+            "projects": ["个人网站", "数据可视化平台"]
+          },
+          "powershell": {
+            "description": "自动化脚本、系统管理",
+            "projects": ["自动刷写脚本", "系统配置管理"]
+          }
         },
-        "frameworks": {
-          "title": "框架工具",
-          "items": ["PyTorch", "TensorFlow", "ROS", "OpenFOAM", "ANSYS Fluent"]
+        "simulation": {
+          "starccm": {
+            "description": "CFD/FSI仿真，Java Macro开发",
+            "projects": ["仿生波动鳍推进仿真", "流固耦合分析"]
+          },
+          "comsol": {
+            "description": "多物理场耦合仿真",
+            "projects": ["流固耦合分析", "传热传质仿真", "校核验证"]
+          },
+          "ansys": {
+            "description": "工程仿真分析",
+            "projects": ["结构分析", "流体仿真", "多物理场耦合"]
+          },
+          "pdebench": {
+            "description": "偏微分方程基准测试",
+            "projects": ["Neural Operator验证", "PDE求解器对比"]
+          }
         },
-        "research": {
-          "title": "研究领域",
-          "items": ["计算流体力学", "深度学习", "神经算子", "机器人技术", "仿生学"]
+        "aiMl": {
+          "transformer": {
+            "description": "注意力机制，时空序列建模",
+            "projects": ["CFD时空场预测", "序列到序列学习"]
+          },
+          "neuralOperator": {
+            "description": "FNO, DeepONet等算子学习",
+            "projects": ["PDE求解", "科学计算加速"]
+          },
+          "pytorch": {
+            "description": "深度学习框架",
+            "projects": ["神经网络训练", "DDP/AMP并行计算"]
+          },
+          "reinforcementLearning": {
+            "description": "DQN, PPO等算法",
+            "projects": ["仿生鱼控制策略", "机器人控制"]
+          },
+          "computerVision": {
+            "description": "仿生感知，图像处理",
+            "projects": ["水下机器人视觉", "仿生感知系统"]
+          }
+        },
+        "hardware": {
+          "solidworks": {
+            "description": "3D/2D设计、BOM、干涉检查",
+            "projects": ["仿生鱼机器人设计", "机械结构优化", "装配体设计"]
+          },
+          "shapr3d": {
+            "description": "移动端3D建模设计",
+            "projects": ["快速原型设计", "概念建模"]
+          },
+          "stm32": {
+            "description": "NUCLEO-F439ZI，PWM/TACH控制",
+            "projects": ["嵌入式控制系统", "传感器接口"]
+          },
+          "tplink": {
+            "description": "网管交换机配置管理",
+            "projects": ["网络架构设计", "设备管理"]
+          }
+        },
+        "tools": {
+          "git": {
+            "description": "版本控制与协作",
+            "projects": ["所有项目代码管理"]
+          },
+          "docker": {
+            "description": "容器化部署",
+            "projects": ["仿真环境部署", "微服务架构"]
+          },
+          "linux": {
+            "description": "系统管理与脚本",
+            "projects": ["服务器运维", "自动化脚本"]
+          },
+          "vscode": {
+            "description": "集成开发环境",
+            "projects": ["日常开发工具"]
+          },
+          "jupyter": {
+            "description": "交互式开发",
+            "projects": ["数据分析", "算法原型"]
+          }
         }
       }
     },
@@ -669,6 +784,53 @@
     "demo": "在线演示",
     "highlights": "项目亮点",
     "techStack": "技术栈"
+  },
+  "seo": {
+    "site": {
+      "title": "牟昭阳 - 个人网站",
+      "author": "牟昭阳",
+      "language": "zh-CN",
+      "locale": "zh_CN"
+    },
+    "default": {
+      "title": "牟昭阳 - 计算机科学研究者 & 软件工程师",
+      "description": "专注于人工智能、机器学习和软件工程领域的研究与实践。致力于通过技术创新解决实际问题，推动科技进步。",
+      "keywords": ["牟昭阳", "Zhaoyang Mu", "计算机科学", "人工智能", "机器学习", "软件工程", "研究者"],
+      "jobTitle": "计算机科学研究者 & 软件工程师",
+      "organization": "研究机构"
+    },
+    "pages": {
+      "home": {
+        "title": "牟昭阳 - 计算机科学研究者 & 软件工程师",
+        "description": "欢迎来到牟昭阳的个人网站。专注于人工智能、机器学习和软件工程领域的研究与实践，致力于通过技术创新解决实际问题。",
+        "keywords": ["牟昭阳", "Zhaoyang Mu", "个人网站", "计算机科学", "人工智能", "机器学习", "软件工程"]
+      },
+      "research": {
+        "title": "研究方向 - 牟昭阳",
+        "description": "了解牟昭阳在人工智能、机器学习、深度学习等领域的研究方向和学术成果。",
+        "keywords": ["研究方向", "人工智能研究", "机器学习", "深度学习", "学术研究"]
+      },
+      "projects": {
+        "title": "项目展示 - 牟昭阳",
+        "description": "查看牟昭阳的技术项目作品集，包括人工智能应用、软件开发项目和开源贡献。",
+        "keywords": ["项目展示", "技术项目", "软件开发", "开源项目", "作品集"]
+      },
+      "publications": {
+        "title": "学术发表 - 牟昭阳",
+        "description": "浏览牟昭阳的学术论文发表、会议演讲和研究成果。",
+        "keywords": ["学术论文", "研究发表", "会议论文", "学术成果"]
+      },
+      "skills": {
+        "title": "技能专长 - 牟昭阳",
+        "description": "了解牟昭阳的技术技能、编程语言能力和专业工具使用经验。",
+        "keywords": ["技术技能", "编程语言", "专业技能", "工具使用"]
+      },
+      "contact": {
+        "title": "联系方式 - 牟昭阳",
+        "description": "与牟昭阳取得联系，探讨合作机会或学术交流。",
+        "keywords": ["联系方式", "合作机会", "学术交流", "联系我"]
+      }
+    }
   },
   "footer": {
     "quickLinks": {

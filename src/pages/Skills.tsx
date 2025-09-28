@@ -65,36 +65,36 @@ function Skills() {
           name: 'Python',
           level: 95,
           category: 'programming',
-          description: 'PyTorch/NumPy/Pandas/Matplotlib，深度学习与科学计算',
-          projects: ['Transformer/神经算子建模', '深度强化学习算法', 'CFD时空场预测']
+          description: t('skills.skillData.programming.python.description'),
+          projects: t('skills.skillData.programming.python.projects', { returnObjects: true }) as string[]
         },
         {
           name: 'Java',
           level: 85,
           category: 'programming',
-          description: 'Star-CCM+ Macro/Workflow开发',
-          projects: ['CFD自动化仿真', '仿生波动鳍推进仿真']
+          description: t('skills.skillData.programming.java.description'),
+          projects: t('skills.skillData.programming.java.projects', { returnObjects: true }) as string[]
         },
         {
           name: 'MATLAB',
           level: 80,
           category: 'programming',
-          description: '数值计算、信号处理、控制系统',
-          projects: ['流体力学仿真', '控制算法设计']
+          description: t('skills.skillData.programming.matlab.description'),
+          projects: t('skills.skillData.programming.matlab.projects', { returnObjects: true }) as string[]
         },
         {
           name: 'JavaScript/TypeScript',
           level: 80,
           category: 'programming',
-          description: '前端开发、全栈应用',
-          projects: ['个人网站', '数据可视化平台']
+          description: t('skills.skillData.programming.javascript.description'),
+          projects: t('skills.skillData.programming.javascript.projects', { returnObjects: true }) as string[]
         },
         {
           name: 'PowerShell',
           level: 75,
           category: 'programming',
-          description: '自动化脚本、系统管理',
-          projects: ['自动刷写脚本', '系统配置管理']
+          description: t('skills.skillData.programming.powershell.description'),
+          projects: t('skills.skillData.programming.powershell.projects', { returnObjects: true }) as string[]
         }
       ]
     },
@@ -108,29 +108,29 @@ function Skills() {
           name: 'Star-CCM+',
           level: 90,
           category: 'simulation',
-          description: 'CFD/FSI仿真，Java Macro开发',
-          projects: ['仿生波动鳍推进仿真', '流固耦合分析']
+          description: t('skills.skillData.simulation.starccm.description'),
+          projects: t('skills.skillData.simulation.starccm.projects', { returnObjects: true }) as string[]
         },
         {
           name: 'COMSOL',
           level: 85,
           category: 'simulation',
-          description: '多物理场耦合仿真',
-          projects: ['流固耦合分析', '传热传质仿真', '校核验证']
+          description: t('skills.skillData.simulation.comsol.description'),
+          projects: t('skills.skillData.simulation.comsol.projects', { returnObjects: true }) as string[]
         },
         {
           name: 'ANSYS',
           level: 80,
           category: 'simulation',
-          description: '工程仿真分析',
-          projects: ['结构分析', '流体仿真', '多物理场耦合']
+          description: t('skills.skillData.simulation.ansys.description'),
+          projects: t('skills.skillData.simulation.ansys.projects', { returnObjects: true }) as string[]
         },
         {
           name: 'PDEBench',
           level: 75,
           category: 'simulation',
-          description: '偏微分方程基准测试',
-          projects: ['Neural Operator验证', 'PDE求解器对比']
+          description: t('skills.skillData.simulation.pdebench.description'),
+          projects: t('skills.skillData.simulation.pdebench.projects', { returnObjects: true }) as string[]
         }
       ]
     },
@@ -144,36 +144,36 @@ function Skills() {
           name: 'Transformer',
           level: 90,
           category: 'ai_ml',
-          description: '注意力机制，时空序列建模',
-          projects: ['CFD时空场预测', '序列到序列学习']
+          description: t('skills.skillData.aiMl.transformer.description'),
+          projects: t('skills.skillData.aiMl.transformer.projects', { returnObjects: true }) as string[]
         },
         {
           name: 'Neural Operator',
           level: 85,
           category: 'ai_ml',
-          description: 'FNO, DeepONet等算子学习',
-          projects: ['PDE求解', '科学计算加速']
+          description: t('skills.skillData.aiMl.neuralOperator.description'),
+          projects: t('skills.skillData.aiMl.neuralOperator.projects', { returnObjects: true }) as string[]
         },
         {
           name: 'PyTorch',
           level: 90,
           category: 'ai_ml',
-          description: '深度学习框架',
-          projects: ['神经网络训练', 'DDP/AMP并行计算']
+          description: t('skills.skillData.aiMl.pytorch.description'),
+          projects: t('skills.skillData.aiMl.pytorch.projects', { returnObjects: true }) as string[]
         },
         {
           name: '强化学习',
           level: 80,
           category: 'ai_ml',
-          description: 'DQN, PPO等算法',
-          projects: ['仿生鱼控制策略', '机器人控制']
+          description: t('skills.skillData.aiMl.reinforcementLearning.description'),
+          projects: t('skills.skillData.aiMl.reinforcementLearning.projects', { returnObjects: true }) as string[]
         },
         {
           name: '计算机视觉',
           level: 75,
           category: 'ai_ml',
-          description: '仿生感知，图像处理',
-          projects: ['水下机器人视觉', '仿生感知系统']
+          description: t('skills.skillData.aiMl.computerVision.description'),
+          projects: t('skills.skillData.aiMl.computerVision.projects', { returnObjects: true }) as string[]
         }
       ]
     },
@@ -187,29 +187,29 @@ function Skills() {
           name: 'SolidWorks',
           level: 90,
           category: 'hardware',
-          description: '3D/2D设计、BOM、干涉检查',
-          projects: ['仿生鱼机器人设计', '机械结构优化', '装配体设计']
+          description: t('skills.skillData.hardware.solidworks.description'),
+          projects: t('skills.skillData.hardware.solidworks.projects', { returnObjects: true }) as string[]
         },
         {
           name: 'Shapr3D',
           level: 85,
           category: 'hardware',
-          description: '移动端3D建模设计',
-          projects: ['快速原型设计', '概念建模']
+          description: t('skills.skillData.hardware.shapr3d.description'),
+          projects: t('skills.skillData.hardware.shapr3d.projects', { returnObjects: true }) as string[]
         },
         {
           name: 'STM32',
           level: 80,
           category: 'hardware',
-          description: 'NUCLEO-F439ZI，PWM/TACH控制',
-          projects: ['嵌入式控制系统', '传感器接口']
+          description: t('skills.skillData.hardware.stm32.description'),
+          projects: t('skills.skillData.hardware.stm32.projects', { returnObjects: true }) as string[]
         },
         {
           name: 'TP-Link L3交换机',
           level: 75,
           category: 'hardware',
-          description: '网管交换机配置管理',
-          projects: ['网络架构设计', '设备管理']
+          description: t('skills.skillData.hardware.tplink.description'),
+          projects: t('skills.skillData.hardware.tplink.projects', { returnObjects: true }) as string[]
         }
       ]
     },
@@ -223,36 +223,36 @@ function Skills() {
           name: 'Git/GitHub',
           level: 90,
           category: 'tools',
-          description: '版本控制与协作',
-          projects: ['所有项目代码管理']
+          description: t('skills.skillData.tools.git.description'),
+          projects: t('skills.skillData.tools.git.projects', { returnObjects: true }) as string[]
         },
         {
           name: 'Docker',
           level: 80,
           category: 'tools',
-          description: '容器化部署',
-          projects: ['仿真环境部署', '微服务架构']
+          description: t('skills.skillData.tools.docker.description'),
+          projects: t('skills.skillData.tools.docker.projects', { returnObjects: true }) as string[]
         },
         {
           name: 'Linux',
           level: 85,
           category: 'tools',
-          description: '系统管理与脚本',
-          projects: ['服务器运维', '自动化脚本']
+          description: t('skills.skillData.tools.linux.description'),
+          projects: t('skills.skillData.tools.linux.projects', { returnObjects: true }) as string[]
         },
         {
           name: 'VS Code',
           level: 95,
           category: 'tools',
-          description: '集成开发环境',
-          projects: ['日常开发工具']
+          description: t('skills.skillData.tools.vscode.description'),
+          projects: t('skills.skillData.tools.vscode.projects', { returnObjects: true }) as string[]
         },
         {
           name: 'Jupyter',
           level: 90,
           category: 'tools',
-          description: '交互式开发',
-          projects: ['数据分析', '算法原型']
+          description: t('skills.skillData.tools.jupyter.description'),
+          projects: t('skills.skillData.tools.jupyter.projects', { returnObjects: true }) as string[]
         }
       ]
     }
