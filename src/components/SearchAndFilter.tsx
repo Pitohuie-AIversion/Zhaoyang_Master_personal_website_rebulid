@@ -357,15 +357,20 @@ interface SearchStatsProps {
   filteredResults: number;
   searchTerm: string;
   className?: string;
+  itemsText?: string; // 自定义单位文本，如果不提供则使用默认的翻译键
 }
 
 export const SearchStats: React.FC<SearchStatsProps> = ({
   totalResults,
   filteredResults,
   searchTerm,
-  className = ''
+  className = '',
+  itemsText
 }) => {
   const { t } = useTranslation();
+  
+  // 使用自定义文本或默认翻译键
+  const itemsLabel = itemsText || t('common.searchResults.items');
   
   return (
     <div className={`text-sm text-gray-600 dark:text-gray-400 ${className}`}>
@@ -379,7 +384,7 @@ export const SearchStats: React.FC<SearchStatsProps> = ({
         </span>
       ) : (
         <span>
-          {t('common.searchResults.showing')} <strong className="text-gray-900 dark:text-white">{filteredResults}</strong> {t('common.searchResults.of')} {totalResults} {t('common.searchResults.items')}
+          {t('common.searchResults.showing')} <strong className="text-gray-900 dark:text-white">{filteredResults}</strong> {t('common.searchResults.of')} {totalResults} {itemsLabel}
         </span>
       )}
     </div>
