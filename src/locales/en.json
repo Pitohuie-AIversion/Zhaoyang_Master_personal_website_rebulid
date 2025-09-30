@@ -315,8 +315,9 @@
     "noResults": "No results found",
     "noResultsDesc": "Please try adjusting your search terms or filters",
     "publications": {
-      "title": "Publications",
-      "description": "My research achievements and academic contributions",
+    "title": "Publications",
+    "description": "My research achievements and academic contributions",
+    "items": "publications",
       "stats": {
         "total": "Total",
         "published": "Published",

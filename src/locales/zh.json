@@ -269,6 +269,7 @@
     "publications": {
       "title": "学术成果",
       "description": "我的研究成果和学术贡献",
+      "items": "个成果",
       "stats": {
         "total": "总计",
         "published": "已发表",

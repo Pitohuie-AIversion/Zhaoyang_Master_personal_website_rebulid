@@ -320,6 +320,7 @@ export default function Publications() {
               totalResults={totalCount}
               filteredResults={filteredCount}
               searchTerm={searchTerm}
+              itemsText={t('publications.items')}
             />
           </div>
         </SimpleMotion>

@@ -537,7 +537,7 @@ function Research() {
                         variant="ghost"
                         size="sm"
                         icon={<Eye className="w-4 h-4" />}
-                        title="查看详情"
+                        title={t('research.viewDetails')}
                       />
                     </div>
                   </SimpleMotion>
@@ -593,7 +593,7 @@ function Research() {
                         variant="ghost"
                         size="sm"
                         icon={<Eye className="w-4 h-4" />}
-                        title="查看详情"
+                        title={t('research.viewDetails')}
                       />
                     </div>
                   </SimpleMotion>
