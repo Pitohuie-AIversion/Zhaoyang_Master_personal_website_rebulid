@@ -251,6 +251,10 @@
           "authors": ["Zhaoyang Mou", "Lei Zhao"],
           "description": "Proposed a Transformer-based method for reconstructing dense flow fields from sparse sensor data, enabling complete flow field reconstruction from limited sensor measurements."
         },
+        "damBreak": {
+          "title": "Dam-break Flow Prediction",
+          "description": "High-precision numerical simulation and prediction methods for dam-break flow dynamics"
+        },
         "data": {
           "publication1": {
             "title": "DamFormer: A Transformer-based Model for Dam-break Flow Prediction with Cross-geometry Generalization",
@@ -780,10 +784,12 @@
             "projects": ["Neural Network Training", "DDP/AMP Parallel Computing"]
           },
           "reinforcementLearning": {
+            "name": "Reinforcement Learning",
             "description": "DQN, PPO and other algorithms",
             "projects": ["Bionic Fish Control Strategy", "Robot Control"]
           },
           "computerVision": {
+            "name": "Computer Vision",
             "description": "Bionic perception, image processing",
             "projects": ["Underwater Robot Vision", "Bionic Perception System"]
           }
@@ -802,6 +808,7 @@
             "projects": ["Embedded Control Systems", "Sensor Interfaces"]
           },
           "tplink": {
+            "name": "TP-Link L3 Switch",
             "description": "Managed switch configuration management",
             "projects": ["Network Architecture Design", "Device Management"]
           }

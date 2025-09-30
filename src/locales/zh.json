@@ -571,10 +571,12 @@
             "projects": ["神经网络训练", "DDP/AMP并行计算"]
           },
           "reinforcementLearning": {
+            "name": "强化学习",
             "description": "DQN, PPO等算法",
             "projects": ["仿生鱼控制策略", "机器人控制"]
           },
           "computerVision": {
+            "name": "计算机视觉",
             "description": "仿生感知，图像处理",
             "projects": ["水下机器人视觉", "仿生感知系统"]
           }
@@ -593,6 +595,7 @@
             "projects": ["嵌入式控制系统", "传感器接口"]
           },
           "tplink": {
+            "name": "TP-Link L3交换机",
             "description": "网管交换机配置管理",
             "projects": ["网络架构设计", "设备管理"]
           }

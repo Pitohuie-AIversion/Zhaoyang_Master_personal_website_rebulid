@@ -162,14 +162,14 @@ function Skills() {
           projects: t('skills.skillData.aiMl.pytorch.projects', { returnObjects: true }) as string[]
         },
         {
-          name: '强化学习',
+          name: t('skills.skillData.aiMl.reinforcementLearning.name'),
           level: 80,
           category: 'ai_ml',
           description: t('skills.skillData.aiMl.reinforcementLearning.description'),
           projects: t('skills.skillData.aiMl.reinforcementLearning.projects', { returnObjects: true }) as string[]
         },
         {
-          name: '计算机视觉',
+          name: t('skills.skillData.aiMl.computerVision.name'),
           level: 75,
           category: 'ai_ml',
           description: t('skills.skillData.aiMl.computerVision.description'),
@@ -205,7 +205,7 @@ function Skills() {
           projects: t('skills.skillData.hardware.stm32.projects', { returnObjects: true }) as string[]
         },
         {
-          name: 'TP-Link L3交换机',
+          name: t('skills.skillData.hardware.tplink.name'),
           level: 75,
           category: 'hardware',
           description: t('skills.skillData.hardware.tplink.description'),
