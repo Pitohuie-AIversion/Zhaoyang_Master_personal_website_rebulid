@@ -660,6 +660,13 @@
   "contact": {
     "title": "联系我",
     "description": "欢迎与我交流学术问题或合作机会",
+    "contactInfo": "联系信息",
+    "email": "电子邮箱",
+    "phone": "联系电话",
+    "address": "办公地址",
+    "academicSocial": "学术与社交平台",
+    "sendMessage": "发送消息",
+    "collaborationType": "合作类型",
     "form": {
       "name": {
         "label": "姓名",
@@ -742,9 +749,12 @@
       }
     },
     "info": {
-      "email": "邮箱",
-      "phone": "电话",
-      "location": "位置",
+      "email": "zhaoyang.mou@example.com",
+      "phone": "+86 138-0000-0000",
+      "location": "中国 辽宁 大连",
+      "university": "大连海事大学",
+      "department": "人工智能学院",
+      "office": "智能机器人实验室 305 室",
       "social": "社交媒体"
     },
     "social": {
