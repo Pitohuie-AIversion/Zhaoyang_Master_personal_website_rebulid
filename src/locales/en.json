@@ -887,7 +887,9 @@
       "linkedin": "LinkedIn",
       "twitter": "Twitter",
       "researchgate": "ResearchGate",
-      "orcid": "ORCID"
+      "orcid": "ORCID",
+      "csdn": "CSDN",
+      "scholar": "Google Scholar"
     }
   },
   "footer": {
@@ -973,35 +975,6 @@
         "description": "Get in touch with Zhaoyang Mu to explore collaboration opportunities or academic exchanges.",
         "keywords": ["Contact Information", "Collaboration Opportunities", "Academic Exchange", "Contact Me"]
       }
-    }
-  },
-  "footer": {
-    "quickLinks": {
-      "title": "Quick Links",
-      "home": "Home",
-      "about": "About",
-      "projects": "Projects",
-      "research": "Research",
-      "contact": "Contact"
-    },
-    "research": {
-      "title": "Research Areas",
-      "cfd": "Computational Fluid Dynamics",
-      "robotics": "Robotics",
-      "ai": "Artificial Intelligence",
-      "neuralOperators": "Neural Operators"
-    },
-    "contact": {
-      "title": "Contact Information",
-      "email": "Email",
-      "phone": "Phone",
-      "address": "Address"
-    },
-    "legal": {
-      "copyright": "Zhaoyang Mu. All rights reserved.",
-      "privacy": "Privacy Policy",
-      "terms": "Terms of Service",
-      "sitemap": "Sitemap"
     }
   }
 }

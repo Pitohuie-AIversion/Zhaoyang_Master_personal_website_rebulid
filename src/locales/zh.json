@@ -678,7 +678,9 @@
       "linkedin": "LinkedIn",
       "twitter": "Twitter",
       "researchgate": "ResearchGate",
-      "orcid": "ORCID"
+      "orcid": "ORCID",
+      "csdn": "CSDN",
+      "scholar": "谷歌学术"
     }
   },
   "projects": {
