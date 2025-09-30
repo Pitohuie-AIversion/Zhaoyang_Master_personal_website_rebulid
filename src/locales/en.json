@@ -873,6 +873,13 @@
   "contact": {
     "title": "Contact Me",
     "description": "Welcome to discuss academic questions or collaboration opportunities with me",
+    "contactInfo": "Contact Information",
+    "email": "Email",
+    "phone": "Phone",
+    "address": "Office Address",
+    "academicSocial": "Academic & Social Profiles",
+    "sendMessage": "Send a Message",
+    "collaborationType": "Collaboration Type",
     "form": {
       "name": {
         "label": "Name",
@@ -955,9 +962,12 @@
       }
     },
     "info": {
-      "email": "Email",
-      "phone": "Phone",
-      "location": "Location",
+      "email": "zhaoyang.mou@example.com",
+      "phone": "+86 138-0000-0000",
+      "location": "Dalian, Liaoning, China",
+      "university": "Dalian Maritime University",
+      "department": "School of Artificial Intelligence",
+      "office": "Intelligent Robotics Laboratory, Room 305",
       "social": "Social Media"
     },
     "social": {
