@@ -35,6 +35,9 @@ type SubmitStatus = 'idle' | 'loading' | 'success' | 'error';
 export default function Contact() {
   const { t } = useTranslation();
   const { isMobile } = useResponsive();
+
+  const phoneNumber = t('contact.info.phone');
+  const phoneHref = phoneNumber.replace(/[^\d+]/g, '');
   
   // 动态生成社交媒体链接
   const socialLinks = [
@@ -303,7 +306,12 @@ export default function Contact() {
                   </div>
                   <div className="flex-1 min-w-0">
                     <h3 className="font-medium text-primary-dark theme-transition leading-snug text-base sm:text-sm">{t('contact.phone')}</h3>
-                    <a href={`tel:${t('contact.info.phone')}`} className="text-sm sm:text-sm text-secondary-dark hover:text-blue-600 dark:hover:text-blue-400 theme-transition leading-relaxed underline-offset-2 hover:underline">{t('contact.info.phone')}</a>
+                    <a
+                      href={`tel:${phoneHref}`}
+                      className="text-sm sm:text-sm text-secondary-dark hover:text-blue-600 dark:hover:text-blue-400 theme-transition leading-relaxed underline-offset-2 hover:underline"
+                    >
+                      {phoneNumber}
+                    </a>
                   </div>
                 </div>
                 
