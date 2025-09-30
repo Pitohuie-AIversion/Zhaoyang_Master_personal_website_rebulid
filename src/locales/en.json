@@ -874,14 +874,85 @@
     "title": "Contact Me",
     "description": "Welcome to discuss academic questions or collaboration opportunities with me",
     "form": {
-      "name": "Name",
-      "email": "Email",
-      "subject": "Subject",
-      "message": "Message",
-      "send": "Send Message",
-      "sending": "Sending...",
+      "name": {
+        "label": "Name",
+        "placeholder": "Please enter your name"
+      },
+      "email": {
+        "label": "Email",
+        "placeholder": "Please enter your email address"
+      },
+      "phone": {
+        "label": "Phone",
+        "placeholder": "Please enter your phone number (optional)"
+      },
+      "company": {
+        "label": "Company/Organization",
+        "placeholder": "Please enter your company or organization name (optional)"
+      },
+      "subject": {
+        "label": "Subject",
+        "placeholder": "Please enter email subject"
+      },
+      "message": {
+        "label": "Message",
+        "placeholder": "Please describe your requirements or questions in detail..."
+      },
+      "budget": {
+        "label": "Budget Range",
+        "placeholder": "Please select budget range (optional)",
+        "options": {
+          "select": "Please select budget range",
+          "under5k": "Under $5K",
+          "5k10k": "$5K-$10K",
+          "10k50k": "$10K-$50K",
+          "50k100k": "$50K-$100K",
+          "over100k": "Over $100K",
+          "discuss": "To be discussed"
+        }
+      },
+      "timeline": {
+        "label": "Project Timeline",
+        "placeholder": "Please select expected project timeline (optional)",
+        "options": {
+          "select": "Please select project timeline",
+          "urgent": "Urgent (within 1 week)",
+          "short": "Short-term (1-4 weeks)",
+          "medium": "Medium-term (1-3 months)",
+          "long": "Long-term (3+ months)",
+          "flexible": "Flexible timeline"
+        }
+      },
+      "validationError": "Please check form inputs",
+      "submitError": "Submission failed, please try again",
+      "submitting": "Submitting...",
+      "submit": "Send Message",
       "success": "Message sent successfully!",
-      "error": "Failed to send, please try again"
+      "error": "Failed to send, please try again",
+      "selectBudget": "Please select budget range",
+      "selectTimeline": "Please select project timeline"
+    },
+    "collaboration": {
+      "research": {
+        "title": "Academic Research",
+        "description": "Joint research, paper collaboration, academic exchange"
+      },
+      "development": {
+        "title": "Technology Development",
+        "description": "Software development, system design, technical consulting"
+      },
+      "consulting": {
+        "title": "Technical Consulting",
+        "description": "Technical solutions, architecture design, problem solving"
+      },
+      "teaching": {
+        "title": "Education & Training",
+        "description": "Course development, training services, knowledge transfer"
+      },
+      "other": {
+        "title": "Other Collaborations",
+        "description": "Customized collaboration, special projects, other needs"
+      }
     },
     "info": {
       "email": "Email",

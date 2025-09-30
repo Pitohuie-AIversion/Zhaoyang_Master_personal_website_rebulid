@@ -661,14 +661,85 @@
     "title": "联系我",
     "description": "欢迎与我交流学术问题或合作机会",
     "form": {
-      "name": "姓名",
-      "email": "邮箱",
-      "subject": "主题",
-      "message": "消息",
-      "send": "发送消息",
-      "sending": "发送中...",
+      "name": {
+        "label": "姓名",
+        "placeholder": "请输入您的姓名"
+      },
+      "email": {
+        "label": "邮箱",
+        "placeholder": "请输入您的邮箱地址"
+      },
+      "phone": {
+        "label": "电话",
+        "placeholder": "请输入您的电话号码（可选）"
+      },
+      "company": {
+        "label": "公司/机构",
+        "placeholder": "请输入您的公司或机构名称（可选）"
+      },
+      "subject": {
+        "label": "主题",
+        "placeholder": "请输入邮件主题"
+      },
+      "message": {
+        "label": "消息内容",
+        "placeholder": "请详细描述您的需求或问题..."
+      },
+      "budget": {
+        "label": "预算范围",
+        "placeholder": "请选择预算范围（可选）",
+        "options": {
+          "select": "请选择预算范围",
+          "under5k": "5千以下",
+          "5k10k": "5千-1万",
+          "10k50k": "1万-5万",
+          "50k100k": "5万-10万",
+          "over100k": "10万以上",
+          "discuss": "面议"
+        }
+      },
+      "timeline": {
+        "label": "项目周期",
+        "placeholder": "请选择期望的项目周期（可选）",
+        "options": {
+          "select": "请选择项目周期",
+          "urgent": "紧急（1周内）",
+          "short": "短期（1-4周）",
+          "medium": "中期（1-3个月）",
+          "long": "长期（3个月以上）",
+          "flexible": "时间灵活"
+        }
+      },
+      "validationError": "请检查表单输入",
+      "submitError": "提交失败，请重试",
+      "submitting": "提交中...",
+      "submit": "发送消息",
       "success": "消息发送成功！",
-      "error": "发送失败，请重试"
+      "error": "发送失败，请重试",
+      "selectBudget": "请选择预算范围",
+      "selectTimeline": "请选择项目周期"
+    },
+    "collaboration": {
+      "research": {
+        "title": "学术合作",
+        "description": "论文合作、研究项目、学术交流"
+      },
+      "development": {
+        "title": "技术开发",
+        "description": "软件开发、系统设计、技术咨询"
+      },
+      "consulting": {
+        "title": "技术咨询",
+        "description": "技术方案、架构设计、问题解决"
+      },
+      "teaching": {
+        "title": "教学培训",
+        "description": "课程开发、培训服务、知识传授"
+      },
+      "other": {
+        "title": "其他合作",
+        "description": "定制化合作、特殊项目、其他需求"
+      }
     },
     "info": {
       "email": "邮箱",
