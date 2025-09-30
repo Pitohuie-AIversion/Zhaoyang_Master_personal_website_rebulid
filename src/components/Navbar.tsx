@@ -11,13 +11,13 @@ import { useTranslation } from './TranslationProvider';
 
 // 导航项配置（使用翻译键）
 const navigationConfig = [
-  { key: 'nav.home', href: '/', icon: Home },
-  { key: 'nav.research', href: '/research', icon: Microscope },
-  { key: 'nav.projects', href: '/projects', icon: Briefcase },
-  { key: 'nav.publications', href: '/publications', icon: FileText },
-  { key: 'nav.skills', href: '/skills', icon: Wrench },
-  { key: 'nav.contact', href: '/contact', icon: Mail },
-  { key: 'nav.ascii-demo', href: '/ascii-demo', icon: Terminal }
+  { key: 'navigation.home', href: '/', icon: Home },
+  { key: 'navigation.research', href: '/research', icon: Microscope },
+  { key: 'navigation.projects', href: '/projects', icon: Briefcase },
+  { key: 'navigation.publications', href: '/publications', icon: FileText },
+  { key: 'navigation.skills', href: '/skills', icon: Wrench },
+  { key: 'navigation.contact', href: '/contact', icon: Mail },
+  { key: 'navigation.ascii-demo', href: '/ascii-demo', icon: Terminal }
 ];
 
 export default function Navbar() {

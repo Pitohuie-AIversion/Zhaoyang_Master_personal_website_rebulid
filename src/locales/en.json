@@ -54,13 +54,15 @@
   },
   "navigation": {
     "home": "Home",
-    "about": "About Me",
+    "about": "About",
     "projects": "Projects",
     "research": "Research",
     "publications": "Publications",
     "contact": "Contact",
     "blog": "Blog",
-    "resume": "Resume"
+    "resume": "Resume",
+    "skills": "Skills",
+    "ascii-demo": "ASCII Demo"
   },
   "home": {
     "hero": {
@@ -333,12 +335,18 @@
       "types": {
         "journal": "Journal Paper",
         "conference": "Conference Paper",
-        "patent": "Patent"
+        "patent": "Patent",
+        "invention": "Invention Patent",
+        "utility": "Utility Model",
+        "design": "Design Patent"
       },
       "status": {
         "published": "Published",
+        "accepted": "Accepted",
         "underReview": "Under Review",
         "inPreparation": "In Preparation",
+        "granted": "Granted",
+        "pending": "Pending",
         "unknown": "Unknown"
       },
       "sort": {
@@ -368,27 +376,54 @@
         "patentDetail": "Patent Details",
         "awardDetail": "Award Details"
       },
-      "status": {
-        "published": "Published",
-        "accepted": "Accepted",
-        "underReview": "Under Review",
-        "inPreparation": "In Preparation",
-        "granted": "Granted",
-        "pending": "Pending"
-      },
-      "types": {
-        "journal": "Journal Paper",
-        "conference": "Conference Paper",
-        "invention": "Invention Patent",
-        "utility": "Utility Model",
-        "design": "Design Patent"
-      },
       "levels": {
         "national": "National Level",
         "provincial": "Provincial Level",
         "university": "University Level"
       },
       "data": {
+        "publication1": {
+          "title": "DamFormer: A Transformer-based Model for Dam-break Flow Prediction with Cross-geometry Generalization",
+          "authors": "Zhaoyang Mu, Supervisor Name, Collaborator",
+          "journal": "Physics of Fluids",
+          "abstract": "This paper proposes the DamFormer model based on Transformer architecture for cross-geometric boundary prediction of dam-break flow fields. The model can achieve high-precision flow field prediction under different geometric configurations, providing new technical means for dam-break disaster assessment. Construct multi-geometric boundary datasets, achieve cross-geometric zero-shot prediction, and solve the problem of high computational cost of traditional CFD simulation.",
+          "keywords": ["Transformer", "Dam-break", "CFD", "Deep Learning", "Cross-geometry", "Physics of Fluids"]
+        },
+        "publication2": {
+          "title": "Sparse→Dense Transformer: Sparse to Dense Field Reconstruction",
+          "authors": "Zhaoyang Mu, Research Collaborator",
+          "journal": "Physics of Fluids",
+          "abstract": "For CFD/environmental flow, sparse sensing reconstructs high-resolution spatio-temporal fields. Based on Transformer architecture to achieve intelligent reconstruction from sparse observations to dense fields, providing an efficient flow field reconstruction method.",
+          "keywords": ["Transformer", "Neural Operator", "Field Reconstruction", "CFD", "Environmental Flow"]
+        },
+        "publication3": {
+          "title": "CFD-FSI Analysis of Bionic Undulating Fin Propulsion System",
+          "authors": "Zhaoyang Mu, Westlake University Research Team",
+          "journal": "International Conference on Robotics and Automation (ICRA)",
+          "abstract": "Westlake University i⁴-FSI Laboratory project. Through Star-CCM+ CFD/FSI coupled simulation analysis of bionic undulating fin propulsion system, Java Macro automated parameter scanning, exploring bionic propulsion mechanisms.",
+          "keywords": ["Star-CCM+", "CFD-FSI", "Bionic Propulsion", "Java Macro", "Westlake University"]
+        },
+        "patent1": {
+          "title": "A Self-reconfigurable Robot System Based on Modular Design",
+          "authors": "Zhaoyang Mu, Invention Team",
+          "journal": "Chinese Invention Patent",
+          "abstract": "This invention discloses a self-reconfigurable cubic robot system Rs-ModCubes based on modular design, with autonomous reconfiguration capability and multiple motion modes, suitable for robot applications in complex environments.",
+          "keywords": ["Modular Robot", "Self-reconfiguration", "Cubic Structure", "Robot System"]
+        },
+        "patent2": {
+          "title": "Underwater Robot Bionic Perception Device and Its Perception Method",
+          "authors": "Zhaoyang Mu, Patent Team",
+          "journal": "Chinese Invention Patent",
+          "abstract": "This invention provides an underwater robot bionic perception device, based on TENG technology to achieve sensitive detection of water flow changes, combined with artificial lateral line structure to improve perception accuracy.",
+          "keywords": ["Underwater Robot", "TENG", "Bionic Perception", "Artificial Lateral Line"]
+        },
+        "patent3": {
+          "title": "Fan Array Wind Tunnel Experimental Platform Control System",
+          "authors": "Zhaoyang Mu, Development Team",
+          "journal": "Chinese Utility Model Patent",
+          "abstract": "Modular 2.5m×2.5m fan array, STM32 multi-board PWM/TACH closed-loop control, VLAN/DHCP network management. Experimental platform for flow field control and test verification.",
+          "keywords": ["Fan Array", "STM32", "PWM/TACH", "VLAN", "Experimental Platform"]
+        },
         "papers": {
           "damformer": {
             "title": "DamFormer: A Transformer-based Neural Operator for Dam-break Flow Prediction",
@@ -822,10 +857,48 @@
       "orcid": "ORCID"
     }
   },
+  "footer": {
+    "personalInfo": {
+      "name": "Zhaoyang Mou",
+      "nameEn": "牟昭阳",
+      "description": "Focused on research and practice in artificial intelligence, machine learning, and software engineering, committed to promoting technological innovation and academic development."
+    },
+    "quickLinks": {
+      "title": "Quick Links",
+      "home": "Home",
+      "research": "Research",
+      "projects": "Projects",
+      "publications": "Publications"
+    },
+    "researchAreas": {
+      "title": "Research Areas",
+      "areas": [
+        "Artificial Intelligence & Machine Learning",
+        "Computer Vision",
+        "Natural Language Processing",
+        "Software Engineering",
+        "Data Science"
+      ]
+    },
+    "contact": {
+      "title": "Contact",
+      "email": "zhaoyang.mou@example.com",
+      "address": "Beijing, China"
+    },
+    "legal": {
+      "copyright": "Zhaoyang Mou. All rights reserved.",
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service",
+      "sitemap": "Sitemap"
+    }
+  },
   "seo": {
     "site": {
+      "name": "Zhaoyang Mou's Personal Website",
+      "description": "Zhaoyang Mou's personal academic website showcasing research achievements, project experience, and academic publications",
+      "keywords": "Zhaoyang Mou,Computer Science,Artificial Intelligence,Machine Learning,Software Engineering,Academic Research",
+      "author": "Zhaoyang Mou",
       "title": "Zhaoyang Mu - Personal Website",
-      "author": "Zhaoyang Mu",
       "language": "en-US",
       "locale": "en_US"
     },

@@ -60,7 +60,9 @@
     "publications": "学术成果",
     "contact": "联系我",
     "blog": "博客",
-    "resume": "简历"
+    "resume": "简历",
+    "skills": "技能专长",
+    "ascii-demo": "ASCII演示"
   },
   "home": {
     "hero": {
@@ -285,12 +287,18 @@
       "types": {
         "journal": "期刊论文",
         "conference": "会议论文",
-        "patent": "专利"
+        "patent": "专利",
+        "invention": "发明专利",
+        "utility": "实用新型",
+        "design": "外观设计"
       },
       "status": {
         "published": "已发表",
+        "accepted": "已接收",
         "underReview": "审稿中",
         "inPreparation": "准备中",
+        "granted": "已授权",
+        "pending": "审查中",
         "unknown": "未知"
       },
       "sort": {
@@ -319,21 +327,6 @@
         "publicationDetail": "论文详情",
         "patentDetail": "专利详情",
         "awardDetail": "奖项详情"
-      },
-      "status": {
-        "published": "已发表",
-        "accepted": "已接收",
-        "underReview": "审稿中",
-        "inPreparation": "准备中",
-        "granted": "已授权",
-        "pending": "审查中"
-      },
-      "types": {
-        "journal": "期刊论文",
-        "conference": "会议论文",
-        "invention": "发明专利",
-        "utility": "实用新型",
-        "design": "外观设计"
       },
       "levels": {
         "national": "国家级",
@@ -833,29 +826,35 @@
     }
   },
   "footer": {
+    "personalInfo": {
+      "name": "牟昭阳",
+      "nameEn": "Zhaoyang Mou",
+      "description": "专注于人工智能、机器学习和软件工程领域的研究与实践，致力于推动技术创新与学术发展。"
+    },
     "quickLinks": {
       "title": "快速链接",
       "home": "首页",
-      "about": "关于",
-      "projects": "项目",
-      "research": "研究",
-      "contact": "联系"
+      "research": "研究领域",
+      "projects": "项目展示",
+      "publications": "学术发表"
     },
-    "research": {
+    "researchAreas": {
       "title": "研究领域",
-      "cfd": "计算流体力学",
-      "robotics": "机器人技术",
-      "ai": "人工智能",
-      "neuralOperators": "神经算子"
+      "areas": [
+        "人工智能与机器学习",
+        "计算机视觉",
+        "自然语言处理",
+        "软件工程",
+        "数据科学"
+      ]
     },
     "contact": {
       "title": "联系方式",
-      "email": "邮箱",
-      "phone": "电话",
-      "address": "地址"
+      "email": "zhaoyang.mou@example.com",
+      "address": "中国，北京"
     },
     "legal": {
-      "copyright": "牟昭阳. All rights reserved.",
+      "copyright": "牟昭阳。保留所有权利。",
       "privacy": "隐私政策",
       "terms": "使用条款",
       "sitemap": "网站地图"
