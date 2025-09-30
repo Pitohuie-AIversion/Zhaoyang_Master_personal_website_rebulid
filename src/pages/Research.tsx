@@ -429,7 +429,7 @@ function Research() {
             <div className="card-dark rounded-lg shadow-md-dark p-4 sm:p-6 mb-8 theme-transition">
               <div className="flex items-center mb-6">
                 <BookOpen className="w-6 h-6 text-blue-500 mr-3" />
-                <h3 className="text-xl font-semibold text-primary-dark theme-transition">{t('research.publications')}</h3>
+                <h3 className="text-xl font-semibold text-primary-dark theme-transition">{t('research.publications.title')}</h3>
                 <span className="ml-auto text-sm text-secondary-dark theme-transition">
                   {t('research.totalCount').replace('{{count}}', filteredPublications.length.toString()).replace('{{unit}}', t('research.papers'))}
                 </span>
@@ -495,7 +495,7 @@ function Research() {
             <div className="card-dark rounded-lg shadow-md-dark p-6 mb-8 theme-transition">
               <div className="flex items-center mb-6">
                 <FileText className="w-6 h-6 text-purple-500 mr-3" />
-                <h3 className="text-xl font-semibold text-primary-dark theme-transition">{t('research.patents')}</h3>
+                <h3 className="text-xl font-semibold text-primary-dark theme-transition">{t('research.patents.title')}</h3>
                 <span className="ml-auto text-sm text-secondary-dark theme-transition">
                   {t('research.totalCount').replace('{{count}}', filteredPatents.length.toString()).replace('{{unit}}', t('research.items'))}
                 </span>
@@ -551,7 +551,7 @@ function Research() {
             <div className="card-dark rounded-lg shadow-md-dark p-6 mb-8 theme-transition">
               <div className="flex items-center mb-6">
                 <Award className="w-6 h-6 text-yellow-500 mr-3" />
-                <h3 className="text-xl font-semibold text-primary-dark theme-transition">{t('research.awards')}</h3>
+                <h3 className="text-xl font-semibold text-primary-dark theme-transition">{t('research.awards.title')}</h3>
                 <span className="ml-auto text-sm text-secondary-dark theme-transition">
                   {t('research.totalCount').replace('{{count}}', filteredAwards.length.toString()).replace('{{unit}}', t('research.items'))}
                 </span>

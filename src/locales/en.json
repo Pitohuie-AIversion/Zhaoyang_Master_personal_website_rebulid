@@ -381,6 +381,36 @@
         "provincial": "Provincial Level",
         "university": "University Level"
       },
+      "damformer": {
+        "title": "DamFormer: Transformer-based Dam-break Flow Prediction Neural Operator",
+        "journal": "Physics of Fluids",
+        "authors": ["Zhaoyang Mu", "Wei Zhang"],
+        "description": "Proposed a Transformer-based neural operator DamFormer for predicting dam-break flows. This method can handle fluid dynamics problems under different geometric boundary conditions and achieve cross-geometric generalization capabilities."
+      },
+      "rsModCubes": {
+        "title": "Design of Reconfigurable Robot System Based on Improved Modular Cubes",
+        "journal": "Robotics Technology and Applications",
+        "authors": ["Zhaoyang Mu", "Ming Li"],
+        "description": "Designed a reconfigurable robot system based on improved modular cubes with good reconfigurability and adaptability, capable of autonomously reconfiguring morphology according to task requirements."
+      },
+      "whiskerSensorArray": {
+        "title": "Underwater Robot Environmental Perception System Based on Bionic Whisker Sensor Array",
+        "journal": "Journal of Sensor Technology",
+        "authors": ["Zhaoyang Mu", "Qiang Wang"],
+        "description": "Developed an underwater robot environmental perception system based on bionic whisker sensor array, simulating the perception mechanism of fish lateral line system to improve underwater environmental perception capabilities."
+      },
+      "whiskerSensor": {
+        "title": "Design and Optimization of High-Sensitivity Bionic Whisker Sensor",
+        "journal": "Nano Energy",
+        "authors": ["Zhaoyang Mu", "Hua Chen"],
+        "description": "Designed a high-sensitivity bionic whisker sensor capable of detecting minute fluid disturbances, providing precise environmental perception capabilities for underwater robots."
+      },
+      "sparseToDense": {
+        "title": "Transformer-based Sparse-to-Dense Flow Field Reconstruction Method",
+        "journal": "Journal of Computational Physics",
+        "authors": ["Zhaoyang Mu", "Lei Zhao"],
+        "description": "Proposed a Transformer-based method for reconstructing dense flow fields from sparse sensor data, capable of reconstructing complete flow field information from limited sensor data."
+      },
       "data": {
         "publication1": {
           "title": "DamFormer: A Transformer-based Model for Dam-break Flow Prediction with Cross-geometry Generalization",
@@ -457,6 +487,7 @@
           }
         },
         "patents": {
+          "title": "Patents",
           "underwaterNavigation": {
             "title": "Underwater Navigation Device and Method Based on Bionic Perception",
             "applicant": "Dalian University of Technology",
@@ -469,6 +500,7 @@
           }
         },
         "awards": {
+          "title": "Awards",
           "nationalScholarship": {
             "title": "National Scholarship",
             "organization": "Ministry of Education of China",

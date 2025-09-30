@@ -409,6 +409,7 @@
       }
      },
      "patents": {
+      "title": "专利申请",
       "underwaterNavigation": {
         "title": "一种基于仿生感知的水下导航装置及方法",
         "applicant": "大连理工大学",
@@ -441,6 +442,7 @@
       }
     },
     "awards": {
+      "title": "荣誉奖项",
       "internetPlusGold": {
         "title": "第九届中国国际\\\"互联网+\\\"大学生创新创业大赛金奖",
         "organization": "教育部",
