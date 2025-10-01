@@ -37,7 +37,7 @@ export default function Contact() {
   const { isMobile } = useResponsive();
 
   const phoneDisplay = t('contact.info.phone');
-  const phoneHref = phoneDisplay.replace(/[^\d+]/g, '');
+  const phoneHref = phoneDisplay.replace(/[^\d+]/g, '') || phoneDisplay;
   
   // 动态生成社交媒体链接
   const socialLinks = [
