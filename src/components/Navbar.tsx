@@ -5,9 +5,11 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ThemeToggle } from './DarkModeProvider';
 import { LanguageToggle } from './LanguageToggle';
 import { UnifiedButton } from './UnifiedButton';
+import { AccessibilityButton } from './AccessibilityEnhancements';
 import { Home, Microscope, Briefcase, FileText, Wrench, Mail, Terminal } from 'lucide-react';
 import { useResponsive, MobileMenu } from './ResponsiveEnhancements';
 import { useTranslation } from './TranslationProvider';
+import ZhaoyangASCIIRhythm from './ZhaoyangASCIIRhythm';
 
 // 导航项配置（使用翻译键）
 const navigationConfig = [
@@ -71,18 +73,63 @@ export default function Navbar() {
           {/* Logo */}
           <Link
             to="/"
-            className="flex items-center space-x-3 group"
+            className="flex items-center space-x-2 group flex-shrink-0"
           >
             <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-sm">ZY</span>
             </div>
-            <div className="hidden sm:block">
+            {/* ASCII Logo for different screen sizes */}
+            <div className="hidden lg:block">
+              <div className="h-10 flex items-center overflow-hidden max-w-[140px]">
+                <div 
+                  className="transform-gpu"
+                  style={{
+                    transform: 'scale(0.2)',
+                    transformOrigin: 'left center'
+                  }}
+                >
+                  <ZhaoyangASCIIRhythm 
+                    theme="matrix"
+                    rhythmType="pulse"
+                    intensity="low"
+                    autoPlay={true}
+                    showControls={false}
+                    transparent={true}
+                    className="opacity-85"
+                  />
+                </div>
+              </div>
+            </div>
+            {/* Simplified ASCII for tablet */}
+            <div className="hidden sm:block lg:hidden">
+              <div className="h-8 flex items-center overflow-hidden max-w-[200px]">
+                <div 
+                  className="transform-gpu"
+                  style={{
+                    transform: 'scale(0.15)',
+                    transformOrigin: 'left center'
+                  }}
+                >
+                  <ZhaoyangASCIIRhythm 
+                    theme="matrix"
+                    rhythmType="pulse"
+                    intensity="low"
+                    autoPlay={true}
+                    showControls={false}
+                    transparent={true}
+                    className="opacity-80"
+                  />
+                </div>
+              </div>
+            </div>
+            {/* Text fallback for mobile */}
+            <div className="block sm:hidden">
               <div className="text-lg font-semibold text-primary-dark theme-transition">Zhaoyang</div>
             </div>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-1">
+          <div className="hidden lg:flex items-center space-x-1 flex-1 justify-center">
             {navigation.map((item) => {
               const IconComponent = item.icon;
               return (
@@ -104,8 +151,9 @@ export default function Navbar() {
             })}
           </div>
 
-          <div className="flex items-center space-x-3">
+          <div className="flex items-center space-x-2 flex-shrink-0">
             <LanguageToggle variant="compact" showText={false} />
+            <AccessibilityButton variant="compact" showText={false} />
             <ThemeToggle />
             {(isMobile || isTablet) && (
               <UnifiedButton
@@ -113,9 +161,9 @@ export default function Navbar() {
                 size="sm"
                 onClick={() => setIsOpen(!isOpen)}
                 aria-label={t('common.menu')}
-                className="p-2"
+                className="p-2 w-10 h-10 flex items-center justify-center"
               >
-                {isOpen ? <X size={24} /> : <Menu size={24} />}
+                {isOpen ? <X size={20} /> : <Menu size={20} />}
               </UnifiedButton>
             )}
           </div>

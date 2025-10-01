@@ -219,7 +219,12 @@ export const useAccessibility = () => {
 };
 
 // 可访问性工具栏组件
-export const AccessibilityToolbar: React.FC<{ className?: string }> = ({ className = '' }) => {
+// 可访问性按钮组件（用于导航栏）
+export const AccessibilityButton: React.FC<{ 
+  className?: string;
+  variant?: 'compact' | 'full';
+  showText?: boolean;
+}> = ({ className = '', variant = 'compact', showText = false }) => {
   const { config, updateConfig, speakText, stopSpeaking, isSpeaking } = useAccessibility();
   const [isOpen, setIsOpen] = useState(false);
   
@@ -245,20 +250,21 @@ export const AccessibilityToolbar: React.FC<{ className?: string }> = ({ classNa
   };
   
   return (
-    <div className={`fixed top-4 left-4 z-50 ${className}`}>
+    <div className={`relative ${className}`}>
       <UnifiedButton
-        variant="primary"
-        size="md"
+        variant="ghost"
+        size="sm"
         onClick={() => setIsOpen(!isOpen)}
-        aria-label="打开可访问性工具栏"
+        aria-label="可访问性设置"
         title="可访问性设置"
-        className="rounded-full shadow-lg"
+        className="p-2 w-10 h-10 flex items-center justify-center"
       >
         <Eye className="w-5 h-5" />
+        {showText && <span className="ml-2 text-sm">可访问性</span>}
       </UnifiedButton>
       
       {isOpen && (
-        <div className="absolute top-16 left-0 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 shadow-xl min-w-80">
+        <div className="absolute top-12 right-0 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 shadow-xl min-w-80 z-50">
           <h3 className="font-semibold mb-4 text-gray-900 dark:text-gray-100 flex items-center">
             <Eye className="w-4 h-4 mr-2" />
             可访问性设置
@@ -411,6 +417,11 @@ export const AccessibilityToolbar: React.FC<{ className?: string }> = ({ classNa
       )}
     </div>
   );
+};
+
+// 保留原有的 AccessibilityToolbar 组件以保持向后兼容
+export const AccessibilityToolbar: React.FC<{ className?: string }> = ({ className = '' }) => {
+  return <AccessibilityButton className={`fixed top-20 left-4 z-40 ${className}`} variant="full" />;
 };
 
 // 可访问的按钮组件

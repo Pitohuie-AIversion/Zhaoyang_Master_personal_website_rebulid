@@ -248,7 +248,7 @@
         "sparseToDense": {
           "title": "Transformer-based Sparse-to-Dense Flow Field Reconstruction",
           "journal": "Journal of Computational Physics",
-          "authors": ["Zhaoyang Mou", "Lei Zhao"],
+          "authors": ["Zhaoyang Mu", "Lei Zhao"],
           "description": "Proposed a Transformer-based method for reconstructing dense flow fields from sparse sensor data, enabling complete flow field reconstruction from limited sensor measurements."
         },
         "damBreak": {
@@ -258,42 +258,42 @@
         "data": {
           "publication1": {
             "title": "DamFormer: A Transformer-based Model for Dam-break Flow Prediction with Cross-geometry Generalization",
-            "authors": "Zhaoyang Mou, Supervisor Name, Collaborator",
+            "authors": "Zhaoyang Mu, Supervisor Name, Collaborator",
             "journal": "Physics of Fluids",
             "abstract": "This paper proposes the DamFormer model based on Transformer architecture for cross-geometry dam-break flow prediction. The model achieves high-precision flow field prediction under different geometric configurations, providing new technical means for dam-break disaster assessment. A multi-geometry boundary dataset is constructed to achieve cross-geometry zero-shot prediction, solving the problem of high computational cost in traditional CFD simulations.",
             "keywords": ["Transformer", "Dam-break", "CFD", "Deep Learning", "Cross-geometry", "Physics of Fluids"]
           },
           "publication2": {
             "title": "Sparse→Dense Transformer: Sparse-to-Dense Field Reconstruction",
-            "authors": "Zhaoyang Mou, Collaborating Researcher",
+            "authors": "Zhaoyang Mu, Collaborating Researcher",
             "journal": "Physics of Fluids",
             "abstract": "For CFD/environmental flow, sparse sensing reconstruction of high-resolution spatiotemporal fields. Based on Transformer architecture to achieve intelligent reconstruction from sparse observations to dense fields, providing an efficient flow field reconstruction method.",
             "keywords": ["Transformer", "Neural Operator", "Field Reconstruction", "CFD", "Environmental Flow"]
           },
           "publication3": {
             "title": "CFD-FSI Analysis of Bionic Undulating Fin Propulsion System",
-            "authors": "Zhaoyang Mou, Westlake University Research Team",
+            "authors": "Zhaoyang Mu, Westlake University Research Team",
             "journal": "International Conference on Robotics and Automation (ICRA)",
             "abstract": "Westlake University i⁴-FSI Laboratory project. CFD/FSI coupled simulation analysis of bionic undulating fin propulsion system through Star-CCM+, Java Macro automated parameter sweeping, exploring bionic propulsion mechanisms.",
             "keywords": ["Star-CCM+", "CFD-FSI", "Bionic Propulsion", "Java Macro", "Westlake University"]
           },
           "patent1": {
             "title": "A Modular Self-reconfigurable Robot System",
-            "authors": "Zhaoyang Mou, Invention Team",
+            "authors": "Zhaoyang Mu, Invention Team",
             "journal": "Chinese Invention Patent",
             "abstract": "This invention discloses a modular self-reconfigurable cubic robot system Rs-ModCubes with autonomous reconfiguration capability and multiple motion modes, suitable for robot applications in complex environments.",
             "keywords": ["Modular Robot", "Self-reconfiguration", "Cubic Structure", "Robot System"]
           },
           "patent2": {
             "title": "Underwater Robot Bionic Sensing Device and Sensing Method",
-            "authors": "Zhaoyang Mou, Patent Team",
+            "authors": "Zhaoyang Mu, Patent Team",
             "journal": "Chinese Invention Patent",
             "abstract": "This invention provides an underwater robot bionic sensing device that achieves sensitive detection of water flow changes based on TENG technology, combined with artificial lateral line structure to improve sensing accuracy.",
             "keywords": ["Underwater Robot", "TENG", "Bionic Sensing", "Artificial Lateral Line"]
           },
           "patent3": {
             "title": "Fan Array Wind Tunnel Experimental Platform Control System",
-            "authors": "Zhaoyang Mou, Development Team",
+            "authors": "Zhaoyang Mu, Development Team",
             "journal": "Chinese Utility Model Patent",
             "abstract": "Modular 2.5m×2.5m fan array, STM32 multi-board PWM/TACH closed-loop control, VLAN/DHCP network management. Experimental platform for flow field control and test verification.",
             "keywords": ["Fan Array", "STM32", "PWM/TACH", "VLAN", "Experimental Platform"]
@@ -970,7 +970,7 @@
       }
     },
     "info": {
-      "email": "zhaoyang.mou@example.com",
+      "email": "mzymuzhaoyang@gmail.com",
       "phone": "+86 138-0000-0000",
       "location": "Dalian, Liaoning, China",
       "university": "Dalian Maritime University",
@@ -990,7 +990,7 @@
   },
   "footer": {
     "personalInfo": {
-      "name": "Zhaoyang Mou",
+      "name": "Zhaoyang Mu",
       "nameEn": "牟昭阳",
       "description": "Focused on research and practice in artificial intelligence, machine learning, and software engineering, committed to promoting technological innovation and academic development."
     },
@@ -1013,11 +1013,11 @@
     },
     "contact": {
       "title": "Contact",
-      "email": "zhaoyang.mou@example.com",
-      "address": "Beijing, China"
+      "email": "mzymuzhaoyang@gmail.com",
+      "address": "Hangzhou, China"
     },
     "legal": {
-      "copyright": "Zhaoyang Mou. All rights reserved.",
+      "copyright": "Zhaoyang Mu. All rights reserved.",
       "privacy": "Privacy Policy",
       "terms": "Terms of Service",
       "sitemap": "Sitemap"
@@ -1025,10 +1025,10 @@
   },
   "seo": {
     "site": {
-      "name": "Zhaoyang Mou's Personal Website",
-      "description": "Zhaoyang Mou's personal academic website showcasing research achievements, project experience, and academic publications",
-      "keywords": "Zhaoyang Mou,Computer Science,Artificial Intelligence,Machine Learning,Software Engineering,Academic Research",
-      "author": "Zhaoyang Mou",
+      "name": "Zhaoyang Mu's Personal Website",
+      "description": "Zhaoyang Mu's personal academic website showcasing research achievements, project experience, and academic publications",
+      "keywords": "Zhaoyang Mu,Computer Science,Artificial Intelligence,Machine Learning,Software Engineering,Academic Research",
+      "author": "Zhaoyang Mu",
       "title": "Zhaoyang Mu - Personal Website",
       "language": "en-US",
       "locale": "en_US"

@@ -11,14 +11,17 @@ export default function HeaderASCII({ className = '' }: HeaderASCIIProps) {
 
   return (
     <div 
-      className={`fixed top-0 left-0 right-0 z-40 pointer-events-none overflow-hidden ${className}`}
-      style={{ height: isMobile ? '60px' : isTablet ? '80px' : '100px' }}
+      className={`fixed left-0 right-0 z-30 pointer-events-none overflow-hidden ${className}`}
+      style={{ 
+        top: isMobile ? '56px' : isTablet ? '64px' : '72px',
+        height: isMobile ? '40px' : isTablet ? '50px' : '60px'
+      }}
     >
       <div className="absolute inset-0 flex items-center justify-center">
         <div 
           className="transform-gpu"
           style={{
-            transform: `scale(${isMobile ? 0.25 : isTablet ? 0.4 : 0.5})`,
+            transform: `scale(${isMobile ? 0.15 : isTablet ? 0.25 : 0.35})`,
             transformOrigin: 'center center'
           }}
         >
@@ -29,12 +32,12 @@ export default function HeaderASCII({ className = '' }: HeaderASCIIProps) {
             autoPlay={true}
             showControls={false}
             transparent={true}
-            className="opacity-40"
+            className="opacity-25"
           />
         </div>
       </div>
-      {/* 渐变遮罩，确保不影响导航栏可读性 */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white dark:to-gray-900 opacity-90" />
+      {/* 优化的渐变遮罩，确保不影响页面内容可读性 */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/60 to-white dark:via-gray-900/60 dark:to-gray-900 opacity-80" />
     </div>
   );
 }

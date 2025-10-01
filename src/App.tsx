@@ -8,7 +8,7 @@ import { ErrorBoundary } from './components/ErrorBoundary';
 import { LazyAnimatePresenceComponent, SmartPageTransition } from './components/PageTransitions';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import HeaderASCII from './components/HeaderASCII';
+// import HeaderASCII from './components/HeaderASCII'; // 已移动到 Navbar 中
 import { AccessibilityManager, AccessibilityToolbar } from './components/AccessibilityEnhancements';
 import { ThemeTransition } from './components/DarkModeProvider';
 import './styles/accessibility.css';
@@ -108,7 +108,7 @@ function App() {
                 </a>
                 
                 {/* 性能监控已简化 */}
-                <HeaderASCII />
+                {/* HeaderASCII 已移动到 Navbar 中 */}
                 <Navbar />
                 <AnimatedRoutes />
                 <Footer />

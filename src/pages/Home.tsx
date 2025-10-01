@@ -204,7 +204,7 @@ function Home() {
               className="relative"
             >
               <LazyImage
-                src="https://trae-api-us.mchost.guru/api/ide/v1/text_to_image?prompt=professional%20portrait%20of%20young%20researcher%20in%20modern%20lab%20setting%20confident%20smile&image_size=portrait_4_3"
+                src="/src/assets/me_Nero_AI_Image_Upscaler_Photo_Face.jpeg"
                 alt="牟昭阳"
                 className="mx-auto rounded-lg border border-gray-200 w-48 h-48 md:w-60 md:h-60 lg:w-80 lg:h-80"
               />
