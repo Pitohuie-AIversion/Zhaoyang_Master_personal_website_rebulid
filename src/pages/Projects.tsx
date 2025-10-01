@@ -260,7 +260,7 @@ export default function Projects() {
                 multiple
               />
               <FilterDropdown
-                title={t('projects.status')}
+                title={t('projects.statusLabel')}
                 options={filterOptions.status}
                 selectedValues={filters.status || []}
                 onChange={(values) => updateFilter('status', values)}
@@ -286,7 +286,7 @@ export default function Projects() {
             filters={filters}
             filterLabels={{
               category: t('projects.category'),
-              status: t('projects.status'),
+              status: t('projects.statusLabel'),
               year: t('projects.year')
             }}
             optionLabels={{

@@ -584,7 +584,7 @@
     "description": "Showcasing my project achievements in scientific computing, robotics, and software development",
     "searchPlaceholder": "Search projects...",
     "category": "Category",
-    "status": "Status",
+    "statusLabel": "Status",
     "year": "Year",
     "activeFilters": "Active Filters:",
     "clearAll": "Clear All",

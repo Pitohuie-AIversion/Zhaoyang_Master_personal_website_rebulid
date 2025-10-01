@@ -25,13 +25,17 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
   const { isMobile, isTablet, isDesktop } = useResponsive();
-  const { t } = useTranslation();
+  const { t, language } = useTranslation();
   
   // 生成带翻译的导航项
-  const navigation = navigationConfig.map(item => ({
-    ...item,
-    name: t(item.key)
-  }));
+  const navigation = navigationConfig.map(item => {
+    const translatedName = t(item.key);
+    // console.log(`翻译调试: ${item.key} -> ${translatedText} (当前语言: ${language})`);
+    return {
+      ...item,
+      name: translatedName
+    };
+  });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -83,7 +87,7 @@ export default function Navbar() {
               const IconComponent = item.icon;
               return (
                 <Link
-                  key={item.name}
+                  key={item.key}
                   to={item.href}
                   className={`relative px-3 py-2 rounded-md text-sm font-medium theme-transition group ${
                     isActive(item.href)

@@ -772,7 +772,7 @@
     "description": "展示我在科学计算、机器人技术和软件开发方面的项目成果",
     "searchPlaceholder": "搜索项目...",
     "category": "分类",
-    "status": "状态",
+    "statusLabel": "状态",
     "year": "年份",
     "activeFilters": "活跃筛选:",
     "clearAll": "清除全部",

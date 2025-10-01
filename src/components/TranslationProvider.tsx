@@ -32,6 +32,8 @@ export function TranslationProvider({ children }: TranslationProviderProps) {
 
   const [isTranslating, setIsTranslating] = useState(false);
   const [translationCache, setTranslationCache] = useState<Map<string, string>>(new Map());
+  
+  // console.log('TranslationProvider 当前语言:', language);
 
   useEffect(() => {
     localStorage.setItem('language', language);
@@ -119,6 +121,14 @@ export function TranslationProvider({ children }: TranslationProviderProps) {
 
   // 翻译函数，使用新的翻译文件系统
   const t = createTranslationFunction(language);
+  
+  // 调试翻译函数
+  // console.log('翻译函数测试:', {
+  //   'navigation.home': t('navigation.home'),
+  //   'navigation.publications': t('navigation.publications'),
+  //   language,
+  //   'createTranslationFunction': typeof createTranslationFunction
+  // });
 
   const toggleLanguage = () => {
     const newLanguage = language === 'zh' ? 'en' : 'zh';
