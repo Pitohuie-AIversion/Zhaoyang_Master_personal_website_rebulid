@@ -702,141 +702,6 @@
         }
       }
     },
-    "skills": {
-      "title": "Professional Skills",
-      "description": "Overview of my technical stack and professional capabilities",
-      "categories": {
-        "programming": "Programming Languages",
-        "simulation": "Simulation & Analysis",
-        "aiMl": "Artificial Intelligence",
-        "hardware": "Hardware Design",
-        "tools": "Development Tools"
-      },
-      "levels": {
-        "expert": "Expert",
-        "proficient": "Proficient",
-        "good": "Good",
-        "average": "Average",
-        "beginner": "Beginner"
-      },
-      "proficiency": "Proficiency",
-      "relatedProjects": "Related Projects",
-      "radarChart": "Skills Radar Chart",
-      "skillLevel": "Skill Level",
-      "proficiencyStats": "Proficiency Statistics",
-      "avgProficiency": "Average Proficiency",
-      "skillsCount": "skills",
-      "radar": {
-        "theory": "Theoretical Foundation"
-      },
-      "skillData": {
-        "programming": {
-          "python": {
-            "description": "PyTorch/NumPy/Pandas/Matplotlib, deep learning and scientific computing",
-            "projects": ["Transformer/Neural Operator Modeling", "Deep Reinforcement Learning Algorithms", "CFD Spatiotemporal Field Prediction"]
-          },
-          "java": {
-            "description": "Star-CCM+ Macro/Workflow development",
-            "projects": ["CFD Automated Simulation", "Bionic Undulating Fin Propulsion Simulation"]
-          },
-          "matlab": {
-            "description": "Numerical computing, signal processing, control systems",
-            "projects": ["Fluid Mechanics Simulation", "Control Algorithm Design"]
-          },
-          "javascript": {
-            "description": "Frontend development, full-stack applications",
-            "projects": ["Personal Website", "Data Visualization Platform"]
-          },
-          "powershell": {
-            "description": "Automation scripts, system management",
-            "projects": ["Automated Flashing Scripts", "System Configuration Management"]
-          }
-        },
-        "simulation": {
-          "starccm": {
-            "description": "CFD/FSI simulation, Java Macro development",
-            "projects": ["Bionic Undulating Fin Propulsion Simulation", "Fluid-Structure Interaction Analysis"]
-          },
-          "comsol": {
-            "description": "Multiphysics coupling simulation",
-            "projects": ["Fluid-Structure Interaction Analysis", "Heat and Mass Transfer Simulation", "Verification and Validation"]
-          },
-          "ansys": {
-            "description": "Engineering simulation analysis",
-            "projects": ["Structural Analysis", "Fluid Simulation", "Multiphysics Coupling"]
-          },
-          "pdebench": {
-            "description": "Partial differential equation benchmarking",
-            "projects": ["Neural Operator Validation", "PDE Solver Comparison"]
-          }
-        },
-        "aiMl": {
-          "transformer": {
-            "description": "Attention mechanisms, spatiotemporal sequence modeling",
-            "projects": ["CFD Spatiotemporal Field Prediction", "Sequence-to-Sequence Learning"]
-          },
-          "neuralOperator": {
-            "description": "FNO, DeepONet and other operator learning",
-            "projects": ["PDE Solving", "Scientific Computing Acceleration"]
-          },
-          "pytorch": {
-            "description": "Deep learning framework",
-            "projects": ["Neural Network Training", "DDP/AMP Parallel Computing"]
-          },
-          "reinforcementLearning": {
-            "name": "Reinforcement Learning",
-            "description": "DQN, PPO and other algorithms",
-            "projects": ["Bionic Fish Control Strategy", "Robot Control"]
-          },
-          "computerVision": {
-            "name": "Computer Vision",
-            "description": "Bionic perception, image processing",
-            "projects": ["Underwater Robot Vision", "Bionic Perception System"]
-          }
-        },
-        "hardware": {
-          "solidworks": {
-            "description": "3D/2D design, BOM, interference checking",
-            "projects": ["Bionic Fish Robot Design", "Mechanical Structure Optimization", "Assembly Design"]
-          },
-          "shapr3d": {
-            "description": "Mobile 3D modeling design",
-            "projects": ["Rapid Prototyping", "Concept Modeling"]
-          },
-          "stm32": {
-            "description": "NUCLEO-F439ZI, PWM/TACH control",
-            "projects": ["Embedded Control Systems", "Sensor Interfaces"]
-          },
-          "tplink": {
-            "name": "TP-Link L3 Switch",
-            "description": "Managed switch configuration management",
-            "projects": ["Network Architecture Design", "Device Management"]
-          }
-        },
-        "tools": {
-          "git": {
-            "description": "Version control and collaboration",
-            "projects": ["All Project Code Management"]
-          },
-          "docker": {
-            "description": "Containerized deployment",
-            "projects": ["Simulation Environment Deployment", "Microservice Architecture"]
-          },
-          "linux": {
-            "description": "System administration and scripting",
-            "projects": ["Server Operations", "Automation Scripts"]
-          },
-          "vscode": {
-            "description": "Integrated development environment",
-            "projects": ["Daily Development Tool"]
-          },
-          "jupyter": {
-            "description": "Interactive development",
-            "projects": ["Data Analysis", "Algorithm Prototyping"]
-          }
-        }
-      }
-    },
     "interests": {
       "title": "Research Interests",
       "items": [
@@ -866,6 +731,149 @@
         "other": {
           "title": "Other Collaborations",
           "description": "Customized collaboration, special projects, other needs"
+        }
+      }
+    }
+  },
+  "skills": {
+    "title": "Professional Skills",
+    "description": "Overview of my technical stack and professional capabilities",
+    "categories": {
+      "programming": "Programming Languages",
+      "simulation": "Simulation & Analysis",
+      "aiMl": "Artificial Intelligence",
+      "hardware": "Hardware Design",
+      "tools": "Development Tools"
+    },
+    "levels": {
+      "expert": "Expert",
+      "proficient": "Proficient",
+      "good": "Good",
+      "average": "Average",
+      "beginner": "Beginner"
+    },
+    "viewModes": {
+      "grid": "Grid View",
+      "radar": "Radar View",
+      "chart": "Chart View"
+    },
+    "filters": {
+      "all": "All Skills"
+    },
+    "proficiency": "Proficiency",
+    "relatedProjects": "Related Projects",
+    "radarChart": "Skills Radar Chart",
+    "skillLevel": "Skill Level",
+    "proficiencyStats": "Proficiency Statistics",
+    "avgProficiency": "Average Proficiency",
+    "skillsCount": "skills",
+    "radar": {
+      "theory": "Theoretical Foundation"
+    },
+    "skillData": {
+      "programming": {
+        "python": {
+          "description": "PyTorch/NumPy/Pandas/Matplotlib, deep learning and scientific computing",
+          "projects": ["Transformer/Neural Operator Modeling", "Deep Reinforcement Learning Algorithms", "CFD Spatiotemporal Field Prediction"]
+        },
+        "java": {
+          "description": "Star-CCM+ Macro/Workflow development",
+          "projects": ["CFD Automated Simulation", "Bionic Undulating Fin Propulsion Simulation"]
+        },
+        "matlab": {
+          "description": "Numerical computing, signal processing, control systems",
+          "projects": ["Fluid Mechanics Simulation", "Control Algorithm Design"]
+        },
+        "javascript": {
+          "description": "Frontend development, full-stack applications",
+          "projects": ["Personal Website", "Data Visualization Platform"]
+        },
+        "powershell": {
+          "description": "Automation scripts, system management",
+          "projects": ["Automated Flashing Scripts", "System Configuration Management"]
+        }
+      },
+      "simulation": {
+        "starccm": {
+          "description": "CFD/FSI simulation, Java Macro development",
+          "projects": ["Bionic Undulating Fin Propulsion Simulation", "Fluid-Structure Interaction Analysis"]
+        },
+        "comsol": {
+          "description": "Multiphysics coupling simulation",
+          "projects": ["Fluid-Structure Interaction Analysis", "Heat and Mass Transfer Simulation", "Verification and Validation"]
+        },
+        "ansys": {
+          "description": "Engineering simulation analysis",
+          "projects": ["Structural Analysis", "Fluid Simulation", "Multiphysics Coupling"]
+        },
+        "pdebench": {
+          "description": "Partial differential equation benchmarking",
+          "projects": ["Neural Operator Validation", "PDE Solver Comparison"]
+        }
+      },
+      "aiMl": {
+        "transformer": {
+          "description": "Attention mechanisms, spatiotemporal sequence modeling",
+          "projects": ["CFD Spatiotemporal Field Prediction", "Sequence-to-Sequence Learning"]
+        },
+        "neuralOperator": {
+          "description": "FNO, DeepONet and other operator learning",
+          "projects": ["PDE Solving", "Scientific Computing Acceleration"]
+        },
+        "pytorch": {
+          "description": "Deep learning framework",
+          "projects": ["Neural Network Training", "DDP/AMP Parallel Computing"]
+        },
+        "reinforcementLearning": {
+          "name": "Reinforcement Learning",
+          "description": "DQN, PPO and other algorithms",
+          "projects": ["Bionic Fish Control Strategy", "Robot Control"]
+        },
+        "computerVision": {
+          "name": "Computer Vision",
+          "description": "Bionic perception, image processing",
+          "projects": ["Underwater Robot Vision", "Bionic Perception System"]
+        }
+      },
+      "hardware": {
+        "solidworks": {
+          "description": "3D/2D design, BOM, interference checking",
+          "projects": ["Bionic Fish Robot Design", "Mechanical Structure Optimization", "Assembly Design"]
+        },
+        "shapr3d": {
+          "description": "Mobile 3D modeling design",
+          "projects": ["Rapid Prototyping", "Concept Modeling"]
+        },
+        "stm32": {
+          "description": "NUCLEO-F439ZI, PWM/TACH control",
+          "projects": ["Embedded Control Systems", "Sensor Interfaces"]
+        },
+        "tplink": {
+          "name": "TP-Link L3 Switch",
+          "description": "Managed switch configuration management",
+          "projects": ["Network Architecture Design", "Device Management"]
+        }
+      },
+      "tools": {
+        "git": {
+          "description": "Version control and collaboration",
+          "projects": ["All Project Code Management"]
+        },
+        "docker": {
+          "description": "Containerized deployment",
+          "projects": ["Simulation Environment Deployment", "Microservice Architecture"]
+        },
+        "linux": {
+          "description": "System administration and scripting",
+          "projects": ["Server Operations", "Automation Scripts"]
+        },
+        "vscode": {
+          "description": "Integrated development environment",
+          "projects": ["Daily Development Tool"]
+        },
+        "jupyter": {
+          "description": "Interactive development",
+          "projects": ["Data Analysis", "Algorithm Prototyping"]
         }
       }
     }
