@@ -318,212 +318,6 @@
     },
     "noResults": "No results found",
     "noResultsDesc": "Please try adjusting your search terms or filters",
-    "publications": {
-    "title": "Publications",
-    "description": "My research achievements and academic contributions",
-    "items": "publications",
-      "stats": {
-        "total": "Total",
-        "published": "Published",
-        "citations": "Citations",
-        "patents": "Patents"
-      },
-      "search": {
-        "placeholder": "Search papers, patents..."
-      },
-      "filters": {
-        "type": "Type",
-        "status": "Status",
-        "year": "Year",
-        "all": "All"
-      },
-      "types": {
-        "journal": "Journal Paper",
-        "conference": "Conference Paper",
-        "patent": "Patent",
-        "invention": "Invention Patent",
-        "utility": "Utility Model",
-        "design": "Design Patent"
-      },
-      "status": {
-        "published": "Published",
-        "accepted": "Accepted",
-        "underReview": "Under Review",
-        "inPreparation": "In Preparation",
-        "granted": "Granted",
-        "pending": "Pending",
-        "unknown": "Unknown"
-      },
-      "sort": {
-        "title": "Title",
-        "year": "Year",
-        "citations": "Citations",
-        "authors": "Authors",
-        "journal": "Journal"
-      },
-      "citations": "Citations",
-      "modal": {
-        "authors": "Authors",
-        "year": "Year",
-        "doi": "DOI",
-        "citationsCount": "Citations",
-        "abstract": "Abstract",
-        "keywords": "Keywords",
-        "journal": "Journal",
-        "publishYear": "Publication Year",
-        "patentNumber": "Patent Number",
-        "applicant": "Applicant",
-        "publicDate": "Publication Date",
-        "organization": "Organization",
-        "awardDate": "Award Date",
-        "certificateNumber": "Certificate Number",
-        "publicationDetail": "Publication Details",
-        "patentDetail": "Patent Details",
-        "awardDetail": "Award Details"
-      },
-      "levels": {
-        "national": "National Level",
-        "provincial": "Provincial Level",
-        "university": "University Level"
-      },
-      "damformer": {
-        "title": "DamFormer: Transformer-based Dam-break Flow Prediction Neural Operator",
-        "journal": "Physics of Fluids",
-        "authors": ["Zhaoyang Mu", "Wei Zhang"],
-        "description": "Proposed a Transformer-based neural operator DamFormer for predicting dam-break flows. This method can handle fluid dynamics problems under different geometric boundary conditions and achieve cross-geometric generalization capabilities."
-      },
-      "rsModCubes": {
-        "title": "Design of Reconfigurable Robot System Based on Improved Modular Cubes",
-        "journal": "Robotics Technology and Applications",
-        "authors": ["Zhaoyang Mu", "Ming Li"],
-        "description": "Designed a reconfigurable robot system based on improved modular cubes with good reconfigurability and adaptability, capable of autonomously reconfiguring morphology according to task requirements."
-      },
-      "whiskerSensorArray": {
-        "title": "Underwater Robot Environmental Perception System Based on Bionic Whisker Sensor Array",
-        "journal": "Journal of Sensor Technology",
-        "authors": ["Zhaoyang Mu", "Qiang Wang"],
-        "description": "Developed an underwater robot environmental perception system based on bionic whisker sensor array, simulating the perception mechanism of fish lateral line system to improve underwater environmental perception capabilities."
-      },
-      "whiskerSensor": {
-        "title": "Design and Optimization of High-Sensitivity Bionic Whisker Sensor",
-        "journal": "Nano Energy",
-        "authors": ["Zhaoyang Mu", "Hua Chen"],
-        "description": "Designed a high-sensitivity bionic whisker sensor capable of detecting minute fluid disturbances, providing precise environmental perception capabilities for underwater robots."
-      },
-      "sparseToDense": {
-        "title": "Transformer-based Sparse-to-Dense Flow Field Reconstruction Method",
-        "journal": "Journal of Computational Physics",
-        "authors": ["Zhaoyang Mu", "Lei Zhao"],
-        "description": "Proposed a Transformer-based method for reconstructing dense flow fields from sparse sensor data, capable of reconstructing complete flow field information from limited sensor data."
-      },
-      "data": {
-        "publication1": {
-          "title": "DamFormer: A Transformer-based Model for Dam-break Flow Prediction with Cross-geometry Generalization",
-          "authors": "Zhaoyang Mu, Supervisor Name, Collaborator",
-          "journal": "Physics of Fluids",
-          "abstract": "This paper proposes the DamFormer model based on Transformer architecture for cross-geometric boundary prediction of dam-break flow fields. The model can achieve high-precision flow field prediction under different geometric configurations, providing new technical means for dam-break disaster assessment. Construct multi-geometric boundary datasets, achieve cross-geometric zero-shot prediction, and solve the problem of high computational cost of traditional CFD simulation.",
-          "keywords": ["Transformer", "Dam-break", "CFD", "Deep Learning", "Cross-geometry", "Physics of Fluids"]
-        },
-        "publication2": {
-          "title": "Sparse→Dense Transformer: Sparse to Dense Field Reconstruction",
-          "authors": "Zhaoyang Mu, Research Collaborator",
-          "journal": "Physics of Fluids",
-          "abstract": "For CFD/environmental flow, sparse sensing reconstructs high-resolution spatio-temporal fields. Based on Transformer architecture to achieve intelligent reconstruction from sparse observations to dense fields, providing an efficient flow field reconstruction method.",
-          "keywords": ["Transformer", "Neural Operator", "Field Reconstruction", "CFD", "Environmental Flow"]
-        },
-        "publication3": {
-          "title": "CFD-FSI Analysis of Bionic Undulating Fin Propulsion System",
-          "authors": "Zhaoyang Mu, Westlake University Research Team",
-          "journal": "International Conference on Robotics and Automation (ICRA)",
-          "abstract": "Westlake University i⁴-FSI Laboratory project. Through Star-CCM+ CFD/FSI coupled simulation analysis of bionic undulating fin propulsion system, Java Macro automated parameter scanning, exploring bionic propulsion mechanisms.",
-          "keywords": ["Star-CCM+", "CFD-FSI", "Bionic Propulsion", "Java Macro", "Westlake University"]
-        },
-        "patent1": {
-          "title": "A Self-reconfigurable Robot System Based on Modular Design",
-          "authors": "Zhaoyang Mu, Invention Team",
-          "journal": "Chinese Invention Patent",
-          "abstract": "This invention discloses a self-reconfigurable cubic robot system Rs-ModCubes based on modular design, with autonomous reconfiguration capability and multiple motion modes, suitable for robot applications in complex environments.",
-          "keywords": ["Modular Robot", "Self-reconfiguration", "Cubic Structure", "Robot System"]
-        },
-        "patent2": {
-          "title": "Underwater Robot Bionic Perception Device and Its Perception Method",
-          "authors": "Zhaoyang Mu, Patent Team",
-          "journal": "Chinese Invention Patent",
-          "abstract": "This invention provides an underwater robot bionic perception device, based on TENG technology to achieve sensitive detection of water flow changes, combined with artificial lateral line structure to improve perception accuracy.",
-          "keywords": ["Underwater Robot", "TENG", "Bionic Perception", "Artificial Lateral Line"]
-        },
-        "patent3": {
-          "title": "Fan Array Wind Tunnel Experimental Platform Control System",
-          "authors": "Zhaoyang Mu, Development Team",
-          "journal": "Chinese Utility Model Patent",
-          "abstract": "Modular 2.5m×2.5m fan array, STM32 multi-board PWM/TACH closed-loop control, VLAN/DHCP network management. Experimental platform for flow field control and test verification.",
-          "keywords": ["Fan Array", "STM32", "PWM/TACH", "VLAN", "Experimental Platform"]
-        },
-        "papers": {
-          "damformer": {
-            "title": "DamFormer: A Transformer-based Neural Operator for Dam-break Flow Prediction",
-            "journal": "Physics of Fluids",
-            "authors": ["Zhaoyang Mu", "Wei Zhang"],
-            "description": "Proposed a Transformer-based neural operator DamFormer for predicting dam-break flows. This method can handle fluid dynamics problems under different geometric boundary conditions and achieve cross-geometric generalization capabilities."
-          },
-          "rsModCubes": {
-            "title": "Design of Reconfigurable Robot System Based on Improved Modular Cubes",
-            "journal": "Robotics Technology and Applications",
-            "authors": ["Zhaoyang Mu", "Ming Li"],
-            "description": "Designed a reconfigurable robot system based on improved modular cubes with good reconfigurability and adaptability, capable of autonomously reconfiguring morphology according to task requirements."
-          },
-          "whiskerSensorArray": {
-            "title": "Underwater Robot Environmental Perception System Based on Bionic Whisker Sensor Array",
-            "journal": "Journal of Sensor Technology",
-            "authors": ["Zhaoyang Mu", "Qiang Wang"],
-            "description": "Developed an underwater robot environmental perception system based on bionic whisker sensor array, simulating the perception mechanism of fish lateral line system to improve underwater environmental perception capabilities."
-          },
-          "whiskerSensor": {
-            "title": "Design and Optimization of High-Sensitivity Bionic Whisker Sensor",
-            "journal": "Nano Energy",
-            "authors": ["Zhaoyang Mu", "Hua Chen"],
-            "description": "Designed a high-sensitivity bionic whisker sensor capable of detecting minute fluid disturbances, providing precise environmental perception capabilities for underwater robots."
-          },
-          "sparseToDense": {
-            "title": "Transformer-based Sparse-to-Dense Flow Field Reconstruction",
-            "journal": "Journal of Computational Physics",
-            "authors": ["Zhaoyang Mu", "Lei Zhao"],
-            "description": "Proposed a Transformer-based method for reconstructing dense flow fields from sparse sensor data, capable of reconstructing complete flow field information from limited sensor data."
-          }
-        },
-        "patents": {
-          "title": "Patents",
-          "underwaterNavigation": {
-            "title": "Underwater Navigation Device and Method Based on Bionic Perception",
-            "applicant": "Dalian University of Technology",
-            "description": "This invention discloses an underwater navigation device and method based on bionic perception, achieving precise underwater environmental perception and navigation by simulating fish lateral line systems."
-          },
-          "vectorThruster": {
-            "title": "Vector Thruster and Its Control Method",
-            "applicant": "Dalian University of Technology",
-            "description": "This invention relates to a vector thruster and its control method, capable of achieving omnidirectional thrust control and improving the maneuverability of underwater robots."
-          }
-        },
-        "awards": {
-          "title": "Awards",
-          "nationalScholarship": {
-            "title": "National Scholarship",
-            "organization": "Ministry of Education of China",
-            "description": "Awarded for outstanding academic performance and research achievements in the field of robotics and artificial intelligence."
-          },
-          "excellentGraduate": {
-            "title": "Outstanding Graduate",
-            "organization": "Dalian University of Technology",
-            "description": "Recognized as an outstanding graduate for exceptional academic performance and research contributions."
-          },
-          "innovationCompetition": {
-            "title": "First Prize in National Innovation Competition",
-            "organization": "Ministry of Education of China",
-            "description": "Won first prize in the national innovation competition for the bionic underwater robot project."
-          }
-        }
-      }
-    },
     "patents": {
       "underwaterNavigation": {
         "title": "Underwater Navigation Device and Method Based on Bionic Perception",
@@ -576,6 +370,212 @@
         "title": "Bronze Award in Liaoning Province College Student Mechanical Innovation Design Competition",
         "organization": "Liaoning Provincial Department of Education",
         "description": "Won bronze award in the Liaoning Province College Student Mechanical Innovation Design Competition, demonstrating talent in mechanical design innovation."
+      }
+    }
+  },
+  "publications": {
+    "title": "Publications",
+    "description": "My research achievements and academic contributions",
+    "items": "publications",
+    "stats": {
+      "total": "Total",
+      "published": "Published",
+      "citations": "Citations",
+      "patents": "Patents"
+    },
+    "search": {
+      "placeholder": "Search papers, patents..."
+    },
+    "filters": {
+      "type": "Type",
+      "status": "Status",
+      "year": "Year",
+      "all": "All"
+    },
+    "types": {
+      "journal": "Journal Paper",
+      "conference": "Conference Paper",
+      "patent": "Patent",
+      "invention": "Invention Patent",
+      "utility": "Utility Model",
+      "design": "Design Patent"
+    },
+    "status": {
+      "published": "Published",
+      "accepted": "Accepted",
+      "underReview": "Under Review",
+      "inPreparation": "In Preparation",
+      "granted": "Granted",
+      "pending": "Pending",
+      "unknown": "Unknown"
+    },
+    "sort": {
+      "title": "Title",
+      "year": "Year",
+      "citations": "Citations",
+      "authors": "Authors",
+      "journal": "Journal"
+    },
+    "citations": "Citations",
+    "modal": {
+      "authors": "Authors",
+      "year": "Year",
+      "doi": "DOI",
+      "citationsCount": "Citations",
+      "abstract": "Abstract",
+      "keywords": "Keywords",
+      "journal": "Journal",
+      "publishYear": "Publication Year",
+      "patentNumber": "Patent Number",
+      "applicant": "Applicant",
+      "publicDate": "Publication Date",
+      "organization": "Organization",
+      "awardDate": "Award Date",
+      "certificateNumber": "Certificate Number",
+      "publicationDetail": "Publication Details",
+      "patentDetail": "Patent Details",
+      "awardDetail": "Award Details"
+    },
+    "levels": {
+      "national": "National Level",
+      "provincial": "Provincial Level",
+      "university": "University Level"
+    },
+    "damformer": {
+      "title": "DamFormer: Transformer-based Dam-break Flow Prediction Neural Operator",
+      "journal": "Physics of Fluids",
+      "authors": ["Zhaoyang Mu", "Wei Zhang"],
+      "description": "Proposed a Transformer-based neural operator DamFormer for predicting dam-break flows. This method can handle fluid dynamics problems under different geometric boundary conditions and achieve cross-geometric generalization capabilities."
+    },
+    "rsModCubes": {
+      "title": "Design of Reconfigurable Robot System Based on Improved Modular Cubes",
+      "journal": "Robotics Technology and Applications",
+      "authors": ["Zhaoyang Mu", "Ming Li"],
+      "description": "Designed a reconfigurable robot system based on improved modular cubes with good reconfigurability and adaptability, capable of autonomously reconfiguring morphology according to task requirements."
+    },
+    "whiskerSensorArray": {
+      "title": "Underwater Robot Environmental Perception System Based on Bionic Whisker Sensor Array",
+      "journal": "Journal of Sensor Technology",
+      "authors": ["Zhaoyang Mu", "Qiang Wang"],
+      "description": "Developed an underwater robot environmental perception system based on bionic whisker sensor array, simulating the perception mechanism of fish lateral line system to improve underwater environmental perception capabilities."
+    },
+    "whiskerSensor": {
+      "title": "Design and Optimization of High-Sensitivity Bionic Whisker Sensor",
+      "journal": "Nano Energy",
+      "authors": ["Zhaoyang Mu", "Hua Chen"],
+      "description": "Designed a high-sensitivity bionic whisker sensor capable of detecting minute fluid disturbances, providing precise environmental perception capabilities for underwater robots."
+    },
+    "sparseToDense": {
+      "title": "Transformer-based Sparse-to-Dense Flow Field Reconstruction Method",
+      "journal": "Journal of Computational Physics",
+      "authors": ["Zhaoyang Mu", "Lei Zhao"],
+      "description": "Proposed a Transformer-based method for reconstructing dense flow fields from sparse sensor data, capable of reconstructing complete flow field information from limited sensor data."
+    },
+    "data": {
+      "publication1": {
+        "title": "DamFormer: A Transformer-based Model for Dam-break Flow Prediction with Cross-geometry Generalization",
+        "authors": "Zhaoyang Mu, Supervisor Name, Collaborator",
+        "journal": "Physics of Fluids",
+        "abstract": "This paper proposes the DamFormer model based on Transformer architecture for cross-geometric boundary prediction of dam-break flow fields. The model can achieve high-precision flow field prediction under different geometric configurations, providing new technical means for dam-break disaster assessment. Construct multi-geometric boundary datasets, achieve cross-geometric zero-shot prediction, and solve the problem of high computational cost of traditional CFD simulation.",
+        "keywords": ["Transformer", "Dam-break", "CFD", "Deep Learning", "Cross-geometry", "Physics of Fluids"]
+      },
+      "publication2": {
+        "title": "Sparse→Dense Transformer: Sparse to Dense Field Reconstruction",
+        "authors": "Zhaoyang Mu, Research Collaborator",
+        "journal": "Physics of Fluids",
+        "abstract": "For CFD/environmental flow, sparse sensing reconstructs high-resolution spatio-temporal fields. Based on Transformer architecture to achieve intelligent reconstruction from sparse observations to dense fields, providing an efficient flow field reconstruction method.",
+        "keywords": ["Transformer", "Neural Operator", "Field Reconstruction", "CFD", "Environmental Flow"]
+      },
+      "publication3": {
+        "title": "CFD-FSI Analysis of Bionic Undulating Fin Propulsion System",
+        "authors": "Zhaoyang Mu, Westlake University Research Team",
+        "journal": "International Conference on Robotics and Automation (ICRA)",
+        "abstract": "Westlake University i⁴-FSI Laboratory project. Through Star-CCM+ CFD/FSI coupled simulation analysis of bionic undulating fin propulsion system, Java Macro automated parameter scanning, exploring bionic propulsion mechanisms.",
+        "keywords": ["Star-CCM+", "CFD-FSI", "Bionic Propulsion", "Java Macro", "Westlake University"]
+      },
+      "patent1": {
+        "title": "A Self-reconfigurable Robot System Based on Modular Design",
+        "authors": "Zhaoyang Mu, Invention Team",
+        "journal": "Chinese Invention Patent",
+        "abstract": "This invention discloses a self-reconfigurable cubic robot system Rs-ModCubes based on modular design, with autonomous reconfiguration capability and multiple motion modes, suitable for robot applications in complex environments.",
+        "keywords": ["Modular Robot", "Self-reconfiguration", "Cubic Structure", "Robot System"]
+      },
+      "patent2": {
+        "title": "Underwater Robot Bionic Perception Device and Its Perception Method",
+        "authors": "Zhaoyang Mu, Patent Team",
+        "journal": "Chinese Invention Patent",
+        "abstract": "This invention provides an underwater robot bionic perception device, based on TENG technology to achieve sensitive detection of water flow changes, combined with artificial lateral line structure to improve perception accuracy.",
+        "keywords": ["Underwater Robot", "TENG", "Bionic Perception", "Artificial Lateral Line"]
+      },
+      "patent3": {
+        "title": "Fan Array Wind Tunnel Experimental Platform Control System",
+        "authors": "Zhaoyang Mu, Development Team",
+        "journal": "Chinese Utility Model Patent",
+        "abstract": "Modular 2.5m×2.5m fan array, STM32 multi-board PWM/TACH closed-loop control, VLAN/DHCP network management. Experimental platform for flow field control and test verification.",
+        "keywords": ["Fan Array", "STM32", "PWM/TACH", "VLAN", "Experimental Platform"]
+      },
+      "papers": {
+        "damformer": {
+          "title": "DamFormer: A Transformer-based Neural Operator for Dam-break Flow Prediction",
+          "journal": "Physics of Fluids",
+          "authors": ["Zhaoyang Mu", "Wei Zhang"],
+          "description": "Proposed a Transformer-based neural operator DamFormer for predicting dam-break flows. This method can handle fluid dynamics problems under different geometric boundary conditions and achieve cross-geometric generalization capabilities."
+        },
+        "rsModCubes": {
+          "title": "Design of Reconfigurable Robot System Based on Improved Modular Cubes",
+          "journal": "Robotics Technology and Applications",
+          "authors": ["Zhaoyang Mu", "Ming Li"],
+          "description": "Designed a reconfigurable robot system based on improved modular cubes with good reconfigurability and adaptability, capable of autonomously reconfiguring morphology according to task requirements."
+        },
+        "whiskerSensorArray": {
+          "title": "Underwater Robot Environmental Perception System Based on Bionic Whisker Sensor Array",
+          "journal": "Journal of Sensor Technology",
+          "authors": ["Zhaoyang Mu", "Qiang Wang"],
+          "description": "Developed an underwater robot environmental perception system based on bionic whisker sensor array, simulating the perception mechanism of fish lateral line system to improve underwater environmental perception capabilities."
+        },
+        "whiskerSensor": {
+          "title": "Design and Optimization of High-Sensitivity Bionic Whisker Sensor",
+          "journal": "Nano Energy",
+          "authors": ["Zhaoyang Mu", "Hua Chen"],
+          "description": "Designed a high-sensitivity bionic whisker sensor capable of detecting minute fluid disturbances, providing precise environmental perception capabilities for underwater robots."
+        },
+        "sparseToDense": {
+          "title": "Transformer-based Sparse-to-Dense Flow Field Reconstruction",
+          "journal": "Journal of Computational Physics",
+          "authors": ["Zhaoyang Mu", "Lei Zhao"],
+          "description": "Proposed a Transformer-based method for reconstructing dense flow fields from sparse sensor data, capable of reconstructing complete flow field information from limited sensor data."
+        }
+      },
+      "patents": {
+        "title": "Patents",
+        "underwaterNavigation": {
+          "title": "Underwater Navigation Device and Method Based on Bionic Perception",
+          "applicant": "Dalian University of Technology",
+          "description": "This invention discloses an underwater navigation device and method based on bionic perception, achieving precise underwater environmental perception and navigation by simulating fish lateral line systems."
+        },
+        "vectorThruster": {
+          "title": "Vector Thruster and Its Control Method",
+          "applicant": "Dalian University of Technology",
+          "description": "This invention relates to a vector thruster and its control method, capable of achieving omnidirectional thrust control and improving the maneuverability of underwater robots."
+        }
+      },
+      "awards": {
+        "title": "Awards",
+        "nationalScholarship": {
+          "title": "National Scholarship",
+          "organization": "Ministry of Education of China",
+          "description": "Awarded for outstanding academic performance and research achievements in the field of robotics and artificial intelligence."
+        },
+        "excellentGraduate": {
+          "title": "Outstanding Graduate",
+          "organization": "Dalian University of Technology",
+          "description": "Recognized as an outstanding graduate for exceptional academic performance and research contributions."
+        },
+        "innovationCompetition": {
+          "title": "First Prize in National Innovation Competition",
+          "organization": "Ministry of Education of China",
+          "description": "Won first prize in the national innovation competition for the bionic underwater robot project."
+        }
       }
     }
   },
