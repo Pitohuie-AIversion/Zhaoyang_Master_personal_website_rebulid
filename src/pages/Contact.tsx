@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { useTranslation } from '../components/TranslationProvider';
 import { Mail, Phone, MapPin, Github, Linkedin, Twitter, Send, CheckCircle, XCircle, Loader, Building, Clock, DollarSign, AlertCircle, ExternalLink, Code, Briefcase, GraduationCap, Users } from 'lucide-react';
 import { ContactSEO } from '../components/SEOOptimization';
@@ -37,7 +37,10 @@ export default function Contact() {
   const { isMobile } = useResponsive();
 
   const phoneDisplay = t('contact.info.phone');
-  const phoneHref = phoneDisplay.replace(/[^\d+]/g, '');
+  const phoneHref = useMemo(
+    () => phoneDisplay.replace(/[^\d+]/g, ''),
+    [phoneDisplay]
+  );
   
   // 动态生成社交媒体链接
   const socialLinks = [
