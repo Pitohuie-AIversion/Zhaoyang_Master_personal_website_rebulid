@@ -36,8 +36,8 @@ export default function Contact() {
   const { t } = useTranslation();
   const { isMobile } = useResponsive();
 
-  const phoneNumber = t('contact.info.phone');
-  const phoneHref = phoneNumber.replace(/[^\d+]/g, '');
+  const phoneDisplay = t('contact.info.phone');
+  const phoneHref = phoneDisplay.replace(/[^\d+]/g, '');
   
   // 动态生成社交媒体链接
   const socialLinks = [
@@ -310,7 +310,7 @@ export default function Contact() {
                       href={`tel:${phoneHref}`}
                       className="text-sm sm:text-sm text-secondary-dark hover:text-blue-600 dark:hover:text-blue-400 theme-transition leading-relaxed underline-offset-2 hover:underline"
                     >
-                      {phoneNumber}
+                      {phoneDisplay}
                     </a>
                   </div>
                 </div>
