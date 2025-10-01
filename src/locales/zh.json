@@ -266,149 +266,6 @@
         }
       }
     },
-    "publications": {
-      "title": "学术成果",
-      "description": "我的研究成果和学术贡献",
-      "items": "个成果",
-      "stats": {
-        "total": "总计",
-        "published": "已发表",
-        "citations": "引用数",
-        "patents": "专利"
-      },
-      "search": {
-        "placeholder": "搜索论文、专利..."
-      },
-      "filters": {
-        "type": "类型",
-        "status": "状态",
-        "year": "年份",
-        "all": "全部"
-      },
-      "types": {
-        "journal": "期刊论文",
-        "conference": "会议论文",
-        "patent": "专利",
-        "invention": "发明专利",
-        "utility": "实用新型",
-        "design": "外观设计"
-      },
-      "status": {
-        "published": "已发表",
-        "accepted": "已接收",
-        "underReview": "审稿中",
-        "inPreparation": "准备中",
-        "granted": "已授权",
-        "pending": "审查中",
-        "unknown": "未知"
-      },
-      "sort": {
-        "title": "标题",
-        "year": "年份",
-        "citations": "引用数",
-        "authors": "作者",
-        "journal": "期刊"
-      },
-      "citations": "引用",
-      "modal": {
-        "authors": "作者",
-        "year": "年份",
-        "doi": "DOI",
-        "citationsCount": "引用次数",
-        "abstract": "摘要",
-        "keywords": "关键词",
-        "journal": "期刊",
-        "publishYear": "发表年份",
-        "patentNumber": "专利号",
-        "applicant": "申请人",
-        "publicDate": "公开日期",
-        "organization": "颁发机构",
-        "awardDate": "获奖日期",
-        "certificateNumber": "证书编号",
-        "publicationDetail": "论文详情",
-        "patentDetail": "专利详情",
-        "awardDetail": "奖项详情"
-      },
-      "levels": {
-        "national": "国家级",
-        "provincial": "省级",
-        "university": "校级"
-      },
-      "damformer": {
-        "title": "DamFormer: 基于Transformer的溃坝流动预测神经算子",
-        "journal": "Physics of Fluids",
-        "authors": ["牟昭阳", "张伟"],
-        "description": "提出了一种基于Transformer架构的神经算子DamFormer，用于预测溃坝流动。该方法能够处理不同几何边界条件下的流体动力学问题，实现了跨几何泛化能力。"
-      },
-      "rsModCubes": {
-        "title": "基于改进模块化立方体的重构机器人系统设计",
-        "journal": "机器人技术与应用",
-        "authors": ["牟昭阳", "李明"],
-        "description": "设计了一种基于改进模块化立方体的重构机器人系统，具有良好的可重构性和适应性，能够根据任务需求自主重构形态。"
-      },
-      "whiskerSensorArray": {
-        "title": "基于仿生触须传感器阵列的水下机器人环境感知系统",
-        "journal": "传感器技术学报",
-        "authors": ["牟昭阳", "王强"],
-        "description": "开发了一种基于仿生触须传感器阵列的水下机器人环境感知系统，模拟鱼类侧线系统的感知机制，提高了水下环境的感知能力。"
-      },
-      "whiskerSensor": {
-        "title": "高灵敏度仿生触须传感器的设计与优化",
-        "journal": "Nano Energy",
-        "authors": ["牟昭阳", "陈华"],
-        "description": "设计了一种高灵敏度的仿生触须传感器，能够检测微小的流体扰动，为水下机器人提供精确的环境感知能力。"
-      },
-      "sparseToDense": {
-        "title": "基于Transformer的稀疏到稠密流场重构方法",
-        "journal": "计算物理学报",
-        "authors": ["牟昭阳", "赵磊"],
-        "description": "提出了一种基于Transformer的稀疏传感器数据到稠密流场的重构方法，能够从有限的传感器数据中重构完整的流场信息。"
-      },
-      "data": {
-        "publication1": {
-          "title": "DamFormer: A Transformer-based Model for Dam-break Flow Prediction with Cross-geometry Generalization",
-          "authors": "牟昭阳, 导师姓名, 合作者",
-          "journal": "Physics of Fluids",
-          "abstract": "本文提出了基于Transformer架构的DamFormer模型，用于溃坝流场的跨几何边界预测。该模型能够在不同几何配置下实现高精度的流场预测，为溃坝灾害评估提供了新的技术手段。构建多几何边界数据集，实现跨几何零样本预测，解决传统CFD仿真计算成本高的问题。",
-          "keywords": ["Transformer", "Dam-break", "CFD", "Deep Learning", "Cross-geometry", "Physics of Fluids"]
-        },
-        "publication2": {
-          "title": "Sparse→Dense Transformer: 稀疏到稠密场重建",
-          "authors": "牟昭阳, 合作研究者",
-          "journal": "Physics of Fluids",
-          "abstract": "面向CFD/环境流，稀疏传感重建高分辨率时空场。基于Transformer架构实现从稀疏观测到稠密场的智能重建，提供了一种高效的流场重建方法。",
-          "keywords": ["Transformer", "Neural Operator", "Field Reconstruction", "CFD", "Environmental Flow"]
-        },
-        "publication3": {
-          "title": "CFD-FSI Analysis of Bionic Undulating Fin Propulsion System",
-          "authors": "牟昭阳, 西湖大学研究团队",
-          "journal": "International Conference on Robotics and Automation (ICRA)",
-          "abstract": "西湖大学i⁴-FSI实验室项目。通过Star-CCM+ CFD/FSI耦合仿真分析仿生波动鳍推进系统，Java Macro自动化参数扫描，探索仿生推进机理。",
-          "keywords": ["Star-CCM+", "CFD-FSI", "Bionic Propulsion", "Java Macro", "Westlake University"]
-        },
-        "patent1": {
-          "title": "一种基于模块化设计的自重构机器人系统",
-          "authors": "牟昭阳, 发明团队",
-          "journal": "中国发明专利",
-          "abstract": "本发明公开了一种基于模块化设计的自重构立方体机器人系统Rs-ModCubes，具备自主重构能力和多种运动模式，适用于复杂环境下的机器人应用。",
-          "keywords": ["模块化机器人", "自重构", "立方体结构", "机器人系统"]
-        },
-        "patent2": {
-          "title": "水下机器人仿生感知装置及其感知方法",
-          "authors": "牟昭阳, 专利团队",
-          "journal": "中国发明专利",
-          "abstract": "本发明提供了一种水下机器人仿生感知装置，基于TENG技术实现对水流变化的敏感检测，结合人工侧线结构提高感知精度。",
-          "keywords": ["水下机器人", "TENG", "仿生感知", "人工侧线"]
-        },
-        "patent3": {
-          "title": "风扇阵列风洞实验平台控制系统",
-          "authors": "牟昭阳, 研发团队",
-          "journal": "中国实用新型专利",
-          "abstract": "模块化2.5m×2.5m风扇阵列，STM32多板PWM/TACH闭环控制，VLAN/DHCP网络管理。用于流场控制和测试验证的实验平台。",
-          "keywords": ["风扇阵列", "STM32", "PWM/TACH", "VLAN", "实验平台"]
-        }
-      }
-     },
      "patents": {
       "title": "专利申请",
       "underwaterNavigation": {
@@ -766,6 +623,149 @@
       "csdn": "CSDN",
       "scholar": "谷歌学术"
     }
+  },
+  "publications": {
+      "title": "学术成果",
+      "description": "我的研究成果和学术贡献",
+      "items": "个成果",
+      "stats": {
+        "total": "总计",
+        "published": "已发表",
+        "citations": "引用数",
+        "patents": "专利"
+      },
+      "search": {
+        "placeholder": "搜索论文、专利..."
+      },
+      "filters": {
+        "type": "类型",
+        "status": "状态",
+        "year": "年份",
+        "all": "全部"
+      },
+      "types": {
+        "journal": "期刊论文",
+        "conference": "会议论文",
+        "patent": "专利",
+        "invention": "发明专利",
+        "utility": "实用新型",
+        "design": "外观设计"
+      },
+      "status": {
+        "published": "已发表",
+        "accepted": "已接收",
+        "underReview": "审稿中",
+        "inPreparation": "准备中",
+        "granted": "已授权",
+        "pending": "审查中",
+        "unknown": "未知"
+      },
+      "sort": {
+        "title": "标题",
+        "year": "年份",
+        "citations": "引用数",
+        "authors": "作者",
+        "journal": "期刊"
+      },
+      "citations": "引用",
+      "modal": {
+        "authors": "作者",
+        "year": "年份",
+        "doi": "DOI",
+        "citationsCount": "引用次数",
+        "abstract": "摘要",
+        "keywords": "关键词",
+        "journal": "期刊",
+        "publishYear": "发表年份",
+        "patentNumber": "专利号",
+        "applicant": "申请人",
+        "publicDate": "公开日期",
+        "organization": "颁发机构",
+        "awardDate": "获奖日期",
+        "certificateNumber": "证书编号",
+        "publicationDetail": "论文详情",
+        "patentDetail": "专利详情",
+        "awardDetail": "奖项详情"
+      },
+      "levels": {
+        "national": "国家级",
+        "provincial": "省级",
+        "university": "校级"
+      },
+      "damformer": {
+        "title": "DamFormer: 基于Transformer的溃坝流动预测神经算子",
+        "journal": "Physics of Fluids",
+        "authors": ["牟昭阳", "张伟"],
+        "description": "提出了一种基于Transformer架构的神经算子DamFormer，用于预测溃坝流动。该方法能够处理不同几何边界条件下的流体动力学问题，实现了跨几何泛化能力。"
+      },
+      "rsModCubes": {
+        "title": "基于改进模块化立方体的重构机器人系统设计",
+        "journal": "机器人技术与应用",
+        "authors": ["牟昭阳", "李明"],
+        "description": "设计了一种基于改进模块化立方体的重构机器人系统，具有良好的可重构性和适应性，能够根据任务需求自主重构形态。"
+      },
+      "whiskerSensorArray": {
+        "title": "基于仿生触须传感器阵列的水下机器人环境感知系统",
+        "journal": "传感器技术学报",
+        "authors": ["牟昭阳", "王强"],
+        "description": "开发了一种基于仿生触须传感器阵列的水下机器人环境感知系统，模拟鱼类侧线系统的感知机制，提高了水下环境的感知能力。"
+      },
+      "whiskerSensor": {
+        "title": "高灵敏度仿生触须传感器的设计与优化",
+        "journal": "Nano Energy",
+        "authors": ["牟昭阳", "陈华"],
+        "description": "设计了一种高灵敏度的仿生触须传感器，能够检测微小的流体扰动，为水下机器人提供精确的环境感知能力。"
+      },
+      "sparseToDense": {
+        "title": "基于Transformer的稀疏到稠密流场重构方法",
+        "journal": "计算物理学报",
+        "authors": ["牟昭阳", "赵磊"],
+        "description": "提出了一种基于Transformer的稀疏传感器数据到稠密流场的重构方法，能够从有限的传感器数据中重构完整的流场信息。"
+      },
+      "data": {
+        "publication1": {
+          "title": "DamFormer: A Transformer-based Model for Dam-break Flow Prediction with Cross-geometry Generalization",
+          "authors": "牟昭阳, 导师姓名, 合作者",
+          "journal": "Physics of Fluids",
+          "abstract": "本文提出了基于Transformer架构的DamFormer模型，用于溃坝流场的跨几何边界预测。该模型能够在不同几何配置下实现高精度的流场预测，为溃坝灾害评估提供了新的技术手段。构建多几何边界数据集，实现跨几何零样本预测，解决传统CFD仿真计算成本高的问题。",
+          "keywords": ["Transformer", "Dam-break", "CFD", "Deep Learning", "Cross-geometry", "Physics of Fluids"]
+        },
+        "publication2": {
+          "title": "Sparse→Dense Transformer: 稀疏到稠密场重建",
+          "authors": "牟昭阳, 合作研究者",
+          "journal": "Physics of Fluids",
+          "abstract": "面向CFD/环境流，稀疏传感重建高分辨率时空场。基于Transformer架构实现从稀疏观测到稠密场的智能重建，提供了一种高效的流场重建方法。",
+          "keywords": ["Transformer", "Neural Operator", "Field Reconstruction", "CFD", "Environmental Flow"]
+        },
+        "publication3": {
+          "title": "CFD-FSI Analysis of Bionic Undulating Fin Propulsion System",
+          "authors": "牟昭阳, 西湖大学研究团队",
+          "journal": "International Conference on Robotics and Automation (ICRA)",
+          "abstract": "西湖大学i⁴-FSI实验室项目。通过Star-CCM+ CFD/FSI耦合仿真分析仿生波动鳍推进系统，Java Macro自动化参数扫描，探索仿生推进机理。",
+          "keywords": ["Star-CCM+", "CFD-FSI", "Bionic Propulsion", "Java Macro", "Westlake University"]
+        },
+        "patent1": {
+          "title": "一种基于模块化设计的自重构机器人系统",
+          "authors": "牟昭阳, 发明团队",
+          "journal": "中国发明专利",
+          "abstract": "本发明公开了一种基于模块化设计的自重构立方体机器人系统Rs-ModCubes，具备自主重构能力和多种运动模式，适用于复杂环境下的机器人应用。",
+          "keywords": ["模块化机器人", "自重构", "立方体结构", "机器人系统"]
+        },
+        "patent2": {
+          "title": "水下机器人仿生感知装置及其感知方法",
+          "authors": "牟昭阳, 专利团队",
+          "journal": "中国发明专利",
+          "abstract": "本发明提供了一种水下机器人仿生感知装置，基于TENG技术实现对水流变化的敏感检测，结合人工侧线结构提高感知精度。",
+          "keywords": ["水下机器人", "TENG", "仿生感知", "人工侧线"]
+        },
+        "patent3": {
+          "title": "风扇阵列风洞实验平台控制系统",
+          "authors": "牟昭阳, 研发团队",
+          "journal": "中国实用新型专利",
+          "abstract": "模块化2.5m×2.5m风扇阵列，STM32多板PWM/TACH闭环控制，VLAN/DHCP网络管理。用于流场控制和测试验证的实验平台。",
+          "keywords": ["风扇阵列", "STM32", "PWM/TACH", "VLAN", "实验平台"]
+        }
+      }
   },
   "projects": {
     "title": "项目展示",
