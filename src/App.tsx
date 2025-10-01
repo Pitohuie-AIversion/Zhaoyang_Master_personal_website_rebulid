@@ -8,6 +8,7 @@ import { ErrorBoundary } from './components/ErrorBoundary';
 import { LazyAnimatePresenceComponent, SmartPageTransition } from './components/PageTransitions';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import AnimatedBackground from './components/AnimatedBackground';
 // import HeaderASCII from './components/HeaderASCII'; // 已移动到 Navbar 中
 import { AccessibilityManager, AccessibilityToolbar } from './components/AccessibilityEnhancements';
 import { ThemeTransition } from './components/DarkModeProvider';
@@ -101,7 +102,10 @@ function App() {
           <GlobalOptimizationManager>
           <AccessibilityManager>
             <ThemeTransition>
-              <div className="min-h-screen bg-primary-dark theme-transition" id="main-content">
+              <div className="min-h-screen relative theme-transition" id="main-content">
+                {/* 动态背景 */}
+                <AnimatedBackground />
+                
                 {/* 跳转链接 */}
                 <a href="#main-content" className="skip-link">
                   跳转到主要内容

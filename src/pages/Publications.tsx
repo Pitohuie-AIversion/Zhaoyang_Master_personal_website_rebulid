@@ -215,7 +215,7 @@ export default function Publications() {
   };
 
   return (
-    <div className="min-h-screen bg-primary-dark theme-transition">
+    <div className="min-h-screen relative theme-transition">
       <div className="max-w-7xl mx-auto px-6" style={{ paddingTop: isMobile ? '120px' : isTablet ? '140px' : '160px', paddingBottom: '80px' }}>
         <SimpleMotion
           initial={{ opacity: 0, y: 20 }}

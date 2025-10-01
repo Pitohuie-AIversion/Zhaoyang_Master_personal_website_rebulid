@@ -296,7 +296,7 @@ function Skills() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 theme-transition">
+    <div className="min-h-screen relative theme-transition">
       <div className="container mx-auto px-4" style={{ paddingTop: isMobile ? '120px' : isTablet ? '140px' : '160px', paddingBottom: '80px' }}>
         {/* 页面标题 */}
         <SimpleMotion

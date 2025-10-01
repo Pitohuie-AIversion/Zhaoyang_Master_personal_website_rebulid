@@ -138,7 +138,7 @@ function Home() {
   }
 
   return (
-    <div className="min-h-screen bg-primary-dark theme-transition">
+    <div className="min-h-screen relative theme-transition">
       <HomeSEO />
       {/* Hero Section */}
       <section className="relative overflow-hidden pb-16 bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-blue-900 theme-transition" style={{ paddingTop: isMobile ? '120px' : isTablet ? '140px' : '160px' }}>

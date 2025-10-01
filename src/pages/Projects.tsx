@@ -212,7 +212,7 @@ export default function Projects() {
   }
 
   return (
-    <div className="min-h-screen bg-primary-dark theme-transition">
+    <div className="min-h-screen relative theme-transition">
 
       <ResponsiveContainer 
         maxWidth="xl" 

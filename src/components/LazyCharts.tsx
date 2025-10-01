@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 // 懒加载图表组件
 const LazyRadarChart = lazy(() => 
-  import('recharts/es6').then(module => ({
+  import('recharts').then(module => ({
     default: ({ data, ...props }: any) => {
       const { RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, ResponsiveContainer } = module;
       return (
@@ -28,7 +28,7 @@ const LazyRadarChart = lazy(() =>
 );
 
 const LazyBarChart = lazy(() => 
-  import('recharts/es6').then(module => ({
+  import('recharts').then(module => ({
     default: ({ data, ...props }: any) => {
       const { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } = module;
       return (

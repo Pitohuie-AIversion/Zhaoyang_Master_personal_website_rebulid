@@ -76,9 +76,9 @@ const ASCIIDemo: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 theme-transition">
+    <div className="min-h-screen relative theme-transition">
       {/* Header */}
-      <div className="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700 theme-transition">
+      <div className="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700 theme-transition mt-14">
         <ResponsiveContainer>
           <div className="flex items-center justify-between py-4">
             <div className="flex items-center gap-4">
