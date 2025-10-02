@@ -182,6 +182,15 @@
       "published": "已发表",
       "underReview": "审稿中"
     },
+    "publications": {
+      "title": "学术论文"
+    },
+    "patents": {
+      "title": "发明专利"
+    },
+    "awards": {
+      "title": "获奖荣誉"
+    },
     "academicAchievements": "学术成就",
     "totalCount": "共 {{count}} {{unit}}",
     "papers": "篇",

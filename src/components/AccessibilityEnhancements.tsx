@@ -251,17 +251,15 @@ export const AccessibilityButton: React.FC<{
   
   return (
     <div className={`relative ${className}`}>
-      <UnifiedButton
-        variant="ghost"
-        size="sm"
+      <button
         onClick={() => setIsOpen(!isOpen)}
         aria-label="可访问性设置"
         title="可访问性设置"
-        className="p-2 w-10 h-10 flex items-center justify-center"
+        className="relative p-2 w-10 h-10 rounded-lg bg-gray-200/80 dark:bg-gray-700/80 hover:bg-gray-300/80 dark:hover:bg-gray-600/80 backdrop-blur-sm border border-gray-300/20 dark:border-gray-600/20 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 flex items-center justify-center text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100"
       >
         <Eye className="w-5 h-5" />
         {showText && <span className="ml-2 text-sm">可访问性</span>}
-      </UnifiedButton>
+      </button>
       
       {isOpen && (
         <div className="absolute top-12 right-0 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 shadow-xl min-w-80 z-50">

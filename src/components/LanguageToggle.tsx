@@ -28,7 +28,7 @@ export const LanguageToggle: React.FC<LanguageToggleProps> = ({
       text: 'ml-2 text-sm font-medium'
     },
     compact: {
-      button: 'p-2 w-10 h-10 rounded-md bg-white/5 hover:bg-white/15 backdrop-blur-sm border border-white/10 transition-all duration-300',
+      button: 'p-2 w-10 h-10 rounded-lg bg-gray-200/80 dark:bg-gray-700/80 hover:bg-gray-300/80 dark:hover:bg-gray-600/80 backdrop-blur-sm border border-gray-300/20 dark:border-gray-600/20 transition-all duration-300',
       icon: 'w-4 h-4',
       text: 'ml-1 text-xs'
     },
@@ -49,7 +49,7 @@ export const LanguageToggle: React.FC<LanguageToggleProps> = ({
         ${currentVariant.button}
         ${className}
         flex items-center justify-center
-        text-white/90 hover:text-white
+        text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100
         disabled:opacity-50 disabled:cursor-not-allowed
         relative overflow-hidden
       `}

@@ -186,6 +186,15 @@
       "published": "Published",
       "underReview": "Under Review"
     },
+    "publications": {
+      "title": "Publications"
+    },
+    "patents": {
+      "title": "Patents"
+    },
+    "awards": {
+      "title": "Awards"
+    },
     "academicAchievements": "Academic Achievements",
     "totalCount": "Total {{count}} {{unit}}",
     "papers": "papers",

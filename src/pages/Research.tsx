@@ -53,60 +53,80 @@ function Research() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   // 获取翻译后的论文数据
-  const getPublications = (): Publication[] => [
-    {
-      id: '1',
-      title: t('research.publications.damformer.title'),
-      journal: t('research.publications.damformer.journal'),
-      year: 2025,
-      status: 'published',
-      authors: [t('research.publications.damformer.authors.0'), t('research.publications.damformer.authors.1')],
-      description: t('research.publications.damformer.description'),
-      doi: '10.1063/5.0187644',
-      type: 'journal'
-    },
-    {
-      id: '2',
-      title: t('research.publications.rsModCubes.title'),
-      journal: t('research.publications.rsModCubes.journal'),
-      year: 2025,
-      status: 'published',
-      authors: [t('research.publications.rsModCubes.authors.0'), t('research.publications.rsModCubes.authors.1')],
-      description: t('research.publications.rsModCubes.description'),
-      type: 'journal'
-    },
-    {
-      id: '3',
-      title: t('research.publications.whiskerSensorArray.title'),
-      journal: t('research.publications.whiskerSensorArray.journal'),
-      year: 2025,
-      status: 'published',
-      authors: [t('research.publications.whiskerSensorArray.authors.0'), t('research.publications.whiskerSensorArray.authors.1')],
-      description: t('research.publications.whiskerSensorArray.description'),
-      type: 'journal'
-    },
-    {
-      id: '4',
-      title: t('research.publications.whiskerSensor.title'),
-      journal: t('research.publications.whiskerSensor.journal'),
-      year: 2024,
-      status: 'published',
-      authors: [t('research.publications.whiskerSensor.authors.0'), t('research.publications.whiskerSensor.authors.1')],
-      description: t('research.publications.whiskerSensor.description'),
-      doi: '10.1016/j.nanoen.2024.110011',
-      type: 'journal'
-    },
-    {
-      id: '5',
-      title: t('research.publications.sparseToDense.title'),
-      journal: t('research.publications.sparseToDense.journal'),
-      year: 2024,
-      status: 'under_review',
-      authors: [t('research.publications.sparseToDense.authors.0'), t('research.publications.sparseToDense.authors.1')],
-      description: t('research.publications.sparseToDense.description'),
-      type: 'journal'
-    }
-  ];
+  const getPublications = (): Publication[] => {
+    // 辅助函数：安全地获取作者数组
+    const getAuthors = (key: string): string[] => {
+      const authors = t(key);
+      if (Array.isArray(authors)) {
+        return authors;
+      }
+      // 如果是字符串，尝试解析为数组
+      if (typeof authors === 'string') {
+        try {
+          const parsed = JSON.parse(authors);
+          return Array.isArray(parsed) ? parsed : [authors];
+        } catch {
+          return [authors];
+        }
+      }
+      return [];
+    };
+
+    return [
+      {
+        id: '1',
+        title: t('publications.damformer.title'),
+        journal: t('publications.damformer.journal'),
+        year: 2025,
+        status: 'published',
+        authors: getAuthors('publications.damformer.authors'),
+        description: t('publications.damformer.description'),
+        doi: '10.1063/5.0187644',
+        type: 'journal'
+      },
+      {
+        id: '2',
+        title: t('publications.rsModCubes.title'),
+        journal: t('publications.rsModCubes.journal'),
+        year: 2025,
+        status: 'published',
+        authors: getAuthors('publications.rsModCubes.authors'),
+        description: t('publications.rsModCubes.description'),
+        type: 'journal'
+      },
+      {
+        id: '3',
+        title: t('publications.whiskerSensorArray.title'),
+        journal: t('publications.whiskerSensorArray.journal'),
+        year: 2025,
+        status: 'published',
+        authors: getAuthors('publications.whiskerSensorArray.authors'),
+        description: t('publications.whiskerSensorArray.description'),
+        type: 'journal'
+      },
+      {
+        id: '4',
+        title: t('publications.whiskerSensor.title'),
+        journal: t('publications.whiskerSensor.journal'),
+        year: 2024,
+        status: 'published',
+        authors: getAuthors('publications.whiskerSensor.authors'),
+        description: t('publications.whiskerSensor.description'),
+        doi: '10.1016/j.nanoen.2024.110011',
+        type: 'journal'
+      },
+      {
+        id: '5',
+        title: t('publications.sparseToDense.title'),
+        journal: t('publications.sparseToDense.journal'),
+        year: 2024,
+        status: 'under_review',
+        authors: getAuthors('publications.sparseToDense.authors'),
+        description: t('publications.sparseToDense.description'),
+        type: 'journal'
+      }
+    ];
+  };
 
   // 获取翻译后的专利数据
   const getPatents = (): Patent[] => [
