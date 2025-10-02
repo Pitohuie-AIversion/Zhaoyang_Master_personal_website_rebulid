@@ -459,9 +459,12 @@ const ZhaoyangASCIIRhythm: React.FC<ZhaoyangASCIIRhythmProps> = ({
         </div>
       )}
 
-      <div className="rhythm-info">
-        主题: {theme} | 律动: {rhythmType} | 强度: {intensity}
-      </div>
+      {/* 开发环境下的调试信息 - 生产环境中隐藏 */}
+      {process.env.NODE_ENV === 'development' && (
+        <div className="rhythm-info">
+          主题: {theme} | 律动: {rhythmType} | 强度: {intensity}
+        </div>
+      )}
     </div>
   );
 };

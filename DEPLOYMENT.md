@@ -101,3 +101,55 @@
 3. 等待部署完成
 
 部署成功后，你的个人网站就可以通过 Vercel 提供的 URL 访问了！
+
+---
+
+## 开发记录 & 更新日志
+
+### 2025-01-27
+
+#### 🐛 Bug 修复
+
+**1. Research页面翻译键显示问题**
+- **问题描述**: Research页面中的"学术成果"、"专利"、"获奖"三个标题无法正确显示，控制台报错缺少翻译键
+- **问题原因**: `Research.tsx` 中使用了 `t('research.publications.title')`、`t('research.patents.title')`、`t('research.awards.title')` 翻译键，但在 `zh.json` 和 `en.json` 中缺少对应的键值对
+- **解决方案**: 
+  - 在 `src/locales/zh.json` 的 `research` 对象中添加了缺失的翻译键
+  - 在 `src/locales/en.json` 的 `research` 对象中添加了对应的英文翻译
+  - 确保中英文翻译键名称一致，内容准确
+- **影响文件**: 
+  - `src/locales/zh.json`
+  - `src/locales/en.json`
+- **验证结果**: ✅ Research页面标题正常显示，语言切换功能正常
+
+**2. 首页头像图片加载失败问题**
+- **问题描述**: 首页个人头像图片无法加载，浏览器报404错误
+- **问题原因**: `Home.tsx` 中使用了错误的绝对路径 `"/src/assets/me_Nero_AI_Image_Upscaler_Photo_Face.jpeg"`，Vite无法正确解析此路径
+- **解决方案**:
+  - 在 `Home.tsx` 中添加正确的图片导入语句：`import profileImage from '../assets/me_Nero_AI_Image_Upscaler_Photo_Face.jpeg';`
+  - 将 `LazyImage` 组件的 `src` 属性从硬编码路径改为导入的变量：`src={profileImage}`
+- **影响文件**: `src/pages/Home.tsx`
+- **验证结果**: ✅ 头像图片正常显示，在开发和生产环境中都能正确加载
+
+**3. 网站右下角"trae"调试信息显示问题**
+- **问题描述**: 网站右下角显示调试信息"主题: matrix | 律动: heartbeat | 强度: medium"，影响用户体验
+- **问题原因**: `ZhaoyangASCIIRhythm.tsx` 组件中的 `.rhythm-info` 调试信息区域在所有环境下都会显示
+- **解决方案**:
+  - 使用环境变量判断，仅在开发环境下显示调试信息
+  - 添加条件渲染：`{process.env.NODE_ENV === 'development' && (...调试信息...)}`
+  - 保留开发时的调试功能，同时确保生产环境的界面整洁
+- **影响文件**: `src/components/ZhaoyangASCIIRhythm.tsx`
+- **验证结果**: ✅ 生产环境下不再显示调试信息，开发环境保留调试功能
+
+#### 📋 技术改进
+
+- **多语言支持**: 完善了翻译键的管理，确保所有界面文案都通过翻译系统获取
+- **资源管理**: 改进了静态资源的导入方式，使用ES6模块导入替代硬编码路径
+- **环境区分**: 增强了开发和生产环境的区分，优化用户体验
+
+#### 🔍 质量保证
+
+- 所有修复都经过了本地测试验证
+- 确保修改不影响现有功能
+- 保持代码的可维护性和可读性
+- 遵循项目的编码规范和最佳实践

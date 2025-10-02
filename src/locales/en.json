@@ -330,55 +330,55 @@
     "patents": {
       "underwaterNavigation": {
         "title": "Underwater Navigation Device and Method Based on Bionic Perception",
-        "applicant": "Dalian University of Technology",
+        "applicant": "Westlake University",
         "description": "This invention discloses an underwater navigation device and method based on bionic perception, achieving precise underwater environmental perception and navigation by simulating fish lateral line systems."
       },
       "vectorThruster": {
         "title": "Vector Thruster and Its Control Method",
-        "applicant": "Dalian University of Technology",
+        "applicant": "Westlake University",
         "description": "This invention relates to a vector thruster and its control method, capable of achieving omnidirectional thrust control and improving the maneuverability of underwater robots."
       },
       "undulatingFin": {
         "title": "Bionic Undulating Fin Propulsion Device",
-        "applicant": "Dalian University of Technology",
+        "applicant": "Westlake University",
         "description": "This invention discloses a bionic undulating fin propulsion device that simulates fish swimming patterns to achieve efficient underwater propulsion."
       },
       "flexibleFin": {
-        "title": "Flexible Bionic Fin and Its Drive System",
-        "applicant": "Dalian University of Technology",
-        "description": "This invention relates to a flexible bionic fin and its drive system, achieving bionic swimming propulsion through flexible materials and intelligent actuation."
+        "title": "Flexible Fin Underwater Robot with Embedded Multi-sensors and Its Operation Method",
+        "applicant": "Dalian Maritime University",
+        "description": "This invention relates to a flexible fin underwater robot with embedded multi-sensors and its operation method, achieving bionic swimming propulsion through flexible materials and intelligent actuation."
       },
       "smartShip": {
-        "title": "Intelligent Ship Autonomous Navigation System",
-        "applicant": "Dalian University of Technology",
-        "description": "This invention discloses an intelligent ship autonomous navigation system that integrates multiple sensors and intelligent algorithms to achieve autonomous navigation and obstacle avoidance for ships."
+        "title": "Ship with Intelligent Dynamic Sensing System",
+        "applicant": "Dalian Maritime University",
+        "description": "This invention discloses a ship with intelligent dynamic sensing system that integrates multiple sensors and intelligent algorithms to achieve autonomous navigation and obstacle avoidance for ships."
       },
       "mobileBuoy": {
-        "title": "Mobile Marine Buoy",
-        "applicant": "Dalian University of Technology",
-        "description": "This design relates to a mobile marine buoy with good stability and maneuverability, suitable for marine environment monitoring."
+        "title": "Mobile Buoy Robot",
+        "applicant": "Westlake University",
+        "description": "This design relates to a mobile buoy robot with good stability and maneuverability, suitable for marine environment monitoring."
       }
     },
     "awards": {
       "internetPlusGold": {
-        "title": "Gold Award in the 9th China International \\\"Internet+\\\" College Students Innovation and Entrepreneurship Competition",
+        "title": "Gold Award in the 8th China International \\\"Internet+\\\" College Students Innovation and Entrepreneurship Competition",
         "organization": "Ministry of Education",
-        "description": "Won the gold award in the 9th China International \\\"Internet+\\\" College Students Innovation and Entrepreneurship Competition with the \\\"Bionic Perception Underwater Robot\\\" project, demonstrating innovation capabilities in underwater robotics technology."
+        "description": "Won the gold award in the 8th China International \\\"Internet+\\\" College Students Innovation and Entrepreneurship Competition with the \\\"Kunpeng Technology - Leader in Underwater Hull Inspection Robots\\\" project, demonstrating innovation capabilities in underwater robotics technology."
       },
       "roboticsCompetition": {
-        "title": "First Prize in National College Student Robotics Competition",
+        "title": "First Prize in 2021 China Robot Conference (RoboCup China Open) Underwater Robot Underwater Cruise",
         "organization": "Chinese Association of Automation",
-        "description": "Won first prize in the National College Student Robotics Competition, demonstrating excellent skills in robot design and control."
+        "description": "Team: Dalian Maritime University \\\"DMU Mechanical Team 1\\\", won first prize in the 2021 China Robot Conference (RoboCup China Open) underwater robot underwater cruise project."
       },
       "mechanicalInnovation": {
-        "title": "Bronze Award in National College Student Mechanical Innovation Design Competition",
+        "title": "First Prize in China College Student Mechanical Engineering Innovation and Creativity Competition \\\"Mingshi Cup\\\" Micro-nano Sensing Technology and Intelligent Application Track",
         "organization": "Mechanical Engineering Teaching Steering Committee of Higher Education Institutions, Ministry of Education",
-        "description": "Won bronze award in the National College Student Mechanical Innovation Design Competition, reflecting capabilities in mechanical innovation design."
+        "description": "Competition work: \\\"Deep Blue Vision Fusion Underwater Robot\\\", Instructor: Si Yiran, Participating school: Dalian Maritime University."
       },
       "provincialMechanical": {
-        "title": "Bronze Award in Liaoning Province College Student Mechanical Innovation Design Competition",
+        "title": "First Prize in Liaoning Province College Student Mechanical Innovation Design Competition",
         "organization": "Liaoning Provincial Department of Education",
-        "description": "Won bronze award in the Liaoning Province College Student Mechanical Innovation Design Competition, demonstrating talent in mechanical design innovation."
+        "description": "Competition work: \\\"Deep Blue Vision Fusion Underwater Robot\\\", won first prize in the Liaoning Province College Student Mechanical Innovation Design Competition."
       }
     }
   },
@@ -451,9 +451,9 @@
       "university": "University Level"
     },
     "damformer": {
-      "title": "DamFormer: Transformer-based Dam-break Flow Prediction Neural Operator",
+      "title": "Generalizing morphologies in dam break simulations using transformer model",
       "journal": "Physics of Fluids",
-      "authors": ["Zhaoyang Mu", "Wei Zhang"],
+      "authors": ["Zhaoyang Mu", "Dixia Fan"],
       "description": "Proposed a Transformer-based neural operator DamFormer for predicting dam-break flows. This method can handle fluid dynamics problems under different geometric boundary conditions and achieve cross-geometric generalization capabilities."
     },
     "rsModCubes": {
@@ -697,17 +697,17 @@
       "items": {
         "master": {
           "degree": "Master of Engineering",
-          "major": "Naval Architecture and Ocean Engineering",
+          "major": "Artificial Intelligence",
           "school": "Dalian Maritime University",
-          "period": "2022-2025",
-          "description": "Focused on computational fluid dynamics and marine engineering numerical simulation research"
+          "period": "2023-2026",
+          "description": "Focused on interdisciplinary research in scientific computing, robotics, and artificial intelligence"
         },
         "bachelor": {
           "degree": "Bachelor of Engineering",
-          "major": "Mechanical Design, Manufacturing and Automation",
-          "school": "Dalian University of Technology",
-          "period": "2018-2022",
-          "description": "Gained solid engineering foundation and mechanical design capabilities"
+          "major": "Materials Science and Engineering",
+          "school": "Dalian Maritime University",
+          "period": "2019-2023",
+          "description": "Gained solid engineering foundation and materials science expertise"
         }
       }
     },
