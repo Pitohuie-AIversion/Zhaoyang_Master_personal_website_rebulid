@@ -15,6 +15,7 @@ import { useResponsive, ResponsiveText, ResponsiveImage, ResponsiveCard, Respons
 import { MobileButton } from '../components/ResponsiveContainer';
 import { useTranslation } from '../components/TranslationProvider';
 import { UnifiedButton } from '../components/UnifiedButton';
+import profileImage from '../assets/me_Nero_AI_Image_Upscaler_Photo_Face.jpeg';
 
 interface ResearchHighlight {
   id: string;
@@ -204,7 +205,7 @@ function Home() {
               className="relative"
             >
               <LazyImage
-                src="/src/assets/me_Nero_AI_Image_Upscaler_Photo_Face.jpeg"
+                src={profileImage}
                 alt="牟昭阳"
                 className="mx-auto rounded-lg border border-gray-200 w-48 h-48 md:w-60 md:h-60 lg:w-80 lg:h-80"
               />
