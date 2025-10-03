@@ -254,7 +254,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, items }
           <div className="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700">
             <div className="text-center text-sm text-gray-500 dark:text-gray-400">
               <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg mx-auto mb-2 flex items-center justify-center">
-                <span className="text-white font-bold text-sm">ZY</span>
+                <img src="/favicon.svg" alt="ZY Logo" className="w-full h-full object-contain" />
               </div>
               <p className="leading-relaxed">Zhaoyang Mu</p>
             </div>

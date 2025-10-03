@@ -76,7 +76,7 @@ export default function Navbar() {
             className="flex items-center space-x-2 group flex-shrink-0"
           >
             <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">ZY</span>
+              <img src="/favicon.svg" alt="ZY Logo" className="w-full h-full object-contain" />
             </div>
             {/* ASCII Logo for different screen sizes */}
             <div className="hidden lg:block">

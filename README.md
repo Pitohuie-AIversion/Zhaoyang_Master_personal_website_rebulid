@@ -1,8 +1,26 @@
-# React + TypeScript + Vite
+# 牟昭阳个人网站 | Zhaoyang Mu Personal Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+基于 React + TypeScript + Vite 构建的个人网站，展示个人简历、项目作品、学术成果等内容。
 
 **Last Updated**: 2025-01-27 - Auto-deployment test
+
+## 🌐 部署信息
+
+- **生产环境**: [https://zhaoyangmu.cloud](https://zhaoyangmu.cloud)
+- **绑定域名**: zhaoyangmu.cloud
+- **部署平台**: Vercel
+
+## 🚀 技术栈
+
+- **前端框架**: React 18 + TypeScript
+- **构建工具**: Vite 6
+- **样式方案**: Tailwind CSS
+- **动画库**: Framer Motion
+- **路由**: React Router DOM
+- **国际化**: 自定义 i18n 解决方案
+- **部署**: Vercel
+
+## 📦 开发配置
 
 Currently, two official plugins are available:
 

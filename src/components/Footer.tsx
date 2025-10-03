@@ -74,7 +74,7 @@ export default function Footer() {
           >
             <div className="flex items-center space-x-3 mb-6">
               <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm">ZY</span>
+                <img src="/favicon.svg" alt="ZY Logo" className="w-full h-full object-contain" />
               </div>
               <div>
                 <div className="text-2xl font-bold text-primary-dark theme-transition">{t('footer.personalInfo.name')}</div>
