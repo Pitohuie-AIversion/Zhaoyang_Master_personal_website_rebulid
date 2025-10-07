@@ -70,7 +70,7 @@
       "name": "Zhaoyang Mu",
       "nameEn": "Zhaoyang Mu",
       "title": "AI Master Student at Dalian Maritime University & Visiting Student at Westlake University",
-      "description": "Focused on the intersection of scientific computing and robotics, dedicated to Transformer/Neural Operator modeling of CFD spatiotemporal fields, advancing technological innovation and practical applications.",
+      "description": "Focused on the intersection of scientific computing and robotics, dedicated to Transformer/Neural Operator modeling of CFD spatiotemporal fields, advancing technological innovation and practical applications. Currently in Hangzhou conducting bionic undulating fin propulsion simulation research.",
       "tags": {
         "transformerNeuralOperator": "Transformer Neural Operator",
         "cfdSimulation": "CFD Simulation",
@@ -181,6 +181,8 @@
     "switchToAnalyticsView": "Switch to Analytics View",
     "switchToListView": "Switch to List View",
     "searchPlaceholder": "Search papers, patents, or awards...",
+    "noResults": "No results found",
+    "noResultsDesc": "Please try adjusting your search criteria or filters",
     "filterAll": "All",
     "filterPublications": "Publications",
     "filterPatents": "Patents",
@@ -197,6 +199,7 @@
       "published": "Published",
       "underReview": "Under Review"
     },
+    "education": "Education",
     "publications": {
       "title": "Publications"
     },
@@ -206,6 +209,70 @@
     "awards": {
       "title": "Awards"
     },
+    "academicAchievements": "Academic Achievements",
+    "totalCount": "Total {{count}} {{unit}}",
+    "papers": "papers",
+    "items": "items",
+    "authors": "Authors",
+    "applicant": "Applicant",
+    "areas": {
+      "scientificComputing": {
+        "title": "Scientific Computing",
+        "description": "Research in computational fluid dynamics, neural operators, and high-performance computing",
+        "keywords": ["CFD", "Neural Operator", "Transformer", "HPC"],
+        "data": {
+          "patent1": {
+            "title": "Underwater Robot Dynamic Environment Perception and Navigation Device",
+            "authors": "Zhaoyang Mu, Minyi Xu, et al.",
+            "journal": "Chinese Invention Patent",
+            "abstract": "A novel underwater robot system with dynamic environment perception and navigation capabilities based on bionic principles.",
+            "keywords": ["Underwater Robot", "Environment Perception", "Navigation", "Bionic"]
+          },
+          "patent2": {
+            "title": "Fan Array Wind Tunnel Control System",
+            "authors": "Zhaoyang Mu, et al.",
+            "journal": "Chinese Utility Model Patent",
+            "abstract": "Modular 2.5m×2.5m fan array with STM32 multi-board PWM/TACH closed-loop control and VLAN/DHCP network management.",
+            "keywords": ["Fan Array", "STM32", "PWM/TACH", "VLAN", "Experimental Platform"]
+          },
+          "patent3": {
+            "title": "Marine Observation Buoy Mechanical Structure",
+            "authors": "Zhaoyang Mu, et al.",
+            "journal": "Chinese Utility Model Patent",
+            "abstract": "Optimized mechanical structure design for marine observation buoy with enhanced sealing and corrosion resistance.",
+            "keywords": ["Marine Buoy", "Mechanical Design", "Sealing", "Ocean Engineering"]
+          },
+          "publication1": {
+            "title": "Generalizing morphologies in dam break simulations using transformer model",
+            "authors": "Zhaoyang Mu, Minyi Xu, et al.",
+            "journal": "Physics of Fluids 37(1):016612, 2025",
+            "abstract": "A novel Transformer-based neural operator for cross-geometric generalization in dam-break flow prediction.",
+            "keywords": ["Transformer", "Dam Break", "CFD", "Neural Operator"]
+          },
+          "publication2": {
+            "title": "Rs-ModCubes: Self-reconfigurable, scalable, modular cubic robots for underwater operations",
+            "authors": "Zhaoyang Mu, et al.",
+            "journal": "IEEE Robotics and Automation Letters, 2025",
+            "abstract": "Self-reconfigurable modular cubic robots designed for underwater operations with scalable architecture.",
+            "keywords": ["Modular Robots", "Underwater Operations", "Self-reconfiguration", "Scalable"]
+          },
+          "publication3": {
+            "title": "Sparse-to-Dense Flow Field Reconstruction using Transformer Neural Operator",
+            "authors": "Zhaoyang Mu, et al.",
+            "journal": "Under Review",
+            "abstract": "A Transformer-based approach for reconstructing dense flow fields from sparse sensor measurements.",
+            "keywords": ["Sparse Reconstruction", "Flow Field", "Transformer", "Neural Operator"]
+          }
+        },
+        "sparseToDense": {
+          "authors": "Zhaoyang Mu, et al.",
+          "journal": "Under Review"
+        }
+      }
+    }
+  },
+  "publications": {
+    "title": "Publications",
     "academicAchievements": "Academic Achievements",
     "totalCount": "Total {{count}} {{unit}}",
     "papers": "papers",
@@ -336,38 +403,63 @@
         }
       }
     },
-    "noResults": "No results found",
-    "noResultsDesc": "Please try adjusting your search terms or filters",
+
     "patents": {
       "underwaterNavigation": {
         "title": "Underwater Navigation Device and Method Based on Bionic Perception",
         "applicant": "Westlake University",
+        "number": "CN119509546A",
+        "status": "Published",
         "description": "This invention discloses an underwater navigation device and method based on bionic perception, achieving precise underwater environmental perception and navigation by simulating fish lateral line systems."
       },
       "vectorThruster": {
         "title": "Vector Thruster and Its Control Method",
         "applicant": "Westlake University",
+        "number": "CN119434765A",
+        "status": "Published",
         "description": "This invention relates to a vector thruster and its control method, capable of achieving omnidirectional thrust control and improving the maneuverability of underwater robots."
       },
       "undulatingFin": {
         "title": "Bionic Undulating Fin Propulsion Device",
         "applicant": "Westlake University",
+        "number": "CN119434766A",
+        "status": "Published",
         "description": "This invention discloses a bionic undulating fin propulsion device that simulates fish swimming patterns to achieve efficient underwater propulsion."
       },
       "flexibleFin": {
         "title": "Flexible Fin Underwater Robot with Embedded Multi-sensors and Its Operation Method",
         "applicant": "Dalian Maritime University",
+        "number": "CN117775366A",
+        "status": "Published",
         "description": "This invention relates to a flexible fin underwater robot with embedded multi-sensors and its operation method, achieving bionic swimming propulsion through flexible materials and intelligent actuation."
       },
       "smartShip": {
         "title": "Ship with Intelligent Dynamic Sensing System",
         "applicant": "Dalian Maritime University",
+        "number": "CN117775365A",
+        "status": "Published",
         "description": "This invention discloses a ship with intelligent dynamic sensing system that integrates multiple sensors and intelligent algorithms to achieve autonomous navigation and obstacle avoidance for ships."
       },
       "mobileBuoy": {
         "title": "Mobile Buoy Robot",
         "applicant": "Westlake University",
+        "number": "CN306962132S",
+        "status": "Granted",
         "description": "This design relates to a mobile buoy robot with good stability and maneuverability, suitable for marine environment monitoring."
+      },
+      "underwaterRobot": {
+        "title": "Underwater Robot",
+        "applicant": "Dalian Maritime University",
+        "number": "CN306962133S",
+        "status": "Granted",
+        "description": "This design relates to an underwater robot with streamlined shape and optimized propulsion system design."
+      },
+      "underwaterDetection": {
+        "title": "Underwater Detection Robot",
+        "applicant": "Dalian Maritime University",
+        "number": "CN306962134S",
+        "status": "Granted",
+        "description": "This design discloses an underwater detection robot specifically designed for underwater environment detection and monitoring tasks."
       }
     },
     "awards": {
@@ -694,6 +786,16 @@
         "wandbLogging": "Integrated W&B experiment management"
       }
     },
+    "bionicFin": {
+      "title": "Bionic Undulating Fin Propulsion Simulation",
+      "description": "CFD-FSI coupled simulation research of bionic propulsion systems based on fish swimming mechanisms. Conducted at Westlake University i⁴-FSI Laboratory, exploring the propulsion mechanisms and optimization design of bionic undulating fins to provide theoretical foundations for underwater robot propulsion systems.",
+      "highlights": {
+        "bionicMechanism": "Bionic design based on fish swimming mechanisms",
+        "cfdFsiCoupling": "CFD-FSI coupled simulation analysis",
+        "propulsionOptimization": "Propulsion efficiency optimization research",
+        "westlakeCollaboration": "Collaboration project with Westlake University i⁴-FSI Laboratory"
+      }
+    },
     "code": "View Code",
     "demo": "Live Demo",
     "highlights": "Project Highlights",
@@ -866,7 +968,7 @@
         },
         "stm32": {
           "description": "NUCLEO-F439ZI, PWM/TACH control",
-          "projects": ["Embedded Control Systems", "Sensor Interfaces"]
+          "projects": ["Fan Array Wind Tunnel Control System", "Embedded Control Systems", "Sensor Interfaces"]
         },
         "tplink": {
           "name": "TP-Link L3 Switch",
@@ -884,8 +986,12 @@
           "projects": ["Simulation Environment Deployment", "Microservice Architecture"]
         },
         "linux": {
-          "description": "System administration and scripting",
-          "projects": ["Server Operations", "Automation Scripts"]
+          "description": "System administration and scripting, SLURM job scheduling",
+          "projects": ["Server Operations", "HPC Cluster Management", "Automation Scripts"]
+        },
+        "cuda": {
+          "description": "GPU parallel computing, DDP/AMP acceleration",
+          "projects": ["Deep Learning Training Acceleration", "Scientific Computing Parallelization"]
         },
         "vscode": {
           "description": "Integrated development environment",
