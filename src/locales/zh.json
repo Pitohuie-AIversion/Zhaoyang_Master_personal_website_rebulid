@@ -69,8 +69,8 @@
       "greeting": "你好，我是",
       "name": "牟昭阳",
       "nameEn": "Zhaoyang Mu",
-      "title": "计算流体力学研究者 & 机器人技术专家",
-      "description": "专注于科学计算、机器人技术和人工智能的交叉研究，致力于推动技术创新与实际应用的结合。",
+      "title": "大连海事大学人工智能硕士在读 & 西湖大学访问学生",
+      "description": "专注于科学计算与机器人技术的交叉研究，致力于Transformer/Neural Operator建模CFD时空场，推动技术创新与实际应用的结合。",
       "tags": {
         "transformerNeuralOperator": "Transformer神经算子",
         "cfdSimulation": "CFD仿真",
@@ -120,15 +120,18 @@
       "items": {
         "damformerPaper": {
           "title": "DamFormer论文被Physics of Fluids接收",
-          "description": "关于Transformer在溃坝流动预测中应用的研究成果被顶级期刊接收"
+          "description": "关于Transformer在溃坝流动预测中应用的研究成果被顶级期刊接收（2025年1月）",
+          "date": "2025-01-01"
         },
         "rsModCubes": {
-          "title": "重构机器人系统论文发表",
-          "description": "基于改进模块化立方体的重构机器人系统设计研究成果发表"
+          "title": "Rs-ModCubes论文发表在IEEE RA-L",
+          "description": "自重构、可扩展、模块化立方体机器人用于水下作业的研究成果发表（2025年）",
+          "date": "2025-01-01"
         },
         "underwaterPatents": {
-          "title": "水下机器人相关专利获批",
-          "description": "多项水下机器人感知与控制相关专利获得授权"
+          "title": "8项专利获批",
+          "description": "水下机器人动态环境感知和导航装置等8项发明专利获得授权（2024年11月）",
+          "date": "2024-11-06"
         },
         "mechanicalCompetition": {
           "title": "机械创新设计大赛获奖",
@@ -136,17 +139,8 @@
         },
         "westlakeVisit": {
           "title": "西湖大学访问交流",
-          "description": "受邀访问西湖大学进行仿生机器人技术交流合作"
-        },
-        "conferencePresentation": {
-          "title": "在国际CFD会议上做主题报告",
-          "date": "2024-02-20",
-          "description": "受邀在国际计算流体力学会议上分享神经算子的最新研究进展"
-        },
-        "patentApproval": {
-          "title": "仿生感知装置专利获得授权",
-          "date": "2024-03-10",
-          "description": "基于鱼类侧线系统的水下机器人感知装置专利正式获得授权"
+          "description": "受邀访问西湖大学进行仿生机器人技术交流合作（2024年6月至今）",
+          "date": "2024-06-01"
         }
       }
     },
@@ -156,6 +150,13 @@
       "citations": "论文引用",
       "projects": "完成项目",
       "awards": "获得奖项"
+    },
+    "statsData": {
+      "publications": "10+",
+      "patents": "8",
+      "citations": "50+",
+      "projects": "5",
+      "awards": "3+"
     },
     "startCollaboration": "开始合作",
     "collaborationDesc": "让我们一起探索科技的无限可能",
@@ -202,6 +203,26 @@
     "certificateNumber": "证书编号",
     "viewDetails": "查看详情",
     "education": "教育背景",
+    "education": {
+      "master": {
+        "title": "大连海事大学 - 人工智能硕士",
+        "description": "专业：人工智能（0812J1）| 导师：徐敏义 教授 | 人工智能学院",
+        "period": "2023.08 - 2026.06（预计）",
+        "status": "在读"
+      },
+      "visiting": {
+        "title": "西湖大学 - 访问学生/研究助理",
+        "description": "工学院 i⁴-FSI 实验室（PI：范迪夏）| 方向：仿生波动鳍推进仿真",
+        "period": "2024.06 - 至今",
+        "status": "访问学者"
+      },
+      "bachelor": {
+        "title": "大连海事大学 - 材料科学与工程学士",
+        "description": "专业：材料科学与工程（高分子）| GPA 3.2/4.0（82/100）| 专业排名 7/100",
+        "period": "2019.09 - 2023.06",
+        "status": "工学学士"
+      }
+    },
     "educationItems": {
       "master": {
         "title": "大连海事大学 - 人工智能硕士",
@@ -935,7 +956,7 @@
     "personalInfo": {
       "name": "牟昭阳",
       "nameEn": "Zhaoyang Mu",
-      "description": "专注于人工智能、机器学习和软件工程领域的研究与实践，致力于推动技术创新与学术发展。"
+      "description": "专注于科学计算与机器人技术的交叉研究，致力于Transformer/Neural Operator建模CFD时空场，推动技术创新与实际应用的结合。"
     },
     "quickLinks": {
       "title": "快速链接",
@@ -947,17 +968,18 @@
     "researchAreas": {
       "title": "研究领域",
       "areas": [
-        "人工智能与机器学习",
-        "计算机视觉",
-        "自然语言处理",
-        "软件工程",
-        "数据科学"
+        "Transformer/Neural Operator建模CFD时空场",
+        "科学计算与机器人技术",
+        "仿生感知与水下机器人",
+        "流体力学数值仿真",
+        "机械设计与控制系统"
       ]
     },
     "contact": {
       "title": "联系方式",
       "email": "mzymuzhaoyang@gmail.com",
-      "address": "中国，杭州"
+      "phone": "+86 153 8213 0266",
+      "address": "中国，杭州（西湖大学）"
     },
     "legal": {
       "copyright": "牟昭阳。保留所有权利。",

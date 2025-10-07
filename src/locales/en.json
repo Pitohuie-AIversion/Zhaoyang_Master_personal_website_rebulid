@@ -69,8 +69,8 @@
       "greeting": "Hello, I'm",
       "name": "Zhaoyang Mu",
       "nameEn": "Zhaoyang Mu",
-      "title": "Computational Fluid Dynamics Researcher & Robotics Expert",
-      "description": "Focused on the intersection of scientific computing, robotics, and artificial intelligence, committed to advancing technological innovation and practical applications.",
+      "title": "AI Master Student at Dalian Maritime University & Visiting Student at Westlake University",
+      "description": "Focused on the intersection of scientific computing and robotics, dedicated to Transformer/Neural Operator modeling of CFD spatiotemporal fields, advancing technological innovation and practical applications.",
       "tags": {
         "transformerNeuralOperator": "Transformer Neural Operator",
         "cfdSimulation": "CFD Simulation",
@@ -120,15 +120,18 @@
       "items": {
         "damformerPaper": {
           "title": "DamFormer Paper Accepted by Physics of Fluids",
-          "description": "Research on Transformer applications in dam-break flow prediction accepted by top-tier journal"
+          "description": "Research on Transformer applications in dam-break flow prediction accepted by top-tier journal (January 2025)",
+          "date": "2025-01-01"
         },
         "rsModCubes": {
-          "title": "Reconfigurable Robot System Paper Published",
-          "description": "Research on reconfigurable robot system design based on improved modular cubes published"
+          "title": "Rs-ModCubes Paper Published in IEEE RA-L",
+          "description": "Self-reconfigurable, scalable, modular cube robots for underwater operations research published (2025)",
+          "date": "2025-01-01"
         },
         "underwaterPatents": {
-          "title": "Underwater Robot Patents Approved",
-          "description": "Multiple patents related to underwater robot perception and control have been granted"
+          "title": "8 Patents Granted",
+          "description": "8 invention patents including underwater robot dynamic environment perception and navigation devices granted (November 2024)",
+          "date": "2024-11-06"
         },
         "mechanicalCompetition": {
           "title": "Mechanical Innovation Design Competition Award",
@@ -136,7 +139,8 @@
         },
         "westlakeVisit": {
           "title": "Westlake University Visit and Exchange",
-          "description": "Invited to visit Westlake University for bionic robotics technology exchange and cooperation"
+          "description": "Invited to visit Westlake University for bionic robotics technology exchange and cooperation (June 2024 - Present)",
+          "date": "2024-06-01"
         },
         "conferencePresentation": {
           "title": "Keynote Presentation at International CFD Conference",
@@ -155,6 +159,13 @@
       "citations": "Citations",
       "projects": "Projects",
       "awards": "Awards"
+    },
+    "statsData": {
+      "publications": "10+",
+      "patents": "8",
+      "citations": "50+",
+      "projects": "5",
+      "awards": "3+"
     },
     "startCollaboration": "Start Collaboration",
     "collaborationDesc": "Let's explore the infinite possibilities of technology together",
@@ -980,11 +991,11 @@
     },
     "info": {
       "email": "mzymuzhaoyang@gmail.com",
-      "phone": "+86 153-8213-0266",
-      "location": "Dalian, Liaoning, China",
-      "university": "Dalian Maritime University",
-      "department": "School of Artificial Intelligence",
-      "office": "Intelligent Robotics Laboratory, Room 305",
+      "phone": "+86 153 8213 0266",
+      "location": "Hangzhou, China (Westlake University)",
+      "university": "Dalian Maritime University & Westlake University",
+      "department": "School of Artificial Intelligence & i⁴-FSI Laboratory",
+      "office": "Visiting Student at Westlake University",
       "social": "Social Media"
     },
     "social": {
@@ -998,33 +1009,34 @@
     }
   },
   "footer": {
-    "personalInfo": {
-      "name": "Zhaoyang Mu",
-      "nameEn": "牟昭阳",
-      "description": "Focused on research and practice in artificial intelligence, machine learning, and software engineering, committed to promoting technological innovation and academic development."
-    },
-    "quickLinks": {
-      "title": "Quick Links",
-      "home": "Home",
-      "research": "Research",
-      "projects": "Projects",
-      "publications": "Publications"
-    },
-    "researchAreas": {
-      "title": "Research Areas",
-      "areas": [
-        "Artificial Intelligence & Machine Learning",
-        "Computer Vision",
-        "Natural Language Processing",
-        "Software Engineering",
-        "Data Science"
-      ]
-    },
-    "contact": {
-      "title": "Contact",
-      "email": "mzymuzhaoyang@gmail.com",
-      "address": "Hangzhou, China"
-    },
+      "personalInfo": {
+        "name": "Zhaoyang Mu",
+        "nameEn": "牟昭阳",
+        "description": "Focused on the intersection of scientific computing and robotics, dedicated to Transformer/Neural Operator modeling of CFD spatiotemporal fields, advancing technological innovation and practical applications."
+      },
+      "quickLinks": {
+        "title": "Quick Links",
+        "home": "Home",
+        "research": "Research",
+        "projects": "Projects",
+        "publications": "Publications"
+      },
+      "researchAreas": {
+        "title": "Research Areas",
+        "areas": [
+          "Transformer/Neural Operator for CFD Spatiotemporal Field Modeling",
+          "Scientific Computing & Robotics Technology",
+          "Bionic Perception & Underwater Robotics",
+          "Fluid Dynamics Numerical Simulation",
+          "Mechanical Design & Control Systems"
+        ]
+      },
+      "contact": {
+        "title": "Contact",
+        "email": "mzymuzhaoyang@gmail.com",
+        "phone": "+86 153 8213 0266",
+        "address": "Hangzhou, China (Westlake University)"
+      },
     "legal": {
       "copyright": "Zhaoyang Mu. All rights reserved.",
       "privacy": "Privacy Policy",

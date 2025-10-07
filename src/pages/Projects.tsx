@@ -45,7 +45,7 @@ const getProjects = (t: (key: string, options?: { returnObjects?: boolean; fallb
     status: 'completed',
     year: '2024',
     highlights: [t('projects.damformer.highlights.crossGeometric'), t('projects.damformer.highlights.published'), t('projects.damformer.highlights.architecture'), t('projects.damformer.highlights.dataset')],
-    githubUrl: 'https://github.com/zhaoyangmou',
+    githubUrl: 'https://github.com/Pitohuie',
     demoUrl: 'https://pitohuie-aiversion.github.io/Sparse_to_Dense_Transformer/'
   },
   {
@@ -58,7 +58,7 @@ const getProjects = (t: (key: string, options?: { returnObjects?: boolean; fallb
     status: 'ongoing',
     year: '2024',
     highlights: [t('projects.sparseToDense.highlights.sparseReconstruction'), t('projects.sparseToDense.highlights.transformerBased'), t('projects.sparseToDense.highlights.highAccuracy'), t('projects.sparseToDense.highlights.realTimeProcessing')],
-    githubUrl: 'https://github.com/zhaoyangmou',
+    githubUrl: 'https://github.com/Pitohuie',
     demoUrl: 'https://pitohuie-aiversion.github.io/Sparse_to_Dense_Transformer/'
   },
   {
@@ -71,7 +71,7 @@ const getProjects = (t: (key: string, options?: { returnObjects?: boolean; fallb
     status: 'completed',
     year: '2023',
     highlights: [t('projects.bionicRobot.highlights.bionicPerception'), t('projects.bionicRobot.highlights.realTimeDetection'), t('projects.bionicRobot.highlights.sensorFusion'), t('projects.bionicRobot.highlights.complexEnvironment')],
-    githubUrl: 'https://github.com/zhaoyangmou'
+    githubUrl: 'https://github.com/Pitohuie'
   },
   {
     id: 4,
@@ -83,7 +83,7 @@ const getProjects = (t: (key: string, options?: { returnObjects?: boolean; fallb
     status: 'ongoing',
     year: '2023',
     highlights: [t('projects.fanWall.highlights.modularArray'), t('projects.fanWall.highlights.stm32Control'), t('projects.fanWall.highlights.pwmTach'), t('projects.fanWall.highlights.vlanDhcp')],
-    githubUrl: 'https://github.com/zhaoyangmou'
+    githubUrl: 'https://github.com/Pitohuie'
   },
   {
     id: 5,
@@ -95,7 +95,7 @@ const getProjects = (t: (key: string, options?: { returnObjects?: boolean; fallb
     status: 'completed',
     year: '2022',
     highlights: [t('projects.marineBuoy.highlights.cfdSimulation'), t('projects.marineBuoy.highlights.fluidStructureInteraction'), t('projects.marineBuoy.highlights.javaMacro'), t('projects.marineBuoy.highlights.oceanEngineering')],
-    githubUrl: 'https://github.com/zhaoyangmou'
+    githubUrl: 'https://github.com/Pitohuie'
   },
   {
     id: 6,
@@ -107,7 +107,7 @@ const getProjects = (t: (key: string, options?: { returnObjects?: boolean; fallb
     status: 'ongoing',
     year: '2023',
     highlights: [t('projects.serverHpc.highlights.distributedTraining'), t('projects.serverHpc.highlights.slurmScheduling'), t('projects.serverHpc.highlights.cudaSetup'), t('projects.serverHpc.highlights.wandbLogging')],
-    githubUrl: 'https://github.com/zhaoyangmou'
+    githubUrl: 'https://github.com/Pitohuie'
   }
 ];
 
