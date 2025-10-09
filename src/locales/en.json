@@ -184,6 +184,63 @@
     "noResults": "No results found",
     "noResultsDesc": "Please try adjusting your search criteria or filters",
     "filterAll": "All",
+    "chatAssistant": {
+      "title": "AI Assistant",
+      "subtitle": "Academic Consultation & Navigation",
+      "placeholder": "Please enter your question...",
+      "send": "Send",
+      "typing": "Typing...",
+      "thinking": "Thinking...",
+      "close": "Close",
+      "minimize": "Minimize",
+      "maximize": "Maximize",
+      "newChat": "New Chat",
+      "clearHistory": "Clear History",
+      "quickReplies": {
+        "research": "Research Areas",
+        "projects": "Project Experience",
+        "contact": "Contact Info",
+        "education": "Education Background",
+        "skills": "Skills & Expertise",
+        "publications": "Publications",
+        "patents": "Patent Achievements",
+        "collaboration": "Collaboration Opportunities"
+      },
+      "welcomeMessage": "Hello! I'm Zhaoyang Mu's AI assistant. I can introduce his academic background, research projects, and professional skills. How can I help you?",
+      "errorMessage": "Sorry, I encountered some issues. Please try again later.",
+      "networkError": "Network connection error. Please check your network and try again.",
+      "rateLimitError": "Too many requests. Please try again later.",
+      "emptyMessage": "Please enter your question",
+      "maxLength": "Message length cannot exceed 1000 characters",
+      "sessionExpired": "Session expired. Please refresh the page to start over.",
+      "language": {
+        "switch": "Switch Language",
+        "chinese": "中文",
+        "english": "English"
+      },
+      "quickRepliesTitle": "Quick Questions",
+      "quickRepliesDescription": "Click the buttons below to start a conversation quickly",
+      "status": {
+        "online": "Online",
+        "offline": "Offline",
+        "connecting": "Connecting...",
+        "error": "Connection Error"
+      },
+      "messages": {
+        "welcome": "Hello! I'm Zhaoyang Mu's AI assistant. I can introduce his academic background, research projects, and professional skills. How can I help you?",
+        "error": "Sorry, I can't answer your question right now. Please try again later.",
+        "offline": "Currently in offline mode. I'll do my best to provide basic information.",
+        "tooLong": "Your message is too long. Please keep it within 1000 characters.",
+        "empty": "Please enter your question.",
+        "rateLimited": "Too many requests. Please try again later."
+      },
+      "actions": {
+        "copy": "Copy",
+        "copied": "Copied",
+        "retry": "Retry",
+        "feedback": "Feedback"
+      }
+    },
     "filterPublications": "Publications",
     "filterPatents": "Patents",
     "filterAwards": "Awards",

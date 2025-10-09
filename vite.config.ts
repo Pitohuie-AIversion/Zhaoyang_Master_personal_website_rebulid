@@ -60,6 +60,14 @@ export default defineConfig({
   server: {
     // 启用HTTP/2
     https: false,
+    // 代理配置，将/api请求转发到后端
+    proxy: {
+      '/api': {
+        target: 'http://localhost:3001',
+        changeOrigin: true,
+        secure: false
+      }
+    },
     // 预热常用文件
     warmup: {
       clientFiles: [

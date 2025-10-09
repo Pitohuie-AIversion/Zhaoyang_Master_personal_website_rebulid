@@ -12,6 +12,7 @@ import AnimatedBackground from './components/AnimatedBackground';
 // import HeaderASCII from './components/HeaderASCII'; // 已移动到 Navbar 中
 import { AccessibilityManager, AccessibilityToolbar } from './components/AccessibilityEnhancements';
 import { ThemeTransition } from './components/DarkModeProvider';
+import ChatAssistant from './components/ChatAssistant';
 import './styles/accessibility.css';
 import './styles/animations.css';
 import { 
@@ -116,6 +117,9 @@ function App() {
                 <Navbar />
                 <AnimatedRoutes />
                 <Footer />
+                
+                {/* 聊天助手 */}
+                <ChatAssistant />
                 
                 {/* 可访问性工具栏 */}
                 <AccessibilityToolbar />

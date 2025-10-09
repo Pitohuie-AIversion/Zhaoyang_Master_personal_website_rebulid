@@ -184,6 +184,63 @@
       "underReview": "审稿中"
     },
     "filterAll": "全部",
+    "chatAssistant": {
+      "title": "智能助手",
+      "subtitle": "学术咨询与导航",
+      "placeholder": "请输入您的问题...",
+      "send": "发送",
+      "typing": "正在输入...",
+      "thinking": "思考中...",
+      "close": "关闭",
+      "minimize": "最小化",
+      "maximize": "最大化",
+      "newChat": "新对话",
+      "clearHistory": "清空历史",
+      "quickReplies": {
+        "research": "研究方向",
+        "projects": "项目经验",
+        "contact": "联系方式",
+        "education": "教育背景",
+        "skills": "技能专长",
+        "publications": "学术论文",
+        "patents": "专利成果",
+        "collaboration": "合作机会"
+      },
+      "welcomeMessage": "您好！我是牟昭阳的智能助手，可以为您介绍他的学术背景、研究项目和技能专长。有什么可以帮助您的吗？",
+      "errorMessage": "抱歉，我遇到了一些问题。请稍后再试。",
+      "networkError": "网络连接异常，请检查网络后重试。",
+      "rateLimitError": "请求过于频繁，请稍后再试。",
+      "emptyMessage": "请输入您的问题",
+      "maxLength": "消息长度不能超过1000字符",
+      "sessionExpired": "会话已过期，请刷新页面重新开始",
+      "language": {
+        "switch": "切换语言",
+        "chinese": "中文",
+        "english": "English"
+      },
+      "quickRepliesTitle": "快速提问",
+      "quickRepliesDescription": "点击下方按钮快速开始对话",
+      "status": {
+        "online": "在线",
+        "offline": "离线",
+        "connecting": "连接中...",
+        "error": "连接错误"
+      },
+      "messages": {
+        "welcome": "您好！我是牟昭阳的智能助手，可以为您介绍他的学术背景、研究项目和专业技能。请问有什么可以帮助您的吗？",
+        "error": "抱歉，我现在无法回答您的问题。请稍后再试。",
+        "offline": "当前处于离线模式，我会尽力为您提供基本信息。",
+        "tooLong": "您的消息太长了，请控制在1000字符以内。",
+        "empty": "请输入您的问题。",
+        "rateLimited": "请求过于频繁，请稍后再试。"
+      },
+      "actions": {
+        "copy": "复制",
+        "copied": "已复制",
+        "retry": "重试",
+        "feedback": "反馈"
+      }
+    },
     "filterPublications": "学术论文",
     "filterPatents": "发明专利",
     "filterAwards": "获奖荣誉",
