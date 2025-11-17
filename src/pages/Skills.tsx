@@ -441,7 +441,7 @@ icon={category.icon}
               </h3>
               <ChartContainer delay={300} className="h-96">
                 <LazyRadarChartComponent 
-                  data={radarData} 
+                  data={radarData as unknown as Record<string, unknown>[]} 
                   name={t('skills.skillLevel') as string} 
                 />
               </ChartContainer>
@@ -454,7 +454,7 @@ icon={category.icon}
                 {t('skills.proficiencyStats') as string}
               </h3>
               <ChartContainer delay={300} className="h-96">
-                <LazyBarChartComponent data={getFilteredSkills()} />
+                <LazyBarChartComponent data={getFilteredSkills() as unknown as Record<string, unknown>[]} />
               </ChartContainer>
             </div>
           )}

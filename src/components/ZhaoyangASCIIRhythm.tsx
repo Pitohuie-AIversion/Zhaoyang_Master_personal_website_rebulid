@@ -107,13 +107,13 @@ const ZhaoyangASCIIRhythm: React.FC<ZhaoyangASCIIRhythmProps> = ({
         char,
         opacity: char === ' ' ? 0 : 0.9,
         scale: 1,
-        color: currentTheme.primary,
+        color: themes[theme].primary,
         glowIntensity: 2,
         animationDelay: (lineIndex * 0.1 + charIndex * 0.01) * 1000
       }))
     );
     setCharacterStates(states);
-  }, [currentTheme.primary, asciiLines]);
+  }, [theme]); // Only depend on theme, not the entire currentTheme object
 
   // 心跳律动效果
   const applyHeartbeatEffect = useCallback((time: number) => {
@@ -294,7 +294,7 @@ const ZhaoyangASCIIRhythm: React.FC<ZhaoyangASCIIRhythmProps> = ({
   // 初始化和清理
   useEffect(() => {
     initializeCharacterStates();
-  }, [initializeCharacterStates]);
+  }, []); // Empty dependency array to prevent infinite loop
 
   useEffect(() => {
     if (isPlaying) {

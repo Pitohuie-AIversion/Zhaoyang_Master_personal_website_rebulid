@@ -7,6 +7,9 @@ import { useTranslation } from '../components/TranslationProvider';
 import { ResearchAnalytics } from '../components/ResearchAnalytics';
 import { ResearchDetailModal } from '../components/ResearchDetailModal';
 import { ResponsiveContainer } from '../components/ResponsiveEnhancements';
+import AcademicMetrics from '../components/AcademicMetrics';
+import PublicationList from '../components/PublicationList';
+import { StructuredDataSEO } from '../components/StructuredDataSEO';
 
 interface Publication {
   id: string;
@@ -436,6 +439,27 @@ function Research() {
         >
           <h2 className="text-2xl font-semibold text-primary-dark theme-transition mb-8 text-center">{t('research.academicAchievements') as string}</h2>
 
+          {/* Google Scholar学术指标 */}
+          <div className="mb-12">
+            <h3 className="text-xl font-semibold text-primary-dark theme-transition mb-6 text-center">
+              {t('academic.metrics.title')}
+            </h3>
+            <AcademicMetrics scholarId="zhaoyang_mu" showCharts={true} />
+          </div>
+
+          {/* 学术论文列表 */}
+          <div className="mb-12">
+            <h3 className="text-xl font-semibold text-primary-dark theme-transition mb-6 text-center">
+              {t('academic.papers.title')}
+            </h3>
+            <PublicationList 
+              papers={[]} 
+              maxItems={10} 
+              showCitations={true} 
+              showVelocity={true} 
+            />
+          </div>
+
           {showAnalytics ? (
             <ResearchAnalytics 
               publications={publications}
@@ -696,6 +720,91 @@ function Research() {
       isOpen={isModalOpen}
       onClose={closeDetailModal}
     />
+
+    {/* 学术结构化数据SEO */}
+    <StructuredDataSEO 
+      type="article"
+      data={{
+        headline: t('research.title') as string,
+        author: {
+          "@type": "Person",
+          name: "牟昭阳",
+          alternateName: "Zhaoyang Mu"
+        },
+        publisher: {
+          "@type": "Organization",
+          name: "牟昭阳个人学术网站"
+        },
+        datePublished: new Date().toISOString(),
+        about: [
+          "科学计算",
+          "机器人研究", 
+          "人工智能",
+          "机器学习"
+        ]
+      }}
+    />
+
+    {/* 论文结构化数据 */}
+    {publications.map((publication) => (
+      <StructuredDataSEO 
+        key={`article-${publication.id}`}
+        type="article"
+        data={{
+          headline: publication.title,
+          author: publication.authors.map(author => ({
+            "@type": "Person",
+            name: author
+          })),
+          publisher: {
+            "@type": "Organization",
+            name: publication.journal
+          },
+          datePublished: `${publication.year}-01-01`,
+          doi: publication.doi,
+          citationCount: 0, // 可以从Google Scholar获取实际数据
+          abstract: publication.description
+        }}
+      />
+    ))}
+
+    {/* 专利结构化数据 */}
+    {patents.map((patent) => (
+      <StructuredDataSEO 
+        key={`patent-${patent.id}`}
+        type="patent"
+        data={{
+          name: patent.title,
+          patentNumber: patent.number,
+          applicant: {
+            "@type": "Organization",
+            name: patent.applicant
+          },
+          filingDate: patent.publicDate,
+          abstract: patent.description,
+          patentStatus: patent.status === 'granted' ? 'Granted' : 'Pending'
+        }}
+      />
+    ))}
+
+    {/* 奖项结构化数据 */}
+    {awards.map((award) => (
+      <StructuredDataSEO 
+        key={`award-${award.id}`}
+        type="award"
+        data={{
+          name: award.title,
+          provider: {
+            "@type": "Organization",
+            name: award.organization
+          },
+          datePublished: `${award.date}-01`,
+          description: award.description,
+          awardCategory: award.level === 'national' ? '国家级' : 
+                        award.level === 'provincial' ? '省级' : '校级'
+        }}
+      />
+    ))}
   </div>
   );
 }

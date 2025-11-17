@@ -1,14 +1,14 @@
-import React, { lazy, useEffect, useState } from 'react';
+import React, { lazy, useEffect, useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 
 // 代码分割 - 懒加载组件
-export const LazyHome = lazy(() => import('../pages/Home'));
-export const LazyResearch = lazy(() => import('../pages/Research'));
-export const LazyProjects = lazy(() => import('../pages/Projects'));
-export const LazyPublications = lazy(() => import('../pages/Publications'));
-export const LazySkills = lazy(() => import('../pages/Skills'));
-export const LazyContact = lazy(() => import('../pages/Contact'));
-export const LazyASCIIDemo = lazy(() => import('../pages/ASCIIDemo'));
+export const LazyHome = lazy(() => import('../pages/Home').then(module => ({ default: module.default })));
+export const LazyResearch = lazy(() => import('../pages/Research').then(module => ({ default: module.default })));
+export const LazyProjects = lazy(() => import('../pages/Projects').then(module => ({ default: module.default })));
+export const LazyPublications = lazy(() => import('../pages/Publications').then(module => ({ default: module.default })));
+export const LazySkills = lazy(() => import('../pages/Skills').then(module => ({ default: module.default })));
+export const LazyContact = lazy(() => import('../pages/Contact').then(module => ({ default: module.default })));
+export const LazyASCIIDemo = lazy(() => import('../pages/ASCIIDemo').then(module => ({ default: module.default })));
 
 // 预加载组件
 export const preloadComponent = (componentImport: () => Promise<unknown>) => {
@@ -137,6 +137,7 @@ export const VirtualScroll = <T,>({
   renderItem
 }: VirtualScrollProps<T>) => {
   const [scrollTop, setScrollTop] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   const visibleStart = Math.floor(scrollTop / itemHeight);
   const visibleEnd = Math.min(
@@ -152,7 +153,7 @@ export const VirtualScroll = <T,>({
 
   return (
     <div
-      ref={setContainerRef}
+      ref={containerRef}
       style={{ height: containerHeight, overflow: 'auto' }}
       onScroll={handleScroll}
     >

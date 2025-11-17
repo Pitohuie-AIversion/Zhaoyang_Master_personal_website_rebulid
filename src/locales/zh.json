@@ -50,6 +50,25 @@
       "networkManagement": "网络管理",
       "closedLoopControl": "闭环控制",
       "oceanEngineering": "海洋工程"
+    },
+    "timeline": {
+      "filters": "筛选",
+      "clearFilters": "清除筛选",
+      "sortBy": "排序",
+      "sortByDate": "按日期",
+      "sortByType": "按类型",
+      "sortByTitle": "按标题",
+      "loadMore": "加载更多",
+      "noItems": "暂无时间线项目",
+      "types": {
+        "education": "教育",
+        "research": "研究",
+        "publication": "论文",
+        "patent": "专利",
+        "award": "奖项",
+        "project": "项目",
+        "skill": "技能"
+      }
     }
   },
   "navigation": {
@@ -90,7 +109,7 @@
       "description": "探索前沿技术，推动科学进步",
       "items": {
         "damformer": {
-          "title": "DamFormer: 基于Transformer的溃坝流动预测神经算子",
+          "title": "DamFormer: A Transformer-based Neural Operator for Dam-break Flow Prediction",
           "description": "创新性地将Transformer架构应用于流体力学预测，实现跨几何边界的泛化能力",
           "category": "Transformer/神经算子"
         },
@@ -119,12 +138,12 @@
       "description": "了解我的最新研究进展和学术活动",
       "items": {
         "damformerPaper": {
-          "title": "DamFormer论文被Physics of Fluids接收",
+          "title": "DamFormer Paper Accepted by Physics of Fluids",
           "description": "关于Transformer在溃坝流动预测中应用的研究成果被顶级期刊接收（2025年1月）",
           "date": "2025-01-01"
         },
         "rsModCubes": {
-          "title": "Rs-ModCubes论文发表在IEEE RA-L",
+          "title": "Rs-ModCubes Paper Published in IEEE RA-L",
           "description": "自重构、可扩展、模块化立方体机器人用于水下作业的研究成果发表（2025年）",
           "date": "2025-01-01"
         },
@@ -184,6 +203,44 @@
       "underReview": "审稿中"
     },
     "filterAll": "全部",
+    "blog": {
+      "title": "学术博客",
+      "description": "分享学术研究成果和技术思考",
+      "loading": "加载中...",
+      "searchPlaceholder": "搜索博客文章...",
+      "categories": "分类",
+      "allCategories": "全部分类",
+      "tags": "标签",
+      "allTags": "全部标签",
+      "sortByDate": "按日期",
+      "sortByViews": "按浏览量",
+      "sortByLikes": "按点赞数",
+      "noPosts": "暂无博客文章",
+      "readMore": "阅读更多",
+      "like": "点赞",
+      "minutesRead": "分钟阅读",
+      "featured": "精选",
+      "share": "分享",
+      "copyLink": "复制链接",
+      "bookmark": "收藏",
+      "comments": "评论",
+      "leaveComment": "发表评论",
+      "name": "姓名",
+      "email": "邮箱",
+      "comment": "评论内容",
+      "commentPlaceholder": "请输入您的评论...",
+      "submitComment": "提交评论",
+      "submitting": "提交中...",
+      "commentSubmitted": "评论已提交，等待审核",
+      "commentSubmitFailed": "评论提交失败，请重试",
+      "pleaseFillAllFields": "请填写所有必填字段",
+      "pleaseEnterValidEmail": "请输入有效的邮箱地址",
+      "noComments": "暂无评论，快来发表第一条评论吧！",
+      "postNotFound": "文章未找到",
+      "backToBlog": "返回博客",
+      "relatedPosts": "相关文章",
+      "viewOnScholar": "在学术主页查看"
+    },
     "chatAssistant": {
       "title": "智能助手",
       "subtitle": "学术咨询与导航",
@@ -204,7 +261,11 @@
         "skills": "技能专长",
         "publications": "学术论文",
         "patents": "专利成果",
-        "collaboration": "合作机会"
+        "collaboration": "合作机会",
+        "timeline": {
+          "title": "学术历程",
+          "description": "展示我的学术和职业发展轨迹"
+        }
       },
       "welcomeMessage": "您好！我是牟昭阳的智能助手，可以为您介绍他的学术背景、研究项目和技能专长。有什么可以帮助您的吗？",
       "errorMessage": "抱歉，我遇到了一些问题。请稍后再试。",
@@ -241,12 +302,66 @@
         "feedback": "反馈"
       }
     },
+    "search": {
+      "placeholder": "搜索论文、专利、项目...",
+      "searching": "搜索中...",
+      "noResults": "未找到相关结果",
+      "tryDifferentKeywords": "尝试使用不同的关键词搜索",
+      "startTyping": "开始输入以搜索内容",
+      "searchTips": "支持中英文搜索，支持模糊匹配",
+      "foundResults": "找到 {{count}} 个结果",
+      "filters": "筛选",
+      "filterByType": "按类型筛选",
+      "minRelevance": "最小相关度",
+      "recentSearches": "最近搜索",
+      "types": {
+        "publication": "论文",
+        "patent": "专利",
+        "award": "奖项",
+        "project": "项目",
+        "skill": "技能",
+        "page": "页面"
+      }
+    },
     "filterPublications": "学术论文",
     "filterPatents": "发明专利",
     "filterAwards": "获奖荣誉",
     "publicationFilterAll": "全部状态",
     "publicationFilterPublished": "已发表",
     "publicationFilterUnderReview": "审稿中",
+    "academic": {
+      "metrics": {
+        "title": "学术影响力",
+        "totalCitations": "总引用数",
+        "hIndex": "h-index",
+        "i10Index": "i10-index", 
+        "totalPapers": "论文总数",
+        "yearlyCitations": "年度引用分布",
+        "citationTrend": "引用趋势",
+        "aboutHIndex": "关于h-index",
+        "hIndexDescription": "h-index是指有h篇论文分别被引用了至少h次的最大值",
+        "aboutI10Index": "关于i10-index",
+        "i10IndexDescription": "i10-index是指被引用次数超过10次的论文数量",
+        "dataSource": "数据来源",
+        "lastUpdated": "最后更新",
+        "error": "获取学术指标失败，请稍后重试",
+        "notFound": "未找到学术数据"
+      },
+      "papers": {
+        "title": "学术论文",
+        "sortBy": "排序方式",
+        "filterYear": "筛选年份",
+        "allYears": "所有年份",
+        "year": "年份",
+        "citations": "引用数",
+        "citationVelocity": "引用速度",
+        "viewPaper": "查看论文",
+        "totalPapers": "论文总数",
+        "totalCitations": "总引用数",
+        "avgCitations": "平均引用",
+        "error": "获取论文数据失败，请稍后重试"
+      }
+    },
     "publications": {
       "title": "学术论文"
     },
@@ -266,25 +381,27 @@
     "publicDate": "公开日期",
     "certificateNumber": "证书编号",
     "viewDetails": "查看详情",
-    "education": "教育背景",
     "education": {
       "master": {
         "title": "大连海事大学 - 人工智能硕士",
-        "description": "专业：人工智能（0812J1）| 导师：徐敏义 教授 | 人工智能学院",
+        "description": "专业：人工智能（0812J1）| 导师：徐敏义 教授 | 人工智能学院 | 预计2026.06毕业",
         "period": "2023.08 - 2026.06（预计）",
-        "status": "在读"
+        "status": "在读",
+        "location": "大连"
       },
       "visiting": {
         "title": "西湖大学 - 访问学生/研究助理",
-        "description": "工学院 i⁴-FSI 实验室（PI：范迪夏）| 方向：仿生波动鳍推进仿真",
+        "description": "工学院 i⁴-FSI 实验室（PI：范迪夏教授）| 方向：仿生波动鳍推进仿真（Star-CCM+ + Java Macro）",
         "period": "2024.06 - 至今",
-        "status": "访问学者"
+        "status": "访问学者",
+        "location": "杭州"
       },
       "bachelor": {
         "title": "大连海事大学 - 材料科学与工程学士",
-        "description": "专业：材料科学与工程（高分子）| GPA 3.2/4.0（82/100）| 专业排名 7/100",
+        "description": "专业：材料科学与工程（高分子）| GPA 3.2/4.0（82/100）| 专业排名 7/100 | 工学学士",
         "period": "2019.09 - 2023.06",
-        "status": "工学学士"
+        "status": "已毕业",
+        "location": "大连"
       }
     },
     "educationItems": {
@@ -332,7 +449,7 @@
       "scientificComputing": {
         "title": "科学计算",
         "description": "专注于Transformer/Neural Operator建模CFD时空场，推动科学计算与人工智能的深度融合",
-        "keywords": "Transformer,Neural Operator,CFD,科学计算,深度学习,偏微分方程",
+        "keywords": ["Transformer", "Neural Operator", "CFD", "科学计算", "深度学习", "偏微分方程"],
         "transformer": {
           "title": "Transformer神经算子",
           "description": "将Transformer架构应用于偏微分方程求解，实现跨几何泛化预测"
@@ -356,14 +473,14 @@
             "keywords": ["Transformer", "溃坝", "CFD", "深度学习", "跨几何", "Physics of Fluids"]
           },
           "publication2": {
-            "title": "稀疏→稠密Transformer：稀疏到稠密场重构",
+            "title": "Sparse→Dense Transformer: Sparse-to-Dense Field Reconstruction",
             "authors": "牟昭阳, 合作研究者",
             "journal": "Physics of Fluids",
             "abstract": "针对CFD/环境流动，稀疏传感重构高分辨率时空场。基于Transformer架构实现从稀疏观测到稠密场的智能重构，提供高效的流场重构方法。",
             "keywords": ["Transformer", "Neural Operator", "场重构", "CFD", "环境流动"]
           },
           "publication3": {
-            "title": "仿生波动鳍推进系统CFD-FSI分析",
+            "title": "CFD-FSI Analysis of Bionic Undulating Fin Propulsion System",
             "authors": "牟昭阳, 西湖大学研究团队",
             "journal": "International Conference on Robotics and Automation (ICRA)",
             "abstract": "西湖大学i⁴-FSI实验室项目。通过Star-CCM+进行仿生波动鳍推进系统CFD/FSI耦合仿真分析，Java Macro自动化参数扫描，探索仿生推进机理。",
@@ -1113,9 +1230,15 @@
     "demoMode": "演示模式",
     "settings": "设置",
     "backToMain": "返回主页",
+    "backToHome": "返回首页",
+    "mainTitle": "沉浸式粒子海洋",
     "toggleInfo": "切换信息",
     "toggleStats": "切换统计",
     "presets": "预设",
+    "demo": "演示",
+    "startExperience": "开始体验",
+    "customize": "自定义",
+    "technicalFeatures": "技术特性",
     "play": "播放",
     "pause": "暂停",
     "reset": "重置",
@@ -1140,6 +1263,9 @@
     },
     "features": {
       "title": "功能特性",
+      "realtime": "实时渲染",
+      "interactive": "交互式体验", 
+      "responsive": "响应式设计",
       "webgl": {
         "title": "WebGL 2.0 渲染",
         "description": "基于现代WebGL 2.0技术，实现高性能GPU加速渲染"
@@ -1171,6 +1297,16 @@
       "shaders": "着色器程序",
       "algorithms": "核心算法",
       "optimization": "性能优化"
+    },
+    "tech": {
+      "performance": "高性能渲染",
+      "performanceDesc": "基于WebGL 2.0的GPU加速渲染，支持数十万粒子实时计算",
+      "interaction": "交互式控制",
+      "interactionDesc": "支持鼠标、触摸和键盘多种交互方式，响应灵敏自然",
+      "visual": "视觉特效",
+      "visualDesc": "集成后处理管线，提供发光、模糊、色彩校正等专业特效",
+      "adaptive": "智能适配",
+      "adaptiveDesc": "自动检测设备性能，动态调整渲染质量和粒子数量"
     },
     "settings": {
       "title": "粒子海洋设置",

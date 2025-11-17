@@ -287,10 +287,10 @@ export const useNetworkOptimization = () => {
     updateNetworkInfo();
 
     if ('connection' in navigator) {
-      const connection = (navigator as Navigator & { connection?: { effectiveType?: string; downlink?: number; rtt?: number; addEventListener?: (event: string, callback: () => void) => void; removeEventListener?: (event: string, callback: () => void) => void } }).connection;
-      if (connection && connection.addEventListener && connection.removeEventListener) {
-        connection.addEventListener('change', updateNetworkInfo);
-        return () => connection.removeEventListener!('change', updateNetworkInfo);
+      const connection = (navigator as Navigator & { connection?: { effectiveType?: string; downlink?: number; rtt?: number } }).connection;
+      if (connection) {
+        (connection as any).addEventListener('change', updateNetworkInfo);
+        return () => (connection as any).removeEventListener('change', updateNetworkInfo);
       }
     }
   }, []);

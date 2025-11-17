@@ -300,7 +300,7 @@ export const useMobileOptimization = () => {
     
     // 检测低电量模式
     if ('getBattery' in navigator) {
-      (navigator as Navigator & { getBattery?: () => Promise<{ level: number; charging: boolean }> }).getBattery()?.then((battery) => {
+      (navigator as Navigator & { getBattery?: () => Promise<any> }).getBattery()?.then((battery) => {
         const checkLowPower = () => {
           const lowPower = battery.level < 0.2 && !battery.charging;
           setIsLowPowerMode(lowPower);

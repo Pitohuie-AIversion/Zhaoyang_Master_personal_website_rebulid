@@ -174,7 +174,11 @@ interface MobileMenuProps {
   }>;
 }
 
+import { useTranslation } from './TranslationProvider';
+
 export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, items }) => {
+  const { t } = useTranslation();
+  
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -213,7 +217,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, items }
             <button
               onClick={onClose}
               className="p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-              aria-label="关闭菜单"
+              aria-label={t('common.close')}
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -328,6 +332,7 @@ interface ResponsiveCardProps {
   };
   hover?: boolean;
   background?: boolean;
+  onClick?: () => void;
 }
 
 export const ResponsiveCard: React.FC<ResponsiveCardProps> = ({
@@ -335,7 +340,8 @@ export const ResponsiveCard: React.FC<ResponsiveCardProps> = ({
   className = '',
   padding = 'md',
   hover = true,
-  background = true
+  background = true,
+  onClick
 }) => {
   let paddingClasses = '';
   
@@ -358,6 +364,7 @@ export const ResponsiveCard: React.FC<ResponsiveCardProps> = ({
   return (
     <motion.div
       whileHover={hover ? { y: -2 } : {}}
+      onClick={onClick}
       className={`
         ${backgroundClasses}
         rounded-lg shadow-md 

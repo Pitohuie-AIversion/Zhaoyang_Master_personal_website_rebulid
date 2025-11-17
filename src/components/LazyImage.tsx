@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { useTranslation } from './TranslationProvider';
 
 interface LazyImageProps {
   src: string;
@@ -19,6 +20,7 @@ const LazyImage: React.FC<LazyImageProps> = ({
   onLoad,
   onError
 }) => {
+  const { t } = useTranslation();
   const [isLoaded, setIsLoaded] = useState(false);
   const [isInView, setIsInView] = useState(false);
   const [hasError, setHasError] = useState(false);
@@ -71,13 +73,13 @@ const LazyImage: React.FC<LazyImageProps> = ({
           {placeholder ? (
             <img
               src={placeholder}
-              alt="Loading..."
+              alt={t('common.loading')}
               className="w-full h-full object-cover filter blur-sm"
             />
           ) : (
             <img
               src={defaultPlaceholder}
-              alt="Loading..."
+              alt={t('common.loading')}
               className="w-full h-full object-cover"
             />
           )}
@@ -102,7 +104,7 @@ const LazyImage: React.FC<LazyImageProps> = ({
             <svg className="w-12 h-12 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
             </svg>
-            <p className="text-sm">图片加载失败</p>
+            <p className="text-sm">{t('common.error')}</p>
           </div>
         </div>
       )}

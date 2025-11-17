@@ -4,15 +4,28 @@ import { createClient } from '@supabase/supabase-js';
 const router = express.Router();
 
 // 初始化Supabase客户端
-const supabase = createClient(
-  process.env.VITE_SUPABASE_URL,
-  process.env.SUPABASE_SERVICE_ROLE_KEY
-);
+let supabase = null;
+try {
+  supabase = createClient(
+    process.env.VITE_SUPABASE_URL,
+    process.env.SUPABASE_SERVICE_ROLE_KEY
+  );
+  console.log('✅ Session Supabase client initialized successfully');
+} catch (error) {
+  console.error('❌ Failed to initialize Session Supabase client:', error.message);
+}
 
 // 创建新会话
 router.post('/create', async (req, res) => {
   try {
     const { language = 'zh', userAgent, ipAddress } = req.body;
+    
+    if (!supabase) {
+      return res.status(503).json({
+        error: 'Database connection not available',
+        message: 'Supabase client is not initialized'
+      });
+    }
     
     // 生成会话ID
     const sessionId = `sess_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
@@ -52,6 +65,13 @@ router.post('/create', async (req, res) => {
 router.get('/:sessionId', async (req, res) => {
   try {
     const { sessionId } = req.params;
+
+    if (!supabase) {
+      return res.status(503).json({
+        error: 'Database connection not available',
+        message: 'Supabase client is not initialized'
+      });
+    }
 
     const { data, error } = await supabase
       .from('chat_sessions')

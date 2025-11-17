@@ -20,7 +20,7 @@ import {
 const ParticleFieldDemo: React.FC = () => {
   const { t } = useTranslation();
   
-  const [_config, setConfig] = useState<ParticleFieldConfig>(builtinPresets[0].config);
+  const [config, setConfig] = useState<ParticleFieldConfig>(builtinPresets[0].config);
   const [isPlaying, setIsPlaying] = useState(true);
   const [metrics, setMetrics] = useState<PerformanceMetrics | null>(null);
   const [showStats, setShowStats] = useState(false);

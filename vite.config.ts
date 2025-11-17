@@ -54,8 +54,8 @@ export default defineConfig({
     },
     // 新增：启用构建分析
     reportCompressedSize: true,
-    // 新增：启用sourcemap
-    sourcemap: true
+    // 安全：生产环境禁用sourcemap，开发环境启用
+    sourcemap: process.env.NODE_ENV !== 'production'
   },
   // 优化依赖预构建
   optimizeDeps: {

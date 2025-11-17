@@ -387,4 +387,4 @@ const ASCIIDemo: React.FC = () => {
   );
 };
 
-export default ASCIIDemo;
+export { ASCIIDemo as default };

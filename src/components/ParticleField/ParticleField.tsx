@@ -3,6 +3,7 @@ import { ParticleSystem, defaultParticleConfig } from '../../utils/particleSyste
 import { ParticleRenderer, defaultRenderConfig } from '../../utils/particleRenderer';
 import { InteractionController } from '../../utils/interactionController';
 import { ParticleFieldConfig } from '../../utils/configManager';
+import { useTranslation } from '../../hooks/useTranslation';
 
 export interface PerformanceMetrics {
   fps: number;
@@ -31,6 +32,7 @@ export const ParticleField = React.forwardRef<HTMLCanvasElement, ParticleFieldPr
   onPerformanceUpdate
 }, ref) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const { t } = useTranslation();
   
   // 系统组件引用
   const particleSystemRef = useRef<ParticleSystem | null>(null);
@@ -275,13 +277,7 @@ export const ParticleField = React.forwardRef<HTMLCanvasElement, ParticleFieldPr
       />
       {loading && (
         <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="text-white">Loading...</div>
-        </div>
-      )}
-      
-      {error && (
-        <div className="absolute inset-0 flex items-center justify-center bg-red-500 bg-opacity-50">
-          <div className="text-white">{error}</div>
+          <div className="text-white">{t('common.loading')}</div>
         </div>
       )}
     </div>

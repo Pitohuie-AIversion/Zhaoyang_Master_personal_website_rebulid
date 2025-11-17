@@ -30,7 +30,22 @@ const SEOOptimization: React.FC<SEOProps> = ({
   // 使用翻译键获取默认值
   const defaultTitle = title || (t('seo.default.title') as string);
   const defaultDescription = description || (t('seo.default.description') as string);
-  const defaultKeywords = keywords || (t('seo.default.keywords', { returnObjects: true }) as unknown) as string[];
+  
+  // 安全获取关键词，确保始终是数组
+  let defaultKeywords: string[];
+  try {
+    const translatedKeywords = t('seo.default.keywords', { returnObjects: true });
+    if (Array.isArray(translatedKeywords)) {
+      defaultKeywords = keywords || translatedKeywords;
+    } else if (typeof translatedKeywords === 'string') {
+      defaultKeywords = keywords || translatedKeywords.split(',').map(k => k.trim());
+    } else {
+      defaultKeywords = keywords || ['牟昭阳', 'Zhaoyang Mu', '计算机科学', '人工智能'];
+    }
+  } catch (error) {
+    defaultKeywords = keywords || ['牟昭阳', 'Zhaoyang Mu', '计算机科学', '人工智能'];
+  }
+  
   const defaultAuthor = author || (t('seo.site.author') as string);
   const siteTitle = t('seo.site.title') as string;
   const language = t('seo.site.language') as string;
@@ -45,7 +60,7 @@ const SEOOptimization: React.FC<SEOProps> = ({
       {/* 基本元数据 */}
       <title>{fullTitle}</title>
       <meta name="description" content={defaultDescription} />
-      <meta name="keywords" content={defaultKeywords.join(', ')} />
+      <meta name="keywords" content={Array.isArray(defaultKeywords) ? defaultKeywords.join(', ') : String(defaultKeywords || '')} />
       <meta name="author" content={defaultAuthor} />
       <meta name="robots" content="index, follow" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -126,7 +141,7 @@ export const HomeSEO: React.FC = () => {
     <SEOOptimization
       title={t('seo.pages.home.title') as string}
       description={t('seo.pages.home.description') as string}
-      keywords={(t('seo.pages.home.keywords', { returnObjects: true }) as unknown) as string[]}
+      // 使用默认关键词，因为页面特定关键词不存在
       type="profile"
     />
   );
@@ -138,7 +153,7 @@ export const ResearchSEO: React.FC = () => {
     <SEOOptimization
       title={t('seo.pages.research.title') as string}
       description={t('seo.pages.research.description') as string}
-      keywords={(t('seo.pages.research.keywords', { returnObjects: true }) as unknown) as string[]}
+      // 使用默认关键词，因为页面特定关键词不存在
       type="website"
     />
   );
@@ -150,7 +165,7 @@ export const ProjectsSEO: React.FC = () => {
     <SEOOptimization
       title={t('seo.pages.projects.title') as string}
       description={t('seo.pages.projects.description') as string}
-      keywords={(t('seo.pages.projects.keywords', { returnObjects: true }) as unknown) as string[]}
+      // 使用默认关键词，因为页面特定关键词不存在
       type="website"
     />
   );
@@ -162,7 +177,7 @@ export const PublicationsSEO: React.FC = () => {
     <SEOOptimization
       title={t('seo.pages.publications.title') as string}
       description={t('seo.pages.publications.description') as string}
-      keywords={(t('seo.pages.publications.keywords', { returnObjects: true }) as unknown) as string[]}
+      // 使用默认关键词，因为页面特定关键词不存在
       type="website"
     />
   );
@@ -174,7 +189,7 @@ export const SkillsSEO: React.FC = () => {
     <SEOOptimization
       title={t('seo.pages.skills.title') as string}
       description={t('seo.pages.skills.description') as string}
-      keywords={(t('seo.pages.skills.keywords', { returnObjects: true }) as unknown) as string[]}
+      // 使用默认关键词，因为页面特定关键词不存在
       type="website"
     />
   );
@@ -186,7 +201,7 @@ export const ContactSEO: React.FC = () => {
     <SEOOptimization
       title={t('seo.pages.contact.title') as string}
       description={t('seo.pages.contact.description') as string}
-      keywords={(t('seo.pages.contact.keywords', { returnObjects: true }) as unknown) as string[]}
+      // 使用默认关键词，因为页面特定关键词不存在
       type="website"
     />
   );

@@ -896,7 +896,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
 
 const ParticleFieldSettings: React.FC = () => {
   const { t } = useTranslation();
-  const _particleFieldRef = useRef<HTMLCanvasElement>(null);
+  const particleFieldRef = useRef<HTMLCanvasElement>(null);
   
   const [config, setConfig] = useState<ParticleFieldConfig | null>(null);
   const [metrics, setMetrics] = useState<PerformanceMetrics | null>(null);

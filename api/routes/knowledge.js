@@ -4,10 +4,16 @@ import { createClient } from '@supabase/supabase-js';
 const router = express.Router();
 
 // 初始化Supabase客户端
-const supabase = createClient(
-  process.env.VITE_SUPABASE_URL,
-  process.env.SUPABASE_SERVICE_ROLE_KEY
-);
+let supabase = null;
+try {
+  supabase = createClient(
+    process.env.VITE_SUPABASE_URL,
+    process.env.SUPABASE_SERVICE_ROLE_KEY
+  );
+  console.log('✅ Knowledge Supabase client initialized successfully');
+} catch (error) {
+  console.error('❌ Failed to initialize Knowledge Supabase client:', error.message);
+}
 
 // 搜索知识库
 router.get('/search', async (req, res) => {

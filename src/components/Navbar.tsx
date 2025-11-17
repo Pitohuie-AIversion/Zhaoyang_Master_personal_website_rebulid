@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Search } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { ThemeToggle } from './DarkModeProvider';
 import { LanguageToggle } from './LanguageToggle';
 import { UnifiedButton } from './UnifiedButton';
 import { AccessibilityButton } from './AccessibilityEnhancements';
-import { Home, Microscope, Briefcase, FileText, Wrench, Mail, Terminal } from 'lucide-react';
+import { Home, Microscope, Briefcase, FileText, Wrench, Mail, Terminal, BookOpen } from 'lucide-react';
 import { useResponsive, MobileMenu } from './ResponsiveEnhancements';
 import { useTranslation } from './TranslationProvider';
+import { SmartSearch } from './SmartSearch';
+import { useGlobalSearchShortcut } from '../hooks/useKeyboardShortcut';
 import ZhaoyangASCIIRhythm from './ZhaoyangASCIIRhythm';
 
 // 导航项配置（使用翻译键）
@@ -17,6 +19,7 @@ const navigationConfig = [
   { key: 'navigation.research', href: '/research', icon: Microscope },
   { key: 'navigation.projects', href: '/projects', icon: Briefcase },
   { key: 'navigation.publications', href: '/publications', icon: FileText },
+  { key: 'navigation.blog', href: '/blog', icon: BookOpen },
   { key: 'navigation.skills', href: '/skills', icon: Wrench },
   { key: 'navigation.contact', href: '/contact', icon: Mail },
   { key: 'navigation.ascii-demo', href: '/ascii-demo', icon: Terminal }
@@ -25,9 +28,13 @@ const navigationConfig = [
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const location = useLocation();
   const { isMobile, isTablet } = useResponsive();
   const { t } = useTranslation();
+  
+  // 全局搜索快捷键
+  useGlobalSearchShortcut(() => setIsSearchOpen(true));
   
   // 生成带翻译的导航项
   const navigation = navigationConfig.map(item => {
@@ -152,6 +159,15 @@ export default function Navbar() {
           </div>
 
           <div className="flex items-center space-x-2 flex-shrink-0">
+            {/* 搜索按钮 */}
+            <UnifiedButton
+              variant="ghost"
+              size="sm"
+              icon={<Search className="w-4 h-4" />}
+              onClick={() => setIsSearchOpen(true)}
+              title={t('search.placeholder') || '搜索'}
+              className="hidden sm:flex"
+            />
             <LanguageToggle variant="compact" showText={false} />
             <AccessibilityButton variant="compact" showText={false} />
             <ThemeToggle />
@@ -178,6 +194,12 @@ export default function Navbar() {
           ...item,
           isActive: isActive(item.href)
         }))}
+      />
+
+      {/* 智能搜索 */}
+      <SmartSearch
+        isOpen={isSearchOpen}
+        onClose={() => setIsSearchOpen(false)}
       />
     </motion.nav>
   );

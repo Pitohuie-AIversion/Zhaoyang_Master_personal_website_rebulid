@@ -12,6 +12,7 @@ import AnimatedBackground from './components/AnimatedBackground';
 import { AccessibilityManager, AccessibilityToolbar } from './components/AccessibilityEnhancements';
 import { ThemeTransition } from './components/DarkModeProvider';
 import ChatAssistant from './components/ChatAssistant';
+import { StructuredDataSEO } from './components/StructuredDataSEO';
 import './styles/accessibility.css';
 import './styles/animations.css';
 import { 
@@ -29,6 +30,13 @@ import {
 const LazyParticleField = React.lazy(() => import('./pages/ParticleField'));
 const LazyParticleFieldDemo = React.lazy(() => import('./pages/ParticleFieldDemo'));
 const LazyParticleFieldSettings = React.lazy(() => import('./pages/ParticleFieldSettings'));
+
+// 联系信息管理页面
+const LazyContactViewer = React.lazy(() => import('./pages/ContactViewer'));
+
+// 博客页面
+const LazyBlogPage = React.lazy(() => import('./pages/BlogPage'));
+const LazyBlogPost = React.lazy(() => import('./components/BlogPost'));
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -116,6 +124,30 @@ function AnimatedRoutes() {
             </Suspense>
           }
         />
+        <Route
+          path="/contact-admin"
+          element={
+            <Suspense fallback={<LoadingFallback message="加载联系信息管理页面中..." />}>
+              <LazyContactViewer />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/blog"
+          element={
+            <Suspense fallback={<LoadingFallback message="加载博客页面中..." />}>
+              <LazyBlogPage />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/blog/:slug"
+          element={
+            <Suspense fallback={<LoadingFallback message="加载博客文章中..." />}>
+              <LazyBlogPost />
+            </Suspense>
+          }
+        />
         </Routes>
       </SmartPageTransition>
   );
@@ -152,6 +184,37 @@ function App() {
                 
                 {/* 性能监控显示 */}
                 {/* 移除了性能监控显示和优化建议组件 */}
+                
+                {/* 结构化数据SEO */}
+                <StructuredDataSEO 
+                  type="person"
+                  data={{
+                    name: "牟昭阳",
+                    alternateName: "Zhaoyang Mu",
+                    jobTitle: "研究员",
+                    affiliation: {
+                      name: "学术研究机构",
+                      url: "https://example-institution.com"
+                    },
+                    url: window.location.origin,
+                    sameAs: [
+                      "https://scholar.google.com/citations?user=zhaoyang_mu",
+                      "https://orcid.org/0000-0000-0000-0000",
+                      "https://linkedin.com/in/zhaoyang-mu"
+                    ],
+                    knowsAbout: [
+                      "人工智能",
+                      "机器学习", 
+                      "深度学习",
+                      "计算机视觉",
+                      "自然语言处理"
+                    ],
+                    alumniOf: {
+                      name: "顶尖大学",
+                      degree: "博士"
+                    }
+                  }}
+                />
               </div>
             </ThemeTransition>
           </AccessibilityManager>

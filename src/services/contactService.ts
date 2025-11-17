@@ -101,25 +101,92 @@ export const sanitizeFormData = (formData: ContactFormData): ContactFormData => 
   };
 };
 
-// 模拟邮件发送服务
-const simulateEmailSend = async (_data: ContactFormData): Promise<SubmitResponse> => {
-  // 模拟网络延迟
-  await new Promise(resolve => setTimeout(resolve, 1500 + Math.random() * 1000));
-  
-  // 模拟随机失败（10%概率）
-  if (Math.random() < 0.1) {
-    throw new Error('网络连接超时，请稍后重试');
-  }
-  
-  return {
-    success: true,
-    message: '消息发送成功！我会尽快回复您。',
-    data: {
-      messageId: `msg_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
-      timestamp: new Date().toISOString(),
-      estimatedReplyTime: '24小时内'
+// 存储到 Supabase 的服务
+const saveToSupabase = async (data: ContactFormData): Promise<SubmitResponse> => {
+  try {
+    // 准备数据
+    const submissionData = {
+      name: data.name,
+      email: data.email,
+      subject: data.subject,
+      message: data.message,
+      phone: data.phone || null,
+      company: data.company || null,
+      collaboration_type: data.collaborationType || null,
+      budget: data.budget || null,
+      timeline: data.timeline || null,
+      status: 'new',
+      created_at: new Date().toISOString()
+    };
+
+    // 发送数据到 Supabase
+    const response = await fetch('/api/contact/submit', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(submissionData)
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => ({ error: 'Unknown error' }));
+      throw new Error(errorData.error || `HTTP error! status: ${response.status}`);
     }
-  };
+
+    const result = await response.json();
+    
+    return {
+      success: true,
+      message: '消息发送成功！我会尽快回复您。',
+      data: {
+        messageId: result.id || `msg_${Date.now()}`,
+        timestamp: new Date().toISOString(),
+        estimatedReplyTime: '24小时内'
+      }
+    };
+  } catch (error) {
+    console.error('Failed to save to Supabase:', error);
+    
+    // 如果是网络错误或服务器错误，回退到本地存储
+    if (error instanceof Error && (error.message.includes('Network') || error.message.includes('fetch'))) {
+      return saveToLocalStorage(data);
+    }
+    
+    throw error;
+  }
+};
+
+// 本地存储备份方案
+const saveToLocalStorage = async (data: ContactFormData): Promise<SubmitResponse> => {
+  try {
+    // 模拟网络延迟
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    
+    const localData = {
+      id: `local_${Date.now()}`,
+      ...data,
+      status: 'new',
+      created_at: new Date().toISOString(),
+      source: 'local_backup'
+    };
+    
+    // 存储到本地存储
+    const existingMessages = JSON.parse(localStorage.getItem('contactMessages_backup') || '[]');
+    existingMessages.push(localData);
+    localStorage.setItem('contactMessages_backup', JSON.stringify(existingMessages));
+    
+    return {
+      success: true,
+      message: '消息已保存到本地（网络连接问题，稍后我会手动查看）。',
+      data: {
+        messageId: localData.id,
+        timestamp: localData.created_at,
+        estimatedReplyTime: '48小时内'
+      }
+    };
+  } catch (error) {
+    throw new Error('无法保存消息，请稍后重试');
+  }
 };
 
 // 主要的表单提交函数
@@ -138,8 +205,8 @@ export const submitContactForm = async (formData: ContactFormData): Promise<Subm
     // 3. 显示加载提示
     toast.loading('正在发送消息...', { id: 'contact-submit' });
 
-    // 4. 发送邮件（这里使用模拟服务，实际项目中替换为真实服务）
-    const result = await simulateEmailSend(cleanData);
+    // 4. 保存到 Supabase（新实现）
+    const result = await saveToSupabase(cleanData);
     
     // 5. 显示成功提示
     toast.success(result.message, { id: 'contact-submit' });

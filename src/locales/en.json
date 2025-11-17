@@ -50,6 +50,25 @@
       "networkManagement": "Network Management",
       "closedLoopControl": "Closed-loop Control",
       "oceanEngineering": "Ocean Engineering"
+    },
+    "timeline": {
+      "filters": "Filters",
+      "clearFilters": "Clear Filters",
+      "sortBy": "Sort By",
+      "sortByDate": "By Date",
+      "sortByType": "By Type",
+      "sortByTitle": "By Title",
+      "loadMore": "Load More",
+      "noItems": "No timeline items",
+      "types": {
+        "education": "Education",
+        "research": "Research",
+        "publication": "Publication",
+        "patent": "Patent",
+        "award": "Award",
+        "project": "Project",
+        "skill": "Skill"
+      }
     }
   },
   "navigation": {
@@ -184,6 +203,44 @@
     "noResults": "No results found",
     "noResultsDesc": "Please try adjusting your search criteria or filters",
     "filterAll": "All",
+    "blog": {
+      "title": "Academic Blog",
+      "description": "Sharing research findings and technical insights",
+      "loading": "Loading...",
+      "searchPlaceholder": "Search blog posts...",
+      "categories": "Categories",
+      "allCategories": "All Categories",
+      "tags": "Tags",
+      "allTags": "All Tags",
+      "sortByDate": "By Date",
+      "sortByViews": "By Views",
+      "sortByLikes": "By Likes",
+      "noPosts": "No blog posts available",
+      "readMore": "Read More",
+      "like": "Like",
+      "minutesRead": "min read",
+      "featured": "Featured",
+      "share": "Share",
+      "copyLink": "Copy Link",
+      "bookmark": "Bookmark",
+      "comments": "Comments",
+      "leaveComment": "Leave a Comment",
+      "name": "Name",
+      "email": "Email",
+      "comment": "Comment",
+      "commentPlaceholder": "Enter your comment...",
+      "submitComment": "Submit Comment",
+      "submitting": "Submitting...",
+      "commentSubmitted": "Comment submitted, pending review",
+      "commentSubmitFailed": "Comment submission failed, please try again",
+      "pleaseFillAllFields": "Please fill in all required fields",
+      "pleaseEnterValidEmail": "Please enter a valid email address",
+      "noComments": "No comments yet. Be the first to comment!",
+      "postNotFound": "Post not found",
+      "backToBlog": "Back to Blog",
+      "relatedPosts": "Related Posts",
+      "viewOnScholar": "View on Scholar Profile"
+    },
     "chatAssistant": {
       "title": "AI Assistant",
       "subtitle": "Academic Consultation & Navigation",
@@ -204,7 +261,11 @@
         "skills": "Skills & Expertise",
         "publications": "Publications",
         "patents": "Patent Achievements",
-        "collaboration": "Collaboration Opportunities"
+        "collaboration": "Collaboration Opportunities",
+        "timeline": {
+          "title": "Academic Journey",
+          "description": "Showcasing my academic and professional development trajectory"
+        }
       },
       "welcomeMessage": "Hello! I'm Zhaoyang Mu's AI assistant. I can introduce his academic background, research projects, and professional skills. How can I help you?",
       "errorMessage": "Sorry, I encountered some issues. Please try again later.",
@@ -241,12 +302,66 @@
         "feedback": "Feedback"
       }
     },
+    "search": {
+      "placeholder": "Search papers, patents, projects...",
+      "searching": "Searching...",
+      "noResults": "No results found",
+      "tryDifferentKeywords": "Try different search keywords",
+      "startTyping": "Start typing to search",
+      "searchTips": "Supports Chinese/English search and fuzzy matching",
+      "foundResults": "Found {{count}} results",
+      "filters": "Filters",
+      "filterByType": "Filter by type",
+      "minRelevance": "Minimum relevance",
+      "recentSearches": "Recent searches",
+      "types": {
+        "publication": "Publication",
+        "patent": "Patent",
+        "award": "Award",
+        "project": "Project",
+        "skill": "Skill",
+        "page": "Page"
+      }
+    },
     "filterPublications": "Publications",
     "filterPatents": "Patents",
     "filterAwards": "Awards",
     "publicationFilterAll": "All Status",
     "publicationFilterPublished": "Published",
     "publicationFilterUnderReview": "Under Review",
+    "academic": {
+      "metrics": {
+        "title": "Academic Impact",
+        "totalCitations": "Total Citations",
+        "hIndex": "h-index",
+        "i10Index": "i10-index",
+        "totalPapers": "Total Papers",
+        "yearlyCitations": "Yearly Citations",
+        "citationTrend": "Citation Trend",
+        "aboutHIndex": "About h-index",
+        "hIndexDescription": "h-index is the largest number h such that h publications have at least h citations",
+        "aboutI10Index": "About i10-index",
+        "i10IndexDescription": "i10-index is the number of publications with at least 10 citations",
+        "dataSource": "Data Source",
+        "lastUpdated": "Last Updated",
+        "error": "Failed to fetch academic metrics, please try again later",
+        "notFound": "No academic data found"
+      },
+      "papers": {
+        "title": "Academic Papers",
+        "sortBy": "Sort By",
+        "filterYear": "Filter Year",
+        "allYears": "All Years",
+        "year": "Year",
+        "citations": "Citations",
+        "citationVelocity": "Citation Velocity",
+        "viewPaper": "View Paper",
+        "totalPapers": "Total Papers",
+        "totalCitations": "Total Citations",
+        "avgCitations": "Avg Citations",
+        "error": "Failed to fetch papers data, please try again later"
+      }
+    },
     "filters": {
       "allTypes": "All Types",
       "publications": "Publications",
@@ -257,6 +372,26 @@
       "underReview": "Under Review"
     },
     "education": "Education",
+    "educationItems": {
+      "master": {
+        "title": "Dalian Maritime University - Master of Artificial Intelligence",
+        "description": "Major: Artificial Intelligence (0812J1) | Supervisor: Prof. Xu Minyi | School of Artificial Intelligence",
+        "period": "2023.08 - 2026.06 (Expected)",
+        "status": "Current"
+      },
+      "visiting": {
+        "title": "Westlake University - Visiting Student/Research Assistant",
+        "description": "School of Engineering i⁴-FSI Lab (PI: Prof. Fan Dixia) | Focus: Bionic Undulating Fin Propulsion Simulation",
+        "period": "2024.06 - Present",
+        "status": "Visiting Scholar"
+      },
+      "bachelor": {
+        "title": "Dalian Maritime University - Bachelor of Materials Science and Engineering",
+        "description": "Major: Materials Science and Engineering (Polymer) | GPA 3.2/4.0 (82/100) | Rank 7/100",
+        "period": "2019.09 - 2023.06",
+        "status": "Bachelor of Engineering"
+      }
+    },
     "publications": {
       "title": "Publications"
     },
@@ -328,8 +463,8 @@
       }
     }
   },
-  "publications": {
-    "title": "Publications",
+  "research": {
+    "title": "Research",
     "academicAchievements": "Academic Achievements",
     "totalCount": "Total {{count}} {{unit}}",
     "papers": "papers",
@@ -340,27 +475,102 @@
     "publicDate": "Publication Date",
     "certificateNumber": "Certificate No.",
     "viewDetails": "View Details",
-    "education": "Education",
-    "educationItems": {
-      "master": {
-        "title": "Dalian Maritime University - Master of Artificial Intelligence",
-        "description": "Major: Artificial Intelligence (0812J1) | Supervisor: Prof. Xu Minyi | School of Artificial Intelligence",
-        "period": "2023.08 - 2026.06 (Expected)",
-        "status": "Current"
+    "status": {
+      "published": "Published",
+      "accepted": "Accepted",
+      "underReview": "Under Review",
+      "preparing": "Preparing",
+      "granted": "Granted"
+    },
+    "type": {
+      "journal": "Journal Paper",
+      "conference": "Conference Paper",
+      "patent": "Patent",
+      "invention": "Invention Patent",
+      "utility": "Utility Model",
+      "design": "Design Patent"
+    },
+    "level": {
+      "national": "National",
+      "provincial": "Provincial",
+      "school": "School"
+    },
+    "areas": {
+      "scientificComputing": {
+        "title": "Scientific Computing",
+        "description": "Research in computational fluid dynamics, neural operators, and high-performance computing",
+        "keywords": ["CFD", "Neural Operator", "Transformer", "HPC"],
+        "data": {
+          "publication1": {
+            "title": "DamFormer: A Transformer-based Model for Dam-break Flow Prediction with Cross-geometry Generalization",
+            "authors": "Zhaoyang Mu, Supervisor Name, Collaborator",
+            "journal": "Physics of Fluids",
+            "abstract": "This paper proposes the DamFormer model based on Transformer architecture for cross-geometry dam-break flow prediction. The model achieves high-precision flow field prediction under different geometric configurations, providing new technical means for dam-break disaster assessment. A multi-geometry boundary dataset is constructed to achieve cross-geometry zero-shot prediction, solving the problem of high computational cost in traditional CFD simulations.",
+            "keywords": ["Transformer", "Dam-break", "CFD", "Deep Learning", "Cross-geometry", "Physics of Fluids"]
+          },
+          "publication2": {
+            "title": "Sparse→Dense Transformer: Sparse-to-Dense Field Reconstruction",
+            "authors": "Zhaoyang Mu, Collaborating Researcher",
+            "journal": "Physics of Fluids",
+            "abstract": "For CFD/environmental flow, sparse sensing reconstruction of high-resolution spatiotemporal fields. Based on Transformer architecture to achieve intelligent reconstruction from sparse observations to dense fields, providing an efficient flow field reconstruction method.",
+            "keywords": ["Transformer", "Neural Operator", "Field Reconstruction", "CFD", "Environmental Flow"]
+          },
+          "publication3": {
+            "title": "CFD-FSI Analysis of Bionic Undulating Fin Propulsion System",
+            "authors": "Zhaoyang Mu, Westlake University Research Team",
+            "journal": "International Conference on Robotics and Automation (ICRA)",
+            "abstract": "Westlake University i⁴-FSI Laboratory project. CFD/FSI coupled simulation analysis of bionic undulating fin propulsion system through Star-CCM+, Java Macro automated parameter sweeping, exploring bionic propulsion mechanisms.",
+            "keywords": ["Star-CCM+", "CFD-FSI", "Bionic Propulsion", "Java Macro", "Westlake University"]
+          },
+          "patent1": {
+            "title": "A Modular Self-reconfigurable Robot System",
+            "authors": "Zhaoyang Mu, Invention Team",
+            "journal": "Chinese Invention Patent",
+            "abstract": "This invention discloses a modular self-reconfigurable cubic robot system Rs-ModCubes with autonomous reconfiguration capability and multiple motion modes, suitable for robot applications in complex environments.",
+            "keywords": ["Modular Robot", "Self-reconfiguration", "Cubic Structure", "Robot System"]
+          },
+          "patent2": {
+            "title": "Underwater Robot Bionic Sensing Device and Sensing Method",
+            "authors": "Zhaoyang Mu, Patent Team",
+            "journal": "Chinese Invention Patent",
+            "abstract": "This invention provides an underwater robot bionic sensing device that achieves sensitive detection of water flow changes based on TENG technology, combined with artificial lateral line structure to improve sensing accuracy.",
+            "keywords": ["Underwater Robot", "TENG", "Bionic Sensing", "Artificial Lateral Line"]
+          },
+          "patent3": {
+            "title": "Fan Array Wind Tunnel Experimental Platform Control System",
+            "authors": "Zhaoyang Mu, Development Team",
+            "journal": "Chinese Utility Model Patent",
+            "abstract": "Modular 2.5m×2.5m fan array, STM32 multi-board PWM/TACH closed-loop control, VLAN/DHCP network management. Experimental platform for flow field control and test verification.",
+            "keywords": ["Fan Array", "STM32", "PWM/TACH", "VLAN", "Experimental Platform"]
+          }
+        }
       },
-      "visiting": {
-        "title": "Westlake University - Visiting Student/Research Assistant",
-        "description": "School of Engineering i⁴-FSI Lab (PI: Prof. Fan Dixia) | Focus: Bionic Undulating Fin Propulsion Simulation",
-        "period": "2024.06 - Present",
-        "status": "Visiting Scholar"
-      },
-      "bachelor": {
-        "title": "Dalian Maritime University - Bachelor of Materials Science and Engineering",
-        "description": "Major: Materials Science and Engineering (Polymer) | GPA 3.2/4.0 (82/100) | Rank 7/100",
-        "period": "2019.09 - 2023.06",
-        "status": "Bachelor of Engineering"
+      "robotics": {
+        "title": "Robotics",
+        "underwaterPerception": {
+          "title": "Underwater Perception System",
+          "description": "Bionic-based underwater robot environmental perception and navigation technology"
+        },
+        "bionicFin": {
+          "title": "Bionic Propulsion System",
+          "description": "Fish-inspired undulating fin propulsion device design and control"
+        },
+        "modularRobot": {
+          "title": "Modular Robot",
+          "description": "Reconfigurable robot system design based on modular cubes"
+        }
       }
     },
+    "patents": {
+    "totalCount": "Total {{count}} {{unit}}",
+    "papers": "papers",
+    "items": "items",
+    "authors": "Authors",
+    "applicant": "Applicant",
+    "patentNumber": "Patent No.",
+    "publicDate": "Publication Date",
+    "certificateNumber": "Certificate No.",
+    "viewDetails": "View Details",
     "status": {
       "published": "Published",
       "accepted": "Accepted",
@@ -1287,6 +1497,38 @@
       "maxFps": "Max FPS",
       "preset": "Performance Preset"
     },
+    "performanceStats": "Performance Statistics",
+    "controls": "Controls",
+    "shortcuts": {
+      "title": "Keyboard Shortcuts",
+      "space": "Space",
+      "playPause": "Play/Pause",
+      "reset": "Reset",
+      "stats": "Toggle Stats",
+      "presets": "Toggle Presets",
+      "fullscreen": "Toggle Fullscreen",
+      "info": "Toggle Info",
+      "mouse": "Mouse",
+      "interact": "Interact with particles"
+    },
+    "backToMain": "Back to Main",
+    "backToHome": "Back to Home",
+    "mainTitle": "Immersive Particle Ocean",
+    "toggleInfo": "Toggle Info",
+    "toggleStats": "Toggle Stats",
+    "presets": "Presets",
+    "startExperience": "Start Experience",
+    "customize": "Customize",
+    "technicalFeatures": "Technical Features",
+    "play": "Play",
+    "pause": "Pause",
+    "reset": "Reset",
+    "fullscreen": "Fullscreen",
+    "exitFullscreen": "Exit Fullscreen",
+    "particles": "Particles",
+    "frameTime": "Frame Time",
+    "memory": "Memory Usage",
+    "avgFps": "Avg FPS",
     "instructions": {
       "title": "Control Instructions",
       "mouse": "Mouse interaction affects particle movement",
@@ -1302,6 +1544,9 @@
     },
     "features": {
       "title": "Core Features",
+      "realtime": "Real-time Rendering",
+      "interactive": "Interactive Experience",
+      "responsive": "Responsive Design",
       "webgl": {
         "title": "WebGL 2.0 Rendering",
         "description": "High-performance GPU-accelerated particle rendering"
@@ -1327,6 +1572,16 @@
         "description": "Built-in presets and custom configuration saving"
       }
     },
+    "tech": {
+      "performance": "High Performance",
+      "performanceDesc": "GPU-accelerated rendering with WebGL 2.0 for smooth 60+ FPS experience",
+      "interaction": "Interactive Experience",
+      "interactionDesc": "Multi-platform input support including mouse, touch, and keyboard controls",
+      "visual": "Stunning Visuals",
+      "visualDesc": "Advanced post-processing effects including bloom, blur, and color correction",
+      "adaptive": "Adaptive Quality",
+      "adaptiveDesc": "Automatic performance optimization based on device capabilities"
+    },
     "technical": {
       "title": "Technical Implementation",
       "architecture": "Modular architecture design with clear separation of concerns",
@@ -1338,106 +1593,61 @@
     },
     "settings": {
       "title": "Configuration Panel",
-      "particles": {
-        "title": "Particle Settings",
-        "count": "Particle Count",
-        "size": "Particle Size",
-        "speed": "Movement Speed",
-        "life": "Particle Lifetime",
-        "color": "Particle Color",
-        "opacity": "Opacity",
-        "trail": "Trail Effect",
-        "gravity": "Gravity",
-        "turbulence": "Turbulence"
-      },
-      "postProcess": {
-        "title": "Post-Processing",
-        "blur": {
-          "title": "Blur Effect",
-          "enabled": "Enable Blur",
-          "intensity": "Blur Intensity"
-        },
-        "bloom": {
-          "title": "Bloom Effect",
-          "enabled": "Enable Bloom",
-          "threshold": "Bloom Threshold",
-          "intensity": "Bloom Intensity",
-          "radius": "Bloom Radius"
-        },
-        "colorCorrection": {
-          "title": "Color Correction",
-          "contrast": "Contrast",
-          "saturation": "Saturation",
-          "brightness": "Brightness",
-          "temperature": "Color Temperature"
-        },
-        "effects": {
-          "title": "Additional Effects",
-          "noise": "Noise",
-          "vignette": "Vignette"
-        }
-      },
-      "interaction": {
-        "title": "Interaction Settings",
-        "mouse": {
-          "title": "Mouse Control",
-          "enabled": "Enable Mouse",
-          "sensitivity": "Mouse Sensitivity",
-          "radius": "Influence Radius"
-        },
-        "touch": {
-          "title": "Touch Control",
-          "enabled": "Enable Touch",
-          "sensitivity": "Touch Sensitivity",
-          "multiTouch": "Multi-touch Support"
-        },
-        "keyboard": {
-          "title": "Keyboard Control",
-          "enabled": "Enable Keyboard"
-        }
-      },
-      "presets": {
-        "title": "Preset Management",
-        "builtin": "Built-in Presets",
-        "custom": "Custom Presets",
-        "performance": "Performance Presets",
-        "apply": "Apply",
-        "save": "Save",
-        "edit": "Edit",
-        "delete": "Delete",
-        "import": "Import",
-        "export": "Export",
-        "create": "Create New Preset",
-        "name": "Preset Name",
-        "description": "Description",
-        "colorScheme": "Color Scheme",
-        "presets": {
-          "ocean": "Ocean Waves",
-          "galaxy": "Galaxy Nebula",
-          "aurora": "Aurora Borealis",
-          "fire": "Flame Dance",
-          "snow": "Snowfall",
-          "rain": "Raindrops",
-          "smoke": "Smoke Effect",
-          "electric": "Electric Storm"
-        },
-        "performance": {
-          "low": "Low Quality",
-          "medium": "Medium Quality",
-          "high": "High Quality",
-          "ultra": "Ultra Quality"
-        },
-        "colors": {
-          "blue": "Ocean Blue",
-          "purple": "Deep Purple",
-          "green": "Forest Green",
-          "orange": "Sunset Orange",
-          "red": "Crimson Red",
-          "cyan": "Electric Cyan",
-          "white": "Pure White",
-          "rainbow": "Rainbow"
-        }
-      }
+      "particles": "Particles",
+      "postProcess": "Post-Processing",
+      "interaction": "Interaction",
+      "presets": "Presets",
+      "performancePresets": "Performance Presets",
+      "basic": "Basic Settings",
+      "maxParticles": "Max Particles",
+      "spawnRate": "Spawn Rate",
+      "lifespan": "Lifespan",
+      "size": "Size",
+      "physics": "Physics",
+      "gravity": "Gravity",
+      "damping": "Damping",
+      "noiseStrength": "Noise Strength",
+      "noiseScale": "Noise Scale",
+      "colors": "Colors",
+      "colorScheme": "Color Scheme",
+      "bloom": "Bloom Effect",
+      "enableBloom": "Enable Bloom",
+      "bloomIntensity": "Bloom Intensity",
+      "blurAmount": "Blur Amount",
+      "colorCorrection": "Color Correction",
+      "contrast": "Contrast",
+      "saturation": "Saturation",
+      "colorTemperature": "Color Temperature",
+      "effects": "Effects",
+      "noiseAmount": "Noise Amount",
+      "vignetteStrength": "Vignette Strength",
+      "mouse": "Mouse Interaction",
+      "enableMouse": "Enable Mouse",
+      "mouseRadius": "Mouse Radius",
+      "mouseStrength": "Mouse Strength",
+      "smoothing": "Smoothing",
+      "touch": "Touch Interaction",
+      "enableTouch": "Enable Touch",
+      "maxTouches": "Max Touches",
+      "builtinPresets": "Built-in Presets",
+      "customPresets": "Custom Presets",
+      "apply": "Apply",
+      "reset": "Reset",
+      "import": "Import",
+      "export": "Export",
+      "savePreset": "Save Preset",
+      "presetName": "Preset Name",
+      "enterPresetName": "Enter preset name",
+      "presetDescription": "Preset Description",
+      "enterPresetDescription": "Enter preset description",
+      "cancel": "Cancel",
+      "save": "Save",
+      "noCustomPresets": "No custom presets",
+      "livePreview": "Live Preview",
+      "previewHidden": "Preview Hidden",
+      "previewHiddenDesc": "Preview is currently hidden",
+      "showPreview": "Show Preview",
+      "hidePreview": "Hide Preview"
     },
     "status": {
       "loading": "Loading particle system...",
@@ -1456,4 +1666,5 @@
       "presetDeleted": "Preset deleted successfully"
     }
   }
+}
 }

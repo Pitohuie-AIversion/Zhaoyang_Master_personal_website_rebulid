@@ -9,6 +9,7 @@ import { useResponsive, ResponsiveText, ResponsiveCard, ResponsiveContainer, Res
 import { useTranslation } from '../components/TranslationProvider';
 import { UnifiedButton } from '../components/UnifiedButton';
 import { ScrollReveal, HoverCard } from '../components/InteractiveEffects';
+import Timeline from '../components/Timeline';
 import profileImage from '../assets/me_Nero_AI_Image_Upscaler_Photo_Face.jpeg';
 import cnResumePdf from '../../resume/cn_Resume_compressed-1-2.pdf';
 import enResumePdf from '../../resume/en_Resume_compressed.pdf';
@@ -531,6 +532,32 @@ function Home() {
               </div>
             </ScrollReveal>
           </SimpleMotion>
+        </ResponsiveContainer>
+      </section>
+
+      {/* 学术时间线 */}
+      <section className="py-16 bg-gray-50 dark:bg-gray-900">
+        <ResponsiveContainer maxWidth="xl" padding="lg">
+          <SimpleMotion
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+              {t('home.timeline.title') || '学术历程'}
+            </h2>
+            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+              {t('home.timeline.description') || '展示我的学术和职业发展轨迹'}
+            </p>
+          </SimpleMotion>
+          
+          <ScrollReveal direction="up" delay={0.2}>
+            <Timeline 
+              maxItems={8}
+              showFilters={true}
+            />
+          </ScrollReveal>
         </ResponsiveContainer>
       </section>
     </div>
