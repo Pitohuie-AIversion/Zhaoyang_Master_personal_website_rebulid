@@ -1,6 +1,5 @@
 import React, { createContext, useContext, useEffect, useState, useCallback, useRef } from 'react';
 import { Eye, EyeOff, Type, Contrast, Volume2, VolumeX, Keyboard, Mouse } from 'lucide-react';
-import { UnifiedButton } from './UnifiedButton';
 
 // 可访问性配置接口
 interface AccessibilityConfig {
@@ -224,7 +223,7 @@ export const AccessibilityButton: React.FC<{
   className?: string;
   variant?: 'compact' | 'full';
   showText?: boolean;
-}> = ({ className = '', variant = 'compact', showText = false }) => {
+}> = ({ className = '', showText = false }) => {
   const { config, updateConfig, speakText, stopSpeaking, isSpeaking } = useAccessibility();
   const [isOpen, setIsOpen] = useState(false);
   

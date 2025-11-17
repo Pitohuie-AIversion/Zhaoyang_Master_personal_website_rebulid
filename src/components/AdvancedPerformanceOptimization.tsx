@@ -1,4 +1,4 @@
-import React, { Suspense, lazy, useEffect, useState, useCallback, useMemo } from 'react';
+import React, { Suspense, lazy, useEffect, useState, useCallback } from 'react';
 import { motion } from 'framer-motion';
 
 // 代码分割 - 懒加载组件
@@ -66,8 +66,10 @@ export const useMemoryOptimization = () => {
   useEffect(() => {
     const checkMemoryUsage = () => {
       if ('memory' in performance) {
-        const memory = (performance as any).memory;
-        setMemoryUsage(memory.usedJSHeapSize / memory.jsHeapSizeLimit);
+        const memory = (performance as Performance & { memory?: { usedJSHeapSize: number; jsHeapSizeLimit: number } }).memory;
+        if (memory) {
+          setMemoryUsage(memory.usedJSHeapSize / memory.jsHeapSizeLimit);
+        }
       }
     };
 
@@ -95,10 +97,10 @@ export const useMemoryOptimization = () => {
 
 // 虚拟滚动组件
 export const VirtualScrollList: React.FC<{
-  items: any[];
+  items: unknown[];
   itemHeight: number;
   containerHeight: number;
-  renderItem: (item: any, index: number) => React.ReactNode;
+  renderItem: (item: unknown, index: number) => React.ReactNode;
   className?: string;
 }> = ({ items, itemHeight, containerHeight, renderItem, className = '' }) => {
   const [scrollTop, setScrollTop] = useState(0);
@@ -136,7 +138,7 @@ export const VirtualScrollList: React.FC<{
 
 // 性能监控组件
 export const PerformanceMonitor: React.FC<{
-  onMetrics?: (metrics: any) => void;
+  onMetrics?: (metrics: { lcp: number; fid: number; cls: number; fcp: number }) => void;
 }> = ({ onMetrics }) => {
   useEffect(() => {
     const observer = new PerformanceObserver((list) => {
@@ -154,13 +156,15 @@ export const PerformanceMonitor: React.FC<{
             metrics.lcp = entry.startTime;
             break;
           case 'first-input':
-            metrics.fid = (entry as any).processingStart - entry.startTime;
+            metrics.fid = (entry as PerformanceEventTiming).processingStart - entry.startTime;
             break;
-          case 'layout-shift':
-            if (!(entry as any).hadRecentInput) {
-              metrics.cls += (entry as any).value;
+          case 'layout-shift': {
+            const layoutShiftEntry = entry as PerformanceEntry & { hadRecentInput?: boolean; value?: number };
+            if (!layoutShiftEntry.hadRecentInput && layoutShiftEntry.value) {
+              metrics.cls += layoutShiftEntry.value;
             }
             break;
+          }
           case 'paint':
             if (entry.name === 'first-contentful-paint') {
               metrics.fcp = entry.startTime;
@@ -269,21 +273,25 @@ export const useNetworkOptimization = () => {
   useEffect(() => {
     const updateNetworkInfo = () => {
       if ('connection' in navigator) {
-        const connection = (navigator as any).connection;
-        setNetworkInfo({
-          effectiveType: connection.effectiveType || '4g',
-          downlink: connection.downlink || 10,
-          rtt: connection.rtt || 100,
-        });
+        const connection = (navigator as Navigator & { connection?: { effectiveType?: string; downlink?: number; rtt?: number } }).connection;
+        if (connection) {
+          setNetworkInfo({
+            effectiveType: connection.effectiveType || '4g',
+            downlink: connection.downlink || 10,
+            rtt: connection.rtt || 100,
+          });
+        }
       }
     };
 
     updateNetworkInfo();
 
     if ('connection' in navigator) {
-      const connection = (navigator as any).connection;
-      connection.addEventListener('change', updateNetworkInfo);
-      return () => connection.removeEventListener('change', updateNetworkInfo);
+      const connection = (navigator as Navigator & { connection?: { effectiveType?: string; downlink?: number; rtt?: number; addEventListener?: (event: string, callback: () => void) => void; removeEventListener?: (event: string, callback: () => void) => void } }).connection;
+      if (connection && connection.addEventListener && connection.removeEventListener) {
+        connection.addEventListener('change', updateNetworkInfo);
+        return () => connection.removeEventListener!('change', updateNetworkInfo);
+      }
     }
   }, []);
 

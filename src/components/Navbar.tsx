@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { ThemeToggle } from './DarkModeProvider';
 import { LanguageToggle } from './LanguageToggle';
 import { UnifiedButton } from './UnifiedButton';
@@ -26,8 +26,8 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
-  const { isMobile, isTablet, isDesktop } = useResponsive();
-  const { t, language } = useTranslation();
+  const { isMobile, isTablet } = useResponsive();
+  const { t } = useTranslation();
   
   // 生成带翻译的导航项
   const navigation = navigationConfig.map(item => {

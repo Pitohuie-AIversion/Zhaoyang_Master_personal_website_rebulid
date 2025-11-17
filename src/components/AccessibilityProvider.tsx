@@ -1,7 +1,8 @@
 import React, { createContext, useContext, ReactNode } from 'react';
 
 interface AccessibilityContextType {
-  // 简化的可访问性上下文
+  // 简化的可访问性上下文 - 预留扩展
+  [key: string]: unknown;
 }
 
 const AccessibilityContext = createContext<AccessibilityContextType | undefined>(undefined);

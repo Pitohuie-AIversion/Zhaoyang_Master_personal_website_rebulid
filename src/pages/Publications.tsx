@@ -29,75 +29,75 @@ export default function Publications() {
   const publications: Publication[] = [
     {
       id: 1,
-      title: t('publications.data.publication1.title'),
-      authors: t('publications.data.publication1.authors'),
-      journal: t('publications.data.publication1.journal'),
+      title: t('publications.data.publication1.title') as string,
+      authors: t('publications.data.publication1.authors') as string,
+      journal: t('publications.data.publication1.journal') as string,
       year: '2024',
       type: 'journal',
       status: 'published',
-      abstract: t('publications.data.publication1.abstract'),
-      keywords: t('publications.data.publication1.keywords', { returnObjects: true }) as string[],
+      abstract: t('publications.data.publication1.abstract') as string,
+      keywords: (t('publications.data.publication1.keywords', { returnObjects: true }) as unknown as string[] || []),
       doi: '10.1063/5.0123456',
       citations: 5
     },
     {
       id: 2,
-      title: t('publications.data.publication2.title'),
-      authors: t('publications.data.publication2.authors'),
-      journal: t('publications.data.publication2.journal'),
+      title: t('publications.data.publication2.title') as string,
+      authors: t('publications.data.publication2.authors') as string,
+      journal: t('publications.data.publication2.journal') as string,
       year: '2024',
       type: 'journal',
       status: 'in_preparation',
-      abstract: t('publications.data.publication2.abstract'),
-      keywords: t('publications.data.publication2.keywords', { returnObjects: true }) as string[],
+      abstract: t('publications.data.publication2.abstract') as string,
+      keywords: (t('publications.data.publication2.keywords', { returnObjects: true }) as unknown as string[] || []),
       citations: 0
     },
     {
       id: 3,
-      title: t('publications.data.publication3.title'),
-      authors: t('publications.data.publication3.authors'),
-      journal: t('publications.data.publication3.journal'),
+      title: t('publications.data.publication3.title') as string,
+      authors: t('publications.data.publication3.authors') as string,
+      journal: t('publications.data.publication3.journal') as string,
       year: '2024',
       type: 'conference',
       status: 'in_preparation',
-      abstract: t('publications.data.publication3.abstract'),
-      keywords: t('publications.data.publication3.keywords', { returnObjects: true }) as string[],
+      abstract: t('publications.data.publication3.abstract') as string,
+      keywords: (t('publications.data.publication3.keywords', { returnObjects: true }) as unknown as string[] || []),
       citations: 0
     },
     {
       id: 4,
-      title: t('publications.data.patent1.title'),
-      authors: t('publications.data.patent1.authors'),
-      journal: t('publications.data.patent1.journal'),
+      title: t('publications.data.patent1.title') as string,
+      authors: t('publications.data.patent1.authors') as string,
+      journal: t('publications.data.patent1.journal') as string,
       year: '2023',
       type: 'patent',
       status: 'published',
-      abstract: t('publications.data.patent1.abstract'),
-      keywords: t('publications.data.patent1.keywords', { returnObjects: true }) as string[],
+      abstract: t('publications.data.patent1.abstract') as string,
+      keywords: (t('publications.data.patent1.keywords', { returnObjects: true }) as unknown as string[] || []),
       doi: 'CN202310123456.7'
     },
     {
       id: 5,
-      title: t('publications.data.patent2.title'),
-      authors: t('publications.data.patent2.authors'),
-      journal: t('publications.data.patent2.journal'),
+      title: t('publications.data.patent2.title') as string,
+      authors: t('publications.data.patent2.authors') as string,
+      journal: t('publications.data.patent2.journal') as string,
       year: '2023',
       type: 'patent',
       status: 'published',
-      abstract: t('publications.data.patent2.abstract'),
-      keywords: t('publications.data.patent2.keywords', { returnObjects: true }) as string[],
+      abstract: t('publications.data.patent2.abstract') as string,
+      keywords: (t('publications.data.patent2.keywords', { returnObjects: true }) as unknown as string[] || []),
       doi: 'CN202310234567.8'
     },
     {
       id: 6,
-      title: t('publications.data.patent3.title'),
-      authors: t('publications.data.patent3.authors'),
-      journal: t('publications.data.patent3.journal'),
+      title: t('publications.data.patent3.title') as string,
+      authors: t('publications.data.patent3.authors') as string,
+      journal: t('publications.data.patent3.journal') as string,
       year: '2023',
       type: 'patent',
       status: 'published',
-      abstract: t('publications.data.patent3.abstract'),
-      keywords: t('publications.data.patent3.keywords', { returnObjects: true }) as string[],
+      abstract: t('publications.data.patent3.abstract') as string,
+      keywords: (t('publications.data.patent3.keywords', { returnObjects: true }) as unknown as string[] || []),
       doi: 'CN202320345678.9'
     }
   ];
@@ -143,12 +143,12 @@ export default function Publications() {
   const filterOptions = {
     type: types.slice(1).map(type => ({ 
       value: type, 
-      label: typeLabels[type as keyof typeof typeLabels] 
+      label: typeLabels[type as keyof typeof typeLabels] as string 
     })),
     status: [
-      { value: 'published', label: t('publications.status.published') },
-      { value: 'under_review', label: t('publications.status.underReview') },
-      { value: 'in_preparation', label: t('publications.status.inPreparation') }
+      { value: 'published', label: t('publications.status.published') as string },
+      { value: 'under_review', label: t('publications.status.underReview') as string },
+      { value: 'in_preparation', label: t('publications.status.inPreparation') as string }
     ],
     year: [...new Set(publications.map(p => p.year))]
       .sort((a, b) => b.localeCompare(a))
@@ -156,11 +156,11 @@ export default function Publications() {
   };
   
   const sortOptions = [
-    { value: 'title', label: t('publications.sort.title') },
-    { value: 'year', label: t('publications.sort.year') },
-    { value: 'citations', label: t('publications.sort.citations') },
-    { value: 'authors', label: t('publications.sort.authors') },
-    { value: 'journal', label: t('publications.sort.journal') }
+    { value: 'title', label: t('publications.sort.title') as string },
+    { value: 'year', label: t('publications.sort.year') as string },
+    { value: 'citations', label: t('publications.sort.citations') as string },
+    { value: 'authors', label: t('publications.sort.authors') as string },
+    { value: 'journal', label: t('publications.sort.journal') as string }
   ];
 
   const getStatusColor = (status: string) => {
@@ -224,10 +224,10 @@ export default function Publications() {
           className="text-center mb-16"
         >
           <h1 className="text-3xl md:text-4xl font-bold text-primary-dark theme-transition mb-4">
-            {t('publications.title')}
+            {t('publications.title') as string}
           </h1>
           <p className="text-lg text-secondary-dark theme-transition max-w-2xl mx-auto">
-            {t('publications.description')}
+            {t('publications.description') as string}
           </p>
         </SimpleMotion>
 
@@ -240,19 +240,19 @@ export default function Publications() {
         >
           <div className="bg-gray-50 rounded-lg p-4 text-center border border-gray-200">
             <div className="text-2xl font-bold text-gray-900 mb-1">{stats.total}</div>
-            <div className="text-sm text-gray-600">{t('publications.stats.total')}</div>
+            <div className="text-sm text-gray-600">{t('publications.stats.total') as string}</div>
           </div>
           <div className="bg-gray-50 rounded-lg p-4 text-center border border-gray-200">
             <div className="text-2xl font-bold text-gray-900 mb-1">{stats.published}</div>
-            <div className="text-sm text-gray-600">{t('publications.stats.published')}</div>
+            <div className="text-sm text-gray-600">{t('publications.stats.published') as string}</div>
           </div>
           <div className="bg-gray-50 rounded-lg p-4 text-center border border-gray-200">
             <div className="text-2xl font-bold text-gray-900 mb-1">{stats.citations}</div>
-            <div className="text-sm text-gray-600">{t('publications.stats.citations')}</div>
+            <div className="text-sm text-gray-600">{t('publications.stats.citations') as string}</div>
           </div>
           <div className="bg-gray-50 rounded-lg p-4 text-center border border-gray-200">
             <div className="text-2xl font-bold text-gray-900 mb-1">{stats.patents}</div>
-            <div className="text-sm text-gray-600">{t('publications.stats.patents')}</div>
+            <div className="text-sm text-gray-600">{t('publications.stats.patents') as string}</div>
           </div>
         </SimpleMotion>
 
@@ -268,19 +268,19 @@ export default function Publications() {
               <SearchInput
                 value={searchTerm}
                 onChange={setSearchTerm}
-                placeholder={t('publications.search.placeholder')}
+                placeholder={t('publications.search.placeholder') as string}
                 className="w-full"
               />
             </div>
             <div className="flex gap-3">
               <FilterDropdown
-                title={t('publications.filters.type')}
+                title={t('publications.filters.type') as string}
                 options={filterOptions.type}
                 selectedValues={filters.type || []}
                 onChange={(values) => updateFilter('type', values)}
               />
               <FilterDropdown
-                title={t('publications.filters.status')}
+                title={t('publications.filters.status') as string}
                 options={filterOptions.status}
                 selectedValues={filters.status || []}
                 onChange={(values) => updateFilter('status', values)}
@@ -299,20 +299,20 @@ export default function Publications() {
               onRemoveFilter={removeFilter}
               onClearAll={clearAllFilters}
               filterLabels={{ 
-                type: t('publications.filters.type'), 
-                status: t('publications.filters.status'), 
-                year: t('publications.filters.year') 
+                type: t('publications.filters.type') as string, 
+                status: t('publications.filters.status') as string, 
+                year: t('publications.filters.year') as string 
               }}
               optionLabels={{
                 type: { 
-                  'journal': t('publications.types.journal'), 
-                  'conference': t('publications.types.conference'), 
-                  'patent': t('publications.types.patent') 
+                  'journal': t('publications.types.journal') as string, 
+                  'conference': t('publications.types.conference') as string, 
+                  'patent': t('publications.types.patent') as string 
                 },
                 status: { 
-                  'published': t('publications.status.published'), 
-                  'under_review': t('publications.status.underReview'), 
-                  'in_preparation': t('publications.status.inPreparation') 
+                  'published': t('publications.status.published') as string, 
+                  'under_review': t('publications.status.underReview') as string, 
+                  'in_preparation': t('publications.status.inPreparation') as string 
                 }
               }}
             />
@@ -320,7 +320,7 @@ export default function Publications() {
               totalResults={totalCount}
               filteredResults={filteredCount}
               searchTerm={searchTerm}
-              itemsText={t('publications.items')}
+              itemsText={t('publications.items') as string}
             />
           </div>
         </SimpleMotion>
@@ -342,17 +342,17 @@ export default function Publications() {
                     {getTypeIcon(publication.type)}
                   </div>
                   <span className="text-xs font-medium text-gray-600 bg-gray-100 px-2 py-1 rounded">
-                    {typeLabels[publication.type as keyof typeof typeLabels]}
+                    {typeLabels[publication.type as keyof typeof typeLabels] as string}
                   </span>
                   <span className={`px-2 py-1 rounded text-xs font-medium ${getStatusColor(publication.status)}`}>
-                    {getStatusText(publication.status)}
+                    {getStatusText(publication.status) as string}
                   </span>
                 </div>
                 <div className="text-right">
                   <div className="text-sm text-gray-500">{publication.year}</div>
                   {publication.citations !== undefined && (
                     <div className="text-sm text-gray-600 mt-1">
-                      {t('publications.citations')}: {publication.citations}
+                      {t('publications.citations') as string}: {publication.citations}
                     </div>
                   )}
                 </div>
@@ -401,10 +401,10 @@ export default function Publications() {
                       {getTypeIcon(selectedPublication.type)}
                     </div>
                     <span className="text-sm font-medium text-gray-600 bg-gray-100 px-3 py-1 rounded">
-                      {typeLabels[selectedPublication.type as keyof typeof typeLabels]}
+                      {typeLabels[selectedPublication.type as keyof typeof typeLabels] as string}
                     </span>
                     <span className={`px-3 py-1 rounded text-sm font-medium ${getStatusColor(selectedPublication.status)}`}>
-                      {getStatusText(selectedPublication.status)}
+                      {getStatusText(selectedPublication.status) as string}
                     </span>
                   </div>
                   <UnifiedButton
@@ -418,25 +418,25 @@ export default function Publications() {
                 </div>
                 
                 <h2 className="text-xl font-bold text-gray-900 mb-3">{selectedPublication.title}</h2>
-                <p className="text-sm text-gray-600 mb-2"><strong>{t('publications.modal.authors')}:</strong> {selectedPublication.authors}</p>
+                <p className="text-sm text-gray-600 mb-2"><strong>{t('publications.modal.authors') as string}:</strong> {selectedPublication.authors}</p>
                 <p className="text-sm text-gray-900 font-medium mb-2">{selectedPublication.journal}</p>
-                <p className="text-sm text-gray-600 mb-3"><strong>{t('publications.modal.year')}:</strong> {selectedPublication.year}</p>
+                <p className="text-sm text-gray-600 mb-3"><strong>{t('publications.modal.year') as string}:</strong> {selectedPublication.year}</p>
                 
                 {selectedPublication.doi && (
-                  <p className="text-gray-600 mb-4"><strong>{t('publications.modal.doi')}:</strong> {selectedPublication.doi}</p>
+                  <p className="text-gray-600 mb-4"><strong>{t('publications.modal.doi') as string}:</strong> {selectedPublication.doi}</p>
                 )}
                 
                 {selectedPublication.citations !== undefined && (
-                  <p className="text-gray-600 mb-4"><strong>{t('publications.modal.citationsCount')}:</strong> {selectedPublication.citations}</p>
+                  <p className="text-gray-600 mb-4"><strong>{t('publications.modal.citationsCount') as string}:</strong> {selectedPublication.citations}</p>
                 )}
                 
                 <div className="mb-5">
-                  <h3 className="text-base font-semibold text-gray-900 mb-2">{t('publications.modal.abstract')}</h3>
+                  <h3 className="text-base font-semibold text-gray-900 mb-2">{t('publications.modal.abstract') as string}</h3>
                   <p className="text-sm text-gray-700 leading-relaxed">{selectedPublication.abstract}</p>
                 </div>
                 
                 <div>
-                  <h3 className="text-base font-semibold text-gray-900 mb-2">{t('publications.modal.keywords')}</h3>
+                  <h3 className="text-base font-semibold text-gray-900 mb-2">{t('publications.modal.keywords') as string}</h3>
                   <div className="flex flex-wrap gap-2">
                     {selectedPublication.keywords.map((keyword) => (
                       <span

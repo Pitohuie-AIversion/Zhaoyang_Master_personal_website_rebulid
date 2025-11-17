@@ -29,7 +29,6 @@ const ZhaoyangASCIIRhythm: React.FC<ZhaoyangASCIIRhythmProps> = ({
   transparent = false
 }) => {
   const [isPlaying, setIsPlaying] = useState(autoPlay);
-  const [currentFrame, setCurrentFrame] = useState(0);
   const [characterStates, setCharacterStates] = useState<CharacterState[][]>([]);
   const animationRef = useRef<number | null>(null);
   const startTimeRef = useRef<number>(0);
@@ -114,7 +113,7 @@ const ZhaoyangASCIIRhythm: React.FC<ZhaoyangASCIIRhythmProps> = ({
       }))
     );
     setCharacterStates(states);
-  }, [currentTheme.primary]);
+  }, [currentTheme.primary, asciiLines]);
 
   // 心跳律动效果
   const applyHeartbeatEffect = useCallback((time: number) => {
@@ -171,7 +170,7 @@ const ZhaoyangASCIIRhythm: React.FC<ZhaoyangASCIIRhythmProps> = ({
     
     setCharacterStates(prev => 
       prev.map((line, lineIndex) =>
-        line.map((charState, charIndex) => {
+        line.map((charState) => {
           if (charState.char === ' ') return charState;
           
           const pulse = Math.abs(Math.sin(time * pulseSpeed + lineIndex * 0.3));
@@ -189,12 +188,12 @@ const ZhaoyangASCIIRhythm: React.FC<ZhaoyangASCIIRhythmProps> = ({
   }, [currentIntensity.speed, currentIntensity.amplitude]);
 
   // 故障律动效果
-  const applyGlitchEffect = useCallback((time: number) => {
+  const applyGlitchEffect = useCallback(() => {
     const glitchChance = 0.05 * currentIntensity.amplitude;
     
     setCharacterStates(prev => 
-      prev.map((line, lineIndex) =>
-        line.map((charState, charIndex) => {
+      prev.map((line) =>
+        line.map((charState) => {
           if (charState.char === ' ') return charState;
           
           const shouldGlitch = Math.random() < glitchChance;
@@ -252,7 +251,7 @@ const ZhaoyangASCIIRhythm: React.FC<ZhaoyangASCIIRhythmProps> = ({
     if (!startTimeRef.current) startTimeRef.current = timestamp;
     const elapsed = timestamp - startTimeRef.current;
     
-    setCurrentFrame(elapsed);
+    // setCurrentFrame(elapsed); // This function doesn't exist, so we'll remove it
     
     switch (rhythmType) {
       case 'heartbeat':
@@ -265,7 +264,7 @@ const ZhaoyangASCIIRhythm: React.FC<ZhaoyangASCIIRhythmProps> = ({
         applyPulseEffect(elapsed);
         break;
       case 'glitch':
-        applyGlitchEffect(elapsed);
+        applyGlitchEffect(); // Remove the elapsed parameter
         break;
       default:
         break;
@@ -288,7 +287,7 @@ const ZhaoyangASCIIRhythm: React.FC<ZhaoyangASCIIRhythmProps> = ({
   // 重置动画
   const resetAnimation = () => {
     startTimeRef.current = 0;
-    setCurrentFrame(0);
+    // setCurrentFrame(0); // This function doesn't exist, so we'll remove it
     initializeCharacterStates();
   };
 

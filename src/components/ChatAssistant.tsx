@@ -8,7 +8,7 @@ interface ChatAssistantProps {
 }
 
 const ChatAssistant: React.FC<ChatAssistantProps> = ({ className = '' }) => {
-  const { t, language } = useTranslation();
+  const { language } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const [hasUnread, setHasUnread] = useState(false);
 

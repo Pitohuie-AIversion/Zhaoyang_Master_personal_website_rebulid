@@ -4,10 +4,22 @@ import { lazy, Suspense } from 'react';
 import { motion } from 'framer-motion';
 import { TrendingUp, BarChart3, PieChart as PieChartIcon, Calendar } from 'lucide-react';
 
+// ChartData interface removed - not used in this file
+
+interface PieChartData {
+  name: string;
+  value: number;
+}
+
+interface BarChartData {
+  name: string;
+  value: number;
+}
+
 // 懒加载图表组件
 const LazyLineChart = lazy(() => 
   import('recharts/es6').then(module => ({
-    default: ({ data, ...props }: any) => {
+    default: ({ data }: { data: Record<string, unknown>[] }) => {
       const { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } = module;
       return (
         <ResponsiveContainer width="100%" height={250}>
@@ -40,7 +52,7 @@ const LazyLineChart = lazy(() =>
 
 const LazyPieChart = lazy(() => 
   import('recharts/es6').then(module => ({
-    default: ({ data, ...props }: any) => {
+    default: ({ data }: { data: PieChartData[] }) => {
       const { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } = module;
       const COLORS = ['#3B82F6', '#10B981', '#F59E0B', '#EF4444', '#8B5CF6'];
        return (
@@ -51,12 +63,12 @@ const LazyPieChart = lazy(() =>
                cx="50%"
                cy="50%"
                labelLine={false}
-               label={(props: any) => `${props.name || ''} ${((props.percent || 0) * 100).toFixed(0)}%`}
+               label={(props: { name?: string; percent?: number }) => `${props.name || ''} ${((props.percent || 0) * 100).toFixed(0)}%`}
                outerRadius={80}
                fill="#8884d8"
                dataKey="value"
              >
-               {data.map((entry: any, index: number) => (
+               {data.map((entry, index: number) => (
                  <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                ))}
              </Pie>
@@ -70,7 +82,7 @@ const LazyPieChart = lazy(() =>
 
 const LazyBarChart = lazy(() => 
   import('recharts/es6').then(module => ({
-    default: ({ data, ...props }: any) => {
+    default: ({ data }: { data: BarChartData[] }) => {
       const { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } = module;
       return (
         <ResponsiveContainer width="100%" height={250}>

@@ -1,15 +1,14 @@
-import { useState, useMemo } from 'react';
+import { useState } from 'react';
 import { SimpleMotion } from '../components/SimpleMotion';
-import { ExternalLink, Github, X, Search, Filter, RotateCcw } from 'lucide-react';
+import { ExternalLink, Github, Search, X } from 'lucide-react';
 import { PageLoader, ProjectCardSkeleton, usePageLoading, LazyWrapper } from '../components/LoadingComponents';
-import { HoverCard, ScrollReveal } from '../components/InteractiveEffects';
-import { LazyMagneticButtonComponent as MagneticButton } from '../components/LazyAnimations';
 import { UnifiedButton } from '../components/UnifiedButton';
 import LazyImage from '../components/LazyImage';
 import { SearchInput, FilterDropdown, SortDropdown, ActiveFilters, SearchStats, useAdvancedSearch } from '../components/SearchAndFilter';
 import { useResponsive } from '../hooks/useResponsive';
 import { useTranslation } from '../components/TranslationProvider';
 import { ResponsiveContainer } from '../components/ResponsiveEnhancements';
+import { ScrollReveal, HoverCard } from '../components/InteractiveEffects';
 
 interface Project {
   id: number;
@@ -34,12 +33,12 @@ export const CATEGORY_CODES = {
   HIGH_PERFORMANCE_COMPUTING: 'highPerformanceComputing'
 } as const;
 
-const getProjects = (t: (key: string, options?: { returnObjects?: boolean; fallback?: string }) => any): Project[] => [
+const getProjects = (t: (key: string, options?: { returnObjects?: boolean; fallback?: string }) => string): Project[] => [
   {
     id: 1,
-    title: t('projects.damformer.title'),
+    title: t('projects.damformer.title') as string,
     category: CATEGORY_CODES.SCIENTIFIC_COMPUTING,
-    description: t('projects.damformer.description'),
+    description: t('projects.damformer.description') as string,
     technologies: ['PyTorch', 'Transformer', 'CFD', 'Python', 'CUDA', 'Physics of Fluids'],
     image: 'https://trae-api-us.mchost.guru/api/ide/v1/text_to_image?prompt=dam%20break%20simulation%20transformer%20neural%20network%20CFD%20flow%20field%20prediction%20scientific%20computing&image_size=landscape_4_3',
     status: 'completed',
@@ -111,16 +110,15 @@ const getProjects = (t: (key: string, options?: { returnObjects?: boolean; fallb
   }
 ];
 
-const getCategories = (t: (key: string, options?: { returnObjects?: boolean; fallback?: string }) => any) => [
-  { value: 'all', label: t('projects.filters.all') },
-  { value: CATEGORY_CODES.SCIENTIFIC_COMPUTING, label: t('projects.categories.scientificComputing') },
-  { value: CATEGORY_CODES.ROBOTICS_TECHNOLOGY, label: t('projects.categories.roboticsTechnology') },
-  { value: CATEGORY_CODES.SIMULATION_ANALYSIS, label: t('projects.categories.simulationAnalysis') },
-  { value: CATEGORY_CODES.EXPERIMENTAL_PLATFORM, label: t('projects.categories.experimentalPlatform') },
-  { value: CATEGORY_CODES.HIGH_PERFORMANCE_COMPUTING, label: t('projects.categories.highPerformanceComputing') }
+const getCategories = (t: (key: string, options?: { returnObjects?: boolean; fallback?: string }) => string) => [
+  { value: 'all', label: t('projects.filters.all') as string },
+  { value: CATEGORY_CODES.SCIENTIFIC_COMPUTING, label: t('projects.categories.scientificComputing') as string },
+  { value: CATEGORY_CODES.ROBOTICS_TECHNOLOGY, label: t('projects.categories.roboticsTechnology') as string },
+  { value: CATEGORY_CODES.SIMULATION_ANALYSIS, label: t('projects.categories.simulationAnalysis') as string },
+  { value: CATEGORY_CODES.EXPERIMENTAL_PLATFORM, label: t('projects.categories.experimentalPlatform') as string },
+  { value: CATEGORY_CODES.HIGH_PERFORMANCE_COMPUTING, label: t('projects.categories.highPerformanceComputing') as string }
 ];
-const getStatusOptions = (t: (key: string, options?: { returnObjects?: boolean; fallback?: string }) => any) => [t('projects.filters.all'), t('projects.status.completed'), t('projects.status.ongoing'), t('projects.status.planned')];
-const getYearOptions = (t: (key: string, options?: { returnObjects?: boolean; fallback?: string }) => any) => [t('projects.filters.all'), '2025', '2024', '2023', '2022'];
+const getYearOptions = (t: (key: string, options?: { returnObjects?: boolean; fallback?: string }) => string) => [t('projects.filters.all') as string, '2025', '2024', '2023', '2022'];
 
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
@@ -129,10 +127,9 @@ export default function Projects() {
   const { t } = useTranslation();
   
   // Get translated options
-  const categories = getCategories(t);
-  const statusOptions = getStatusOptions(t);
-  const yearOptions = getYearOptions(t);
-  const projects = getProjects(t);
+  const categories = getCategories(t as (key: string, options?: { returnObjects?: boolean; fallback?: string }) => string);
+  const yearOptions = getYearOptions(t as (key: string, options?: { returnObjects?: boolean; fallback?: string }) => string);
+  const projects = getProjects(t as (key: string, options?: { returnObjects?: boolean; fallback?: string }) => string);
   
   // 使用高级搜索Hook
   const {
@@ -182,10 +179,10 @@ export default function Projects() {
 
   const getStatusText = (status: string) => {
     switch (status) {
-      case 'completed': return t('projects.status.completed');
-      case 'ongoing': return t('projects.status.ongoing');
-      case 'planned': return t('projects.status.planned');
-      default: return t('projects.status.unknown');
+      case 'completed': return t('projects.status.completed') as string;
+      case 'ongoing': return t('projects.status.ongoing') as string;
+      case 'planned': return t('projects.status.planned') as string;
+      default: return t('projects.status.unknown') as string;
     }
   };
 
@@ -193,18 +190,18 @@ export default function Projects() {
   const filterOptions = {
     category: categories.slice(1),
     status: [
-      { value: 'completed', label: getStatusText('completed') },
-      { value: 'ongoing', label: getStatusText('ongoing') },
-      { value: 'planned', label: getStatusText('planned') }
+      { value: 'completed', label: getStatusText('completed') as string },
+      { value: 'ongoing', label: getStatusText('ongoing') as string },
+      { value: 'planned', label: getStatusText('planned') as string }
     ],
     year: yearOptions.slice(1).map(year => ({ value: year, label: year }))
   };
   
   const sortOptions = [
-    { value: 'title', label: t('projects.sort.title'), direction: 'asc' as const },
-    { value: 'year', label: t('projects.sort.year'), direction: 'desc' as const },
-    { value: 'category', label: t('projects.sort.category'), direction: 'asc' as const },
-    { value: 'status', label: t('projects.sort.status'), direction: 'asc' as const }
+    { value: 'title', label: t('projects.sort.title') as string, direction: 'asc' as const },
+    { value: 'year', label: t('projects.sort.year') as string, direction: 'desc' as const },
+    { value: 'category', label: t('projects.sort.category') as string, direction: 'asc' as const },
+    { value: 'status', label: t('projects.sort.status') as string, direction: 'asc' as const }
   ];
 
   if (isLoading) {
@@ -227,10 +224,10 @@ export default function Projects() {
           className="text-center mb-16"
         >
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-8 leading-tight break-words">
-            {t('projects.title')}
+            {t('projects.title') as string}
           </h1>
           <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-loose break-words hyphens-auto">
-            {t('projects.description')}
+            {t('projects.description') as string}
           </p>
         </SimpleMotion>
 
@@ -247,27 +244,27 @@ export default function Projects() {
               <SearchInput
                 value={searchTerm}
                 onChange={setSearchTerm}
-                placeholder={t('projects.searchPlaceholder')}
+                placeholder={t('projects.searchPlaceholder') as string}
                 className="w-full"
               />
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
               <FilterDropdown
-                title={t('projects.category')}
+                title={t('projects.category') as string}
                 options={filterOptions.category}
                 selectedValues={filters.category || []}
                 onChange={(values) => updateFilter('category', values)}
                 multiple
               />
               <FilterDropdown
-                title={t('projects.statusLabel')}
+                title={t('projects.statusLabel') as string}
                 options={filterOptions.status}
                 selectedValues={filters.status || []}
                 onChange={(values) => updateFilter('status', values)}
                 multiple
               />
               <FilterDropdown
-                title={t('projects.year')}
+                title={t('projects.year') as string}
                 options={filterOptions.year}
                 selectedValues={filters.year || []}
                 onChange={(values) => updateFilter('year', values)}
@@ -285,21 +282,21 @@ export default function Projects() {
           <ActiveFilters
             filters={filters}
             filterLabels={{
-              category: t('projects.category'),
-              status: t('projects.statusLabel'),
-              year: t('projects.year')
+              category: t('projects.category') as string,
+              status: t('projects.statusLabel') as string,
+              year: t('projects.year') as string
             }}
             optionLabels={{
               category: Object.fromEntries(categories.map(cat => [cat.value, cat.label])),
               status: {
-                'completed': t('projects.status.completed'),
-                'ongoing': t('projects.status.ongoing'),
-                'planned': t('projects.status.planned')
+                'completed': t('projects.status.completed') as string,
+                'ongoing': t('projects.status.ongoing') as string,
+                'planned': t('projects.status.planned') as string
               },
               year: Object.fromEntries(yearOptions.map(year => [year, year]))
             }}
-            activeFiltersText={t('projects.activeFilters')}
-            clearAllText={t('projects.clearAll')}
+            activeFiltersText={t('projects.activeFilters') as string}
+            clearAllText={t('projects.clearAll') as string}
             onRemoveFilter={removeFilter}
             onClearAll={() => {
               Object.keys(filters).forEach(key => {
@@ -326,8 +323,8 @@ export default function Projects() {
               <div className="text-gray-400 mb-4">
                 <Search className="w-12 h-12 mx-auto" />
               </div>
-              <h3 className="text-lg md:text-xl font-medium text-gray-900 mb-2 leading-snug">{t('projects.noResults')}</h3>
-              <p className="text-gray-600">{t('projects.noResultsDesc')}</p>
+              <h3 className="text-lg md:text-xl font-medium text-gray-900 mb-2 leading-snug">{t('projects.noResults') as string}</h3>
+              <p className="text-gray-600">{t('projects.noResultsDesc') as string}</p>
             </div>
           ) : null}
           {filteredProjects.map((project, index) => (
@@ -346,14 +343,14 @@ export default function Projects() {
                     />
                     <div className="absolute top-2 sm:top-4 right-2 sm:right-4">
                       <span className={`px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-medium ${getStatusColor(project.status)}`}>
-                        {getStatusText(project.status)}
+                        {getStatusText(project.status) as string}
                       </span>
                     </div>
                   </div>
                   <div className="p-3 sm:p-4">
                     <div className="flex items-center justify-between mb-2">
                       <span className="text-xs font-medium text-gray-600 dark:text-gray-400 bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded theme-transition">
-                        {t(`projects.categories.${project.category}`)}
+                        {t(`projects.categories.${project.category}`) as string}
                       </span>
                       <span className="text-xs text-gray-500 dark:text-gray-400 theme-transition">{project.year}</span>
                     </div>
@@ -395,10 +392,11 @@ export default function Projects() {
               onClick={(e) => e.stopPropagation()}
             >
               <div className="relative">
-                <img
+                <LazyImage
                   src={selectedProject.image}
                   alt={selectedProject.title}
                   className="w-full h-48 sm:h-56 md:h-72 object-cover"
+                  placeholder="blur"
                 />
                 <UnifiedButton
                   onClick={() => setSelectedProject(null)}
@@ -411,8 +409,8 @@ export default function Projects() {
               <div className="p-4 sm:p-6">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
                   <div className="flex items-center gap-3">
-                    <span className="text-xs sm:text-sm font-medium text-gray-600 dark:text-gray-400 bg-gray-100 dark:bg-gray-700 px-2 sm:px-3 py-1 rounded theme-transition">
-                      {t(`projects.categories.${selectedProject.category}`)}
+                    <span className="text-xs sm:text-sm font-medium text-gray-600 bg-gray-100 dark:bg-gray-700 px-2 sm:px-3 py-1 rounded theme-transition">
+                      {t(`projects.categories.${selectedProject.category}`) as string}
                     </span>
                     <span className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 theme-transition">{selectedProject.year}</span>
                   </div>
@@ -429,7 +427,7 @@ export default function Projects() {
                         iconPosition="left"
                         className="bg-gray-900 dark:bg-gray-700 hover:bg-gray-800 dark:hover:bg-gray-600"
                       >
-                        {t('projects.code')}
+                        {t('projects.code') as string}
                       </UnifiedButton>
                     )}
                     {selectedProject.demoUrl && (
@@ -443,7 +441,7 @@ export default function Projects() {
                         icon={<ExternalLink className="w-3 h-3 sm:w-4 sm:h-4" />}
                         iconPosition="left"
                       >
-                        {t('projects.demo')}
+                        {t('projects.demo') as string}
                       </UnifiedButton>
                     )}
                   </div>
@@ -452,7 +450,7 @@ export default function Projects() {
                 <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 mb-5 theme-transition leading-relaxed">{selectedProject.description}</p>
                 
                 <div className="mb-6">
-                  <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-3 theme-transition leading-snug">{t('projects.highlights')}</h3>
+                  <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-3 theme-transition leading-snug">{t('projects.highlights') as string}</h3>
                   <div className="grid grid-cols-1 gap-2">
                     {selectedProject.highlights.map((highlight, index) => (
                       <div key={index} className="flex items-start">
@@ -464,7 +462,7 @@ export default function Projects() {
                 </div>
                 
                 <div>
-                  <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-2 theme-transition leading-snug">{t('projects.techStack')}</h3>
+                  <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-2 theme-transition leading-snug">{t('projects.techStack') as string}</h3>
                   <div className="flex flex-wrap gap-2">
                     {selectedProject.technologies.map((tech) => (
                       <span

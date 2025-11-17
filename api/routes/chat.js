@@ -5,10 +5,9 @@ import rateLimit from 'express-rate-limit';
 
 const router = express.Router();
 
-// 初始化 OpenAI 客户端
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY
-});
+// 初始化 OpenAI 客户端（演示模式下使用模拟响应）
+const openai = process.env.OPENAI_API_KEY && process.env.OPENAI_API_KEY !== 'your-openai-api-key-here' ? 
+  new OpenAI({ apiKey: process.env.OPENAI_API_KEY }) : null;
 
 // 初始化Supabase客户端
 const supabase = createClient(
@@ -207,48 +206,78 @@ router.post('/message', chatRateLimit, async (req, res) => {
       }
     ];
 
-    // 调用OpenAI API（带重试机制）
-    let completion;
-    let retryCount = 0;
-    const maxRetries = 3;
-    
-    while (retryCount < maxRetries) {
-      try {
-        completion = await openai.chat.completions.create({
-          model: 'gpt-4o-mini',
-          messages: messages,
-          max_tokens: 500,
-          temperature: 0.7,
-          presence_penalty: 0.1,
-          frequency_penalty: 0.1,
-          timeout: 60000 // 60秒超时
-        });
-        break; // 成功则跳出循环
-      } catch (openaiError) {
-        retryCount++;
-        console.error(`OpenAI API error (attempt ${retryCount}/${maxRetries}):`, openaiError);
-        
-        // 如果是网络连接错误且还有重试次数
-        if ((openaiError.code === 'ECONNRESET' || openaiError.code === 'ETIMEDOUT' || openaiError.type === 'system') && retryCount < maxRetries) {
-          console.log(`Retrying in ${retryCount * 2} seconds...`);
-          await new Promise(resolve => setTimeout(resolve, retryCount * 2000)); // 递增延迟
-          continue;
-        }
-        
-        // 如果重试次数用完或其他错误，返回友好的错误信息
-        if (retryCount >= maxRetries || openaiError.code === 'ECONNRESET' || openaiError.code === 'ETIMEDOUT' || openaiError.type === 'system') {
-          return res.status(503).json({
-            error: 'AI service is temporarily unavailable. Please try again in a moment.',
-            code: 'service_unavailable',
-            details: `Failed after ${retryCount} attempts`
-          });
-        }
-        
-        throw openaiError; // 重新抛出其他错误
+    // 如果没有OpenAI客户端，使用模拟响应
+    let reply;
+    if (!openai) {
+      // 演示模式：使用基于关键词的模拟响应
+      const lowerMessage = message.toLowerCase();
+      const kb = knowledgeBase[language] || knowledgeBase.zh;
+      
+      if (lowerMessage.includes('你好') || lowerMessage.includes('hello') || lowerMessage.includes('hi')) {
+        reply = language === 'zh' ? 
+          `你好！我是牟昭阳的智能助手。我是大连海事大学人工智能专业的硕士研究生，目前在西湖大学工学院i⁴-FSI实验室做访问学生。我的研究方向包括科学计算、机器人技术、CFD时空场建模等。有什么可以帮助你的吗？` :
+          `Hello! I'm Zhaoyang Mu's intelligent assistant. I'm a master's student in Artificial Intelligence at Dalian Maritime University, currently a visiting student at the i⁴-FSI Laboratory, School of Engineering, Westlake University. My research interests include scientific computing, robotics, and CFD spatiotemporal field modeling. How can I help you?`;
+      } else if (lowerMessage.includes('研究') || lowerMessage.includes('research')) {
+        reply = language === 'zh' ? 
+          `我的研究主要集中在使用Transformer和Neural Operator建模CFD时空场。具体包括溃坝流动预测、稀疏到稠密场重构等。我开发了DamFormer系统用于溃坝流动预测，这在科学计算和工程应用中有重要意义。` :
+          `My research focuses on using Transformer and Neural Operator for CFD spatiotemporal field modeling. This includes dam-break flow prediction, sparse-to-dense field reconstruction, etc. I developed the DamFormer system for dam-break flow prediction, which has significant importance in scientific computing and engineering applications.`;
+      } else if (lowerMessage.includes('项目') || lowerMessage.includes('project')) {
+        reply = language === 'zh' ? 
+          `我参与的主要项目包括：1) DamFormer溃坝流动预测系统 - 基于Transformer的CFD时空场预测模型；2) Rs-ModCubes模块化机器人 - 可重构模块化机器人系统；3) 仿生波动鳍推进系统 - 仿生鱼类推进机制的工程实现。` :
+          `My main projects include: 1) DamFormer Dam-break Flow Prediction System - a Transformer-based CFD spatiotemporal field prediction model; 2) Rs-ModCubes Modular Robots - a reconfigurable modular robot system; 3) Bionic Undulating Fin Propulsion System - engineering implementation of bionic fish propulsion mechanisms.`;
+      } else if (lowerMessage.includes('技能') || lowerMessage.includes('skill') || lowerMessage.includes('技术')) {
+        reply = language === 'zh' ? 
+          `我的技能专长包括：编程语言：Python、MATLAB、C++、Java、JavaScript；仿真软件：Star-CCM+、ANSYS Fluent、OpenFOAM；机器学习：PyTorch、TensorFlow、Transformer；硬件开发：STM32、Arduino、传感器集成；服务器管理：Linux、HPC集群管理。` :
+          `My technical skills include: Programming Languages: Python, MATLAB, C++, Java, JavaScript; Simulation Software: Star-CCM+, ANSYS Fluent, OpenFOAM; Machine Learning: PyTorch, TensorFlow, Transformer; Hardware Development: STM32, Arduino, Sensor Integration; Server Management: Linux, HPC Cluster Management.`;
+      } else {
+        reply = language === 'zh' ? 
+          `感谢你的问题！我是牟昭阳，大连海事大学人工智能专业硕士研究生，在西湖大学i⁴-FSI实验室做访问学生。我的研究兴趣包括科学计算、机器人技术、CFD时空场建模等。你可以问我关于研究、项目、技能或任何相关问题！` :
+          `Thank you for your question! I'm Zhaoyang Mu, a master's student in Artificial Intelligence at Dalian Maritime University, and a visiting student at the i⁴-FSI Laboratory at Westlake University. My research interests include scientific computing, robotics, and CFD spatiotemporal field modeling. Feel free to ask me about research, projects, skills, or any related topics!`;
       }
-    }
+    } else {
+      // 调用OpenAI API（带重试机制）
+      let completion;
+      let retryCount = 0;
+      const maxRetries = 3;
+      
+      while (retryCount < maxRetries) {
+        try {
+          completion = await openai.chat.completions.create({
+            model: 'gpt-4o-mini',
+            messages: messages,
+            max_tokens: 500,
+            temperature: 0.7,
+            presence_penalty: 0.1,
+            frequency_penalty: 0.1,
+            timeout: 60000 // 60秒超时
+          });
+          break; // 成功则跳出循环
+        } catch (openaiError) {
+          retryCount++;
+          console.error(`OpenAI API error (attempt ${retryCount}/${maxRetries}):`, openaiError);
+          
+          // 如果是网络连接错误且还有重试次数
+          if ((openaiError.code === 'ECONNRESET' || openaiError.code === 'ETIMEDOUT' || openaiError.type === 'system') && retryCount < maxRetries) {
+            console.log(`Retrying in ${retryCount * 2} seconds...`);
+            await new Promise(resolve => setTimeout(resolve, retryCount * 2000)); // 递增延迟
+            continue;
+          }
+          
+          // 如果重试次数用完或其他错误，返回友好的错误信息
+          if (retryCount >= maxRetries || openaiError.code === 'ECONNRESET' || openaiError.code === 'ETIMEDOUT' || openaiError.type === 'system') {
+            return res.status(503).json({
+              error: 'AI service is temporarily unavailable. Please try again in a moment.',
+              code: 'service_unavailable',
+              details: `Failed after ${retryCount} attempts`
+            });
+          }
+          
+          throw openaiError; // 重新抛出其他错误
+        }
+      }
 
-    const reply = completion.choices[0]?.message?.content || '抱歉，我现在无法回答您的问题。请稍后再试。';
+      reply = completion.choices[0]?.message?.content || '抱歉，我现在无法回答您的问题。请稍后再试。';
+    }
 
     // 生成相关链接
     const relatedLinks = generateRelatedLinks(message, language);

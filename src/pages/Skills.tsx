@@ -1,23 +1,17 @@
 import React, { useState, memo } from 'react';
 import { useTranslation } from '../components/TranslationProvider';
 import { SimpleMotion } from '../components/SimpleMotion';
-import { PageLoader, usePageLoading } from '../components/LoadingComponents';
-import { ScrollReveal, HoverCard } from '../components/InteractiveEffects';
-import { ResponsiveContainer } from '../components/ResponsiveEnhancements';
 import { UnifiedButton, ButtonGroup } from '../components/UnifiedButton';
 import { 
   Code, 
-  Cpu, 
-  Database, 
-  Globe, 
-  Layers, 
-  Monitor, 
-  Settings, 
+  BarChart3, 
   Zap,
+  Cpu,
   Brain,
   Wrench,
-  BarChart3,
-  Star
+  Settings,
+  Star,
+  Layers
 } from 'lucide-react';
 import { LazyRadarChartComponent, LazyBarChartComponent, ChartContainer } from '../components/LazyCharts';
 import { useResponsive } from '../hooks/useResponsive';
@@ -57,7 +51,7 @@ function Skills() {
   const skillCategories: SkillCategory[] = [
     {
       id: 'programming',
-      name: t('skills.categories.programming'),
+      name: t('skills.categories.programming') as string,
       icon: <Code className="w-5 h-5" />,
       color: 'blue',
       skills: [
@@ -65,42 +59,42 @@ function Skills() {
           name: 'Python',
           level: 95,
           category: 'programming',
-          description: t('skills.skillData.programming.python.description'),
-          projects: t('skills.skillData.programming.python.projects', { returnObjects: true }) as string[]
+          description: t('skills.skillData.programming.python.description') as string,
+          projects: t('skills.skillData.programming.python.projects', { returnObjects: true }) as unknown as string[]
         },
         {
           name: 'Java',
           level: 85,
           category: 'programming',
-          description: t('skills.skillData.programming.java.description'),
-          projects: t('skills.skillData.programming.java.projects', { returnObjects: true }) as string[]
+          description: t('skills.skillData.programming.java.description') as string,
+          projects: t('skills.skillData.programming.java.projects', { returnObjects: true }) as unknown as string[]
         },
         {
           name: 'MATLAB',
           level: 80,
           category: 'programming',
-          description: t('skills.skillData.programming.matlab.description'),
-          projects: t('skills.skillData.programming.matlab.projects', { returnObjects: true }) as string[]
+          description: t('skills.skillData.programming.matlab.description') as string,
+          projects: t('skills.skillData.programming.matlab.projects', { returnObjects: true }) as unknown as string[]
         },
         {
           name: 'JavaScript/TypeScript',
           level: 80,
           category: 'programming',
-          description: t('skills.skillData.programming.javascript.description'),
-          projects: t('skills.skillData.programming.javascript.projects', { returnObjects: true }) as string[]
+          description: t('skills.skillData.programming.javascript.description') as string,
+          projects: t('skills.skillData.programming.javascript.projects', { returnObjects: true }) as unknown as string[]
         },
         {
           name: 'PowerShell',
           level: 75,
           category: 'programming',
-          description: t('skills.skillData.programming.powershell.description'),
-          projects: t('skills.skillData.programming.powershell.projects', { returnObjects: true }) as string[]
+          description: t('skills.skillData.programming.powershell.description') as string,
+          projects: t('skills.skillData.programming.powershell.projects', { returnObjects: true }) as unknown as string[]
         }
       ]
     },
     {
       id: 'simulation',
-      name: t('skills.categories.simulation'),
+      name: t('skills.categories.simulation') as string,
       icon: <Cpu className="w-5 h-5" />,
       color: 'green',
       skills: [
@@ -108,35 +102,35 @@ function Skills() {
           name: 'Star-CCM+',
           level: 90,
           category: 'simulation',
-          description: t('skills.skillData.simulation.starccm.description'),
-          projects: t('skills.skillData.simulation.starccm.projects', { returnObjects: true }) as string[]
+          description: t('skills.skillData.simulation.starccm.description') as string,
+          projects: t('skills.skillData.simulation.starccm.projects', { returnObjects: true }) as unknown as string[]
         },
         {
           name: 'COMSOL',
           level: 85,
           category: 'simulation',
-          description: t('skills.skillData.simulation.comsol.description'),
-          projects: t('skills.skillData.simulation.comsol.projects', { returnObjects: true }) as string[]
+          description: t('skills.skillData.simulation.comsol.description') as string,
+          projects: t('skills.skillData.simulation.comsol.projects', { returnObjects: true }) as unknown as string[]
         },
         {
           name: 'ANSYS',
           level: 80,
           category: 'simulation',
-          description: t('skills.skillData.simulation.ansys.description'),
-          projects: t('skills.skillData.simulation.ansys.projects', { returnObjects: true }) as string[]
+          description: t('skills.skillData.simulation.ansys.description') as string,
+          projects: t('skills.skillData.simulation.ansys.projects', { returnObjects: true }) as unknown as string[]
         },
         {
           name: 'PDEBench',
           level: 75,
           category: 'simulation',
-          description: t('skills.skillData.simulation.pdebench.description'),
-          projects: t('skills.skillData.simulation.pdebench.projects', { returnObjects: true }) as string[]
+          description: t('skills.skillData.simulation.pdebench.description') as string,
+          projects: t('skills.skillData.simulation.pdebench.projects', { returnObjects: true }) as unknown as string[]
         }
       ]
     },
     {
       id: 'ai_ml',
-      name: t('skills.categories.aiMl'),
+      name: t('skills.categories.aiMl') as string,
       icon: <Brain className="w-5 h-5" />,
       color: 'purple',
       skills: [
@@ -144,42 +138,42 @@ function Skills() {
           name: 'Transformer',
           level: 90,
           category: 'ai_ml',
-          description: t('skills.skillData.aiMl.transformer.description'),
-          projects: t('skills.skillData.aiMl.transformer.projects', { returnObjects: true }) as string[]
+          description: t('skills.skillData.aiMl.transformer.description') as string,
+          projects: t('skills.skillData.aiMl.transformer.projects', { returnObjects: true }) as unknown as string[]
         },
         {
           name: 'Neural Operator',
           level: 85,
           category: 'ai_ml',
-          description: t('skills.skillData.aiMl.neuralOperator.description'),
-          projects: t('skills.skillData.aiMl.neuralOperator.projects', { returnObjects: true }) as string[]
+          description: t('skills.skillData.aiMl.neuralOperator.description') as string,
+          projects: t('skills.skillData.aiMl.neuralOperator.projects', { returnObjects: true }) as unknown as string[]
         },
         {
           name: 'PyTorch',
           level: 90,
           category: 'ai_ml',
-          description: t('skills.skillData.aiMl.pytorch.description'),
-          projects: t('skills.skillData.aiMl.pytorch.projects', { returnObjects: true }) as string[]
+          description: t('skills.skillData.aiMl.pytorch.description') as string,
+          projects: t('skills.skillData.aiMl.pytorch.projects', { returnObjects: true }) as unknown as string[]
         },
         {
-          name: t('skills.skillData.aiMl.reinforcementLearning.name'),
+          name: t('skills.skillData.aiMl.reinforcementLearning.name') as string,
           level: 80,
           category: 'ai_ml',
-          description: t('skills.skillData.aiMl.reinforcementLearning.description'),
-          projects: t('skills.skillData.aiMl.reinforcementLearning.projects', { returnObjects: true }) as string[]
+          description: t('skills.skillData.aiMl.reinforcementLearning.description') as string,
+          projects: t('skills.skillData.aiMl.reinforcementLearning.projects', { returnObjects: true }) as unknown as string[]
         },
         {
-          name: t('skills.skillData.aiMl.computerVision.name'),
+          name: t('skills.skillData.aiMl.computerVision.name') as string,
           level: 75,
           category: 'ai_ml',
-          description: t('skills.skillData.aiMl.computerVision.description'),
-          projects: t('skills.skillData.aiMl.computerVision.projects', { returnObjects: true }) as string[]
+          description: t('skills.skillData.aiMl.computerVision.description') as string,
+          projects: t('skills.skillData.aiMl.computerVision.projects', { returnObjects: true }) as unknown as string[]
         }
       ]
     },
     {
       id: 'hardware',
-      name: t('skills.categories.hardware'),
+      name: t('skills.categories.hardware') as string,
       icon: <Wrench className="w-5 h-5" />,
       color: 'orange',
       skills: [
@@ -187,35 +181,35 @@ function Skills() {
           name: 'SolidWorks',
           level: 90,
           category: 'hardware',
-          description: t('skills.skillData.hardware.solidworks.description'),
-          projects: t('skills.skillData.hardware.solidworks.projects', { returnObjects: true }) as string[]
+          description: t('skills.skillData.hardware.solidworks.description') as string,
+          projects: t('skills.skillData.hardware.solidworks.projects', { returnObjects: true }) as unknown as string[]
         },
         {
           name: 'Shapr3D',
           level: 85,
           category: 'hardware',
-          description: t('skills.skillData.hardware.shapr3d.description'),
-          projects: t('skills.skillData.hardware.shapr3d.projects', { returnObjects: true }) as string[]
+          description: t('skills.skillData.hardware.shapr3d.description') as string,
+          projects: t('skills.skillData.hardware.shapr3d.projects', { returnObjects: true }) as unknown as string[]
         },
         {
           name: 'STM32',
           level: 80,
           category: 'hardware',
-          description: t('skills.skillData.hardware.stm32.description'),
-          projects: t('skills.skillData.hardware.stm32.projects', { returnObjects: true }) as string[]
+          description: t('skills.skillData.hardware.stm32.description') as string,
+          projects: t('skills.skillData.hardware.stm32.projects', { returnObjects: true }) as unknown as string[]
         },
         {
-          name: t('skills.skillData.hardware.tplink.name'),
+          name: t('skills.skillData.hardware.tplink.name') as string,
           level: 75,
           category: 'hardware',
-          description: t('skills.skillData.hardware.tplink.description'),
-          projects: t('skills.skillData.hardware.tplink.projects', { returnObjects: true }) as string[]
+          description: t('skills.skillData.hardware.tplink.description') as string,
+          projects: t('skills.skillData.hardware.tplink.projects', { returnObjects: true }) as unknown as string[]
         }
       ]
     },
     {
       id: 'tools',
-      name: t('skills.categories.tools'),
+      name: t('skills.categories.tools') as string,
       icon: <Settings className="w-5 h-5" />,
       color: 'gray',
       skills: [
@@ -223,36 +217,36 @@ function Skills() {
           name: 'Git/GitHub',
           level: 90,
           category: 'tools',
-          description: t('skills.skillData.tools.git.description'),
-          projects: t('skills.skillData.tools.git.projects', { returnObjects: true }) as string[]
+          description: t('skills.skillData.tools.git.description') as string,
+          projects: t('skills.skillData.tools.git.projects', { returnObjects: true }) as unknown as string[]
         },
         {
           name: 'Docker',
           level: 80,
           category: 'tools',
-          description: t('skills.skillData.tools.docker.description'),
-          projects: t('skills.skillData.tools.docker.projects', { returnObjects: true }) as string[]
+          description: t('skills.skillData.tools.docker.description') as string,
+          projects: t('skills.skillData.tools.docker.projects', { returnObjects: true }) as unknown as string[]
         },
         {
           name: 'Linux',
           level: 85,
           category: 'tools',
-          description: t('skills.skillData.tools.linux.description'),
-          projects: t('skills.skillData.tools.linux.projects', { returnObjects: true }) as string[]
+          description: t('skills.skillData.tools.linux.description') as string,
+          projects: t('skills.skillData.tools.linux.projects', { returnObjects: true }) as unknown as string[]
         },
         {
           name: 'VS Code',
           level: 95,
           category: 'tools',
-          description: t('skills.skillData.tools.vscode.description'),
-          projects: t('skills.skillData.tools.vscode.projects', { returnObjects: true }) as string[]
+          description: t('skills.skillData.tools.vscode.description') as string,
+          projects: t('skills.skillData.tools.vscode.projects', { returnObjects: true }) as unknown as string[]
         },
         {
           name: 'Jupyter',
           level: 90,
           category: 'tools',
-          description: t('skills.skillData.tools.jupyter.description'),
-          projects: t('skills.skillData.tools.jupyter.projects', { returnObjects: true }) as string[]
+          description: t('skills.skillData.tools.jupyter.description') as string,
+          projects: t('skills.skillData.tools.jupyter.projects', { returnObjects: true }) as unknown as string[]
         }
       ]
     }
@@ -260,12 +254,12 @@ function Skills() {
 
   // 雷达图数据
   const radarData: RadarData[] = [
-    { subject: t('skills.categories.programming'), A: 85, fullMark: 100 },
-    { subject: t('skills.categories.simulation'), A: 85, fullMark: 100 },
-    { subject: t('skills.categories.aiMl'), A: 80, fullMark: 100 },
-    { subject: t('skills.categories.hardware'), A: 80, fullMark: 100 },
-    { subject: t('skills.categories.tools'), A: 90, fullMark: 100 },
-    { subject: t('skills.radar.theory'), A: 85, fullMark: 100 }
+    { subject: t('skills.categories.programming') as string, A: 85, fullMark: 100 },
+    { subject: t('skills.categories.simulation') as string, A: 85, fullMark: 100 },
+    { subject: t('skills.categories.aiMl') as string, A: 80, fullMark: 100 },
+    { subject: t('skills.categories.hardware') as string, A: 80, fullMark: 100 },
+    { subject: t('skills.categories.tools') as string, A: 90, fullMark: 100 },
+    { subject: t('skills.radar.theory') as string, A: 85, fullMark: 100 }
   ];
 
   // 获取筛选后的技能
@@ -288,11 +282,11 @@ function Skills() {
 
   // 获取技能等级文本
   const getSkillLevelText = (level: number) => {
-    if (level >= 90) return t('skills.levels.expert');
-    if (level >= 80) return t('skills.levels.proficient');
-    if (level >= 70) return t('skills.levels.good');
-    if (level >= 60) return t('skills.levels.average');
-    return t('skills.levels.beginner');
+    if (level >= 90) return t('skills.levels.expert') as string;
+    if (level >= 80) return t('skills.levels.proficient') as string;
+    if (level >= 70) return t('skills.levels.good') as string;
+    if (level >= 60) return t('skills.levels.average') as string;
+    return t('skills.levels.beginner') as string;
   };
 
   return (
@@ -305,10 +299,10 @@ function Skills() {
           className="text-center mb-12"
         >
           <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 bg-clip-text text-transparent mb-4">
-            {t('skills.title')}
+            {t('skills.title') as string}
           </h1>
           <p className="text-lg text-secondary-dark theme-transition max-w-2xl mx-auto">
-            {t('skills.description')}
+            {t('skills.description') as string}
           </p>
         </SimpleMotion>
 
@@ -329,7 +323,7 @@ function Skills() {
                 icon={Layers}
                 iconPosition="left"
               >
-                {t('skills.viewModes.grid')}
+                {t('skills.viewModes.grid') as string}
               </UnifiedButton>
               <UnifiedButton
                 variant={viewMode === 'radar' ? 'primary' : 'ghost'}
@@ -338,7 +332,7 @@ function Skills() {
                 icon={Zap}
                 iconPosition="left"
               >
-                {t('skills.viewModes.radar')}
+                {t('skills.viewModes.radar') as string}
               </UnifiedButton>
               <UnifiedButton
                 variant={viewMode === 'chart' ? 'primary' : 'ghost'}
@@ -347,7 +341,7 @@ function Skills() {
                 icon={BarChart3}
                 iconPosition="left"
               >
-                {t('skills.viewModes.chart')}
+                {t('skills.viewModes.chart') as string}
               </UnifiedButton>
             </ButtonGroup>
           </div>
@@ -359,7 +353,7 @@ function Skills() {
               size="sm"
               onClick={() => setSelectedCategory('all')}
             >
-              {t('skills.filters.all')}
+              {t('skills.filters.all') as string}
             </UnifiedButton>
             {skillCategories.map((category) => (
               <UnifiedButton
@@ -367,7 +361,7 @@ function Skills() {
                 variant={selectedCategory === category.id ? 'primary' : 'secondary'}
                 size="sm"
                 onClick={() => setSelectedCategory(category.id)}
-icon={category.icon as any}
+icon={category.icon}
                 iconPosition="left"
               >
                 {category.name}
@@ -403,7 +397,7 @@ icon={category.icon as any}
                   
                   <div className="mb-4">
                     <div className="flex justify-between text-sm mb-1">
-                      <span className="text-gray-600 dark:text-gray-400">{t('skills.proficiency')}</span>
+                      <span className="text-gray-600 dark:text-gray-400">{t('skills.proficiency') as string}</span>
                       <span className="text-gray-800 dark:text-gray-200">{skill.level}%</span>
                     </div>
                     <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
@@ -421,7 +415,7 @@ icon={category.icon as any}
                   {skill.projects && skill.projects.length > 0 && (
                     <div>
                       <h4 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                        {t('skills.relatedProjects')}:
+                        {t('skills.relatedProjects') as string}:
                       </h4>
                       <div className="flex flex-wrap gap-1">
                         {skill.projects.map((project, idx) => (
@@ -443,12 +437,12 @@ icon={category.icon as any}
           {viewMode === 'radar' && (
             <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
               <h3 className="text-xl font-semibold text-primary-dark theme-transition mb-6 text-center">
-                {t('skills.radarChart')}
+                {t('skills.radarChart') as string}
               </h3>
               <ChartContainer delay={300} className="h-96">
                 <LazyRadarChartComponent 
                   data={radarData} 
-                  name={t('skills.skillLevel')} 
+                  name={t('skills.skillLevel') as string} 
                 />
               </ChartContainer>
             </div>
@@ -457,7 +451,7 @@ icon={category.icon as any}
           {viewMode === 'chart' && (
             <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
               <h3 className="text-xl font-semibold text-primary-dark theme-transition mb-6 text-center">
-                {t('skills.proficiencyStats')}
+                {t('skills.proficiencyStats') as string}
               </h3>
               <ChartContainer delay={300} className="h-96">
                 <LazyBarChartComponent data={getFilteredSkills()} />
@@ -504,10 +498,10 @@ icon={category.icon as any}
                   ))}
                 </div>
                 <p className="text-sm text-secondary-dark theme-transition">
-                  {t('skills.avgProficiency')}: {avgLevel}%
+                  {t('skills.avgProficiency') as string}: {avgLevel}%
                 </p>
                 <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
-                  {category.skills.length} {t('skills.skillsCount')}
+                  {category.skills.length} {t('skills.skillsCount') as string}
                 </p>
               </div>
             );

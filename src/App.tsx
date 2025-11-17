@@ -1,11 +1,10 @@
 import React, { Suspense } from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import { GlobalOptimizationManager } from './components/GlobalOptimizationManager';
-import { AccessibilityProvider } from './components/AccessibilityProvider';
 import { ThemeProvider } from './components/DarkModeProvider';
 import { TranslationProvider } from './components/TranslationProvider';
 import { ErrorBoundary } from './components/ErrorBoundary';
-import { LazyAnimatePresenceComponent, SmartPageTransition } from './components/PageTransitions';
+import { SmartPageTransition } from './components/PageTransitions';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import AnimatedBackground from './components/AnimatedBackground';
@@ -26,13 +25,17 @@ import {
   LazyASCIIDemo
 } from './components/PerformanceOptimization';
 
+// Lazy load Particle Field pages
+const LazyParticleField = React.lazy(() => import('./pages/ParticleField'));
+const LazyParticleFieldDemo = React.lazy(() => import('./pages/ParticleFieldDemo'));
+const LazyParticleFieldSettings = React.lazy(() => import('./pages/ParticleFieldSettings'));
+
 function AnimatedRoutes() {
   const location = useLocation();
 
   return (
-    <LazyAnimatePresenceComponent>
-      <SmartPageTransition>
-        <Routes location={location} key={location.pathname}>
+    <SmartPageTransition>
+      <Routes location={location} key={location.pathname}>
         <Route
           path="/"
           element={
@@ -89,9 +92,32 @@ function AnimatedRoutes() {
             </Suspense>
           }
         />
+        <Route
+          path="/particle-field"
+          element={
+            <Suspense fallback={<LoadingFallback message="加载粒子海洋页面中..." />}>
+              <LazyParticleField />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/particle-field/demo"
+          element={
+            <Suspense fallback={<LoadingFallback message="加载粒子海洋演示页面中..." />}>
+              <LazyParticleFieldDemo />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/particle-field/settings"
+          element={
+            <Suspense fallback={<LoadingFallback message="加载粒子海洋设置页面中..." />}>
+              <LazyParticleFieldSettings />
+            </Suspense>
+          }
+        />
         </Routes>
       </SmartPageTransition>
-    </LazyAnimatePresenceComponent>
   );
 }
 
@@ -109,7 +135,7 @@ function App() {
                 
                 {/* 跳转链接 */}
                 <a href="#main-content" className="skip-link">
-                  跳转到主要内容
+                  Skip to main content
                 </a>
                 
                 {/* 性能监控已简化 */}

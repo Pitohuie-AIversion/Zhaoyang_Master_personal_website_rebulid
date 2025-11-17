@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>粒子系统交互测试</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background: #000;
+            color: #fff;
+        }
+        .test-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .test-info {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .test-info h2 {
+            margin-top: 0;
+        }
+        .test-instructions {
+            background: rgba(0, 255, 0, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .test-results {
+            background: rgba(255, 255, 0, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .particle-container {
+            width: 100%;
+            height: 400px;
+            border: 2px solid #333;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .status-display {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .status-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 10px;
+            border-radius: 4px;
+        }
+        .status-label {
+            font-weight: bold;
+            color: #00ff00;
+        }
+        .status-value {
+            font-family: monospace;
+            color: #ffff00;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <div class="test-info">
+            <h2>🧪 粒子系统交互测试</h2>
+            <p>此页面用于测试粒子系统的用户交互功能，包括鼠标控制、触摸控制和键盘控制。</p>
+        </div>
+
+        <div class="test-instructions">
+            <h3>📋 测试说明</h3>
+            <ul>
+                <li><strong>鼠标测试：</strong>移动鼠标到粒子区域，观察粒子是否跟随鼠标移动</li>
+                <li><strong>点击测试：</strong>点击并拖拽，观察交互强度变化</li>
+                <li><strong>键盘测试：</strong>按 R 键重置，P 键暂停/恢复，方向键控制虚拟鼠标</li>
+                <li><strong>触摸测试：</strong>在移动设备上触摸屏幕，观察粒子响应</li>
+            </ul>
+        </div>
+
+        <div class="particle-container" id="particleContainer">
+            <!-- 粒子系统将在这里渲染 -->
+        </div>
+
+        <div class="test-results">
+            <h3>📊 实时状态监控</h3>
+            <div class="status-display" id="statusDisplay">
+                <div class="status-item">
+                    <div class="status-label">鼠标位置:</div>
+                    <div class="status-value" id="mousePosition">等待中...</div>
+                </div>
+                <div class="status-item">
+                    <div class="status-label">交互强度:</div>
+                    <div class="status-value" id="interactionStrength">等待中...</div>
+                </div>
+                <div class="status-item">
+                    <div class="status-label">粒子数量:</div>
+                    <div class="status-value" id="particleCount">等待中...</div>
+                </div>
+                <div class="status-item">
+                    <div class="status-label">FPS:</div>
+                    <div class="status-value" id="fps">等待中...</div>
+                </div>
+                <div class="status-item">
+                    <div class="status-label">是否按下鼠标:</div>
+                    <div class="status-value" id="mouseDown">等待中...</div>
+                </div>
+                <div class="status-item">
+                    <div class="status-label">触摸点数量:</div>
+                    <div class="status-value" id="touchPoints">等待中...</div>
+                </div>
+                <div class="status-item">
+                    <div class="status-label">检测到的手势:</div>
+                    <div class="status-value" id="gesture">等待中...</div>
+                </div>
+                <div class="status-item">
+                    <div class="status-label">系统状态:</div>
+                    <div class="status-value" id="systemStatus">初始化中...</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 模拟粒子系统交互测试
+        console.log('🧪 开始粒子系统交互测试');
+        
+        const container = document.getElementById('particleContainer');
+        const statusElements = {
+            mousePosition: document.getElementById('mousePosition'),
+            interactionStrength: document.getElementById('interactionStrength'),
+            particleCount: document.getElementById('particleCount'),
+            fps: document.getElementById('fps'),
+            mouseDown: document.getElementById('mouseDown'),
+            touchPoints: document.getElementById('touchPoints'),
+            gesture: document.getElementById('gesture'),
+            systemStatus: document.getElementById('systemStatus')
+        };
+
+        // 模拟交互状态
+        let interactionState = {
+            mousePosition: { x: 0, y: 0 },
+            isMouseDown: false,
+            touchPoints: [],
+            interactionStrength: 0,
+            gesture: 'none'
+        };
+
+        let particleCount = 5000;
+        let fps = 60;
+        let lastTime = performance.now();
+
+        // 更新状态显示
+        function updateStatusDisplay() {
+            statusElements.mousePosition.textContent = `(${interactionState.mousePosition.x.toFixed(0)}, ${interactionState.mousePosition.y.toFixed(0)})`;
+            statusElements.interactionStrength.textContent = interactionState.interactionStrength.toFixed(2);
+            statusElements.particleCount.textContent = particleCount.toString();
+            statusElements.fps.textContent = fps.toString();
+            statusElements.mouseDown.textContent = interactionState.isMouseDown ? '是' : '否';
+            statusElements.touchPoints.textContent = interactionState.touchPoints.length.toString();
+            statusElements.gesture.textContent = interactionState.gesture;
+            statusElements.systemStatus.textContent = '运行中 ✅';
+        }
+
+        // 鼠标事件监听
+        container.addEventListener('mousemove', (e) => {
+            const rect = container.getBoundingClientRect();
+            interactionState.mousePosition.x = e.clientX - rect.left;
+            interactionState.mousePosition.y = e.clientY - rect.top;
+            interactionState.interactionStrength = interactionState.isMouseDown ? 1.5 : 0.5;
+            console.debug('鼠标移动:', interactionState.mousePosition);
+        });
+
+        container.addEventListener('mousedown', (e) => {
+            interactionState.isMouseDown = true;
+            interactionState.interactionStrength = 1.5;
+            console.debug('鼠标按下');
+        });
+
+        container.addEventListener('mouseup', (e) => {
+            interactionState.isMouseDown = false;
+            interactionState.interactionStrength = 0.5;
+            console.debug('鼠标释放');
+        });
+
+        container.addEventListener('mouseleave', (e) => {
+            interactionState.isMouseDown = false;
+            interactionState.interactionStrength = 0;
+            console.debug('鼠标离开');
+        });
+
+        // 触摸事件监听
+        container.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            interactionState.touchPoints = Array.from(e.touches).map(touch => ({
+                id: touch.identifier,
+                x: touch.clientX - container.getBoundingClientRect().left,
+                y: touch.clientY - container.getBoundingClientRect().top
+            }));
+            interactionState.gesture = interactionState.touchPoints.length === 1 ? 'tap' : 'pinch';
+            console.debug('触摸开始:', interactionState.touchPoints);
+        });
+
+        container.addEventListener('touchmove', (e) => {
+            e.preventDefault();
+            interactionState.touchPoints = Array.from(e.touches).map(touch => ({
+                id: touch.identifier,
+                x: touch.clientX - container.getBoundingClientRect().left,
+                y: touch.clientY - container.getBoundingClientRect().top
+            }));
+            console.debug('触摸移动:', interactionState.touchPoints);
+        });
+
+        container.addEventListener('touchend', (e) => {
+            e.preventDefault();
+            interactionState.touchPoints = Array.from(e.touches).map(touch => ({
+                id: touch.identifier,
+                x: touch.clientX - container.getBoundingClientRect().left,
+                y: touch.clientY - container.getBoundingClientRect().top
+            }));
+            if (interactionState.touchPoints.length === 0) {
+                interactionState.gesture = 'none';
+            }
+            console.debug('触摸结束:', interactionState.touchPoints);
+        });
+
+        // 键盘事件监听
+        document.addEventListener('keydown', (e) => {
+            switch(e.code) {
+                case 'KeyR':
+                    console.debug('重置系统');
+                    interactionState.interactionStrength = 0;
+                    break;
+                case 'KeyP':
+                    console.debug('暂停/恢复系统');
+                    break;
+                case 'ArrowLeft':
+                    interactionState.mousePosition.x = Math.max(0, interactionState.mousePosition.x - 10);
+                    console.debug('键盘控制: 左');
+                    break;
+                case 'ArrowRight':
+                    interactionState.mousePosition.x = Math.min(container.clientWidth, interactionState.mousePosition.x + 10);
+                    console.debug('键盘控制: 右');
+                    break;
+                case 'ArrowUp':
+                    interactionState.mousePosition.y = Math.max(0, interactionState.mousePosition.y - 10);
+                    console.debug('键盘控制: 上');
+                    break;
+                case 'ArrowDown':
+                    interactionState.mousePosition.y = Math.min(container.clientHeight, interactionState.mousePosition.y + 10);
+                    console.debug('键盘控制: 下');
+                    break;
+            }
+        });
+
+        // 模拟FPS计算
+        function updateFPS() {
+            const currentTime = performance.now();
+            const deltaTime = currentTime - lastTime;
+            fps = Math.round(1000 / deltaTime);
+            lastTime = currentTime;
+        }
+
+        // 定期更新显示
+        setInterval(() => {
+            updateFPS();
+            updateStatusDisplay();
+        }, 100);
+
+        // 初始化显示
+        updateStatusDisplay();
+        
+        console.log('✅ 交互测试页面初始化完成');
+        console.log('📝 请按照测试说明进行交互测试');
+    </script>
+</body>
+</html>

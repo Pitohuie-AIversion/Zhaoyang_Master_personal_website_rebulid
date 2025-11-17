@@ -26,12 +26,6 @@ const LazyMotionButton = lazy(() =>
   }))
 );
 
-const LazyAnimatePresence = lazy(() => 
-  import('framer-motion').then(module => ({ 
-    default: module.AnimatePresence 
-  }))
-);
-
 // Motion骨架屏
 const MotionSkeleton: React.FC<{ 
   className?: string;
@@ -78,28 +72,28 @@ const MotionWrapper: React.FC<{
 // 创建motion对象，包含所有子组件
 const createLazyMotion = () => {
   const LazyMotionObject = {
-    div: (props: any) => (
+    div: (props: Record<string, unknown>) => (
       <MotionWrapper delay={0} as="div">
         <Suspense fallback={<MotionSkeleton as="div" />}>
           <LazyMotionDiv {...props} />
         </Suspense>
       </MotionWrapper>
     ),
-    section: (props: any) => (
+    section: (props: Record<string, unknown>) => (
       <MotionWrapper delay={100} as="section">
         <Suspense fallback={<MotionSkeleton as="section" />}>
           <LazyMotionSection {...props} />
         </Suspense>
       </MotionWrapper>
     ),
-    span: (props: any) => (
+    span: (props: Record<string, unknown>) => (
       <MotionWrapper delay={0} as="span">
         <Suspense fallback={<MotionSkeleton as="span" />}>
           <LazyMotionSpan {...props} />
         </Suspense>
       </MotionWrapper>
     ),
-    button: (props: any) => (
+    button: (props: Record<string, unknown>) => (
       <MotionWrapper delay={0} as="button">
         <Suspense fallback={<MotionSkeleton as="button" />}>
           <LazyMotionButton {...props} />
@@ -117,40 +111,22 @@ export const LazyMotionSectionComponent = createLazyMotion();
 export const LazyMotionSpanComponent = createLazyMotion();
 export const LazyMotionButtonComponent = createLazyMotion();
 
-export const LazyAnimatePresenceComponent: React.FC<React.ComponentProps<typeof LazyAnimatePresence>> = (props) => {
-  const { config } = useOptimization();
-  
-  // 如果禁用动画，直接返回children
-  if (config.reducedMotion) {
-    return <>{props.children}</>;
-  }
-  
-  return (
-    <Suspense fallback={<>{props.children}</>}>
-      <LazyAnimatePresence {...props} />
-    </Suspense>
-  );
-};
+// Removed unused LazyAnimatePresenceComponent
 
 // 简化的motion组件，用于基本动画
 export const SimpleMotion: React.FC<{
   children: React.ReactNode;
   className?: string;
-  initial?: any;
-  animate?: any;
-  transition?: any;
+  initial?: Record<string, unknown>;
+  animate?: Record<string, unknown>;
   as?: 'div' | 'section' | 'span' | 'button';
-}> = ({ children, className = '', initial, animate, transition, as = 'div' }) => {
+}> = ({ children, className = '', initial, animate, as = 'div' }) => {
   const { config } = useOptimization();
   const Component = as;
   
-  // 如果禁用动画，返回静态组件
-  if (config.reducedMotion) {
-    return <Component className={className}>{children}</Component>;
-  }
-  
-  // 使用CSS动画替代framer-motion
+  // 使用CSS动画替代framer-motion - 必须在条件返回之前调用hook
   const animationClass = React.useMemo(() => {
+    if (config.reducedMotion) return '';
     if (initial?.opacity === 0 && animate?.opacity === 1) {
       return 'animate-fade-in';
     }
@@ -161,7 +137,12 @@ export const SimpleMotion: React.FC<{
       return 'animate-slide-right';
     }
     return '';
-  }, [initial, animate]);
+  }, [initial, animate, config.reducedMotion]);
+  
+  // 如果禁用动画，返回静态组件
+  if (config.reducedMotion) {
+    return <Component className={className}>{children}</Component>;
+  }
   
   return (
     <Component className={`${className} ${animationClass}`}>

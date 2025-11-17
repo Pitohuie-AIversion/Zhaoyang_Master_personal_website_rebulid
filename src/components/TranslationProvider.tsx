@@ -1,6 +1,5 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import translationService from '../services/translationService';
-import { toast } from 'sonner';
 import { createTranslationFunction } from '../utils/i18n';
 
 type Language = 'zh' | 'en';
@@ -9,7 +8,7 @@ interface TranslationContextType {
   language: Language;
   setLanguage: (lang: Language) => void;
   toggleLanguage: () => void;
-  t: (key: string, options?: { returnObjects?: boolean; fallback?: string }) => any;
+  t: (key: string, options?: { returnObjects?: boolean; fallback?: string }) => string;
   isTranslating: boolean;
 }
 
@@ -81,7 +80,7 @@ export function TranslationProvider({ children }: TranslationProviderProps) {
       if (originalText.length === 0) return;
 
       // 跳过纯数字、符号或很短的文本
-      if (/^[\d\s\-_.,!@#$%^&*()+={}\[\]|\\:;"'<>?/~`]+$/.test(originalText) || 
+      if (/^[\d\s\-_.,!@#$%^&*()+={}\]|\\:;"'<>?/~`]*$/.test(originalText) || 
           originalText.length < 2) {
         return;
       }
@@ -150,12 +149,13 @@ export function TranslationProvider({ children }: TranslationProviderProps) {
   );
 }
 
-export function useTranslation() {
+// useTranslation hook
+export const useTranslation = () => {
   const context = useContext(TranslationContext);
   if (!context) {
-    throw new Error('useTranslation must be used within a TranslationProvider');
+    throw new Error('useTranslation must be used within TranslationProvider');
   }
   return context;
-}
+};
 
 export { TranslationContext, type Language, type TranslationContextType };

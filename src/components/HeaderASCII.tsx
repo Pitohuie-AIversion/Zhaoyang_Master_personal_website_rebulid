@@ -7,7 +7,7 @@ interface HeaderASCIIProps {
 }
 
 export default function HeaderASCII({ className = '' }: HeaderASCIIProps) {
-  const { isMobile, isTablet, isDesktop } = useResponsive();
+  const { isMobile, isTablet } = useResponsive();
 
   return (
     <div 

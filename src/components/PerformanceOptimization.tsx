@@ -1,4 +1,4 @@
-import React, { Suspense, lazy, useEffect, useState } from 'react';
+import React, { lazy, useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 
 // 代码分割 - 懒加载组件
@@ -11,7 +11,7 @@ export const LazyContact = lazy(() => import('../pages/Contact'));
 export const LazyASCIIDemo = lazy(() => import('../pages/ASCIIDemo'));
 
 // 预加载组件
-export const preloadComponent = (componentImport: () => Promise<any>) => {
+export const preloadComponent = (componentImport: () => Promise<unknown>) => {
   componentImport();
 };
 
@@ -29,7 +29,6 @@ interface ImagePreloaderProps {
 }
 
 export const ImagePreloader: React.FC<ImagePreloaderProps> = ({ images, onComplete }) => {
-  const [loadedCount, setLoadedCount] = useState(0);
 
   useEffect(() => {
     if (images.length === 0) {
@@ -37,13 +36,10 @@ export const ImagePreloader: React.FC<ImagePreloaderProps> = ({ images, onComple
       return;
     }
 
-    let loaded = 0;
     const imagePromises = images.map((src) => {
       return new Promise((resolve, reject) => {
         const img = new Image();
         img.onload = () => {
-          loaded++;
-          setLoadedCount(loaded);
           resolve(img);
         };
         img.onerror = reject;
@@ -127,21 +123,20 @@ export const useResourcePreloader = () => {
 // 性能监控组件已移至AdvancedPerformanceOptimization.tsx以避免重复
 
 // 虚拟滚动组件
-interface VirtualScrollProps {
-  items: any[];
+interface VirtualScrollProps<T> {
+  items: T[];
   itemHeight: number;
   containerHeight: number;
-  renderItem: (item: any, index: number) => React.ReactNode;
+  renderItem: (item: T, index: number) => React.ReactNode;
 }
 
-export const VirtualScroll: React.FC<VirtualScrollProps> = ({
+export const VirtualScroll = <T,>({
   items,
   itemHeight,
   containerHeight,
   renderItem
-}) => {
+}: VirtualScrollProps<T>) => {
   const [scrollTop, setScrollTop] = useState(0);
-  const [containerRef, setContainerRef] = useState<HTMLDivElement | null>(null);
 
   const visibleStart = Math.floor(scrollTop / itemHeight);
   const visibleEnd = Math.min(
@@ -211,7 +206,9 @@ export const useNetworkOptimization = () => {
     };
 
     const updateConnectionType = () => {
-      const connection = (navigator as any).connection || (navigator as any).mozConnection || (navigator as any).webkitConnection;
+      const connection = (navigator as unknown as { connection?: { effectiveType?: string }; mozConnection?: { effectiveType?: string }; webkitConnection?: { effectiveType?: string } }).connection || 
+                         (navigator as unknown as { connection?: { effectiveType?: string }; mozConnection?: { effectiveType?: string }; webkitConnection?: { effectiveType?: string } }).mozConnection || 
+                         (navigator as unknown as { connection?: { effectiveType?: string }; mozConnection?: { effectiveType?: string }; webkitConnection?: { effectiveType?: string } }).webkitConnection;
       if (connection) {
         setConnectionType(connection.effectiveType || 'unknown');
       }
@@ -237,10 +234,10 @@ interface ErrorBoundaryState {
 }
 
 export class ErrorBoundary extends React.Component<
-  React.PropsWithChildren<{}>,
+  React.PropsWithChildren<Record<string, unknown>>,
   ErrorBoundaryState
 > {
-  constructor(props: React.PropsWithChildren<{}>) {
+  constructor(props: React.PropsWithChildren<Record<string, unknown>>) {
     super(props);
     this.state = { hasError: false };
   }

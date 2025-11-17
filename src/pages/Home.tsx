@@ -2,20 +2,16 @@ import { SimpleMotion } from '../components/SimpleMotion';
 import { useState, useEffect, memo } from 'react';
 import { Link } from 'react-router-dom';
 import { Mail, Download } from 'lucide-react';
-import PixelRhythm from '../components/PixelRhythm';
-import TraeASCIIBackground from '../components/TraeASCIIBackground';
-import ZhaoyangASCIIText from '../components/ZhaoyangASCIIText';
-import ZhaoyangASCIIRhythm from '../components/ZhaoyangASCIIRhythm';
 import { PageLoader, ResearchHighlightSkeleton, NewsItemSkeleton, StatSkeleton, usePageLoading, LazyWrapper } from '../components/LoadingComponents';
 import LazyImage from '../components/LazyImage';
-import { HoverCard, ScrollReveal } from '../components/InteractiveEffects';
-// 移除复杂动画组件导入
 import { HomeSEO } from '../components/SEOOptimization';
-import { useResponsive, ResponsiveText, ResponsiveImage, ResponsiveCard, ResponsiveSpacing, ResponsiveContainer, ResponsiveGrid } from '../components/ResponsiveEnhancements';
-import { MobileButton } from '../components/ResponsiveContainer';
+import { useResponsive, ResponsiveText, ResponsiveCard, ResponsiveContainer, ResponsiveGrid } from '../components/ResponsiveEnhancements';
 import { useTranslation } from '../components/TranslationProvider';
 import { UnifiedButton } from '../components/UnifiedButton';
+import { ScrollReveal, HoverCard } from '../components/InteractiveEffects';
 import profileImage from '../assets/me_Nero_AI_Image_Upscaler_Photo_Face.jpeg';
+import cnResumePdf from '../../resume/cn_Resume_compressed-1-2.pdf';
+import enResumePdf from '../../resume/en_Resume_compressed.pdf';
 
 interface ResearchHighlight {
   id: string;
@@ -34,7 +30,7 @@ interface NewsItem {
   type: 'publication' | 'award' | 'conference' | 'project';
 }
 
-const getResearchHighlights = (t: (key: string, options?: { returnObjects?: boolean; fallback?: string }) => any): ResearchHighlight[] => [
+const getResearchHighlights = (t: (key: string, options?: { returnObjects?: boolean; fallback?: string }) => string): ResearchHighlight[] => [
   {
     id: '1',
     title: t('home.researchHighlights.items.damformer.title'),
@@ -61,7 +57,7 @@ const getResearchHighlights = (t: (key: string, options?: { returnObjects?: bool
   }
 ];
 
-const getNewsItems = (t: (key: string, options?: { returnObjects?: boolean; fallback?: string }) => any): NewsItem[] => [
+const getNewsItems = (t: (key: string, options?: { returnObjects?: boolean; fallback?: string }) => string): NewsItem[] => [
   {
     id: '1',
     date: '2025-01',
@@ -99,7 +95,7 @@ const getNewsItems = (t: (key: string, options?: { returnObjects?: boolean; fall
   }
 ];
 
-const getStats = (t: (key: string, options?: { returnObjects?: boolean; fallback?: string }) => any) => [
+const getStats = (t: (key: string, options?: { returnObjects?: boolean; fallback?: string }) => string) => [
   { label: t('home.stats.publications'), value: '10+', icon: '📄' },
   { label: t('home.stats.projects'), value: '5', icon: '🔬' },
   { label: t('home.stats.patents'), value: '8', icon: '💡' },
@@ -114,9 +110,9 @@ function Home() {
   const { t, language } = useTranslation();
 
   // Get translated data
-  const researchHighlights = getResearchHighlights(t);
-  const newsItems = getNewsItems(t);
-  const stats = getStats(t);
+  const researchHighlights = getResearchHighlights(t as (key: string, options?: { returnObjects?: boolean; fallback?: string }) => string);
+  const newsItems = getNewsItems(t as (key: string, options?: { returnObjects?: boolean; fallback?: string }) => string);
+  const stats = getStats(t as (key: string, options?: { returnObjects?: boolean; fallback?: string }) => string);
 
   useEffect(() => {
     if (!isAutoPlaying) return;
@@ -126,7 +122,7 @@ function Home() {
     }, 5000);
 
     return () => clearInterval(interval);
-  }, [isAutoPlaying]);
+  }, [isAutoPlaying, researchHighlights.length]);
 
   const handleHighlightChange = (index: number) => {
     setCurrentHighlight(index);
@@ -154,45 +150,45 @@ function Home() {
             >
               <ScrollReveal direction="up" delay={0.2}>
                 <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-primary-dark theme-transition mb-4 leading-tight break-words">
-                  {t('home.hero.name')}
+                  {t('home.hero.name') as string}
                   <ResponsiveText
                     as="span"
                     className="block text-secondary-dark theme-transition font-normal mt-2"
                     preset="card-title"
                   >
-                    {t('home.hero.nameEn')}
+                    {t('home.hero.nameEn') as string}
                   </ResponsiveText>
                 </h1>
               </ScrollReveal>
               <ScrollReveal direction="up" delay={0.6}>
                 <p className="text-base md:text-lg lg:text-xl text-secondary-dark theme-transition mb-6 leading-loose break-words hyphens-auto">
-                  {t('home.hero.description')}
+                  {t('home.hero.description') as string}
                 </p>
               </ScrollReveal>
               <div className="flex flex-wrap gap-2 sm:gap-3 mb-8">
                 <span className="px-3 py-1 bg-gray-100 text-gray-700 rounded-md text-sm font-medium">
-                  {t('home.hero.tags.transformerNeuralOperator')}
+                  {t('home.hero.tags.transformerNeuralOperator') as string}
                 </span>
                 <span className="px-3 py-1 bg-gray-100 text-gray-700 rounded-md text-sm font-medium">
-                  {t('home.hero.tags.cfdSimulation')}
+                  {t('home.hero.tags.cfdSimulation') as string}
                 </span>
                 <span className="px-3 py-1 bg-gray-100 text-gray-700 rounded-md text-sm font-medium">
-                  {t('home.hero.tags.underwaterRobotics')}
+                  {t('home.hero.tags.underwaterRobotics') as string}
                 </span>
                 <span className="px-3 py-1 bg-gray-100 text-gray-700 rounded-md text-sm font-medium">
-                  {t('home.hero.tags.bionicPerception')}
+                  {t('home.hero.tags.bionicPerception') as string}
                 </span>
                 <span className="px-3 py-1 bg-gray-100 text-gray-700 rounded-md text-sm font-medium">
-                  {t('home.hero.tags.mechanicalDesign')}
+                  {t('home.hero.tags.mechanicalDesign') as string}
                 </span>
               </div>
               <ScrollReveal direction="up" delay={0.8}>
                 <div className="flex flex-wrap gap-2 sm:gap-3">
                   <Link to="/research" className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200">
-                    {t('home.hero.buttons.research')}
+                    {t('home.hero.buttons.research') as string}
                   </Link>
                   <Link to="/projects" className="px-6 py-3 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors duration-200">
-                    {t('home.hero.buttons.projects')}
+                    {t('home.hero.buttons.projects') as string}
                   </Link>
                 </div>
               </ScrollReveal>
@@ -236,14 +232,14 @@ function Home() {
             className="text-center mb-12"
           >
             <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-primary-dark theme-transition mb-4 leading-tight">
-              {t('home.researchHighlights.title')}
+              {t('home.researchHighlights.title') as string}
             </h2>
             <ResponsiveText
               as="p"
               className="text-secondary-dark theme-transition max-w-2xl mx-auto"
               preset="body"
             >
-              {t('home.researchHighlights.description')}
+              {t('home.researchHighlights.description') as string}
             </ResponsiveText>
           </SimpleMotion>
 
@@ -323,14 +319,14 @@ function Home() {
               className="font-bold text-gray-900 mb-4"
               preset="section-title"
             >
-              {t('home.latestNews.title')}
+              {t('home.latestNews.title') as string}
             </ResponsiveText>
             <ResponsiveText
               as="p"
               className="text-gray-600 max-w-2xl mx-auto"
               preset="body"
             >
-              {t('home.latestNews.description')}
+              {t('home.latestNews.description') as string}
             </ResponsiveText>
           </SimpleMotion>
 
@@ -398,7 +394,7 @@ function Home() {
                 )}
                 iconPosition="right"
               >
-                {t('home.viewMoreAchievements')}
+                {t('home.viewMoreAchievements') as string}
               </UnifiedButton>
             </Link>
           </div>
@@ -414,9 +410,9 @@ function Home() {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl lg:text-4xl font-bold mb-4">{t('home.researchAchievements')}</h2>
+            <h2 className="text-3xl lg:text-4xl font-bold mb-4">{t('home.researchAchievements') as string}</h2>
             <p className="text-lg text-gray-300 max-w-2xl mx-auto">
-              {t('home.achievementsDesc')}
+              {t('home.achievementsDesc') as string}
             </p>
           </SimpleMotion>
 
@@ -491,7 +487,7 @@ function Home() {
                 desktop: 'text-4xl leading-tight'
               }}
             >
-              {t('home.startCollaboration')}
+              {t('home.startCollaboration') as string}
             </ResponsiveText>
             <ResponsiveText
               as="p"
@@ -502,7 +498,7 @@ function Home() {
                 desktop: 'text-lg leading-relaxed'
               }}
             >
-              {t('home.collaborationDesc')}
+              {t('home.collaborationDesc') as string}
             </ResponsiveText>
             <ScrollReveal direction="up" delay={0.4}>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -514,11 +510,11 @@ function Home() {
                     iconPosition="left"
                     className="shadow-lg hover:shadow-xl transition-shadow"
                   >
-                    {t('home.contactMe')}
+                    {t('home.contactMe') as string}
                   </UnifiedButton>
                 </Link>
                 <a
-                  href="/resume.pdf"
+                  href={language === 'zh' ? cnResumePdf : enResumePdf}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -529,7 +525,7 @@ function Home() {
                     iconPosition="left"
                     className="shadow-lg hover:shadow-xl transition-shadow"
                   >
-                    {t('home.downloadResume')}
+                    {t('home.downloadResume') as string}
                   </UnifiedButton>
                 </a>
               </div>

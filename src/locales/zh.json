@@ -1107,6 +1107,130 @@
       }
     }
   },
+  "particleField": {
+    "title": "粒子海洋",
+    "description": "基于WebGL 2.0的高性能粒子系统，模拟海洋粒子的自然运动",
+    "demoMode": "演示模式",
+    "settings": "设置",
+    "backToMain": "返回主页",
+    "toggleInfo": "切换信息",
+    "toggleStats": "切换统计",
+    "presets": "预设",
+    "play": "播放",
+    "pause": "暂停",
+    "reset": "重置",
+    "fullscreen": "全屏",
+    "exitFullscreen": "退出全屏",
+    "particles": "粒子",
+    "frameTime": "帧时间",
+    "memory": "内存",
+    "avgFps": "平均FPS",
+    "performanceStats": "性能统计",
+    "controls": "控制说明",
+    "shortcuts": {
+      "space": "空格",
+      "playPause": "播放/暂停",
+      "reset": "重置系统",
+      "stats": "显示统计",
+      "presets": "预设面板",
+      "fullscreen": "全屏切换",
+      "info": "信息面板",
+      "mouse": "鼠标",
+      "interact": "交互控制"
+    },
+    "features": {
+      "title": "功能特性",
+      "webgl": {
+        "title": "WebGL 2.0 渲染",
+        "description": "基于现代WebGL 2.0技术，实现高性能GPU加速渲染"
+      },
+      "perlinNoise": {
+        "title": "Perlin噪声算法",
+        "description": "使用Perlin噪声生成自然的粒子运动轨迹"
+      },
+      "postProcessing": {
+        "title": "后处理效果",
+        "description": "包含模糊、发光、色彩校正等多种视觉效果"
+      },
+      "interaction": {
+        "title": "用户交互",
+        "description": "支持鼠标和触摸交互，实时响应用户操作"
+      },
+      "performance": {
+        "title": "性能自适应",
+        "description": "智能检测设备性能，自动调整渲染质量"
+      },
+      "presets": {
+        "title": "预设管理",
+        "description": "内置多种视觉预设，支持自定义配置保存"
+      }
+    },
+    "technical": {
+      "title": "技术实现",
+      "architecture": "系统架构",
+      "shaders": "着色器程序",
+      "algorithms": "核心算法",
+      "optimization": "性能优化"
+    },
+    "settings": {
+      "title": "粒子海洋设置",
+      "particles": "粒子设置",
+      "postProcess": "后处理",
+      "interaction": "交互控制",
+      "presets": "预设管理",
+      "performancePresets": "性能预设",
+      "basic": "基础设置",
+      "physics": "物理设置",
+      "colors": "颜色设置",
+      "bloom": "发光效果",
+      "colorCorrection": "色彩校正",
+      "effects": "视觉效果",
+      "mouse": "鼠标控制",
+      "touch": "触摸控制",
+      "builtinPresets": "内置预设",
+      "customPresets": "自定义预设",
+      "maxParticles": "最大粒子数",
+      "spawnRate": "生成速率",
+      "lifespan": "生命周期",
+      "size": "粒子大小",
+      "gravity": "重力",
+      "damping": "阻尼",
+      "noiseStrength": "噪声强度",
+      "noiseScale": "噪声缩放",
+      "colorScheme": "配色方案",
+      "enableBloom": "启用发光",
+      "bloomIntensity": "发光强度",
+      "blurAmount": "模糊程度",
+      "contrast": "对比度",
+      "saturation": "饱和度",
+      "colorTemperature": "色温",
+      "noiseAmount": "噪声量",
+      "vignetteStrength": "暗角强度",
+      "enableMouse": "启用鼠标",
+      "mouseRadius": "鼠标半径",
+      "mouseStrength": "鼠标强度",
+      "smoothing": "平滑度",
+      "enableTouch": "启用触摸",
+      "maxTouches": "最大触摸点",
+      "apply": "应用",
+      "savePreset": "保存预设",
+      "noCustomPresets": "暂无自定义预设",
+      "presetName": "预设名称",
+      "presetDescription": "预设描述",
+      "enterPresetName": "请输入预设名称",
+      "enterPresetDescription": "请输入预设描述",
+      "cancel": "取消",
+      "save": "保存",
+      "reset": "重置",
+      "import": "导入",
+      "export": "导出",
+      "livePreview": "实时预览",
+      "hidePreview": "隐藏预览",
+      "showPreview": "显示预览",
+      "previewHidden": "预览已隐藏",
+      "previewHiddenDesc": "点击按钮重新显示实时预览"
+    }
+  },
   "footer": {
     "personalInfo": {
       "name": "牟昭阳",

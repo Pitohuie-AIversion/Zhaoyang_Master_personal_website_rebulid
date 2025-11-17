@@ -25,7 +25,13 @@ export default defineConfig({
           // 将UI组件库分离
           'ui': ['lucide-react'],
           // 将SEO相关库分离
-          'seo': ['react-helmet-async']
+          'seo': ['react-helmet-async'],
+          // 新增：动画库分离
+          'motion': ['framer-motion'],
+          // 新增：图表库分离
+          'charts': ['recharts'],
+          // 新增：工具库分离
+          'utils': ['clsx', 'tailwind-merge']
         },
         // 优化chunk文件名
         chunkFileNames: 'assets/js/[name]-[hash].js',
@@ -36,15 +42,20 @@ export default defineConfig({
     // 启用CSS代码分割
     cssCodeSplit: true,
     // 设置chunk大小警告限制
-    chunkSizeWarningLimit: 1000,
+    chunkSizeWarningLimit: 500,
     // 启用压缩
     minify: 'terser',
     terserOptions: {
       compress: {
         drop_console: true,
-        drop_debugger: true
+        drop_debugger: true,
+        pure_funcs: ['console.log', 'console.info']
       }
-    }
+    },
+    // 新增：启用构建分析
+    reportCompressedSize: true,
+    // 新增：启用sourcemap
+    sourcemap: true
   },
   // 优化依赖预构建
   optimizeDeps: {
@@ -53,7 +64,11 @@ export default defineConfig({
       'react-dom',
       'react-router-dom',
       'lucide-react',
-      'react-helmet-async'
+      'react-helmet-async',
+      'framer-motion',
+      'recharts',
+      'clsx',
+      'tailwind-merge'
     ]
   },
   // 开发服务器配置

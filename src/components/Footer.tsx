@@ -46,18 +46,18 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   const quickLinks = [
-    { name: t('footer.quickLinks.home'), href: '/' },
-    { name: t('footer.quickLinks.research'), href: '/research' },
-    { name: t('footer.quickLinks.projects'), href: '/projects' },
-    { name: t('footer.quickLinks.publications'), href: '/publications' }
+    { name: t('footer.quickLinks.home') as string, href: '/' },
+    { name: t('footer.quickLinks.research') as string, href: '/research' },
+    { name: t('footer.quickLinks.projects') as string, href: '/projects' },
+    { name: t('footer.quickLinks.publications') as string, href: '/publications' }
   ];
 
   const researchAreas = [
-    t('footer.researchAreas.areas.0'),
-    t('footer.researchAreas.areas.1'),
-    t('footer.researchAreas.areas.2'),
-    t('footer.researchAreas.areas.3'),
-    t('footer.researchAreas.areas.4')
+    t('footer.researchAreas.areas.0') as string,
+    t('footer.researchAreas.areas.1') as string,
+    t('footer.researchAreas.areas.2') as string,
+    t('footer.researchAreas.areas.3') as string,
+    t('footer.researchAreas.areas.4') as string
   ].filter(area => area && !area.startsWith('footer.'));
 
   return (
@@ -77,14 +77,14 @@ export default function Footer() {
                 <img src="/favicon.svg" alt="ZY Logo" className="w-full h-full object-contain" />
               </div>
               <div>
-                <div className="text-2xl font-bold text-primary-dark theme-transition">{t('footer.personalInfo.name')}</div>
-                <div className="text-secondary-dark theme-transition">{t('footer.personalInfo.nameEn')}</div>
+                <div className="text-2xl font-bold text-primary-dark theme-transition">{t('footer.personalInfo.name') as string}</div>
+                <div className="text-secondary-dark theme-transition">{t('footer.personalInfo.nameEn') as string}</div>
               </div>
             </div>
             <p className="text-secondary-dark theme-transition mb-6 leading-relaxed max-w-md">
-              {t('footer.personalInfo.description')}
+              {t('footer.personalInfo.description') as string}
             </p>
-            <h3 className="font-semibold text-primary-dark theme-transition mb-4">{t('footer.researchAreas.title')}</h3>
+            <h3 className="font-semibold text-primary-dark theme-transition mb-4">{t('footer.researchAreas.title') as string}</h3>
             <ul className="space-y-2">
               {researchAreas.map((area: string, index: number) => (
                 <li key={index} className="text-secondary-dark theme-transition">
@@ -115,7 +115,7 @@ export default function Footer() {
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <h3 className="font-semibold text-primary-dark theme-transition mb-4">{t('footer.quickLinks.title')}</h3>
+            <h3 className="font-semibold text-primary-dark theme-transition mb-4">{t('footer.quickLinks.title') as string}</h3>
             <ul className="space-y-2">
               {quickLinks.map((link) => (
                 <li key={link.name}>
@@ -123,7 +123,7 @@ export default function Footer() {
                     to={link.href}
                     className="text-secondary-dark hover:text-blue-600 dark:hover:text-blue-400 theme-transition"
                   >
-                    {link.name}
+                    {link.name as string}
                   </Link>
                 </li>
               ))}
@@ -137,17 +137,17 @@ export default function Footer() {
             transition={{ duration: 0.6, delay: 0.4 }}
             viewport={{ once: true }}
           >
-            <h3 className="font-semibold text-primary-dark theme-transition mb-4">{t('footer.contact.title')}</h3>
+            <h3 className="font-semibold text-primary-dark theme-transition mb-4">{t('footer.contact.title') as string}</h3>
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
                 <svg className="w-5 h-5 text-tertiary-dark theme-transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
                 <a
-                  href={`mailto:${t('footer.contact.email')}`}
+                  href={`mailto:${t('footer.contact.email') as string}`}
                   className="text-secondary-dark hover:text-blue-600 dark:hover:text-blue-400 theme-transition"
                 >
-                  {t('footer.contact.email')}
+                  {t('footer.contact.email') as string}
                 </a>
               </div>
               <div className="flex items-center space-x-3">
@@ -155,7 +155,7 @@ export default function Footer() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
-                <span className="text-secondary-dark theme-transition">{t('footer.contact.address')}</span>
+                <span className="text-secondary-dark theme-transition">{t('footer.contact.address') as string}</span>
               </div>
             </div>
           </motion.div>
@@ -171,17 +171,17 @@ export default function Footer() {
         >
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-tertiary-dark theme-transition text-sm mb-4 md:mb-0">
-              &copy; {currentYear} {t('footer.legal.copyright')}
+              &copy; {currentYear} {t('footer.legal.copyright') as string}
             </p>
             <div className="flex space-x-6 text-sm text-tertiary-dark theme-transition">
               <a href="#" className="hover:text-blue-600 dark:hover:text-blue-400 theme-transition">
-                {t('footer.legal.privacy')}
+                {t('footer.legal.privacy') as string}
               </a>
               <a href="#" className="hover:text-blue-600 dark:hover:text-blue-400 theme-transition">
-                {t('footer.legal.terms')}
+                {t('footer.legal.terms') as string}
               </a>
               <a href="#" className="hover:text-blue-600 dark:hover:text-blue-400 theme-transition">
-                {t('footer.legal.sitemap')}
+                {t('footer.legal.sitemap') as string}
               </a>
             </div>
           </div>

@@ -27,7 +27,7 @@ const ChatButton: React.FC<ChatButtonProps> = ({ isOpen, onClick, hasUnread = fa
         ${isOpen ? 'rotate-180' : 'rotate-0'}
       `}
       aria-label={isOpen ? t('research.chatAssistant.close') : t('research.chatAssistant.title')}
-        title={isOpen ? t('research.chatAssistant.close') : t('research.chatAssistant.title')}
+        title={isOpen ? t('research.chatAssistant.close') as string : t('research.chatAssistant.title') as string}
     >
       {/* 未读消息指示器 */}
       {hasUnread && !isOpen && (
@@ -52,7 +52,7 @@ const ChatButton: React.FC<ChatButtonProps> = ({ isOpen, onClick, hasUnread = fa
         whitespace-nowrap pointer-events-none
         ${isOpen ? 'hidden' : 'block'}
       `}>
-        {t('research.chatAssistant.title')}
+        {t('research.chatAssistant.title') as string}
         <div className="absolute top-1/2 -right-1 transform -translate-y-1/2 w-2 h-2 bg-gray-900 rotate-45" />
       </div>
     </button>

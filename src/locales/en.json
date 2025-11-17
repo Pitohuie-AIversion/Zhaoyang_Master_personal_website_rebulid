@@ -719,12 +719,12 @@
         "title": "Patents",
         "underwaterNavigation": {
           "title": "Underwater Navigation Device and Method Based on Bionic Perception",
-          "applicant": "Dalian University of Technology",
+          "applicant": "Westlake University",
           "description": "This invention discloses an underwater navigation device and method based on bionic perception, achieving precise underwater environmental perception and navigation by simulating fish lateral line systems."
         },
         "vectorThruster": {
           "title": "Vector Thruster and Its Control Method",
-          "applicant": "Dalian University of Technology",
+          "applicant": "Westlake University",
           "description": "This invention relates to a vector thruster and its control method, capable of achieving omnidirectional thrust control and improving the maneuverability of underwater robots."
         }
       },
@@ -1255,6 +1255,205 @@
         "description": "Get in touch with Zhaoyang Mu to explore collaboration opportunities or academic exchanges.",
         "keywords": ["Contact Information", "Collaboration Opportunities", "Academic Exchange", "Contact Me"]
       }
+    }
+  },
+  "particleField": {
+    "title": "Particle Ocean",
+    "description": "Interactive particle field based on WebGL 2.0 and Perlin Noise algorithm",
+    "demo": "Demo Mode",
+    "settings": "Settings",
+    "navigation": {
+      "main": "Main Display",
+      "demo": "Immersive Demo",
+      "settings": "Configuration Panel"
+    },
+    "controls": {
+      "play": "Play",
+      "pause": "Pause",
+      "reset": "Reset",
+      "fullscreen": "Fullscreen",
+      "exitFullscreen": "Exit Fullscreen",
+      "showPreview": "Show Preview",
+      "hidePreview": "Hide Preview"
+    },
+    "performance": {
+      "title": "Performance Statistics",
+      "particles": "Particles",
+      "frameTime": "Frame Time",
+      "memory": "Memory Usage",
+      "fps": "FPS",
+      "avgFps": "Avg FPS",
+      "minFps": "Min FPS",
+      "maxFps": "Max FPS",
+      "preset": "Performance Preset"
+    },
+    "instructions": {
+      "title": "Control Instructions",
+      "mouse": "Mouse interaction affects particle movement",
+      "touch": "Touch interaction affects particle movement",
+      "keyboard": "Keyboard shortcuts available"
+    },
+    "shortcuts": {
+      "title": "Keyboard Shortcuts",
+      "space": "Space - Play/Pause",
+      "r": "R - Reset",
+      "f": "F - Toggle Fullscreen",
+      "esc": "Esc - Exit Fullscreen"
+    },
+    "features": {
+      "title": "Core Features",
+      "webgl": {
+        "title": "WebGL 2.0 Rendering",
+        "description": "High-performance GPU-accelerated particle rendering"
+      },
+      "perlinNoise": {
+        "title": "Perlin Noise Algorithm",
+        "description": "Natural and smooth particle motion patterns"
+      },
+      "postProcessing": {
+        "title": "Post-Processing Effects",
+        "description": "Blur, bloom, color correction and other visual effects"
+      },
+      "interaction": {
+        "title": "User Interaction",
+        "description": "Mouse and touch control for immersive experience"
+      },
+      "performance": {
+        "title": "Performance Adaptation",
+        "description": "Automatic quality adjustment based on device capabilities"
+      },
+      "presets": {
+        "title": "Preset Management",
+        "description": "Built-in presets and custom configuration saving"
+      }
+    },
+    "technical": {
+      "title": "Technical Implementation",
+      "architecture": "Modular architecture design with clear separation of concerns",
+      "rendering": "WebGL 2.0 shader-based particle rendering system",
+      "algorithms": "Perlin Noise and particle physics simulation",
+      "optimization": "Performance monitoring and adaptive quality control",
+      "interaction": "Multi-platform input handling (mouse, touch, keyboard)",
+      "effects": "Real-time post-processing pipeline"
+    },
+    "settings": {
+      "title": "Configuration Panel",
+      "particles": {
+        "title": "Particle Settings",
+        "count": "Particle Count",
+        "size": "Particle Size",
+        "speed": "Movement Speed",
+        "life": "Particle Lifetime",
+        "color": "Particle Color",
+        "opacity": "Opacity",
+        "trail": "Trail Effect",
+        "gravity": "Gravity",
+        "turbulence": "Turbulence"
+      },
+      "postProcess": {
+        "title": "Post-Processing",
+        "blur": {
+          "title": "Blur Effect",
+          "enabled": "Enable Blur",
+          "intensity": "Blur Intensity"
+        },
+        "bloom": {
+          "title": "Bloom Effect",
+          "enabled": "Enable Bloom",
+          "threshold": "Bloom Threshold",
+          "intensity": "Bloom Intensity",
+          "radius": "Bloom Radius"
+        },
+        "colorCorrection": {
+          "title": "Color Correction",
+          "contrast": "Contrast",
+          "saturation": "Saturation",
+          "brightness": "Brightness",
+          "temperature": "Color Temperature"
+        },
+        "effects": {
+          "title": "Additional Effects",
+          "noise": "Noise",
+          "vignette": "Vignette"
+        }
+      },
+      "interaction": {
+        "title": "Interaction Settings",
+        "mouse": {
+          "title": "Mouse Control",
+          "enabled": "Enable Mouse",
+          "sensitivity": "Mouse Sensitivity",
+          "radius": "Influence Radius"
+        },
+        "touch": {
+          "title": "Touch Control",
+          "enabled": "Enable Touch",
+          "sensitivity": "Touch Sensitivity",
+          "multiTouch": "Multi-touch Support"
+        },
+        "keyboard": {
+          "title": "Keyboard Control",
+          "enabled": "Enable Keyboard"
+        }
+      },
+      "presets": {
+        "title": "Preset Management",
+        "builtin": "Built-in Presets",
+        "custom": "Custom Presets",
+        "performance": "Performance Presets",
+        "apply": "Apply",
+        "save": "Save",
+        "edit": "Edit",
+        "delete": "Delete",
+        "import": "Import",
+        "export": "Export",
+        "create": "Create New Preset",
+        "name": "Preset Name",
+        "description": "Description",
+        "colorScheme": "Color Scheme",
+        "presets": {
+          "ocean": "Ocean Waves",
+          "galaxy": "Galaxy Nebula",
+          "aurora": "Aurora Borealis",
+          "fire": "Flame Dance",
+          "snow": "Snowfall",
+          "rain": "Raindrops",
+          "smoke": "Smoke Effect",
+          "electric": "Electric Storm"
+        },
+        "performance": {
+          "low": "Low Quality",
+          "medium": "Medium Quality",
+          "high": "High Quality",
+          "ultra": "Ultra Quality"
+        },
+        "colors": {
+          "blue": "Ocean Blue",
+          "purple": "Deep Purple",
+          "green": "Forest Green",
+          "orange": "Sunset Orange",
+          "red": "Crimson Red",
+          "cyan": "Electric Cyan",
+          "white": "Pure White",
+          "rainbow": "Rainbow"
+        }
+      }
+    },
+    "status": {
+      "loading": "Loading particle system...",
+      "error": "Failed to initialize particle system",
+      "ready": "Particle system ready",
+      "paused": "Paused",
+      "playing": "Playing"
+    },
+    "messages": {
+      "webglNotSupported": "WebGL 2.0 not supported by your browser",
+      "performanceWarning": "Performance may be affected on this device",
+      "configSaved": "Configuration saved successfully",
+      "configLoaded": "Configuration loaded successfully",
+      "presetApplied": "Preset applied successfully",
+      "presetSaved": "Preset saved successfully",
+      "presetDeleted": "Preset deleted successfully"
     }
   }
 }

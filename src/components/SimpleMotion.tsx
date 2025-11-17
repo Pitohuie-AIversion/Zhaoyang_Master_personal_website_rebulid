@@ -1,13 +1,13 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 
 interface SimpleMotionProps {
   children: React.ReactNode;
   className?: string;
-  initial?: any;
-  animate?: any;
-  transition?: any;
+  initial?: Record<string, unknown>;
+  animate?: Record<string, unknown>;
+  transition?: Record<string, unknown>;
   as?: 'button' | 'div' | 'section' | 'span' | 'p';
-  onClick?: (e?: any) => void;
+  onClick?: (e?: React.MouseEvent) => void;
   onMouseEnter?: () => void;
   onMouseLeave?: () => void;
   style?: React.CSSProperties;
@@ -26,7 +26,7 @@ export const SimpleMotion: React.FC<SimpleMotionProps> = ({
   id,
   ...props
 }) => {
-  const ElementComponent = Component as any;
+  const ElementComponent = Component as React.ElementType;
   
   return (
     <ElementComponent

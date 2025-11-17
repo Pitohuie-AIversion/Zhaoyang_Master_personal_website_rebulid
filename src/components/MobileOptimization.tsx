@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useCallback, useRef } from 'react';
-import { Menu, X, ChevronUp, Wifi, WifiOff, Battery, Signal } from 'lucide-react';
+import React, { useState, useEffect, useCallback } from 'react';
+import { X, ChevronUp, Wifi, WifiOff, Battery } from 'lucide-react';
 import { useResponsive } from './ResponsiveEnhancements';
 import { useOptimization } from './GlobalOptimizationManager';
 
@@ -191,20 +191,22 @@ export const MobileNetworkIndicator: React.FC = () => {
     
     // 检测连接类型
     if ('connection' in navigator) {
-      const connection = (navigator as any).connection;
-      setConnectionType(connection.effectiveType || 'unknown');
-      
-      const handleConnectionChange = () => {
+      const connection = (navigator as Navigator & { connection?: { effectiveType?: string; downlink?: number; rtt?: number } }).connection;
+      if (connection) {
         setConnectionType(connection.effectiveType || 'unknown');
-      };
-      
-      connection.addEventListener('change', handleConnectionChange);
-      
-      return () => {
-        window.removeEventListener('online', handleOnline);
-        window.removeEventListener('offline', handleOffline);
-        connection.removeEventListener('change', handleConnectionChange);
-      };
+        
+        const handleConnectionChange = () => {
+          setConnectionType(connection.effectiveType || 'unknown');
+        };
+        
+        (connection as any).addEventListener('change', handleConnectionChange);
+        
+        return () => {
+          window.removeEventListener('online', handleOnline);
+          window.removeEventListener('offline', handleOffline);
+          (connection as any).removeEventListener('change', handleConnectionChange);
+        };
+      }
     }
     
     return () => {
@@ -239,7 +241,7 @@ export const MobileBatteryIndicator: React.FC = () => {
   
   useEffect(() => {
     if ('getBattery' in navigator) {
-      (navigator as any).getBattery().then((battery: any) => {
+      (navigator as Navigator & { getBattery?: () => Promise<{ level: number; charging: boolean; addEventListener?: (event: string, callback: () => void) => void; removeEventListener?: (event: string, callback: () => void) => void }> }).getBattery()?.then((battery) => {
         setBatteryLevel(Math.round(battery.level * 100));
         setIsCharging(battery.charging);
         
@@ -251,12 +253,16 @@ export const MobileBatteryIndicator: React.FC = () => {
           setIsCharging(battery.charging);
         };
         
-        battery.addEventListener('levelchange', handleLevelChange);
-        battery.addEventListener('chargingchange', handleChargingChange);
+        if (battery.addEventListener) {
+          battery.addEventListener('levelchange', handleLevelChange);
+          battery.addEventListener('chargingchange', handleChargingChange);
+        }
         
         return () => {
-          battery.removeEventListener('levelchange', handleLevelChange);
-          battery.removeEventListener('chargingchange', handleChargingChange);
+          if (battery.removeEventListener) {
+            battery.removeEventListener('levelchange', handleLevelChange);
+            battery.removeEventListener('chargingchange', handleChargingChange);
+          }
         };
       });
     }
@@ -294,7 +300,7 @@ export const useMobileOptimization = () => {
     
     // 检测低电量模式
     if ('getBattery' in navigator) {
-      (navigator as any).getBattery().then((battery: any) => {
+      (navigator as Navigator & { getBattery?: () => Promise<{ level: number; charging: boolean }> }).getBattery()?.then((battery) => {
         const checkLowPower = () => {
           const lowPower = battery.level < 0.2 && !battery.charging;
           setIsLowPowerMode(lowPower);

@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useInView } from 'react-intersection-observer';
-import { useResponsive } from './ResponsiveEnhancements';
 import { useOptimization } from './GlobalOptimizationManager';
 
 // 动画配置接口
@@ -12,6 +11,16 @@ interface AnimationConfig {
   direction?: 'normal' | 'reverse' | 'alternate' | 'alternate-reverse';
   fillMode?: 'none' | 'forwards' | 'backwards' | 'both';
 }
+
+// 使用AnimationConfig接口确保类型安全
+const _defaultAnimationConfig: AnimationConfig = {
+  duration: 1000,
+  delay: 0,
+  easing: 'ease-out',
+  repeat: false,
+  direction: 'normal',
+  fillMode: 'both'
+};
 
 // 粒子效果组件
 export const ParticleBackground: React.FC<{

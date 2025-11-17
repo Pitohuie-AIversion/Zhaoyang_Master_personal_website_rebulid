@@ -89,7 +89,7 @@ const TraeASCIIBackground: React.FC<TraeASCIIBackgroundProps> = ({
 
   const getRandomChar = useCallback(() => {
     return matrixChars[Math.floor(Math.random() * matrixChars.length)];
-  }, []);
+  }, [matrixChars]);
 
   const createColumn = useCallback((canvas: HTMLCanvasElement, x: number) => {
     return {
@@ -120,7 +120,7 @@ const TraeASCIIBackground: React.FC<TraeASCIIBackgroundProps> = ({
     
     columns.forEach(column => {
       // 更新现有字符位置
-      column.characters.forEach((char, index) => {
+      column.characters.forEach((char, charIndex) => {
         char.y += column.speed * (deltaTime / 16); // 标准化到60fps
         
         // 更新透明度和亮度
@@ -129,7 +129,7 @@ const TraeASCIIBackground: React.FC<TraeASCIIBackgroundProps> = ({
           char.opacity = 1;
         } else {
           // 根据距离头部的位置计算透明度
-          const distanceFromHead = index;
+          const distanceFromHead = charIndex;
           char.brightness = Math.max(0.1, 1 - distanceFromHead * 0.1);
           char.opacity = Math.max(0.1, 1 - distanceFromHead * 0.05);
         }
@@ -164,7 +164,7 @@ const TraeASCIIBackground: React.FC<TraeASCIIBackgroundProps> = ({
     });
     
     lastTimeRef.current = currentTime;
-  }, [intensity, getRandomChar]);
+  }, [intensity, getRandomChar, intensityConfig]);
 
   const drawColumns = useCallback((ctx: CanvasRenderingContext2D) => {
     const currentTheme = themes[theme];
@@ -172,7 +172,7 @@ const TraeASCIIBackground: React.FC<TraeASCIIBackgroundProps> = ({
     const fontSize = 16;
 
     columns.forEach(column => {
-      column.characters.forEach((char, index) => {
+      column.characters.forEach((char) => {
         ctx.save();
         
         // 设置字体

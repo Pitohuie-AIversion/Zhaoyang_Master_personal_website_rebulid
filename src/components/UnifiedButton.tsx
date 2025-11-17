@@ -75,7 +75,6 @@ export const UnifiedButton: React.FC<UnifiedButtonProps> = ({
   className = '',
   ariaLabel,
   title,
-  as,
   href,
   target,
   rel
@@ -132,7 +131,7 @@ export const UnifiedButton: React.FC<UnifiedButtonProps> = ({
       {icon && iconPosition === 'left' && !loading && (
         <span className="flex items-center">
           {React.isValidElement(icon) ? icon : 
-           typeof icon === 'function' ? React.createElement(icon as React.ComponentType<any>, { className: 'w-4 h-4' }) : 
+           typeof icon === 'function' ? React.createElement(icon as React.ComponentType<React.SVGProps<SVGSVGElement>>, { className: 'w-4 h-4' }) : 
            typeof icon === 'object' && icon !== null ? null : icon}
         </span>
       )}
@@ -142,7 +141,7 @@ export const UnifiedButton: React.FC<UnifiedButtonProps> = ({
       {icon && iconPosition === 'right' && !loading && (
         <span className="flex items-center">
           {React.isValidElement(icon) ? icon : 
-           typeof icon === 'function' ? React.createElement(icon as React.ComponentType<any>, { className: 'w-4 h-4' }) : 
+           typeof icon === 'function' ? React.createElement(icon as React.ComponentType<React.SVGProps<SVGSVGElement>>, { className: 'w-4 h-4' }) : 
            typeof icon === 'object' && icon !== null ? null : icon}
         </span>
       )}

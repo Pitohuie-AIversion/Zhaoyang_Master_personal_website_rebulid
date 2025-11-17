@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useTranslation } from '../components/TranslationProvider';
-import { Mail, Phone, MapPin, Github, Linkedin, Twitter, Send, CheckCircle, XCircle, Loader, Building, Clock, DollarSign, AlertCircle, ExternalLink, Code, Briefcase, GraduationCap, Users } from 'lucide-react';
+import { Send, CheckCircle, XCircle, Building, Clock, DollarSign, AlertCircle } from 'lucide-react';
 import { ContactSEO } from '../components/SEOOptimization';
 import { SimpleMotion } from '../components/SimpleMotion';
 import { useResponsive } from '../components/ResponsiveEnhancements';
@@ -36,13 +36,13 @@ export default function Contact() {
   const { t } = useTranslation();
   const { isMobile } = useResponsive();
 
-  const phoneDisplay = t('contact.info.phone');
+  const phoneDisplay = t('contact.info.phone') as string;
   const phoneHref = phoneDisplay.replace(/[^\d+]/g, '') || phoneDisplay;
   
   // 动态生成社交媒体链接
   const socialLinks = [
     {
-      name: t('contact.social.github'),
+      name: t('contact.social.github') as string,
       url: 'https://github.com/Pitohuie',
       icon: (
         <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -51,7 +51,7 @@ export default function Contact() {
       )
     },
     {
-      name: t('contact.social.linkedin'),
+      name: t('contact.social.linkedin') as string,
       url: 'https://www.linkedin.com/in/昭阳-牟-283497384/',
       icon: (
         <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -60,7 +60,7 @@ export default function Contact() {
       )
     },
     {
-      name: t('contact.social.csdn'),
+      name: t('contact.social.csdn') as string,
       url: 'https://blog.csdn.net/zhaoyangmou',
       icon: (
         <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -69,7 +69,7 @@ export default function Contact() {
       )
     },
     {
-      name: t('contact.social.researchgate'),
+      name: t('contact.social.researchgate') as string,
       url: 'https://researchgate.net/profile/Zhaoyang-Mou',
       icon: (
         <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -78,7 +78,7 @@ export default function Contact() {
       )
     },
     {
-      name: t('contact.social.scholar'),
+      name: t('contact.social.scholar') as string,
       url: 'https://scholar.google.com/citations?user=T3AV5RgAAAAJ',
       icon: (
         <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -89,8 +89,8 @@ export default function Contact() {
   ];
   
   // 获取翻译后的配置数据
-  const formFieldConfig = getFormFieldConfig(t);
-  const collaborationTypes = getCollaborationTypes(t);
+  const formFieldConfig = getFormFieldConfig((key: string) => t(key) as string);
+  const collaborationTypes = getCollaborationTypes((key: string) => t(key) as string);
   
   // 表单数据状态
   const [formData, setFormData] = useState<ContactFormData>({
@@ -136,22 +136,6 @@ export default function Contact() {
     }
   };
   
-  // 兼容旧版本的handleInputChange函数
-  const handleInputChangeOld = (field: string, value: string) => {
-    setFormData(prev => ({
-      ...prev,
-      [field]: value
-    }));
-    
-    // 清除对应字段的错误信息
-    if (errors[field as keyof FormErrors]) {
-      setErrors(prev => ({
-        ...prev,
-        [field]: undefined
-      }));
-    }
-  };
-  
   // 处理合作类型选择
   const handleCollaborationSelect = (typeId: string) => {
     setSelectedCollaboration(typeId);
@@ -169,7 +153,7 @@ export default function Contact() {
     setErrors(validationErrors);
     
     if (hasValidationErrors(validationErrors)) {
-      toast.error(t('contact.form.validationError'));
+      toast.error(t('contact.form.validationError') as string);
       return;
     }
     
@@ -205,7 +189,7 @@ export default function Contact() {
       
     } catch (error) {
       setSubmitStatus('error');
-      const errorMessage = error instanceof Error ? error.message : t('contact.form.submitError');
+      const errorMessage = error instanceof Error ? error.message : t('contact.form.submitError') as string;
       setSubmitMessage(errorMessage);
       
       // 3秒后重置状态
@@ -264,10 +248,10 @@ export default function Contact() {
               className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 leading-tight break-words"
               gradient="from-blue-600 via-purple-600 to-pink-600"
             >
-              {t('contact.title')}
+              {t('contact.title') as string}
             </GradientText>
             <p className="text-base md:text-lg lg:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-loose break-words hyphens-auto">
-              {t('contact.description')}
+              {t('contact.description') as string}
             </p>
           </SimpleMotion>
         </AnimationContainer>
@@ -281,7 +265,7 @@ export default function Contact() {
               transition={{ duration: 0.6, delay: 0.2 }}
             >
               <article className="card-dark rounded-lg border border-gray-200 dark:border-gray-700 p-6 theme-transition">
-              <h2 className="text-xl md:text-2xl font-semibold text-primary-dark theme-transition mb-4 leading-tight">{t('contact.contactInfo')}</h2>
+              <h2 className="text-xl md:text-2xl font-semibold text-primary-dark theme-transition mb-4 leading-tight">{t('contact.contactInfo') as string}</h2>
               
               <address className="space-y-6 not-italic">
                 {/* 邮箱信息 */}
@@ -292,8 +276,8 @@ export default function Contact() {
                     </svg>
                   </div>
                   <div className="flex-1 min-w-0">
-                    <h3 className="font-medium text-primary-dark theme-transition leading-snug text-base sm:text-sm">{t('contact.email')}</h3>
-                    <a href={`mailto:${t('contact.info.email')}`} className="text-sm sm:text-sm text-secondary-dark hover:text-blue-600 dark:hover:text-blue-400 theme-transition leading-relaxed break-all underline-offset-2 hover:underline">{t('contact.info.email')}</a>
+                    <h3 className="font-medium text-primary-dark theme-transition leading-snug text-base sm:text-sm">{t('contact.email') as string}</h3>
+                    <a href={`mailto:${t('contact.info.email') as string}`} className="text-sm sm:text-sm text-secondary-dark hover:text-blue-600 dark:hover:text-blue-400 theme-transition leading-relaxed break-all underline-offset-2 hover:underline">{t('contact.info.email') as string}</a>
                   </div>
                 </div>
                 
@@ -305,7 +289,7 @@ export default function Contact() {
                     </svg>
                   </div>
                   <div className="flex-1 min-w-0">
-                    <h3 className="font-medium text-primary-dark theme-transition leading-snug text-base sm:text-sm">{t('contact.phone')}</h3>
+                    <h3 className="font-medium text-primary-dark theme-transition leading-snug text-base sm:text-sm">{t('contact.phone') as string}</h3>
                     <a
                       href={`tel:${phoneHref}`}
                       className="text-sm sm:text-sm text-secondary-dark hover:text-blue-600 dark:hover:text-blue-400 theme-transition leading-relaxed underline-offset-2 hover:underline"
@@ -324,11 +308,11 @@ export default function Contact() {
                     </svg>
                   </div>
                   <div className="flex-1 min-w-0">
-                    <h3 className="font-medium text-primary-dark theme-transition leading-snug text-base sm:text-sm">{t('contact.address')}</h3>
+                    <h3 className="font-medium text-primary-dark theme-transition leading-snug text-base sm:text-sm">{t('contact.address') as string}</h3>
                     <div className="space-y-1">
-                      <p className="text-sm sm:text-sm text-secondary-dark theme-transition leading-relaxed break-words">{t('contact.info.location')}</p>
-                      <p className="text-xs text-gray-500 dark:text-gray-400 theme-transition leading-relaxed">{t('contact.info.university')} {t('contact.info.department')}</p>
-                      <p className="text-xs text-gray-500 dark:text-gray-400 theme-transition leading-relaxed">{t('contact.info.office')}</p>
+                      <p className="text-sm sm:text-sm text-secondary-dark theme-transition leading-relaxed break-words">{t('contact.info.location') as string}</p>
+                      <p className="text-xs text-gray-500 dark:text-gray-400 theme-transition leading-relaxed">{t('contact.info.university') as string} {t('contact.info.department') as string}</p>
+                      <p className="text-xs text-gray-500 dark:text-gray-400 theme-transition leading-relaxed">{t('contact.info.office') as string}</p>
                     </div>
                   </div>
                 </div>
@@ -337,7 +321,7 @@ export default function Contact() {
 
               {/* 社交媒体链接 */}
               <article className="card-dark rounded-lg border border-gray-200 dark:border-gray-700 p-6 theme-transition">
-                <h2 className="text-xl md:text-2xl font-semibold text-primary-dark theme-transition mb-4 leading-tight">{t('contact.academicSocial')}</h2>
+                <h2 className="text-xl md:text-2xl font-semibold text-primary-dark theme-transition mb-4 leading-tight">{t('contact.academicSocial') as string}</h2>
                 <nav className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4" aria-label="社交媒体链接">
                   {socialLinks.map((link) => (
                     <a
@@ -367,14 +351,14 @@ export default function Contact() {
               transition={{ duration: 0.6, delay: 0.4 }}
             >
               <article className="card-dark rounded-lg border border-gray-200 dark:border-gray-700 p-6 theme-transition">
-            <h2 className="text-xl md:text-2xl font-semibold text-primary-dark theme-transition mb-4 leading-tight">{t('contact.sendMessage')}</h2>
+            <h2 className="text-xl md:text-2xl font-semibold text-primary-dark theme-transition mb-4 leading-tight">{t('contact.sendMessage') as string}</h2>
             
             {/* 合作类型选择 */}
             <AnimationContainer delay={0.4}>
               <div className="mb-8">
                 <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-6 flex items-center">
                   <Building className="w-5 h-5 mr-2 text-blue-600" />
-                  {t('contact.collaborationType')}
+                  {t('contact.collaborationType') as string}
                 </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {collaborationTypes.map((type) => {
@@ -521,7 +505,7 @@ export default function Contact() {
                     <div>
                       <label htmlFor="budget" className="block text-xs sm:text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2 leading-tight break-words">
                         <DollarSign className="w-3 h-3 sm:w-4 sm:h-4 inline mr-1 flex-shrink-0" />
-                        <span className="break-words">{formFieldConfig.budget?.label || t('contact.form.budget.label')}</span>
+                        <span className="break-words">{formFieldConfig.budget?.label || t('contact.form.budget.label') as string}</span>
                       </label>
                       <select
                         id="budget"
@@ -530,7 +514,7 @@ export default function Contact() {
                         onChange={handleInputChange}
                         className="w-full px-4 py-3 border-2 border-gray-200 dark:border-gray-700 rounded-xl focus:outline-none focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition-all duration-300"
                       >
-                        <option value="">{t('contact.form.selectBudget')}</option>
+                        <option value="">{t('contact.form.selectBudget') as string}</option>
                         {formFieldConfig.budget?.options?.map((option) => (
                           <option key={option.value} value={option.value}>
                             {option.label}
@@ -543,7 +527,7 @@ export default function Contact() {
                     <div>
                       <label htmlFor="timeline" className="block text-xs sm:text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2 leading-tight break-words">
                         <Clock className="w-3 h-3 sm:w-4 sm:h-4 inline mr-1 flex-shrink-0" />
-                        <span className="break-words">{formFieldConfig.timeline?.label || t('contact.form.timeline.label')}</span>
+                        <span className="break-words">{formFieldConfig.timeline?.label || t('contact.form.timeline.label') as string}</span>
                       </label>
                       <select
                         id="timeline"
@@ -552,7 +536,7 @@ export default function Contact() {
                         onChange={handleInputChange}
                         className="w-full px-4 py-3 border-2 border-gray-200 dark:border-gray-700 rounded-xl focus:outline-none focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition-all duration-300"
                       >
-                        <option value="">{t('contact.form.selectTimeline')}</option>
+                        <option value="">{t('contact.form.selectTimeline') as string}</option>
                         {formFieldConfig.timeline?.options?.map((option) => (
                           <option key={option.value} value={option.value}>
                             {option.label}
@@ -605,7 +589,7 @@ export default function Contact() {
                   icon={submitStatus === 'loading' ? undefined : Send}
                   iconPosition="left"
                 >
-                  {submitStatus === 'loading' ? t('contact.form.submitting') : t('contact.form.submit')}
+                  {submitStatus === 'loading' ? t('contact.form.submitting') as string : t('contact.form.submit') as string}
                 </UnifiedButton>
               </form>
             </AnimationContainer>
@@ -634,7 +618,7 @@ export default function Contact() {
                  </div>
                  <div>
                    <h4 className="font-semibold mb-1">
-                     {submitStatus === 'success' ? t('contact.form.success') : t('contact.form.error')}
+                     {submitStatus === 'success' ? t('contact.form.success') as string : t('contact.form.error') as string}
                    </h4>
                    <p className="text-sm opacity-90">{submitMessage}</p>
                  </div>

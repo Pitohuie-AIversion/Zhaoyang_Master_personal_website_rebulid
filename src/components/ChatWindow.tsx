@@ -41,7 +41,7 @@ const ChatWindow: React.FC<ChatWindowProps> = ({ isOpen, onClose, onSendMessage 
       const welcomeMessage: Message = {
         id: 'welcome',
         type: 'assistant',
-        content: t('research.chatAssistant.welcomeMessage'),
+        content: t('research.chatAssistant.welcomeMessage') as string,
         timestamp: new Date()
       };
       setMessages([welcomeMessage]);
@@ -61,7 +61,7 @@ const ChatWindow: React.FC<ChatWindowProps> = ({ isOpen, onClose, onSendMessage 
       setMessages(prev => [
         {
           ...prev[0],
-          content: t('research.chatAssistant.welcomeMessage')
+          content: t('research.chatAssistant.welcomeMessage') as string
         },
         ...prev.slice(1)
       ]);
@@ -104,7 +104,7 @@ const ChatWindow: React.FC<ChatWindowProps> = ({ isOpen, onClose, onSendMessage 
       const errorMessage: Message = {
         id: `error-${Date.now()}`,
         type: 'assistant',
-        content: t('research.chatAssistant.errorMessage'),
+        content: t('research.chatAssistant.errorMessage') as string,
         timestamp: new Date()
       };
 
@@ -122,7 +122,7 @@ const ChatWindow: React.FC<ChatWindowProps> = ({ isOpen, onClose, onSendMessage 
     const welcomeMessage: Message = {
       id: 'welcome',
       type: 'assistant',
-      content: t('research.chatAssistant.welcomeMessage'),
+      content: t('research.chatAssistant.welcomeMessage') as string,
       timestamp: new Date()
     };
     setMessages([welcomeMessage]);
@@ -152,8 +152,8 @@ const ChatWindow: React.FC<ChatWindowProps> = ({ isOpen, onClose, onSendMessage 
             <span className="text-sm font-bold">AI</span>
           </div>
           <div>
-            <h3 className="font-semibold text-sm">{t('research.chatAssistant.title')}</h3>
-            <p className="text-xs opacity-80">{t('research.chatAssistant.subtitle')}</p>
+            <h3 className="font-semibold text-sm">{t('research.chatAssistant.title') as string}</h3>
+            <p className="text-xs opacity-80">{t('research.chatAssistant.subtitle') as string}</p>
           </div>
         </div>
         
@@ -162,7 +162,7 @@ const ChatWindow: React.FC<ChatWindowProps> = ({ isOpen, onClose, onSendMessage 
           <button
             onClick={toggleLanguage}
             className="p-1.5 hover:bg-white/20 rounded-lg transition-colors duration-200"
-            title={t('research.chatAssistant.language.switch')}
+            title={t('research.chatAssistant.language.switch') as string}
           >
             <Globe className="w-4 h-4" />
           </button>
@@ -171,7 +171,7 @@ const ChatWindow: React.FC<ChatWindowProps> = ({ isOpen, onClose, onSendMessage 
           <button
             onClick={handleClearHistory}
             className="p-1.5 hover:bg-white/20 rounded-lg transition-colors duration-200"
-            title={t('research.chatAssistant.clearHistory')}
+            title={t('research.chatAssistant.clearHistory') as string}
           >
             <RotateCcw className="w-4 h-4" />
           </button>
@@ -180,7 +180,7 @@ const ChatWindow: React.FC<ChatWindowProps> = ({ isOpen, onClose, onSendMessage 
           <button
             onClick={() => setIsMinimized(!isMinimized)}
             className="p-1.5 hover:bg-white/20 rounded-lg transition-colors duration-200"
-            title={isMinimized ? t('research.chatAssistant.maximize') : t('research.chatAssistant.minimize')}
+            title={isMinimized ? t('research.chatAssistant.maximize') as string : t('research.chatAssistant.minimize') as string}
           >
             {isMinimized ? <Maximize2 className="w-4 h-4" /> : <Minimize2 className="w-4 h-4" />}
           </button>
@@ -189,7 +189,7 @@ const ChatWindow: React.FC<ChatWindowProps> = ({ isOpen, onClose, onSendMessage 
           <button
             onClick={onClose}
             className="p-1.5 hover:bg-white/20 rounded-lg transition-colors duration-200"
-            title={t('research.chatAssistant.close')}
+            title={t('research.chatAssistant.close') as string}
           >
             <X className="w-4 h-4" />
           </button>

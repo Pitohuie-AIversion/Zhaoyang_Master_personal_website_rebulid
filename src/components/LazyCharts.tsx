@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 // 懒加载图表组件
 const LazyRadarChart = lazy(() => 
   import('recharts').then(module => ({
-    default: ({ data, ...props }: any) => {
+    default: ({ data, name }: { data: Record<string, unknown>[]; name?: string }) => {
       const { RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, ResponsiveContainer } = module;
       return (
         <ResponsiveContainer width="100%" height="100%">
@@ -13,7 +13,7 @@ const LazyRadarChart = lazy(() =>
             <PolarAngleAxis dataKey="subject" />
             <PolarRadiusAxis angle={90} domain={[0, 100]} />
             <Radar
-              name={props.name}
+              name={name || 'Data'}
               dataKey="A"
               stroke="#3B82F6"
               fill="#3B82F6"
@@ -29,7 +29,7 @@ const LazyRadarChart = lazy(() =>
 
 const LazyBarChart = lazy(() => 
   import('recharts').then(module => ({
-    default: ({ data, ...props }: any) => {
+    default: ({ data }: { data: Record<string, unknown>[] }) => {
       const { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } = module;
       return (
         <ResponsiveContainer width="100%" height="100%">
@@ -55,14 +55,14 @@ const ChartSkeleton: React.FC = () => (
 );
 
 // 懒加载雷达图组件
-export const LazyRadarChartComponent: React.FC<{ data: any; name: string }> = ({ data, name }) => (
+export const LazyRadarChartComponent: React.FC<{ data: Record<string, unknown>[]; name?: string }> = ({ data, name }) => (
   <Suspense fallback={<ChartSkeleton />}>
     <LazyRadarChart data={data} name={name} />
   </Suspense>
 );
 
 // 懒加载柱状图组件
-export const LazyBarChartComponent: React.FC<{ data: any }> = ({ data }) => (
+export const LazyBarChartComponent: React.FC<{ data: Record<string, unknown>[] }> = ({ data }) => (
   <Suspense fallback={<ChartSkeleton />}>
     <LazyBarChart data={data} />
   </Suspense>

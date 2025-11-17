@@ -37,7 +37,7 @@ const ASCIIDemo: React.FC = () => {
   const [isPlaying, setIsPlaying] = useState(true);
   const [resetKey, setResetKey] = useState(0);
 
-  const updateConfig = (key: keyof DemoConfig, value: any) => {
+  const updateConfig = (key: keyof DemoConfig, value: string | boolean | number) => {
     setConfig(prev => ({ ...prev, [key]: value }));
   };
 

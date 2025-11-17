@@ -3,7 +3,7 @@ import zhTranslations from '../locales/zh.json';
 import enTranslations from '../locales/en.json';
 
 type TranslationKey = string;
-type TranslationValue = string | { [key: string]: any };
+type TranslationValue = string | { [key: string]: unknown };
 type Translations = { [key: string]: TranslationValue };
 
 const translations: { [lang in Language]: Translations } = {
@@ -24,7 +24,7 @@ export function getTranslation(
   fallback?: string
 ): string {
   const keys = key.split('.');
-  let value: any = translations[language];
+  let value: unknown = translations[language];
   
   for (const k of keys) {
     if (value && typeof value === 'object' && k in value) {
@@ -32,7 +32,7 @@ export function getTranslation(
     } else {
       // 如果找不到翻译，尝试使用备用语言
       const fallbackLang = language === 'zh' ? 'en' : 'zh';
-      let fallbackValue: any = translations[fallbackLang];
+      let fallbackValue: unknown = translations[fallbackLang];
       
       for (const fk of keys) {
         if (fallbackValue && typeof fallbackValue === 'object' && fk in fallbackValue) {
@@ -60,37 +60,8 @@ export function getTranslation(
  * @returns 翻译函数
  */
 export function createTranslationFunction(language: Language) {
-  return (key: TranslationKey, options?: { returnObjects?: boolean; fallback?: string }): any => {
+  return (key: TranslationKey, options?: { returnObjects?: boolean; fallback?: string }): string => {
     const fallback = options?.fallback;
-    
-    if (options?.returnObjects) {
-      const keys = key.split('.');
-      let value: any = translations[language];
-      
-      for (const k of keys) {
-        if (value && typeof value === 'object' && k in value) {
-          value = value[k];
-        } else {
-          // 如果找不到翻译，尝试使用备用语言
-          const fallbackLang = language === 'zh' ? 'en' : 'zh';
-          let fallbackValue: any = translations[fallbackLang];
-          
-          for (const fk of keys) {
-            if (fallbackValue && typeof fallbackValue === 'object' && fk in fallbackValue) {
-              fallbackValue = fallbackValue[fk];
-            } else {
-              fallbackValue = null;
-              break;
-            }
-          }
-          
-          return fallbackValue || fallback || [];
-        }
-      }
-      
-      return value || fallback || [];
-    }
-    
     return getTranslation(key, language, fallback);
   };
 }
@@ -101,14 +72,14 @@ export function createTranslationFunction(language: Language) {
  * @param prefix 前缀
  * @returns 翻译键数组
  */
-export function getAllTranslationKeys(obj: any = translations.zh, prefix = ''): string[] {
+export function getAllTranslationKeys(obj: Record<string, unknown> = translations.zh, prefix = ''): string[] {
   const keys: string[] = [];
   
   for (const key in obj) {
     const fullKey = prefix ? `${prefix}.${key}` : key;
     
     if (typeof obj[key] === 'object' && obj[key] !== null) {
-      keys.push(...getAllTranslationKeys(obj[key], fullKey));
+      keys.push(...getAllTranslationKeys(obj[key] as Record<string, unknown>, fullKey));
     } else {
       keys.push(fullKey);
     }
@@ -125,7 +96,7 @@ export function getAllTranslationKeys(obj: any = translations.zh, prefix = ''): 
  */
 export function hasTranslation(key: TranslationKey, language: Language): boolean {
   const keys = key.split('.');
-  let value: any = translations[language];
+  let value: unknown = translations[language];
   
   for (const k of keys) {
     if (value && typeof value === 'object' && k in value) {

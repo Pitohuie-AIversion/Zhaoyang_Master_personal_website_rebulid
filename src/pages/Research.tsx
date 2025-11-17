@@ -1,6 +1,6 @@
-import React, { useState, useEffect, memo } from 'react';
+import React, { useState, memo } from 'react';
 import { SimpleMotion } from '../components/SimpleMotion';
-import { Search, Filter, BookOpen, Award, FileText, Calendar, Users, ExternalLink, GraduationCap, MapPin, Clock, BarChart3, Eye } from 'lucide-react';
+import { Search, BookOpen, Award, FileText, BarChart3, Eye, GraduationCap } from 'lucide-react';
 import { UnifiedButton } from '../components/UnifiedButton';
 import { useResponsive } from '../hooks/useResponsive';
 import { useTranslation } from '../components/TranslationProvider';
@@ -75,54 +75,54 @@ function Research() {
     return [
       {
         id: '1',
-        title: t('publications.damformer.title'),
-        journal: t('publications.damformer.journal'),
+        title: t('publications.damformer.title') as string,
+        journal: t('publications.damformer.journal') as string,
         year: 2025,
         status: 'published',
         authors: getAuthors('publications.damformer.authors'),
-        description: t('publications.damformer.description'),
+        description: t('publications.damformer.description') as string,
         doi: '10.1063/5.0187644',
         type: 'journal'
       },
       {
         id: '2',
-        title: t('publications.rsModCubes.title'),
-        journal: t('publications.rsModCubes.journal'),
+        title: t('publications.rsModCubes.title') as string,
+        journal: t('publications.rsModCubes.journal') as string,
         year: 2025,
         status: 'published',
         authors: getAuthors('publications.rsModCubes.authors'),
-        description: t('publications.rsModCubes.description'),
+        description: t('publications.rsModCubes.description') as string,
         type: 'journal'
       },
       {
         id: '3',
-        title: t('publications.whiskerSensorArray.title'),
-        journal: t('publications.whiskerSensorArray.journal'),
+        title: t('publications.whiskerSensorArray.title') as string,
+        journal: t('publications.whiskerSensorArray.journal') as string,
         year: 2025,
         status: 'published',
         authors: getAuthors('publications.whiskerSensorArray.authors'),
-        description: t('publications.whiskerSensorArray.description'),
+        description: t('publications.whiskerSensorArray.description') as string,
         type: 'journal'
       },
       {
         id: '4',
-        title: t('publications.whiskerSensor.title'),
-        journal: t('publications.whiskerSensor.journal'),
+        title: t('publications.whiskerSensor.title') as string,
+        journal: t('publications.whiskerSensor.journal') as string,
         year: 2024,
         status: 'published',
         authors: getAuthors('publications.whiskerSensor.authors'),
-        description: t('publications.whiskerSensor.description'),
+        description: t('publications.whiskerSensor.description') as string,
         doi: '10.1016/j.nanoen.2024.110011',
         type: 'journal'
       },
       {
         id: '5',
-        title: t('publications.sparseToDense.title'),
-        journal: t('publications.sparseToDense.journal'),
+        title: t('publications.sparseToDense.title') as string,
+        journal: t('publications.sparseToDense.journal') as string,
         year: 2024,
         status: 'under_review',
         authors: getAuthors('publications.sparseToDense.authors'),
-        description: t('publications.sparseToDense.description'),
+        description: t('publications.sparseToDense.description') as string,
         type: 'journal'
       }
     ];
@@ -132,63 +132,63 @@ function Research() {
   const getPatents = (): Patent[] => [
     {
       id: '1',
-      title: t('research.patents.underwaterNavigation.title'),
+      title: t('research.patents.underwaterNavigation.title') as string,
       number: 'CN119509546A',
-      applicant: t('research.patents.underwaterNavigation.applicant'),
+      applicant: t('research.patents.underwaterNavigation.applicant') as string,
       publicDate: '2024-11-06',
       status: 'published',
       type: 'invention',
-      description: t('research.patents.underwaterNavigation.description')
+      description: t('research.patents.underwaterNavigation.description') as string
     },
     {
       id: '2',
-      title: t('research.patents.vectorThruster.title'),
+      title: t('research.patents.vectorThruster.title') as string,
       number: 'CN119239885A',
-      applicant: t('research.patents.vectorThruster.applicant'),
+      applicant: t('research.patents.vectorThruster.applicant') as string,
       publicDate: '2024-11-06',
       status: 'published',
       type: 'invention',
-      description: t('research.patents.vectorThruster.description')
+      description: t('research.patents.vectorThruster.description') as string
     },
     {
       id: '3',
-      title: t('research.patents.undulatingFin.title'),
+      title: t('research.patents.undulatingFin.title') as string,
       number: 'CN119142488A',
-      applicant: t('research.patents.undulatingFin.applicant'),
+      applicant: t('research.patents.undulatingFin.applicant') as string,
       publicDate: '2024-11-06',
       status: 'published',
       type: 'invention',
-      description: t('research.patents.undulatingFin.description')
+      description: t('research.patents.undulatingFin.description') as string
     },
     {
       id: '4',
-      title: t('research.patents.flexibleFin.title'),
+      title: t('research.patents.flexibleFin.title') as string,
       number: 'CN118182783A',
-      applicant: t('research.patents.flexibleFin.applicant'),
+      applicant: t('research.patents.flexibleFin.applicant') as string,
       publicDate: '2024-04-23',
       status: 'published',
       type: 'invention',
-      description: t('research.patents.flexibleFin.description')
+      description: t('research.patents.flexibleFin.description') as string
     },
     {
       id: '5',
-      title: t('research.patents.smartShip.title'),
+      title: t('research.patents.smartShip.title') as string,
       number: 'CN118047007A',
-      applicant: t('research.patents.smartShip.applicant'),
+      applicant: t('research.patents.smartShip.applicant') as string,
       publicDate: '2024-03-14',
       status: 'published',
       type: 'invention',
-      description: t('research.patents.smartShip.description')
+      description: t('research.patents.smartShip.description') as string
     },
     {
       id: '6',
-      title: t('research.patents.mobileBuoy.title'),
+      title: t('research.patents.mobileBuoy.title') as string,
       number: 'CN308069533S',
-      applicant: t('research.patents.mobileBuoy.applicant'),
+      applicant: t('research.patents.mobileBuoy.applicant') as string,
       publicDate: '2023-02-22',
       status: 'published',
       type: 'design',
-      description: t('research.patents.mobileBuoy.description')
+      description: t('research.patents.mobileBuoy.description') as string
     }
   ];
 
@@ -196,38 +196,38 @@ function Research() {
   const getAwards = (): Award[] => [
     {
       id: '1',
-      title: t('research.awards.internetPlusGold.title'),
-      organization: t('research.awards.internetPlusGold.organization'),
+      title: t('research.awards.internetPlusGold.title') as string,
+      organization: t('research.awards.internetPlusGold.organization') as string,
       date: '2023-04',
       level: 'national',
-      description: t('research.awards.internetPlusGold.description'),
+      description: t('research.awards.internetPlusGold.description') as string,
       certificateNumber: '202310033'
     },
     {
       id: '2',
-      title: t('research.awards.roboticsCompetition.title'),
-      organization: t('research.awards.roboticsCompetition.organization'),
+      title: t('research.awards.roboticsCompetition.title') as string,
+      organization: t('research.awards.roboticsCompetition.organization') as string,
       date: '2022-04',
       level: 'national',
-      description: t('research.awards.roboticsCompetition.description'),
+      description: t('research.awards.roboticsCompetition.description') as string,
       certificateNumber: 'Y2109R025A0001'
     },
     {
       id: '3',
-      title: t('research.awards.mechanicalInnovation.title'),
-      organization: t('research.awards.mechanicalInnovation.organization'),
+      title: t('research.awards.mechanicalInnovation.title') as string,
+      organization: t('research.awards.mechanicalInnovation.organization') as string,
       date: '2024-07',
       level: 'national',
-      description: t('research.awards.mechanicalInnovation.description'),
+      description: t('research.awards.mechanicalInnovation.description') as string,
       certificateNumber: 'MEICC05MNSI2024-CV1-006'
     },
     {
       id: '4',
-      title: t('research.awards.provincialMechanical.title'),
-      organization: t('research.awards.provincialMechanical.organization'),
+      title: t('research.awards.provincialMechanical.title') as string,
+      organization: t('research.awards.provincialMechanical.organization') as string,
       date: '2024-04',
       level: 'provincial',
-      description: t('research.awards.provincialMechanical.description')
+      description: t('research.awards.provincialMechanical.description') as string
     }
   ];
 
@@ -302,7 +302,7 @@ function Research() {
         >
           <div className="flex items-center justify-center gap-3 sm:gap-4 mb-4">
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary-dark theme-transition leading-tight break-words">
-              {t('research.title')}
+              {t('research.title') as string}
             </h1>
             <button
               onClick={() => setShowAnalytics(!showAnalytics)}
@@ -311,13 +311,13 @@ function Research() {
                   ? 'bg-blue-600 text-white shadow-lg' 
                   : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
               }`}
-              title={showAnalytics ? t('research.switchToListView') : t('research.switchToAnalyticsView')}
+              title={showAnalytics ? t('research.switchToListView') as string : t('research.switchToAnalyticsView') as string}
             >
               <BarChart3 className="w-6 h-6" />
             </button>
           </div>
           <p className="text-base md:text-lg lg:text-xl text-secondary-dark theme-transition max-w-2xl mx-auto mb-8 leading-loose break-words hyphens-auto">
-            {t('research.description')}
+            {t('research.description') as string}
           </p>
           
           {/* 搜索和筛选 */}
@@ -328,7 +328,7 @@ function Research() {
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
                 <input
                   type="text"
-                  placeholder={t('research.searchPlaceholder')}
+                  placeholder={t('research.searchPlaceholder') as string}
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                   className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white text-gray-900 break-words"
@@ -339,24 +339,24 @@ function Research() {
               <div className="flex gap-2 sm:gap-3">
                 <select
                   value={filterType}
-                  onChange={(e) => setFilterType(e.target.value as any)}
+                  onChange={(e) => setFilterType(e.target.value as 'all' | 'publications' | 'patents' | 'awards')}
                   className="px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white text-gray-900 break-words"
                 >
-                  <option value="all">{t('research.filters.allTypes')}</option>
-                  <option value="publications">{t('research.filters.publications')}</option>
-                  <option value="patents">{t('research.filters.patents')}</option>
-                  <option value="awards">{t('research.filters.awards')}</option>
+                  <option value="all">{t('research.filters.allTypes') as string}</option>
+                  <option value="publications">{t('research.filters.publications') as string}</option>
+                  <option value="patents">{t('research.filters.patents') as string}</option>
+                  <option value="awards">{t('research.filters.awards') as string}</option>
                 </select>
                 
                 {filterType === 'publications' && (
                   <select
                     value={publicationFilter}
-                    onChange={(e) => setPublicationFilter(e.target.value as any)}
+                    onChange={(e) => setPublicationFilter(e.target.value as 'all' | 'published' | 'under_review')}
                     className="px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white text-gray-900 break-words"
                   >
-                    <option value="all">{t('research.filters.allStatus')}</option>
-                    <option value="published">{t('research.filters.published')}</option>
-                    <option value="under_review">{t('research.filters.underReview')}</option>
+                    <option value="all">{t('research.filters.allStatus') as string}</option>
+                    <option value="published">{t('research.filters.published') as string}</option>
+                    <option value="under_review">{t('research.filters.underReview') as string}</option>
                   </select>
                 )}
               </div>
@@ -377,20 +377,20 @@ function Research() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
                 </svg>
               </div>
-              <h2 className="text-xl md:text-2xl font-semibold text-primary-dark theme-transition leading-tight">{t('research.areas.scientificComputing.title')}</h2>
+              <h2 className="text-xl md:text-2xl font-semibold text-primary-dark theme-transition leading-tight">{t('research.areas.scientificComputing.title') as string}</h2>
             </div>
             <div className="space-y-4">
               <div>
-                <h3 className="text-base md:text-lg font-medium text-primary-dark theme-transition mb-1 leading-snug">{t('research.areas.scientificComputing.transformer.title')}</h3>
-                <p className="text-sm md:text-base text-secondary-dark theme-transition leading-relaxed">{t('research.areas.scientificComputing.transformer.description')}</p>
+                <h3 className="text-base md:text-lg font-medium text-primary-dark theme-transition mb-1 leading-snug">{t('research.areas.scientificComputing.transformer.title') as string}</h3>
+                <p className="text-sm md:text-base text-secondary-dark theme-transition leading-relaxed">{t('research.areas.scientificComputing.transformer.description') as string}</p>
               </div>
               <div>
-                <h3 className="text-base md:text-lg font-medium text-primary-dark theme-transition mb-1 leading-snug">{t('research.areas.scientificComputing.sparseToDense.title')}</h3>
-                <p className="text-sm md:text-base text-secondary-dark theme-transition leading-relaxed">{t('research.areas.scientificComputing.sparseToDense.description')}</p>
+                <h3 className="text-base md:text-lg font-medium text-primary-dark theme-transition mb-1 leading-snug">{t('research.areas.scientificComputing.sparseToDense.title') as string}</h3>
+                <p className="text-sm md:text-base text-secondary-dark theme-transition leading-relaxed">{t('research.areas.scientificComputing.sparseToDense.description') as string}</p>
               </div>
               <div>
-                <h3 className="text-base md:text-lg font-medium text-primary-dark theme-transition mb-1 leading-snug">{t('research.areas.scientificComputing.damBreak.title')}</h3>
-                <p className="text-sm md:text-base text-secondary-dark theme-transition leading-relaxed">{t('research.areas.scientificComputing.damBreak.description')}</p>
+                <h3 className="text-base md:text-lg font-medium text-primary-dark theme-transition mb-1 leading-snug">{t('research.areas.scientificComputing.damBreak.title') as string}</h3>
+                <p className="text-sm md:text-base text-secondary-dark theme-transition leading-relaxed">{t('research.areas.scientificComputing.damBreak.description') as string}</p>
               </div>
             </div>
           </SimpleMotion>
@@ -408,20 +408,20 @@ function Research() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
                 </svg>
               </div>
-              <h2 className="text-xl md:text-2xl font-semibold text-primary-dark theme-transition leading-tight">{t('research.areas.robotics.title')}</h2>
+              <h2 className="text-xl md:text-2xl font-semibold text-primary-dark theme-transition leading-tight">{t('research.areas.robotics.title') as string}</h2>
             </div>
             <div className="space-y-4">
               <div>
-                <h3 className="text-base md:text-lg font-medium text-primary-dark theme-transition mb-1 leading-snug">{t('research.areas.robotics.underwaterPerception.title')}</h3>
-                <p className="text-sm md:text-base text-secondary-dark theme-transition leading-relaxed">{t('research.areas.robotics.underwaterPerception.description')}</p>
+                <h3 className="text-base md:text-lg font-medium text-primary-dark theme-transition mb-1 leading-snug">{t('research.areas.robotics.underwaterPerception.title') as string}</h3>
+                <p className="text-sm md:text-base text-secondary-dark theme-transition leading-relaxed">{t('research.areas.robotics.underwaterPerception.description') as string}</p>
               </div>
               <div>
-                <h3 className="text-base md:text-lg font-medium text-primary-dark theme-transition mb-1 leading-snug">{t('research.areas.robotics.bionicFin.title')}</h3>
-                <p className="text-sm md:text-base text-secondary-dark theme-transition leading-relaxed">{t('research.areas.robotics.bionicFin.description')}</p>
+                <h3 className="text-base md:text-lg font-medium text-primary-dark theme-transition mb-1 leading-snug">{t('research.areas.robotics.bionicFin.title') as string}</h3>
+                <p className="text-sm md:text-base text-secondary-dark theme-transition leading-relaxed">{t('research.areas.robotics.bionicFin.description') as string}</p>
               </div>
               <div>
-                <h3 className="text-base md:text-lg font-medium text-primary-dark theme-transition mb-1 leading-snug">{t('research.areas.robotics.modularRobot.title')}</h3>
-                <p className="text-sm md:text-base text-secondary-dark theme-transition leading-relaxed">{t('research.areas.robotics.modularRobot.description')}</p>
+                <h3 className="text-base md:text-lg font-medium text-primary-dark theme-transition mb-1 leading-snug">{t('research.areas.robotics.modularRobot.title') as string}</h3>
+                <p className="text-sm md:text-base text-secondary-dark theme-transition leading-relaxed">{t('research.areas.robotics.modularRobot.description') as string}</p>
               </div>
             </div>
           </SimpleMotion>
@@ -434,7 +434,7 @@ function Research() {
           transition={{ duration: 0.6, delay: 0.6 }}
           className="mb-12"
         >
-          <h2 className="text-2xl font-semibold text-primary-dark theme-transition mb-8 text-center">{t('research.academicAchievements')}</h2>
+          <h2 className="text-2xl font-semibold text-primary-dark theme-transition mb-8 text-center">{t('research.academicAchievements') as string}</h2>
 
           {showAnalytics ? (
             <ResearchAnalytics 
@@ -449,9 +449,9 @@ function Research() {
             <div className="card-dark rounded-lg shadow-md-dark p-4 sm:p-6 mb-8 theme-transition">
               <div className="flex items-center mb-6">
                 <BookOpen className="w-6 h-6 text-blue-500 mr-3" />
-                <h3 className="text-xl font-semibold text-primary-dark theme-transition">{t('research.publications.title')}</h3>
+                <h3 className="text-xl font-semibold text-primary-dark theme-transition">{t('research.publications.title') as string}</h3>
                 <span className="ml-auto text-sm text-secondary-dark theme-transition">
-                  {t('research.totalCount').replace('{{count}}', filteredPublications.length.toString()).replace('{{unit}}', t('research.papers'))}
+                  {(t('research.totalCount') as string).replace('{{count}}', filteredPublications.length.toString()).replace('{{unit}}', t('research.papers') as string)}
                 </span>
               </div>
               <div className="grid grid-cols-1 gap-6">
@@ -485,15 +485,15 @@ function Research() {
                     <div className="flex items-center justify-between">
                       <div className="flex flex-wrap gap-2 sm:gap-3">
                         <span className={`text-xs px-2 py-1 rounded ${getStatusColor(pub.status)}`}>
-                          {pub.status === 'published' ? t('research.status.published') : 
-                           pub.status === 'accepted' ? t('research.status.accepted') :
-                           pub.status === 'under_review' ? t('research.status.underReview') : t('research.status.preparing')}
+                          {pub.status === 'published' ? t('research.status.published') as string : 
+                           pub.status === 'accepted' ? t('research.status.accepted') as string :
+                           pub.status === 'under_review' ? t('research.status.underReview') as string : t('research.status.preparing') as string}
                         </span>
                         <span className="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded">
-                          {pub.type === 'journal' ? t('research.type.journal') : t('research.type.conference')}
+                          {pub.type === 'journal' ? t('research.type.journal') as string : t('research.type.conference') as string}
                         </span>
                         <span className="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">
-                          {t('research.authors')}: {pub.authors.join(', ')}
+                          {t('research.authors') as string}: {pub.authors.join(', ')}
                         </span>
                       </div>
                       <UnifiedButton
@@ -501,7 +501,7 @@ function Research() {
                         variant="ghost"
                         size="sm"
                         icon={<Eye className="w-4 h-4" />}
-                        title={t('research.viewDetails')}
+                        title={t('research.viewDetails') as string}
                       />
                     </div>
                   </SimpleMotion>
@@ -515,9 +515,9 @@ function Research() {
             <div className="card-dark rounded-lg shadow-md-dark p-6 mb-8 theme-transition">
               <div className="flex items-center mb-6">
                 <FileText className="w-6 h-6 text-purple-500 mr-3" />
-                <h3 className="text-xl font-semibold text-primary-dark theme-transition">{t('research.patents.title')}</h3>
+                <h3 className="text-xl font-semibold text-primary-dark theme-transition">{t('research.patents.title') as string}</h3>
                 <span className="ml-auto text-sm text-secondary-dark theme-transition">
-                  {t('research.totalCount').replace('{{count}}', filteredPatents.length.toString()).replace('{{unit}}', t('research.items'))}
+                  {(t('research.totalCount') as string).replace('{{count}}', filteredPatents.length.toString()).replace('{{unit}}', t('research.items') as string)}
                 </span>
               </div>
               <div className="grid grid-cols-1 gap-6">
@@ -535,21 +535,21 @@ function Research() {
                       {patent.description}
                     </p>
                     <div className="flex flex-wrap items-center gap-2 mb-3">
-                      <span className="text-sm font-medium text-gray-700">{t('research.patentNumber')}: {patent.number}</span>
+                      <span className="text-sm font-medium text-gray-700">{t('research.patentNumber') as string}: {patent.number}</span>
                       <span className="text-sm text-gray-500">·</span>
-                      <span className="text-sm text-gray-600">{t('research.applicant')}: {patent.applicant}</span>
+                      <span className="text-sm text-gray-600">{t('research.applicant') as string}: {patent.applicant}</span>
                       <span className="text-sm text-gray-500">·</span>
-                      <span className="text-sm text-gray-600">{t('research.publicDate')}: {patent.publicDate}</span>
+                      <span className="text-sm text-gray-600">{t('research.publicDate') as string}: {patent.publicDate}</span>
                     </div>
                     <div className="flex items-center justify-between">
                       <div className="flex flex-wrap gap-2">
                         <span className={`text-xs px-2 py-1 rounded ${getStatusColor(patent.status)}`}>
-                          {patent.status === 'granted' ? t('research.status.granted') : 
-                           patent.status === 'published' ? t('research.status.published') : t('research.status.underReview')}
+                          {patent.status === 'granted' ? t('research.status.granted') as string : 
+                           patent.status === 'published' ? t('research.status.published') as string : t('research.status.underReview') as string}
                         </span>
                         <span className="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">
-                          {patent.type === 'invention' ? t('research.patentType.invention') : 
-                           patent.type === 'utility' ? t('research.patentType.utility') : t('research.patentType.design')}
+                          {patent.type === 'invention' ? t('research.patentType.invention') as string : 
+                           patent.type === 'utility' ? t('research.patentType.utility') as string : t('research.patentType.design') as string}
                         </span>
                       </div>
                       <UnifiedButton
@@ -557,7 +557,7 @@ function Research() {
                         variant="ghost"
                         size="sm"
                         icon={<Eye className="w-4 h-4" />}
-                        title={t('research.viewDetails')}
+                        title={t('research.viewDetails') as string}
                       />
                     </div>
                   </SimpleMotion>
@@ -571,9 +571,9 @@ function Research() {
             <div className="card-dark rounded-lg shadow-md-dark p-6 mb-8 theme-transition">
               <div className="flex items-center mb-6">
                 <Award className="w-6 h-6 text-yellow-500 mr-3" />
-                <h3 className="text-xl font-semibold text-primary-dark theme-transition">{t('research.awards.title')}</h3>
+                <h3 className="text-xl font-semibold text-primary-dark theme-transition">{t('research.awards.title') as string}</h3>
                 <span className="ml-auto text-sm text-secondary-dark theme-transition">
-                  {t('research.totalCount').replace('{{count}}', filteredAwards.length.toString()).replace('{{unit}}', t('research.items'))}
+                  {(t('research.totalCount') as string).replace('{{count}}', filteredAwards.length.toString()).replace('{{unit}}', t('research.items') as string)}
                 </span>
               </div>
               <div className="grid grid-cols-1 gap-4 sm:gap-6">
@@ -597,15 +597,15 @@ function Research() {
                       {award.certificateNumber && (
                         <>
                           <span className="text-sm text-gray-500">·</span>
-                          <span className="text-sm text-gray-600">{t('research.certificateNumber')}: {award.certificateNumber}</span>
+                          <span className="text-sm text-gray-600">{t('research.certificateNumber') as string}: {award.certificateNumber}</span>
                         </>
                       )}
                     </div>
                     <div className="flex items-center justify-between">
                       <div className="flex flex-wrap gap-2">
                         <span className={`text-xs px-2 py-1 rounded ${getLevelColor(award.level)}`}>
-                          {award.level === 'national' ? t('research.level.national') : 
-                           award.level === 'provincial' ? t('research.level.provincial') : t('research.level.school')}
+                          {award.level === 'national' ? t('research.level.national') as string : 
+                           award.level === 'provincial' ? t('research.level.provincial') as string : t('research.level.school') as string}
                         </span>
                       </div>
                       <UnifiedButton
@@ -613,7 +613,7 @@ function Research() {
                         variant="ghost"
                         size="sm"
                         icon={<Eye className="w-4 h-4" />}
-                        title={t('research.viewDetails')}
+                        title={t('research.viewDetails') as string}
                       />
                     </div>
                   </SimpleMotion>
@@ -626,7 +626,7 @@ function Research() {
           <div className="card-dark rounded-lg shadow-md-dark p-6 theme-transition">
             <div className="flex items-center mb-6">
               <GraduationCap className="w-6 h-6 text-green-500 mr-3" />
-              <h3 className="text-xl font-semibold text-primary-dark theme-transition">{t('research.education')}</h3>
+              <h3 className="text-xl font-semibold text-primary-dark theme-transition">{t('research.education') as string}</h3>
             </div>
             <div className="space-y-6">
               <SimpleMotion
@@ -635,14 +635,14 @@ function Research() {
                 className="border-l-4 border-blue-600 pl-6 hover:bg-gray-50 p-4 rounded-r-lg transition-colors"
               >
                 <h4 className="text-lg font-medium text-primary-dark theme-transition mb-2">
-                  {t('research.educationItems.master.title')}
+                  {t('research.educationItems.master.title') as string}
                 </h4>
                 <p className="text-sm text-secondary-dark theme-transition mb-3">
-                  {t('research.educationItems.master.description')}
+                  {t('research.educationItems.master.description') as string}
                 </p>
                 <div className="flex flex-wrap gap-2">
-                  <span className="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">{t('research.educationItems.master.period')}</span>
-                  <span className="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">{t('research.educationItems.master.status')}</span>
+                  <span className="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">{t('research.educationItems.master.period') as string}</span>
+                  <span className="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">{t('research.educationItems.master.status') as string}</span>
                 </div>
               </SimpleMotion>
               
@@ -653,14 +653,14 @@ function Research() {
                 className="border-l-4 border-purple-600 pl-6 hover:bg-gray-50 p-4 rounded-r-lg transition-colors"
               >
                 <h4 className="text-lg font-medium text-primary-dark theme-transition mb-2">
-                  {t('research.educationItems.visiting.title')}
+                  {t('research.educationItems.visiting.title') as string}
                 </h4>
                 <p className="text-sm text-secondary-dark theme-transition mb-3">
-                  {t('research.educationItems.visiting.description')}
+                  {t('research.educationItems.visiting.description') as string}
                 </p>
                 <div className="flex flex-wrap gap-2">
-                  <span className="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded">{t('research.educationItems.visiting.period')}</span>
-                  <span className="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded">{t('research.educationItems.visiting.status')}</span>
+                  <span className="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded">{t('research.educationItems.visiting.period') as string}</span>
+                  <span className="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded">{t('research.educationItems.visiting.status') as string}</span>
                 </div>
               </SimpleMotion>
               
@@ -671,14 +671,14 @@ function Research() {
                 className="border-l-4 border-green-600 pl-6 hover:bg-gray-50 p-4 rounded-r-lg transition-colors"
               >
                 <h4 className="text-lg font-medium text-primary-dark theme-transition mb-2">
-                  {t('research.educationItems.bachelor.title')}
+                  {t('research.educationItems.bachelor.title') as string}
                 </h4>
                 <p className="text-sm text-secondary-dark theme-transition mb-3">
-                  {t('research.educationItems.bachelor.description')}
+                  {t('research.educationItems.bachelor.description') as string}
                 </p>
                 <div className="flex flex-wrap gap-2">
-                  <span className="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">{t('research.educationItems.bachelor.period')}</span>
-                  <span className="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">{t('research.educationItems.bachelor.status')}</span>
+                  <span className="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">{t('research.educationItems.bachelor.period') as string}</span>
+                  <span className="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">{t('research.educationItems.bachelor.status') as string}</span>
                 </div>
               </SimpleMotion>
             </div>

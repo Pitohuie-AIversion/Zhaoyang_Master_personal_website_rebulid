@@ -28,15 +28,15 @@ const SEOOptimization: React.FC<SEOProps> = ({
   const { t } = useTranslation();
 
   // 使用翻译键获取默认值
-  const defaultTitle = title || t('seo.default.title');
-  const defaultDescription = description || t('seo.default.description');
-  const defaultKeywords = keywords || t('seo.default.keywords', { returnObjects: true }) as string[];
-  const defaultAuthor = author || t('seo.site.author');
-  const siteTitle = t('seo.site.title');
-  const language = t('seo.site.language');
-  const locale = t('seo.site.locale');
-  const jobTitle = t('seo.default.jobTitle');
-  const organization = t('seo.default.organization');
+  const defaultTitle = title || (t('seo.default.title') as string);
+  const defaultDescription = description || (t('seo.default.description') as string);
+  const defaultKeywords = keywords || (t('seo.default.keywords', { returnObjects: true }) as unknown) as string[];
+  const defaultAuthor = author || (t('seo.site.author') as string);
+  const siteTitle = t('seo.site.title') as string;
+  const language = t('seo.site.language') as string;
+  const locale = t('seo.site.locale') as string;
+  const jobTitle = t('seo.default.jobTitle') as string;
+  const organization = t('seo.default.organization') as string;
 
   const fullTitle = defaultTitle === siteTitle ? defaultTitle : `${defaultTitle} | ${siteTitle}`;
 
@@ -124,9 +124,9 @@ export const HomeSEO: React.FC = () => {
   const { t } = useTranslation();
   return (
     <SEOOptimization
-      title={t('seo.pages.home.title')}
-      description={t('seo.pages.home.description')}
-      keywords={t('seo.pages.home.keywords', { returnObjects: true }) as string[]}
+      title={t('seo.pages.home.title') as string}
+      description={t('seo.pages.home.description') as string}
+      keywords={(t('seo.pages.home.keywords', { returnObjects: true }) as unknown) as string[]}
       type="profile"
     />
   );
@@ -136,9 +136,9 @@ export const ResearchSEO: React.FC = () => {
   const { t } = useTranslation();
   return (
     <SEOOptimization
-      title={t('seo.pages.research.title')}
-      description={t('seo.pages.research.description')}
-      keywords={t('seo.pages.research.keywords', { returnObjects: true }) as string[]}
+      title={t('seo.pages.research.title') as string}
+      description={t('seo.pages.research.description') as string}
+      keywords={(t('seo.pages.research.keywords', { returnObjects: true }) as unknown) as string[]}
       type="website"
     />
   );
@@ -148,9 +148,9 @@ export const ProjectsSEO: React.FC = () => {
   const { t } = useTranslation();
   return (
     <SEOOptimization
-      title={t('seo.pages.projects.title')}
-      description={t('seo.pages.projects.description')}
-      keywords={t('seo.pages.projects.keywords', { returnObjects: true }) as string[]}
+      title={t('seo.pages.projects.title') as string}
+      description={t('seo.pages.projects.description') as string}
+      keywords={(t('seo.pages.projects.keywords', { returnObjects: true }) as unknown) as string[]}
       type="website"
     />
   );
@@ -160,9 +160,9 @@ export const PublicationsSEO: React.FC = () => {
   const { t } = useTranslation();
   return (
     <SEOOptimization
-      title={t('seo.pages.publications.title')}
-      description={t('seo.pages.publications.description')}
-      keywords={t('seo.pages.publications.keywords', { returnObjects: true }) as string[]}
+      title={t('seo.pages.publications.title') as string}
+      description={t('seo.pages.publications.description') as string}
+      keywords={(t('seo.pages.publications.keywords', { returnObjects: true }) as unknown) as string[]}
       type="website"
     />
   );
@@ -172,9 +172,9 @@ export const SkillsSEO: React.FC = () => {
   const { t } = useTranslation();
   return (
     <SEOOptimization
-      title={t('seo.pages.skills.title')}
-      description={t('seo.pages.skills.description')}
-      keywords={t('seo.pages.skills.keywords', { returnObjects: true }) as string[]}
+      title={t('seo.pages.skills.title') as string}
+      description={t('seo.pages.skills.description') as string}
+      keywords={(t('seo.pages.skills.keywords', { returnObjects: true }) as unknown) as string[]}
       type="website"
     />
   );
@@ -184,9 +184,9 @@ export const ContactSEO: React.FC = () => {
   const { t } = useTranslation();
   return (
     <SEOOptimization
-      title={t('seo.pages.contact.title')}
-      description={t('seo.pages.contact.description')}
-      keywords={t('seo.pages.contact.keywords', { returnObjects: true }) as string[]}
+      title={t('seo.pages.contact.title') as string}
+      description={t('seo.pages.contact.description') as string}
+      keywords={(t('seo.pages.contact.keywords', { returnObjects: true }) as unknown) as string[]}
       type="website"
     />
   );

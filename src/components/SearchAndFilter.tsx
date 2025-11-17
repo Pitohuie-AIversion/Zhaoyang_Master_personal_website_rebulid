@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useMemo, useCallback } from 'react';
+import React, { useState, useMemo, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Search, Filter, X, ChevronDown, SortAsc, SortDesc, Calendar, Tag, User } from 'lucide-react';
+import { Search, X, ChevronDown, SortAsc, SortDesc } from 'lucide-react';
 import { useDebounce } from '../hooks/useDebounce';
 import { useTranslation } from './TranslationProvider';
 
@@ -41,7 +41,7 @@ export const SearchInput: React.FC<SearchInputProps> = ({
             setIsFocused(false);
             onBlur?.();
           }}
-          placeholder={placeholder || t('common.searchPlaceholder')}
+          placeholder={placeholder || (t('common.searchPlaceholder') as string)}
           className={`
             w-full pl-10 pr-4 py-2 rounded-lg border transition-all duration-200
             ${isFocused 
@@ -171,7 +171,7 @@ export const FilterDropdown: React.FC<FilterDropdownProps> = ({
                    onClick={() => onChange([])}
                    className="w-full px-3 py-2 text-sm text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-md transition-colors"
                  >
-                   {clearAllText || t('common.clearAllFilters')}
+                   {clearAllText || (t('common.clearAllFilters') as string)}
                  </button>
               </div>
             )}
@@ -211,10 +211,10 @@ export const SortDropdown: React.FC<SortDropdownProps> = ({
   const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   
-  // 解析当前选中的排序值和方向
-  const [sortField, sortDirection] = selectedSort.includes('_desc') 
-    ? [selectedSort.replace('_desc', ''), 'desc'] 
-    : [selectedSort, 'asc'];
+  // 解析当前选中的排序值
+  const sortField = selectedSort.includes('_desc') 
+    ? selectedSort.replace('_desc', '') 
+    : selectedSort;
   
   const selectedOption = options.find(opt => opt.value === sortField);
   const currentDirection = selectedOption?.direction || 'asc';
@@ -228,7 +228,7 @@ export const SortDropdown: React.FC<SortDropdownProps> = ({
       >
         <SortIcon className="w-4 h-4" />
         <span className="text-sm font-medium">
-           {selectedOption ? selectedOption.label : t('common.sortBy')}
+           {selectedOption ? selectedOption.label : (t('common.sortBy') as string)}
          </span>
         <ChevronDown className={`w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
       </button>
@@ -308,14 +308,14 @@ export const ActiveFilters: React.FC<ActiveFiltersProps> = ({
   clearAllText
 }) => {
   const { t } = useTranslation();
-  const activeFilters = Object.entries(filters).filter(([_, values]) => values.length > 0);
+  const activeFilters = Object.entries(filters).filter(([, values]) => values.length > 0);
   
   if (activeFilters.length === 0) return null;
 
   return (
     <div className="flex flex-wrap items-center gap-2">
        <span className="text-sm text-gray-600 dark:text-gray-400">
-         {activeFiltersText || t('common.activeFilters')}
+         {activeFiltersText || (t('common.activeFilters') as string)}
        </span>
       {activeFilters.map(([filterKey, values]) => 
         values.map(value => {
@@ -345,7 +345,7 @@ export const ActiveFilters: React.FC<ActiveFiltersProps> = ({
          onClick={onClearAll}
          className="text-sm text-red-600 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300 transition-colors"
        >
-         {clearAllText || t('common.clearAll')}
+         {clearAllText || (t('common.clearAll') as string)}
        </button>
     </div>
   );
@@ -370,21 +370,21 @@ export const SearchStats: React.FC<SearchStatsProps> = ({
   const { t } = useTranslation();
   
   // 使用自定义文本或默认翻译键
-  const itemsLabel = itemsText || t('common.searchResults.items');
+  const itemsLabel = itemsText || (t('common.searchResults.items') as string);
   
   return (
     <div className={`text-sm text-gray-600 dark:text-gray-400 ${className}`}>
       {searchTerm ? (
         <span>
-          {t('common.searchResults.found')} <strong className="text-gray-900 dark:text-white">{filteredResults}</strong> {t('common.searchResults.results')}
+          {(t('common.searchResults.found') as string)} <strong className="text-gray-900 dark:text-white">{filteredResults}</strong> {(t('common.searchResults.results') as string)}
           {searchTerm && (
-            <span> {t('common.searchResults.containing')} "<strong className="text-blue-600 dark:text-blue-400">{searchTerm}</strong>"
+            <span> {(t('common.searchResults.containing') as string)} "<strong className="text-blue-600 dark:text-blue-400">{searchTerm}</strong>"
             </span>
           )}
         </span>
       ) : (
         <span>
-          {t('common.searchResults.showing')} <strong className="text-gray-900 dark:text-white">{filteredResults}</strong> {t('common.searchResults.of')} {totalResults} {itemsLabel}
+          {(t('common.searchResults.showing') as string)} <strong className="text-gray-900 dark:text-white">{filteredResults}</strong> {(t('common.searchResults.of') as string)} {totalResults} {itemsLabel}
         </span>
       )}
     </div>
@@ -396,7 +396,7 @@ interface UseAdvancedSearchProps<T> {
   data: T[];
   searchFields: (keyof T)[];
   filterFields?: { [key: string]: (item: T) => string | string[] };
-  sortFields?: { [key: string]: (item: T) => any };
+  sortFields?: { [key: string]: (item: T) => string | number | Date };
   debounceMs?: number;
   // 新增：搜索字段映射函数，用于将代码值转换为可搜索的文本
   searchFieldMappers?: { [key: string]: (item: T) => string[] };

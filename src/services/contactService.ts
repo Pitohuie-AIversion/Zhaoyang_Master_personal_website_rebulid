@@ -26,12 +26,12 @@ export interface FormErrors {
 export interface SubmitResponse {
   success: boolean;
   message: string;
-  data?: any;
+  data?: Record<string, unknown>;
 }
 
 // 邮箱验证正则表达式
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const PHONE_REGEX = /^[\+]?[1-9][\d]{0,3}[\s\-]?[\(]?[\d]{1,4}[\)]?[\s\-]?[\d]{1,4}[\s\-]?[\d]{1,9}$/;
+const PHONE_REGEX = /^\+?[1-9]\d{0,3}[\s-]?[(]?\d{1,4}[)]?[\s-]?\d{1,4}[\s-]?\d{1,9}$/;
 
 // 表单验证函数
 export const validateContactForm = (formData: ContactFormData): FormErrors => {
@@ -102,7 +102,7 @@ export const sanitizeFormData = (formData: ContactFormData): ContactFormData => 
 };
 
 // 模拟邮件发送服务
-const simulateEmailSend = async (formData: ContactFormData): Promise<SubmitResponse> => {
+const simulateEmailSend = async (_data: ContactFormData): Promise<SubmitResponse> => {
   // 模拟网络延迟
   await new Promise(resolve => setTimeout(resolve, 1500 + Math.random() * 1000));
   
@@ -120,31 +120,6 @@ const simulateEmailSend = async (formData: ContactFormData): Promise<SubmitRespo
       estimatedReplyTime: '24小时内'
     }
   };
-};
-
-// 真实邮件发送服务（使用EmailJS或其他服务）
-const sendEmailViaService = async (formData: ContactFormData): Promise<SubmitResponse> => {
-  try {
-    // 这里可以集成真实的邮件服务，如EmailJS、Formspree等
-    // 示例：使用fetch发送到后端API
-    const response = await fetch('/api/contact', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formData),
-    });
-
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-
-    const result = await response.json();
-    return result;
-  } catch (error) {
-    console.error('Email send error:', error);
-    throw error;
-  }
 };
 
 // 主要的表单提交函数
@@ -222,7 +197,7 @@ const logContactSubmission = (formData: ContactFormData, result: SubmitResponse)
 };
 
 // 获取提交历史（用于调试）
-export const getContactSubmissionHistory = (): any[] => {
+export const getContactSubmissionHistory = (): Record<string, unknown>[] => {
   try {
     return JSON.parse(localStorage.getItem('contactSubmissions') || '[]');
   } catch (error) {

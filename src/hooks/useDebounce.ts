@@ -34,7 +34,7 @@ export function useDebounce<T>(value: T, delay: number): T {
  * @param delay - 节流间隔时间（毫秒）
  * @returns 节流后的回调函数
  */
-export function useThrottledCallback<T extends (...args: any[]) => any>(
+export function useThrottledCallback<T extends (...args: unknown[]) => unknown>(
   callback: T,
   delay: number
 ): T {
