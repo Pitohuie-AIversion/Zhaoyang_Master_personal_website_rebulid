@@ -1,81 +1,112 @@
-// Find JSON structure issues
-import { readFileSync } from 'fs';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
-try {
-  const content = readFileSync('./src/locales/en.json', 'utf8');
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Detailed JSON structure analysis
+function analyzeJSONStructure() {
+  console.log('=== Detailed JSON Structure Analysis ===');
   
-  // Try to parse the JSON
-  let data;
   try {
-    data = JSON.parse(content);
-    console.log('✅ JSON parses successfully');
-    console.log('Top-level keys:', Object.keys(data));
-  } catch (parseError) {
-    console.log('❌ JSON parse error:', parseError.message);
+    // Test English JSON
+    const enPath = path.join(__dirname, 'src/locales/en.json');
+    const enContent = fs.readFileSync(enPath, 'utf8');
     
-    // Find the position where parsing fails
-    if (parseError.message.includes('position')) {
-      const match = parseError.message.match(/position (\d+)/);
-      if (match) {
-        const position = parseInt(match[1]);
-        console.log('Error at position:', position);
-        console.log('Line number:', content.substring(0, position).split('\n').length);
-        
-        // Show context around error
-        const start = Math.max(0, position - 200);
-        const end = Math.min(content.length, position + 200);
-        console.log('Context around error:');
-        console.log(content.substring(start, end));
-      }
-    }
-    process.exit(1);
-  }
-  
-  // Check for multiple root objects by looking for patterns
-  console.log('\n🔍 Checking for structural issues:');
-  
-  // Look for patterns that suggest multiple root objects
-  const lines = content.split('\n');
-  let braceCount = 0;
-  let inString = false;
-  let escapeNext = false;
-  
-  for (let i = 0; i < content.length; i++) {
-    const char = content[i];
-    const prevChar = i > 0 ? content[i-1] : '';
+    console.log('English file size:', enContent.length, 'characters');
     
-    if (escapeNext) {
-      escapeNext = false;
-      continue;
-    }
-    
-    if (char === '\\' && inString) {
-      escapeNext = true;
-      continue;
-    }
-    
-    if (char === '"' && prevChar !== '\\') {
-      inString = !inString;
-      continue;
-    }
-    
-    if (!inString) {
-      if (char === '{') braceCount++;
-      if (char === '}') braceCount--;
+    // Try to parse and check for issues
+    let enData;
+    try {
+      enData = JSON.parse(enContent);
+      console.log('✅ English JSON parsing successful');
+    } catch (parseError) {
+      console.error('❌ English JSON parsing failed:', parseError.message);
       
-      // Check if we have a complete JSON object
-      if (braceCount === 0 && char === '}') {
-        console.log(`Potential root object ending at position ${i} (line ${content.substring(0, i).split('\n').length})`);
-        
-        // Check what comes after
-        const remaining = content.substring(i + 1).trim();
-        if (remaining && !remaining.startsWith('//') && !remaining.startsWith('/*')) {
-          console.log('Remaining content after this point:', remaining.substring(0, 100) + '...');
-        }
+      // Try to find the exact error location
+      const lines = enContent.split('\n');
+      console.log('File has', lines.length, 'lines');
+      
+      // Check for common JSON issues
+      const braceCount = (enContent.match(/\{/g) || []).length;
+      const closeBraceCount = (enContent.match(/\}/g) || []).length;
+      console.log('Opening braces:', braceCount, 'Closing braces:', closeBraceCount);
+      
+      if (braceCount !== closeBraceCount) {
+        console.log('❌ Mismatched braces detected!');
       }
+      
+      return;
     }
+    
+    console.log('English top-level sections:', Object.keys(enData));
+    
+    // Check each section
+    Object.keys(enData).forEach(section => {
+      console.log(`Section "${section}" type:`, typeof enData[section]);
+      if (typeof enData[section] === 'object') {
+        console.log(`  Keys in ${section}:`, Object.keys(enData[section]).length);
+      }
+    });
+    
+    // Test Chinese JSON
+    const zhPath = path.join(__dirname, 'src/locales/zh.json');
+    const zhContent = fs.readFileSync(zhPath, 'utf8');
+    const zhData = JSON.parse(zhContent);
+    
+    console.log('\nChinese top-level sections:', Object.keys(zhData));
+    
+    // Compare sections
+    const enSections = Object.keys(enData);
+    const zhSections = Object.keys(zhData);
+    
+    console.log('\n=== Section Comparison ===');
+    console.log('English sections:', enSections.length);
+    console.log('Chinese sections:', zhSections.length);
+    
+    const missingInEn = zhSections.filter(section => !enSections.includes(section));
+    const missingInZh = enSections.filter(section => !zhSections.includes(section));
+    
+    if (missingInEn.length > 0) {
+      console.log('Missing in English:', missingInEn);
+    }
+    if (missingInZh.length > 0) {
+      console.log('Missing in Chinese:', missingInZh);
+    }
+    
+    // Test specific particleField keys
+    console.log('\n=== ParticleField Key Test ===');
+    if (enData.particleField) {
+      console.log('English particleField keys:', Object.keys(enData.particleField));
+      
+      const testKeys = [
+        'backToHome',
+        'mainTitle', 
+        'features',
+        'settings',
+        'shortcuts'
+      ];
+      
+      testKeys.forEach(key => {
+        const exists = enData.particleField[key] !== undefined;
+        console.log(`  ${key}: ${exists ? '✅' : '❌'}`);
+      });
+    } else {
+      console.log('❌ particleField section missing in English');
+    }
+    
+    if (zhData.particleField) {
+      console.log('Chinese particleField keys:', Object.keys(zhData.particleField));
+    } else {
+      console.log('❌ particleField section missing in Chinese');
+    }
+    
+  } catch (error) {
+    console.error('❌ Analysis failed:', error.message);
+    console.error('Stack:', error.stack);
   }
-  
-} catch (error) {
-  console.log('❌ File reading error:', error.message);
 }
+
+// Run analysis
+analyzeJSONStructure();

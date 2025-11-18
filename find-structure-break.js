@@ -1,77 +1,81 @@
-// Find the exact structural break
-import { readFileSync } from 'fs';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
-const content = readFileSync('./src/locales/en.json', 'utf8');
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
-console.log('🔍 Analyzing JSON structure...\n');
-
-let braceCount = 0;
-let inString = false;
-let escapeNext = false;
-let lineNumber = 1;
-let rootObjectEnded = false;
-let rootObjectEndLine = 0;
-let rootObjectEndPosition = 0;
-
-for (let i = 0; i < content.length; i++) {
-  const char = content[i];
-  const prevChar = i > 0 ? content[i-1] : '';
+// Find the exact break point in JSON structure
+function findStructureBreak() {
+  console.log('=== Finding Structure Break ===');
   
-  if (char === '\n') lineNumber++;
+  const enPath = path.join(__dirname, 'src/locales/en.json');
+  const enContent = fs.readFileSync(enPath, 'utf8');
   
-  if (escapeNext) {
-    escapeNext = false;
-    continue;
-  }
+  // Split into lines and find where sections should be
+  const lines = enContent.split('\n');
   
-  if (char === '\\' && inString) {
-    escapeNext = true;
-    continue;
-  }
+  console.log('Total lines:', lines.length);
   
-  if (char === '"' && prevChar !== '\\') {
-    inString = !inString;
-    continue;
-  }
+  // Look for section transitions
+  let sectionStarts = [];
+  lines.forEach((line, index) => {
+    if (line.trim().match(/^"[a-zA-Z]+"\s*:\s*\{$/)) {
+      sectionStarts.push({
+        line: index + 1,
+        content: line.trim(),
+        context: lines.slice(Math.max(0, index-2), Math.min(lines.length, index+3)).join('\n')
+      });
+    }
+  });
   
-  if (!inString) {
-    if (char === '{') braceCount++;
-    if (char === '}') braceCount--;
+  console.log('\nSection transitions found:');
+  sectionStarts.forEach(section => {
+    console.log(`Line ${section.line}: ${section.content}`);
+  });
+  
+  // Check around line 1069 where the issue might be
+  console.log('\n=== Checking around line 1069 ===');
+  const contextLines = lines.slice(1065, 1075);
+  contextLines.forEach((line, index) => {
+    console.log(`${1066 + index}: ${line}`);
+  });
+  
+  // Try to parse JSON and catch the exact error
+  try {
+    JSON.parse(enContent);
+    console.log('✅ JSON parsing successful');
+  } catch (error) {
+    console.error('❌ JSON parsing failed:', error.message);
     
-    // Check if we have a complete JSON object
-    if (braceCount === 0 && char === '}') {
-      console.log(`Root object ends at position ${i} (line ${lineNumber})`);
-      rootObjectEnded = true;
-      rootObjectEndLine = lineNumber;
-      rootObjectEndPosition = i;
+    // Try to extract more context around the error
+    const errorMessage = error.message;
+    const lineMatch = errorMessage.match(/position (\d+)/);
+    if (lineMatch) {
+      const position = parseInt(lineMatch[1]);
+      console.log('Error around character position:', position);
       
-      // Check what comes after
-      const remaining = content.substring(i + 1).trim();
-      if (remaining && !remaining.startsWith('//') && !remaining.startsWith('/*')) {
-        console.log('Remaining content after root object:', remaining.substring(0, 200));
-        console.log('This suggests there are multiple root objects!');
+      // Find the line number
+      let charCount = 0;
+      let errorLine = 0;
+      for (let i = 0; i < lines.length; i++) {
+        charCount += lines[i].length + 1; // +1 for newline
+        if (charCount >= position) {
+          errorLine = i + 1;
+          break;
+        }
       }
-      break;
+      
+      console.log('Error around line:', errorLine);
+      if (errorLine > 0) {
+        const context = lines.slice(Math.max(0, errorLine - 3), Math.min(lines.length, errorLine + 3));
+        console.log('Context around error:');
+        context.forEach((line, idx) => {
+          console.log(`${errorLine - 2 + idx}: ${line}`);
+        });
+      }
     }
   }
 }
 
-// Now let's check what sections exist after the root object end
-if (rootObjectEnded) {
-  console.log(`\n📋 Content after line ${rootObjectEndLine}:`);
-  const remainingContent = content.substring(rootObjectEndPosition + 1);
-  const remainingLines = remainingContent.split('\n');
-  
-  console.log('First 20 lines after root object:');
-  for (let i = 0; i < Math.min(20, remainingLines.length); i++) {
-    const lineNum = rootObjectEndLine + i + 1;
-    console.log(`${lineNum}: ${remainingLines[i]}`);
-  }
-  
-  // Look for section headers
-  console.log('\n🔍 Looking for section headers after root object:');
-  const sectionMatches = remainingContent.match(/^\s*"(\w+)":\s*{/gm);
-  if (sectionMatches) {
-    console.log('Found sections:', sectionMatches.map(match => match.match(/"(\w+)"/)[1]));
-  }
-}
+findStructureBreak();

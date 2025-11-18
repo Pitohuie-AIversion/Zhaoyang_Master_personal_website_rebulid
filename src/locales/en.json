@@ -194,7 +194,7 @@
     "researchAchievements": "Research Achievements",
     "achievementsDesc": "Significant achievements and breakthroughs in scientific computing, robotics, and artificial intelligence"
   },
-  "publications": {
+  "academic": {
     "title": "Academic Research",
     "description": "Exploring cutting-edge scientific technologies and promoting deep integration of academic innovation with practical applications",
     "switchToAnalyticsView": "Switch to Analytics View",
@@ -670,7 +670,6 @@
         }
       }
     },
-
     "patents": {
       "underwaterNavigation": {
         "title": "Underwater Navigation Device and Method Based on Bionic Perception",
@@ -1062,13 +1061,8 @@
         "propulsionOptimization": "Propulsion efficiency optimization research",
         "westlakeCollaboration": "Collaboration project with Westlake University i⁴-FSI Laboratory"
       }
-    },
-    "code": "View Code",
-    "demo": "Live Demo",
-    "highlights": "Project Highlights",
-    "techStack": "Tech Stack"
+    }
   },
-  "about": {
     "title": "About Me",
     "description": "Learn about my academic background, research interests, and professional experience",
     "introduction": "I am Zhaoyang Mu, currently focused on interdisciplinary research in computational fluid dynamics, robotics, and artificial intelligence. My research interests include neural operators, deep learning applications in scientific computing, and bionic robot system design.",
@@ -1665,6 +1659,39 @@
       "presetSaved": "Preset saved successfully",
       "presetDeleted": "Preset deleted successfully"
     }
+  },
+  "about": {
+    "title": "About Me",
+    "description": "Learn about my academic background, research interests, and professional journey"
+  },
+  "skills": {
+    "title": "Professional Skills",
+    "description": "Technical expertise across multiple domains"
+  },
+  "contact": {
+    "title": "Contact Me",
+    "description": "Let's explore collaboration opportunities and academic exchanges"
+  },
+  "publications": {
+    "title": "Publications",
+    "description": "Academic papers, patents, and research outputs"
+  },
+  "projects": {
+    "title": "Projects",
+    "description": "Technical projects and research implementations"
+  },
+  "seo": {
+    "site": {
+      "title": "Zhaoyang Mu - Computer Science Researcher & Software Engineer",
+      "description": "Personal website of Zhaoyang Mu, showcasing research in AI, machine learning, and scientific computing"
+    }
+  },
+  "footer": {
+    "copyright": "© 2024 Zhaoyang Mu. All rights reserved.",
+    "personalInfo": {
+      "name": "Zhaoyang Mu",
+      "nameEn": "Mu Zhaoyang",
+      "title": "Computer Science Researcher & Software Engineer"
+    }
   }
-}
 }

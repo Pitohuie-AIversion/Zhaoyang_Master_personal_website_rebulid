@@ -113,7 +113,7 @@ const saveToSupabase = async (data: ContactFormData): Promise<SubmitResponse> =>
       phone: data.phone || null,
       company: data.company || null,
       collaboration_type: data.collaborationType || null,
-      budget: data.budget || null,
+      budget_range: data.budget || null,  // 注意：这里使用budget_range而不是budget
       timeline: data.timeline || null,
       status: 'new',
       created_at: new Date().toISOString()

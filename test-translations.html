@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Translation Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test-section { margin: 20px 0; padding: 15px; border: 1px solid #ccc; }
+        .error { color: red; }
+        .success { color: green; }
+        .warning { color: orange; }
+    </style>
+</head>
+<body>
+    <h1>Translation System Test</h1>
+    
+    <div class="test-section">
+        <h2>JSON File Validation</h2>
+        <div id="json-validation"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Translation Key Tests</h2>
+        <div id="translation-tests"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Language Switching Test</h2>
+        <button onclick="testLanguageSwitch()">Test Language Switch</button>
+        <div id="language-test-results"></div>
+    </div>
+
+    <script type="module">
+        // Test JSON files directly
+        async function testJsonFiles() {
+            const results = document.getElementById('json-validation');
+            
+            try {
+                // Test Chinese JSON
+                const zhResponse = await fetch('/src/locales/zh.json');
+                const zhData = await zhResponse.json();
+                results.innerHTML += '<div class="success">✓ Chinese JSON file is valid</div>';
+                
+                // Test English JSON  
+                const enResponse = await fetch('/src/locales/en.json');
+                const enData = await enResponse.json();
+                results.innerHTML += '<div class="success">✓ English JSON file is valid</div>';
+                
+                // Count top-level keys
+                const zhKeys = Object.keys(zhData);
+                const enKeys = Object.keys(enData);
+                
+                results.innerHTML += `<div>Chinese keys: ${zhKeys.length} (${zhKeys.join(', ')})</div>`;
+                results.innerHTML += `<div>English keys: ${enKeys.length} (${enKeys.join(', ')})</div>`;
+                
+                if (zhKeys.length !== enKeys.length) {
+                    results.innerHTML += '<div class="warning">⚠ Key count mismatch between languages</div>';
+                }
+                
+                // Test specific keys
+                const testKeys = ['common.loading', 'navigation.home', 'particleField.title'];
+                for (const key of testKeys) {
+                    const zhValue = getNestedValue(zhData, key);
+                    const enValue = getNestedValue(enData, key);
+                    
+                    if (zhValue && enValue) {
+                        results.innerHTML += `<div class="success">✓ ${key}: zh="${zhValue}", en="${enValue}"</div>`;
+                    } else {
+                        results.innerHTML += `<div class="error">✗ ${key}: zh=${zhValue ? '✓' : '✗'}, en=${enValue ? '✓' : '✗'}</div>`;
+                    }
+                }
+                
+            } catch (error) {
+                results.innerHTML += `<div class="error">✗ JSON validation failed: ${error.message}</div>`;
+            }
+        }
+        
+        function getNestedValue(obj, path) {
+            return path.split('.').reduce((current, key) => current && current[key], obj);
+        }
+        
+        // Test translation function (simulated)
+        function testTranslations() {
+            const results = document.getElementById('translation-tests');
+            
+            // This would normally use the actual translation function
+            // For now, just show what keys should be tested
+            const testKeys = [
+                'common.loading',
+                'navigation.home', 
+                'navigation.research',
+                'particleField.title',
+                'particleField.features.realtime',
+                'particleField.settings.particles'
+            ];
+            
+            results.innerHTML = '<div>Keys to test:</div>';
+            testKeys.forEach(key => {
+                results.innerHTML += `<div>• ${key}</div>`;
+            });
+        }
+        
+        // Test language switching
+        window.testLanguageSwitch = function() {
+            const results = document.getElementById('language-test-results');
+            results.innerHTML = '<div class="warning">Language switching test requires the actual React application to be loaded</div>';
+        };
+        
+        // Run tests
+        testJsonFiles();
+        testTranslations();
+    </script>
+</body>
+</html>

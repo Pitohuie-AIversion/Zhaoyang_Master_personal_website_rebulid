@@ -62,7 +62,7 @@ router.post('/submit', contactRateLimit, async (req, res) => {
       phone: phone ? phone.trim() : null,
       company: company ? company.trim() : null,
       collaboration_type: collaboration_type || null,
-      budget: budget || null,
+      budget_range: budget || null,  // 注意：这里使用budget_range而不是budget
       timeline: timeline || null,
       status: status,
       ip_address: req.ip || req.connection?.remoteAddress || 'unknown',

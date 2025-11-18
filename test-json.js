@@ -1,38 +1,18 @@
-// Test JSON structure
-import { readFileSync } from 'fs';
+import fs from 'fs';
+const content = fs.readFileSync('./src/locales/en.json', 'utf8');
 
-try {
-  const enContent = readFileSync('./src/locales/en.json', 'utf8');
-  const enData = JSON.parse(enContent);
-  
-  console.log('✅ English JSON parsed successfully');
-  console.log('Top-level keys:', Object.keys(enData));
-  console.log('Total top-level keys:', Object.keys(enData).length);
-  
-  // Check specific sections
-  console.log('\nChecking specific sections:');
-  console.log('- footer exists:', !!enData.footer);
-  console.log('- particleField exists:', !!enData.particleField);
-  console.log('- seo exists:', !!enData.seo);
-  console.log('- blog exists:', !!enData.blog);
-  
-  if (enData.footer) {
-    console.log('- footer.personalInfo exists:', !!enData.footer.personalInfo);
-  }
-  
-  if (enData.particleField) {
-    console.log('- particleField.settings exists:', !!enData.particleField.settings);
-  }
-  
-} catch (error) {
-  console.log('❌ JSON parsing error:', error.message);
-  if (error.message.includes('position')) {
-    const match = error.message.match(/position (\d+)/);
-    if (match) {
-      const position = parseInt(match[1]);
-      const content = readFileSync('./src/locales/en.json', 'utf8');
-      console.log('Error context around position', position, ':');
-      console.log(content.substring(Math.max(0, position - 50), position + 50));
-    }
-  }
+// Check what's at position 79268
+console.log('File length:', content.length);
+console.log('Character at position 79268:', JSON.stringify(content[79268]));
+console.log('Content around position 79268:');
+console.log(content.substring(79260, 79280));
+
+// Check if there are any extra characters at the end
+console.log('\nLast 20 characters:');
+console.log(JSON.stringify(content.substring(content.length - 20)));
+
+// Check for any hidden characters or BOM
+console.log('\nFirst few character codes:');
+for (let i = 79260; i < 79280 && i < content.length; i++) {
+  console.log(`Position ${i}: "${content[i]}" (code: ${content.charCodeAt(i)})`);
 }
