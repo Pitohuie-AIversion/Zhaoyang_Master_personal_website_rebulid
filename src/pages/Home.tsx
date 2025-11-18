@@ -11,8 +11,6 @@ import { UnifiedButton } from '../components/UnifiedButton';
 import { ScrollReveal, HoverCard } from '../components/InteractiveEffects';
 import Timeline from '../components/Timeline';
 import profileImage from '../assets/me_Nero_AI_Image_Upscaler_Photo_Face.jpeg';
-import cnResumePdf from '../../resume/cn_Resume_compressed-1-2.pdf';
-import enResumePdf from '../../resume/en_Resume_compressed.pdf';
 
 interface ResearchHighlight {
   id: string;
@@ -515,9 +513,10 @@ function Home() {
                   </UnifiedButton>
                 </Link>
                 <a
-                  href={language === 'zh' ? cnResumePdf : enResumePdf}
+                  href={language === 'zh' ? '/cn_resume.pdf' : '/en_resume.pdf'}
                   target="_blank"
                   rel="noopener noreferrer"
+                  download
                 >
                   <UnifiedButton
                     variant="outline"

@@ -175,6 +175,13 @@ criticalKeys.forEach((key) => {
   console.log(`${key} zh=${zhHas} en=${enHas} zhType=${getType(zh, key)} enType=${getType(en, key)}`);
 });
 
+logSection('英文 particleField 一层键');
+if (en && en.particleField) {
+  console.log(Object.keys(en.particleField).slice(0, 50).join(', '));
+}
+logSection('英文顶层键');
+console.log(Object.keys(en).slice(0, 100).join(', '));
+
 const result = {
   totalKeys: keys.length,
   missingZhCount: missingZh.length,
