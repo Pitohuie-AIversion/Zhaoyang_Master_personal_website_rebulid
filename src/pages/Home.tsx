@@ -95,10 +95,10 @@ const getNewsItems = (t: (key: string, options?: { returnObjects?: boolean; fall
 ];
 
 const getStats = (t: (key: string, options?: { returnObjects?: boolean; fallback?: string }) => string) => [
-  { label: t('home.stats.publications'), value: '10+', icon: '📄' },
-  { label: t('home.stats.projects'), value: '5', icon: '🔬' },
-  { label: t('home.stats.patents'), value: '8', icon: '💡' },
-  { label: t('home.stats.awards'), value: '3+', icon: '🏆' }
+  { label: t('home.stats.publications'), value: '10', icon: '📄' },
+  { label: t('home.stats.projects'), value: '6', icon: '🔬' },
+  { label: t('home.stats.patents'), value: '6', icon: '💡' },
+  { label: t('home.stats.awards'), value: '4', icon: '🏆' }
 ];
 
 function Home() {
@@ -513,7 +513,7 @@ function Home() {
                   </UnifiedButton>
                 </Link>
                 <a
-                  href={language === 'zh' ? '/cn_resume.pdf' : '/en_resume.pdf'}
+                  href={language === 'zh' ? '/resume/cn_Resume_compressed-1-2.pdf' : '/resume/en_Resume_compressed.pdf'}
                   target="_blank"
                   rel="noopener noreferrer"
                   download

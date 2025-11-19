@@ -6,7 +6,7 @@ import { ThemeToggle } from './DarkModeProvider';
 import { LanguageToggle } from './LanguageToggle';
 import { UnifiedButton } from './UnifiedButton';
 import { AccessibilityButton } from './AccessibilityEnhancements';
-import { Home, Microscope, Briefcase, FileText, Wrench, Mail, Terminal, BookOpen } from 'lucide-react';
+import { Home, Microscope, Briefcase, FileText, Wrench, Mail, Terminal, BookOpen, FileText as ResumeIcon } from 'lucide-react';
 import { useResponsive, MobileMenu } from './ResponsiveEnhancements';
 import { useTranslation } from './TranslationProvider';
 import { SmartSearch } from './SmartSearch';
@@ -22,7 +22,8 @@ const navigationConfig = [
   { key: 'navigation.blog', href: '/blog', icon: BookOpen },
   { key: 'navigation.skills', href: '/skills', icon: Wrench },
   { key: 'navigation.contact', href: '/contact', icon: Mail },
-  { key: 'navigation.ascii-demo', href: '/ascii-demo', icon: Terminal }
+  { key: 'navigation.ascii-demo', href: '/ascii-demo', icon: Terminal },
+  { key: 'navigation.resume-manager', href: '/resume-manager', icon: ResumeIcon }
 ];
 
 export default function Navbar() {

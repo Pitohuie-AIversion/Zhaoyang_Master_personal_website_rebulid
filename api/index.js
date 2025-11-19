@@ -70,6 +70,9 @@ app.use(cors({
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
+// Serve static files from the resume directory
+app.use('/resume', express.static(path.join(process.cwd(), 'resume')));
+
 // 请求日志中间件
 app.use((req, res, next) => {
   console.log(`${new Date().toISOString()} - ${req.method} ${req.path}`);
@@ -92,6 +95,7 @@ const testGPT4ProxyRoutes = await import('./routes/test-gpt4-proxy.js').then(m =
 const testGPT4MockRoutes = await import('./routes/test-gpt4-mock.js').then(m => m.default);
 const testGPT35Routes = await import('./routes/test-gpt35.js').then(m => m.default);
 const checkApiStatusRoutes = await import('./routes/check-api-status.js').then(m => m.default);
+const resumeRoutes = await import('./routes/resume.js').then(m => m.default);
 
 // API路由
 app.use('/api/chat', chatRoutes);
@@ -109,6 +113,7 @@ app.use('/api/test-gpt4-proxy', testGPT4ProxyRoutes);
 app.use('/api/test-gpt4-mock', testGPT4MockRoutes);
 app.use('/api/test-gpt35', testGPT35Routes);
 app.use('/api/check-api', checkApiStatusRoutes);
+app.use('/api/resume', resumeRoutes);
 
 // 健康检查端点
 app.get('/api/health', (req, res) => {

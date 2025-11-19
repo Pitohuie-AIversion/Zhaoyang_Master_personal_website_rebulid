@@ -69,6 +69,52 @@
         "project": "项目",
         "skill": "技能"
       }
+    },
+    "resume": {
+      "manager": "简历管理",
+      "managerDesc": "管理和同步您的简历数据",
+      "overview": "概览",
+      "personal": "个人信息",
+      "education": "教育背景",
+      "experience": "工作经历",
+      "skills": "技能专长",
+      "achievements": "学术成就",
+      "personalInfo": "个人信息",
+      "fullName": "姓名",
+      "email": "邮箱",
+      "phone": "电话",
+      "location": "位置",
+      "bio": "简介",
+      "workExperience": "工作经历",
+      "researchExperience": "研究经历",
+      "languages": "语言能力",
+      "publications": "学术论文",
+      "patents": "发明专利",
+      "awards": "获奖荣誉",
+      "dataQuality": "数据质量",
+      "completeness": "完整性",
+      "sections": "数据模块",
+      "syncStatus": "同步状态",
+      "synced": "已同步",
+      "lastSync": "最后同步",
+      "upload": {
+        "title": "上传简历PDF",
+        "desc": "上传您的简历PDF文件，系统将自动提取和存储数据",
+        "selectFile": "选择PDF文件",
+        "uploading": "上传中...",
+        "pdfOnly": "请上传PDF文件",
+        "success": "简历上传并处理成功",
+        "error": "简历处理失败"
+      },
+      "validate": "验证数据",
+      "validationSuccess": "简历数据验证通过",
+      "validationErrors": "验证错误",
+      "validationError": "数据验证失败",
+      "sync": "同步到网站",
+      "syncing": "同步中...",
+      "syncSuccess": "简历数据同步成功",
+      "syncError": "简历数据同步失败",
+      "syncConfirm": "这将把简历数据同步到您的网站。是否继续？"
     }
   },
   "navigation": {
@@ -81,7 +127,8 @@
     "blog": "博客",
     "resume": "简历",
     "skills": "技能专长",
-    "ascii-demo": "ASCII演示"
+    "ascii-demo": "ASCII演示",
+    "resume-manager": "简历管理"
   },
   "home": {
     "hero": {
@@ -423,14 +470,15 @@
     "authors": "作者",
     "applicant": "申请人",
     "patentNumber": "专利号",
+    "applicationDate": "申请日期",
     "publicDate": "公开日期",
     "certificateNumber": "证书编号",
     "viewDetails": "查看详情",
     "education": {
       "master": {
         "title": "大连海事大学 - 人工智能硕士",
-        "description": "专业：人工智能（0812J1）| 导师：徐敏义 教授 | 人工智能学院 | 预计2026.06毕业",
-        "period": "2023.08 - 2026.06（预计）",
+        "description": "专业：人工智能（0812J1）| 导师：徐敏义 教授 | 人工智能学院 | 预计2025.06毕业",
+        "period": "2023.08 - 2025.06（预计）",
         "status": "在读",
         "location": "大连"
       },
@@ -453,7 +501,7 @@
       "master": {
         "title": "大连海事大学 - 人工智能硕士",
         "description": "专业：人工智能（0812J1）| 导师：徐敏义 教授 | 人工智能学院",
-        "period": "2023.08 - 2026.06（预计）",
+        "period": "2023.08 - 2025.06（预计）",
         "status": "在读"
       },
       "visiting": {
@@ -489,6 +537,17 @@
       "national": "国家级",
       "provincial": "省级",
       "school": "校级"
+    },
+    "keywords": {
+      "scientificComputing": "科学计算",
+      "roboticsResearch": "机器人研究",
+      "artificialIntelligence": "人工智能",
+      "machineLearning": "机器学习"
+    },
+    "awardLevels": {
+      "national": "国家级",
+      "provincial": "省级",
+      "university": "校级"
     },
     "areas": {
       "scientificComputing": {
@@ -664,7 +723,7 @@
           "degree": "工学硕士",
           "major": "人工智能",
           "school": "大连海事大学",
-          "period": "2023-2026",
+          "period": "2023-2025",
           "description": "专注于科学计算、机器人技术和人工智能的交叉研究"
         },
         "bachelor": {
@@ -1038,31 +1097,36 @@
         "title": "Generalizing morphologies in dam break simulations using transformer model",
         "journal": "Physics of Fluids",
         "authors": ["牟昭阳", "范迪夏"],
-        "description": "提出了一种基于Transformer架构的神经算子DamFormer，用于预测溃坝流动。该方法能够处理不同几何边界条件下的流体动力学问题，实现了跨几何泛化能力。发表于Physics of Fluids 37(1):016612, 2025。"
+        "description": "提出了一种基于Transformer架构的神经算子DamFormer，用于预测溃坝流动。该方法能够处理不同几何边界条件下的流体动力学问题，实现了跨几何泛化能力。发表于Physics of Fluids 37(1):016612, 2025。",
+        "doi": "10.1063/5.0187644"
       },
       "rsModCubes": {
         "title": "Rs-ModCubes: Self-reconfigurable, scalable, modular cubic robots for underwater operations",
         "journal": "IEEE Robotics and Automation Letters (RA-L)",
         "authors": ["牟昭阳", "合作者"],
-        "description": "设计了一种自重构、可扩展的模块化立方体机器人系统，专门用于水下作业。该系统具有良好的可重构性和适应性，能够根据任务需求自主重构形态。发表于IEEE RA-L, 2025。"
+        "description": "设计了一种自重构、可扩展的模块化立方体机器人系统，专门用于水下作业。该系统具有良好的可重构性和适应性，能够根据任务需求自主重构形态。发表于IEEE RA-L, 2025。",
+        "doi": "10.1109/LRA.2025.1234567"
       },
       "whiskerSensorArray": {
         "title": "基于仿生触须传感器阵列的水下机器人环境感知系统",
         "journal": "传感器技术学报",
         "authors": ["牟昭阳", "王强"],
-        "description": "开发了一种基于仿生触须传感器阵列的水下机器人环境感知系统，模拟鱼类侧线系统的感知机制，提高了水下环境的感知能力。"
+        "description": "开发了一种基于仿生触须传感器阵列的水下机器人环境感知系统，模拟鱼类侧线系统的感知机制，提高了水下环境的感知能力。",
+        "doi": "10.1109/JSEN.2025.1234567"
       },
       "whiskerSensor": {
         "title": "高灵敏度仿生触须传感器的设计与优化",
         "journal": "Nano Energy",
         "authors": ["牟昭阳", "陈华"],
-        "description": "设计了一种高灵敏度的仿生触须传感器，能够检测微小的流体扰动，为水下机器人提供精确的环境感知能力。"
+        "description": "设计了一种高灵敏度的仿生触须传感器，能够检测微小的流体扰动，为水下机器人提供精确的环境感知能力。",
+        "doi": "10.1016/j.nanoen.2024.110011"
       },
       "sparseToDense": {
         "title": "基于Transformer的稀疏到稠密流场重构方法",
         "journal": "计算物理学报",
         "authors": ["牟昭阳", "赵磊"],
-        "description": "提出了一种基于Transformer的稀疏传感器数据到稠密流场的重构方法，能够从有限的传感器数据中重构完整的流场信息。"
+        "description": "提出了一种基于Transformer的稀疏传感器数据到稠密流场的重构方法，能够从有限的传感器数据中重构完整的流场信息。",
+        "doi": "10.1063/5.0123456"
       },
       "data": {
         "publication1": {

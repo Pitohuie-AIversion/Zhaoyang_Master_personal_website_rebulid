@@ -38,6 +38,9 @@ const LazyContactViewer = React.lazy(() => import('./pages/ContactViewer'));
 const LazyBlogPage = React.lazy(() => import('./pages/BlogPage'));
 const LazyBlogPost = React.lazy(() => import('./components/BlogPost'));
 
+// 简历管理页面
+const LazyResumeManager = React.lazy(() => import('./components/ResumeManager'));
+
 function AnimatedRoutes() {
   const location = useLocation();
 
@@ -145,6 +148,14 @@ function AnimatedRoutes() {
           element={
             <Suspense fallback={<LoadingFallback message="加载博客文章中..." />}>
               <LazyBlogPost />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/resume-manager"
+          element={
+            <Suspense fallback={<LoadingFallback message="加载简历管理页面中..." />}>
+              <LazyResumeManager />
             </Suspense>
           }
         />

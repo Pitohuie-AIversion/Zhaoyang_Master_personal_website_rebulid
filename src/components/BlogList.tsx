@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Calendar, Clock, Eye, Heart, Tag, User, BookOpen, Search, Filter } from 'lucide-react';
 import { blogService, BlogPost, BlogCategory, BlogTag } from '../services/blogService';
 import { useTranslation } from '../components/TranslationProvider';
@@ -41,11 +41,7 @@ export const BlogList: React.FC<BlogListProps> = ({
   const [sortBy, setSortBy] = useState<'date' | 'views' | 'likes'>('date');
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('desc');
 
-  useEffect(() => {
-    loadData();
-  }, [selectedCategory, selectedTag, searchQuery, sortBy, sortOrder]);
-
-  const loadData = async () => {
+  const loadData = useCallback(async () => {
     setLoading(true);
     try {
       // 加载博客文章
@@ -74,7 +70,11 @@ export const BlogList: React.FC<BlogListProps> = ({
     } finally {
       setLoading(false);
     }
-  };
+  }, [selectedCategory, selectedTag, searchQuery, sortBy, sortOrder, maxPosts]);
+
+  useEffect(() => {
+    loadData();
+  }, [selectedCategory, selectedTag, searchQuery, sortBy, sortOrder, loadData]);
 
   const handleLike = async (postId: string) => {
     try {

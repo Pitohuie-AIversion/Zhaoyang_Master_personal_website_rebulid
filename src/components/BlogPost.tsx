@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
+import DOMPurify from 'dompurify';
 import { 
   Calendar, 
   Clock, 
@@ -53,13 +54,7 @@ const BlogPost: React.FC<BlogPostProps> = ({ className = '' }) => {
   const [isLiked, setIsLiked] = useState(false);
   const [showShareMenu, setShowShareMenu] = useState(false);
 
-  useEffect(() => {
-    if (slug) {
-      loadPost(slug);
-    }
-  }, [slug]);
-
-  const loadPost = async (postSlug: string) => {
+  const loadPost = useCallback(async (postSlug: string) => {
     try {
       setLoading(true);
       
@@ -86,7 +81,13 @@ const BlogPost: React.FC<BlogPostProps> = ({ className = '' }) => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [navigate]);
+
+  useEffect(() => {
+    if (slug) {
+      loadPost(slug);
+    }
+  }, [slug, loadPost]);
 
   const handleLike = async () => {
     if (!post || isLiked) return;
@@ -181,8 +182,8 @@ const BlogPost: React.FC<BlogPostProps> = ({ className = '' }) => {
   };
 
   const renderMarkdown = (content: string) => {
-    // 简单的Markdown渲染，可以根据需要扩展
-    return content
+    // 安全的Markdown渲染，使用DOMPurify防止XSS攻击
+    const rawHtml = content
       .replace(/^### (.*$)/gim, '<h3 class="text-lg font-semibold mt-4 mb-2">$1</h3>')
       .replace(/^## (.*$)/gim, '<h2 class="text-xl font-bold mt-6 mb-3">$1</h2>')
       .replace(/^# (.*$)/gim, '<h1 class="text-2xl font-bold mt-8 mb-4">$1</h1>')
@@ -193,6 +194,12 @@ const BlogPost: React.FC<BlogPostProps> = ({ className = '' }) => {
       .replace(/\$\$(.+?)\$\$/g, '<div class="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg my-4 overflow-x-auto"><code class="text-sm">$1</code></div>')
       .replace(/\$(.+?)\$/g, '<code class="bg-gray-100 dark:bg-gray-800 px-1 py-0.5 rounded text-sm">$1</code>')
       .replace(/\|(.+?)\|/g, '<span class="border border-gray-300 dark:border-gray-600 px-2 py-1 rounded text-sm">$1</span>');
+    
+    // 使用DOMPurify清理HTML，防止XSS攻击
+    return DOMPurify.sanitize(rawHtml, {
+      ALLOWED_TAGS: ['h1', 'h2', 'h3', 'p', 'strong', 'em', 'br', 'div', 'code', 'span', 'a', 'ul', 'ol', 'li', 'blockquote'],
+      ALLOWED_ATTR: ['class', 'href', 'target', 'rel']
+    });
   };
 
   if (loading) {

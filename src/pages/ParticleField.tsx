@@ -1,10 +1,10 @@
 import React, { useState, useCallback } from 'react';
-import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { ParticleField as ParticleFieldComponent } from '../components/ParticleField/ParticleField';
 import { ParticleFieldConfig } from '../utils/configManager';
 import { PerformanceMetrics } from '../utils/performanceMonitor';
 import { Settings, Play, Monitor, Palette } from 'lucide-react';
+import { useTranslation } from '../components/TranslationProvider';
 
 const ParticleField: React.FC = () => {
   const { t } = useTranslation();

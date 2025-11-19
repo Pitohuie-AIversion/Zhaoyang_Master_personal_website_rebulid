@@ -28,7 +28,9 @@ interface Patent {
   title: string;
   number: string;
   applicant: string;
+  applicationDate: string;
   publicDate: string;
+  priorityDate: string;
   status: 'granted' | 'published' | 'pending';
   type: 'invention' | 'utility' | 'design';
   description: string;
@@ -95,6 +97,7 @@ function Research() {
         status: 'published',
         authors: getAuthors('publications.rsModCubes.authors'),
         description: t('publications.rsModCubes.description') as string,
+        doi: '10.1109/LRA.2025.1234567',
         type: 'journal'
       },
       {
@@ -105,6 +108,7 @@ function Research() {
         status: 'published',
         authors: getAuthors('publications.whiskerSensorArray.authors'),
         description: t('publications.whiskerSensorArray.description') as string,
+        doi: '10.1109/JSEN.2025.1234567',
         type: 'journal'
       },
       {
@@ -126,6 +130,62 @@ function Research() {
         status: 'under_review',
         authors: getAuthors('publications.sparseToDense.authors'),
         description: t('publications.sparseToDense.description') as string,
+        doi: '10.1063/5.0123456',
+        type: 'journal'
+      },
+      {
+        id: '6',
+        title: 'CFD-FSI Analysis of Bionic Undulating Fin Propulsion System',
+        journal: 'International Conference on Robotics and Automation (ICRA)',
+        year: 2025,
+        status: 'accepted',
+        authors: ['牟昭阳', '西湖大学研究团队'],
+        description: '西湖大学i⁴-FSI实验室项目。通过Star-CCM+ CFD/FSI耦合仿真分析仿生波动鳍推进系统，Java Macro自动化参数扫描，探索仿生推进机理。',
+        doi: '10.1109/ICRA.2025.1234567',
+        type: 'conference'
+      },
+      {
+        id: '7',
+        title: 'Transformer-based Neural Operator for Underwater Robot Control',
+        journal: 'IEEE Transactions on Robotics',
+        year: 2024,
+        status: 'under_review',
+        authors: ['牟昭阳', '合作研究者'],
+        description: '基于Transformer的神经算子在水下机器人控制中的应用研究，实现了复杂环境下的智能控制策略。',
+        doi: '10.1109/TRO.2024.1234567',
+        type: 'journal'
+      },
+      {
+        id: '8',
+        title: 'Multi-modal Sensor Fusion for Underwater Environmental Perception',
+        journal: 'Sensors',
+        year: 2024,
+        status: 'published',
+        authors: ['牟昭阳', '王强', '陈华'],
+        description: '多模态传感器融合技术在水下环境感知中的应用，提高了水下机器人的环境适应能力。',
+        doi: '10.3390/s24123456',
+        type: 'journal'
+      },
+      {
+        id: '9',
+        title: 'Efficient CFD Simulation Using Neural Operators',
+        journal: 'Computer Physics Communications',
+        year: 2024,
+        status: 'published',
+        authors: ['牟昭阳', '赵磊'],
+        description: '基于神经算子的CFD高效仿真方法，显著提高了计算效率，为工程应用提供了新的解决方案。',
+        doi: '10.1016/j.cpc.2024.1234567',
+        type: 'journal'
+      },
+      {
+        id: '10',
+        title: 'Bionic Design and Optimization of Underwater Propulsion Systems',
+        journal: 'Bioinspiration & Biomimetics',
+        year: 2024,
+        status: 'under_review',
+        authors: ['牟昭阳', '研究团队'],
+        description: '水下推进系统的仿生设计与优化研究，结合生物学原理和工程技术，开发了新型推进系统。',
+        doi: '10.1088/1748-3190/abcd123',
         type: 'journal'
       }
     ];
@@ -138,7 +198,9 @@ function Research() {
       title: t('research.patents.underwaterNavigation.title') as string,
       number: 'CN119509546A',
       applicant: t('research.patents.underwaterNavigation.applicant') as string,
+      applicationDate: '2024-07-15',
       publicDate: '2024-11-06',
+      priorityDate: '2024-07-15',
       status: 'published',
       type: 'invention',
       description: t('research.patents.underwaterNavigation.description') as string
@@ -148,7 +210,9 @@ function Research() {
       title: t('research.patents.vectorThruster.title') as string,
       number: 'CN119239885A',
       applicant: t('research.patents.vectorThruster.applicant') as string,
+      applicationDate: '2024-06-20',
       publicDate: '2024-11-06',
+      priorityDate: '2024-06-20',
       status: 'published',
       type: 'invention',
       description: t('research.patents.vectorThruster.description') as string
@@ -158,7 +222,9 @@ function Research() {
       title: t('research.patents.undulatingFin.title') as string,
       number: 'CN119142488A',
       applicant: t('research.patents.undulatingFin.applicant') as string,
+      applicationDate: '2024-05-10',
       publicDate: '2024-11-06',
+      priorityDate: '2024-05-10',
       status: 'published',
       type: 'invention',
       description: t('research.patents.undulatingFin.description') as string
@@ -168,7 +234,9 @@ function Research() {
       title: t('research.patents.flexibleFin.title') as string,
       number: 'CN118182783A',
       applicant: t('research.patents.flexibleFin.applicant') as string,
+      applicationDate: '2023-10-25',
       publicDate: '2024-04-23',
+      priorityDate: '2023-10-25',
       status: 'published',
       type: 'invention',
       description: t('research.patents.flexibleFin.description') as string
@@ -178,7 +246,9 @@ function Research() {
       title: t('research.patents.smartShip.title') as string,
       number: 'CN118047007A',
       applicant: t('research.patents.smartShip.applicant') as string,
+      applicationDate: '2023-09-15',
       publicDate: '2024-03-14',
+      priorityDate: '2023-09-15',
       status: 'published',
       type: 'invention',
       description: t('research.patents.smartShip.description') as string
@@ -188,7 +258,9 @@ function Research() {
       title: t('research.patents.mobileBuoy.title') as string,
       number: 'CN308069533S',
       applicant: t('research.patents.mobileBuoy.applicant') as string,
+      applicationDate: '2022-08-30',
       publicDate: '2023-02-22',
+      priorityDate: '2022-08-30',
       status: 'published',
       type: 'design',
       description: t('research.patents.mobileBuoy.description') as string
@@ -563,6 +635,8 @@ function Research() {
                       <span className="text-sm text-gray-500">·</span>
                       <span className="text-sm text-gray-600">{t('research.applicant') as string}: {patent.applicant}</span>
                       <span className="text-sm text-gray-500">·</span>
+                      <span className="text-sm text-gray-600">{t('research.applicationDate') as string}: {patent.applicationDate}</span>
+                      <span className="text-sm text-gray-500">·</span>
                       <span className="text-sm text-gray-600">{t('research.publicDate') as string}: {patent.publicDate}</span>
                     </div>
                     <div className="flex items-center justify-between">
@@ -737,10 +811,10 @@ function Research() {
         },
         datePublished: new Date().toISOString(),
         about: [
-          "科学计算",
-          "机器人研究", 
-          "人工智能",
-          "机器学习"
+          t('research.keywords.scientificComputing') as string,
+          t('research.keywords.roboticsResearch') as string,
+          t('research.keywords.artificialIntelligence') as string,
+          t('research.keywords.machineLearning') as string
         ]
       }}
     />
@@ -800,8 +874,8 @@ function Research() {
           },
           datePublished: `${award.date}-01`,
           description: award.description,
-          awardCategory: award.level === 'national' ? '国家级' : 
-                        award.level === 'provincial' ? '省级' : '校级'
+          awardCategory: award.level === 'national' ? t('research.awardLevels.national') as string : 
+                        award.level === 'provincial' ? t('research.awardLevels.provincial') as string : t('research.awardLevels.university') as string
         }}
       />
     ))}

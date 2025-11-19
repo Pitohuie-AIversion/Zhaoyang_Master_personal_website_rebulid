@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
-import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
+import { useTranslation } from '../components/TranslationProvider';
 import { ParticleField as ParticleFieldComponent } from '../components/ParticleField/ParticleField';
 import { ParticleFieldConfig, builtinPresets } from '../utils/configManager';
 import { PerformanceMetrics } from '../utils/performanceMonitor';
