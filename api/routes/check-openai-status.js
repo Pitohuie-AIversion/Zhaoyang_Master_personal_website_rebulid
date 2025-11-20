@@ -22,7 +22,7 @@ function decryptApiKey(encryptedKey) {
 }
 
 // 检查OpenAI密钥状态
-router.get('/check-openai-status', async (req, res) => {
+export const checkOpenAiStatus = async (req, res) => {
   try {
     console.log('🔍 检查OpenAI API密钥状态...');
     
@@ -107,6 +107,8 @@ router.get('/check-openai-status', async (req, res) => {
       error: error.message
     });
   }
-});
+};
 
+// 保持向后兼容性
+router.get('/check-openai-status', checkOpenAiStatus);
 export default router;

@@ -86,15 +86,8 @@ const knowledgeRoutes = await import('./routes/knowledge.js').then(m => m.defaul
 const academicsRoutes = await import('./routes/academics.js').then(m => m.default);
 const uploadRoutes = await import('./routes/upload.js').then(m => m.default);
 const exportRoutes = await import('./routes/export.js').then(m => m.default);
-const contactRoutes = await import('./routes/contact.js').then(m => m.default);
-const contactSubmitRoutes = await import('./routes/contact-submit.js').then(m => m.default);
-const testSecurityRoutes = await import('./routes/test-security.js').then(m => m.default);
-const checkOpenAiStatusRoutes = await import('./routes/check-openai-status.js').then(m => m.default);
-const testGPT4Routes = await import('./routes/test-gpt4.js').then(m => m.default);
-const testGPT4ProxyRoutes = await import('./routes/test-gpt4-proxy.js').then(m => m.default);
-const testGPT4MockRoutes = await import('./routes/test-gpt4-mock.js').then(m => m.default);
-const testGPT35Routes = await import('./routes/test-gpt35.js').then(m => m.default);
-const checkApiStatusRoutes = await import('./routes/check-api-status.js').then(m => m.default);
+const contactRoutes = await import('./routes/contact-combined.js').then(m => m.default);
+const testRoutes = await import('./routes/tests.js').then(m => m.default);
 const resumeRoutes = await import('./routes/resume.js').then(m => m.default);
 
 // API路由
@@ -105,14 +98,7 @@ app.use('/api/academics', academicsRoutes);
 app.use('/api/upload', uploadRoutes);
 app.use('/api/export', exportRoutes);
 app.use('/api/contact', contactRoutes);
-app.use('/api/contact', contactSubmitRoutes);
-app.use('/api/test', testSecurityRoutes);
-app.use('/api/status', checkOpenAiStatusRoutes);
-app.use('/api/test-gpt4', testGPT4Routes);
-app.use('/api/test-gpt4-proxy', testGPT4ProxyRoutes);
-app.use('/api/test-gpt4-mock', testGPT4MockRoutes);
-app.use('/api/test-gpt35', testGPT35Routes);
-app.use('/api/check-api', checkApiStatusRoutes);
+app.use('/api/tests', testRoutes);
 app.use('/api/resume', resumeRoutes);
 
 // 健康检查端点

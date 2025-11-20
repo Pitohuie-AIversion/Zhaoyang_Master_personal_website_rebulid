@@ -5,7 +5,7 @@ import { HttpsProxyAgent } from 'https-proxy-agent';
 const router = express.Router();
 
 // 直接测试GPT-3.5 Turbo的简单路由
-router.post('/', async (req, res) => {
+export const testGPT4Endpoint = async (req, res) => {
   try {
     const { message, language = 'en' } = req.body;
     
@@ -66,5 +66,8 @@ router.post('/', async (req, res) => {
     });
   }
 });
+
+// 保持向后兼容性
+router.post('/', testGPT4Endpoint);
 
 export default router;

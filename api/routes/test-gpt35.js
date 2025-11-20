@@ -5,7 +5,7 @@ import { HttpsProxyAgent } from 'https-proxy-agent';
 const router = express.Router();
 
 // 测试 GPT-3.5 Turbo 的简单路由
-router.post('/', async (req, res) => {
+export const testGPT35Endpoint = async (req, res) => {
   try {
     const { message, language = 'en' } = req.body;
     
@@ -81,6 +81,8 @@ router.post('/', async (req, res) => {
       suggestion: 'Please check your API quota and VPN connection'
     });
   }
-});
+};
 
+// 保持向后兼容性
+router.post('/', testGPT35Endpoint);
 export default router;

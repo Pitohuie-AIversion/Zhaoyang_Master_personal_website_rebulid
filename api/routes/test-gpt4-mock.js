@@ -3,7 +3,7 @@ import express from 'express';
 const router = express.Router();
 
 // 模拟 GPT-4 响应的测试路由（用于验证功能逻辑）
-router.post('/', async (req, res) => {
+export const testGPT4MockEndpoint = async (req, res) => {
   try {
     const { message, language = 'en' } = req.body;
     
@@ -38,6 +38,8 @@ router.post('/', async (req, res) => {
       details: error.message
     });
   }
-});
+};
 
+// 保持向后兼容性
+router.post('/', testGPT4MockEndpoint);
 export default router;

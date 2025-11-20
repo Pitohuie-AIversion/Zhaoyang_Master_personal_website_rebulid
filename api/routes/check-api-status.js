@@ -4,7 +4,7 @@ import { HttpsProxyAgent } from 'https-proxy-agent';
 const router = express.Router();
 
 // 测试 API 密钥状态的路由
-router.post('/', async (req, res) => {
+export const checkApiStatus = async (req, res) => {
   try {
     console.log('🔍 Testing OpenAI API key status...');
     
@@ -68,6 +68,8 @@ router.post('/', async (req, res) => {
       suggestion: 'Please check your VPN connection'
     });
   }
-});
+};
 
+// 保持向后兼容性
+router.post('/', checkApiStatus);
 export default router;

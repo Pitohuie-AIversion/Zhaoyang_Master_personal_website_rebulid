@@ -4,7 +4,7 @@ import fetch from 'node-fetch';
 const router = express.Router();
 
 // 使用 fetch 直接调用 OpenAI API 的测试路由
-router.post('/', async (req, res) => {
+export const testGPT4ProxyEndpoint = async (req, res) => {
   try {
     const { message, language = 'en' } = req.body;
     
@@ -66,5 +66,8 @@ router.post('/', async (req, res) => {
     });
   }
 });
+
+// 保持向后兼容性
+router.post('/', testGPT4ProxyEndpoint);
 
 export default router;

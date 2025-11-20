@@ -31,7 +31,7 @@ function decryptApiKey(encryptedKey) {
 }
 
 // 测试安全密钥管理
-router.get('/test-key-management', async (req, res) => {
+export const testSecurityEndpoint = async (req, res) => {
   try {
     console.log('🔐 测试安全密钥管理系统...');
     
@@ -126,6 +126,8 @@ router.get('/test-key-management', async (req, res) => {
       details: '安全密钥管理系统测试失败'
     });
   }
-});
+};
 
+// 保持向后兼容性
+router.get('/test-key-management', testSecurityEndpoint);
 export default router;
