@@ -364,7 +364,7 @@ export default function Publications() {
               <p className="text-sm text-secondary-dark theme-transition mb-3 line-clamp-2">{publication.abstract}</p>
               
               <div className="flex flex-wrap gap-2">
-                {publication.keywords.slice(0, 4).map((keyword, keywordIndex) => (
+                {Array.isArray(publication.keywords) && publication.keywords.slice(0, 4).map((keyword, keywordIndex) => (
                   <span
                     key={keywordIndex}
                     className="px-2 py-1 bg-blue-50 dark:bg-blue-900 text-blue-700 dark:text-blue-200 text-xs rounded-md theme-transition"
@@ -372,7 +372,7 @@ export default function Publications() {
                     {keyword}
                   </span>
                 ))}
-                {publication.keywords.length > 4 && (
+                {Array.isArray(publication.keywords) && publication.keywords.length > 4 && (
                   <span className="text-xs text-gray-400">+{publication.keywords.length - 4}</span>
                 )}
               </div>
@@ -438,7 +438,7 @@ export default function Publications() {
                 <div>
                   <h3 className="text-base font-semibold text-gray-900 mb-2">{t('publications.modal.keywords') as string}</h3>
                   <div className="flex flex-wrap gap-2">
-                    {selectedPublication.keywords.map((keyword) => (
+                    {Array.isArray(selectedPublication.keywords) && selectedPublication.keywords.map((keyword) => (
                       <span
                         key={keyword}
                         className="bg-gray-50 text-gray-600 px-3 py-1 rounded text-sm"

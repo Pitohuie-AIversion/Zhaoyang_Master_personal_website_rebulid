@@ -412,13 +412,13 @@ icon={category.icon}
                     {skill.description}
                   </p>
 
-                  {skill.projects && skill.projects.length > 0 && (
+                  {Array.isArray(skill.projects) && skill.projects.length > 0 && (
                     <div>
                       <h4 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                         {t('skills.relatedProjects') as string}:
                       </h4>
                       <div className="flex flex-wrap gap-1">
-                        {skill.projects.map((project, idx) => (
+                        {Array.isArray(skill.projects) && skill.projects.map((project, idx) => (
                           <span
                             key={idx}
                             className="text-xs bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 px-2 py-1 rounded"
