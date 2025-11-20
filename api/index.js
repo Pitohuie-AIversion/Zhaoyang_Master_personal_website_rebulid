@@ -50,7 +50,7 @@ console.log('OPENAI_API_KEY:', process.env.OPENAI_API_KEY ? 'SET' : 'MISSING');
 
 import express from 'express';
 import cors from 'cors';
-import securityLogger, { securityHeaders, requestSizeLimit } from './middleware/securityLogger.js';
+import { securityLogger, securityHeaders } from './services/combined.js';
 
 const app = express();
 const PORT = process.env.PORT || 3001;
