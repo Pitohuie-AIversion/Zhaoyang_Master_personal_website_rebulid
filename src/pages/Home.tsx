@@ -513,7 +513,7 @@ function Home() {
                   </UnifiedButton>
                 </Link>
                 <a
-                  href={language === 'zh' ? '/resume/cn_Resume_compressed-1-2.pdf' : '/resume/en_Resume_compressed.pdf'}
+                  href={language === 'zh' ? '/cn_resume.pdf' : '/en_resume.pdf'}
                   target="_blank"
                   rel="noopener noreferrer"
                   download
