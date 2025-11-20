@@ -47,7 +47,19 @@ export const AdvancedSEO: React.FC<AdvancedSEOProps> = ({
   // 使用翻译获取默认值
   const defaultTitle = title || (t('seo.default.title') as string);
   const defaultDescription = description || (t('seo.default.description') as string);
-  const defaultKeywords = keywords || (t('seo.default.keywords', { returnObjects: true }) as unknown as string[]);
+  let defaultKeywords: string[];
+  try {
+    const translatedKeywords = t('seo.default.keywords', { returnObjects: true });
+    if (Array.isArray(translatedKeywords)) {
+      defaultKeywords = keywords || translatedKeywords;
+    } else if (typeof translatedKeywords === 'string') {
+      defaultKeywords = keywords || translatedKeywords.split(',').map(k => k.trim());
+    } else {
+      defaultKeywords = keywords || ['牟昭阳', 'Zhaoyang Mu', '计算机科学', '人工智能'];
+    }
+  } catch (error) {
+    defaultKeywords = keywords || ['牟昭阳', 'Zhaoyang Mu', '计算机科学', '人工智能'];
+  }
   const defaultAuthor = author || (t('seo.site.author') as string);
   const defaultLocale = locale || (language === 'zh' ? 'zh_CN' : 'en_US');
   const defaultSiteName = siteName || (t('seo.site.title') as string);
