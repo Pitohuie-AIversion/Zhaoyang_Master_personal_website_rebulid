@@ -12,7 +12,6 @@ import {
   Share2, 
   MessageCircle,
   ChevronLeft,
-  ChevronRight,
   Bookmark,
   ExternalLink
 } from 'lucide-react';

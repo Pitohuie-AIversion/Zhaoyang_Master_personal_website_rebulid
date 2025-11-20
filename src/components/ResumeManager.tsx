@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Upload, FileText, User, GraduationCap, Briefcase, Award, Settings, Download, Eye, Edit, Trash2, Plus, Save, X } from 'lucide-react';
+import { Upload, FileText, User, GraduationCap, Briefcase, Award, Settings, Download, Eye, Edit, Trash2, Plus, X } from 'lucide-react';
 
 interface ResumeData {
   personal_info: PersonalInfo | null;
@@ -159,7 +159,7 @@ const ResumeManager: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [uploading, setUploading] = useState(false);
   const [activeTab, setActiveTab] = useState('overview');
-  const [editingItem, setEditingItem] = useState<any>(null);
+  const [editingItem, setEditingItem] = useState<Record<string, unknown> | null>(null);
   const [editingSection, setEditingSection] = useState<string>('');
   const [syncing, setSyncing] = useState(false);
 
@@ -221,8 +221,8 @@ const ResumeManager: React.FC = () => {
     }
   };
 
-  const handleEdit = (section: string, item: any) => {
-    setEditingItem({ ...item });
+  const handleEdit = (section: string, item: unknown) => {
+    setEditingItem(item as Record<string, unknown>);
     setEditingSection(section);
   };
 
@@ -230,18 +230,19 @@ const ResumeManager: React.FC = () => {
     if (!editingItem || !editingSection) return;
 
     try {
-      const url = editingItem.id 
-        ? `/api/resume/data/${editingSection}/${editingItem.id}`
+      const typedItem = editingItem as Record<string, unknown>;
+      const url = typedItem.id 
+        ? `/api/resume/data/${editingSection}/${typedItem.id}`
         : `/api/resume/data/${editingSection}`;
       
-      const method = editingItem.id ? 'PUT' : 'POST';
+      const method = typedItem.id ? 'PUT' : 'POST';
       
       const response = await fetch(url, {
         method: method,
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(editingItem),
+        body: JSON.stringify(typedItem),
       });
 
       const result = await response.json();
@@ -429,7 +430,7 @@ const ResumeManager: React.FC = () => {
     );
   };
 
-  const renderSection = (title: string, items: any[], sectionKey: string, fields: string[]) => {
+  const renderSection = (title: string, items: unknown[], sectionKey: string, fields: string[]) => {
     if (!items || items.length === 0) {
       return (
         <div className="bg-white rounded-lg shadow-md p-6">
@@ -462,43 +463,46 @@ const ResumeManager: React.FC = () => {
         </div>
         
         <div className="space-y-4">
-          {items.map((item) => (
-            <div key={item.id} className="border border-gray-200 rounded-lg p-4">
-              <div className="flex items-center justify-between mb-2">
-                <h4 className="font-medium text-gray-900">
-                  {item.title || item.degree || item.position || item.skill_name || item.language || item.name}
-                </h4>
-                <div className="flex items-center gap-2">
-                  <button
-                    onClick={() => handleEdit(sectionKey, item)}
-                    className="p-1 text-blue-600 hover:bg-blue-50 rounded transition-colors"
-                  >
-                    <Edit size={14} />
-                  </button>
-                  <button
-                    onClick={() => handleDelete(sectionKey, item.id)}
-                    className="p-1 text-red-600 hover:bg-red-50 rounded transition-colors"
-                  >
-                    <Trash2 size={14} />
-                  </button>
+          {items.map((item) => {
+            const typedItem = item as Record<string, unknown>;
+            return (
+              <div key={typedItem.id as string} className="border border-gray-200 rounded-lg p-4">
+                <div className="flex items-center justify-between mb-2">
+                  <h4 className="font-medium text-gray-900">
+                    {typedItem.title as string || typedItem.degree as string || typedItem.position as string || typedItem.skill_name as string || typedItem.language as string || typedItem.name as string}
+                  </h4>
+                  <div className="flex items-center gap-2">
+                    <button
+                      onClick={() => handleEdit(sectionKey, item)}
+                      className="p-1 text-blue-600 hover:bg-blue-50 rounded transition-colors"
+                    >
+                      <Edit size={14} />
+                    </button>
+                    <button
+                      onClick={() => handleDelete(sectionKey, typedItem.id as string)}
+                      className="p-1 text-red-600 hover:bg-red-50 rounded transition-colors"
+                    >
+                      <Trash2 size={14} />
+                    </button>
+                  </div>
+                </div>
+              
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm text-gray-600">
+                  {fields.map((field) => {
+                    const value = typedItem[field];
+                    if (!value) return null;
+                    
+                    return (
+                      <div key={field}>
+                        <span className="font-medium">{field.replace('_', ' ')}: </span>
+                        <span>{Array.isArray(value) ? value.join(', ') : String(value)}</span>
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm text-gray-600">
-                {fields.map((field) => {
-                  const value = item[field];
-                  if (!value) return null;
-                  
-                  return (
-                    <div key={field}>
-                      <span className="font-medium">{field.replace('_', ' ')}: </span>
-                      <span>{Array.isArray(value) ? value.join(', ') : String(value)}</span>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     );
@@ -540,9 +544,9 @@ const ResumeManager: React.FC = () => {
           ) : (
             <input
               type="text"
-              value={editingItem[field] || ''}
+              value={(editingItem as Record<string, unknown>)[field] as string || ''}
               onChange={(e) => setEditingItem({
-                ...editingItem,
+                ...(editingItem as Record<string, unknown>),
                 [field]: e.target.value
               })}
               className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -557,7 +561,7 @@ const ResumeManager: React.FC = () => {
         <div className="bg-white rounded-lg p-6 w-full max-w-2xl max-h-[80vh] overflow-y-auto">
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-lg font-semibold text-gray-800">
-              {editingItem.id ? t('common.edit', 'Edit') : t('common.add', 'Add')} {editingSection}
+              {(editingItem as Record<string, unknown>).id ? t('common.edit', 'Edit') : t('common.add', 'Add')} {editingSection}
             </h3>
             <button
               onClick={() => {
