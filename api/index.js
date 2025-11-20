@@ -79,36 +79,11 @@ app.use((req, res, next) => {
   next();
 });
 
-// 延迟导入路由，确保环境变量已加载
-const chatRoutes = await import('./routes/chat.js').then(m => m.default);
-const sessionRoutes = await import('./routes/session.js').then(m => m.default);
-const knowledgeRoutes = await import('./routes/knowledge.js').then(m => m.default);
-const academicsRoutes = await import('./routes/academics.js').then(m => m.default);
-const uploadRoutes = await import('./routes/upload.js').then(m => m.default);
-const exportRoutes = await import('./routes/export.js').then(m => m.default);
-const contactRoutes = await import('./routes/contact-combined.js').then(m => m.default);
-const testRoutes = await import('./routes/tests.js').then(m => m.default);
-const resumeRoutes = await import('./routes/resume.js').then(m => m.default);
+// 使用超级合并的路由文件以减少函数数量
+const allRoutes = await import('./routes/all-routes-combined.js').then(m => m.default);
 
-// API路由
-app.use('/api/chat', chatRoutes);
-app.use('/api/session', sessionRoutes);
-app.use('/api/knowledge', knowledgeRoutes);
-app.use('/api/academics', academicsRoutes);
-app.use('/api/upload', uploadRoutes);
-app.use('/api/export', exportRoutes);
-app.use('/api/contact', contactRoutes);
-app.use('/api/tests', testRoutes);
-app.use('/api/resume', resumeRoutes);
-
-// 健康检查端点
-app.get('/api/health', (req, res) => {
-  res.json({ 
-    status: 'ok', 
-    timestamp: new Date().toISOString(),
-    version: '1.0.0'
-  });
-});
+// API路由 - 全部使用单一合并路由文件
+app.use('/api', allRoutes);
 
 // 404处理
 app.use('/api/*', (req, res) => {
