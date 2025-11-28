@@ -873,6 +873,64 @@
       "patentDetail": "Patent Details",
       "awardDetail": "Award Details"
     },
+    "data": {
+      "nanoEnergy2024": {
+        "title": "Deep-learning-assisted triboelectric whisker for near field perception and online state estimation of underwater vehicle",
+        "authors": "Peng Xu, Jianhua Liu, Bo Liu, Yuanzheng Li, Hao Jin, Zhaoyang Mu, Tangzhen Guan, Guangming Xie, Hao Wang, Minyi Xu",
+        "journal": "Nano Energy",
+        "abstract": "",
+        "keywords": ["Triboelectric", "Underwater Whisker", "Near-field Perception", "Deep Learning"],
+        "doi": "10.1016/j.nanoen.2024.110011"
+      },
+      "amtTWSA2025": {
+        "title": "Deep-Learning-Assisted Triboelectric Whisker Sensor Array for Real-Time Motion Sensing of Unmanned Underwater Vehicle",
+        "authors": "Bo Liu, Bowen Dong, Hao Jin, Peng Zhu, Zhaoyang Mu, Yuanzheng Li, Jianhua Liu, Zhaochen Meng, Xinyue Zhou, Peng Xu, Minyi Xu",
+        "journal": "Advanced Materials Technologies",
+        "abstract": "",
+        "keywords": ["Triboelectric", "Sensor Array", "Underwater Vehicle", "Deep Learning"],
+        "doi": "10.1002/admt.202401053"
+      },
+      "pofDamFormer2025": {
+        "title": "Generalizing morphologies in dam break simulations using transformer model",
+        "authors": "Zhaoyang Mu, Aoming Liang, Mingming Ge, Dashuai Chen, Dixia Fan, Minyi Xu",
+        "journal": "Physics of Fluids",
+        "abstract": "",
+        "keywords": ["Transformer", "Dam Break", "CFD", "Neural Operator"],
+        "doi": ""
+      },
+      "ieeeCAC2024": {
+        "title": "Triboelectric Bionic Tail-Fin Shaped Flexible Sensor for Proprioception",
+        "authors": "",
+        "journal": "IEEE CAC 2024",
+        "abstract": "",
+        "keywords": ["Triboelectric", "Tail-Fin", "Proprioception", "Underwater"],
+        "doi": ""
+      },
+      "ralRsModCubes2025": {
+        "title": "Rs-modcubes: Self-reconfigurable, scalable, modular cubic robots for underwater operations",
+        "authors": "",
+        "journal": "IEEE Robotics and Automation Letters",
+        "abstract": "",
+        "keywords": ["Modular Robots", "Underwater", "Reconfiguration", "Swarm"],
+        "doi": ""
+      },
+      "spieCITA2025": {
+        "title": "Design of modular autonomous underwater vehicle for swarm applications",
+        "authors": "Zhaochen Meng, Siyuan Wang, Jianhua Liu, Peng Xu, Zhaoyang Mu, Wenxiang Li, Minyi Xu",
+        "journal": "Proc. SPIE CITA 2024",
+        "abstract": "",
+        "keywords": ["AUV", "Swarm", "Modular Design", "SPIE"],
+        "doi": "10.1117/12.3056794"
+      },
+      "amtTBLS2025": {
+        "title": "Highly Sensitive and Integratable Triboelectric Bionic Lateral Line Sensor for Flow Recognition of Underwater Vehicle",
+        "authors": "",
+        "journal": "Advanced Materials Technologies",
+        "abstract": "",
+        "keywords": ["Triboelectric", "Lateral Line", "Underwater Vehicle", "Flow Recognition"],
+        "doi": "10.1002/admt.202500072"
+      }
+    },
     "levels": {
       "national": "National Level",
       "provincial": "Provincial Level",
@@ -1749,7 +1807,8 @@
     "personalInfo": {
       "name": "Zhaoyang Mu",
       "nameEn": "Mu Zhaoyang",
-      "title": "Computer Science Researcher & Software Engineer"
+      "title": "Computer Science Researcher & Software Engineer",
+      "description": "Focused on the intersection of scientific computing and robotics, dedicated to Transformer/Neural Operator modeling of CFD spatiotemporal fields, advancing technological innovation and practical applications."
     }
   }
 }

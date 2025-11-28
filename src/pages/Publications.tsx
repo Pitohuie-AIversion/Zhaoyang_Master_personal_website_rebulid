@@ -16,6 +16,7 @@ interface Publication {
   abstract: string;
   keywords: string[];
   doi?: string;
+  url?: string;
   citations?: number;
 }
 
@@ -29,76 +30,94 @@ export default function Publications() {
   const publications: Publication[] = [
     {
       id: 1,
-      title: t('publications.data.publication1.title') as string,
-      authors: t('publications.data.publication1.authors') as string,
-      journal: t('publications.data.publication1.journal') as string,
+      title: t('publications.data.nanoEnergy2024.title') as string,
+      authors: t('publications.data.nanoEnergy2024.authors') as string,
+      journal: t('publications.data.nanoEnergy2024.journal') as string,
       year: '2024',
       type: 'journal',
       status: 'published',
-      abstract: t('publications.data.publication1.abstract') as string,
-      keywords: (t('publications.data.publication1.keywords', { returnObjects: true }) as unknown as string[] || []),
-      doi: '10.1063/5.0123456',
-      citations: 5
+      abstract: t('publications.data.nanoEnergy2024.abstract') as string,
+      keywords: (t('publications.data.nanoEnergy2024.keywords', { returnObjects: true }) as unknown as string[] || []),
+      doi: '10.1016/j.nanoen.2024.110011',
+      url: t('publications.data.nanoEnergy2024.url') as string
     },
     {
       id: 2,
-      title: t('publications.data.publication2.title') as string,
-      authors: t('publications.data.publication2.authors') as string,
-      journal: t('publications.data.publication2.journal') as string,
-      year: '2024',
+      title: t('publications.data.amtTWSA2025.title') as string,
+      authors: t('publications.data.amtTWSA2025.authors') as string,
+      journal: t('publications.data.amtTWSA2025.journal') as string,
+      year: '2025',
       type: 'journal',
-      status: 'in_preparation',
-      abstract: t('publications.data.publication2.abstract') as string,
-      keywords: (t('publications.data.publication2.keywords', { returnObjects: true }) as unknown as string[] || []),
-      citations: 0
+      status: 'published',
+      abstract: t('publications.data.amtTWSA2025.abstract') as string,
+      keywords: (t('publications.data.amtTWSA2025.keywords', { returnObjects: true }) as unknown as string[] || []),
+      doi: '10.1002/admt.202401053',
+      url: t('publications.data.amtTWSA2025.url') as string
     },
     {
       id: 3,
-      title: t('publications.data.publication3.title') as string,
-      authors: t('publications.data.publication3.authors') as string,
-      journal: t('publications.data.publication3.journal') as string,
-      year: '2024',
-      type: 'conference',
-      status: 'in_preparation',
-      abstract: t('publications.data.publication3.abstract') as string,
-      keywords: (t('publications.data.publication3.keywords', { returnObjects: true }) as unknown as string[] || []),
-      citations: 0
+      title: t('publications.data.pofDamFormer2025.title') as string,
+      authors: t('publications.data.pofDamFormer2025.authors') as string,
+      journal: t('publications.data.pofDamFormer2025.journal') as string,
+      year: '2025',
+      type: 'journal',
+      status: 'published',
+      abstract: t('publications.data.pofDamFormer2025.abstract') as string,
+      keywords: (t('publications.data.pofDamFormer2025.keywords', { returnObjects: true }) as unknown as string[] || []),
+      citations: 0,
+      url: t('publications.data.pofDamFormer2025.url') as string
     },
     {
       id: 4,
-      title: t('publications.data.patent1.title') as string,
-      authors: t('publications.data.patent1.authors') as string,
-      journal: t('publications.data.patent1.journal') as string,
-      year: '2023',
-      type: 'patent',
+      title: t('publications.data.ieeeCAC2024.title') as string,
+      authors: t('publications.data.ieeeCAC2024.authors') as string,
+      journal: t('publications.data.ieeeCAC2024.journal') as string,
+      year: '2024',
+      type: 'conference',
       status: 'published',
-      abstract: t('publications.data.patent1.abstract') as string,
-      keywords: (t('publications.data.patent1.keywords', { returnObjects: true }) as unknown as string[] || []),
-      doi: 'CN202310123456.7'
+      abstract: t('publications.data.ieeeCAC2024.abstract') as string,
+      keywords: (t('publications.data.ieeeCAC2024.keywords', { returnObjects: true }) as unknown as string[] || []),
+      citations: 0,
+      url: t('publications.data.ieeeCAC2024.url') as string
     },
     {
       id: 5,
-      title: t('publications.data.patent2.title') as string,
-      authors: t('publications.data.patent2.authors') as string,
-      journal: t('publications.data.patent2.journal') as string,
-      year: '2023',
-      type: 'patent',
+      title: t('publications.data.ralRsModCubes2025.title') as string,
+      authors: t('publications.data.ralRsModCubes2025.authors') as string,
+      journal: t('publications.data.ralRsModCubes2025.journal') as string,
+      year: '2025',
+      type: 'journal',
       status: 'published',
-      abstract: t('publications.data.patent2.abstract') as string,
-      keywords: (t('publications.data.patent2.keywords', { returnObjects: true }) as unknown as string[] || []),
-      doi: 'CN202310234567.8'
+      abstract: t('publications.data.ralRsModCubes2025.abstract') as string,
+      keywords: (t('publications.data.ralRsModCubes2025.keywords', { returnObjects: true }) as unknown as string[] || []),
+      citations: 0,
+      url: t('publications.data.ralRsModCubes2025.url') as string
     },
     {
       id: 6,
-      title: t('publications.data.patent3.title') as string,
-      authors: t('publications.data.patent3.authors') as string,
-      journal: t('publications.data.patent3.journal') as string,
-      year: '2023',
-      type: 'patent',
+      title: t('publications.data.spieCITA2025.title') as string,
+      authors: t('publications.data.spieCITA2025.authors') as string,
+      journal: t('publications.data.spieCITA2025.journal') as string,
+      year: '2025',
+      type: 'conference',
       status: 'published',
-      abstract: t('publications.data.patent3.abstract') as string,
-      keywords: (t('publications.data.patent3.keywords', { returnObjects: true }) as unknown as string[] || []),
-      doi: 'CN202320345678.9'
+      abstract: t('publications.data.spieCITA2025.abstract') as string,
+      keywords: (t('publications.data.spieCITA2025.keywords', { returnObjects: true }) as unknown as string[] || []),
+      doi: '10.1117/12.3056794',
+      url: t('publications.data.spieCITA2025.url') as string
+    },
+    {
+      id: 7,
+      title: t('publications.data.amtTBLS2025.title') as string,
+      authors: t('publications.data.amtTBLS2025.authors') as string,
+      journal: t('publications.data.amtTBLS2025.journal') as string,
+      year: '2025',
+      type: 'journal',
+      status: 'published',
+      abstract: t('publications.data.amtTBLS2025.abstract') as string,
+      keywords: (t('publications.data.amtTBLS2025.keywords', { returnObjects: true }) as unknown as string[] || []),
+      doi: '10.1002/admt.202500072',
+      url: t('publications.data.amtTBLS2025.url') as string
     }
   ];
   
@@ -424,6 +443,9 @@ export default function Publications() {
                 
                 {selectedPublication.doi && (
                   <p className="text-gray-600 mb-4"><strong>{t('publications.modal.doi') as string}:</strong> {selectedPublication.doi}</p>
+                )}
+                {selectedPublication.url && (
+                  <p className="text-gray-600 mb-4"><strong>{t('publications.modal.publisherLink') as string}:</strong> <a href={selectedPublication.url} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">{selectedPublication.url}</a></p>
                 )}
                 
                 {selectedPublication.citations !== undefined && (

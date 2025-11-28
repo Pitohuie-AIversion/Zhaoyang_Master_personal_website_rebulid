@@ -1086,13 +1086,14 @@
         "certificateNumber": "证书编号",
         "publicationDetail": "论文详情",
         "patentDetail": "专利详情",
-        "awardDetail": "奖项详情"
-      },
-      "levels": {
-        "national": "国家级",
-        "provincial": "省级",
-        "university": "校级"
-      },
+      "awardDetail": "奖项详情"
+    },
+    "publisherLink": "出版社链接",
+    "levels": {
+      "national": "国家级",
+      "provincial": "省级",
+      "university": "校级"
+    },
       "damformer": {
         "title": "Generalizing morphologies in dam break simulations using transformer model",
         "journal": "Physics of Fluids",
@@ -1170,6 +1171,70 @@
           "journal": "中国实用新型专利",
           "abstract": "模块化2.5m×2.5m风扇阵列，STM32多板PWM/TACH闭环控制，VLAN/DHCP网络管理。用于流场控制和测试验证的实验平台。",
           "keywords": ["风扇阵列", "STM32", "PWM/TACH", "VLAN", "实验平台"]
+        }
+        ,
+        "nanoEnergy2024": {
+          "title": "Deep-learning-assisted triboelectric whisker for near field perception and online state estimation of underwater vehicle",
+          "authors": "Peng Xu, Jianhua Liu, Bo Liu, Yuanzheng Li, Hao Jin, Zhaoyang Mu, Tangzhen Guan, Guangming Xie, Hao Wang, Minyi Xu",
+          "journal": "Nano Energy",
+          "abstract": "",
+          "keywords": ["Triboelectric", "Underwater Whisker", "Near-field Perception", "Deep Learning"],
+          "doi": "10.1016/j.nanoen.2024.110011",
+          "url": "https://www.sciencedirect.com/science/article/abs/pii/S2211285524007614"
+        },
+        "amtTWSA2025": {
+          "title": "Deep-Learning-Assisted Triboelectric Whisker Sensor Array for Real-Time Motion Sensing of Unmanned Underwater Vehicle",
+          "authors": "Bo Liu, Bowen Dong, Hao Jin, Peng Zhu, Zhaoyang Mu, Yuanzheng Li, Jianhua Liu, Zhaochen Meng, Xinyue Zhou, Peng Xu, Minyi Xu",
+          "journal": "Advanced Materials Technologies",
+          "abstract": "",
+          "keywords": ["Triboelectric", "Sensor Array", "Underwater Vehicle", "Deep Learning"],
+          "doi": "10.1002/admt.202401053",
+          "url": "https://advanced.onlinelibrary.wiley.com/doi/10.1002/admt.202401053"
+        },
+        "pofDamFormer2025": {
+          "title": "Generalizing morphologies in dam break simulations using transformer model",
+          "authors": "Zhaoyang Mu, Aoming Liang, Mingming Ge, Dashuai Chen, Dixia Fan, Minyi Xu",
+          "journal": "Physics of Fluids",
+          "abstract": "",
+          "keywords": ["Transformer", "Dam Break", "CFD", "Neural Operator"],
+          "doi": "",
+          "url": "https://pubs.aip.org/aip/pof/article/37/1/016612/3329607/Generalizing-morphologies-in-dam-break-simulations"
+        },
+        "ieeeCAC2024": {
+          "title": "Triboelectric Bionic Tail-Fin Shaped Flexible Sensor for Proprioception",
+          "authors": "",
+          "journal": "IEEE CAC 2024",
+          "abstract": "",
+          "keywords": ["Triboelectric", "Tail-Fin", "Proprioception", "Underwater"],
+          "doi": "",
+          "url": "https://ieeexplore.ieee.org/document/10865203/"
+        },
+        "ralRsModCubes2025": {
+          "title": "Rs-modcubes: Self-reconfigurable, scalable, modular cubic robots for underwater operations",
+          "authors": "",
+          "journal": "IEEE Robotics and Automation Letters",
+          "abstract": "",
+          "keywords": ["Modular Robots", "Underwater", "Reconfiguration", "Swarm"],
+          "doi": "",
+          "url": "https://ieeexplore.ieee.org/document/10891552/"
+        },
+        "spieCITA2025": {
+          "title": "Design of modular autonomous underwater vehicle for swarm applications",
+          "authors": "Zhaochen Meng, Siyuan Wang, Jianhua Liu, Peng Xu, Zhaoyang Mu, Wenxiang Li, Minyi Xu",
+          "journal": "Proc. SPIE CITA 2024",
+          "abstract": "",
+          "keywords": ["AUV", "Swarm", "Modular Design", "SPIE"],
+          "doi": "10.1117/12.3056794",
+          "url": "https://doi.org/10.1117/12.3056794"
+        },
+        "amtTBLS2025": {
+          "title": "Highly Sensitive and Integratable Triboelectric Bionic Lateral Line Sensor for Flow Recognition of Underwater Vehicle",
+          "authors": "",
+          "journal": "Advanced Materials Technologies",
+          "abstract": "",
+          "keywords": ["Triboelectric", "Lateral Line", "Underwater Vehicle", "Flow Recognition"],
+          "doi": "10.1002/admt.202500072",
+          "url": "https://advanced.onlinelibrary.wiley.com/doi/10.1002/admt.202500072"
         }
       }
   },
