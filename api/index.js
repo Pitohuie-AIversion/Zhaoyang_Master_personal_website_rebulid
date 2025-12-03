@@ -5,29 +5,27 @@ import { fileURLToPath } from 'url';
 import http from 'http';
 import https from 'https';
 
-// 配置 Clash 代理
-const PROXY_HOST = '127.0.0.1';
-const PROXY_PORT = 59010;
-
-// 设置全局代理
-if (typeof process.env.HTTP_PROXY === 'undefined') {
-  process.env.HTTP_PROXY = `http://${PROXY_HOST}:${PROXY_PORT}`;
-  process.env.HTTPS_PROXY = `http://${PROXY_HOST}:${PROXY_PORT}`;
-  process.env.http_proxy = `http://${PROXY_HOST}:${PROXY_PORT}`;
-  process.env.https_proxy = `http://${PROXY_HOST}:${PROXY_PORT}`;
-  
-  console.log('🌐 Clash proxy configured:', process.env.HTTP_PROXY);
-}
-
-// 配置 Node.js HTTP 代理
-try {
-  const { HttpsProxyAgent } = await import('https-proxy-agent');
-  const agent = new HttpsProxyAgent(`http://${PROXY_HOST}:${PROXY_PORT}`);
-  http.globalAgent = agent;
-  https.globalAgent = agent;
-  console.log('✅ Global HTTPS proxy agent configured');
-} catch (error) {
-  console.log('⚠️ HttpsProxyAgent not available, using environment variables only');
+// 在开发调试且显式启用时配置本地代理，生产禁用
+const USE_LOCAL_PROXY = process.env.NODE_ENV !== 'production' && process.env.USE_LOCAL_PROXY === 'true';
+if (USE_LOCAL_PROXY) {
+  const PROXY_HOST = '127.0.0.1';
+  const PROXY_PORT = 59010;
+  if (typeof process.env.HTTP_PROXY === 'undefined') {
+    process.env.HTTP_PROXY = `http://${PROXY_HOST}:${PROXY_PORT}`;
+    process.env.HTTPS_PROXY = `http://${PROXY_HOST}:${PROXY_PORT}`;
+    process.env.http_proxy = `http://${PROXY_HOST}:${PROXY_PORT}`;
+    process.env.https_proxy = `http://${PROXY_HOST}:${PROXY_PORT}`;
+    console.log('🌐 Local proxy configured:', process.env.HTTP_PROXY);
+  }
+  try {
+    const { HttpsProxyAgent } = await import('https-proxy-agent');
+    const agent = new HttpsProxyAgent(`http://${PROXY_HOST}:${PROXY_PORT}`);
+    http.globalAgent = agent;
+    https.globalAgent = agent;
+    console.log('✅ HTTPS proxy agent configured (dev)');
+  } catch (error) {
+    console.log('⚠️ HttpsProxyAgent not available, skipping proxy agent');
+  }
 }
 
 const __filename = fileURLToPath(import.meta.url);
