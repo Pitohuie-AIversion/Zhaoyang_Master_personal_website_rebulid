@@ -1,6 +1,5 @@
 import React, { Suspense } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
-import { useTranslation } from './components/TranslationProvider';
 import { GlobalOptimizationManager } from './components/GlobalOptimizationManager';
 import { ThemeProvider } from './components/DarkModeProvider';
 import { TranslationProvider, useTranslation } from './components/TranslationProvider';

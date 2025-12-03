@@ -11,6 +11,7 @@ import {
 } from 'lucide-react';
 import { UnifiedButton } from '../components/UnifiedButton';
 import { HoverCard } from '../components/InteractiveEffects';
+import { useTranslation } from './TranslationProvider';
 
 interface UserPreferences {
   theme: 'light' | 'dark' | 'auto';
@@ -42,6 +43,7 @@ export const FloatingControls: React.FC<FloatingControlsProps> = ({
   showShare = true,
   className = ''
 }) => {
+  const { t } = useTranslation();
 
   const [isVisible, setIsVisible] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
@@ -173,7 +175,7 @@ export const FloatingControls: React.FC<FloatingControlsProps> = ({
         alert(t('common.linkCopied', { fallback: '链接已复制到剪贴板' }) as string);
       }
     }
-  }, []);
+  }, [t]);
 
   if (!isVisible && !isExpanded) return null;
 
@@ -480,7 +482,7 @@ export const KeyboardShortcuts: React.FC<{
   isOpen: boolean;
   onClose: () => void;
 }> = ({ isOpen, onClose }) => {
-
+  const { t } = useTranslation();
   
   const shortcuts = [
     { key: '/', description: '聚焦搜索框' },
