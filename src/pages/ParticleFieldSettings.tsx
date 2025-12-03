@@ -368,13 +368,13 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
                     onChange={(e) => updateParticleConfig({ colorScheme: e.target.value as 'ocean' | 'fire' | 'electric' | 'cosmic' | 'storm' | 'abyss' | 'aurora' | 'monochrome' })}
                     className="w-full p-2 bg-gray-800 border border-gray-600 rounded"
                   >
-                    <option value="blue">Blue Ocean</option>
-                    <option value="rainbow">Rainbow</option>
-                    <option value="fire">Fire</option>
-                    <option value="ice">Ice</option>
-                    <option value="forest">Forest</option>
-                    <option value="sunset">Sunset</option>
-                    <option value="monochrome">Monochrome</option>
+                    <option value="blue">{t('particleField.settings.colorOptions.blue') as string}</option>
+                    <option value="rainbow">{t('particleField.settings.colorOptions.rainbow') as string}</option>
+                    <option value="fire">{t('particleField.settings.colorOptions.fire') as string}</option>
+                    <option value="ice">{t('particleField.settings.colorOptions.ice') as string}</option>
+                    <option value="forest">{t('particleField.settings.colorOptions.forest') as string}</option>
+                    <option value="sunset">{t('particleField.settings.colorOptions.sunset') as string}</option>
+                    <option value="monochrome">{t('particleField.settings.colorOptions.monochrome') as string}</option>
                   </select>
                 </div>
               </div>

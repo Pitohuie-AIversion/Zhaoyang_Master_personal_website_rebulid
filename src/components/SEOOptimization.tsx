@@ -12,18 +12,20 @@ interface SEOProps {
   author?: string;
   publishedTime?: string;
   modifiedTime?: string;
+  robots?: string;
 }
 
 const SEOOptimization: React.FC<SEOProps> = ({
   title,
   description,
   keywords,
-  image = '/og-image.jpg',
+  image = '/favicon.svg',
   url = window.location.href,
   type = 'website',
   author,
   publishedTime,
-  modifiedTime
+  modifiedTime,
+  robots
 }) => {
   const { t } = useTranslation();
 
@@ -62,7 +64,7 @@ const SEOOptimization: React.FC<SEOProps> = ({
       <meta name="description" content={defaultDescription} />
       <meta name="keywords" content={Array.isArray(defaultKeywords) ? defaultKeywords.join(', ') : String(defaultKeywords || '')} />
       <meta name="author" content={defaultAuthor} />
-      <meta name="robots" content="index, follow" />
+      <meta name="robots" content={robots || 'index, follow'} />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
       <meta name="language" content={language} />
@@ -93,36 +95,34 @@ const SEOOptimization: React.FC<SEOProps> = ({
         <meta property="article:author" content={defaultAuthor} />
       )}
       
-      {/* 结构化数据 */}
-      <script type="application/ld+json">
-        {JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": type === 'profile' ? 'Person' : 'WebSite',
-          "name": defaultAuthor,
-          "url": url,
-          "description": defaultDescription,
-          "image": image,
-          ...(type === 'profile' && {
-            "jobTitle": jobTitle,
-            "worksFor": {
-              "@type": "Organization",
-              "name": organization
-            },
-            "knowsAbout": defaultKeywords
-          })
-        })}
-      </script>
+      {/* 结构化数据（受 CSP 限制，默认禁用；可通过环境变量开启） */}
+      {import.meta.env.VITE_ALLOW_INLINE_JSONLD === 'true' && (
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": type === 'profile' ? 'Person' : 'WebSite',
+            "name": defaultAuthor,
+            "url": url,
+            "description": defaultDescription,
+            "image": image,
+            ...(type === 'profile' && {
+              "jobTitle": jobTitle,
+              "worksFor": {
+                "@type": "Organization",
+                "name": organization
+              },
+              "knowsAbout": defaultKeywords
+            })
+          })}
+        </script>
+      )}
       
-      {/* 预加载关键资源 */}
-      <link rel="preload" href="/fonts/inter-var.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+      {/* 关键资源预连接（保留，不引用缺失本地字体） */}
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       
-      {/* 网站图标 */}
-      <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-      <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-      <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-      <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+      {/* 网站图标（使用已存在的 SVG） */}
+      <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
       <link rel="manifest" href="/site.webmanifest" />
       
       {/* 主题颜色 */}

@@ -218,15 +218,15 @@ export const EnhancedSearch: React.FC<EnhancedSearchProps> = ({
         />
         {query && (
           <div className="absolute inset-y-0 right-0 pr-3 flex items-center">
-            <UnifiedButton
-              variant="ghost"
-              size="sm"
-              onClick={clearSearch}
-              className="p-1"
-              aria-label="清除搜索"
-            >
-              <X className="h-4 w-4" />
-            </UnifiedButton>
+              <UnifiedButton
+                variant="ghost"
+                size="sm"
+                onClick={clearSearch}
+                className="p-1"
+                aria-label={t('common.aria.clearSearch', { fallback: '清除搜索' })}
+              >
+                <X className="h-4 w-4" />
+              </UnifiedButton>
           </div>
         )}
       </div>
@@ -257,7 +257,7 @@ export const EnhancedSearch: React.FC<EnhancedSearchProps> = ({
               <div className="flex items-center justify-between mb-2">
                 <div className="flex items-center text-sm text-gray-600 dark:text-gray-400">
                   <Clock className="h-4 w-4 mr-1" />
-                  Search History
+                  {t('common.searchHistoryTitle') as string}
                 </div>
                 <UnifiedButton
                   variant="ghost"
@@ -265,7 +265,7 @@ export const EnhancedSearch: React.FC<EnhancedSearchProps> = ({
                   onClick={clearHistory}
                   className="text-xs"
                 >
-                  Clear
+                  {t('common.clear') as string}
                 </UnifiedButton>
               </div>
               {searchHistory.map((item, index) => (
@@ -278,7 +278,7 @@ export const EnhancedSearch: React.FC<EnhancedSearchProps> = ({
                   }}
                 >
                   <span className="text-sm">{item.query}</span>
-                  <span className="text-xs text-gray-500">{item.results}个结果</span>
+                  <span className="text-xs text-gray-500">{item.results}{t('common.searchResults.items') as string}</span>
                 </div>
               ))}
             </div>
@@ -312,7 +312,7 @@ export const EnhancedSearch: React.FC<EnhancedSearchProps> = ({
                           </span>
                           <div className="flex items-center text-xs text-gray-500">
                             <TrendingUp className="h-3 w-3 mr-1" />
-                            {Math.round(result.relevance * 100)}% Match
+                            {Math.round(result.relevance * 100)}% {t('common.match') as string}
                           </div>
                         </div>
                       </div>
@@ -327,8 +327,8 @@ export const EnhancedSearch: React.FC<EnhancedSearchProps> = ({
           {query && searchResults.length === 0 && (
             <div className="p-6 text-center text-gray-500 dark:text-gray-400">
               <Search className="h-8 w-8 mx-auto mb-2 opacity-50" />
-              <p>No results found</p>
-              <p className="text-sm mt-1">Try different keywords?</p>
+              <p>{t('common.noResults') as string}</p>
+              <p className="text-sm mt-1">{t('common.tryDifferentKeywords') as string}</p>
             </div>
           )}
         </div>

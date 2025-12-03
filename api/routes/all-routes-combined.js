@@ -272,6 +272,81 @@ router.post('/contact/submit', contactRateLimit, async (req, res) => {
   }
 });
 
+// 获取联系消息列表（简易分页）
+router.get('/contact/messages', async (req, res) => {
+  try {
+    const { page = 1, pageSize = 20 } = req.query;
+    if (!supabase) {
+      return res.status(503).json({ error: 'Service temporarily unavailable', code: 'SERVICE_UNAVAILABLE' });
+    }
+    const from = (parseInt(page) - 1) * parseInt(pageSize);
+    const to = from + parseInt(pageSize) - 1;
+    const { data, error, count } = await supabase
+      .from('contacts')
+      .select('*', { count: 'exact' })
+      .order('created_at', { ascending: false })
+      .range(from, to);
+    if (error) throw error;
+    res.json({ data, total: count || 0, page: parseInt(page), pageSize: parseInt(pageSize) });
+  } catch (error) {
+    console.error('❌ Fetch contacts error:', error);
+    res.status(500).json({ error: 'Failed to fetch contacts', code: 'FETCH_FAILED' });
+  }
+});
+
+// 联系消息统计
+router.get('/contact/stats', async (req, res) => {
+  try {
+    if (!supabase) {
+      return res.status(503).json({ error: 'Service temporarily unavailable', code: 'SERVICE_UNAVAILABLE' });
+    }
+    const { data, error } = await supabase
+      .from('contacts')
+      .select('status');
+    if (error) throw error;
+    const byStatus = { new: 0, read: 0, replied: 0, archived: 0 };
+    (data || []).forEach((row) => {
+      const s = row.status;
+      if (byStatus[s] !== undefined) byStatus[s]++;
+    });
+    const recentThreshold = new Date();
+    recentThreshold.setDate(recentThreshold.getDate() - 30);
+    const { data: recentData } = await supabase
+      .from('contacts')
+      .select('id, created_at')
+      .gte('created_at', recentThreshold.toISOString());
+    res.json({ stats: { total: (data || []).length, byStatus, recentCount: (recentData || []).length } });
+  } catch (error) {
+    console.error('❌ Contact stats error:', error);
+    res.status(500).json({ error: 'Failed to fetch stats', code: 'FETCH_FAILED' });
+  }
+});
+
+// 更新联系消息状态
+router.patch('/contact/messages/:id/status', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { status } = req.body;
+    if (!supabase) {
+      return res.status(503).json({ error: 'Service temporarily unavailable', code: 'SERVICE_UNAVAILABLE' });
+    }
+    if (!['new', 'read', 'replied', 'archived'].includes(status)) {
+      return res.status(400).json({ error: 'Invalid status', code: 'INVALID_STATUS' });
+    }
+    const { data, error } = await supabase
+      .from('contacts')
+      .update({ status, updated_at: new Date().toISOString() })
+      .eq('id', id)
+      .select('*')
+      .single();
+    if (error) throw error;
+    res.json({ success: true, data });
+  } catch (error) {
+    console.error('❌ Update contact status error:', error);
+    res.status(500).json({ error: 'Failed to update status', code: 'UPDATE_FAILED' });
+  }
+});
+
 // ==================== 文件上传路由 ====================
 
 // 上传文件接口

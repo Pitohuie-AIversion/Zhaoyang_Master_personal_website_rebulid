@@ -9,6 +9,7 @@ import { useResponsive } from '../hooks/useResponsive';
 import { useTranslation } from '../components/TranslationProvider';
 import { ResponsiveContainer } from '../components/ResponsiveEnhancements';
 import { ScrollReveal, HoverCard } from '../components/InteractiveEffects';
+import { ProjectsSEO } from '../components/SEOOptimization';
 
 interface Project {
   id: number;
@@ -210,6 +211,7 @@ export default function Projects() {
 
   return (
     <div className="min-h-screen relative theme-transition">
+      <ProjectsSEO />
 
       <ResponsiveContainer 
         maxWidth="xl" 

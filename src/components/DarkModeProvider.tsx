@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation } from './TranslationProvider';
 import { Moon, Sun } from 'lucide-react';
 import { UnifiedButton } from './UnifiedButton';
 
@@ -101,6 +102,7 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
 // 主题切换按钮组件
 export const ThemeToggle: React.FC = () => {
   const { isDark, toggleTheme } = useTheme();
+  const { t } = useTranslation();
 
   return (
     <motion.button
@@ -108,7 +110,7 @@ export const ThemeToggle: React.FC = () => {
       className="relative p-2 w-10 h-10 rounded-lg bg-gray-200/80 dark:bg-gray-700/80 hover:bg-gray-300/80 dark:hover:bg-gray-600/80 backdrop-blur-sm border border-gray-300/20 dark:border-gray-600/20 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 flex items-center justify-center"
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
-      aria-label={isDark ? '切换到浅色模式' : '切换到深色模式'}
+      aria-label={isDark ? (t('common.aria.themeToggleLight') as string) : (t('common.aria.themeToggleDark') as string)}
     >
       <motion.div
         initial={false}
@@ -131,6 +133,7 @@ export const ThemeToggle: React.FC = () => {
 export const ThemeSelector: React.FC = () => {
   const { theme, setTheme } = useTheme();
   const [isOpen, setIsOpen] = useState(false);
+  const { t } = useTranslation();
 
   const themes = [
     { value: 'light', label: '浅色', icon: Sun },
@@ -148,7 +151,7 @@ export const ThemeSelector: React.FC = () => {
         variant="secondary"
         size="sm"
         onClick={() => setIsOpen(!isOpen)}
-        aria-label="选择主题"
+        aria-label={t('common.aria.chooseTheme') as string}
         aria-expanded={isOpen}
         className="flex items-center space-x-2"
       >

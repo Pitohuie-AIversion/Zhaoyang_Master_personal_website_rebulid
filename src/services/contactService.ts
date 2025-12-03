@@ -190,7 +190,7 @@ const saveToLocalStorage = async (data: ContactFormData): Promise<SubmitResponse
 };
 
 // 主要的表单提交函数
-export const submitContactForm = async (formData: ContactFormData): Promise<SubmitResponse> => {
+export const submitContactForm = async (formData: ContactFormData, t?: (key: string) => string): Promise<SubmitResponse> => {
   try {
     // 1. 验证表单数据
     const errors = validateContactForm(formData);
@@ -203,20 +203,20 @@ export const submitContactForm = async (formData: ContactFormData): Promise<Subm
     const cleanData = sanitizeFormData(formData);
 
     // 3. 显示加载提示
-    toast.loading('正在发送消息...', { id: 'contact-submit' });
+    toast.loading(t ? t('contact.form.submitting') : '正在发送消息...', { id: 'contact-submit' });
 
     // 4. 保存到 Supabase（新实现）
     const result = await saveToSupabase(cleanData);
     
     // 5. 显示成功提示
-    toast.success(result.message, { id: 'contact-submit' });
+    toast.success(result.message || (t ? t('contact.form.success') : '消息发送成功'), { id: 'contact-submit' });
     
     // 6. 记录提交日志（可选）
     logContactSubmission(cleanData, result);
     
     return result;
   } catch (error) {
-    const errorMessage = error instanceof Error ? error.message : '发送失败，请稍后重试';
+    const errorMessage = error instanceof Error ? error.message : (t ? t('contact.form.submitError') : '发送失败，请稍后重试');
     
     // 显示错误提示
     toast.error(errorMessage, { id: 'contact-submit' });

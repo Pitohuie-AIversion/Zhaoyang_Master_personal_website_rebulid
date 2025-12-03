@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import { useTranslation } from './TranslationProvider';
 import { X, ChevronUp, Wifi, WifiOff, Battery } from 'lucide-react';
 import { useResponsive } from './ResponsiveEnhancements';
 import { useOptimization } from './GlobalOptimizationManager';
@@ -10,6 +11,7 @@ export const MobileNavMenu: React.FC<{
   children: React.ReactNode;
 }> = ({ isOpen, onClose, children }) => {
   const { isMobile } = useResponsive();
+  const { t } = useTranslation();
   
   useEffect(() => {
     if (isOpen) {
@@ -36,11 +38,11 @@ export const MobileNavMenu: React.FC<{
       {/* 菜单内容 */}
       <div className="fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-white dark:bg-gray-900 z-50 transform transition-transform duration-300 ease-in-out shadow-2xl">
         <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700">
-          <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">菜单</h2>
+          <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">{t('common.menu') as string}</h2>
           <button
             onClick={onClose}
             className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-            aria-label="关闭菜单"
+            aria-label={t('common.aria.closeMenu') as string}
           >
             <X className="w-5 h-5" />
           </button>
@@ -93,6 +95,7 @@ export const MobileBottomNav: React.FC<{
 export const MobileScrollToTop: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
   const { isMobile } = useResponsive();
+  const { t } = useTranslation();
   
   useEffect(() => {
     const toggleVisibility = () => {
@@ -120,7 +123,7 @@ export const MobileScrollToTop: React.FC = () => {
     <button
       onClick={scrollToTop}
       className="fixed bottom-20 right-4 bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition-colors z-40"
-      aria-label="回到顶部"
+      aria-label={t('common.aria.backToTop') as string}
     >
       <ChevronUp className="w-5 h-5" />
     </button>

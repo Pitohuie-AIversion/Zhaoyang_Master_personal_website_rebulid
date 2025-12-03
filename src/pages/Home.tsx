@@ -201,7 +201,7 @@ function Home() {
             >
               <LazyImage
                 src={profileImage}
-                alt="牟昭阳"
+                alt={t('home.hero.name') as string}
                 className="mx-auto rounded-lg border border-gray-200 w-48 h-48 md:w-60 md:h-60 lg:w-80 lg:h-80"
               />
             </SimpleMotion>

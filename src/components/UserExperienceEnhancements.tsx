@@ -155,13 +155,13 @@ export const FloatingControls: React.FC<FloatingControlsProps> = ({
       try {
         await navigator.share(shareData);
       } catch {
-        console.log('分享取消');
+        console.log(t('common.shareCancelled', { fallback: '分享取消' }) as string);
       }
     } else {
       // 降级方案：复制到剪贴板
       try {
         await navigator.clipboard.writeText(window.location.href);
-        alert('链接已复制到剪贴板');
+        alert(t('common.linkCopied', { fallback: '链接已复制到剪贴板' }) as string);
       } catch {
         // 降级到传统方法
         const textArea = document.createElement('textarea');
@@ -170,7 +170,7 @@ export const FloatingControls: React.FC<FloatingControlsProps> = ({
         textArea.select();
         document.execCommand('copy');
         document.body.removeChild(textArea);
-        alert('链接已复制到剪贴板');
+        alert(t('common.linkCopied', { fallback: '链接已复制到剪贴板' }) as string);
       }
     }
   }, []);
@@ -203,7 +203,7 @@ export const FloatingControls: React.FC<FloatingControlsProps> = ({
                   size="sm"
                   onClick={scrollToTop}
                   className="w-10 h-10 rounded-full"
-                  title="返回顶部"
+                  title={t('common.backToTop') as string}
                 >
                   <ArrowUp size={16} />
                 </UnifiedButton>
@@ -218,7 +218,7 @@ export const FloatingControls: React.FC<FloatingControlsProps> = ({
                   size="sm"
                   onClick={() => updatePreference('theme', preferences.theme === 'dark' ? 'light' : 'dark')}
                   className="w-10 h-10 rounded-full"
-                  title="主题切换"
+                  title={t('common.theme') as string}
                 >
                   {preferences.theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
                 </UnifiedButton>
@@ -238,7 +238,7 @@ export const FloatingControls: React.FC<FloatingControlsProps> = ({
                     updatePreference('fontSize', nextSize);
                   }}
                   className="w-10 h-10 rounded-full"
-                  title="字体大小"
+                  title={t('common.fontSize', { fallback: '字体大小' }) as string}
                 >
                   <TextCursor size={16} />
                 </UnifiedButton>
@@ -253,7 +253,7 @@ export const FloatingControls: React.FC<FloatingControlsProps> = ({
                   size="sm"
                   onClick={() => updatePreference('readingMode', !preferences.readingMode)}
                   className="w-10 h-10 rounded-full"
-                  title="阅读模式"
+                  title={t('common.readingMode', { fallback: '阅读模式' }) as string}
                 >
                   <Palette size={16} />
                 </UnifiedButton>
@@ -268,7 +268,7 @@ export const FloatingControls: React.FC<FloatingControlsProps> = ({
                   size="sm"
                   onClick={handleShare}
                   className="w-10 h-10 rounded-full"
-                  title="分享"
+                  title={t('common.share') as string}
                 >
                   <Share2 size={16} />
                 </UnifiedButton>
@@ -285,7 +285,7 @@ export const FloatingControls: React.FC<FloatingControlsProps> = ({
                     onChange={(e) => updatePreference('reducedMotion', e.target.checked)}
                     className="rounded"
                   />
-                  减少动画
+                  {t('common.accessibilityLabels.reducedMotion') as string}
                 </label>
                 
                 <label className="flex items-center gap-2 text-xs">
@@ -295,7 +295,7 @@ export const FloatingControls: React.FC<FloatingControlsProps> = ({
                     onChange={(e) => updatePreference('highContrast', e.target.checked)}
                     className="rounded"
                   />
-                  高对比度
+                  {t('common.accessibilityLabels.highContrast') as string}
                 </label>
                 
                 <label className="flex items-center gap-2 text-xs">
@@ -305,7 +305,7 @@ export const FloatingControls: React.FC<FloatingControlsProps> = ({
                     onChange={(e) => updatePreference('autoScroll', e.target.checked)}
                     className="rounded"
                   />
-                  自动滚动
+                  {t('common.autoScroll', { fallback: '自动滚动' }) as string}
                 </label>
               </div>
             </div>
@@ -501,14 +501,14 @@ export const KeyboardShortcuts: React.FC<{
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
       <div className="bg-white dark:bg-gray-800 rounded-lg shadow-xl max-w-md w-full mx-4">
         <div className="flex items-center justify-between p-4 border-b">
-          <h3 className="text-lg font-semibold">键盘快捷键</h3>
+          <h3 className="text-lg font-semibold">{t('common.keyboard.shortcutsTitle', { fallback: '键盘快捷键' }) as string}</h3>
           <UnifiedButton
             variant="ghost"
             size="sm"
             onClick={onClose}
             className="p-1"
           >
-            <span className="sr-only">关闭</span>
+            <span className="sr-only">{t('common.close') as string}</span>
             ×
           </UnifiedButton>
         </div>
@@ -518,7 +518,7 @@ export const KeyboardShortcuts: React.FC<{
             {shortcuts.map((shortcut, index) => (
               <div key={index} className="flex items-center justify-between py-2">
                 <span className="text-sm text-gray-600 dark:text-gray-400">
-                  {shortcut.description}
+                  {t(`common.keyboard.${index}`, { fallback: shortcut.description }) as string}
                 </span>
                 <kbd className="px-2 py-1 text-xs font-mono bg-gray-100 dark:bg-gray-700 rounded border">
                   {shortcut.key}
@@ -529,7 +529,7 @@ export const KeyboardShortcuts: React.FC<{
         </div>
         
         <div className="p-4 border-t text-xs text-gray-500 dark:text-gray-400">
-          提示：部分快捷键可能因浏览器或操作系统而异
+          {t('common.keyboard.tip', { fallback: '提示：部分快捷键可能因浏览器或操作系统而异' }) as string}
         </div>
       </div>
     </div>

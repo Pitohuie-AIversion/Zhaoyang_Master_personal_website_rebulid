@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>牟昭阳 - 个人学术网站</title>
+    <link>https://zhaoyang-mou.com</link>
+    <description>个人学术网站最新更新</description>
+    <language>zh-CN</language>
+    <lastBuildDate>2025-11-29T00:00:00Z</lastBuildDate>
+    <atom:link href="https://zhaoyang-mou.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title><![CDATA[DamFormer Paper Published in Physics of Fluids]]></title>
+      <description><![CDATA[Our latest research on dam break simulation using transformer architecture has been published in Physics of Fluids.]]></description>
+      <link>https://zhaoyang-mou.com/publications</link>
+      <guid isPermaLink="true">https://zhaoyang-mou.com/publications</guid>
+      <pubDate>2025-01-15T00:00:00Z</pubDate>
+      <category>Publication</category>
+    </item>
+    <item>
+      <title><![CDATA[Rs-ModCubes Paper Accepted by IEEE RA-L]]></title>
+      <description><![CDATA[Our innovative approach to sparse-to-dense field reconstruction has been accepted by IEEE Robotics and Automation Letters.]]></description>
+      <link>https://zhaoyang-mou.com/publications</link>
+      <guid isPermaLink="true">https://zhaoyang-mou.com/publications</guid>
+      <pubDate>2025-01-10T00:00:00Z</pubDate>
+      <category>Publication</category>
+    </item>
+    <item>
+      <title><![CDATA[New Patent Granted for Underwater Robotics]]></title>
+      <description><![CDATA[A new patent has been granted for our biomimetic underwater propulsion system.]]></description>
+      <link>https://zhaoyang-mou.com/publications</link>
+      <guid isPermaLink="true">https://zhaoyang-mou.com/publications</guid>
+      <pubDate>2024-11-20T00:00:00Z</pubDate>
+      <category>Patent</category>
+    </item>
+  </channel>
+</rss>

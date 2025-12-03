@@ -18,19 +18,259 @@
     "close": "Close",
     "open": "Open",
     "download": "Download",
+  "share": "Share",
+  "fontSize": "Font size",
+  "readingMode": "Reading mode",
+  "autoScroll": "Auto scroll",
+  "shareCancelled": "Share cancelled",
+  "linkCopied": "Link copied to clipboard",
+  "keyboard": {
+    "shortcutsTitle": "Keyboard Shortcuts",
+    "tip": "Note: Some shortcuts may vary by browser or OS"
+  },
+  "ascii": {
+    "title": "ASCII Demo",
+    "displayMode": "Display Mode",
+    "display": {
+      "staticText": "Static Text",
+      "rhythmEffect": "Rhythm Effect"
+    },
+    "theme": {
+      "title": "Theme Colors",
+      "matrix": "Matrix Green",
+      "cyber": "Cyber Blue",
+      "neon": "Neon Purple",
+      "rainbow": "Rainbow"
+    },
+    "rhythm": {
+      "title": "Rhythm Type",
+      "heartbeat": { "label": "Heartbeat", "desc": "Simulate heartbeat rhythm" },
+      "wave": { "label": "Wave", "desc": "Flowing wave effect" },
+      "pulse": { "label": "Pulse", "desc": "Regular pulsing flicker" },
+      "glitch": { "label": "Glitch", "desc": "Random glitch effect" }
+    },
+    "animation": {
+      "title": "Animation Type",
+      "typewriter": { "label": "Typewriter", "desc": "Character-by-character display" },
+      "wave": { "label": "Wave", "desc": "Character wave animation" },
+      "pulse": { "label": "Pulse", "desc": "Line pulse effect" },
+      "glitch": { "label": "Glitch", "desc": "Character glitch effect" }
+    },
+    "intensity": {
+      "title": "Effect Intensity",
+      "low": "Low",
+      "medium": "Medium",
+      "high": "High"
+    },
+    "size": {
+      "title": "Display Size",
+      "small": "Small",
+      "medium": "Medium",
+      "large": "Large"
+    },
+    "typewriter": {
+      "speedLabel": "Typing Speed"
+    }
+    ,
+    "docs": {
+      "title": "Feature Guide",
+      "display": {
+        "title": "Display Modes",
+        "static": "Basic ASCII text display, supports multiple animation effects",
+        "rhythm": "Dynamic character rhythms simulating heartbeat and waves"
+      },
+      "theme": {
+        "title": "Theme Colors",
+        "matrix": "Classic Matrix-style",
+        "cyber": "Modern tech palette",
+        "neon": "Futuristic neon effect",
+        "rainbow": "Dynamic rainbow gradient"
+      },
+      "rhythm": {
+        "title": "Rhythm Types",
+        "heartbeat": "Simulates heartbeat scaling",
+        "wave": "Flowing wave animation",
+        "pulse": "Regular pulsing",
+        "glitch": "Random glitch style"
+      },
+      "tech": {
+        "title": "Technical Features",
+        "canvas": "High-performance rendering based on Canvas and requestAnimationFrame",
+        "responsive": "Responsive design for multiple screen sizes",
+        "controls": "Real-time animation control and parameter tuning",
+        "effects": "Combination and stacking of multiple visual effects"
+      }
+    }
+  },
+  "seo": {
+    "site": {
+      "title": "Zhaoyang Mu Personal Site",
+      "author": "Zhaoyang Mu",
+      "language": "en",
+      "locale": "en_US"
+    },
+    "default": {
+      "title": "Zhaoyang Mu | Personal Site",
+      "description": "Focused on scientific computing, robotics, and AI — including Transformer/Neural Operator, CFD simulation, and underwater robotics.",
+      "keywords": ["Zhaoyang Mu", "Scientific Computing", "CFD", "Transformer", "Neural Operator", "Robotics"],
+      "jobTitle": "AI Master's Student",
+      "organization": "Dalian Maritime University"
+    },
+    "pages": {
+      "home": { "title": "Home", "description": "Personal homepage and research overview" },
+      "research": { "title": "Research", "description": "Research areas, outputs, and analytics" },
+      "projects": { "title": "Projects", "description": "Scientific/engineering projects and key outcomes" },
+      "publications": { "title": "Publications", "description": "Papers, conferences, and patents" },
+      "skills": { "title": "Skills", "description": "Programming, simulation, AI/ML, hardware and tools" },
+      "contact": { "title": "Contact", "description": "Email, socials, and address" }
+    },
+    "sitemap": {
+      "title": "Sitemap"
+    }
+  
+    ,
+    "institutions": {
+      "dlmu": "Dalian Maritime University",
+      "westlake": "Westlake University"
+    },
+    "rss": {
+      "title": "RSS Feed"
+    }
+  },
+  "blog": {
+    "title": "Academic Blog",
+    "description": "Share academic research outputs and technical thoughts",
+    "loading": "Loading...",
+    "searchPlaceholder": "Search blog posts...",
+    "sortByDate": "By Date",
+    "sortByViews": "By Views",
+    "sortByLikes": "By Likes",
+    "categories": "Categories",
+    "allCategories": "All Categories",
+    "tags": "Tags",
+    "allTags": "All Tags",
+    "noPosts": "No blog posts",
+    "readMore": "Read More",
+    "like": "Like",
+    "minutesRead": "min read",
+    "pleaseFillAllFields": "Please fill in all required fields",
+    "pleaseEnterValidEmail": "Please enter a valid email address",
+    "commentSubmitted": "Comment submitted, pending review",
+    "commentSubmitFailed": "Failed to submit comment, please retry",
+    "linkCopied": "Link copied to clipboard",
+    "postNotFound": "Post not found",
+    "backToBlog": "Back to Blog",
+    "featured": "Featured",
     "share": "Share",
+    "copyLink": "Copy Link",
+    "bookmark": "Bookmark",
+    "relatedPosts": "Related Posts",
+    "comments": "Comments",
+    "leaveComment": "Leave a Comment",
+    "name": "Name",
+    "email": "Email",
+    "comment": "Comment",
+    "commentPlaceholder": "Enter your comment...",
+    "submitting": "Submitting...",
+    "submitComment": "Submit Comment",
+    "noComments": "No comments yet — be the first!",
+    "viewOnScholar": "View on Scholar Profile"
+  },
     "copy": "Copy",
     "copied": "Copied",
-    "language": "Language",
+  "language": "Language",
+  "languageOptions": {
+    "switchToEnglish": "Switch to English",
+    "switchToChinese": "Switch to Chinese",
+    "english": "English",
+    "chinese": "Chinese",
+    "englishShort": "EN",
+    "chineseShort": "中文"
+  },
     "theme": "Theme",
     "settings": "Settings",
     "help": "Help",
     "about": "About",
     "contact": "Contact",
     "privacy": "Privacy Policy",
-    "terms": "Terms of Service",
-    "searchPlaceholder": "Search...",
-    "clearAllFilters": "Clear All Filters",
+  "terms": "Terms of Service",
+  "searchPlaceholder": "Search...",
+  "menu": "Menu",
+  "skipToMain": "Skip to main content",
+  "logoAlt": "Zhaoyang Mu Logo",
+  "searchSuggestions": "Search suggestions",
+  "categories": {
+    "project": "Project",
+    "publication": "Publication",
+    "skill": "Skill",
+    "research": "Research"
+  },
+  "aria": {
+    "clearSearch": "Clear search",
+    "closeMenu": "Close menu",
+    "backToTop": "Back to top",
+    "accessibilitySettings": "Accessibility settings",
+    "themeToggleLight": "Switch to light mode",
+    "themeToggleDark": "Switch to dark mode",
+    "chooseTheme": "Choose theme",
+    "socialLinks": "Social media links",
+    "visitSocial": "Visit my social profile"
+  },
+  "breadcrumb": {
+    "home": "Home",
+    "research": "Research",
+    "projects": "Projects",
+    "publications": "Publications",
+    "skills": "Skills",
+    "contact": "Contact"
+  },
+  "clearAllFilters": "Clear All Filters",
+  "searchHistoryTitle": "Search History",
+  "clear": "Clear",
+  "noResults": "No results found",
+  "tryDifferentKeywords": "Try different keywords?",
+  "match": "Match",
+  "accessibility": "Accessibility",
+  "saveSuccess": "Saved successfully",
+  "saveError": "Failed to save",
+  "confirmDelete": "Are you sure you want to delete this item?",
+  "deleteSuccess": "Deleted successfully",
+  "deleteError": "Failed to delete",
+  "add": "Add",
+  "noData": "No data available",
+  "items": "items",
+  "confirmYes": "Yes",
+  "confirmNo": "No",
+  "relatedLinks": "Related Links",
+  "chat": {
+    "projectsIntro": "He has participated in several important projects, including DamFormer dam-break flow prediction, Rs-ModCubes modular robots, bionic undulating fin propulsion system, and fan array wind tunnel experimental platform.",
+    "educationIntro": "Zhaoyang Mu is a Master's student in AI at Dalian Maritime University and a visiting student at Westlake University.",
+    "contactIntro": "You can contact Zhaoyang Mu via email, phone, or visit his social platforms such as GitHub and LinkedIn.",
+    "skillsIntro": "He masters Python, MATLAB, C++, Java, PyTorch, TensorFlow, Star-CCM+, ANSYS Fluent, OpenFOAM, STM32, Arduino, etc.",
+    "defaultHelp": "I'm Zhaoyang Mu's AI assistant. Ask about his research areas, projects, skills, or education to get started."
+  },
+  "social": {
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "twitter": "Twitter",
+    "researchgate": "ResearchGate",
+    "googleScholar": "Google Scholar",
+    "weibo": "Weibo"
+  },
+  "accessibilityLabels": {
+    "settingsTitle": "Accessibility Settings",
+    "highContrast": "High contrast mode",
+    "largeText": "Large text mode",
+    "reducedMotion": "Reduce motion effects",
+    "keyboardNavigation": "Keyboard navigation enhancements",
+    "focusVisible": "Focus visible",
+    "textToSpeech": "Text-to-speech",
+    "screenReader": "Screen reader",
+    "colorBlindFriendly": "Color-blind friendly mode",
+    "readHelpMessage": "This is the accessibility toolbar. Here you can adjust accessibility settings.",
+    "stopReading": "Stop reading",
+    "readDescription": "Read description"
+  },
     "activeFilters": "Active Filters:",
     "clearAll": "Clear All",
     "sortBy": "Sort by",
@@ -130,6 +370,48 @@
     "ascii-demo": "ASCII Demo",
     "resume-manager": "Resume Manager"
   },
+  "footer": {
+    "personalInfo": {
+      "name": "Zhaoyang Mu",
+      "nameEn": "Zhaoyang Mu",
+      "description": "Focused on the intersection of scientific computing and robotics, modeling CFD spatiotemporal fields with Transformer/Neural Operator and bionic underwater robotics."
+    },
+    "researchAreas": {
+      "title": "Research Areas",
+      "areas": [
+        "Transformer/Neural Operator",
+        "Computational Fluid Dynamics (CFD)",
+        "Bionic Robotics",
+        "Underwater Perception & Control",
+        "High-Performance Computing"
+      ]
+    },
+    "quickLinks": {
+      "title": "Quick Links",
+      "home": "Home",
+      "research": "Research",
+      "projects": "Projects",
+      "publications": "Publications"
+    },
+    "contact": {
+      "title": "Contact",
+      "email": "mzymuzhaoyang@gmail.com",
+      "address": "Hangzhou, Zhejiang, China"
+    },
+    "legal": {
+      "copyright": "© Zhaoyang Mu. All rights reserved",
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service",
+      "sitemap": "Sitemap"
+    }
+  },
+  "common": {
+    "notFound": {
+      "title": "Page Not Found",
+      "description": "The page you are looking for does not exist or has been moved.",
+      "backHome": "Back to Home"
+    }
+  }
   "home": {
     "hero": {
       "greeting": "Hello, I'm",
@@ -290,6 +572,7 @@
     },
     "chatAssistant": {
       "title": "AI Assistant",
+      "aiLabel": "AI",
       "subtitle": "Academic Consultation & Navigation",
       "placeholder": "Please enter your question...",
       "send": "Send",
@@ -854,25 +1137,26 @@
       "journal": "Journal"
     },
     "citations": "Citations",
-    "modal": {
-      "authors": "Authors",
-      "year": "Year",
-      "doi": "DOI",
-      "citationsCount": "Citations",
-      "abstract": "Abstract",
-      "keywords": "Keywords",
-      "journal": "Journal",
-      "publishYear": "Publication Year",
-      "patentNumber": "Patent Number",
-      "applicant": "Applicant",
-      "publicDate": "Publication Date",
-      "organization": "Organization",
-      "awardDate": "Award Date",
-      "certificateNumber": "Certificate Number",
-      "publicationDetail": "Publication Details",
-      "patentDetail": "Patent Details",
-      "awardDetail": "Award Details"
-    },
+      "modal": {
+        "authors": "Authors",
+        "year": "Year",
+        "doi": "DOI",
+        "citationsCount": "Citations",
+        "abstract": "Abstract",
+        "keywords": "Keywords",
+        "journal": "Journal",
+        "publishYear": "Publication Year",
+        "patentNumber": "Patent Number",
+        "applicant": "Applicant",
+        "publicDate": "Publication Date",
+        "organization": "Organization",
+        "awardDate": "Award Date",
+        "certificateNumber": "Certificate Number",
+        "publicationDetail": "Publication Details",
+        "patentDetail": "Patent Details",
+        "awardDetail": "Award Details",
+        "publisherLink": "Publisher Link"
+      },
     "data": {
       "nanoEnergy2024": {
         "title": "Deep-learning-assisted triboelectric whisker for near field perception and online state estimation of underwater vehicle",
@@ -1726,6 +2010,15 @@
       "noiseScale": "Noise Scale",
       "colors": "Colors",
       "colorScheme": "Color Scheme",
+      "colorOptions": {
+        "blue": "Blue Ocean",
+        "rainbow": "Rainbow",
+        "fire": "Fire",
+        "ice": "Ice",
+        "forest": "Forest",
+        "sunset": "Sunset",
+        "monochrome": "Monochrome"
+      },
       "bloom": "Bloom Effect",
       "enableBloom": "Enable Bloom",
       "bloomIntensity": "Bloom Intensity",

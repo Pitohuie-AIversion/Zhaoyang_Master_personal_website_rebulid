@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useEffect, useState, useCallback, useRef } from 'react';
+import { useTranslation } from './TranslationProvider';
 import { Eye, EyeOff, Type, Contrast, Volume2, VolumeX, Keyboard, Mouse } from 'lucide-react';
 
 // 可访问性配置接口
@@ -226,6 +227,7 @@ export const AccessibilityButton: React.FC<{
 }> = ({ className = '', showText = false }) => {
   const { config, updateConfig, speakText, stopSpeaking, isSpeaking } = useAccessibility();
   const [isOpen, setIsOpen] = useState(false);
+  const { t } = useTranslation();
   
   const toggleOption = (option: keyof AccessibilityConfig) => {
     const newValue = !config[option];
@@ -233,18 +235,17 @@ export const AccessibilityButton: React.FC<{
     
     // 语音反馈
     if (config.textToSpeech) {
-      const optionNames: Record<keyof AccessibilityConfig, string> = {
-        highContrast: '高对比度',
-        largeText: '大字体',
-        reducedMotion: '减少动画',
-        screenReader: '屏幕阅读器',
-        keyboardNavigation: '键盘导航',
-        focusVisible: '焦点可见',
-        colorBlindFriendly: '色盲友好',
-        textToSpeech: '文本转语音'
+      const optionNameMap: Record<keyof AccessibilityConfig, string> = {
+        highContrast: t('common.accessibilityLabels.highContrast') as string,
+        largeText: t('common.accessibilityLabels.largeText') as string,
+        reducedMotion: t('common.accessibilityLabels.reducedMotion') as string,
+        screenReader: t('common.accessibilityLabels.screenReader') as string,
+        keyboardNavigation: t('common.accessibilityLabels.keyboardNavigation') as string,
+        focusVisible: t('common.accessibilityLabels.focusVisible', { fallback: '焦点可见' }) as string,
+        colorBlindFriendly: t('common.accessibilityLabels.colorBlindFriendly') as string,
+        textToSpeech: t('common.accessibilityLabels.textToSpeech') as string
       };
-      
-      speakText(`${optionNames[option]}已${newValue ? '开启' : '关闭'}`);
+      speakText(`${optionNameMap[option]}${newValue ? t('common.open', { fallback: '已开启' }) : t('common.close', { fallback: '已关闭' })}`);
     }
   };
   
@@ -252,19 +253,19 @@ export const AccessibilityButton: React.FC<{
     <div className={`relative ${className}`}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        aria-label="可访问性设置"
-        title="可访问性设置"
+        aria-label={t('common.aria.accessibilitySettings') as string}
+        title={t('common.aria.accessibilitySettings') as string}
         className="relative p-2 w-10 h-10 rounded-lg bg-gray-200/80 dark:bg-gray-700/80 hover:bg-gray-300/80 dark:hover:bg-gray-600/80 backdrop-blur-sm border border-gray-300/20 dark:border-gray-600/20 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 flex items-center justify-center text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100"
       >
         <Eye className="w-5 h-5" />
-        {showText && <span className="ml-2 text-sm">可访问性</span>}
+        {showText && <span className="ml-2 text-sm">{t('common.accessibility', { fallback: '可访问性' }) as string}</span>}
       </button>
       
       {isOpen && (
         <div className="absolute top-12 right-0 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 shadow-xl min-w-80 z-50">
           <h3 className="font-semibold mb-4 text-gray-900 dark:text-gray-100 flex items-center">
             <Eye className="w-4 h-4 mr-2" />
-            可访问性设置
+            {t('common.accessibilityLabels.settingsTitle') as string}
           </h3>
           
           <div className="space-y-3">
@@ -272,7 +273,7 @@ export const AccessibilityButton: React.FC<{
             <label className="flex items-center justify-between cursor-pointer">
               <span className="flex items-center text-sm text-gray-700 dark:text-gray-300">
                 <Contrast className="w-4 h-4 mr-2" />
-                高对比度模式
+                {t('common.accessibilityLabels.highContrast') as string}
               </span>
               <input
                 type="checkbox"
@@ -293,7 +294,7 @@ export const AccessibilityButton: React.FC<{
             <label className="flex items-center justify-between cursor-pointer">
               <span className="flex items-center text-sm text-gray-700 dark:text-gray-300">
                 <Type className="w-4 h-4 mr-2" />
-                大字体模式
+                {t('common.accessibilityLabels.largeText') as string}
               </span>
               <input
                 type="checkbox"
@@ -314,7 +315,7 @@ export const AccessibilityButton: React.FC<{
             <label className="flex items-center justify-between cursor-pointer">
               <span className="flex items-center text-sm text-gray-700 dark:text-gray-300">
                 <Mouse className="w-4 h-4 mr-2" />
-                减少动画效果
+                {t('common.accessibilityLabels.reducedMotion') as string}
               </span>
               <input
                 type="checkbox"
@@ -335,7 +336,7 @@ export const AccessibilityButton: React.FC<{
             <label className="flex items-center justify-between cursor-pointer">
               <span className="flex items-center text-sm text-gray-700 dark:text-gray-300">
                 <Keyboard className="w-4 h-4 mr-2" />
-                键盘导航增强
+                {t('common.accessibilityLabels.keyboardNavigation') as string}
               </span>
               <input
                 type="checkbox"
@@ -356,7 +357,7 @@ export const AccessibilityButton: React.FC<{
             <label className="flex items-center justify-between cursor-pointer">
               <span className="flex items-center text-sm text-gray-700 dark:text-gray-300">
                 {isSpeaking ? <VolumeX className="w-4 h-4 mr-2" /> : <Volume2 className="w-4 h-4 mr-2" />}
-                文本转语音
+                {t('common.accessibilityLabels.textToSpeech') as string}
               </span>
               <input
                 type="checkbox"
@@ -377,7 +378,7 @@ export const AccessibilityButton: React.FC<{
             <label className="flex items-center justify-between cursor-pointer">
               <span className="flex items-center text-sm text-gray-700 dark:text-gray-300">
                 <EyeOff className="w-4 h-4 mr-2" />
-                色盲友好模式
+                {t('common.accessibilityLabels.colorBlindFriendly') as string}
               </span>
               <input
                 type="checkbox"
@@ -399,14 +400,14 @@ export const AccessibilityButton: React.FC<{
           {config.textToSpeech && (
             <div className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-600">
               <button
-                onClick={() => isSpeaking ? stopSpeaking() : speakText('这是可访问性工具栏，您可以在这里调整网站的无障碍访问设置')}
+                onClick={() => isSpeaking ? stopSpeaking() : speakText(t('common.accessibilityLabels.readHelpMessage') as string)}
                 className={`w-full px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
                   isSpeaking 
                     ? 'bg-red-100 text-red-700 hover:bg-red-200' 
                     : 'bg-blue-100 text-blue-700 hover:bg-blue-200'
                 }`}
               >
-                {isSpeaking ? '停止朗读' : '朗读说明'}
+                {isSpeaking ? (t('common.accessibilityLabels.stopReading') as string) : (t('common.accessibilityLabels.readDescription') as string)}
               </button>
             </div>
           )}

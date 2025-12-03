@@ -14,7 +14,7 @@ export const LanguageToggle: React.FC<LanguageToggleProps> = ({
   showText = true,
   className = ''
 }) => {
-  const { language, toggleLanguage, isTranslating } = useTranslation();
+  const { language, toggleLanguage, isTranslating, t } = useTranslation();
 
   const handleToggle = () => {
     if (isTranslating) return;
@@ -55,7 +55,7 @@ export const LanguageToggle: React.FC<LanguageToggleProps> = ({
       `}
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
-      title={`切换到${language === 'zh' ? '英文' : '中文'}`}
+      title={language === 'zh' ? (t('common.languageOptions.switchToEnglish') as string) : (t('common.languageOptions.switchToChinese') as string)}
     >
       {/* 背景动画 */}
       <motion.div
@@ -95,7 +95,7 @@ export const LanguageToggle: React.FC<LanguageToggleProps> = ({
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.3 }}
           >
-            {language === 'zh' ? 'EN' : '中'}
+            {language === 'zh' ? (t('common.languageOptions.englishShort', { fallback: 'EN' }) as string) : (t('common.languageOptions.chineseShort', { fallback: '中' }) as string)}
           </motion.span>
         )}
         
@@ -113,12 +113,12 @@ export const LanguageToggle: React.FC<LanguageToggleProps> = ({
 
 // 语言选择器下拉菜单组件
 export const LanguageSelector: React.FC<{ className?: string }> = ({ className = '' }) => {
-  const { language, setLanguage, isTranslating } = useTranslation();
+  const { language, setLanguage, isTranslating, t } = useTranslation();
   const [isOpen, setIsOpen] = React.useState(false);
 
   const languages = [
-    { code: 'zh', name: '中文', flag: '🇨🇳' },
-    { code: 'en', name: 'English', flag: '🇺🇸' }
+    { code: 'zh', name: t('common.languageOptions.chinese', { fallback: '中文' }) as string, flag: '🇨🇳' },
+    { code: 'en', name: t('common.languageOptions.english', { fallback: 'English' }) as string, flag: '🇺🇸' }
   ];
 
   return (

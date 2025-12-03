@@ -190,7 +190,7 @@ const ResumeManager: React.FC = () => {
     if (!file) return;
 
     if (file.type !== 'application/pdf') {
-      alert(t('resume.upload.pdfOnly', 'Please upload a PDF file'));
+      alert(t('common.resume.upload.pdfOnly', 'Please upload a PDF file'));
       return;
     }
 
@@ -207,14 +207,14 @@ const ResumeManager: React.FC = () => {
       const result = await response.json();
 
       if (result.success) {
-        alert(t('resume.upload.success', 'Resume uploaded and processed successfully'));
+        alert(t('common.resume.upload.success', 'Resume uploaded and processed successfully'));
         fetchResumeData(); // Refresh data
       } else {
-        alert(t('resume.upload.error', 'Failed to process resume') + ': ' + result.message);
+        alert(t('common.resume.upload.error', 'Failed to process resume') + ': ' + result.message);
       }
     } catch (error) {
       console.error('Upload error:', error);
-      alert(t('resume.upload.error', 'Failed to upload resume'));
+      alert(t('common.resume.upload.error', 'Failed to upload resume'));
     } finally {
       setUploading(false);
       event.target.value = ''; // Reset file input
@@ -286,7 +286,7 @@ const ResumeManager: React.FC = () => {
   };
 
   const handleSync = async () => {
-    if (!confirm(t('resume.syncConfirm', 'This will sync resume data with your website. Continue?'))) {
+    if (!confirm(t('common.resume.syncConfirm', 'This will sync resume data with your website. Continue?'))) {
       return;
     }
 
@@ -302,13 +302,13 @@ const ResumeManager: React.FC = () => {
       const result = await response.json();
 
       if (result.success) {
-        alert(t('resume.syncSuccess', 'Resume data synced successfully'));
+        alert(t('common.resume.syncSuccess', 'Resume data synced successfully'));
       } else {
-        alert(t('resume.syncError', 'Failed to sync resume data') + ': ' + result.message);
+        alert(t('common.resume.syncError', 'Failed to sync resume data') + ': ' + result.message);
       }
     } catch (error) {
       console.error('Sync error:', error);
-      alert(t('resume.syncError', 'Failed to sync resume data'));
+      alert(t('common.resume.syncError', 'Failed to sync resume data'));
     } finally {
       setSyncing(false);
     }
@@ -350,7 +350,7 @@ const ResumeManager: React.FC = () => {
       <div className="bg-white rounded-lg shadow-md p-6">
         <div className="flex items-center justify-between mb-4">
           <h3 className="text-xl font-semibold text-gray-800">
-            {t('resume.personalInfo', 'Personal Information')}
+            {t('common.resume.personalInfo', 'Personal Information')}
           </h3>
           <button
             onClick={() => handleEdit('personal_info', info)}
@@ -363,7 +363,7 @@ const ResumeManager: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
-              {t('resume.fullName', 'Full Name')}
+              {t('common.resume.fullName', 'Full Name')}
             </label>
             <p className="text-gray-900">{info.full_name}</p>
           </div>
@@ -371,7 +371,7 @@ const ResumeManager: React.FC = () => {
           {info.email && (
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
-                {t('resume.email', 'Email')}
+                {t('common.resume.email', 'Email')}
               </label>
               <p className="text-gray-900">{info.email}</p>
             </div>
@@ -380,7 +380,7 @@ const ResumeManager: React.FC = () => {
           {info.phone && (
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
-                {t('resume.phone', 'Phone')}
+                {t('common.resume.phone', 'Phone')}
               </label>
               <p className="text-gray-900">{info.phone}</p>
             </div>
@@ -389,7 +389,7 @@ const ResumeManager: React.FC = () => {
           {info.location && (
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
-                {t('resume.location', 'Location')}
+                {t('common.resume.location', 'Location')}
               </label>
               <p className="text-gray-900">{info.location}</p>
             </div>
@@ -398,7 +398,7 @@ const ResumeManager: React.FC = () => {
           {info.linkedin && (
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
-                LinkedIn
+                {t('common.social.linkedin') as string}
               </label>
               <a href={info.linkedin} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
                 {info.linkedin}
@@ -409,7 +409,7 @@ const ResumeManager: React.FC = () => {
           {info.github && (
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
-                GitHub
+                {t('common.social.github') as string}
               </label>
               <a href={info.github} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
                 {info.github}
@@ -421,7 +421,7 @@ const ResumeManager: React.FC = () => {
         {info.bio && (
           <div className="mt-4">
             <label className="block text-sm font-medium text-gray-700 mb-1">
-              {t('resume.bio', 'Bio')}
+              {t('common.resume.bio', 'Bio')}
             </label>
             <p className="text-gray-900 whitespace-pre-wrap">{info.bio}</p>
           </div>
@@ -538,8 +538,8 @@ const ResumeManager: React.FC = () => {
               })}
               className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
-              <option value="true">Yes</option>
-              <option value="false">No</option>
+              <option value="true">{t('common.confirmYes', { fallback: 'Yes' }) as string}</option>
+              <option value="false">{t('common.confirmNo', { fallback: 'No' }) as string}</option>
             </select>
           ) : (
             <input
@@ -561,7 +561,7 @@ const ResumeManager: React.FC = () => {
         <div className="bg-white rounded-lg p-6 w-full max-w-2xl max-h-[80vh] overflow-y-auto">
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-lg font-semibold text-gray-800">
-              {(editingItem as Record<string, unknown>).id ? t('common.edit', 'Edit') : t('common.add', 'Add')} {editingSection}
+              {(editingItem as Record<string, unknown>).id ? (t('common.edit', { fallback: 'Edit' }) as string) : (t('common.add', { fallback: 'Add' }) as string)} {editingSection}
             </h3>
             <button
               onClick={() => {
@@ -602,12 +602,12 @@ const ResumeManager: React.FC = () => {
   };
 
   const tabs = [
-    { id: 'overview', label: t('resume.overview', 'Overview'), icon: Eye },
-    { id: 'personal', label: t('resume.personal', 'Personal'), icon: User },
-    { id: 'education', label: t('resume.education', 'Education'), icon: GraduationCap },
-    { id: 'experience', label: t('resume.experience', 'Experience'), icon: Briefcase },
-    { id: 'skills', label: t('resume.skills', 'Skills'), icon: Settings },
-    { id: 'achievements', label: t('resume.achievements', 'Achievements'), icon: Award },
+    { id: 'overview', label: t('common.resume.overview', 'Overview'), icon: Eye },
+    { id: 'personal', label: t('common.resume.personal', 'Personal'), icon: User },
+    { id: 'education', label: t('common.resume.education', 'Education'), icon: GraduationCap },
+    { id: 'experience', label: t('common.resume.experience', 'Experience'), icon: Briefcase },
+    { id: 'skills', label: t('common.resume.skills', 'Skills'), icon: Settings },
+    { id: 'achievements', label: t('common.resume.achievements', 'Achievements'), icon: Award },
   ];
 
   if (loading) {
@@ -622,10 +622,10 @@ const ResumeManager: React.FC = () => {
     <div className="max-w-6xl mx-auto p-6">
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-gray-900 mb-2">
-          {t('resume.manager', 'Resume Manager')}
+          {t('common.resume.manager', 'Resume Manager')}
         </h1>
         <p className="text-gray-600">
-          {t('resume.managerDesc', 'Manage and synchronize your resume data')}
+          {t('common.resume.managerDesc', 'Manage and synchronize your resume data')}
         </p>
       </div>
 
@@ -634,10 +634,10 @@ const ResumeManager: React.FC = () => {
         <div className="flex items-center justify-between">
           <div>
             <h3 className="text-lg font-semibold text-gray-800 mb-2">
-              {t('resume.upload.title', 'Upload Resume PDF')}
+              {t('common.resume.upload.title', 'Upload Resume PDF')}
             </h3>
             <p className="text-gray-600 text-sm">
-              {t('resume.upload.desc', 'Upload your resume PDF to extract and store data automatically')}
+              {t('common.resume.upload.desc', 'Upload your resume PDF to extract and store data automatically')}
             </p>
           </div>
           <div className="flex items-center gap-3">
@@ -646,7 +646,7 @@ const ResumeManager: React.FC = () => {
               className="flex items-center gap-2 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
             >
               <FileText size={16} />
-              {t('resume.validate', 'Validate Data')}
+              {t('common.resume.validate', 'Validate Data')}
             </button>
             <button
               onClick={handleSync}
@@ -656,12 +656,12 @@ const ResumeManager: React.FC = () => {
               {syncing ? (
                 <>
                   <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
-                  {t('resume.syncing', 'Syncing...')}
+                  {t('common.resume.syncing', 'Syncing...')}
                 </>
               ) : (
                 <>
                   <Download size={16} />
-                  {t('resume.sync', 'Sync with Website')}
+                  {t('common.resume.sync', 'Sync with Website')}
                 </>
               )}
             </button>
@@ -680,12 +680,12 @@ const ResumeManager: React.FC = () => {
                 {uploading ? (
                   <>
                     <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
-                    {t('resume.upload.uploading', 'Uploading...')}
+                    {t('common.resume.upload.uploading', 'Uploading...')}
                   </>
                 ) : (
                   <>
                     <Upload size={16} />
-                    {t('resume.upload.selectFile', 'Select PDF File')}
+                    {t('common.resume.upload.selectFile', 'Select PDF File')}
                   </>
                 )}
               </button>
@@ -726,14 +726,14 @@ const ResumeManager: React.FC = () => {
             <div className="bg-white rounded-lg shadow-md p-6">
               <div className="flex items-center justify-between">
                 <h3 className="text-lg font-semibold text-gray-800">
-                  {t('resume.dataQuality', 'Data Quality')}
+                  {t('common.resume.dataQuality', 'Data Quality')}
                 </h3>
                 <FileText className="text-blue-600" size={20} />
               </div>
               <div className="mt-4">
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-sm text-gray-600">
-                    {t('resume.completeness', 'Completeness')}
+                    {t('common.resume.completeness', 'Completeness')}
                   </span>
                   <span className="text-sm font-medium text-gray-900">85%</span>
                 </div>
@@ -746,25 +746,25 @@ const ResumeManager: React.FC = () => {
             <div className="bg-white rounded-lg shadow-md p-6">
               <div className="flex items-center justify-between">
                 <h3 className="text-lg font-semibold text-gray-800">
-                  {t('resume.sections', 'Sections')}
+                  {t('common.resume.sections', 'Sections')}
                 </h3>
                 <Settings className="text-green-600" size={20} />
               </div>
               <div className="mt-4 space-y-2">
                 <div className="flex justify-between">
-                  <span className="text-sm text-gray-600">{t('resume.personalInfo', 'Personal Info')}</span>
+                  <span className="text-sm text-gray-600">{t('common.resume.personalInfo', 'Personal Info')}</span>
                   <span className="text-sm text-gray-900">{resumeData?.personal_info ? '✓' : '○'}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-sm text-gray-600">{t('resume.education', 'Education')}</span>
+                  <span className="text-sm text-gray-600">{t('common.resume.education', 'Education')}</span>
                   <span className="text-sm text-gray-900">{resumeData?.education?.length || 0} {t('common.items', 'items')}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-sm text-gray-600">{t('resume.experience', 'Experience')}</span>
+                  <span className="text-sm text-gray-600">{t('common.resume.experience', 'Experience')}</span>
                   <span className="text-sm text-gray-900">{resumeData?.work_experience?.length || 0} {t('common.items', 'items')}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-sm text-gray-600">{t('resume.skills', 'Skills')}</span>
+                  <span className="text-sm text-gray-600">{t('common.resume.skills', 'Skills')}</span>
                   <span className="text-sm text-gray-900">{resumeData?.skills?.length || 0} {t('common.items', 'items')}</span>
                 </div>
               </div>
@@ -773,17 +773,17 @@ const ResumeManager: React.FC = () => {
             <div className="bg-white rounded-lg shadow-md p-6">
               <div className="flex items-center justify-between">
                 <h3 className="text-lg font-semibold text-gray-800">
-                  {t('resume.syncStatus', 'Sync Status')}
+                  {t('common.resume.syncStatus', 'Sync Status')}
                 </h3>
                 <Award className="text-purple-600" size={20} />
               </div>
               <div className="mt-4">
                 <div className="flex items-center gap-2 text-green-600">
                   <div className="w-2 h-2 bg-green-600 rounded-full"></div>
-                  <span className="text-sm">{t('resume.synced', 'Synchronized')}</span>
+                  <span className="text-sm">{t('common.resume.synced', 'Synchronized')}</span>
                 </div>
                 <p className="text-xs text-gray-500 mt-2">
-                  {t('resume.lastSync', 'Last sync')}: {new Date().toLocaleDateString()}
+                  {t('common.resume.lastSync', 'Last sync')}: {new Date().toLocaleDateString()}
                 </p>
               </div>
             </div>
@@ -794,7 +794,7 @@ const ResumeManager: React.FC = () => {
 
         {activeTab === 'education' && (
           renderSection(
-            t('resume.education', 'Education'),
+            t('common.resume.education', 'Education'),
             resumeData?.education || [],
             'education',
             ['degree', 'major', 'school', 'start_date', 'end_date', 'gpa', 'description']
@@ -804,13 +804,13 @@ const ResumeManager: React.FC = () => {
         {activeTab === 'experience' && (
           <div className="space-y-6">
             {renderSection(
-              t('resume.workExperience', 'Work Experience'),
+              t('common.resume.workExperience', 'Work Experience'),
               resumeData?.work_experience || [],
               'work_experience',
               ['position', 'company', 'start_date', 'end_date', 'location', 'description']
             )}
             {renderSection(
-              t('resume.researchExperience', 'Research Experience'),
+              t('common.resume.researchExperience', 'Research Experience'),
               resumeData?.research_experience || [],
               'research_experience',
               ['title', 'institution', 'lab_name', 'supervisor', 'start_date', 'end_date', 'description']
@@ -821,13 +821,13 @@ const ResumeManager: React.FC = () => {
         {activeTab === 'skills' && (
           <div className="space-y-6">
             {renderSection(
-              t('resume.skills', 'Skills'),
+              t('common.resume.skills', 'Skills'),
               resumeData?.skills || [],
               'skills',
               ['skill_name', 'category', 'proficiency_level', 'years_of_experience', 'description']
             )}
             {renderSection(
-              t('resume.languages', 'Languages'),
+              t('common.resume.languages', 'Languages'),
               resumeData?.languages || [],
               'languages',
               ['language', 'proficiency', 'is_native']
@@ -838,19 +838,19 @@ const ResumeManager: React.FC = () => {
         {activeTab === 'achievements' && (
           <div className="space-y-6">
             {renderSection(
-              t('resume.publications', 'Publications'),
+              t('common.resume.publications', 'Publications'),
               resumeData?.publications || [],
               'publications',
               ['title', 'journal', 'year', 'doi', 'status']
             )}
             {renderSection(
-              t('resume.patents', 'Patents'),
+              t('common.resume.patents', 'Patents'),
               resumeData?.patents || [],
               'patents',
               ['title', 'patent_number', 'applicant', 'public_date', 'status']
             )}
             {renderSection(
-              t('resume.awards', 'Awards'),
+              t('common.resume.awards', 'Awards'),
               resumeData?.awards || [],
               'awards',
               ['title', 'organization', 'award_date', 'level', 'description']

@@ -149,7 +149,7 @@ const ChatWindow: React.FC<ChatWindowProps> = ({ isOpen, onClose, onSendMessage 
       <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-t-2xl">
         <div className="flex items-center gap-3">
           <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
-            <span className="text-sm font-bold">AI</span>
+            <span className="text-sm font-bold">{t('research.chatAssistant.aiLabel', { fallback: 'AI' }) as string}</span>
           </div>
           <div>
             <h3 className="font-semibold text-sm">{t('research.chatAssistant.title') as string}</h3>

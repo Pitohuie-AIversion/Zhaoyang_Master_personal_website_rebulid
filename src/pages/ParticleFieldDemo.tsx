@@ -315,7 +315,7 @@ const ParticleFieldDemo: React.FC = () => {
             <h4 className="font-semibold mb-2">{t('particleField.performanceStats')}</h4>
             <div className="space-y-1">
               <div className="flex justify-between">
-                <span>FPS:</span>
+                <span>{t('particleField.performance.fps') as string}:</span>
                 <span className={metrics.fps < 30 ? 'text-red-400' : metrics.fps < 50 ? 'text-yellow-400' : 'text-green-400'}>
                   {Math.round(metrics.fps)}
                 </span>

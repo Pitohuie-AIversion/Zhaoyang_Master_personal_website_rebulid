@@ -4,6 +4,7 @@ import { useTranslation } from '../components/TranslationProvider';
 import { SearchInput, FilterDropdown, SortDropdown, ActiveFilters, SearchStats, useAdvancedSearch } from '../components/SearchAndFilter';
 import { UnifiedButton } from '../components/UnifiedButton';
 import { useResponsive } from '../hooks/useResponsive';
+import { PublicationsSEO } from '../components/SEOOptimization';
 
 interface Publication {
   id: number;
@@ -235,6 +236,7 @@ export default function Publications() {
 
   return (
     <div className="min-h-screen relative theme-transition">
+      <PublicationsSEO />
       <div className="max-w-7xl mx-auto px-6" style={{ paddingTop: isMobile ? '120px' : isTablet ? '140px' : '160px', paddingBottom: '80px' }}>
         <SimpleMotion
           initial={{ opacity: 0, y: 20 }}

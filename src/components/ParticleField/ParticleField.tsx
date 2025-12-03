@@ -256,9 +256,9 @@ export const ParticleField = React.forwardRef<HTMLCanvasElement, ParticleFieldPr
     return (
       <div className={`particle-field-error ${className}`}>
         <div className="error-message">
-          <h3>WebGL Error</h3>
+          <h3>{t('particleField.status.error') as string}</h3>
           <p>{error}</p>
-          <p>Please make sure your browser supports WebGL 2.0</p>
+          <p>{t('particleField.messages.webglNotSupported') as string}</p>
         </div>
       </div>
     );

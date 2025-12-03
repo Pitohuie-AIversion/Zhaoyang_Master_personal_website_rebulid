@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useTranslation } from '../components/TranslationProvider';
 import { ArrowLeft, Settings, Play, Pause, RotateCcw } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import ZhaoyangASCIIText from '../components/ZhaoyangASCIIText';
@@ -25,6 +26,7 @@ interface DemoConfig {
 
 const ASCIIDemo: React.FC = () => {
   const { isMobile, isTablet } = useResponsive();
+  const { t } = useTranslation();
   const [config, setConfig] = useState<DemoConfig>({
     theme: 'matrix',
     rhythmType: 'heartbeat',
@@ -87,11 +89,11 @@ const ASCIIDemo: React.FC = () => {
                 className="flex items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
               >
                 <ArrowLeft size={20} />
-                <span>返回首页</span>
+                <span>{t('navigation.home') as string}</span>
               </Link>
               <div className="h-6 w-px bg-gray-300 dark:bg-gray-600" />
               <h1 className="text-xl font-bold text-gray-900 dark:text-white">
-                ZHAOYANG ASCII 演示
+                {t('ascii.title', { fallback: 'ASCII 演示' }) as string}
               </h1>
             </div>
             <div className="flex items-center gap-2">
@@ -100,14 +102,14 @@ const ASCIIDemo: React.FC = () => {
                 className="flex items-center gap-2 px-3 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
               >
                 {isPlaying ? <Pause size={16} /> : <Play size={16} />}
-                {isPlaying ? '暂停' : '播放'}
+                {isPlaying ? (t('particleField.pause') as string) : (t('particleField.play') as string)}
               </button>
               <button
                 onClick={resetDemo}
                 className="flex items-center gap-2 px-3 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors"
               >
                 <RotateCcw size={16} />
-                重置
+                {t('particleField.settings.reset') as string}
               </button>
             </div>
           </div>
@@ -121,13 +123,13 @@ const ASCIIDemo: React.FC = () => {
             <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-sm border border-gray-200 dark:border-gray-700 theme-transition">
               <div className="flex items-center gap-2 mb-4">
                 <Settings size={20} className="text-blue-600" />
-                <h2 className="text-lg font-semibold text-gray-900 dark:text-white">控制面板</h2>
+                <h2 className="text-lg font-semibold text-gray-900 dark:text-white">{t('common.settings') as string}</h2>
               </div>
 
               {/* 显示模式 */}
               <div className="mb-6">
                 <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                  显示模式
+                  {t('ascii.displayMode', { fallback: '显示模式' }) as string}
                 </label>
                 <div className="flex gap-2">
                   <button
@@ -138,7 +140,7 @@ const ASCIIDemo: React.FC = () => {
                         : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
                     }`}
                   >
-                    静态文字
+                    {t('ascii.display.staticText', { fallback: '静态文字' }) as string}
                   </button>
                   <button
                     onClick={() => updateConfig('showRhythm', true)}
@@ -148,7 +150,7 @@ const ASCIIDemo: React.FC = () => {
                         : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
                     }`}
                   >
-                    律动效果
+                    {t('ascii.display.rhythmEffect', { fallback: '律动效果' }) as string}
                   </button>
                 </div>
               </div>
@@ -156,7 +158,7 @@ const ASCIIDemo: React.FC = () => {
               {/* 主题选择 */}
               <div className="mb-6">
                 <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                  主题配色
+                  {t('ascii.theme.title', { fallback: '主题配色' }) as string}
                 </label>
                 <div className="grid grid-cols-2 gap-2">
                   {themeOptions.map((option) => (
@@ -178,7 +180,7 @@ const ASCIIDemo: React.FC = () => {
                         }}
                       />
                       <span className="text-xs font-medium text-gray-700 dark:text-gray-300">
-                        {option.label}
+                        {t(`ascii.theme.${option.value}`, { fallback: option.label }) as string}
                       </span>
                     </button>
                   ))}
@@ -189,7 +191,7 @@ const ASCIIDemo: React.FC = () => {
               {config.showRhythm && (
                 <div className="mb-6">
                   <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    律动类型
+                    {t('ascii.rhythm.title', { fallback: '律动类型' }) as string}
                   </label>
                   <div className="space-y-2">
                     {rhythmOptions.map((option) => (
@@ -203,10 +205,10 @@ const ASCIIDemo: React.FC = () => {
                         }`}
                       >
                         <div className="font-medium text-gray-900 dark:text-white">
-                          {option.label}
+                          {t(`ascii.rhythm.${option.value}.label`, { fallback: option.label }) as string}
                         </div>
                         <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">
-                          {option.description}
+                          {t(`ascii.rhythm.${option.value}.desc`, { fallback: option.description }) as string}
                         </div>
                       </button>
                     ))}
@@ -218,7 +220,7 @@ const ASCIIDemo: React.FC = () => {
               {!config.showRhythm && (
                 <div className="mb-6">
                   <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    动画类型
+                    {t('ascii.animation.title', { fallback: '动画类型' }) as string}
                   </label>
                   <div className="space-y-2">
                     {animationOptions.map((option) => (
@@ -232,10 +234,10 @@ const ASCIIDemo: React.FC = () => {
                         }`}
                       >
                         <div className="font-medium text-gray-900 dark:text-white">
-                          {option.label}
+                          {t(`ascii.animation.${option.value}.label`, { fallback: option.label }) as string}
                         </div>
                         <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">
-                          {option.description}
+                          {t(`ascii.animation.${option.value}.desc`, { fallback: option.description }) as string}
                         </div>
                       </button>
                     ))}
@@ -246,7 +248,7 @@ const ASCIIDemo: React.FC = () => {
               {/* 强度控制 */}
               <div className="mb-6">
                 <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                  效果强度
+                  {t('ascii.intensity.title', { fallback: '效果强度' }) as string}
                 </label>
                 <div className="flex gap-2">
                   {(['low', 'medium', 'high'] as Intensity[]).map((intensity) => (
@@ -259,7 +261,7 @@ const ASCIIDemo: React.FC = () => {
                           : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
                       }`}
                     >
-                      {intensity === 'low' ? '低' : intensity === 'medium' ? '中' : '高'}
+                      {intensity === 'low' ? (t('ascii.intensity.low') as string) : intensity === 'medium' ? (t('ascii.intensity.medium') as string) : (t('ascii.intensity.high') as string)}
                     </button>
                   ))}
                 </div>
@@ -268,7 +270,7 @@ const ASCIIDemo: React.FC = () => {
               {/* 尺寸控制 */}
               <div className="mb-6">
                 <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                  显示尺寸
+                  {t('ascii.size.title', { fallback: '显示尺寸' }) as string}
                 </label>
                 <div className="flex gap-2">
                   {(['small', 'medium', 'large'] as Size[]).map((size) => (
@@ -281,7 +283,7 @@ const ASCIIDemo: React.FC = () => {
                           : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
                       }`}
                     >
-                      {size === 'small' ? '小' : size === 'medium' ? '中' : '大'}
+                      {size === 'small' ? (t('ascii.size.small') as string) : size === 'medium' ? (t('ascii.size.medium') as string) : (t('ascii.size.large') as string)}
                     </button>
                   ))}
                 </div>
@@ -291,7 +293,7 @@ const ASCIIDemo: React.FC = () => {
               {!config.showRhythm && config.animationType === 'typewriter' && (
                 <div className="mb-6">
                   <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    打字速度: {config.speed}ms
+                    {t('ascii.typewriter.speedLabel', { fallback: '打字速度' }) as string}: {config.speed}ms
                   </label>
                   <input
                     type="range"
@@ -341,41 +343,41 @@ const ASCIIDemo: React.FC = () => {
             {/* 说明文档 */}
             <div className="mt-8 bg-white dark:bg-gray-800 rounded-lg p-6 shadow-sm border border-gray-200 dark:border-gray-700 theme-transition">
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
-                功能说明
+                {t('ascii.docs.title') as string}
               </h3>
               <div className="grid md:grid-cols-2 gap-6 text-sm text-gray-600 dark:text-gray-300">
                 <div>
-                  <h4 className="font-medium text-gray-900 dark:text-white mb-2">显示模式</h4>
+                  <h4 className="font-medium text-gray-900 dark:text-white mb-2">{t('ascii.docs.display.title') as string}</h4>
                   <ul className="space-y-1">
-                    <li>• <strong>静态文字</strong>: 基础的 ASCII 文字显示，支持多种动画效果</li>
-                    <li>• <strong>律动效果</strong>: 动态的字符律动，模拟心跳、波浪等效果</li>
+                    <li>• <strong>{t('ascii.display.staticText') as string}</strong>: {t('ascii.docs.display.static') as string}</li>
+                    <li>• <strong>{t('ascii.display.rhythmEffect') as string}</strong>: {t('ascii.docs.display.rhythm') as string}</li>
                   </ul>
                 </div>
                 <div>
-                  <h4 className="font-medium text-gray-900 dark:text-white mb-2">主题配色</h4>
+                  <h4 className="font-medium text-gray-900 dark:text-white mb-2">{t('ascii.docs.theme.title') as string}</h4>
                   <ul className="space-y-1">
-                    <li>• <strong>Matrix 绿</strong>: 经典黑客帝国风格</li>
-                    <li>• <strong>Cyber 蓝</strong>: 现代科技感配色</li>
-                    <li>• <strong>Neon 紫</strong>: 未来霓虹灯效果</li>
-                    <li>• <strong>彩虹</strong>: 动态彩虹渐变色</li>
+                    <li>• <strong>{t('ascii.theme.matrix') as string}</strong>: {t('ascii.docs.theme.matrix') as string}</li>
+                    <li>• <strong>{t('ascii.theme.cyber') as string}</strong>: {t('ascii.docs.theme.cyber') as string}</li>
+                    <li>• <strong>{t('ascii.theme.neon') as string}</strong>: {t('ascii.docs.theme.neon') as string}</li>
+                    <li>• <strong>{t('ascii.theme.rainbow') as string}</strong>: {t('ascii.docs.theme.rainbow') as string}</li>
                   </ul>
                 </div>
                 <div>
-                  <h4 className="font-medium text-gray-900 dark:text-white mb-2">律动类型</h4>
+                  <h4 className="font-medium text-gray-900 dark:text-white mb-2">{t('ascii.docs.rhythm.title') as string}</h4>
                   <ul className="space-y-1">
-                    <li>• <strong>心跳</strong>: 模拟心跳节拍的缩放效果</li>
-                    <li>• <strong>波浪</strong>: 流动的波浪式动画</li>
-                    <li>• <strong>脉冲</strong>: 规律的闪烁脉冲</li>
-                    <li>• <strong>故障</strong>: 随机的故障风格效果</li>
+                    <li>• <strong>{t('ascii.rhythm.heartbeat.label') as string}</strong>: {t('ascii.docs.rhythm.heartbeat') as string}</li>
+                    <li>• <strong>{t('ascii.rhythm.wave.label') as string}</strong>: {t('ascii.docs.rhythm.wave') as string}</li>
+                    <li>• <strong>{t('ascii.rhythm.pulse.label') as string}</strong>: {t('ascii.docs.rhythm.pulse') as string}</li>
+                    <li>• <strong>{t('ascii.rhythm.glitch.label') as string}</strong>: {t('ascii.docs.rhythm.glitch') as string}</li>
                   </ul>
                 </div>
                 <div>
-                  <h4 className="font-medium text-gray-900 dark:text-white mb-2">技术特性</h4>
+                  <h4 className="font-medium text-gray-900 dark:text-white mb-2">{t('ascii.docs.tech.title') as string}</h4>
                   <ul className="space-y-1">
-                    <li>• 基于 Canvas 和 requestAnimationFrame 的高性能渲染</li>
-                    <li>• 响应式设计，支持多种屏幕尺寸</li>
-                    <li>• 实时动画控制和参数调节</li>
-                    <li>• 多种视觉效果的组合和叠加</li>
+                    <li>• {t('ascii.docs.tech.canvas') as string}</li>
+                    <li>• {t('ascii.docs.tech.responsive') as string}</li>
+                    <li>• {t('ascii.docs.tech.controls') as string}</li>
+                    <li>• {t('ascii.docs.tech.effects') as string}</li>
                   </ul>
                 </div>
               </div>

@@ -43,7 +43,7 @@ export default function ContactViewer() {
   const fetchMessages = async () => {
     try {
       setLoading(true);
-      const response = await fetch('http://localhost:3001/api/contact/messages');
+      const response = await fetch('/api/contact/messages');
       const data = await response.json();
       if (data.data) {
         setMessages(data.data);
@@ -57,7 +57,7 @@ export default function ContactViewer() {
 
   const fetchStats = async () => {
     try {
-      const response = await fetch('http://localhost:3001/api/contact/stats');
+      const response = await fetch('/api/contact/stats');
       const data = await response.json();
       if (data.stats) {
         setStats(data.stats);
@@ -69,7 +69,7 @@ export default function ContactViewer() {
 
   const updateMessageStatus = async (messageId: string, newStatus: string) => {
     try {
-      const response = await fetch(`http://localhost:3001/api/contact/messages/${messageId}/status`, {
+      const response = await fetch(`/api/contact/messages/${messageId}/status`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',

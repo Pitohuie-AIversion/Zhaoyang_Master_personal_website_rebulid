@@ -73,8 +73,8 @@ export default function Footer() {
             className="lg:col-span-2"
           >
             <div className="flex items-center space-x-3 mb-6">
-              <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
-                <img src="/favicon.svg" alt="ZY Logo" className="w-full h-full object-contain" />
+              <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg mx-auto mb-2 flex items-center justify-center">
+                <img src="/favicon.svg" alt={t('common.logoAlt') as string} className="w-full h-full object-contain" />
               </div>
               <div>
                 <div className="text-2xl font-bold text-primary-dark theme-transition">{t('footer.personalInfo.name') as string}</div>
@@ -100,7 +100,13 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-10 h-10 bg-gray-800 rounded-md flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-700 transition-all duration-200"
-                  aria-label={link.name}
+                  aria-label={
+                    link.name === 'GitHub' ? (t('common.social.github') as string) :
+                    link.name === 'LinkedIn' ? (t('common.social.linkedin') as string) :
+                    link.name === 'ResearchGate' ? (t('common.social.researchgate') as string) :
+                    link.name === 'Google Scholar' ? (t('common.social.googleScholar') as string) :
+                    link.name
+                  }
                 >
                   {link.icon}
                 </a>

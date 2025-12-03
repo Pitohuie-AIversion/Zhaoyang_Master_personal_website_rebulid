@@ -1,4 +1,5 @@
 import React from 'react';
+import { createTranslationFunction } from '../utils/i18n';
 import { Helmet } from 'react-helmet-async';
 import { useTranslation } from '../components/TranslationProvider';
 import { useLocation } from 'react-router-dom';
@@ -27,7 +28,7 @@ export const AdvancedSEO: React.FC<AdvancedSEOProps> = ({
   title,
   description,
   keywords,
-  image = '/og-image.jpg',
+  image = '/favicon.svg',
   type = 'website',
   author,
   publishedTime,
@@ -132,11 +133,11 @@ export const AdvancedSEO: React.FC<AdvancedSEOProps> = ({
         ],
         "alumniOf": {
           "@type": "Organization",
-          "name": "大连海事大学"
+          "name": t('seo.institutions.dlmu') as string
         },
         "worksFor": {
           "@type": "Organization",
-          "name": "西湖大学"
+          "name": t('seo.institutions.westlake') as string
         },
         "knowsAbout": defaultKeywords
       });
@@ -217,21 +218,18 @@ export const AdvancedSEO: React.FC<AdvancedSEOProps> = ({
       {/* 移动设备优化 */}
       <meta name="format-detection" content="telephone=no" />
       <meta name="msapplication-TileColor" content="#3b82f6" />
-      <meta name="msapplication-TileImage" content="/mstile-144x144.png" />
+      {/* 移除缺失的 msapplication 图标 */}
       <meta name="theme-color" content="#3b82f6" />
       
       {/* Apple设备优化 */}
       <meta name="apple-mobile-web-app-capable" content="yes" />
       <meta name="apple-mobile-web-app-status-bar-style" content="default" />
       <meta name="apple-mobile-web-app-title" content={defaultSiteName} />
-      <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+      {/* 移除缺失的 Apple Touch 图标 */}
       
       {/* 网站图标 */}
       <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-      <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-      <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
       <link rel="manifest" href="/site.webmanifest" />
-      <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#3b82f6" />
       
       {/* 结构化数据 */}
       <script type="application/ld+json">
@@ -239,18 +237,17 @@ export const AdvancedSEO: React.FC<AdvancedSEOProps> = ({
       </script>
       
       {/* 预加载关键资源 */}
-      <link rel="preload" href="/fonts/inter.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
-      <link rel="preload" href="/fonts/noto-sans-sc.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+      {/* 移除缺失的本地字体预加载 */}
       <link rel="dns-prefetch" href="//fonts.googleapis.com" />
       <link rel="preconnect" href="//fonts.googleapis.com" crossOrigin="anonymous" />
       <link rel="dns-prefetch" href="//scholar.google.com" />
       <link rel="preconnect" href="//scholar.google.com" crossOrigin="anonymous" />
       
       {/* 站点地图 */}
-      <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
+      <link rel="sitemap" type="application/xml" title={t('seo.sitemap.title') as string} href="/sitemap.xml" />
       
       {/* RSS订阅 */}
-      <link rel="alternate" type="application/rss+xml" title={`${defaultSiteName} RSS Feed`} href="/rss.xml" />
+      <link rel="alternate" type="application/rss+xml" title={t('seo.rss.title') as string} href="/rss.xml" />
       
       {/* 安全相关 */}
       <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
@@ -269,15 +266,15 @@ export const HomeSEO: React.FC = () => {
   
   return (
     <AdvancedSEO
-      title={t('seo.home.title') as string}
-      description={t('seo.home.description') as string}
-      keywords={(t('seo.home.keywords', { returnObjects: true }) as unknown) as string[]}
+      title={t('seo.pages.home.title') as string}
+      description={t('seo.pages.home.description') as string}
+      keywords={(t('seo.pages.home.keywords', { returnObjects: true }) as unknown) as string[]}
       type="profile"
-      image="/og-home.jpg"
+      image="/favicon.svg"
       publishedTime="2024-01-01T00:00:00Z"
       modifiedTime={new Date().toISOString()}
       breadcrumbs={[
-        { name: '首页', url: '/' }
+        { name: t('common.breadcrumb.home') as string, url: '/' }
       ]}
     />
   );
@@ -288,16 +285,16 @@ export const ResearchSEO: React.FC = () => {
   
   return (
     <AdvancedSEO
-      title={t('seo.research.title') as string}
-      description={t('seo.research.description') as string}
-      keywords={(t('seo.research.keywords', { returnObjects: true }) as unknown) as string[]}
+      title={t('seo.pages.research.title') as string}
+      description={t('seo.pages.research.description') as string}
+      keywords={(t('seo.pages.research.keywords', { returnObjects: true }) as unknown) as string[]}
       type="article"
-      image="/og-research.jpg"
+      image="/favicon.svg"
       section="research"
       tags={['scientific computing', 'robotics', 'CFD', 'transformer']}
       breadcrumbs={[
-        { name: '首页', url: '/' },
-        { name: '学术研究', url: '/research' }
+        { name: t('common.breadcrumb.home') as string, url: '/' },
+        { name: t('common.breadcrumb.research') as string, url: '/research' }
       ]}
     />
   );
@@ -308,16 +305,16 @@ export const ProjectsSEO: React.FC = () => {
   
   return (
     <AdvancedSEO
-      title={t('seo.projects.title') as string}
-      description={t('seo.projects.description') as string}
-      keywords={(t('seo.projects.keywords', { returnObjects: true }) as unknown) as string[]}
+      title={t('seo.pages.projects.title') as string}
+      description={t('seo.pages.projects.description') as string}
+      keywords={(t('seo.pages.projects.keywords', { returnObjects: true }) as unknown) as string[]}
       type="article"
-      image="/og-projects.jpg"
+      image="/favicon.svg"
       section="projects"
       tags={['DamFormer', 'Sparse-Dense', 'biomimetic', 'underwater robotics']}
       breadcrumbs={[
-        { name: '首页', url: '/' },
-        { name: '项目展示', url: '/projects' }
+        { name: t('common.breadcrumb.home') as string, url: '/' },
+        { name: t('common.breadcrumb.projects') as string, url: '/projects' }
       ]}
     />
   );
@@ -328,16 +325,16 @@ export const PublicationsSEO: React.FC = () => {
   
   return (
     <AdvancedSEO
-      title={t('seo.publications.title') as string}
-      description={t('seo.publications.description') as string}
-      keywords={(t('seo.publications.keywords', { returnObjects: true }) as unknown) as string[]}
+      title={t('seo.pages.publications.title') as string}
+      description={t('seo.pages.publications.description') as string}
+      keywords={(t('seo.pages.publications.keywords', { returnObjects: true }) as unknown) as string[]}
       type="article"
-      image="/og-publications.jpg"
+      image="/favicon.svg"
       section="publications"
       tags={['Physics of Fluids', 'IEEE RA-L', 'patents', 'academic papers']}
       breadcrumbs={[
-        { name: '首页', url: '/' },
-        { name: '学术成果', url: '/publications' }
+        { name: t('common.breadcrumb.home') as string, url: '/' },
+        { name: t('common.breadcrumb.publications') as string, url: '/publications' }
       ]}
     />
   );
@@ -348,16 +345,16 @@ export const SkillsSEO: React.FC = () => {
   
   return (
     <AdvancedSEO
-      title={t('seo.skills.title') as string}
-      description={t('seo.skills.description') as string}
-      keywords={(t('seo.skills.keywords', { returnObjects: true }) as unknown) as string[]}
+      title={t('seo.pages.skills.title') as string}
+      description={t('seo.pages.skills.description') as string}
+      keywords={(t('seo.pages.skills.keywords', { returnObjects: true }) as unknown) as string[]}
       type="article"
-      image="/og-skills.jpg"
+      image="/favicon.svg"
       section="skills"
       tags={['Python', 'PyTorch', 'CFD', 'Star-CCM+', 'SolidWorks']}
       breadcrumbs={[
-        { name: '首页', url: '/' },
-        { name: '技能专长', url: '/skills' }
+        { name: t('common.breadcrumb.home') as string, url: '/' },
+        { name: t('common.breadcrumb.skills') as string, url: '/skills' }
       ]}
     />
   );
@@ -368,14 +365,14 @@ export const ContactSEO: React.FC = () => {
   
   return (
     <AdvancedSEO
-      title={t('seo.contact.title') as string}
-      description={t('seo.contact.description') as string}
-      keywords={(t('seo.contact.keywords', { returnObjects: true }) as unknown) as string[]}
+      title={t('seo.pages.contact.title') as string}
+      description={t('seo.pages.contact.description') as string}
+      keywords={(t('seo.pages.contact.keywords', { returnObjects: true }) as unknown) as string[]}
       type="website"
-      image="/og-contact.jpg"
+      image="/favicon.svg"
       breadcrumbs={[
-        { name: '首页', url: '/' },
-        { name: '联系我', url: '/contact' }
+        { name: t('common.breadcrumb.home') as string, url: '/' },
+        { name: t('common.breadcrumb.contact') as string, url: '/contact' }
       ]}
     />
   );
@@ -411,6 +408,7 @@ export const generateSitemap = () => {
 
 // 生成RSS订阅的函数
 export const generateRSSFeed = (language: string = 'en') => {
+  const t = createTranslationFunction(language as 'en' | 'zh');
   const baseUrl = 'https://zhaoyang-mou.com';
   const now = new Date().toISOString();
   
@@ -441,9 +439,9 @@ export const generateRSSFeed = (language: string = 'en') => {
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>牟昭阳 - 个人学术网站</title>
+    <title>${t('seo.site.title') as string}</title>
     <link>${baseUrl}</link>
-    <description>Latest updates from Zhaoyang Mou's personal academic website</description>
+    <description>${t('seo.default.description') as string}</description>
     <language>${language === 'zh' ? 'zh-CN' : 'en-US'}</language>
     <lastBuildDate>${now}</lastBuildDate>
     <atom:link href="${baseUrl}/rss.xml" rel="self" type="application/rss+xml" />

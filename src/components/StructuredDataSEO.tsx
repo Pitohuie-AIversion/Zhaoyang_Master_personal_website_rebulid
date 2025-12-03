@@ -39,6 +39,7 @@ export const StructuredDataSEO: React.FC<StructuredDataSEOProps> = ({
   const structuredData = generateStructuredData();
 
   if (!structuredData) return null;
+  if (import.meta.env.VITE_ALLOW_INLINE_JSONLD !== 'true') return null;
 
   return (
     <Helmet>

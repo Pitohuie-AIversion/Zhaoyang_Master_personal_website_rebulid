@@ -18,19 +18,259 @@
     "close": "关闭",
     "open": "打开",
     "download": "下载",
+  "share": "分享",
+  "fontSize": "字体大小",
+  "readingMode": "阅读模式",
+  "autoScroll": "自动滚动",
+  "shareCancelled": "分享取消",
+  "linkCopied": "链接已复制到剪贴板",
+  "keyboard": {
+    "shortcutsTitle": "键盘快捷键",
+    "tip": "提示：部分快捷键可能因浏览器或操作系统而异"
+  },
+  "ascii": {
+    "title": "ASCII 演示",
+    "displayMode": "显示模式",
+    "display": {
+      "staticText": "静态文字",
+      "rhythmEffect": "律动效果"
+    },
+    "theme": {
+      "title": "主题配色",
+      "matrix": "Matrix 绿",
+      "cyber": "Cyber 蓝",
+      "neon": "Neon 紫",
+      "rainbow": "彩虹"
+    },
+    "rhythm": {
+      "title": "律动类型",
+      "heartbeat": { "label": "心跳", "desc": "模拟心跳节拍的律动" },
+      "wave": { "label": "波浪", "desc": "流动的波浪效果" },
+      "pulse": { "label": "脉冲", "desc": "规律的脉冲闪烁" },
+      "glitch": { "label": "故障", "desc": "随机的故障效果" }
+    },
+    "animation": {
+      "title": "动画类型",
+      "typewriter": { "label": "打字机", "desc": "逐字显示效果" },
+      "wave": { "label": "波浪", "desc": "字符波浪动画" },
+      "pulse": { "label": "脉冲", "desc": "整行脉冲效果" },
+      "glitch": { "label": "故障", "desc": "字符故障效果" }
+    },
+    "intensity": {
+      "title": "效果强度",
+      "low": "低",
+      "medium": "中",
+      "high": "高"
+    },
+    "size": {
+      "title": "显示尺寸",
+      "small": "小",
+      "medium": "中",
+      "large": "大"
+    },
+    "typewriter": {
+      "speedLabel": "打字速度"
+    }
+    ,
+    "docs": {
+      "title": "功能说明",
+      "display": {
+        "title": "显示模式",
+        "static": "基础的 ASCII 文字显示，支持多种动画效果",
+        "rhythm": "动态的字符律动，模拟心跳、波浪等效果"
+      },
+      "theme": {
+        "title": "主题配色",
+        "matrix": "经典黑客帝国风格",
+        "cyber": "现代科技感配色",
+        "neon": "未来霓虹灯效果",
+        "rainbow": "动态彩虹渐变色"
+      },
+      "rhythm": {
+        "title": "律动类型",
+        "heartbeat": "模拟心跳节拍的缩放效果",
+        "wave": "流动的波浪式动画",
+        "pulse": "规律的闪烁脉冲",
+        "glitch": "随机的故障风格效果"
+      },
+      "tech": {
+        "title": "技术特性",
+        "canvas": "基于 Canvas 和 requestAnimationFrame 的高性能渲染",
+        "responsive": "响应式设计，支持多种屏幕尺寸",
+        "controls": "实时动画控制和参数调节",
+        "effects": "多种视觉效果的组合和叠加"
+      }
+    }
+  },
+  "seo": {
+    "site": {
+      "title": "牟昭阳个人网站",
+      "author": "牟昭阳",
+      "language": "zh",
+      "locale": "zh_CN"
+    },
+    "default": {
+      "title": "牟昭阳 | 个人网站",
+      "description": "专注于科学计算、机器人技术与人工智能交叉研究，涵盖 Transformer/神经算子、CFD 仿真、水下机器人等领域。",
+      "keywords": ["牟昭阳", "科学计算", "CFD", "Transformer", "神经算子", "机器人"],
+      "jobTitle": "人工智能硕士研究生",
+      "organization": "大连海事大学"
+    },
+    "pages": {
+      "home": { "title": "首页", "description": "牟昭阳个人主页与研究概览" },
+      "research": { "title": "学术研究", "description": "研究方向、学术成果与数据分析" },
+      "projects": { "title": "项目展示", "description": "科研/工程项目与关键成果" },
+      "publications": { "title": "学术成果", "description": "论文/会议/专利等完整信息" },
+      "skills": { "title": "技能专长", "description": "编程、仿真、AI/ML、硬件与工具能力" },
+      "contact": { "title": "联系我", "description": "邮箱、社交与地址信息" }
+    },
+    "sitemap": {
+      "title": "站点地图"
+    }
+  
+    ,
+    "institutions": {
+      "dlmu": "Dalian Maritime University",
+      "westlake": "Westlake University"
+    },
+    "rss": {
+      "title": "RSS订阅"
+    }
+  },
+  "blog": {
+    "title": "学术博客",
+    "description": "分享学术研究成果和技术思考",
+    "loading": "加载中...",
+    "searchPlaceholder": "搜索博客文章...",
+    "sortByDate": "按日期",
+    "sortByViews": "按浏览量",
+    "sortByLikes": "按点赞数",
+    "categories": "分类",
+    "allCategories": "全部分类",
+    "tags": "标签",
+    "allTags": "全部标签",
+    "noPosts": "暂无博客文章",
+    "readMore": "阅读更多",
+    "like": "点赞",
+    "minutesRead": "分钟阅读",
+    "pleaseFillAllFields": "请填写所有必填字段",
+    "pleaseEnterValidEmail": "请输入有效的邮箱地址",
+    "commentSubmitted": "评论已提交，等待审核",
+    "commentSubmitFailed": "评论提交失败，请重试",
+    "linkCopied": "链接已复制到剪贴板",
+    "postNotFound": "文章未找到",
+    "backToBlog": "返回博客",
+    "featured": "精选",
     "share": "分享",
+    "copyLink": "复制链接",
+    "bookmark": "收藏",
+    "relatedPosts": "相关文章",
+    "comments": "评论",
+    "leaveComment": "发表评论",
+    "name": "姓名",
+    "email": "邮箱",
+    "comment": "评论内容",
+    "commentPlaceholder": "请输入您的评论...",
+    "submitting": "提交中...",
+    "submitComment": "提交评论",
+    "noComments": "暂无评论，快来发表第一条评论吧！",
+    "viewOnScholar": "在学术主页查看"
+  },
     "copy": "复制",
     "copied": "已复制",
-    "language": "语言",
+  "language": "语言",
+  "languageOptions": {
+    "switchToEnglish": "切换到英文",
+    "switchToChinese": "切换到中文",
+    "english": "英语",
+    "chinese": "中文",
+    "englishShort": "EN",
+    "chineseShort": "中"
+  },
     "theme": "主题",
     "settings": "设置",
     "help": "帮助",
     "about": "关于",
     "contact": "联系",
     "privacy": "隐私政策",
-    "terms": "使用条款",
-    "searchPlaceholder": "搜索...",
-    "clearAllFilters": "清除所有筛选",
+  "terms": "使用条款",
+  "searchPlaceholder": "搜索...",
+  "menu": "菜单",
+  "skipToMain": "跳到主要内容",
+  "logoAlt": "牟昭阳站点标识",
+  "searchSuggestions": "搜索建议",
+  "categories": {
+    "project": "项目",
+    "publication": "论文",
+    "skill": "技能",
+    "research": "研究"
+  },
+  "aria": {
+    "clearSearch": "清除搜索",
+    "closeMenu": "关闭菜单",
+    "backToTop": "回到顶部",
+    "accessibilitySettings": "可访问性设置",
+    "themeToggleLight": "切换到浅色模式",
+    "themeToggleDark": "切换到深色模式",
+    "chooseTheme": "选择主题",
+    "socialLinks": "社交媒体链接",
+    "visitSocial": "访问我的社交主页"
+  },
+  "breadcrumb": {
+    "home": "首页",
+    "research": "学术研究",
+    "projects": "项目展示",
+    "publications": "学术成果",
+    "skills": "技能专长",
+    "contact": "联系我"
+  },
+  "clearAllFilters": "清除所有筛选",
+  "searchHistoryTitle": "搜索历史",
+  "clear": "清除",
+  "noResults": "未找到相关结果",
+  "tryDifferentKeywords": "尝试不同的关键词？",
+  "match": "匹配",
+  "accessibility": "可访问性",
+  "saveSuccess": "保存成功",
+  "saveError": "保存失败",
+  "confirmDelete": "确认删除此项？",
+  "deleteSuccess": "删除成功",
+  "deleteError": "删除失败",
+  "add": "新增",
+  "noData": "暂无数据",
+  "items": "个项目",
+  "confirmYes": "是",
+  "confirmNo": "否",
+  "relatedLinks": "相关链接",
+  "chat": {
+    "projectsIntro": "他参与了多个重要项目，包括DamFormer溃坝流动预测、Rs-ModCubes模块化机器人、仿生波动鳍推进系统、风扇阵列风洞实验平台等。",
+    "educationIntro": "牟昭阳是大连海事大学人工智能硕士在读，同时为西湖大学访问学生。",
+    "contactIntro": "您可以通过邮箱、电话联系牟昭阳，或访问其 GitHub、LinkedIn 等社交平台。",
+    "skillsIntro": "他掌握 Python、MATLAB、C++、Java、PyTorch、TensorFlow、Star-CCM+、ANSYS Fluent、OpenFOAM、STM32、Arduino 等。",
+    "defaultHelp": "我是牟昭阳的智能助手。您可以询问他的研究方向、项目经验、技能专长或教育背景。"
+  },
+  "social": {
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "twitter": "Twitter",
+    "researchgate": "ResearchGate",
+    "googleScholar": "Google Scholar",
+    "weibo": "微博"
+  },
+  "accessibilityLabels": {
+    "settingsTitle": "可访问性设置",
+    "高对比度模式": "高对比度模式",
+    "largeText": "大字体模式",
+    "reducedMotion": "减少动画效果",
+    "keyboardNavigation": "键盘导航增强",
+    "focusVisible": "焦点可见",
+    "textToSpeech": "文本转语音",
+    "screenReader": "屏幕阅读器",
+    "colorBlindFriendly": "色盲友好模式",
+    "readHelpMessage": "这是可访问性工具栏，您可以在这里调整网站的无障碍访问设置",
+    "stopReading": "停止朗读",
+    "readDescription": "朗读说明"
+  },
     "activeFilters": "当前筛选:",
     "clearAll": "清除全部",
     "sortBy": "排序",
@@ -130,6 +370,48 @@
     "ascii-demo": "ASCII演示",
     "resume-manager": "简历管理"
   },
+  "footer": {
+    "personalInfo": {
+      "name": "牟昭阳",
+      "nameEn": "Zhaoyang Mu",
+      "description": "专注于科学计算与机器人技术的交叉研究，致力于 Transformer/神经算子建模 CFD 时空场与仿生水下机器人。"
+    },
+    "researchAreas": {
+      "title": "研究领域",
+      "areas": [
+        "Transformer/神经算子",
+        "计算流体力学（CFD）",
+        "仿生机器人",
+        "水下感知与控制",
+        "高性能计算"
+      ]
+    },
+    "quickLinks": {
+      "title": "快速链接",
+      "home": "首页",
+      "research": "学术研究",
+      "projects": "项目展示",
+      "publications": "学术成果"
+    },
+    "contact": {
+      "title": "联系信息",
+      "email": "mzymuzhaoyang@gmail.com",
+      "address": "中国·浙江省·杭州"
+    },
+    "legal": {
+      "copyright": "牟昭阳（Zhaoyang Mu）保留所有权利",
+      "privacy": "隐私政策",
+      "terms": "使用条款",
+      "sitemap": "站点地图"
+    }
+  },
+  "common": {
+    "notFound": {
+      "title": "页面未找到",
+      "description": "您访问的页面不存在或已被移动。",
+      "backHome": "返回首页"
+    }
+  }
   "home": {
     "hero": {
       "greeting": "你好，我是",
@@ -335,6 +617,7 @@
     },
     "chatAssistant": {
       "title": "智能助手",
+      "aiLabel": "AI",
       "subtitle": "学术咨询与导航",
       "placeholder": "请输入您的问题...",
       "send": "发送",
@@ -1086,8 +1369,9 @@
         "certificateNumber": "证书编号",
         "publicationDetail": "论文详情",
         "patentDetail": "专利详情",
-      "awardDetail": "奖项详情"
-    },
+      "awardDetail": "奖项详情",
+      "publisherLink": "出版社链接"
+      },
     "publisherLink": "出版社链接",
     "levels": {
       "national": "国家级",
@@ -1508,6 +1792,15 @@
       "noiseStrength": "噪声强度",
       "noiseScale": "噪声缩放",
       "colorScheme": "配色方案",
+      "colorOptions": {
+        "blue": "深海蓝",
+        "rainbow": "彩虹",
+        "fire": "火焰",
+        "ice": "冰蓝",
+        "forest": "森林",
+        "sunset": "日落",
+        "monochrome": "单色"
+      },
       "enableBloom": "启用发光",
       "bloomIntensity": "发光强度",
       "blurAmount": "模糊程度",

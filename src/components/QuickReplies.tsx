@@ -73,7 +73,7 @@ const QuickReplies: React.FC<QuickRepliesProps> = ({ onQuickReply, disabled = fa
           return (
             <button
               key={reply.key}
-              onClick={() => onQuickReply(reply.message)}
+              onClick={() => onQuickReply(t(`research.chatAssistant.quickReplies.${reply.key}`) as string)}
               disabled={disabled}
               className={`
                 flex items-center gap-2 p-3 rounded-lg text-left

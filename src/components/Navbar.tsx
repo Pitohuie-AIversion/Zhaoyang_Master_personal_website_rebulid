@@ -84,7 +84,7 @@ export default function Navbar() {
             className="flex items-center space-x-2 group flex-shrink-0"
           >
             <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
-              <img src="/favicon.svg" alt="ZY Logo" className="w-full h-full object-contain" />
+              <img src="/favicon.svg" alt={t('common.logoAlt')} className="w-full h-full object-contain" />
             </div>
             {/* ASCII Logo for different screen sizes */}
             <div className="hidden lg:block">
@@ -132,7 +132,7 @@ export default function Navbar() {
             </div>
             {/* Text fallback for mobile */}
             <div className="block sm:hidden">
-              <div className="text-lg font-semibold text-primary-dark theme-transition">Zhaoyang</div>
+              <div className="text-lg font-semibold text-primary-dark theme-transition">{t('home.hero.name') as string}</div>
             </div>
           </Link>
 
@@ -161,14 +161,14 @@ export default function Navbar() {
 
           <div className="flex items-center space-x-2 flex-shrink-0">
             {/* 搜索按钮 */}
-            <UnifiedButton
-              variant="ghost"
-              size="sm"
-              icon={<Search className="w-4 h-4" />}
-              onClick={() => setIsSearchOpen(true)}
-              title={t('search.placeholder') || '搜索'}
-              className="hidden sm:flex"
-            />
+              <UnifiedButton
+                variant="ghost"
+                size="sm"
+                icon={<Search className="w-4 h-4" />}
+                onClick={() => setIsSearchOpen(true)}
+              title={t('common.search')}
+                className="hidden sm:flex"
+              />
             <LanguageToggle variant="compact" showText={false} />
             <AccessibilityButton variant="compact" showText={false} />
             <ThemeToggle />

@@ -1,8 +1,9 @@
 import React, { Suspense } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
+import { useTranslation } from './components/TranslationProvider';
 import { GlobalOptimizationManager } from './components/GlobalOptimizationManager';
 import { ThemeProvider } from './components/DarkModeProvider';
-import { TranslationProvider } from './components/TranslationProvider';
+import { TranslationProvider, useTranslation } from './components/TranslationProvider';
 import { ErrorBoundary } from './components/ErrorBoundary';
 import { SmartPageTransition } from './components/PageTransitions';
 import Navbar from './components/Navbar';
@@ -40,9 +41,11 @@ const LazyBlogPost = React.lazy(() => import('./components/BlogPost'));
 
 // 简历管理页面
 const LazyResumeManager = React.lazy(() => import('./components/ResumeManager'));
+const LazyNotFound = React.lazy(() => import('./pages/NotFound'));
 
 function AnimatedRoutes() {
   const location = useLocation();
+  const { t } = useTranslation();
 
   return (
     <SmartPageTransition>
@@ -50,7 +53,7 @@ function AnimatedRoutes() {
         <Route
           path="/"
           element={
-            <Suspense fallback={<LoadingFallback message="加载首页中..." />}>
+            <Suspense fallback={<LoadingFallback message={t('common.loading') as string} />}>
               <LazyHome />
             </Suspense>
           }
@@ -58,7 +61,7 @@ function AnimatedRoutes() {
         <Route
           path="/research"
           element={
-            <Suspense fallback={<LoadingFallback message="加载研究页面中..." />}>
+            <Suspense fallback={<LoadingFallback message={t('common.loading') as string} />}>
               <LazyResearch />
             </Suspense>
           }
@@ -66,7 +69,7 @@ function AnimatedRoutes() {
         <Route
           path="/projects"
           element={
-            <Suspense fallback={<LoadingFallback message="加载项目页面中..." />}>
+            <Suspense fallback={<LoadingFallback message={t('common.loading') as string} />}>
               <LazyProjects />
             </Suspense>
           }
@@ -74,7 +77,7 @@ function AnimatedRoutes() {
         <Route
           path="/publications"
           element={
-            <Suspense fallback={<LoadingFallback message="加载发表页面中..." />}>
+            <Suspense fallback={<LoadingFallback message={t('common.loading') as string} />}>
               <LazyPublications />
             </Suspense>
           }
@@ -82,7 +85,7 @@ function AnimatedRoutes() {
         <Route
           path="/skills"
           element={
-            <Suspense fallback={<LoadingFallback message="加载技能页面中..." />}>
+            <Suspense fallback={<LoadingFallback message={t('common.loading') as string} />}>
               <LazySkills />
             </Suspense>
           }
@@ -90,7 +93,7 @@ function AnimatedRoutes() {
         <Route
           path="/contact"
           element={
-            <Suspense fallback={<LoadingFallback message="加载联系页面中..." />}>
+            <Suspense fallback={<LoadingFallback message={t('common.loading') as string} />}>
               <LazyContact />
             </Suspense>
           }
@@ -98,7 +101,7 @@ function AnimatedRoutes() {
         <Route
           path="/ascii-demo"
           element={
-            <Suspense fallback={<LoadingFallback message="加载ASCII演示页面中..." />}>
+            <Suspense fallback={<LoadingFallback message={t('common.loading') as string} />}>
               <LazyASCIIDemo />
             </Suspense>
           }
@@ -106,7 +109,7 @@ function AnimatedRoutes() {
         <Route
           path="/particle-field"
           element={
-            <Suspense fallback={<LoadingFallback message="加载粒子海洋页面中..." />}>
+            <Suspense fallback={<LoadingFallback message={t('common.loading') as string} />}>
               <LazyParticleField />
             </Suspense>
           }
@@ -114,7 +117,7 @@ function AnimatedRoutes() {
         <Route
           path="/particle-field/demo"
           element={
-            <Suspense fallback={<LoadingFallback message="加载粒子海洋演示页面中..." />}>
+            <Suspense fallback={<LoadingFallback message={t('common.loading') as string} />}>
               <LazyParticleFieldDemo />
             </Suspense>
           }
@@ -122,7 +125,7 @@ function AnimatedRoutes() {
         <Route
           path="/particle-field/settings"
           element={
-            <Suspense fallback={<LoadingFallback message="加载粒子海洋设置页面中..." />}>
+            <Suspense fallback={<LoadingFallback message={t('common.loading') as string} />}>
               <LazyParticleFieldSettings />
             </Suspense>
           }
@@ -130,7 +133,7 @@ function AnimatedRoutes() {
         <Route
           path="/contact-admin"
           element={
-            <Suspense fallback={<LoadingFallback message="加载联系信息管理页面中..." />}>
+            <Suspense fallback={<LoadingFallback message={t('common.loading') as string} />}>
               <LazyContactViewer />
             </Suspense>
           }
@@ -138,7 +141,7 @@ function AnimatedRoutes() {
         <Route
           path="/blog"
           element={
-            <Suspense fallback={<LoadingFallback message="加载博客页面中..." />}>
+            <Suspense fallback={<LoadingFallback message={t('common.loading') as string} />}>
               <LazyBlogPage />
             </Suspense>
           }
@@ -146,7 +149,7 @@ function AnimatedRoutes() {
         <Route
           path="/blog/:slug"
           element={
-            <Suspense fallback={<LoadingFallback message="加载博客文章中..." />}>
+            <Suspense fallback={<LoadingFallback message={t('common.loading') as string} />}>
               <LazyBlogPost />
             </Suspense>
           }
@@ -154,8 +157,16 @@ function AnimatedRoutes() {
         <Route
           path="/resume-manager"
           element={
-            <Suspense fallback={<LoadingFallback message="加载简历管理页面中..." />}>
+            <Suspense fallback={<LoadingFallback message={t('common.loading') as string} />}>
               <LazyResumeManager />
+            </Suspense>
+          }
+        />
+        <Route
+          path="*"
+          element={
+            <Suspense fallback={<LoadingFallback message={t('common.loading') as string} />}>
+              <LazyNotFound />
             </Suspense>
           }
         />
@@ -165,6 +176,7 @@ function AnimatedRoutes() {
 }
 
 function App() {
+  const { t } = useTranslation();
   return (
     <ErrorBoundary>
       <ThemeProvider>
@@ -178,7 +190,7 @@ function App() {
                 
                 {/* 跳转链接 */}
                 <a href="#main-content" className="skip-link">
-                  Skip to main content
+                  {t('common.skipToMain')}
                 </a>
                 
                 {/* 性能监控已简化 */}

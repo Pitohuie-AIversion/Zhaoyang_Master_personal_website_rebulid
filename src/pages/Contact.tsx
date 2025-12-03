@@ -160,7 +160,7 @@ export default function Contact() {
     setSubmitStatus('loading');
     
     try {
-      const result = await submitContactForm(formData);
+      const result = await submitContactForm(formData, t as (key: string) => string);
       
       if (result.success) {
         setSubmitStatus('success');
@@ -322,7 +322,7 @@ export default function Contact() {
               {/* 社交媒体链接 */}
               <article className="card-dark rounded-lg border border-gray-200 dark:border-gray-700 p-6 theme-transition">
                 <h2 className="text-xl md:text-2xl font-semibold text-primary-dark theme-transition mb-4 leading-tight">{t('contact.academicSocial') as string}</h2>
-                <nav className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4" aria-label="社交媒体链接">
+                <nav className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4" aria-label={t('common.aria.socialLinks') as string}>
                   {socialLinks.map((link) => (
                     <a
                       key={link.name}
@@ -330,7 +330,7 @@ export default function Contact() {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center p-3 sm:p-4 bg-gray-50 dark:bg-gray-800 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200 group theme-transition min-h-[60px] sm:min-h-[56px]"
-                      aria-label={`访问我的${link.name}主页`}
+                      aria-label={t('common.aria.visitSocial', { fallback: `访问我的${link.name}主页` }) as string}
                     >
                       <div className="text-gray-600 dark:text-gray-400 mr-3 sm:mr-4 theme-transition flex-shrink-0" aria-hidden="true">
                         {link.icon}

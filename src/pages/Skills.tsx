@@ -15,6 +15,7 @@ import {
 } from 'lucide-react';
 import { LazyRadarChartComponent, LazyBarChartComponent, ChartContainer } from '../components/LazyCharts';
 import { useResponsive } from '../hooks/useResponsive';
+import { SkillsSEO } from '../components/SEOOptimization';
 
 // 技能数据接口
 interface Skill {
@@ -291,6 +292,7 @@ function Skills() {
 
   return (
     <div className="min-h-screen relative theme-transition">
+      <SkillsSEO />
       <div className="container mx-auto px-4" style={{ paddingTop: isMobile ? '120px' : isTablet ? '140px' : '160px', paddingBottom: '80px' }}>
         {/* 页面标题 */}
         <SimpleMotion

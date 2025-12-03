@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Sitemap: https://zhaoyang-mou.com/sitemap.xml
+

@@ -83,7 +83,7 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({ message, isTyping = false
               {/* 相关链接 */}
               {message.relatedLinks && message.relatedLinks.length > 0 && (
                 <div className="mt-3 pt-3 border-t border-gray-200 dark:border-gray-600">
-                  <div className="text-sm font-medium mb-2 opacity-80">相关链接：</div>
+                  <div className="text-sm font-medium mb-2 opacity-80">{t('common.relatedLinks', { fallback: '相关链接' }) as string}：</div>
                   <div className="flex flex-wrap gap-2">
                     {message.relatedLinks.map((link, index) => (
                       <a
@@ -117,7 +117,7 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({ message, isTyping = false
                     transition-opacity duration-200
                     hover:bg-gray-200 dark:hover:bg-gray-700
                   `}
-                  title="复制消息"
+                  title={t('research.chatAssistant.actions.copy') as string}
                 >
                   {copied ? (
                     <Check className="w-3 h-3 text-green-600" />

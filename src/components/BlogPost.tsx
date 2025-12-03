@@ -348,19 +348,19 @@ const BlogPost: React.FC<BlogPostProps> = ({ className = '' }) => {
                   onClick={() => handleShare('twitter')}
                   className="block w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
                 >
-                  Twitter
+                  {t('common.social.twitter') as string}
                 </button>
                 <button
                   onClick={() => handleShare('linkedin')}
                   className="block w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
                 >
-                  LinkedIn
+                  {t('common.social.linkedin') as string}
                 </button>
                 <button
                   onClick={() => handleShare('weibo')}
                   className="block w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
                 >
-                  微博
+                  {t('common.social.weibo') as string}
                 </button>
                 <button
                   onClick={() => handleShare('copy')}
