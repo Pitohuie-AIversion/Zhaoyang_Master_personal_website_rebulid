@@ -5,17 +5,13 @@
       "destination": "/api/index.js"
     },
     {
-      "source": "/(.*\\.(pdf|jpg|jpeg|png|gif|svg|ico|woff|woff2|ttf|eot))",
-      "destination": "/$1"
-    },
-    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
   ],
   "headers": [
     {
-      "source": "/(.*\\.pdf)",
+      "source": "/:file*.pdf",
       "headers": [
         {
           "key": "Content-Type",
