@@ -2,7 +2,7 @@ import React, { Suspense } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { GlobalOptimizationManager } from './components/GlobalOptimizationManager';
 import { ThemeProvider } from './components/DarkModeProvider';
-import { TranslationProvider, useTranslation } from './components/TranslationProvider';
+import { useTranslation } from './components/TranslationProvider';
 import { ErrorBoundary } from './components/ErrorBoundary';
 import { SmartPageTransition } from './components/PageTransitions';
 import Navbar from './components/Navbar';
@@ -179,8 +179,7 @@ function App() {
   return (
     <ErrorBoundary>
       <ThemeProvider>
-        <TranslationProvider>
-          <GlobalOptimizationManager>
+        <GlobalOptimizationManager>
           <AccessibilityManager>
             <ThemeTransition>
               <div className="min-h-screen relative theme-transition" id="main-content">
@@ -240,8 +239,7 @@ function App() {
               </div>
             </ThemeTransition>
           </AccessibilityManager>
-          </GlobalOptimizationManager>
-        </TranslationProvider>
+        </GlobalOptimizationManager>
       </ThemeProvider>
     </ErrorBoundary>
   );

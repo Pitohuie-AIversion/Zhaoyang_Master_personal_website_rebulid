@@ -42,7 +42,7 @@ export default defineConfig({
     // 启用CSS代码分割
     cssCodeSplit: true,
     // 设置chunk大小警告限制
-    chunkSizeWarningLimit: 500,
+    chunkSizeWarningLimit: 600,
     // 启用压缩
     minify: 'terser',
     terserOptions: {

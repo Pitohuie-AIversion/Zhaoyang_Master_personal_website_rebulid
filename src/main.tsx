@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router-dom'
 import { HelmetProvider } from 'react-helmet-async'
 import App from './App.tsx'
 import ResourcePreloader from './components/ResourcePreloader.tsx'
+import { TranslationProvider } from './components/TranslationProvider.tsx'
 import './index.css'
 import './styles/accessibility.css'
 import './styles/dark-mode.css'
@@ -13,7 +14,9 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     <HelmetProvider>
       <BrowserRouter>
         <ResourcePreloader>
-          <App />
+          <TranslationProvider>
+            <App />
+          </TranslationProvider>
         </ResourcePreloader>
       </BrowserRouter>
     </HelmetProvider>
