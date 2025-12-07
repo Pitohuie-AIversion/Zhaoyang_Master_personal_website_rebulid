@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
-import { useTranslation } from '../components/TranslationProvider';
-import { Send, CheckCircle, XCircle, Building, Clock, DollarSign, AlertCircle } from 'lucide-react';
-import { ContactSEO } from '../components/SEOOptimization';
-import { SimpleMotion } from '../components/SimpleMotion';
-import { useResponsive } from '../components/ResponsiveEnhancements';
+import React, { useState, useEffect } from 'react';
+import { useTranslation } from '../components/common/TranslationProvider';
+import { Send, CheckCircle, XCircle, Building, Clock, DollarSign, AlertCircle, ArrowLeft } from 'lucide-react';
+import { ContactSEO } from '../components/seo/SEOOptimization';
+import { SimpleMotion } from '../components/animations/SimpleMotion';
+import { useResponsive } from '../components/common/ResponsiveEnhancements';
 import { 
   LazyAnimationContainerComponent as AnimationContainer,
   LazyMagneticButtonComponent as MagneticButton,
   LazyFloatingElementComponent as FloatingElement,
   LazyGradientTextComponent as GradientText
-} from '../components/LazyAnimations';
-import { ResponsiveContainer } from '../components/ResponsiveEnhancements';
-import { UnifiedButton } from '../components/UnifiedButton';
+} from '../components/animations/LazyAnimations';
+import { ResponsiveContainer } from '../components/common/ResponsiveEnhancements';
+import { UnifiedButton } from '../components/common/UnifiedButton';
 import { 
   submitContactForm, 
   validateContactForm, 
@@ -22,19 +22,15 @@ import {
   type FormErrors
 } from '../services/contactService';
 import { toast } from 'sonner';
+import { useSearchParams } from 'react-router-dom';
 
 // 提交状态类型
 type SubmitStatus = 'idle' | 'loading' | 'success' | 'error';
 
-// contactInfo 将从翻译文件中动态获取
-
-// socialLinks 将在组件内部动态生成
-
-
-
 export default function Contact() {
   const { t } = useTranslation();
   const { isMobile } = useResponsive();
+  const [searchParams] = useSearchParams();
 
   const phoneDisplay = t('contact.info.phone') as string;
   const phoneHref = phoneDisplay.replace(/[^\d+]/g, '') || phoneDisplay;
@@ -115,6 +111,21 @@ export default function Contact() {
   // 选中的合作类型
   const [selectedCollaboration, setSelectedCollaboration] = useState<string>('');
 
+  // 监听 URL 参数，预填充表单
+  useEffect(() => {
+    const subject = searchParams.get('subject');
+    const type = searchParams.get('type');
+    
+    if (subject) {
+      setFormData(prev => ({ ...prev, subject }));
+    }
+    
+    if (type) {
+      setSelectedCollaboration(type);
+      setFormData(prev => ({ ...prev, collaborationType: type }));
+    }
+  }, [searchParams]);
+
   // 表单验证
   const validateForm = (): FormErrors => {
     return validateContactForm(formData);
@@ -165,24 +176,7 @@ export default function Contact() {
       if (result.success) {
         setSubmitStatus('success');
         setSubmitMessage(result.message);
-        
-        // 重置表单
-        setFormData({
-          name: '',
-          email: '',
-          subject: '',
-          message: '',
-          collaborationType: '',
-          budget: '',
-          timeline: ''
-        });
-        setSelectedCollaboration('');
-        
-        // 3秒后重置状态
-        setTimeout(() => {
-          setSubmitStatus('idle');
-          setSubmitMessage('');
-        }, 3000);
+        // 成功后不再自动重置，而是显示成功界面
       } else {
         throw new Error(result.message);
       }
@@ -192,12 +186,27 @@ export default function Contact() {
       const errorMessage = error instanceof Error ? error.message : t('contact.form.submitError') as string;
       setSubmitMessage(errorMessage);
       
-      // 3秒后重置状态
+      // 错误状态3秒后重置
       setTimeout(() => {
         setSubmitStatus('idle');
         setSubmitMessage('');
       }, 3000);
     }
+  };
+
+  const handleReset = () => {
+    setFormData({
+      name: '',
+      email: '',
+      subject: '',
+      message: '',
+      collaborationType: '',
+      budget: '',
+      timeline: ''
+    });
+    setSelectedCollaboration('');
+    setSubmitStatus('idle');
+    setSubmitMessage('');
   };
 
   return (
@@ -350,283 +359,303 @@ export default function Contact() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              <article className="card-dark rounded-lg border border-gray-200 dark:border-gray-700 p-6 theme-transition">
-            <h2 className="text-xl md:text-2xl font-semibold text-primary-dark theme-transition mb-4 leading-tight">{t('contact.sendMessage') as string}</h2>
-            
-            {/* 合作类型选择 */}
-            <AnimationContainer delay={0.4}>
-              <div className="mb-8">
-                <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-6 flex items-center">
-                  <Building className="w-5 h-5 mr-2 text-blue-600" />
-                  {t('contact.collaborationType') as string}
-                </h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {collaborationTypes.map((type) => {
-                    return (
-                      <MagneticButton
-                        key={type.id}
-                        onClick={() => handleCollaborationSelect(type.id)}
-                        className={`p-6 rounded-xl border-2 transition-all duration-300 text-left group ${
-                          selectedCollaboration === type.id
-                            ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/20 shadow-lg'
-                            : 'border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-600 hover:shadow-md'
-                        }`}
+              <article className="card-dark rounded-lg border border-gray-200 dark:border-gray-700 p-6 theme-transition relative overflow-hidden min-h-[600px]">
+                {submitStatus === 'success' ? (
+                  <div className="absolute inset-0 flex flex-col items-center justify-center p-8 bg-white dark:bg-gray-800 z-10">
+                    <SimpleMotion
+                      initial={{ opacity: 0, scale: 0.5 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.5 }}
+                      className="text-center"
+                    >
+                      <div className="w-24 h-24 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mx-auto mb-6 text-green-500 dark:text-green-400">
+                        <CheckCircle className="w-12 h-12" />
+                      </div>
+                      <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+                        {t('contact.form.success') as string}
+                      </h3>
+                      <p className="text-gray-600 dark:text-gray-300 mb-8 max-w-md mx-auto">
+                        {submitMessage}
+                      </p>
+                      <UnifiedButton
+                        onClick={handleReset}
+                        variant="primary"
+                        size="lg"
+                        icon={ArrowLeft}
+                        iconPosition="left"
                       >
-                        <div className="flex items-center mb-3">
-                          <div className={`p-2 rounded-lg ${
-                            selectedCollaboration === type.id 
-                              ? 'bg-blue-100 dark:bg-blue-800/30' 
-                              : 'bg-gray-100 dark:bg-gray-800 group-hover:bg-blue-100 dark:group-hover:bg-blue-800/30'
-                          } transition-colors duration-300`}>
-                            <span className={`text-lg sm:text-xl ${
-                              selectedCollaboration === type.id 
-                                ? 'text-blue-600 dark:text-blue-400' 
-                                : 'text-gray-600 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-400'
-                            } transition-colors duration-300 flex-shrink-0`}>
-                              {type.icon}
-                            </span>
-                          </div>
-                          <span className="ml-3 font-semibold text-sm sm:text-base lg:text-lg text-gray-800 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300 leading-tight break-words flex-1 min-w-0">
-                            {type.title}
-                          </span>
+                        {t('contact.form.sendAnother') as string}
+                      </UnifiedButton>
+                    </SimpleMotion>
+                  </div>
+                ) : (
+                  <>
+                    <h2 className="text-xl md:text-2xl font-semibold text-primary-dark theme-transition mb-4 leading-tight">{t('contact.sendMessage') as string}</h2>
+                    
+                    {/* 合作类型选择 */}
+                    <AnimationContainer delay={0.4}>
+                      <div className="mb-8">
+                        <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-6 flex items-center">
+                          <Building className="w-5 h-5 mr-2 text-blue-600" />
+                          {t('contact.collaborationType') as string}
+                        </h3>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                          {collaborationTypes.map((type) => {
+                            return (
+                              <MagneticButton
+                                key={type.id}
+                                onClick={() => handleCollaborationSelect(type.id)}
+                                className={`p-6 rounded-xl border-2 transition-all duration-300 text-left group ${
+                                  selectedCollaboration === type.id
+                                    ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/20 shadow-lg'
+                                    : 'border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-600 hover:shadow-md'
+                                }`}
+                              >
+                                <div className="flex items-center mb-3">
+                                  <div className={`p-2 rounded-lg ${
+                                    selectedCollaboration === type.id 
+                                      ? 'bg-blue-100 dark:bg-blue-800/30' 
+                                      : 'bg-gray-100 dark:bg-gray-800 group-hover:bg-blue-100 dark:group-hover:bg-blue-800/30'
+                                  } transition-colors duration-300`}>
+                                    <span className={`text-lg sm:text-xl ${
+                                      selectedCollaboration === type.id 
+                                        ? 'text-blue-600 dark:text-blue-400' 
+                                        : 'text-gray-600 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-400'
+                                    } transition-colors duration-300 flex-shrink-0`}>
+                                      {type.icon}
+                                    </span>
+                                  </div>
+                                  <span className="ml-3 font-semibold text-sm sm:text-base lg:text-lg text-gray-800 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300 leading-tight break-words flex-1 min-w-0">
+                                    {type.title}
+                                  </span>
+                                </div>
+                                <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+                                  {type.description}
+                                </p>
+                              </MagneticButton>
+                            );
+                          })}
                         </div>
-                        <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
-                          {type.description}
-                        </p>
-                      </MagneticButton>
-                    );
-                  })}
-                </div>
-              </div>
-            </AnimationContainer>
+                      </div>
+                    </AnimationContainer>
 
-            <AnimationContainer delay={0.6}>
-              <form onSubmit={handleSubmit} className="space-y-6">
-                {/* 基本信息 */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {/* 姓名 */}
-                  <div>
-                    <label htmlFor="name" className="block text-xs sm:text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2 leading-tight break-words">
-                      {formFieldConfig.name.label} *
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleInputChange}
-                      className={`w-full px-4 py-3 border-2 rounded-xl transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-blue-500/20 ${
-                        errors.name 
-                          ? 'border-red-500 bg-red-50 dark:bg-red-900/20' 
-                          : 'border-gray-200 dark:border-gray-700 focus:border-blue-500 bg-white dark:bg-gray-800'
-                      } text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400`}
-                      placeholder={formFieldConfig.name.placeholder}
-                    />
-                    {errors.name && (
-                      <SimpleMotion 
-                        initial={{ opacity: 0, y: -10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="mt-2 text-sm text-red-500 flex items-center"
-                        as="p"
-                      >
-                        <AlertCircle className="w-4 h-4 mr-1" />
-                        {errors.name}
-                      </SimpleMotion>
-                    )}
-                  </div>
+                    <AnimationContainer delay={0.6}>
+                      <form onSubmit={handleSubmit} className="space-y-6">
+                        {/* 基本信息 */}
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                          {/* 姓名 */}
+                          <div>
+                            <label htmlFor="name" className="block text-xs sm:text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2 leading-tight break-words">
+                              {formFieldConfig.name.label} *
+                            </label>
+                            <input
+                              type="text"
+                              id="name"
+                              name="name"
+                              value={formData.name}
+                              onChange={handleInputChange}
+                              className={`w-full px-4 py-3 border-2 rounded-xl transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-blue-500/20 ${
+                                errors.name 
+                                  ? 'border-red-500 bg-red-50 dark:bg-red-900/20' 
+                                  : 'border-gray-200 dark:border-gray-700 focus:border-blue-500 bg-white dark:bg-gray-800'
+                              } text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400`}
+                              placeholder={formFieldConfig.name.placeholder}
+                            />
+                            {errors.name && (
+                              <SimpleMotion 
+                                initial={{ opacity: 0, y: -10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                className="mt-2 text-sm text-red-500 flex items-center"
+                                as="p"
+                              >
+                                <AlertCircle className="w-4 h-4 mr-1" />
+                                {errors.name}
+                              </SimpleMotion>
+                            )}
+                          </div>
 
-                  {/* 邮箱 */}
-                  <div>
-                    <label htmlFor="email" className="block text-xs sm:text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2 leading-tight break-words">
-                      {formFieldConfig.email.label} *
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      className={`w-full px-4 py-3 border-2 rounded-xl transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-blue-500/20 ${
-                        errors.email 
-                          ? 'border-red-500 bg-red-50 dark:bg-red-900/20' 
-                          : 'border-gray-200 dark:border-gray-700 focus:border-blue-500 bg-white dark:bg-gray-800'
-                      } text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400`}
-                      placeholder={formFieldConfig.email.placeholder}
-                    />
-                    {errors.email && (
-                      <SimpleMotion 
-                        initial={{ opacity: 0, y: -10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="mt-2 text-xs sm:text-sm text-red-500 flex items-center leading-tight break-words"
-                        as="p"
-                      >
-                        <AlertCircle className="w-4 h-4 mr-1 flex-shrink-0" />
-                        <span className="flex-1 min-w-0">{errors.email}</span>
-                      </SimpleMotion>
-                    )}
-                  </div>
-                </div>
+                          {/* 邮箱 */}
+                          <div>
+                            <label htmlFor="email" className="block text-xs sm:text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2 leading-tight break-words">
+                              {formFieldConfig.email.label} *
+                            </label>
+                            <input
+                              type="email"
+                              id="email"
+                              name="email"
+                              value={formData.email}
+                              onChange={handleInputChange}
+                              className={`w-full px-4 py-3 border-2 rounded-xl transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-blue-500/20 ${
+                                errors.email 
+                                  ? 'border-red-500 bg-red-50 dark:bg-red-900/20' 
+                                  : 'border-gray-200 dark:border-gray-700 focus:border-blue-500 bg-white dark:bg-gray-800'
+                              } text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400`}
+                              placeholder={formFieldConfig.email.placeholder}
+                            />
+                            {errors.email && (
+                              <SimpleMotion 
+                                initial={{ opacity: 0, y: -10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                className="mt-2 text-xs sm:text-sm text-red-500 flex items-center leading-tight break-words"
+                                as="p"
+                              >
+                                <AlertCircle className="w-4 h-4 mr-1 flex-shrink-0" />
+                                <span className="flex-1 min-w-0">{errors.email}</span>
+                              </SimpleMotion>
+                            )}
+                          </div>
+                        </div>
 
-                {/* 主题 */}
-                <div>
-                  <label htmlFor="subject" className="block text-xs sm:text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2 leading-tight break-words">
-                    {formFieldConfig.subject.label} *
-                  </label>
-                  <input
-                    type="text"
-                    id="subject"
-                    name="subject"
-                    value={formData.subject}
-                    onChange={handleInputChange}
-                    className={`w-full px-4 py-3 border-2 rounded-xl transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-blue-500/20 ${
-                      errors.subject 
-                        ? 'border-red-500 bg-red-50 dark:bg-red-900/20' 
-                        : 'border-gray-200 dark:border-gray-700 focus:border-blue-500 bg-white dark:bg-gray-800'
-                    } text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400`}
-                    placeholder={formFieldConfig.subject.placeholder}
-                  />
-                  {errors.subject && (
-                    <SimpleMotion 
-                      initial={{ opacity: 0, y: -10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      className="mt-2 text-xs sm:text-sm text-red-500 flex items-center leading-tight break-words"
-                      as="p"
-                    >
-                      <AlertCircle className="w-4 h-4 mr-1 flex-shrink-0" />
-                      <span className="flex-1 min-w-0">{errors.subject}</span>
-                    </SimpleMotion>
-                  )}
-                </div>
+                        {/* 主题 */}
+                        <div>
+                          <label htmlFor="subject" className="block text-xs sm:text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2 leading-tight break-words">
+                            {formFieldConfig.subject.label} *
+                          </label>
+                          <input
+                            type="text"
+                            id="subject"
+                            name="subject"
+                            value={formData.subject}
+                            onChange={handleInputChange}
+                            className={`w-full px-4 py-3 border-2 rounded-xl transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-blue-500/20 ${
+                              errors.subject 
+                                ? 'border-red-500 bg-red-50 dark:bg-red-900/20' 
+                                : 'border-gray-200 dark:border-gray-700 focus:border-blue-500 bg-white dark:bg-gray-800'
+                            } text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400`}
+                            placeholder={formFieldConfig.subject.placeholder}
+                          />
+                          {errors.subject && (
+                            <SimpleMotion 
+                              initial={{ opacity: 0, y: -10 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              className="mt-2 text-xs sm:text-sm text-red-500 flex items-center leading-tight break-words"
+                              as="p"
+                            >
+                              <AlertCircle className="w-4 h-4 mr-1 flex-shrink-0" />
+                              <span className="flex-1 min-w-0">{errors.subject}</span>
+                            </SimpleMotion>
+                          )}
+                        </div>
 
-                {/* 项目详情 */}
-                {selectedCollaboration && (
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {/* 预算范围 */}
-                    <div>
-                      <label htmlFor="budget" className="block text-xs sm:text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2 leading-tight break-words">
-                        <DollarSign className="w-3 h-3 sm:w-4 sm:h-4 inline mr-1 flex-shrink-0" />
-                        <span className="break-words">{formFieldConfig.budget?.label || t('contact.form.budget.label') as string}</span>
-                      </label>
-                      <select
-                        id="budget"
-                        name="budget"
-                        value={formData.budget}
-                        onChange={handleInputChange}
-                        className="w-full px-4 py-3 border-2 border-gray-200 dark:border-gray-700 rounded-xl focus:outline-none focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition-all duration-300"
-                      >
-                        <option value="">{t('contact.form.selectBudget') as string}</option>
-                        {formFieldConfig.budget?.options?.map((option) => (
-                          <option key={option.value} value={option.value}>
-                            {option.label}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
+                        {/* 项目详情 */}
+                        {selectedCollaboration && (
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            {/* 预算范围 */}
+                            <div>
+                              <label htmlFor="budget" className="block text-xs sm:text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2 leading-tight break-words">
+                                <DollarSign className="w-3 h-3 sm:w-4 sm:h-4 inline mr-1 flex-shrink-0" />
+                                <span className="break-words">{formFieldConfig.budget?.label || t('contact.form.budget.label') as string}</span>
+                              </label>
+                              <select
+                                id="budget"
+                                name="budget"
+                                value={formData.budget}
+                                onChange={handleInputChange}
+                                className="w-full px-4 py-3 border-2 border-gray-200 dark:border-gray-700 rounded-xl focus:outline-none focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition-all duration-300"
+                              >
+                                <option value="">{t('contact.form.selectBudget') as string}</option>
+                                {formFieldConfig.budget?.options?.map((option) => (
+                                  <option key={option.value} value={option.value}>
+                                    {option.label}
+                                  </option>
+                                ))}
+                              </select>
+                            </div>
 
-                    {/* 项目周期 */}
-                    <div>
-                      <label htmlFor="timeline" className="block text-xs sm:text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2 leading-tight break-words">
-                        <Clock className="w-3 h-3 sm:w-4 sm:h-4 inline mr-1 flex-shrink-0" />
-                        <span className="break-words">{formFieldConfig.timeline?.label || t('contact.form.timeline.label') as string}</span>
-                      </label>
-                      <select
-                        id="timeline"
-                        name="timeline"
-                        value={formData.timeline}
-                        onChange={handleInputChange}
-                        className="w-full px-4 py-3 border-2 border-gray-200 dark:border-gray-700 rounded-xl focus:outline-none focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition-all duration-300"
-                      >
-                        <option value="">{t('contact.form.selectTimeline') as string}</option>
-                        {formFieldConfig.timeline?.options?.map((option) => (
-                          <option key={option.value} value={option.value}>
-                            {option.label}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-                  </div>
+                            {/* 项目周期 */}
+                            <div>
+                              <label htmlFor="timeline" className="block text-xs sm:text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2 leading-tight break-words">
+                                <Clock className="w-3 h-3 sm:w-4 sm:h-4 inline mr-1 flex-shrink-0" />
+                                <span className="break-words">{formFieldConfig.timeline?.label || t('contact.form.timeline.label') as string}</span>
+                              </label>
+                              <select
+                                id="timeline"
+                                name="timeline"
+                                value={formData.timeline}
+                                onChange={handleInputChange}
+                                className="w-full px-4 py-3 border-2 border-gray-200 dark:border-gray-700 rounded-xl focus:outline-none focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition-all duration-300"
+                              >
+                                <option value="">{t('contact.form.selectTimeline') as string}</option>
+                                {formFieldConfig.timeline?.options?.map((option) => (
+                                  <option key={option.value} value={option.value}>
+                                    {option.label}
+                                  </option>
+                                ))}
+                              </select>
+                            </div>
+                          </div>
+                        )}
+
+                        {/* 消息内容 */}
+                        <div>
+                          <label htmlFor="message" className="block text-xs sm:text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2 leading-tight break-words">
+                            {formFieldConfig.message.label} *
+                          </label>
+                          <textarea
+                            id="message"
+                            name="message"
+                            rows={6}
+                            value={formData.message}
+                            onChange={handleInputChange}
+                            className={`w-full px-4 py-3 border-2 rounded-xl transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-blue-500/20 resize-none ${
+                              errors.message 
+                                ? 'border-red-500 bg-red-50 dark:bg-red-900/20' 
+                                : 'border-gray-200 dark:border-gray-700 focus:border-blue-500 bg-white dark:bg-gray-800'
+                            } text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400`}
+                            placeholder={formFieldConfig.message.placeholder}
+                          />
+                          {errors.message && (
+                            <SimpleMotion 
+                              initial={{ opacity: 0, y: -10 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              className="mt-2 text-xs sm:text-sm text-red-500 flex items-center leading-tight break-words"
+                              as="p"
+                            >
+                              <AlertCircle className="w-4 h-4 mr-1 flex-shrink-0" />
+                              <span className="flex-1 min-w-0">{errors.message}</span>
+                            </SimpleMotion>
+                          )}
+                        </div>
+                      
+                        {/* 提交按钮 */}
+                        <UnifiedButton
+                          type="submit"
+                          variant="primary"
+                          size="lg"
+                          fullWidth
+                          loading={submitStatus === 'loading'}
+                          disabled={submitStatus === 'loading'}
+                          icon={submitStatus === 'loading' ? undefined : Send}
+                          iconPosition="left"
+                        >
+                          {submitStatus === 'loading' ? t('contact.form.submitting') as string : t('contact.form.submit') as string}
+                        </UnifiedButton>
+                      </form>
+                    </AnimationContainer>
+
+                     {/* 错误状态反馈 - 成功状态已移至上方独立视图 */}
+                     {submitStatus === 'error' && submitMessage && (
+                       <SimpleMotion
+                         initial={{ opacity: 0, y: 20, scale: 0.95 }}
+                         animate={{ opacity: 1, y: 0, scale: 1 }}
+                         className="mt-6 p-6 rounded-xl flex items-center shadow-lg bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-300 border-2 border-red-200 dark:border-red-800"
+                       >
+                         <div className="p-2 rounded-full mr-4 bg-red-100 dark:bg-red-800/30">
+                           <XCircle className="w-6 h-6" />
+                         </div>
+                         <div>
+                           <h4 className="font-semibold mb-1">
+                             {t('contact.form.error') as string}
+                           </h4>
+                           <p className="text-sm opacity-90">{submitMessage}</p>
+                         </div>
+                       </SimpleMotion>
+                     )}
+                  </>
                 )}
-
-                {/* 消息内容 */}
-                <div>
-                  <label htmlFor="message" className="block text-xs sm:text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2 leading-tight break-words">
-                    {formFieldConfig.message.label} *
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows={6}
-                    value={formData.message}
-                    onChange={handleInputChange}
-                    className={`w-full px-4 py-3 border-2 rounded-xl transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-blue-500/20 resize-none ${
-                      errors.message 
-                        ? 'border-red-500 bg-red-50 dark:bg-red-900/20' 
-                        : 'border-gray-200 dark:border-gray-700 focus:border-blue-500 bg-white dark:bg-gray-800'
-                    } text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400`}
-                    placeholder={formFieldConfig.message.placeholder}
-                  />
-                  {errors.message && (
-                    <SimpleMotion 
-                      initial={{ opacity: 0, y: -10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      className="mt-2 text-xs sm:text-sm text-red-500 flex items-center leading-tight break-words"
-                      as="p"
-                    >
-                      <AlertCircle className="w-4 h-4 mr-1 flex-shrink-0" />
-                      <span className="flex-1 min-w-0">{errors.message}</span>
-                    </SimpleMotion>
-                  )}
-                </div>
-              
-                {/* 提交按钮 */}
-                <UnifiedButton
-                  type="submit"
-                  variant="primary"
-                  size="lg"
-                  fullWidth
-                  loading={submitStatus === 'loading'}
-                  disabled={submitStatus === 'loading'}
-                  icon={submitStatus === 'loading' ? undefined : Send}
-                  iconPosition="left"
-                >
-                  {submitStatus === 'loading' ? t('contact.form.submitting') as string : t('contact.form.submit') as string}
-                </UnifiedButton>
-              </form>
-            </AnimationContainer>
-
-             {/* 提交状态反馈 */}
-             {submitMessage && (
-               <SimpleMotion
-                 initial={{ opacity: 0, y: 20, scale: 0.95 }}
-                 animate={{ opacity: 1, y: 0, scale: 1 }}
-                 className={`mt-6 p-6 rounded-xl flex items-center shadow-lg ${
-                   submitStatus === 'success'
-                     ? 'bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-300 border-2 border-green-200 dark:border-green-800'
-                     : 'bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-300 border-2 border-red-200 dark:border-red-800'
-                 }`}
-               >
-                 <div className={`p-2 rounded-full mr-4 ${
-                   submitStatus === 'success' 
-                     ? 'bg-green-100 dark:bg-green-800/30' 
-                     : 'bg-red-100 dark:bg-red-800/30'
-                 }`}>
-                   {submitStatus === 'success' ? (
-                     <CheckCircle className="w-6 h-6" />
-                   ) : (
-                     <XCircle className="w-6 h-6" />
-                   )}
-                 </div>
-                 <div>
-                   <h4 className="font-semibold mb-1">
-                     {submitStatus === 'success' ? t('contact.form.success') as string : t('contact.form.error') as string}
-                   </h4>
-                   <p className="text-sm opacity-90">{submitMessage}</p>
-                 </div>
-               </SimpleMotion>
-             )}
-               </article>
-             </SimpleMotion>
-           </section>
+              </article>
+            </SimpleMotion>
+          </section>
         </main>
       </ResponsiveContainer>
     </div>

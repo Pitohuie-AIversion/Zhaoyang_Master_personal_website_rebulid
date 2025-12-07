@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { useTranslation } from '../components/TranslationProvider';
+import { useTranslation } from '../components/common/TranslationProvider';
 import { ArrowLeft, Settings, Play, Pause, RotateCcw } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import ZhaoyangASCIIText from '../components/ZhaoyangASCIIText';
-import ZhaoyangASCIIRhythm from '../components/ZhaoyangASCIIRhythm';
-import { ResponsiveContainer } from '../components/ResponsiveEnhancements';
-import { useResponsive } from '../components/ResponsiveEnhancements';
-import SimpleMotion from '../components/SimpleMotion';
+import ZhaoyangASCIIText from '../components/features/home/ZhaoyangASCIIText';
+import ZhaoyangASCIIRhythm from '../components/features/home/ZhaoyangASCIIRhythm';
+import { ResponsiveContainer } from '../components/common/ResponsiveEnhancements';
+import { useResponsive } from '../components/common/ResponsiveEnhancements';
+import SimpleMotion from '../components/animations/SimpleMotion';
 
 type Theme = 'matrix' | 'cyber' | 'neon' | 'rainbow';
 type RhythmType = 'heartbeat' | 'wave' | 'pulse' | 'glitch';

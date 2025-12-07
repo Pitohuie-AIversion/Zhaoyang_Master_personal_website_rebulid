@@ -391,7 +391,7 @@ export const securityHeaders = (req, res, next) => {
   res.setHeader('Content-Security-Policy', 
     "default-src 'self'; " +
     "img-src 'self' data: https:; " +
-    "connect-src 'self' https://api.zhaoyangmu.cloud https://auoxidsodyvjcjzfthot.supabase.co; " +
+    "connect-src 'self' https://api.zhaoyangmu.cloud " + (process.env.VITE_SUPABASE_URL || "https://auoxidsodyvjcjzfthot.supabase.co") + "; " +
     "style-src 'self' 'unsafe-inline'; " +
     "script-src 'self'; " +
     "font-src 'self'; " +

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Search, Mail, Phone, Building, Calendar, MessageSquare } from 'lucide-react';
-import { ResponsiveCard } from '../components/ResponsiveEnhancements';
-import { UnifiedButton } from '../components/UnifiedButton';
+import { ResponsiveCard } from '../components/common/ResponsiveEnhancements';
+import { UnifiedButton } from '../components/common/UnifiedButton';
 
 interface ContactMessage {
   id: string;

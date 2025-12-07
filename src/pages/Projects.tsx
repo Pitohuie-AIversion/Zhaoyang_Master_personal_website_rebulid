@@ -1,15 +1,15 @@
 import { useState } from 'react';
-import { SimpleMotion } from '../components/SimpleMotion';
+import { SimpleMotion } from '../components/animations/SimpleMotion';
 import { ExternalLink, Github, Search, X } from 'lucide-react';
-import { PageLoader, ProjectCardSkeleton, usePageLoading, LazyWrapper } from '../components/LoadingComponents';
-import { UnifiedButton } from '../components/UnifiedButton';
-import LazyImage from '../components/LazyImage';
-import { SearchInput, FilterDropdown, SortDropdown, ActiveFilters, SearchStats, useAdvancedSearch } from '../components/SearchAndFilter';
+import { PageLoader, ProjectCardSkeleton, usePageLoading, LazyWrapper } from '../components/common/LoadingComponents';
+import { UnifiedButton } from '../components/common/UnifiedButton';
+import LazyImage from '../components/common/LazyImage';
+import { SearchInput, FilterDropdown, SortDropdown, ActiveFilters, SearchStats, useAdvancedSearch } from '../components/features/search/SearchAndFilter';
 import { useResponsive } from '../hooks/useResponsive';
-import { useTranslation } from '../components/TranslationProvider';
-import { ResponsiveContainer } from '../components/ResponsiveEnhancements';
-import { ScrollReveal, HoverCard } from '../components/InteractiveEffects';
-import { ProjectsSEO } from '../components/SEOOptimization';
+import { useTranslation } from '../components/common/TranslationProvider';
+import { ResponsiveContainer } from '../components/common/ResponsiveEnhancements';
+import { ScrollReveal, HoverCard } from '../components/animations/InteractiveEffects';
+import { ProjectsSEO } from '../components/seo/SEOOptimization';
 
 interface Project {
   id: number;

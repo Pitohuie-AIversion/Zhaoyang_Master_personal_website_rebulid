@@ -1,18 +1,19 @@
 import React, { Suspense } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
-import { GlobalOptimizationManager } from './components/GlobalOptimizationManager';
-import { ThemeProvider } from './components/DarkModeProvider';
-import { useTranslation } from './components/TranslationProvider';
-import { ErrorBoundary } from './components/ErrorBoundary';
-import { SmartPageTransition } from './components/PageTransitions';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
-import AnimatedBackground from './components/AnimatedBackground';
-// import HeaderASCII from './components/HeaderASCII'; // 已移动到 Navbar 中
-import { AccessibilityManager, AccessibilityToolbar } from './components/AccessibilityEnhancements';
-import { ThemeTransition } from './components/DarkModeProvider';
-import ChatAssistant from './components/ChatAssistant';
-import { StructuredDataSEO } from './components/StructuredDataSEO';
+import { GlobalOptimizationManager } from './components/common/GlobalOptimizationManager';
+import { ThemeProvider } from './components/common/DarkModeProvider';
+import { useTranslation } from './components/common/TranslationProvider';
+import { ErrorBoundary } from './components/common/ErrorBoundary';
+import { SmartPageTransition } from './components/animations/PageTransitions';
+import Navbar from './components/layout/Navbar';
+import Footer from './components/layout/Footer';
+import AnimatedBackground from './components/features/home/AnimatedBackground';
+// import HeaderASCII from './components/layout/HeaderASCII'; // 已移动到 Navbar 中
+import { AccessibilityManager, AccessibilityToolbar } from './components/layout/AccessibilityEnhancements';
+import { ThemeTransition } from './components/common/DarkModeProvider';
+import ChatAssistant from './components/features/chat/ChatAssistant';
+import { StructuredDataSEO } from './components/seo/StructuredDataSEO';
+import { GoogleAnalytics } from './components/seo/GoogleAnalytics';
 import './styles/accessibility.css';
 import './styles/animations.css';
 import { 
@@ -24,7 +25,7 @@ import {
   LazySkills,
   LazyContact,
   LazyASCIIDemo
-} from './components/PerformanceOptimization';
+} from './components/common/PerformanceOptimization';
 
 // Lazy load Particle Field pages
 const LazyParticleField = React.lazy(() => import('./pages/ParticleField'));
@@ -36,10 +37,10 @@ const LazyContactViewer = React.lazy(() => import('./pages/ContactViewer'));
 
 // 博客页面
 const LazyBlogPage = React.lazy(() => import('./pages/BlogPage'));
-const LazyBlogPost = React.lazy(() => import('./components/BlogPost'));
+const LazyBlogPost = React.lazy(() => import('./components/features/blog/BlogPost'));
 
 // 简历管理页面
-const LazyResumeManager = React.lazy(() => import('./components/ResumeManager'));
+const LazyResumeManager = React.lazy(() => import('./components/features/resume/ResumeManager'));
 const LazyNotFound = React.lazy(() => import('./pages/NotFound'));
 
 function AnimatedRoutes() {
@@ -180,6 +181,7 @@ function App() {
     <ErrorBoundary>
       <ThemeProvider>
         <GlobalOptimizationManager>
+          <GoogleAnalytics />
           <AccessibilityManager>
             <ThemeTransition>
               <div className="min-h-screen relative theme-transition" id="main-content">
@@ -210,11 +212,11 @@ function App() {
                 <StructuredDataSEO 
                   type="person"
                   data={{
-                    name: "牟昭阳",
-                    alternateName: "Zhaoyang Mu",
-                    jobTitle: "研究员",
+                    name: t('seo.site.author'),
+                    alternateName: t('seo.site.author') === '牟昭阳' ? 'Zhaoyang Mu' : '牟昭阳',
+                    jobTitle: t('home.hero.title'),
                     affiliation: {
-                      name: "学术研究机构",
+                      name: t('seo.default.organization'),
                       url: "https://example-institution.com"
                     },
                     url: window.location.origin,
@@ -224,15 +226,15 @@ function App() {
                       "https://linkedin.com/in/zhaoyang-mu"
                     ],
                     knowsAbout: [
-                      "人工智能",
-                      "机器学习", 
-                      "深度学习",
-                      "计算机视觉",
-                      "自然语言处理"
+                      t('skills.categories.aiMl'),
+                      t('skills.categories.programming'),
+                      t('skills.categories.simulation'),
+                      t('research.areas.scientificComputing.keywords.0'),
+                      t('research.areas.scientificComputing.keywords.1')
                     ],
                     alumniOf: {
-                      name: "顶尖大学",
-                      degree: "博士"
+                      name: t('education.educationItems.master.school'),
+                      degree: t('education.educationItems.master.degree')
                     }
                   }}
                 />

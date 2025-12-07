@@ -1,4 +1,4 @@
-import type { Language } from '../components/TranslationProvider';
+import type { Language } from '../components/common/TranslationProvider';
 
 interface TranslationCache {
   [key: string]: {

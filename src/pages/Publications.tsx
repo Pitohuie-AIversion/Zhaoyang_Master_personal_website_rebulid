@@ -1,10 +1,10 @@
-import { SimpleMotion } from '../components/SimpleMotion';
+import { SimpleMotion } from '../components/animations/SimpleMotion';
 import { useState } from 'react';
-import { useTranslation } from '../components/TranslationProvider';
-import { SearchInput, FilterDropdown, SortDropdown, ActiveFilters, SearchStats, useAdvancedSearch } from '../components/SearchAndFilter';
-import { UnifiedButton } from '../components/UnifiedButton';
+import { useTranslation } from '../components/common/TranslationProvider';
+import { SearchInput, FilterDropdown, SortDropdown, ActiveFilters, SearchStats, useAdvancedSearch } from '../components/features/search/SearchAndFilter';
+import { UnifiedButton } from '../components/common/UnifiedButton';
 import { useResponsive } from '../hooks/useResponsive';
-import { PublicationsSEO } from '../components/SEOOptimization';
+import { PublicationsSEO } from '../components/seo/SEOOptimization';
 
 interface Publication {
   id: number;

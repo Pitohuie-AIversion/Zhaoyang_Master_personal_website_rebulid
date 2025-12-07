@@ -1,7 +1,7 @@
 import React, { useState, memo } from 'react';
-import { useTranslation } from '../components/TranslationProvider';
-import { SimpleMotion } from '../components/SimpleMotion';
-import { UnifiedButton, ButtonGroup } from '../components/UnifiedButton';
+import { useTranslation } from '../components/common/TranslationProvider';
+import { SimpleMotion } from '../components/animations/SimpleMotion';
+import { UnifiedButton, ButtonGroup } from '../components/common/UnifiedButton';
 import { 
   Code, 
   BarChart3, 
@@ -13,9 +13,9 @@ import {
   Star,
   Layers
 } from 'lucide-react';
-import { LazyRadarChartComponent, LazyBarChartComponent, ChartContainer } from '../components/LazyCharts';
+import { LazyRadarChartComponent, LazyBarChartComponent, ChartContainer } from '../components/common/LazyCharts';
 import { useResponsive } from '../hooks/useResponsive';
-import { SkillsSEO } from '../components/SEOOptimization';
+import { SkillsSEO } from '../components/seo/SEOOptimization';
 
 // 技能数据接口
 interface Skill {

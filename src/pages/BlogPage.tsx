@@ -1,8 +1,8 @@
 import React from 'react';
-import { BlogList } from '../components/BlogList';
-import { useTranslation } from '../components/TranslationProvider';
-import { SimpleMotion } from '../components/SimpleMotion';
-import { StructuredDataSEO } from '../components/StructuredDataSEO';
+import { BlogList } from '../components/features/blog/BlogList';
+import { useTranslation } from '../components/common/TranslationProvider';
+import { SimpleMotion } from '../components/animations/SimpleMotion';
+import { StructuredDataSEO } from '../components/seo/StructuredDataSEO';
 
 const BlogPage: React.FC = () => {
   const { t } = useTranslation();

@@ -4,7 +4,7 @@ import { ParticleField as ParticleFieldComponent } from '../components/ParticleF
 import { ParticleFieldConfig } from '../utils/configManager';
 import { PerformanceMetrics } from '../utils/performanceMonitor';
 import { Settings, Play, Monitor, Palette } from 'lucide-react';
-import { useTranslation } from '../components/TranslationProvider';
+import { useTranslation } from '../components/common/TranslationProvider';
 
 const ParticleField: React.FC = () => {
   const { t } = useTranslation();

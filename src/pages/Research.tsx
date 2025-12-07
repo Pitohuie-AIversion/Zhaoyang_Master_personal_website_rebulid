@@ -1,15 +1,15 @@
 import React, { useState, memo } from 'react';
-import { SimpleMotion } from '../components/SimpleMotion';
+import { SimpleMotion } from '../components/animations/SimpleMotion';
 import { Search, BookOpen, Award, FileText, BarChart3, Eye, GraduationCap } from 'lucide-react';
-import { UnifiedButton } from '../components/UnifiedButton';
+import { UnifiedButton } from '../components/common/UnifiedButton';
 import { useResponsive } from '../hooks/useResponsive';
-import { useTranslation } from '../components/TranslationProvider';
-import { ResearchAnalytics } from '../components/ResearchAnalytics';
-import { ResearchDetailModal } from '../components/ResearchDetailModal';
-import { ResponsiveContainer } from '../components/ResponsiveEnhancements';
-import AcademicMetrics from '../components/AcademicMetrics';
-import PublicationList from '../components/PublicationList';
-import { StructuredDataSEO } from '../components/StructuredDataSEO';
+import { useTranslation } from '../components/common/TranslationProvider';
+import { ResearchAnalytics } from '../components/features/research/ResearchAnalytics';
+import { ResearchDetailModal } from '../components/features/research/ResearchDetailModal';
+import { ResponsiveContainer } from '../components/common/ResponsiveEnhancements';
+import AcademicMetrics from '../components/features/research/AcademicMetrics';
+import PublicationList from '../components/features/research/PublicationList';
+import { StructuredDataSEO } from '../components/seo/StructuredDataSEO';
 
 interface Publication {
   id: string;

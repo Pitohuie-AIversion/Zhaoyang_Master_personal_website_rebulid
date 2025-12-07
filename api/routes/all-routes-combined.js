@@ -1,14 +1,10 @@
-/**
- * 超级合并路由文件 - 减少Vercel Serverless Functions数量
- * 包含所有API路由以符合Hobby计划的12个函数限制
- */
-
 import express from 'express';
 import rateLimit from 'express-rate-limit';
 import { createClient } from '@supabase/supabase-js';
 import OpenAI from 'openai';
 import multer from 'multer';
 import { SecureKeyManager, utils } from '../utils/combined.js';
+import resumeRoutes from './resume-routes.js'; // Import separated resume routes
 
 const router = express.Router();
 
@@ -30,6 +26,12 @@ try {
 } catch (error) {
   console.error('❌ Failed to initialize global services:', error.message);
 }
+
+// Pass supabase to resume routes
+router.use('/resume', (req, res, next) => {
+  req.supabase = supabase;
+  next();
+}, resumeRoutes);
 
 // 初始化OpenAI客户端
 async function initializeOpenAI() {
@@ -635,50 +637,6 @@ router.get('/knowledge/search', async (req, res) => {
     res.status(500).json({ 
       error: 'Failed to search knowledge base',
       code: 'SEARCH_FAILED'
-    });
-  }
-});
-
-// ==================== 简历路由 ====================
-
-// 获取简历信息
-router.get('/resume/info', async (req, res) => {
-  try {
-    const { language = 'en' } = req.query;
-
-    if (!supabase) {
-      return res.status(503).json({ 
-        error: 'Resume service temporarily unavailable',
-        code: 'SERVICE_UNAVAILABLE'
-      });
-    }
-
-    console.log(`📄 Fetching resume info (${language})`);
-
-    const { data, error } = await supabase
-      .from('resume_info')
-      .select('*')
-      .eq('language', language)
-      .single();
-
-    if (error) {
-      console.error('❌ Resume info fetch error:', error);
-      throw error;
-    }
-
-    console.log(`✅ Resume info fetched successfully`);
-
-    res.json({
-      resume: data,
-      language
-    });
-
-  } catch (error) {
-    console.error('❌ Resume info API error:', error.message);
-    
-    res.status(500).json({ 
-      error: 'Failed to fetch resume information',
-      code: 'FETCH_FAILED'
     });
   }
 });

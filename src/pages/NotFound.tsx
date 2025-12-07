@@ -1,7 +1,7 @@
 import React from 'react';
-import { SimpleMotion } from '../components/SimpleMotion';
-import { useTranslation } from '../components/TranslationProvider';
-import SEOOptimization from '../components/SEOOptimization';
+import { SimpleMotion } from '../components/animations/SimpleMotion';
+import { useTranslation } from '../components/common/TranslationProvider';
+import SEOOptimization from '../components/seo/SEOOptimization';
 
 export default function NotFound() {
   const { t } = useTranslation();

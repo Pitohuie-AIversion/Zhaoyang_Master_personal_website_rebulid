@@ -1,0 +1,16 @@
+FROM node:18-alpine
+
+WORKDIR /app
+
+COPY package*.json ./
+RUN npm ci --only=production
+
+# Copy API source code
+COPY api ./api
+# Copy shared utils/services if they are outside api folder (based on project structure)
+# Based on LS, api/ has routes/ services/ utils/. 
+# But we also saw src/lib/utils.ts? No, backend seems to be in api/
+
+EXPOSE 3000
+
+CMD ["node", "api/index.js"]

@@ -1,360 +1,9 @@
 {
   "common": {
-    "loading": "Loading...",
-    "error": "Error",
-    "retry": "Retry",
-    "cancel": "Cancel",
-    "confirm": "Confirm",
-    "save": "Save",
-    "edit": "Edit",
-    "delete": "Delete",
-    "search": "Search",
-    "filter": "Filter",
-    "sort": "Sort",
-    "more": "More",
-    "less": "Less",
-    "viewAll": "View All",
-    "backToTop": "Back to Top",
-    "close": "Close",
-    "open": "Open",
-    "download": "Download",
-  "share": "Share",
-  "fontSize": "Font size",
-  "readingMode": "Reading mode",
-  "autoScroll": "Auto scroll",
-  "shareCancelled": "Share cancelled",
-  "linkCopied": "Link copied to clipboard",
-  "keyboard": {
-    "shortcutsTitle": "Keyboard Shortcuts",
-    "tip": "Note: Some shortcuts may vary by browser or OS"
-  },
-  "ascii": {
-    "title": "ASCII Demo",
-    "displayMode": "Display Mode",
-    "display": {
-      "staticText": "Static Text",
-      "rhythmEffect": "Rhythm Effect"
-    },
-    "theme": {
-      "title": "Theme Colors",
-      "matrix": "Matrix Green",
-      "cyber": "Cyber Blue",
-      "neon": "Neon Purple",
-      "rainbow": "Rainbow"
-    },
-    "rhythm": {
-      "title": "Rhythm Type",
-      "heartbeat": { "label": "Heartbeat", "desc": "Simulate heartbeat rhythm" },
-      "wave": { "label": "Wave", "desc": "Flowing wave effect" },
-      "pulse": { "label": "Pulse", "desc": "Regular pulsing flicker" },
-      "glitch": { "label": "Glitch", "desc": "Random glitch effect" }
-    },
-    "animation": {
-      "title": "Animation Type",
-      "typewriter": { "label": "Typewriter", "desc": "Character-by-character display" },
-      "wave": { "label": "Wave", "desc": "Character wave animation" },
-      "pulse": { "label": "Pulse", "desc": "Line pulse effect" },
-      "glitch": { "label": "Glitch", "desc": "Character glitch effect" }
-    },
-    "intensity": {
-      "title": "Effect Intensity",
-      "low": "Low",
-      "medium": "Medium",
-      "high": "High"
-    },
-    "size": {
-      "title": "Display Size",
-      "small": "Small",
-      "medium": "Medium",
-      "large": "Large"
-    },
-    "typewriter": {
-      "speedLabel": "Typing Speed"
-    }
-    ,
-    "docs": {
-      "title": "Feature Guide",
-      "display": {
-        "title": "Display Modes",
-        "static": "Basic ASCII text display, supports multiple animation effects",
-        "rhythm": "Dynamic character rhythms simulating heartbeat and waves"
-      },
-      "theme": {
-        "title": "Theme Colors",
-        "matrix": "Classic Matrix-style",
-        "cyber": "Modern tech palette",
-        "neon": "Futuristic neon effect",
-        "rainbow": "Dynamic rainbow gradient"
-      },
-      "rhythm": {
-        "title": "Rhythm Types",
-        "heartbeat": "Simulates heartbeat scaling",
-        "wave": "Flowing wave animation",
-        "pulse": "Regular pulsing",
-        "glitch": "Random glitch style"
-      },
-      "tech": {
-        "title": "Technical Features",
-        "canvas": "High-performance rendering based on Canvas and requestAnimationFrame",
-        "responsive": "Responsive design for multiple screen sizes",
-        "controls": "Real-time animation control and parameter tuning",
-        "effects": "Combination and stacking of multiple visual effects"
-      }
-    }
-  },
-  "seo": {
-    "site": {
-      "title": "Zhaoyang Mu Personal Site",
-      "author": "Zhaoyang Mu",
-      "language": "en",
-      "locale": "en_US"
-    },
-    "default": {
-      "title": "Zhaoyang Mu | Personal Site",
-      "description": "Focused on scientific computing, robotics, and AI — including Transformer/Neural Operator, CFD simulation, and underwater robotics.",
-      "keywords": ["Zhaoyang Mu", "Scientific Computing", "CFD", "Transformer", "Neural Operator", "Robotics"],
-      "jobTitle": "AI Master's Student",
-      "organization": "Dalian Maritime University"
-    },
-    "pages": {
-      "home": { "title": "Home", "description": "Personal homepage and research overview" },
-      "research": { "title": "Research", "description": "Research areas, outputs, and analytics" },
-      "projects": { "title": "Projects", "description": "Scientific/engineering projects and key outcomes" },
-      "publications": { "title": "Publications", "description": "Papers, conferences, and patents" },
-      "skills": { "title": "Skills", "description": "Programming, simulation, AI/ML, hardware and tools" },
-      "contact": { "title": "Contact", "description": "Email, socials, and address" }
-    },
-    "sitemap": {
-      "title": "Sitemap"
-    }
-  
-    ,
-    "institutions": {
-      "dlmu": "Dalian Maritime University",
-      "westlake": "Westlake University"
-    },
-    "rss": {
-      "title": "RSS Feed"
-    }
-  },
-  "blog": {
-    "title": "Academic Blog",
-    "description": "Share academic research outputs and technical thoughts",
-    "loading": "Loading...",
-    "searchPlaceholder": "Search blog posts...",
-    "sortByDate": "By Date",
-    "sortByViews": "By Views",
-    "sortByLikes": "By Likes",
-    "categories": "Categories",
-    "allCategories": "All Categories",
-    "tags": "Tags",
-    "allTags": "All Tags",
-    "noPosts": "No blog posts",
-    "readMore": "Read More",
-    "like": "Like",
-    "minutesRead": "min read",
-    "pleaseFillAllFields": "Please fill in all required fields",
-    "pleaseEnterValidEmail": "Please enter a valid email address",
-    "commentSubmitted": "Comment submitted, pending review",
-    "commentSubmitFailed": "Failed to submit comment, please retry",
-    "linkCopied": "Link copied to clipboard",
-    "postNotFound": "Post not found",
-    "backToBlog": "Back to Blog",
-    "featured": "Featured",
-    "share": "Share",
-    "copyLink": "Copy Link",
-    "bookmark": "Bookmark",
-    "relatedPosts": "Related Posts",
-    "comments": "Comments",
-    "leaveComment": "Leave a Comment",
-    "name": "Name",
-    "email": "Email",
-    "comment": "Comment",
-    "commentPlaceholder": "Enter your comment...",
-    "submitting": "Submitting...",
-    "submitComment": "Submit Comment",
-    "noComments": "No comments yet — be the first!",
-    "viewOnScholar": "View on Scholar Profile"
-  },
-    "copy": "Copy",
-    "copied": "Copied",
-  "language": "Language",
-  "languageOptions": {
-    "switchToEnglish": "Switch to English",
-    "switchToChinese": "Switch to Chinese",
-    "english": "English",
-    "chinese": "Chinese",
-    "englishShort": "EN",
-    "chineseShort": "中文"
-  },
-    "theme": "Theme",
-    "settings": "Settings",
-    "help": "Help",
-    "about": "About",
-    "contact": "Contact",
-    "privacy": "Privacy Policy",
-  "terms": "Terms of Service",
-  "searchPlaceholder": "Search...",
-  "menu": "Menu",
-  "skipToMain": "Skip to main content",
-  "logoAlt": "Zhaoyang Mu Logo",
-  "searchSuggestions": "Search suggestions",
-  "categories": {
-    "project": "Project",
-    "publication": "Publication",
-    "skill": "Skill",
-    "research": "Research"
-  },
-  "aria": {
-    "clearSearch": "Clear search",
-    "closeMenu": "Close menu",
-    "backToTop": "Back to top",
-    "accessibilitySettings": "Accessibility settings",
-    "themeToggleLight": "Switch to light mode",
-    "themeToggleDark": "Switch to dark mode",
-    "chooseTheme": "Choose theme",
-    "socialLinks": "Social media links",
-    "visitSocial": "Visit my social profile"
-  },
-  "breadcrumb": {
-    "home": "Home",
-    "research": "Research",
-    "projects": "Projects",
-    "publications": "Publications",
-    "skills": "Skills",
-    "contact": "Contact"
-  },
-  "clearAllFilters": "Clear All Filters",
-  "searchHistoryTitle": "Search History",
-  "clear": "Clear",
-  "noResults": "No results found",
-  "tryDifferentKeywords": "Try different keywords?",
-  "match": "Match",
-  "accessibility": "Accessibility",
-  "saveSuccess": "Saved successfully",
-  "saveError": "Failed to save",
-  "confirmDelete": "Are you sure you want to delete this item?",
-  "deleteSuccess": "Deleted successfully",
-  "deleteError": "Failed to delete",
-  "add": "Add",
-  "noData": "No data available",
-  "items": "items",
-  "confirmYes": "Yes",
-  "confirmNo": "No",
-  "relatedLinks": "Related Links",
-  "chat": {
-    "projectsIntro": "He has participated in several important projects, including DamFormer dam-break flow prediction, Rs-ModCubes modular robots, bionic undulating fin propulsion system, and fan array wind tunnel experimental platform.",
-    "educationIntro": "Zhaoyang Mu is a Master's student in AI at Dalian Maritime University and a visiting student at Westlake University.",
-    "contactIntro": "You can contact Zhaoyang Mu via email, phone, or visit his social platforms such as GitHub and LinkedIn.",
-    "skillsIntro": "He masters Python, MATLAB, C++, Java, PyTorch, TensorFlow, Star-CCM+, ANSYS Fluent, OpenFOAM, STM32, Arduino, etc.",
-    "defaultHelp": "I'm Zhaoyang Mu's AI assistant. Ask about his research areas, projects, skills, or education to get started."
-  },
-  "social": {
-    "github": "GitHub",
-    "linkedin": "LinkedIn",
-    "twitter": "Twitter",
-    "researchgate": "ResearchGate",
-    "googleScholar": "Google Scholar",
-    "weibo": "Weibo"
-  },
-  "accessibilityLabels": {
-    "settingsTitle": "Accessibility Settings",
-    "highContrast": "High contrast mode",
-    "largeText": "Large text mode",
-    "reducedMotion": "Reduce motion effects",
-    "keyboardNavigation": "Keyboard navigation enhancements",
-    "focusVisible": "Focus visible",
-    "textToSpeech": "Text-to-speech",
-    "screenReader": "Screen reader",
-    "colorBlindFriendly": "Color-blind friendly mode",
-    "readHelpMessage": "This is the accessibility toolbar. Here you can adjust accessibility settings.",
-    "stopReading": "Stop reading",
-    "readDescription": "Read description"
-  },
-    "activeFilters": "Active Filters:",
-    "clearAll": "Clear All",
-    "sortBy": "Sort by",
-    "searchResults": {
-      "found": "Found",
-      "results": "results",
-      "containing": "containing",
-      "showing": "Showing",
-      "of": "of",
-      "items": "items"
-    },
-    "technologies": {
-      "bionics": "Bionics",
-      "underwaterRobot": "Underwater Robot",
-      "sensorFusion": "Sensor Fusion",
-      "realTimeControl": "Real-time Control",
-      "networkManagement": "Network Management",
-      "closedLoopControl": "Closed-loop Control",
-      "oceanEngineering": "Ocean Engineering"
-    },
-    "timeline": {
-      "filters": "Filters",
-      "clearFilters": "Clear Filters",
-      "sortBy": "Sort By",
-      "sortByDate": "By Date",
-      "sortByType": "By Type",
-      "sortByTitle": "By Title",
-      "loadMore": "Load More",
-      "noItems": "No timeline items",
-      "types": {
-        "education": "Education",
-        "research": "Research",
-        "publication": "Publication",
-        "patent": "Patent",
-        "award": "Award",
-        "project": "Project",
-        "skill": "Skill"
-      }
-    },
-    "resume": {
-      "manager": "Resume Manager",
-      "managerDesc": "Manage and synchronize your resume data",
-      "overview": "Overview",
-      "personal": "Personal",
-      "education": "Education",
-      "experience": "Experience",
-      "skills": "Skills",
-      "achievements": "Achievements",
-      "personalInfo": "Personal Information",
-      "fullName": "Full Name",
-      "email": "Email",
-      "phone": "Phone",
-      "location": "Location",
-      "bio": "Bio",
-      "workExperience": "Work Experience",
-      "researchExperience": "Research Experience",
-      "languages": "Languages",
-      "publications": "Publications",
-      "patents": "Patents",
-      "awards": "Awards",
-      "dataQuality": "Data Quality",
-      "completeness": "Completeness",
-      "sections": "Sections",
-      "syncStatus": "Sync Status",
-      "synced": "Synchronized",
-      "lastSync": "Last sync",
-      "upload": {
-        "title": "Upload Resume PDF",
-        "desc": "Upload your resume PDF file, the system will automatically extract and store data",
-        "selectFile": "Select PDF File",
-        "uploading": "Uploading...",
-        "pdfOnly": "Please upload a PDF file",
-        "success": "Resume uploaded and processed successfully",
-        "error": "Resume processing failed"
-      },
-      "validate": "Validate Data",
-      "validationSuccess": "Resume data is valid",
-      "validationErrors": "Validation errors",
-      "validationError": "Failed to validate resume data",
-      "sync": "Sync with Website",
-      "syncing": "Syncing...",
-      "syncSuccess": "Resume data synced successfully",
-      "syncError": "Failed to sync resume data",
-      "syncConfirm": "This will sync resume data with your website. Continue?"
+    "notFound": {
+      "title": "Page Not Found",
+      "description": "The page you are looking for does not exist or has been moved.",
+      "backHome": "Back to Home"
     }
   },
   "navigation": {
@@ -373,18 +22,8 @@
   "footer": {
     "personalInfo": {
       "name": "Zhaoyang Mu",
-      "nameEn": "Zhaoyang Mu",
-      "description": "Focused on the intersection of scientific computing and robotics, modeling CFD spatiotemporal fields with Transformer/Neural Operator and bionic underwater robotics."
-    },
-    "researchAreas": {
-      "title": "Research Areas",
-      "areas": [
-        "Transformer/Neural Operator",
-        "Computational Fluid Dynamics (CFD)",
-        "Bionic Robotics",
-        "Underwater Perception & Control",
-        "High-Performance Computing"
-      ]
+      "nameEn": "牟昭阳",
+      "description": "Focused on the intersection of scientific computing and robotics, dedicated to Transformer/Neural Operator modeling of CFD spatiotemporal fields, advancing technological innovation and practical applications."
     },
     "quickLinks": {
       "title": "Quick Links",
@@ -393,23 +32,27 @@
       "projects": "Projects",
       "publications": "Publications"
     },
+    "researchAreas": {
+      "title": "Research Areas",
+      "areas": [
+        "Transformer/Neural Operator for CFD Spatiotemporal Field Modeling",
+        "Scientific Computing & Robotics Technology",
+        "Bionic Perception & Underwater Robotics",
+        "Fluid Dynamics Numerical Simulation",
+        "Mechanical Design & Control Systems"
+      ]
+    },
     "contact": {
       "title": "Contact",
       "email": "mzymuzhaoyang@gmail.com",
-      "address": "Hangzhou, Zhejiang, China"
+      "phone": "+86 153 8213 0266",
+      "address": "Hangzhou, China (Westlake University)"
     },
     "legal": {
-      "copyright": "© Zhaoyang Mu. All rights reserved",
+      "copyright": "Zhaoyang Mu. All rights reserved.",
       "privacy": "Privacy Policy",
       "terms": "Terms of Service",
       "sitemap": "Sitemap"
-    }
-  },
-  "common": {
-    "notFound": {
-      "title": "Page Not Found",
-      "description": "The page you are looking for does not exist or has been moved.",
-      "backHome": "Back to Home"
     }
   },
   "home": {
@@ -489,15 +132,6 @@
           "title": "Westlake University Visit and Exchange",
           "description": "Invited to visit Westlake University for bionic robotics technology exchange and cooperation (June 2024 - Present)",
           "date": "2024-06-01"
-        },
-        "conferencePresentation": {
-          "title": "Keynote Presentation at International CFD Conference",
-          "date": "2024-02-20",
-          "description": "Invited to share latest research progress on neural operators at international computational fluid dynamics conference"
-        },
-        "patentApproval": {
-          "title": "Bionic Perception Device Patent Granted",
-          "date": "2024-03-10"
         }
       }
     },
@@ -521,7 +155,11 @@
     "downloadResume": "Download Resume",
     "viewMoreAchievements": "View More Achievements",
     "researchAchievements": "Research Achievements",
-    "achievementsDesc": "Significant achievements and breakthroughs in scientific computing, robotics, and artificial intelligence"
+    "achievementsDesc": "Significant achievements and breakthroughs in scientific computing, robotics, and artificial intelligence",
+    "timeline": {
+      "title": "Academic Journey",
+      "description": "Showcasing my academic and professional development trajectory"
+    }
   },
   "academic": {
     "title": "Academic Research",
@@ -531,6 +169,60 @@
     "searchPlaceholder": "Search papers, patents, or awards...",
     "noResults": "No results found",
     "noResultsDesc": "Please try adjusting your search criteria or filters",
+    "filterAll": "All",
+    "blog": {
+      "title": "Academic Blog",
+      "description": "Sharing research findings and technical insights",
+      "loading": "Loading...",
+      "searchPlaceholder": "Search blog posts...",
+      "categories": "Categories",
+      "allCategories": "All Categories",
+      "tags": "Tags",
+      "allTags": "All Tags",
+      "sortByDate": "By Date",
+      "sortByViews": "By Views",
+      "sortByLikes": "By Likes",
+      "noPosts": "No blog posts available",
+      "readMore": "Read More",
+      "backToBlog": "Back to Blog",
+      "share": "Share",
+      "like": "Like",
+      "unlike": "取消点赞",
+      "comment": "Comment",
+      "reply": "回复",
+      "loadMoreComments": "加载更多评论",
+      "noComments": "No comments yet. Be the first to comment!",
+      "addComment": "添加评论",
+      "commentPlaceholder": "Enter your comment...",
+      "submitComment": "Submit Comment",
+      "commentSuccess": "评论发表成功",
+      "commentError": "评论发表失败",
+      "relatedPosts": "Related Posts",
+      "author": "作者",
+      "publishedDate": "发布日期",
+      "readingTime": "阅读时间",
+      "minutes": "分钟",
+      "wordCount": "字数",
+      "words": "字"
+    }
+  },
+  "research": {
+    "title": "About Me",
+    "description": "Learn about my academic background, research interests, and professional experience",
+    "switchToAnalyticsView": "Switch to Analytics View",
+    "switchToListView": "Switch to List View",
+    "searchPlaceholder": "Search papers, patents, or awards...",
+    "noResults": "No results found",
+    "noResultsDesc": "Please try adjusting your search criteria or filters",
+    "filters": {
+      "allTypes": "All Types",
+      "publications": "Publications",
+      "patents": "Patents",
+      "awards": "Awards",
+      "allStatus": "All Status",
+      "published": "Published",
+      "underReview": "Under Review"
+    },
     "filterAll": "All",
     "blog": {
       "title": "Academic Blog",
@@ -692,327 +384,11 @@
         "error": "Failed to fetch papers data, please try again later"
       }
     },
-    "filters": {
-      "allTypes": "All Types",
-      "publications": "Publications",
-      "patents": "Patents",
-      "awards": "Awards",
-      "allStatus": "All Status",
-      "published": "Published",
-      "underReview": "Under Review"
-    },
-    "education": "Education",
-    "educationItems": {
-      "master": {
-        "title": "Dalian Maritime University - Master of Artificial Intelligence",
-        "description": "Major: Artificial Intelligence (0812J1) | Supervisor: Prof. Xu Minyi | School of Artificial Intelligence",
-        "period": "2023.08 - 2025.06 (Expected)",
-        "status": "Current"
-      },
-      "visiting": {
-        "title": "Westlake University - Visiting Student/Research Assistant",
-        "description": "School of Engineering i⁴-FSI Lab (PI: Prof. Fan Dixia) | Focus: Bionic Undulating Fin Propulsion Simulation",
-        "period": "2024.06 - Present",
-        "status": "Visiting Scholar"
-      },
-      "bachelor": {
-        "title": "Dalian Maritime University - Bachelor of Materials Science and Engineering",
-        "description": "Major: Materials Science and Engineering (Polymer) | GPA 3.2/4.0 (82/100) | Rank 7/100",
-        "period": "2019.09 - 2023.06",
-        "status": "Bachelor of Engineering"
-      }
-    },
     "publications": {
       "title": "Publications"
     },
     "patents": {
-      "title": "Patents"
-    },
-    "awards": {
-      "title": "Awards"
-    },
-    "academicAchievements": "Academic Achievements",
-    "totalCount": "Total {{count}} {{unit}}",
-    "papers": "papers",
-    "items": "items",
-    "authors": "Authors",
-    "applicant": "Applicant",
-    "areas": {
-      "scientificComputing": {
-        "title": "Scientific Computing",
-        "description": "Research in computational fluid dynamics, neural operators, and high-performance computing",
-        "keywords": ["CFD", "Neural Operator", "Transformer", "HPC"],
-        "data": {
-          "patent1": {
-            "title": "Underwater Robot Dynamic Environment Perception and Navigation Device",
-            "authors": "Zhaoyang Mu, Minyi Xu, et al.",
-            "journal": "Chinese Invention Patent",
-            "abstract": "A novel underwater robot system with dynamic environment perception and navigation capabilities based on bionic principles.",
-            "keywords": ["Underwater Robot", "Environment Perception", "Navigation", "Bionic"]
-          },
-          "patent2": {
-            "title": "Fan Array Wind Tunnel Control System",
-            "authors": "Zhaoyang Mu, et al.",
-            "journal": "Chinese Utility Model Patent",
-            "abstract": "Modular 2.5m×2.5m fan array with STM32 multi-board PWM/TACH closed-loop control and VLAN/DHCP network management.",
-            "keywords": ["Fan Array", "STM32", "PWM/TACH", "VLAN", "Experimental Platform"]
-          },
-          "patent3": {
-            "title": "Marine Observation Buoy Mechanical Structure",
-            "authors": "Zhaoyang Mu, et al.",
-            "journal": "Chinese Utility Model Patent",
-            "abstract": "Optimized mechanical structure design for marine observation buoy with enhanced sealing and corrosion resistance.",
-            "keywords": ["Marine Buoy", "Mechanical Design", "Sealing", "Ocean Engineering"]
-          },
-          "publication1": {
-            "title": "Generalizing morphologies in dam break simulations using transformer model",
-            "authors": "Zhaoyang Mu, Minyi Xu, et al.",
-            "journal": "Physics of Fluids 37(1):016612, 2025",
-            "abstract": "A novel Transformer-based neural operator for cross-geometric generalization in dam-break flow prediction.",
-            "keywords": ["Transformer", "Dam Break", "CFD", "Neural Operator"]
-          },
-          "publication2": {
-            "title": "Rs-ModCubes: Self-reconfigurable, scalable, modular cubic robots for underwater operations",
-            "authors": "Zhaoyang Mu, et al.",
-            "journal": "IEEE Robotics and Automation Letters, 2025",
-            "abstract": "Self-reconfigurable modular cubic robots designed for underwater operations with scalable architecture.",
-            "keywords": ["Modular Robots", "Underwater Operations", "Self-reconfiguration", "Scalable"]
-          },
-          "publication3": {
-            "title": "Sparse-to-Dense Flow Field Reconstruction using Transformer Neural Operator",
-            "authors": "Zhaoyang Mu, et al.",
-            "journal": "Under Review",
-            "abstract": "A Transformer-based approach for reconstructing dense flow fields from sparse sensor measurements.",
-            "keywords": ["Sparse Reconstruction", "Flow Field", "Transformer", "Neural Operator"]
-          }
-        },
-        "sparseToDense": {
-          "authors": "Zhaoyang Mu, et al.",
-          "journal": "Under Review"
-        }
-      }
-    }
-  },
-  "research": {
-    "title": "Research",
-    "academicAchievements": "Academic Achievements",
-    "totalCount": "Total {{count}} {{unit}}",
-    "papers": "papers",
-    "items": "items",
-    "authors": "Authors",
-    "applicant": "Applicant",
-    "patentNumber": "Patent No.",
-    "applicationDate": "Application Date",
-    "publicDate": "Publication Date",
-    "certificateNumber": "Certificate No.",
-    "viewDetails": "View Details",
-    "status": {
-      "published": "Published",
-      "accepted": "Accepted",
-      "underReview": "Under Review",
-      "preparing": "Preparing",
-      "granted": "Granted"
-    },
-    "type": {
-      "journal": "Journal Paper",
-      "conference": "Conference Paper",
-      "patent": "Patent",
-      "invention": "Invention Patent",
-      "utility": "Utility Model",
-      "design": "Design Patent"
-    },
-    "level": {
-      "national": "National",
-      "provincial": "Provincial",
-      "school": "School"
-    },
-    "keywords": {
-      "scientificComputing": "Scientific Computing",
-      "roboticsResearch": "Robotics Research",
-      "artificialIntelligence": "Artificial Intelligence",
-      "machineLearning": "Machine Learning"
-    },
-    "awardLevels": {
-      "national": "National Level",
-      "provincial": "Provincial Level",
-      "university": "University Level"
-    },
-    "areas": {
-      "scientificComputing": {
-        "title": "Scientific Computing",
-        "description": "Research in computational fluid dynamics, neural operators, and high-performance computing",
-        "keywords": ["CFD", "Neural Operator", "Transformer", "HPC"],
-        "data": {
-          "publication1": {
-            "title": "DamFormer: A Transformer-based Model for Dam-break Flow Prediction with Cross-geometry Generalization",
-            "authors": "Zhaoyang Mu, Supervisor Name, Collaborator",
-            "journal": "Physics of Fluids",
-            "abstract": "This paper proposes the DamFormer model based on Transformer architecture for cross-geometry dam-break flow prediction. The model achieves high-precision flow field prediction under different geometric configurations, providing new technical means for dam-break disaster assessment. A multi-geometry boundary dataset is constructed to achieve cross-geometry zero-shot prediction, solving the problem of high computational cost in traditional CFD simulations.",
-            "keywords": ["Transformer", "Dam-break", "CFD", "Deep Learning", "Cross-geometry", "Physics of Fluids"]
-          },
-          "publication2": {
-            "title": "Sparse→Dense Transformer: Sparse-to-Dense Field Reconstruction",
-            "authors": "Zhaoyang Mu, Collaborating Researcher",
-            "journal": "Physics of Fluids",
-            "abstract": "For CFD/environmental flow, sparse sensing reconstruction of high-resolution spatiotemporal fields. Based on Transformer architecture to achieve intelligent reconstruction from sparse observations to dense fields, providing an efficient flow field reconstruction method.",
-            "keywords": ["Transformer", "Neural Operator", "Field Reconstruction", "CFD", "Environmental Flow"]
-          },
-          "publication3": {
-            "title": "CFD-FSI Analysis of Bionic Undulating Fin Propulsion System",
-            "authors": "Zhaoyang Mu, Westlake University Research Team",
-            "journal": "International Conference on Robotics and Automation (ICRA)",
-            "abstract": "Westlake University i⁴-FSI Laboratory project. CFD/FSI coupled simulation analysis of bionic undulating fin propulsion system through Star-CCM+, Java Macro automated parameter sweeping, exploring bionic propulsion mechanisms.",
-            "keywords": ["Star-CCM+", "CFD-FSI", "Bionic Propulsion", "Java Macro", "Westlake University"]
-          },
-          "patent1": {
-            "title": "A Modular Self-reconfigurable Robot System",
-            "authors": "Zhaoyang Mu, Invention Team",
-            "journal": "Chinese Invention Patent",
-            "abstract": "This invention discloses a modular self-reconfigurable cubic robot system Rs-ModCubes with autonomous reconfiguration capability and multiple motion modes, suitable for robot applications in complex environments.",
-            "keywords": ["Modular Robot", "Self-reconfiguration", "Cubic Structure", "Robot System"]
-          },
-          "patent2": {
-            "title": "Underwater Robot Bionic Sensing Device and Sensing Method",
-            "authors": "Zhaoyang Mu, Patent Team",
-            "journal": "Chinese Invention Patent",
-            "abstract": "This invention provides an underwater robot bionic sensing device that achieves sensitive detection of water flow changes based on TENG technology, combined with artificial lateral line structure to improve sensing accuracy.",
-            "keywords": ["Underwater Robot", "TENG", "Bionic Sensing", "Artificial Lateral Line"]
-          },
-          "patent3": {
-            "title": "Fan Array Wind Tunnel Experimental Platform Control System",
-            "authors": "Zhaoyang Mu, Development Team",
-            "journal": "Chinese Utility Model Patent",
-            "abstract": "Modular 2.5m×2.5m fan array, STM32 multi-board PWM/TACH closed-loop control, VLAN/DHCP network management. Experimental platform for flow field control and test verification.",
-            "keywords": ["Fan Array", "STM32", "PWM/TACH", "VLAN", "Experimental Platform"]
-          }
-        }
-      },
-      "robotics": {
-        "title": "Robotics",
-        "underwaterPerception": {
-          "title": "Underwater Perception System",
-          "description": "Bionic-based underwater robot environmental perception and navigation technology"
-        },
-        "bionicFin": {
-          "title": "Bionic Propulsion System",
-          "description": "Fish-inspired undulating fin propulsion device design and control"
-        },
-        "modularRobot": {
-          "title": "Modular Robot",
-          "description": "Reconfigurable robot system design based on modular cubes"
-        }
-      }
-    },
-    "patents": {
-    "totalCount": "Total {{count}} {{unit}}",
-    "papers": "papers",
-    "items": "items",
-    "authors": "Authors",
-    "applicant": "Applicant",
-    "patentNumber": "Patent No.",
-    "publicDate": "Publication Date",
-    "certificateNumber": "Certificate No.",
-    "viewDetails": "View Details",
-    "status": {
-      "published": "Published",
-      "accepted": "Accepted",
-      "underReview": "Under Review",
-      "preparing": "Preparing",
-      "granted": "Granted"
-    },
-    "type": {
-      "journal": "Journal Paper",
-      "conference": "Conference Paper"
-    },
-    "patentType": {
-      "invention": "Invention Patent",
-      "utility": "Utility Model",
-      "design": "Design Patent"
-    },
-    "level": {
-      "national": "National",
-      "provincial": "Provincial",
-      "school": "School"
-    },
-    "areas": {
-      "scientificComputing": {
-        "title": "Scientific Computing",
-        "transformer": {
-          "title": "Transformer Neural Operator",
-          "description": "Applying Transformer architecture to PDE solving with cross-geometry generalization"
-        },
-        "sparseToDense": {
-          "title": "Transformer-based Sparse-to-Dense Flow Field Reconstruction",
-          "journal": "Journal of Computational Physics",
-          "authors": ["Zhaoyang Mu", "Lei Zhao"],
-          "description": "Proposed a Transformer-based method for reconstructing dense flow fields from sparse sensor data, enabling complete flow field reconstruction from limited sensor measurements."
-        },
-        "damBreak": {
-          "title": "Dam-break Flow Prediction",
-          "description": "High-precision numerical simulation and prediction methods for dam-break flow dynamics"
-        },
-        "data": {
-          "publication1": {
-            "title": "DamFormer: A Transformer-based Model for Dam-break Flow Prediction with Cross-geometry Generalization",
-            "authors": "Zhaoyang Mu, Supervisor Name, Collaborator",
-            "journal": "Physics of Fluids",
-            "abstract": "This paper proposes the DamFormer model based on Transformer architecture for cross-geometry dam-break flow prediction. The model achieves high-precision flow field prediction under different geometric configurations, providing new technical means for dam-break disaster assessment. A multi-geometry boundary dataset is constructed to achieve cross-geometry zero-shot prediction, solving the problem of high computational cost in traditional CFD simulations.",
-            "keywords": ["Transformer", "Dam-break", "CFD", "Deep Learning", "Cross-geometry", "Physics of Fluids"]
-          },
-          "publication2": {
-            "title": "Sparse→Dense Transformer: Sparse-to-Dense Field Reconstruction",
-            "authors": "Zhaoyang Mu, Collaborating Researcher",
-            "journal": "Physics of Fluids",
-            "abstract": "For CFD/environmental flow, sparse sensing reconstruction of high-resolution spatiotemporal fields. Based on Transformer architecture to achieve intelligent reconstruction from sparse observations to dense fields, providing an efficient flow field reconstruction method.",
-            "keywords": ["Transformer", "Neural Operator", "Field Reconstruction", "CFD", "Environmental Flow"]
-          },
-          "publication3": {
-            "title": "CFD-FSI Analysis of Bionic Undulating Fin Propulsion System",
-            "authors": "Zhaoyang Mu, Westlake University Research Team",
-            "journal": "International Conference on Robotics and Automation (ICRA)",
-            "abstract": "Westlake University i⁴-FSI Laboratory project. CFD/FSI coupled simulation analysis of bionic undulating fin propulsion system through Star-CCM+, Java Macro automated parameter sweeping, exploring bionic propulsion mechanisms.",
-            "keywords": ["Star-CCM+", "CFD-FSI", "Bionic Propulsion", "Java Macro", "Westlake University"]
-          },
-          "patent1": {
-            "title": "A Modular Self-reconfigurable Robot System",
-            "authors": "Zhaoyang Mu, Invention Team",
-            "journal": "Chinese Invention Patent",
-            "abstract": "This invention discloses a modular self-reconfigurable cubic robot system Rs-ModCubes with autonomous reconfiguration capability and multiple motion modes, suitable for robot applications in complex environments.",
-            "keywords": ["Modular Robot", "Self-reconfiguration", "Cubic Structure", "Robot System"]
-          },
-          "patent2": {
-            "title": "Underwater Robot Bionic Sensing Device and Sensing Method",
-            "authors": "Zhaoyang Mu, Patent Team",
-            "journal": "Chinese Invention Patent",
-            "abstract": "This invention provides an underwater robot bionic sensing device that achieves sensitive detection of water flow changes based on TENG technology, combined with artificial lateral line structure to improve sensing accuracy.",
-            "keywords": ["Underwater Robot", "TENG", "Bionic Sensing", "Artificial Lateral Line"]
-          },
-          "patent3": {
-            "title": "Fan Array Wind Tunnel Experimental Platform Control System",
-            "authors": "Zhaoyang Mu, Development Team",
-            "journal": "Chinese Utility Model Patent",
-            "abstract": "Modular 2.5m×2.5m fan array, STM32 multi-board PWM/TACH closed-loop control, VLAN/DHCP network management. Experimental platform for flow field control and test verification.",
-            "keywords": ["Fan Array", "STM32", "PWM/TACH", "VLAN", "Experimental Platform"]
-          }
-        }
-      },
-      "robotics": {
-        "title": "Robotics",
-        "underwaterPerception": {
-          "title": "Underwater Perception System",
-          "description": "Bionic-based underwater robot environmental perception and navigation technology"
-        },
-        "bionicFin": {
-          "title": "Bionic Propulsion System",
-          "description": "Fish-inspired undulating fin propulsion device design and control"
-        },
-        "modularRobot": {
-          "title": "Modular Robot",
-          "description": "Reconfigurable robot system design based on modular cubes"
-        }
-      }
-    },
-    "patents": {
+      "title": "Patents",
       "underwaterNavigation": {
         "title": "Underwater Navigation Device and Method Based on Bionic Perception",
         "applicant": "Westlake University",
@@ -1071,6 +447,7 @@
       }
     },
     "awards": {
+      "title": "Awards",
       "internetPlusGold": {
         "title": "Gold Award in the 8th China International \\\"Internet+\\\" College Students Innovation and Entrepreneurship Competition",
         "organization": "Ministry of Education",
@@ -1091,6 +468,605 @@
         "organization": "Liaoning Provincial Department of Education",
         "description": "Competition work: \\\"Deep Blue Vision Fusion Underwater Robot\\\", won first prize in the Liaoning Province College Student Mechanical Innovation Design Competition."
       }
+    },
+    "academicAchievements": "Academic Achievements",
+    "totalCount": "Total {{count}} {{unit}}",
+    "papers": "papers",
+    "items": "items",
+    "authors": "Authors",
+    "applicant": "Applicant",
+    "patentNumber": "Patent No.",
+    "applicationDate": "Application Date",
+    "publicDate": "Publication Date",
+    "certificateNumber": "Certificate No.",
+    "viewDetails": "View Details",
+    "education": {
+      "master": {
+        "title": "[EN] 大连海事大学 - 人工智能硕士",
+        "description": "[EN] 专业：人工智能（0812J1）| 导师：徐敏义 教授 | 人工智能学院 | 预计2025.06毕业",
+        "period": "[EN] 2023.08 - 2025.06（预计）",
+        "status": "在读",
+        "location": "大连"
+      },
+      "visiting": {
+        "title": "[EN] 西湖大学 - 访问学生/研究助理",
+        "description": "[EN] 工学院 i⁴-FSI 实验室（PI：范迪夏教授）| 方向：仿生波动鳍推进仿真（Star-CCM+ + Java Macro）",
+        "period": "[EN] 2024.06 - 至今",
+        "status": "访问学者",
+        "location": "杭州"
+      },
+      "bachelor": {
+        "title": "[EN] 大连海事大学 - 材料科学与工程学士",
+        "description": "[EN] 专业：材料科学与工程（高分子）| GPA 3.2/4.0（82/100）| 专业排名 7/100 | 工学学士",
+        "period": "2019.09 - 2023.06",
+        "status": "已毕业",
+        "location": "大连"
+      }
+    },
+    "educationItems": {
+      "master": {
+        "title": "Dalian Maritime University - Master of Artificial Intelligence",
+        "description": "Major: Artificial Intelligence (0812J1) | Supervisor: Prof. Xu Minyi | School of Artificial Intelligence",
+        "period": "2023.08 - 2025.06 (Expected)",
+        "status": "Current"
+      },
+      "visiting": {
+        "title": "Westlake University - Visiting Student/Research Assistant",
+        "description": "School of Engineering i⁴-FSI Lab (PI: Prof. Fan Dixia) | Focus: Bionic Undulating Fin Propulsion Simulation",
+        "period": "2024.06 - Present",
+        "status": "Visiting Scholar"
+      },
+      "bachelor": {
+        "title": "Dalian Maritime University - Bachelor of Materials Science and Engineering",
+        "description": "Major: Materials Science and Engineering (Polymer) | GPA 3.2/4.0 (82/100) | Rank 7/100",
+        "period": "2019.09 - 2023.06",
+        "status": "Bachelor of Engineering"
+      }
+    },
+    "status": {
+      "published": "Published",
+      "accepted": "Accepted",
+      "underReview": "Under Review",
+      "preparing": "Preparing",
+      "granted": "Granted"
+    },
+    "type": {
+      "journal": "Journal Paper",
+      "conference": "Conference Paper"
+    },
+    "patentType": {
+      "invention": "Invention Patent",
+      "utility": "Utility Model",
+      "design": "Design Patent"
+    },
+    "level": {
+      "national": "National",
+      "provincial": "Provincial",
+      "school": "School"
+    },
+    "keywords": {
+      "scientificComputing": "Scientific Computing",
+      "roboticsResearch": "Robotics Research",
+      "artificialIntelligence": "Artificial Intelligence",
+      "machineLearning": "Machine Learning"
+    },
+    "awardLevels": {
+      "national": "National Level",
+      "provincial": "Provincial Level",
+      "university": "University Level"
+    },
+    "areas": {
+      "scientificComputing": {
+        "title": "Scientific Computing",
+        "description": "Research in computational fluid dynamics, neural operators, and high-performance computing",
+        "keywords": [
+          "CFD",
+          "Neural Operator",
+          "Transformer",
+          "HPC"
+        ],
+        "transformer": {
+          "title": "Transformer Neural Operator",
+          "description": "Applying Transformer architecture to PDE solving with cross-geometry generalization"
+        },
+        "sparseToDense": {
+          "title": "Transformer-based Sparse-to-Dense Flow Field Reconstruction",
+          "description": "Proposed a Transformer-based method for reconstructing dense flow fields from sparse sensor data, enabling complete flow field reconstruction from limited sensor measurements.",
+          "journal": "Journal of Computational Physics",
+          "authors": [
+            "Zhaoyang Mu",
+            "Lei Zhao"
+          ]
+        },
+        "damBreak": {
+          "title": "Dam-break Flow Prediction",
+          "description": "High-precision numerical simulation and prediction methods for dam-break flow dynamics"
+        },
+        "data": {
+          "publication1": {
+            "title": "DamFormer: A Transformer-based Model for Dam-break Flow Prediction with Cross-geometry Generalization",
+            "authors": "Zhaoyang Mu, Supervisor Name, Collaborator",
+            "journal": "Physics of Fluids",
+            "abstract": "This paper proposes the DamFormer model based on Transformer architecture for cross-geometry dam-break flow prediction. The model achieves high-precision flow field prediction under different geometric configurations, providing new technical means for dam-break disaster assessment. A multi-geometry boundary dataset is constructed to achieve cross-geometry zero-shot prediction, solving the problem of high computational cost in traditional CFD simulations.",
+            "keywords": [
+              "Transformer",
+              "Dam-break",
+              "CFD",
+              "Deep Learning",
+              "Cross-geometry",
+              "Physics of Fluids"
+            ]
+          },
+          "publication2": {
+            "title": "Sparse→Dense Transformer: Sparse-to-Dense Field Reconstruction",
+            "authors": "Zhaoyang Mu, Collaborating Researcher",
+            "journal": "Physics of Fluids",
+            "abstract": "For CFD/environmental flow, sparse sensing reconstruction of high-resolution spatiotemporal fields. Based on Transformer architecture to achieve intelligent reconstruction from sparse observations to dense fields, providing an efficient flow field reconstruction method.",
+            "keywords": [
+              "Transformer",
+              "Neural Operator",
+              "Field Reconstruction",
+              "CFD",
+              "Environmental Flow"
+            ]
+          },
+          "publication3": {
+            "title": "CFD-FSI Analysis of Bionic Undulating Fin Propulsion System",
+            "authors": "Zhaoyang Mu, Westlake University Research Team",
+            "journal": "International Conference on Robotics and Automation (ICRA)",
+            "abstract": "Westlake University i⁴-FSI Laboratory project. CFD/FSI coupled simulation analysis of bionic undulating fin propulsion system through Star-CCM+, Java Macro automated parameter sweeping, exploring bionic propulsion mechanisms.",
+            "keywords": [
+              "Star-CCM+",
+              "CFD-FSI",
+              "Bionic Propulsion",
+              "Java Macro",
+              "Westlake University"
+            ]
+          },
+          "patent1": {
+            "title": "A Modular Self-reconfigurable Robot System",
+            "authors": "Zhaoyang Mu, Invention Team",
+            "journal": "Chinese Invention Patent",
+            "abstract": "This invention discloses a modular self-reconfigurable cubic robot system Rs-ModCubes with autonomous reconfiguration capability and multiple motion modes, suitable for robot applications in complex environments.",
+            "keywords": [
+              "Modular Robot",
+              "Self-reconfiguration",
+              "Cubic Structure",
+              "Robot System"
+            ]
+          },
+          "patent2": {
+            "title": "Underwater Robot Bionic Sensing Device and Sensing Method",
+            "authors": "Zhaoyang Mu, Patent Team",
+            "journal": "Chinese Invention Patent",
+            "abstract": "This invention provides an underwater robot bionic sensing device that achieves sensitive detection of water flow changes based on TENG technology, combined with artificial lateral line structure to improve sensing accuracy.",
+            "keywords": [
+              "Underwater Robot",
+              "TENG",
+              "Bionic Sensing",
+              "Artificial Lateral Line"
+            ]
+          },
+          "patent3": {
+            "title": "Fan Array Wind Tunnel Experimental Platform Control System",
+            "authors": "Zhaoyang Mu, Development Team",
+            "journal": "Chinese Utility Model Patent",
+            "abstract": "Modular 2.5m×2.5m fan array, STM32 multi-board PWM/TACH closed-loop control, VLAN/DHCP network management. Experimental platform for flow field control and test verification.",
+            "keywords": [
+              "Fan Array",
+              "STM32",
+              "PWM/TACH",
+              "VLAN",
+              "Experimental Platform"
+            ]
+          }
+        }
+      },
+      "robotics": {
+        "title": "Robotics",
+        "underwaterPerception": {
+          "title": "Underwater Perception System",
+          "description": "Bionic-based underwater robot environmental perception and navigation technology"
+        },
+        "bionicFin": {
+          "title": "Bionic Propulsion System",
+          "description": "Fish-inspired undulating fin propulsion device design and control"
+        },
+        "modularRobot": {
+          "title": "Modular Robot",
+          "description": "Reconfigurable robot system design based on modular cubes"
+        }
+      }
+    }
+  },
+  "about": {
+    "title": "About Me",
+    "description": "Learn about my academic background, research interests, and professional experience",
+    "introduction": "I am Zhaoyang Mu, currently focused on interdisciplinary research in computational fluid dynamics, robotics, and artificial intelligence. My research interests include neural operators, deep learning applications in scientific computing, and bionic robot system design.",
+    "education": {
+      "title": "Education",
+      "items": {
+        "master": {
+          "degree": "Master of Engineering",
+          "major": "Artificial Intelligence",
+          "school": "Dalian Maritime University",
+          "period": "2023-2025",
+          "description": "Focused on interdisciplinary research in scientific computing, robotics, and artificial intelligence"
+        },
+        "bachelor": {
+          "degree": "Bachelor of Engineering",
+          "major": "Materials Science and Engineering",
+          "school": "Dalian Maritime University",
+          "period": "2019-2023",
+          "description": "Gained solid engineering foundation and materials science expertise"
+        }
+      }
+    },
+    "interests": {
+      "title": "Research Interests",
+      "items": [
+        "Neural operator applications in scientific computing",
+        "Transformer architecture applications in physics problems",
+        "Bionic robot perception system design",
+        "Efficient solutions for fluid-structure interaction problems",
+        "Integration of artificial intelligence and traditional engineering"
+      ]
+    },
+    "collaboration": {
+      "title": "Collaboration Opportunities",
+      "description": "I welcome collaboration and exchange in the following areas",
+      "types": {
+        "research": {
+          "title": "Academic Research",
+          "description": "Joint research, paper collaboration, academic exchange"
+        },
+        "industry": {
+          "title": "Industry Collaboration",
+          "description": "Technical consulting, project development, product innovation"
+        },
+        "education": {
+          "title": "Education & Training",
+          "description": "Course development, training services, knowledge transfer"
+        },
+        "other": {
+          "title": "Other Collaborations",
+          "description": "Customized collaboration, special projects, other needs"
+        }
+      }
+    }
+  },
+  "skills": {
+    "title": "Professional Skills",
+    "description": "Overview of my technical stack and professional capabilities",
+    "categories": {
+      "programming": "Programming Languages",
+      "simulation": "Simulation & Analysis",
+      "aiMl": "Artificial Intelligence",
+      "hardware": "Hardware Design",
+      "tools": "Development Tools"
+    },
+    "levels": {
+      "expert": "Expert",
+      "proficient": "Proficient",
+      "good": "Good",
+      "average": "Average",
+      "beginner": "Beginner"
+    },
+    "viewModes": {
+      "grid": "Grid View",
+      "radar": "Radar View",
+      "chart": "Chart View"
+    },
+    "filters": {
+      "all": "All Skills"
+    },
+    "proficiency": "Proficiency",
+    "relatedProjects": "Related Projects",
+    "radarChart": "Skills Radar Chart",
+    "skillLevel": "Skill Level",
+    "proficiencyStats": "Proficiency Statistics",
+    "avgProficiency": "Average Proficiency",
+    "skillsCount": "skills",
+    "radar": {
+      "theory": "Theoretical Foundation"
+    },
+    "skillData": {
+      "programming": {
+        "python": {
+          "description": "PyTorch/NumPy/Pandas/Matplotlib, deep learning and scientific computing",
+          "projects": [
+            "Transformer/Neural Operator Modeling",
+            "Deep Reinforcement Learning Algorithms",
+            "CFD Spatiotemporal Field Prediction"
+          ]
+        },
+        "java": {
+          "description": "Star-CCM+ Macro/Workflow development",
+          "projects": [
+            "CFD Automated Simulation",
+            "Bionic Undulating Fin Propulsion Simulation"
+          ]
+        },
+        "matlab": {
+          "description": "Numerical computing, signal processing, control systems",
+          "projects": [
+            "Fluid Mechanics Simulation",
+            "Control Algorithm Design"
+          ]
+        },
+        "javascript": {
+          "description": "Frontend development, full-stack applications",
+          "projects": [
+            "Personal Website",
+            "Data Visualization Platform"
+          ]
+        },
+        "powershell": {
+          "description": "Automation scripts, system management",
+          "projects": [
+            "Automated Flashing Scripts",
+            "System Configuration Management"
+          ]
+        }
+      },
+      "simulation": {
+        "starccm": {
+          "description": "CFD/FSI simulation, Java Macro development",
+          "projects": [
+            "Bionic Undulating Fin Propulsion Simulation",
+            "Fluid-Structure Interaction Analysis"
+          ]
+        },
+        "comsol": {
+          "description": "Multiphysics coupling simulation",
+          "projects": [
+            "Fluid-Structure Interaction Analysis",
+            "Heat and Mass Transfer Simulation",
+            "Verification and Validation"
+          ]
+        },
+        "ansys": {
+          "description": "Engineering simulation analysis",
+          "projects": [
+            "Structural Analysis",
+            "Fluid Simulation",
+            "Multiphysics Coupling"
+          ]
+        },
+        "pdebench": {
+          "description": "Partial differential equation benchmarking",
+          "projects": [
+            "Neural Operator Validation",
+            "PDE Solver Comparison"
+          ]
+        }
+      },
+      "aiMl": {
+        "transformer": {
+          "description": "Attention mechanisms, spatiotemporal sequence modeling",
+          "projects": [
+            "CFD Spatiotemporal Field Prediction",
+            "Sequence-to-Sequence Learning"
+          ]
+        },
+        "neuralOperator": {
+          "description": "FNO, DeepONet and other operator learning",
+          "projects": [
+            "PDE Solving",
+            "Scientific Computing Acceleration"
+          ]
+        },
+        "pytorch": {
+          "description": "Deep learning framework",
+          "projects": [
+            "Neural Network Training",
+            "DDP/AMP Parallel Computing"
+          ]
+        },
+        "reinforcementLearning": {
+          "name": "Reinforcement Learning",
+          "description": "DQN, PPO and other algorithms",
+          "projects": [
+            "Bionic Fish Control Strategy",
+            "Robot Control"
+          ]
+        },
+        "computerVision": {
+          "name": "Computer Vision",
+          "description": "Bionic perception, image processing",
+          "projects": [
+            "Underwater Robot Vision",
+            "Bionic Perception System"
+          ]
+        }
+      },
+      "hardware": {
+        "solidworks": {
+          "description": "3D/2D design, BOM, interference checking",
+          "projects": [
+            "Bionic Fish Robot Design",
+            "Mechanical Structure Optimization",
+            "Assembly Design"
+          ]
+        },
+        "shapr3d": {
+          "description": "Mobile 3D modeling design",
+          "projects": [
+            "Rapid Prototyping",
+            "Concept Modeling"
+          ]
+        },
+        "stm32": {
+          "description": "NUCLEO-F439ZI, PWM/TACH control",
+          "projects": [
+            "Fan Array Wind Tunnel Control System",
+            "Embedded Control Systems",
+            "Sensor Interfaces"
+          ]
+        },
+        "tplink": {
+          "name": "TP-Link L3 Switch",
+          "description": "Managed switch configuration management",
+          "projects": [
+            "Network Architecture Design",
+            "Device Management"
+          ]
+        }
+      },
+      "tools": {
+        "git": {
+          "description": "Version control and collaboration",
+          "projects": [
+            "All Project Code Management"
+          ]
+        },
+        "docker": {
+          "description": "Containerized deployment",
+          "projects": [
+            "Simulation Environment Deployment",
+            "Microservice Architecture"
+          ]
+        },
+        "linux": {
+          "description": "System administration and scripting, SLURM job scheduling",
+          "projects": [
+            "Server Operations",
+            "HPC Cluster Management",
+            "Automation Scripts"
+          ]
+        },
+        "cuda": {
+          "description": "GPU parallel computing, DDP/AMP acceleration",
+          "projects": [
+            "Deep Learning Training Acceleration",
+            "Scientific Computing Parallelization"
+          ]
+        },
+        "vscode": {
+          "description": "Integrated development environment",
+          "projects": [
+            "Daily Development Tool"
+          ]
+        },
+        "jupyter": {
+          "description": "Interactive development",
+          "projects": [
+            "Data Analysis",
+            "Algorithm Prototyping"
+          ]
+        }
+      }
+    }
+  },
+  "contact": {
+    "title": "Contact Me",
+    "description": "Welcome to discuss academic questions or collaboration opportunities with me",
+    "contactInfo": "Contact Information",
+    "email": "Email",
+    "phone": "Phone",
+    "address": "Office Address",
+    "academicSocial": "Academic & Social Profiles",
+    "sendMessage": "Send a Message",
+    "collaborationType": "Collaboration Type",
+    "form": {
+      "name": {
+        "label": "Name",
+        "placeholder": "Please enter your name"
+      },
+      "email": {
+        "label": "Email",
+        "placeholder": "Please enter your email address"
+      },
+      "phone": {
+        "label": "Phone",
+        "placeholder": "Please enter your phone number (optional)"
+      },
+      "company": {
+        "label": "Company/Organization",
+        "placeholder": "Please enter your company or organization name (optional)"
+      },
+      "subject": {
+        "label": "Subject",
+        "placeholder": "Please enter email subject"
+      },
+      "message": {
+        "label": "Message",
+        "placeholder": "Please describe your requirements or questions in detail..."
+      },
+      "budget": {
+        "label": "Budget Range",
+        "placeholder": "Please select budget range (optional)",
+        "options": {
+          "select": "Please select budget range",
+          "under5k": "Under $5K",
+          "5k10k": "$5K-$10K",
+          "10k50k": "$10K-$50K",
+          "50k100k": "$50K-$100K",
+          "over100k": "Over $100K",
+          "discuss": "To be discussed"
+        }
+      },
+      "timeline": {
+        "label": "Project Timeline",
+        "placeholder": "Please select expected project timeline (optional)",
+        "options": {
+          "select": "Please select project timeline",
+          "urgent": "Urgent (within 1 week)",
+          "short": "Short-term (1-4 weeks)",
+          "medium": "Medium-term (1-3 months)",
+          "long": "Long-term (3+ months)",
+          "flexible": "Flexible timeline"
+        }
+      },
+      "validationError": "Please check form inputs",
+      "submitError": "Submission failed, please try again",
+      "submitting": "Submitting...",
+      "submit": "Send Message",
+      "success": "Message sent successfully!",
+      "error": "Failed to send, please try again",
+      "sendAnother": "Send another message",
+      "selectBudget": "Please select budget range",
+      "selectTimeline": "Please select project timeline"
+    },
+    "collaboration": {
+      "research": {
+        "title": "Academic Research",
+        "description": "Joint research, paper collaboration, academic exchange"
+      },
+      "development": {
+        "title": "Technology Development",
+        "description": "Software development, system design, technical consulting"
+      },
+      "consulting": {
+        "title": "Technical Consulting",
+        "description": "Technical solutions, architecture design, problem solving"
+      },
+      "teaching": {
+        "title": "Education & Training",
+        "description": "Course development, training services, knowledge transfer"
+      },
+      "other": {
+        "title": "Other Collaborations",
+        "description": "Customized collaboration, special projects, other needs"
+      }
+    },
+    "info": {
+      "email": "mzymuzhaoyang@gmail.com",
+      "phone": "+86 153 8213 0266",
+      "location": "Hangzhou, Zhejiang, China",
+      "university": "Dalian Maritime University & Westlake University",
+      "department": "School of Artificial Intelligence & i⁴-FSI Laboratory",
+      "office": "Visiting Student at Westlake University",
+      "social": "Social Media"
+    },
+    "social": {
+      "github": "GitHub",
+      "linkedin": "LinkedIn",
+      "twitter": "Twitter",
+      "researchgate": "ResearchGate",
+      "orcid": "ORCID",
+      "csdn": "CSDN",
+      "scholar": "Google Scholar"
     }
   },
   "publications": {
@@ -1137,84 +1113,27 @@
       "journal": "Journal"
     },
     "citations": "Citations",
-      "modal": {
-        "authors": "Authors",
-        "year": "Year",
-        "doi": "DOI",
-        "citationsCount": "Citations",
-        "abstract": "Abstract",
-        "keywords": "Keywords",
-        "journal": "Journal",
-        "publishYear": "Publication Year",
-        "patentNumber": "Patent Number",
-        "applicant": "Applicant",
-        "publicDate": "Publication Date",
-        "organization": "Organization",
-        "awardDate": "Award Date",
-        "certificateNumber": "Certificate Number",
-        "publicationDetail": "Publication Details",
-        "patentDetail": "Patent Details",
-        "awardDetail": "Award Details",
-        "publisherLink": "Publisher Link"
-      },
-    "data": {
-      "nanoEnergy2024": {
-        "title": "Deep-learning-assisted triboelectric whisker for near field perception and online state estimation of underwater vehicle",
-        "authors": "Peng Xu, Jianhua Liu, Bo Liu, Yuanzheng Li, Hao Jin, Zhaoyang Mu, Tangzhen Guan, Guangming Xie, Hao Wang, Minyi Xu",
-        "journal": "Nano Energy",
-        "abstract": "",
-        "keywords": ["Triboelectric", "Underwater Whisker", "Near-field Perception", "Deep Learning"],
-        "doi": "10.1016/j.nanoen.2024.110011"
-      },
-      "amtTWSA2025": {
-        "title": "Deep-Learning-Assisted Triboelectric Whisker Sensor Array for Real-Time Motion Sensing of Unmanned Underwater Vehicle",
-        "authors": "Bo Liu, Bowen Dong, Hao Jin, Peng Zhu, Zhaoyang Mu, Yuanzheng Li, Jianhua Liu, Zhaochen Meng, Xinyue Zhou, Peng Xu, Minyi Xu",
-        "journal": "Advanced Materials Technologies",
-        "abstract": "",
-        "keywords": ["Triboelectric", "Sensor Array", "Underwater Vehicle", "Deep Learning"],
-        "doi": "10.1002/admt.202401053"
-      },
-      "pofDamFormer2025": {
-        "title": "Generalizing morphologies in dam break simulations using transformer model",
-        "authors": "Zhaoyang Mu, Aoming Liang, Mingming Ge, Dashuai Chen, Dixia Fan, Minyi Xu",
-        "journal": "Physics of Fluids",
-        "abstract": "",
-        "keywords": ["Transformer", "Dam Break", "CFD", "Neural Operator"],
-        "doi": ""
-      },
-      "ieeeCAC2024": {
-        "title": "Triboelectric Bionic Tail-Fin Shaped Flexible Sensor for Proprioception",
-        "authors": "",
-        "journal": "IEEE CAC 2024",
-        "abstract": "",
-        "keywords": ["Triboelectric", "Tail-Fin", "Proprioception", "Underwater"],
-        "doi": ""
-      },
-      "ralRsModCubes2025": {
-        "title": "Rs-modcubes: Self-reconfigurable, scalable, modular cubic robots for underwater operations",
-        "authors": "",
-        "journal": "IEEE Robotics and Automation Letters",
-        "abstract": "",
-        "keywords": ["Modular Robots", "Underwater", "Reconfiguration", "Swarm"],
-        "doi": ""
-      },
-      "spieCITA2025": {
-        "title": "Design of modular autonomous underwater vehicle for swarm applications",
-        "authors": "Zhaochen Meng, Siyuan Wang, Jianhua Liu, Peng Xu, Zhaoyang Mu, Wenxiang Li, Minyi Xu",
-        "journal": "Proc. SPIE CITA 2024",
-        "abstract": "",
-        "keywords": ["AUV", "Swarm", "Modular Design", "SPIE"],
-        "doi": "10.1117/12.3056794"
-      },
-      "amtTBLS2025": {
-        "title": "Highly Sensitive and Integratable Triboelectric Bionic Lateral Line Sensor for Flow Recognition of Underwater Vehicle",
-        "authors": "",
-        "journal": "Advanced Materials Technologies",
-        "abstract": "",
-        "keywords": ["Triboelectric", "Lateral Line", "Underwater Vehicle", "Flow Recognition"],
-        "doi": "10.1002/admt.202500072"
-      }
+    "modal": {
+      "authors": "Authors",
+      "year": "Year",
+      "doi": "DOI",
+      "citationsCount": "Citations",
+      "abstract": "Abstract",
+      "keywords": "Keywords",
+      "journal": "Journal",
+      "publishYear": "Publication Year",
+      "patentNumber": "Patent Number",
+      "applicant": "Applicant",
+      "publicDate": "Publication Date",
+      "organization": "Organization",
+      "awardDate": "Award Date",
+      "certificateNumber": "Certificate Number",
+      "publicationDetail": "Publication Details",
+      "patentDetail": "Patent Details",
+      "awardDetail": "Award Details",
+      "publisherLink": "Publisher Link"
     },
+    "publisherLink": "出版社链接",
     "levels": {
       "national": "National Level",
       "provincial": "Provincial Level",
@@ -1223,35 +1142,50 @@
     "damformer": {
       "title": "Generalizing morphologies in dam break simulations using transformer model",
       "journal": "Physics of Fluids",
-      "authors": ["Zhaoyang Mu", "Dixia Fan"],
+      "authors": [
+        "Zhaoyang Mu",
+        "Dixia Fan"
+      ],
       "description": "Proposed a Transformer-based neural operator DamFormer for predicting dam-break flows. This method can handle fluid dynamics problems under different geometric boundary conditions and achieve cross-geometric generalization capabilities.",
       "doi": "10.1063/5.0187644"
     },
     "rsModCubes": {
       "title": "Design of Reconfigurable Robot System Based on Improved Modular Cubes",
       "journal": "Robotics Technology and Applications",
-      "authors": ["Zhaoyang Mu", "Ming Li"],
+      "authors": [
+        "Zhaoyang Mu",
+        "Ming Li"
+      ],
       "description": "Designed a reconfigurable robot system based on improved modular cubes with good reconfigurability and adaptability, capable of autonomously reconfiguring morphology according to task requirements.",
       "doi": "10.1109/LRA.2025.1234567"
     },
     "whiskerSensorArray": {
       "title": "Underwater Robot Environmental Perception System Based on Bionic Whisker Sensor Array",
       "journal": "Journal of Sensor Technology",
-      "authors": ["Zhaoyang Mu", "Qiang Wang"],
+      "authors": [
+        "Zhaoyang Mu",
+        "Qiang Wang"
+      ],
       "description": "Developed an underwater robot environmental perception system based on bionic whisker sensor array, simulating the perception mechanism of fish lateral line system to improve underwater environmental perception capabilities.",
       "doi": "10.1109/JSEN.2025.1234567"
     },
     "whiskerSensor": {
       "title": "Design and Optimization of High-Sensitivity Bionic Whisker Sensor",
       "journal": "Nano Energy",
-      "authors": ["Zhaoyang Mu", "Hua Chen"],
+      "authors": [
+        "Zhaoyang Mu",
+        "Hua Chen"
+      ],
       "description": "Designed a high-sensitivity bionic whisker sensor capable of detecting minute fluid disturbances, providing precise environmental perception capabilities for underwater robots.",
       "doi": "10.1016/j.nanoen.2024.110011"
     },
     "sparseToDense": {
       "title": "Transformer-based Sparse-to-Dense Flow Field Reconstruction Method",
       "journal": "Journal of Computational Physics",
-      "authors": ["Zhaoyang Mu", "Lei Zhao"],
+      "authors": [
+        "Zhaoyang Mu",
+        "Lei Zhao"
+      ],
       "description": "Proposed a Transformer-based method for reconstructing dense flow fields from sparse sensor data, capable of reconstructing complete flow field information from limited sensor data.",
       "doi": "10.1063/5.0123456"
     },
@@ -1261,105 +1195,175 @@
         "authors": "Zhaoyang Mu, Supervisor Name, Collaborator",
         "journal": "Physics of Fluids",
         "abstract": "This paper proposes the DamFormer model based on Transformer architecture for cross-geometric boundary prediction of dam-break flow fields. The model can achieve high-precision flow field prediction under different geometric configurations, providing new technical means for dam-break disaster assessment. Construct multi-geometric boundary datasets, achieve cross-geometric zero-shot prediction, and solve the problem of high computational cost of traditional CFD simulation.",
-        "keywords": ["Transformer", "Dam-break", "CFD", "Deep Learning", "Cross-geometry", "Physics of Fluids"]
+        "keywords": [
+          "Transformer",
+          "Dam-break",
+          "CFD",
+          "Deep Learning",
+          "Cross-geometry",
+          "Physics of Fluids"
+        ]
       },
       "publication2": {
         "title": "Sparse→Dense Transformer: Sparse to Dense Field Reconstruction",
         "authors": "Zhaoyang Mu, Research Collaborator",
         "journal": "Physics of Fluids",
         "abstract": "For CFD/environmental flow, sparse sensing reconstructs high-resolution spatio-temporal fields. Based on Transformer architecture to achieve intelligent reconstruction from sparse observations to dense fields, providing an efficient flow field reconstruction method.",
-        "keywords": ["Transformer", "Neural Operator", "Field Reconstruction", "CFD", "Environmental Flow"]
+        "keywords": [
+          "Transformer",
+          "Neural Operator",
+          "Field Reconstruction",
+          "CFD",
+          "Environmental Flow"
+        ]
       },
       "publication3": {
         "title": "CFD-FSI Analysis of Bionic Undulating Fin Propulsion System",
         "authors": "Zhaoyang Mu, Westlake University Research Team",
         "journal": "International Conference on Robotics and Automation (ICRA)",
         "abstract": "Westlake University i⁴-FSI Laboratory project. Through Star-CCM+ CFD/FSI coupled simulation analysis of bionic undulating fin propulsion system, Java Macro automated parameter scanning, exploring bionic propulsion mechanisms.",
-        "keywords": ["Star-CCM+", "CFD-FSI", "Bionic Propulsion", "Java Macro", "Westlake University"]
+        "keywords": [
+          "Star-CCM+",
+          "CFD-FSI",
+          "Bionic Propulsion",
+          "Java Macro",
+          "Westlake University"
+        ]
       },
       "patent1": {
         "title": "A Self-reconfigurable Robot System Based on Modular Design",
         "authors": "Zhaoyang Mu, Invention Team",
         "journal": "Chinese Invention Patent",
         "abstract": "This invention discloses a self-reconfigurable cubic robot system Rs-ModCubes based on modular design, with autonomous reconfiguration capability and multiple motion modes, suitable for robot applications in complex environments.",
-        "keywords": ["Modular Robot", "Self-reconfiguration", "Cubic Structure", "Robot System"]
+        "keywords": [
+          "Modular Robot",
+          "Self-reconfiguration",
+          "Cubic Structure",
+          "Robot System"
+        ]
       },
       "patent2": {
         "title": "Underwater Robot Bionic Perception Device and Its Perception Method",
         "authors": "Zhaoyang Mu, Patent Team",
         "journal": "Chinese Invention Patent",
         "abstract": "This invention provides an underwater robot bionic perception device, based on TENG technology to achieve sensitive detection of water flow changes, combined with artificial lateral line structure to improve perception accuracy.",
-        "keywords": ["Underwater Robot", "TENG", "Bionic Perception", "Artificial Lateral Line"]
+        "keywords": [
+          "Underwater Robot",
+          "TENG",
+          "Bionic Perception",
+          "Artificial Lateral Line"
+        ]
       },
       "patent3": {
         "title": "Fan Array Wind Tunnel Experimental Platform Control System",
         "authors": "Zhaoyang Mu, Development Team",
         "journal": "Chinese Utility Model Patent",
         "abstract": "Modular 2.5m×2.5m fan array, STM32 multi-board PWM/TACH closed-loop control, VLAN/DHCP network management. Experimental platform for flow field control and test verification.",
-        "keywords": ["Fan Array", "STM32", "PWM/TACH", "VLAN", "Experimental Platform"]
+        "keywords": [
+          "Fan Array",
+          "STM32",
+          "PWM/TACH",
+          "VLAN",
+          "Experimental Platform"
+        ]
       },
-      "papers": {
-        "damformer": {
-          "title": "DamFormer: A Transformer-based Neural Operator for Dam-break Flow Prediction",
-          "journal": "Physics of Fluids",
-          "authors": ["Zhaoyang Mu", "Wei Zhang"],
-          "description": "Proposed a Transformer-based neural operator DamFormer for predicting dam-break flows. This method can handle fluid dynamics problems under different geometric boundary conditions and achieve cross-geometric generalization capabilities."
-        },
-        "rsModCubes": {
-          "title": "Design of Reconfigurable Robot System Based on Improved Modular Cubes",
-          "journal": "Robotics Technology and Applications",
-          "authors": ["Zhaoyang Mu", "Ming Li"],
-          "description": "Designed a reconfigurable robot system based on improved modular cubes with good reconfigurability and adaptability, capable of autonomously reconfiguring morphology according to task requirements."
-        },
-        "whiskerSensorArray": {
-          "title": "Underwater Robot Environmental Perception System Based on Bionic Whisker Sensor Array",
-          "journal": "Journal of Sensor Technology",
-          "authors": ["Zhaoyang Mu", "Qiang Wang"],
-          "description": "Developed an underwater robot environmental perception system based on bionic whisker sensor array, simulating the perception mechanism of fish lateral line system to improve underwater environmental perception capabilities."
-        },
-        "whiskerSensor": {
-          "title": "Design and Optimization of High-Sensitivity Bionic Whisker Sensor",
-          "journal": "Nano Energy",
-          "authors": ["Zhaoyang Mu", "Hua Chen"],
-          "description": "Designed a high-sensitivity bionic whisker sensor capable of detecting minute fluid disturbances, providing precise environmental perception capabilities for underwater robots."
-        },
-        "sparseToDense": {
-          "title": "Transformer-based Sparse-to-Dense Flow Field Reconstruction",
-          "journal": "Journal of Computational Physics",
-          "authors": ["Zhaoyang Mu", "Lei Zhao"],
-          "description": "Proposed a Transformer-based method for reconstructing dense flow fields from sparse sensor data, capable of reconstructing complete flow field information from limited sensor data."
-        }
+      "nanoEnergy2024": {
+        "title": "Deep-learning-assisted triboelectric whisker for near field perception and online state estimation of underwater vehicle",
+        "authors": "Peng Xu, Jianhua Liu, Bo Liu, Yuanzheng Li, Hao Jin, Zhaoyang Mu, Tangzhen Guan, Guangming Xie, Hao Wang, Minyi Xu",
+        "journal": "Nano Energy",
+        "abstract": "",
+        "keywords": [
+          "Triboelectric",
+          "Underwater Whisker",
+          "Near-field Perception",
+          "Deep Learning"
+        ],
+        "doi": "10.1016/j.nanoen.2024.110011",
+        "url": "https://www.sciencedirect.com/science/article/abs/pii/S2211285524007614"
       },
-      "patents": {
-        "title": "Patents",
-        "underwaterNavigation": {
-          "title": "Underwater Navigation Device and Method Based on Bionic Perception",
-          "applicant": "Westlake University",
-          "description": "This invention discloses an underwater navigation device and method based on bionic perception, achieving precise underwater environmental perception and navigation by simulating fish lateral line systems."
-        },
-        "vectorThruster": {
-          "title": "Vector Thruster and Its Control Method",
-          "applicant": "Westlake University",
-          "description": "This invention relates to a vector thruster and its control method, capable of achieving omnidirectional thrust control and improving the maneuverability of underwater robots."
-        }
+      "amtTWSA2025": {
+        "title": "Deep-Learning-Assisted Triboelectric Whisker Sensor Array for Real-Time Motion Sensing of Unmanned Underwater Vehicle",
+        "authors": "Bo Liu, Bowen Dong, Hao Jin, Peng Zhu, Zhaoyang Mu, Yuanzheng Li, Jianhua Liu, Zhaochen Meng, Xinyue Zhou, Peng Xu, Minyi Xu",
+        "journal": "Advanced Materials Technologies",
+        "abstract": "",
+        "keywords": [
+          "Triboelectric",
+          "Sensor Array",
+          "Underwater Vehicle",
+          "Deep Learning"
+        ],
+        "doi": "10.1002/admt.202401053",
+        "url": "https://advanced.onlinelibrary.wiley.com/doi/10.1002/admt.202401053"
       },
-      "awards": {
-        "title": "Awards",
-        "nationalScholarship": {
-          "title": "National Scholarship",
-          "organization": "Ministry of Education of China",
-          "description": "Awarded for outstanding academic performance and research achievements in the field of robotics and artificial intelligence."
-        },
-        "excellentGraduate": {
-          "title": "Outstanding Graduate",
-          "organization": "Dalian University of Technology",
-          "description": "Recognized as an outstanding graduate for exceptional academic performance and research contributions."
-        },
-        "innovationCompetition": {
-          "title": "First Prize in National Innovation Competition",
-          "organization": "Ministry of Education of China",
-          "description": "Won first prize in the national innovation competition for the bionic underwater robot project."
-        }
+      "pofDamFormer2025": {
+        "title": "Generalizing morphologies in dam break simulations using transformer model",
+        "authors": "Zhaoyang Mu, Aoming Liang, Mingming Ge, Dashuai Chen, Dixia Fan, Minyi Xu",
+        "journal": "Physics of Fluids",
+        "abstract": "",
+        "keywords": [
+          "Transformer",
+          "Dam Break",
+          "CFD",
+          "Neural Operator"
+        ],
+        "doi": "",
+        "url": "https://pubs.aip.org/aip/pof/article/37/1/016612/3329607/Generalizing-morphologies-in-dam-break-simulations"
+      },
+      "ieeeCAC2024": {
+        "title": "Triboelectric Bionic Tail-Fin Shaped Flexible Sensor for Proprioception",
+        "authors": "",
+        "journal": "IEEE CAC 2024",
+        "abstract": "",
+        "keywords": [
+          "Triboelectric",
+          "Tail-Fin",
+          "Proprioception",
+          "Underwater"
+        ],
+        "doi": "",
+        "url": "https://ieeexplore.ieee.org/document/10865203/"
+      },
+      "ralRsModCubes2025": {
+        "title": "Rs-modcubes: Self-reconfigurable, scalable, modular cubic robots for underwater operations",
+        "authors": "",
+        "journal": "IEEE Robotics and Automation Letters",
+        "abstract": "",
+        "keywords": [
+          "Modular Robots",
+          "Underwater",
+          "Reconfiguration",
+          "Swarm"
+        ],
+        "doi": "",
+        "url": "https://ieeexplore.ieee.org/document/10891552/"
+      },
+      "spieCITA2025": {
+        "title": "Design of modular autonomous underwater vehicle for swarm applications",
+        "authors": "Zhaochen Meng, Siyuan Wang, Jianhua Liu, Peng Xu, Zhaoyang Mu, Wenxiang Li, Minyi Xu",
+        "journal": "Proc. SPIE CITA 2024",
+        "abstract": "",
+        "keywords": [
+          "AUV",
+          "Swarm",
+          "Modular Design",
+          "SPIE"
+        ],
+        "doi": "10.1117/12.3056794",
+        "url": "https://doi.org/10.1117/12.3056794"
+      },
+      "amtTBLS2025": {
+        "title": "Highly Sensitive and Integratable Triboelectric Bionic Lateral Line Sensor for Flow Recognition of Underwater Vehicle",
+        "authors": "",
+        "journal": "Advanced Materials Technologies",
+        "abstract": "",
+        "keywords": [
+          "Triboelectric",
+          "Lateral Line",
+          "Underwater Vehicle",
+          "Flow Recognition"
+        ],
+        "doi": "10.1002/admt.202500072",
+        "url": "https://advanced.onlinelibrary.wiley.com/doi/10.1002/admt.202500072"
       }
     }
   },
@@ -1467,370 +1471,34 @@
         "propulsionOptimization": "Propulsion efficiency optimization research",
         "westlakeCollaboration": "Collaboration project with Westlake University i⁴-FSI Laboratory"
       }
-    }
-  },
-    "title": "About Me",
-    "description": "Learn about my academic background, research interests, and professional experience",
-    "introduction": "I am Zhaoyang Mu, currently focused on interdisciplinary research in computational fluid dynamics, robotics, and artificial intelligence. My research interests include neural operators, deep learning applications in scientific computing, and bionic robot system design.",
-    "education": {
-      "title": "Education",
-      "items": {
-        "master": {
-          "degree": "Master of Engineering",
-          "major": "Artificial Intelligence",
-          "school": "Dalian Maritime University",
-          "period": "2023-2025",
-          "description": "Focused on interdisciplinary research in scientific computing, robotics, and artificial intelligence"
-        },
-        "bachelor": {
-          "degree": "Bachelor of Engineering",
-          "major": "Materials Science and Engineering",
-          "school": "Dalian Maritime University",
-          "period": "2019-2023",
-          "description": "Gained solid engineering foundation and materials science expertise"
-        }
-      }
     },
-    "interests": {
-      "title": "Research Interests",
-      "items": [
-        "Neural operator applications in scientific computing",
-        "Transformer architecture applications in physics problems",
-        "Bionic robot perception system design",
-        "Efficient solutions for fluid-structure interaction problems",
-        "Integration of artificial intelligence and traditional engineering"
-      ]
-    },
-    "collaboration": {
-      "title": "Collaboration Opportunities",
-      "description": "I welcome collaboration and exchange in the following areas",
-      "types": {
-        "research": {
-          "title": "Academic Research",
-          "description": "Joint research, paper collaboration, academic exchange"
-        },
-        "industry": {
-          "title": "Industry Collaboration",
-          "description": "Technical consulting, project development, product innovation"
-        },
-        "education": {
-          "title": "Education & Training",
-          "description": "Course development, training services, knowledge transfer"
-        },
-        "other": {
-          "title": "Other Collaborations",
-          "description": "Customized collaboration, special projects, other needs"
-        }
-      }
-    }
-  },
-  "skills": {
-    "title": "Professional Skills",
-    "description": "Overview of my technical stack and professional capabilities",
-    "categories": {
-      "programming": "Programming Languages",
-      "simulation": "Simulation & Analysis",
-      "aiMl": "Artificial Intelligence",
-      "hardware": "Hardware Design",
-      "tools": "Development Tools"
-    },
-    "levels": {
-      "expert": "Expert",
-      "proficient": "Proficient",
-      "good": "Good",
-      "average": "Average",
-      "beginner": "Beginner"
-    },
-    "viewModes": {
-      "grid": "Grid View",
-      "radar": "Radar View",
-      "chart": "Chart View"
-    },
-    "filters": {
-      "all": "All Skills"
-    },
-    "proficiency": "Proficiency",
-    "relatedProjects": "Related Projects",
-    "radarChart": "Skills Radar Chart",
-    "skillLevel": "Skill Level",
-    "proficiencyStats": "Proficiency Statistics",
-    "avgProficiency": "Average Proficiency",
-    "skillsCount": "skills",
-    "radar": {
-      "theory": "Theoretical Foundation"
-    },
-    "skillData": {
-      "programming": {
-        "python": {
-          "description": "PyTorch/NumPy/Pandas/Matplotlib, deep learning and scientific computing",
-          "projects": ["Transformer/Neural Operator Modeling", "Deep Reinforcement Learning Algorithms", "CFD Spatiotemporal Field Prediction"]
-        },
-        "java": {
-          "description": "Star-CCM+ Macro/Workflow development",
-          "projects": ["CFD Automated Simulation", "Bionic Undulating Fin Propulsion Simulation"]
-        },
-        "matlab": {
-          "description": "Numerical computing, signal processing, control systems",
-          "projects": ["Fluid Mechanics Simulation", "Control Algorithm Design"]
-        },
-        "javascript": {
-          "description": "Frontend development, full-stack applications",
-          "projects": ["Personal Website", "Data Visualization Platform"]
-        },
-        "powershell": {
-          "description": "Automation scripts, system management",
-          "projects": ["Automated Flashing Scripts", "System Configuration Management"]
-        }
-      },
-      "simulation": {
-        "starccm": {
-          "description": "CFD/FSI simulation, Java Macro development",
-          "projects": ["Bionic Undulating Fin Propulsion Simulation", "Fluid-Structure Interaction Analysis"]
-        },
-        "comsol": {
-          "description": "Multiphysics coupling simulation",
-          "projects": ["Fluid-Structure Interaction Analysis", "Heat and Mass Transfer Simulation", "Verification and Validation"]
-        },
-        "ansys": {
-          "description": "Engineering simulation analysis",
-          "projects": ["Structural Analysis", "Fluid Simulation", "Multiphysics Coupling"]
-        },
-        "pdebench": {
-          "description": "Partial differential equation benchmarking",
-          "projects": ["Neural Operator Validation", "PDE Solver Comparison"]
-        }
-      },
-      "aiMl": {
-        "transformer": {
-          "description": "Attention mechanisms, spatiotemporal sequence modeling",
-          "projects": ["CFD Spatiotemporal Field Prediction", "Sequence-to-Sequence Learning"]
-        },
-        "neuralOperator": {
-          "description": "FNO, DeepONet and other operator learning",
-          "projects": ["PDE Solving", "Scientific Computing Acceleration"]
-        },
-        "pytorch": {
-          "description": "Deep learning framework",
-          "projects": ["Neural Network Training", "DDP/AMP Parallel Computing"]
-        },
-        "reinforcementLearning": {
-          "name": "Reinforcement Learning",
-          "description": "DQN, PPO and other algorithms",
-          "projects": ["Bionic Fish Control Strategy", "Robot Control"]
-        },
-        "computerVision": {
-          "name": "Computer Vision",
-          "description": "Bionic perception, image processing",
-          "projects": ["Underwater Robot Vision", "Bionic Perception System"]
-        }
-      },
-      "hardware": {
-        "solidworks": {
-          "description": "3D/2D design, BOM, interference checking",
-          "projects": ["Bionic Fish Robot Design", "Mechanical Structure Optimization", "Assembly Design"]
-        },
-        "shapr3d": {
-          "description": "Mobile 3D modeling design",
-          "projects": ["Rapid Prototyping", "Concept Modeling"]
-        },
-        "stm32": {
-          "description": "NUCLEO-F439ZI, PWM/TACH control",
-          "projects": ["Fan Array Wind Tunnel Control System", "Embedded Control Systems", "Sensor Interfaces"]
-        },
-        "tplink": {
-          "name": "TP-Link L3 Switch",
-          "description": "Managed switch configuration management",
-          "projects": ["Network Architecture Design", "Device Management"]
-        }
-      },
-      "tools": {
-        "git": {
-          "description": "Version control and collaboration",
-          "projects": ["All Project Code Management"]
-        },
-        "docker": {
-          "description": "Containerized deployment",
-          "projects": ["Simulation Environment Deployment", "Microservice Architecture"]
-        },
-        "linux": {
-          "description": "System administration and scripting, SLURM job scheduling",
-          "projects": ["Server Operations", "HPC Cluster Management", "Automation Scripts"]
-        },
-        "cuda": {
-          "description": "GPU parallel computing, DDP/AMP acceleration",
-          "projects": ["Deep Learning Training Acceleration", "Scientific Computing Parallelization"]
-        },
-        "vscode": {
-          "description": "Integrated development environment",
-          "projects": ["Daily Development Tool"]
-        },
-        "jupyter": {
-          "description": "Interactive development",
-          "projects": ["Data Analysis", "Algorithm Prototyping"]
-        }
-      }
-    }
-  },
-  "contact": {
-    "title": "Contact Me",
-    "description": "Welcome to discuss academic questions or collaboration opportunities with me",
-    "contactInfo": "Contact Information",
-    "email": "Email",
-    "phone": "Phone",
-    "address": "Office Address",
-    "academicSocial": "Academic & Social Profiles",
-    "sendMessage": "Send a Message",
-    "collaborationType": "Collaboration Type",
-    "form": {
-      "name": {
-        "label": "Name",
-        "placeholder": "Please enter your name"
-      },
-      "email": {
-        "label": "Email",
-        "placeholder": "Please enter your email address"
-      },
-      "phone": {
-        "label": "Phone",
-        "placeholder": "Please enter your phone number (optional)"
-      },
-      "company": {
-        "label": "Company/Organization",
-        "placeholder": "Please enter your company or organization name (optional)"
-      },
-      "subject": {
-        "label": "Subject",
-        "placeholder": "Please enter email subject"
-      },
-      "message": {
-        "label": "Message",
-        "placeholder": "Please describe your requirements or questions in detail..."
-      },
-      "budget": {
-        "label": "Budget Range",
-        "placeholder": "Please select budget range (optional)",
-        "options": {
-          "select": "Please select budget range",
-          "under5k": "Under $5K",
-          "5k10k": "$5K-$10K",
-          "10k50k": "$10K-$50K",
-          "50k100k": "$50K-$100K",
-          "over100k": "Over $100K",
-          "discuss": "To be discussed"
-        }
-      },
-      "timeline": {
-        "label": "Project Timeline",
-        "placeholder": "Please select expected project timeline (optional)",
-        "options": {
-          "select": "Please select project timeline",
-          "urgent": "Urgent (within 1 week)",
-          "short": "Short-term (1-4 weeks)",
-          "medium": "Medium-term (1-3 months)",
-          "long": "Long-term (3+ months)",
-          "flexible": "Flexible timeline"
-        }
-      },
-      "validationError": "Please check form inputs",
-      "submitError": "Submission failed, please try again",
-      "submitting": "Submitting...",
-      "submit": "Send Message",
-      "success": "Message sent successfully!",
-      "error": "Failed to send, please try again",
-      "selectBudget": "Please select budget range",
-      "selectTimeline": "Please select project timeline"
-    },
-    "collaboration": {
-      "research": {
-        "title": "Academic Research",
-        "description": "Joint research, paper collaboration, academic exchange"
-      },
-      "development": {
-        "title": "Technology Development",
-        "description": "Software development, system design, technical consulting"
-      },
-      "consulting": {
-        "title": "Technical Consulting",
-        "description": "Technical solutions, architecture design, problem solving"
-      },
-      "teaching": {
-        "title": "Education & Training",
-        "description": "Course development, training services, knowledge transfer"
-      },
-      "other": {
-        "title": "Other Collaborations",
-        "description": "Customized collaboration, special projects, other needs"
-      }
-    },
-    "info": {
-      "email": "mzymuzhaoyang@gmail.com",
-      "phone": "+86 153 8213 0266",
-      "location": "Hangzhou, Zhejiang, China",
-      "university": "Dalian Maritime University & Westlake University",
-      "department": "School of Artificial Intelligence & i⁴-FSI Laboratory",
-      "office": "Visiting Student at Westlake University",
-      "social": "Social Media"
-    },
-    "social": {
-      "github": "GitHub",
-      "linkedin": "LinkedIn",
-      "twitter": "Twitter",
-      "researchgate": "ResearchGate",
-      "orcid": "ORCID",
-      "csdn": "CSDN",
-      "scholar": "Google Scholar"
-    }
-  },
-  "footer": {
-      "personalInfo": {
-        "name": "Zhaoyang Mu",
-        "nameEn": "牟昭阳",
-        "description": "Focused on the intersection of scientific computing and robotics, dedicated to Transformer/Neural Operator modeling of CFD spatiotemporal fields, advancing technological innovation and practical applications."
-      },
-      "quickLinks": {
-        "title": "Quick Links",
-        "home": "Home",
-        "research": "Research",
-        "projects": "Projects",
-        "publications": "Publications"
-      },
-      "researchAreas": {
-        "title": "Research Areas",
-        "areas": [
-          "Transformer/Neural Operator for CFD Spatiotemporal Field Modeling",
-          "Scientific Computing & Robotics Technology",
-          "Bionic Perception & Underwater Robotics",
-          "Fluid Dynamics Numerical Simulation",
-          "Mechanical Design & Control Systems"
-        ]
-      },
-      "contact": {
-        "title": "Contact",
-        "email": "mzymuzhaoyang@gmail.com",
-        "phone": "+86 153 8213 0266",
-        "address": "Hangzhou, China (Westlake University)"
-      },
-    "legal": {
-      "copyright": "Zhaoyang Mu. All rights reserved.",
-      "privacy": "Privacy Policy",
-      "terms": "Terms of Service",
-      "sitemap": "Sitemap"
-    }
+    "code": "查看代码",
+    "demo": "在线演示",
+    "highlights": "项目亮点",
+    "techStack": "技术栈"
   },
   "seo": {
     "site": {
-      "name": "Zhaoyang Mu's Personal Website",
+      "title": "Zhaoyang Mu - Personal Website",
+      "author": "Zhaoyang Mu",
+      "language": "en-US",
+      "locale": "en_US",
       "description": "Zhaoyang Mu's personal academic website showcasing research achievements, project experience, and academic publications",
       "keywords": "Zhaoyang Mu,Computer Science,Artificial Intelligence,Machine Learning,Software Engineering,Academic Research",
-      "author": "Zhaoyang Mu",
-      "title": "Zhaoyang Mu - Personal Website",
-      "language": "en-US",
-      "locale": "en_US"
+      "name": "Zhaoyang Mu's Personal Website"
     },
     "default": {
       "title": "Zhaoyang Mu - Computer Science Researcher & Software Engineer",
       "description": "Focused on research and practice in artificial intelligence, machine learning, and software engineering. Committed to solving real-world problems through technological innovation and advancing scientific progress.",
-      "keywords": ["Zhaoyang Mu", "牟昭阳", "Computer Science", "Artificial Intelligence", "Machine Learning", "Software Engineering", "Researcher"],
+      "keywords": [
+        "Zhaoyang Mu",
+        "牟昭阳",
+        "Computer Science",
+        "Artificial Intelligence",
+        "Machine Learning",
+        "Software Engineering",
+        "Researcher"
+      ],
       "jobTitle": "Computer Science Researcher & Software Engineer",
       "organization": "Research Institution"
     },
@@ -1838,78 +1506,140 @@
       "home": {
         "title": "Zhaoyang Mu - Computer Science Researcher & Software Engineer",
         "description": "Welcome to Zhaoyang Mu's personal website. Focused on research and practice in artificial intelligence, machine learning, and software engineering, committed to solving real-world problems through technological innovation.",
-        "keywords": ["Zhaoyang Mu", "牟昭阳", "Personal Website", "Computer Science", "Artificial Intelligence", "Machine Learning", "Software Engineering"]
+        "keywords": [
+          "Zhaoyang Mu",
+          "牟昭阳",
+          "Personal Website",
+          "Computer Science",
+          "Artificial Intelligence",
+          "Machine Learning",
+          "Software Engineering"
+        ]
       },
       "research": {
         "title": "Research Directions - Zhaoyang Mu",
         "description": "Learn about Zhaoyang Mu's research directions and academic achievements in artificial intelligence, machine learning, deep learning, and related fields.",
-        "keywords": ["Research Directions", "AI Research", "Machine Learning", "Deep Learning", "Academic Research"]
+        "keywords": [
+          "Research Directions",
+          "AI Research",
+          "Machine Learning",
+          "Deep Learning",
+          "Academic Research"
+        ]
       },
       "projects": {
         "title": "Project Showcase - Zhaoyang Mu",
         "description": "View Zhaoyang Mu's technical project portfolio, including AI applications, software development projects, and open-source contributions.",
-        "keywords": ["Project Showcase", "Technical Projects", "Software Development", "Open Source Projects", "Portfolio"]
+        "keywords": [
+          "Project Showcase",
+          "Technical Projects",
+          "Software Development",
+          "Open Source Projects",
+          "Portfolio"
+        ]
       },
       "publications": {
         "title": "Academic Publications - Zhaoyang Mu",
         "description": "Browse Zhaoyang Mu's academic paper publications, conference presentations, and research achievements.",
-        "keywords": ["Academic Papers", "Research Publications", "Conference Papers", "Academic Achievements"]
+        "keywords": [
+          "Academic Papers",
+          "Research Publications",
+          "Conference Papers",
+          "Academic Achievements"
+        ]
       },
       "skills": {
         "title": "Technical Skills - Zhaoyang Mu",
         "description": "Learn about Zhaoyang Mu's technical skills, programming language proficiency, and professional tool experience.",
-        "keywords": ["Technical Skills", "Programming Languages", "Professional Skills", "Tool Usage"]
+        "keywords": [
+          "Technical Skills",
+          "Programming Languages",
+          "Professional Skills",
+          "Tool Usage"
+        ]
       },
       "contact": {
         "title": "Contact Information - Zhaoyang Mu",
         "description": "Get in touch with Zhaoyang Mu to explore collaboration opportunities or academic exchanges.",
-        "keywords": ["Contact Information", "Collaboration Opportunities", "Academic Exchange", "Contact Me"]
+        "keywords": [
+          "Contact Information",
+          "Collaboration Opportunities",
+          "Academic Exchange",
+          "Contact Me"
+        ]
       }
     }
   },
   "particleField": {
     "title": "Particle Ocean",
     "description": "Interactive particle field based on WebGL 2.0 and Perlin Noise algorithm",
-    "demo": "Demo Mode",
-    "settings": "Settings",
-    "navigation": {
-      "main": "Main Display",
-      "demo": "Immersive Demo",
-      "settings": "Configuration Panel"
-    },
-    "controls": {
-      "play": "Play",
-      "pause": "Pause",
-      "reset": "Reset",
-      "fullscreen": "Fullscreen",
-      "exitFullscreen": "Exit Fullscreen",
-      "showPreview": "Show Preview",
-      "hidePreview": "Hide Preview"
-    },
-    "performance": {
-      "title": "Performance Statistics",
+    "demoMode": "演示模式",
+    "settings": {
+      "title": "Configuration Panel",
       "particles": "Particles",
-      "frameTime": "Frame Time",
-      "memory": "Memory Usage",
-      "fps": "FPS",
-      "avgFps": "Avg FPS",
-      "minFps": "Min FPS",
-      "maxFps": "Max FPS",
-      "preset": "Performance Preset"
-    },
-    "performanceStats": "Performance Statistics",
-    "controls": "Controls",
-    "shortcuts": {
-      "title": "Keyboard Shortcuts",
-      "space": "Space",
-      "playPause": "Play/Pause",
+      "postProcess": "Post-Processing",
+      "interaction": "Interaction",
+      "presets": "Presets",
+      "performancePresets": "Performance Presets",
+      "basic": "Basic Settings",
+      "physics": "Physics",
+      "colors": "Colors",
+      "bloom": "Bloom Effect",
+      "colorCorrection": "Color Correction",
+      "effects": "Effects",
+      "mouse": "Mouse Interaction",
+      "touch": "Touch Interaction",
+      "builtinPresets": "Built-in Presets",
+      "customPresets": "Custom Presets",
+      "maxParticles": "Max Particles",
+      "spawnRate": "Spawn Rate",
+      "lifespan": "Lifespan",
+      "size": "Size",
+      "gravity": "Gravity",
+      "damping": "Damping",
+      "noiseStrength": "Noise Strength",
+      "noiseScale": "Noise Scale",
+      "colorScheme": "Color Scheme",
+      "colorOptions": {
+        "blue": "Blue Ocean",
+        "rainbow": "Rainbow",
+        "fire": "Fire",
+        "ice": "Ice",
+        "forest": "Forest",
+        "sunset": "Sunset",
+        "monochrome": "Monochrome"
+      },
+      "enableBloom": "Enable Bloom",
+      "bloomIntensity": "Bloom Intensity",
+      "blurAmount": "Blur Amount",
+      "contrast": "Contrast",
+      "saturation": "Saturation",
+      "colorTemperature": "Color Temperature",
+      "noiseAmount": "Noise Amount",
+      "vignetteStrength": "Vignette Strength",
+      "enableMouse": "Enable Mouse",
+      "mouseRadius": "Mouse Radius",
+      "mouseStrength": "Mouse Strength",
+      "smoothing": "Smoothing",
+      "enableTouch": "Enable Touch",
+      "maxTouches": "Max Touches",
+      "apply": "Apply",
+      "savePreset": "Save Preset",
+      "noCustomPresets": "No custom presets",
+      "presetName": "Preset Name",
+      "presetDescription": "Preset Description",
+      "enterPresetName": "Enter preset name",
+      "enterPresetDescription": "Enter preset description",
+      "cancel": "Cancel",
+      "save": "Save",
       "reset": "Reset",
-      "stats": "Toggle Stats",
-      "presets": "Toggle Presets",
-      "fullscreen": "Toggle Fullscreen",
-      "info": "Toggle Info",
-      "mouse": "Mouse",
-      "interact": "Interact with particles"
+      "import": "Import",
+      "export": "Export",
+      "livePreview": "Live Preview",
+      "hidePreview": "Hide Preview",
+      "showPreview": "Show Preview",
+      "previewHidden": "Preview Hidden",
+      "previewHiddenDesc": "Preview is currently hidden"
     },
     "backToMain": "Back to Main",
     "backToHome": "Back to Home",
@@ -1917,6 +1647,7 @@
     "toggleInfo": "Toggle Info",
     "toggleStats": "Toggle Stats",
     "presets": "Presets",
+    "demo": "Demo Mode",
     "startExperience": "Start Experience",
     "customize": "Customize",
     "technicalFeatures": "Technical Features",
@@ -1929,18 +1660,18 @@
     "frameTime": "Frame Time",
     "memory": "Memory Usage",
     "avgFps": "Avg FPS",
-    "instructions": {
-      "title": "Control Instructions",
-      "mouse": "Mouse interaction affects particle movement",
-      "touch": "Touch interaction affects particle movement",
-      "keyboard": "Keyboard shortcuts available"
-    },
+    "performanceStats": "Performance Statistics",
+    "controls": "Controls",
     "shortcuts": {
-      "title": "Keyboard Shortcuts",
       "space": "Space - Play/Pause",
-      "r": "R - Reset",
-      "f": "F - Toggle Fullscreen",
-      "esc": "Esc - Exit Fullscreen"
+      "playPause": "播放/暂停",
+      "reset": "重置系统",
+      "stats": "显示统计",
+      "presets": "预设面板",
+      "fullscreen": "全屏切换",
+      "info": "信息面板",
+      "mouse": "鼠标",
+      "interact": "交互控制"
     },
     "features": {
       "title": "Core Features",
@@ -1972,6 +1703,13 @@
         "description": "Built-in presets and custom configuration saving"
       }
     },
+    "technical": {
+      "title": "Technical Implementation",
+      "architecture": "Modular architecture design with clear separation of concerns",
+      "shaders": "着色器程序",
+      "algorithms": "Perlin Noise and particle physics simulation",
+      "optimization": "Performance monitoring and adaptive quality control"
+    },
     "tech": {
       "performance": "High Performance",
       "performanceDesc": "GPU-accelerated rendering with WebGL 2.0 for smooth 60+ FPS experience",
@@ -1981,127 +1719,6 @@
       "visualDesc": "Advanced post-processing effects including bloom, blur, and color correction",
       "adaptive": "Adaptive Quality",
       "adaptiveDesc": "Automatic performance optimization based on device capabilities"
-    },
-    "technical": {
-      "title": "Technical Implementation",
-      "architecture": "Modular architecture design with clear separation of concerns",
-      "rendering": "WebGL 2.0 shader-based particle rendering system",
-      "algorithms": "Perlin Noise and particle physics simulation",
-      "optimization": "Performance monitoring and adaptive quality control",
-      "interaction": "Multi-platform input handling (mouse, touch, keyboard)",
-      "effects": "Real-time post-processing pipeline"
-    },
-    "settings": {
-      "title": "Configuration Panel",
-      "particles": "Particles",
-      "postProcess": "Post-Processing",
-      "interaction": "Interaction",
-      "presets": "Presets",
-      "performancePresets": "Performance Presets",
-      "basic": "Basic Settings",
-      "maxParticles": "Max Particles",
-      "spawnRate": "Spawn Rate",
-      "lifespan": "Lifespan",
-      "size": "Size",
-      "physics": "Physics",
-      "gravity": "Gravity",
-      "damping": "Damping",
-      "noiseStrength": "Noise Strength",
-      "noiseScale": "Noise Scale",
-      "colors": "Colors",
-      "colorScheme": "Color Scheme",
-      "colorOptions": {
-        "blue": "Blue Ocean",
-        "rainbow": "Rainbow",
-        "fire": "Fire",
-        "ice": "Ice",
-        "forest": "Forest",
-        "sunset": "Sunset",
-        "monochrome": "Monochrome"
-      },
-      "bloom": "Bloom Effect",
-      "enableBloom": "Enable Bloom",
-      "bloomIntensity": "Bloom Intensity",
-      "blurAmount": "Blur Amount",
-      "colorCorrection": "Color Correction",
-      "contrast": "Contrast",
-      "saturation": "Saturation",
-      "colorTemperature": "Color Temperature",
-      "effects": "Effects",
-      "noiseAmount": "Noise Amount",
-      "vignetteStrength": "Vignette Strength",
-      "mouse": "Mouse Interaction",
-      "enableMouse": "Enable Mouse",
-      "mouseRadius": "Mouse Radius",
-      "mouseStrength": "Mouse Strength",
-      "smoothing": "Smoothing",
-      "touch": "Touch Interaction",
-      "enableTouch": "Enable Touch",
-      "maxTouches": "Max Touches",
-      "builtinPresets": "Built-in Presets",
-      "customPresets": "Custom Presets",
-      "apply": "Apply",
-      "reset": "Reset",
-      "import": "Import",
-      "export": "Export",
-      "savePreset": "Save Preset",
-      "presetName": "Preset Name",
-      "enterPresetName": "Enter preset name",
-      "presetDescription": "Preset Description",
-      "enterPresetDescription": "Enter preset description",
-      "cancel": "Cancel",
-      "save": "Save",
-      "noCustomPresets": "No custom presets",
-      "livePreview": "Live Preview",
-      "previewHidden": "Preview Hidden",
-      "previewHiddenDesc": "Preview is currently hidden",
-      "showPreview": "Show Preview",
-      "hidePreview": "Hide Preview"
-    },
-    "status": {
-      "loading": "Loading particle system...",
-      "error": "Failed to initialize particle system",
-      "ready": "Particle system ready",
-      "paused": "Paused",
-      "playing": "Playing"
-    },
-    "messages": {
-      "webglNotSupported": "WebGL 2.0 not supported by your browser",
-      "performanceWarning": "Performance may be affected on this device",
-      "configSaved": "Configuration saved successfully",
-      "configLoaded": "Configuration loaded successfully",
-      "presetApplied": "Preset applied successfully",
-      "presetSaved": "Preset saved successfully",
-      "presetDeleted": "Preset deleted successfully"
-    }
-  },
-  "about": {
-    "title": "About Me",
-    "description": "Learn about my academic background, research interests, and professional journey"
-  },
-  "skills": {
-    "title": "Professional Skills",
-    "description": "Technical expertise across multiple domains"
-  },
-  "contact": {
-    "title": "Contact Me",
-    "description": "Let's explore collaboration opportunities and academic exchanges"
-  },
-  "publications": {
-    "title": "Publications",
-    "description": "Academic papers, patents, and research outputs"
-  },
-  "projects": {
-    "title": "Projects",
-    "description": "Technical projects and research implementations"
-  },
-  "footer": {
-    "copyright": "© 2024 Zhaoyang Mu. All rights reserved.",
-    "personalInfo": {
-      "name": "Zhaoyang Mu",
-      "nameEn": "Mu Zhaoyang",
-      "title": "Computer Science Researcher & Software Engineer",
-      "description": "Focused on the intersection of scientific computing and robotics, dedicated to Transformer/Neural Operator modeling of CFD spatiotemporal fields, advancing technological innovation and practical applications."
     }
   }
 }

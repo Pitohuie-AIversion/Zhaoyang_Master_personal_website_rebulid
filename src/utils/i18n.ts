@@ -1,4 +1,4 @@
-import type { Language } from '../components/TranslationProvider';
+import type { Language } from '../components/common/TranslationProvider';
 import zhTranslations from '../locales/zh.json';
 import enTranslations from '../locales/en.json';
 
