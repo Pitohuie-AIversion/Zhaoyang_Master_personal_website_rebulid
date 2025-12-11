@@ -109,22 +109,22 @@ export class GoogleScholarService {
       i10Index: 5,
       papers: [
         {
-          title: 'DamFormer: Transformer-based Operator Learning for Dam-Break Flood Simulation',
-          authors: ['Zhaoyang Mu', 'Zongjun Li', 'Shunqi Pan'],
-          journal: 'Physics of Fluids',
-          year: 2025,
-          citations: 45,
-          doi: '10.1063/5.1234567',
-          url: 'https://doi.org/10.1063/5.1234567'
+          "title": "Generalizing morphologies in dam break simulations using transformer model",
+          "authors": ["Zhaoyang Mu", "Aoming Liang", "Mingming Ge", "Dashuai Chen", "Dixia Fan", "Minyi Xu"],
+          "journal": "Physics of Fluids",
+          "year": 2025,
+          "citations": 0,
+          "doi": "10.1063/5.0187644",
+          "url": "https://doi.org/10.1063/5.0187644"
         },
         {
-          title: 'Rs-ModCubes: A Modular Cube-based Robotic System for Marine Research',
-          authors: ['Zhaoyang Mu', 'Wei Zhang', 'Li Wang'],
-          journal: 'IEEE Robotics and Automation Letters',
-          year: 2025,
-          citations: 32,
-          doi: '10.1109/LRA.2025.1234567',
-          url: 'https://doi.org/10.1109/LRA.2025.1234567'
+          "title": "Rs-ModCubes: Self-reconfigurable, scalable, modular cubic robots for underwater operations",
+          "authors": ["Zhaoyang Mu", "et al."],
+          "journal": "IEEE Robotics and Automation Letters",
+          "year": 2025,
+          "citations": 0,
+          "doi": "10.1109/LRA.2025.10891552",
+          "url": "https://ieeexplore.ieee.org/document/10891552/"
         },
         {
           title: 'Sparse-to-Dense Transformer for Marine Flow Field Reconstruction',

@@ -858,18 +858,18 @@
         },
         "data": {
           "publication1": {
-            "title": "DamFormer: 基于Transformer的溃坝流动跨几何泛化预测模型",
-            "authors": "牟昭阳, 导师姓名, 合作者",
-            "journal": "Physics of Fluids",
-            "abstract": "本文提出了基于Transformer架构的DamFormer模型，用于溃坝流动的跨几何预测。该模型在不同几何配置下实现了高精度的流场预测，为溃坝灾害评估提供了新的技术手段。构建了多几何边界数据集，实现跨几何零样本预测，解决了传统CFD仿真计算成本高的问题。",
-            "keywords": ["Transformer", "溃坝", "CFD", "深度学习", "跨几何", "Physics of Fluids"]
-          },
+          "title": "DamFormer: Generalizing morphologies in dam break simulations using transformer model",
+          "authors": "Zhaoyang Mu, Aoming Liang, Mingming Ge, Dashuai Chen, Dixia Fan, Minyi Xu",
+          "journal": "Physics of Fluids",
+          "abstract": "本文提出了基于Transformer架构的DamFormer模型，用于溃坝流动的跨几何预测。该模型在不同几何配置下实现了高精度的流场预测，为溃坝灾害评估提供了新的技术手段。构建了多几何边界数据集，实现跨几何零样本预测，解决了传统CFD仿真计算成本高的问题。",
+          "keywords": ["Transformer", "溃坝", "CFD", "深度学习", "跨几何", "Physics of Fluids"]
+        },
           "publication2": {
-            "title": "Sparse→Dense Transformer: Sparse-to-Dense Field Reconstruction",
-            "authors": "牟昭阳, 合作研究者",
-            "journal": "Physics of Fluids",
-            "abstract": "针对CFD/环境流动，稀疏传感重构高分辨率时空场。基于Transformer架构实现从稀疏观测到稠密场的智能重构，提供高效的流场重构方法。",
-            "keywords": ["Transformer", "Neural Operator", "场重构", "CFD", "环境流动"]
+            "title": "Rs-ModCubes: Self-reconfigurable, scalable, modular cubic robots for underwater operations",
+            "authors": "Jiaxi Zheng, Guangmin Dai, Botao He, Zhaoyang Mu, Zhaochen Meng, Tianyi Zhang, Weiming Zhi, Dixia Fan",
+            "journal": "IEEE Robotics and Automation Letters",
+            "abstract": "本发明公开了一种具有自主重构能力和多种运动模式的模块化自重构立方体机器人系统Rs-ModCubes，适用于复杂环境下的机器人应用。",
+            "keywords": ["模块化机器人", "自重构", "立方体结构", "机器人系统"]
           },
           "publication3": {
             "title": "CFD-FSI Analysis of Bionic Undulating Fin Propulsion System",
@@ -923,35 +923,35 @@
         "title": "基于仿生感知的水下导航装置及方法",
         "applicant": "西湖大学",
         "number": "CN119509546A",
-        "status": "已公开",
+        "status": "审查中",
         "description": "本发明公开了一种基于仿生感知的水下导航装置及方法，通过模拟鱼类的侧线系统实现水下环境的精确感知和导航。"
       },
       "vectorThruster": {
         "title": "矢量推进器及其控制方法",
         "applicant": "西湖大学",
         "number": "CN119434765A",
-        "status": "已公开",
+        "status": "审查中",
         "description": "本发明涉及一种矢量推进器及其控制方法，能够实现全方位的推进力控制，提高水下机器人的机动性能。"
       },
       "undulatingFin": {
         "title": "仿生波动鳍推进装置",
         "applicant": "西湖大学",
         "number": "CN119434766A",
-        "status": "已公开",
+        "status": "审查中",
         "description": "本发明公开了一种仿生波动鳍推进装置，模拟鱼类的游泳方式，实现高效的水下推进。"
       },
       "flexibleFin": {
         "title": "内嵌多传感器的柔性鳍水下机器人及运行方法",
         "applicant": "大连海事大学",
         "number": "CN117775366A",
-        "status": "已公开",
+        "status": "审查中",
         "description": "本发明涉及一种内嵌多传感器的柔性鳍水下机器人及运行方法，通过柔性材料和智能驱动实现仿生游泳推进。"
       },
       "smartShip": {
         "title": "具有智能动态感应系统的船舶",
         "applicant": "大连海事大学",
         "number": "CN117775365A",
-        "status": "已公开",
+        "status": "审查中",
         "description": "本发明公开了一种具有智能动态感应系统的船舶，集成了多种传感器和智能算法，实现船舶的自主导航和避障。"
       },
       "mobileBuoy": {
@@ -1386,29 +1386,68 @@
     },
       "damformer": {
         "title": "Generalizing morphologies in dam break simulations using transformer model",
-        "journal": "Physics of Fluids",
-        "authors": ["牟昭阳", "范迪夏"],
+        "journal": "Physics of Fluids 37(1):016612, 2025",
+        "authors": [
+          "Zhaoyang Mu",
+          "Aoming Liang",
+          "Mingming Ge",
+          "Dashuai Chen",
+          "Dixia Fan",
+          "Minyi Xu"
+        ],
         "description": "提出了一种基于Transformer架构的神经算子DamFormer，用于预测溃坝流动。该方法能够处理不同几何边界条件下的流体动力学问题，实现了跨几何泛化能力。发表于Physics of Fluids 37(1):016612, 2025。",
         "doi": "10.1063/5.0187644"
       },
       "rsModCubes": {
         "title": "Rs-ModCubes: Self-reconfigurable, scalable, modular cubic robots for underwater operations",
         "journal": "IEEE Robotics and Automation Letters (RA-L)",
-        "authors": ["牟昭阳", "合作者"],
+        "authors": [
+          "Jiaxi Zheng",
+          "Guangmin Dai",
+          "Botao He",
+          "Zhaoyang Mu",
+          "Zhaochen Meng",
+          "Tianyi Zhang",
+          "Weiming Zhi",
+          "Dixia Fan"
+        ],
         "description": "设计了一种自重构、可扩展的模块化立方体机器人系统，专门用于水下作业。该系统具有良好的可重构性和适应性，能够根据任务需求自主重构形态。发表于IEEE RA-L, 2025。",
-        "doi": "10.1109/LRA.2025.1234567"
+        "doi": "10.1109/LRA.2025.10891552"
       },
       "whiskerSensorArray": {
-        "title": "基于仿生触须传感器阵列的水下机器人环境感知系统",
-        "journal": "传感器技术学报",
-        "authors": ["牟昭阳", "王强"],
+        "title": "Deep-Learning-Assisted Triboelectric Whisker Sensor Array for Real-Time Motion Sensing of Unmanned Underwater Vehicle",
+        "journal": "Advanced Materials Technologies",
+        "authors": [
+          "Bo Liu",
+          "Bowen Dong",
+          "Hao Jin",
+          "Peng Zhu",
+          "Zhaoyang Mu",
+          "Yuanzheng Li",
+          "Jianhua Liu",
+          "Zhaochen Meng",
+          "Xinyue Zhou",
+          "Peng Xu",
+          "Minyi Xu"
+        ],
         "description": "开发了一种基于仿生触须传感器阵列的水下机器人环境感知系统，模拟鱼类侧线系统的感知机制，提高了水下环境的感知能力。",
-        "doi": "10.1109/JSEN.2025.1234567"
+        "doi": "10.1002/admt.202401053"
       },
       "whiskerSensor": {
-        "title": "高灵敏度仿生触须传感器的设计与优化",
+        "title": "Deep-learning-assisted triboelectric whisker for near field perception and online state estimation of underwater vehicle",
         "journal": "Nano Energy",
-        "authors": ["牟昭阳", "陈华"],
+        "authors": [
+          "Peng Xu",
+          "Jianhua Liu",
+          "Bo Liu",
+          "Yuanzheng Li",
+          "Hao Jin",
+          "Zhaoyang Mu",
+          "Tangzhen Guan",
+          "Guangming Xie",
+          "Hao Wang",
+          "Minyi Xu"
+        ],
         "description": "设计了一种高灵敏度的仿生触须传感器，能够检测微小的流体扰动，为水下机器人提供精确的环境感知能力。",
         "doi": "10.1016/j.nanoen.2024.110011"
       },

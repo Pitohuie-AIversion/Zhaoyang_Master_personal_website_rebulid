@@ -1,0 +1,164 @@
+{
+  "summary": {
+    "extracted": true,
+    "counts": {
+      "diffs": 19,
+      "crossMismatch": 0
+    }
+  },
+  "diff": [
+    {
+      "category": "个人信息",
+      "field": "邮箱",
+      "type": "文档缺失或未识别",
+      "pdf": "",
+      "site": "mzymuzhaoyang@gmail.com",
+      "location": "src/locales/zh.json:1299"
+    },
+    {
+      "category": "个人信息",
+      "field": "电话",
+      "type": "文档缺失或未识别",
+      "pdf": "",
+      "site": "+86 153 8213 0266",
+      "location": "src/locales/zh.json:1300"
+    },
+    {
+      "category": "个人信息",
+      "field": "位置",
+      "type": "文档缺失或未识别",
+      "pdf": "",
+      "site": "中国 浙江 杭州",
+      "location": "src/locales/zh.json:1301"
+    },
+    {
+      "category": "教育背景",
+      "field": "硕士时间",
+      "type": "文档缺失或未识别",
+      "pdf": "",
+      "site": "2023.08 - 2025.06（预计）",
+      "location": "src/locales/zh.json:768"
+    },
+    {
+      "category": "教育背景",
+      "field": "访问时间",
+      "type": "文档缺失或未识别",
+      "pdf": "",
+      "site": "2024.06 - 至今",
+      "location": "src/locales/zh.json:776"
+    },
+    {
+      "category": "教育背景",
+      "field": "本科时间",
+      "type": "文档缺失或未识别",
+      "pdf": "",
+      "site": "2019.09 - 2023.06",
+      "location": "src/locales/zh.json:783"
+    },
+    {
+      "category": "教育背景",
+      "field": "GPA/成绩",
+      "type": "文档缺失或未识别",
+      "pdf": "",
+      "site": "专业：材料科学与工程（高分子）| GPA 3.2/4.0（82/100）| 专业排名 7/100 | 工学学士",
+      "location": "src/locales/zh.json:782"
+    },
+    {
+      "category": "教育背景",
+      "field": "排名",
+      "type": "文档缺失或未识别",
+      "pdf": "",
+      "site": "专业：材料科学与工程（高分子）| GPA 3.2/4.0（82/100）| 专业排名 7/100 | 工学学士",
+      "location": "src/locales/zh.json:782"
+    },
+    {
+      "category": "论文",
+      "field": "DamFormer DOI",
+      "type": "文档缺失或未识别",
+      "pdf": "",
+      "site": "10.1063/5.0187644",
+      "location": "src/locales/zh.json:1392"
+    },
+    {
+      "category": "论文",
+      "field": "Rs-ModCubes DOI",
+      "type": "表述差异",
+      "pdf": "Rs-modcubes",
+      "site": "10.1109/LRA.2025.10891552",
+      "location": "src/locales/zh.json:1399"
+    },
+    {
+      "category": "论文",
+      "field": "Nano Energy DOI",
+      "type": "表述差异",
+      "pdf": "triboelectric whisker for near field perception and online state estimation of underwater vehicle  Nano Energy",
+      "site": "10.1016/j.nanoen.2024.110011",
+      "location": "src/locales/zh.json:1413"
+    },
+    {
+      "category": "论文",
+      "field": "AMT DOI",
+      "type": "文档缺失或未识别",
+      "pdf": "",
+      "site": "10.1002/admt.202401053",
+      "location": "src/locales/zh.json:1406"
+    },
+    {
+      "category": "专利",
+      "field": "CN119434765A",
+      "type": "文档缺失或未识别",
+      "pdf": "",
+      "site": "CN119434765A",
+      "location": "src/locales/zh.json:932"
+    },
+    {
+      "category": "专利",
+      "field": "CN119434766A",
+      "type": "文档缺失或未识别",
+      "pdf": "",
+      "site": "CN119434766A",
+      "location": "src/locales/zh.json:939"
+    },
+    {
+      "category": "专利",
+      "field": "CN117775366A",
+      "type": "文档缺失或未识别",
+      "pdf": "",
+      "site": "CN117775366A",
+      "location": "src/locales/zh.json:946"
+    },
+    {
+      "category": "专利",
+      "field": "CN117775365A",
+      "type": "文档缺失或未识别",
+      "pdf": "",
+      "site": "CN117775365A",
+      "location": "src/locales/zh.json:953"
+    },
+    {
+      "category": "专利",
+      "field": "CN306962132S",
+      "type": "文档缺失或未识别",
+      "pdf": "",
+      "site": "CN306962132S",
+      "location": "src/locales/zh.json:960"
+    },
+    {
+      "category": "专利",
+      "field": "CN306962133S",
+      "type": "文档缺失或未识别",
+      "pdf": "",
+      "site": "CN306962133S",
+      "location": "src/locales/zh.json:967"
+    },
+    {
+      "category": "专利",
+      "field": "CN306962134S",
+      "type": "文档缺失或未识别",
+      "pdf": "",
+      "site": "CN306962134S",
+      "location": "src/locales/zh.json:974"
+    }
+  ],
+  "crossMismatch": []
+}
