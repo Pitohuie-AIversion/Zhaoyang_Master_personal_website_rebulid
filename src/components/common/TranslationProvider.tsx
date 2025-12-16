@@ -8,7 +8,7 @@ interface TranslationContextType {
   language: Language;
   setLanguage: (lang: Language) => void;
   toggleLanguage: () => void;
-  t: (key: string, options?: { returnObjects?: boolean; fallback?: string }) => string;
+  t: import('../../utils/i18n').TranslationFunction;
   isTranslating: boolean;
 }
 

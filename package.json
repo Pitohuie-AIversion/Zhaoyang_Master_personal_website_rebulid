@@ -30,7 +30,6 @@
     "openai": "^4.73.1",
     "pdf-parse": "^2.4.5",
     "pdf2pic": "^3.2.0",
-    "pdfjs-dist": "^4.6.82",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-helmet-async": "^2.0.5",
