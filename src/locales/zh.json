@@ -1,175 +1,361 @@
 {
   "common": {
-    "notFound": {
-      "title": "页面未找到",
-      "description": "您访问的页面不存在或已被移动。",
-      "backHome": "返回首页"
+    "loading": "加载中...",
+    "error": "出错了",
+    "retry": "重试",
+    "cancel": "取消",
+    "confirm": "确认",
+    "save": "保存",
+    "edit": "编辑",
+    "delete": "删除",
+    "search": "搜索",
+    "filter": "筛选",
+    "sort": "排序",
+    "more": "更多",
+    "less": "收起",
+    "viewAll": "查看全部",
+    "readMore": "阅读更多",
+    "backToTop": "回到顶部",
+    "close": "关闭",
+    "open": "打开",
+    "download": "下载",
+  "share": "分享",
+  "fontSize": "字体大小",
+  "readingMode": "阅读模式",
+  "autoScroll": "自动滚动",
+  "shareCancelled": "分享取消",
+  "linkCopied": "链接已复制到剪贴板",
+  "keyboard": {
+    "shortcutsTitle": "键盘快捷键",
+    "tip": "提示：部分快捷键可能因浏览器或操作系统而异"
+  },
+  "ascii": {
+    "title": "ASCII 演示",
+    "displayMode": "显示模式",
+    "display": {
+      "staticText": "静态文字",
+      "rhythmEffect": "律动效果"
     },
-    "loading": "???...",
-    "skipToMain": "???????",
-    "accessibility": "???",
-    "accessibilityLabels": {
-      "settingsTitle": "?????",
-      "highContrast": "????",
-      "largeText": "???",
-      "reducedMotion": "????",
-      "screenReader": "???????",
-      "keyboardNavigation": "????",
-      "focusVisible": "????",
-      "colorBlindFriendly": "????",
-      "readDescription": "????",
-      "readHelpMessage": "??????",
-      "stopReading": "????",
-      "textToSpeech": "?????"
+    "theme": {
+      "title": "主题配色",
+      "matrix": "Matrix 绿",
+      "cyber": "Cyber 蓝",
+      "neon": "Neon 紫",
+      "rainbow": "彩虹"
     },
-    "activeFilters": "?????",
-    "add": "??",
-    "aria": {
-      "accessibilitySettings": "???????",
-      "backToTop": "????",
-      "chooseTheme": "????",
-      "clearSearch": "????",
-      "closeMenu": "????",
-      "socialLinks": "????",
-      "themeToggleDark": "???????",
-      "themeToggleLight": "???????",
-      "visitSocial": "??????"
+    "rhythm": {
+      "title": "律动类型",
+      "heartbeat": { "label": "心跳", "desc": "模拟心跳节拍的律动" },
+      "wave": { "label": "波浪", "desc": "流动的波浪效果" },
+      "pulse": { "label": "脉冲", "desc": "规律的脉冲闪烁" },
+      "glitch": { "label": "故障", "desc": "随机的故障效果" }
     },
-    "autoScroll": "????",
-    "backToTop": "????",
-    "breadcrumb": {
-      "home": "??",
-      "research": "??",
-      "projects": "??",
-      "publications": "??",
-      "contact": "??",
-      "skills": "??"
+    "animation": {
+      "title": "动画类型",
+      "typewriter": { "label": "打字机", "desc": "逐字显示效果" },
+      "wave": { "label": "波浪", "desc": "字符波浪动画" },
+      "pulse": { "label": "脉冲", "desc": "整行脉冲效果" },
+      "glitch": { "label": "故障", "desc": "字符故障效果" }
     },
-    "cancel": "??",
-    "chat": {
-      "researchIntro": "??????",
-      "projectsIntro": "??????",
-      "educationIntro": "??????",
-      "contactIntro": "????",
-      "skillsIntro": "??????",
-      "defaultHelp": "??????????????"
+    "intensity": {
+      "title": "效果强度",
+      "low": "低",
+      "medium": "中",
+      "high": "高"
     },
-    "clear": "??",
-    "clearAll": "??",
-    "clearAllFilters": "????",
-    "close": "??",
-    "confirmDelete": "?????",
-    "confirmNo": "?",
-    "confirmYes": "?",
-    "deleteError": "????",
-    "deleteSuccess": "????",
-    "edit": "??",
-    "error": "???",
-    "fontSize": "????",
-    "items": "?",
-    "keyboard": {
-      "shortcutsTitle": "?????",
-      "tip": "??????????????"
+    "size": {
+      "title": "显示尺寸",
+      "small": "小",
+      "medium": "中",
+      "large": "大"
     },
-    "languageOptions": {
-      "chinese": "??",
-      "english": "English",
-      "chineseShort": "??",
-      "englishShort": "EN",
-      "switchToChinese": "?????",
-      "switchToEnglish": "?????"
-    },
-    "linkCopied": "?????????",
-    "logoAlt": "?????",
-    "match": "???",
-    "menu": "??",
-    "noData": "????",
-    "noResults": "?????",
-    "open": "??",
-    "readMore": "????",
-    "readingMode": "????",
-    "relatedLinks": "????",
-    "resume": {
-      "manager": "????",
-      "managerDesc": "????????????",
-      "overview": "????",
-      "personal": "??",
-      "personalInfo": "????",
-      "fullName": "??",
-      "email": "??",
-      "phone": "??",
-      "location": "???",
-      "bio": "??",
-      "education": "????",
-      "experience": "??",
-      "workExperience": "????",
-      "researchExperience": "????",
-      "skills": "??",
-      "languages": "??",
-      "publications": "??",
-      "patents": "??",
-      "awards": "??",
-      "achievements": "??",
-      "dataQuality": "????",
-      "completeness": "???",
-      "lastSync": "????",
-      "sync": "??",
-      "syncConfirm": "?????",
-      "syncStatus": "????",
-      "syncing": "???...",
-      "synced": "???",
-      "syncSuccess": "????",
-      "syncError": "????",
-      "sections": "??",
-      "validate": "??",
-      "upload": {
-        "title": "????",
-        "desc": "??PDF??????????",
-        "selectFile": "??PDF??",
-        "pdfOnly": "???PDF??",
-        "uploading": "???...",
-        "success": "????",
-        "error": "????"
+    "typewriter": {
+      "speedLabel": "打字速度"
+    }
+    ,
+    "docs": {
+      "title": "功能说明",
+      "display": {
+        "title": "显示模式",
+        "static": "基础的 ASCII 文字显示，支持多种动画效果",
+        "rhythm": "动态的字符律动，模拟心跳、波浪等效果"
+      },
+      "theme": {
+        "title": "主题配色",
+        "matrix": "经典黑客帝国风格",
+        "cyber": "现代科技感配色",
+        "neon": "未来霓虹灯效果",
+        "rainbow": "动态彩虹渐变色"
+      },
+      "rhythm": {
+        "title": "律动类型",
+        "heartbeat": "模拟心跳节拍的缩放效果",
+        "wave": "流动的波浪式动画",
+        "pulse": "规律的闪烁脉冲",
+        "glitch": "随机的故障风格效果"
+      },
+      "tech": {
+        "title": "技术特性",
+        "canvas": "基于 Canvas 和 requestAnimationFrame 的高性能渲染",
+        "responsive": "响应式设计，支持多种屏幕尺寸",
+        "controls": "实时动画控制和参数调节",
+        "effects": "多种视觉效果的组合和叠加"
       }
+    }
+  },
+  "seo": {
+    "site": {
+      "title": "牟昭阳个人网站",
+      "author": "牟昭阳",
+      "language": "zh",
+      "locale": "zh_CN"
     },
-    "save": "??",
-    "saveError": "????",
-    "saveSuccess": "????",
-    "search": "??",
-    "searchHistoryTitle": "????",
-    "searchPlaceholder": "??...",
-    "searchSuggestions": "????",
-    "settings": "??",
-    "share": "??",
-    "shareCancelled": "?????",
-    "sortBy": "??",
-    "theme": "??",
-    "tryDifferentKeywords": "????????",
-    "viewAll": "????",
-    "social": {
-      "twitter": "??",
-      "linkedin": "??",
-      "weibo": "??",
-      "googleScholar": "????",
-      "researchgate": "ResearchGate",
-      "github": "GitHub"
+    "default": {
+      "title": "牟昭阳 | 个人网站",
+      "description": "专注于科学计算、机器人技术与人工智能交叉研究，涵盖 Transformer/神经算子、CFD 仿真、水下机器人等领域。",
+      "keywords": ["牟昭阳", "科学计算", "CFD", "Transformer", "神经算子", "机器人"],
+      "jobTitle": "人工智能硕士研究生",
+      "organization": "大连海事大学"
+    },
+    "pages": {
+      "home": { "title": "首页", "description": "牟昭阳个人主页与研究概览" },
+      "research": { "title": "学术研究", "description": "研究方向、学术成果与数据分析" },
+      "projects": { "title": "项目展示", "description": "科研/工程项目与关键成果" },
+      "publications": { "title": "学术成果", "description": "论文/会议/专利等完整信息" },
+      "skills": { "title": "技能专长", "description": "编程、仿真、AI/ML、硬件与工具能力" },
+      "contact": { "title": "联系我", "description": "邮箱、社交与地址信息" }
+    },
+    "sitemap": {
+      "title": "站点地图"
+    }
+  
+    ,
+    "institutions": {
+      "dlmu": "Dalian Maritime University",
+      "westlake": "Westlake University"
+    },
+    "rss": {
+      "title": "RSS订阅"
+    }
+  },
+  "blog": {
+    "title": "学术博客",
+    "description": "分享学术研究成果和技术思考",
+    "loading": "加载中...",
+    "searchPlaceholder": "搜索博客文章...",
+    "sortByDate": "按日期",
+    "sortByViews": "按浏览量",
+    "sortByLikes": "按点赞数",
+    "categories": "分类",
+    "allCategories": "全部分类",
+    "tags": "标签",
+    "allTags": "全部标签",
+    "noPosts": "暂无博客文章",
+    "readMore": "阅读更多",
+    "like": "点赞",
+    "minutesRead": "分钟阅读",
+    "pleaseFillAllFields": "请填写所有必填字段",
+    "pleaseEnterValidEmail": "请输入有效的邮箱地址",
+    "commentSubmitted": "评论已提交，等待审核",
+    "commentSubmitFailed": "评论提交失败，请重试",
+    "linkCopied": "链接已复制到剪贴板",
+    "postNotFound": "文章未找到",
+    "backToBlog": "返回博客",
+    "featured": "精选",
+    "share": "分享",
+    "copyLink": "复制链接",
+    "bookmark": "收藏",
+    "relatedPosts": "相关文章",
+    "comments": "评论",
+    "leaveComment": "发表评论",
+    "name": "姓名",
+    "email": "邮箱",
+    "comment": "评论内容",
+    "commentPlaceholder": "请输入您的评论...",
+    "submitting": "提交中...",
+    "submitComment": "提交评论",
+    "noComments": "暂无评论，快来发表第一条评论吧！",
+    "viewOnScholar": "在学术主页查看"
+  },
+    "copy": "复制",
+    "copied": "已复制",
+  "language": "语言",
+  "languageOptions": {
+    "switchToEnglish": "切换到英文",
+    "switchToChinese": "切换到中文",
+    "english": "英语",
+    "chinese": "中文",
+    "englishShort": "EN",
+    "chineseShort": "中"
+  },
+    "theme": "主题",
+    "settings": "设置",
+    "help": "帮助",
+    "about": "关于",
+    "contact": "联系",
+    "privacy": "隐私政策",
+  "terms": "使用条款",
+  "searchPlaceholder": "搜索...",
+  "menu": "菜单",
+  "skipToMain": "跳到主要内容",
+  "logoAlt": "牟昭阳站点标识",
+  "searchSuggestions": "搜索建议",
+  "categories": {
+    "project": "项目",
+    "publication": "论文",
+    "skill": "技能",
+    "research": "研究"
+  },
+  "aria": {
+    "clearSearch": "清除搜索",
+    "closeMenu": "关闭菜单",
+    "backToTop": "回到顶部",
+    "accessibilitySettings": "可访问性设置",
+    "themeToggleLight": "切换到浅色模式",
+    "themeToggleDark": "切换到深色模式",
+    "chooseTheme": "选择主题",
+    "socialLinks": "社交媒体链接",
+    "visitSocial": "访问我的社交主页"
+  },
+  "breadcrumb": {
+    "home": "首页",
+    "research": "学术研究",
+    "projects": "项目展示",
+    "publications": "学术成果",
+    "skills": "技能专长",
+    "contact": "联系我"
+  },
+  "clearAllFilters": "清除所有筛选",
+  "searchHistoryTitle": "搜索历史",
+  "clear": "清除",
+  "noResults": "未找到相关结果",
+  "tryDifferentKeywords": "尝试不同的关键词？",
+  "match": "匹配",
+  "accessibility": "可访问性",
+  "saveSuccess": "保存成功",
+  "saveError": "保存失败",
+  "confirmDelete": "确认删除此项？",
+  "deleteSuccess": "删除成功",
+  "deleteError": "删除失败",
+  "add": "新增",
+  "noData": "暂无数据",
+  "items": "个项目",
+  "confirmYes": "是",
+  "confirmNo": "否",
+  "relatedLinks": "相关链接",
+  "chat": {
+    "projectsIntro": "他参与了多个重要项目，包括DamFormer溃坝流动预测、Rs-ModCubes模块化机器人、仿生波动鳍推进系统、风扇阵列风洞实验平台等。",
+    "educationIntro": "牟昭阳是大连海事大学人工智能硕士在读，同时为西湖大学访问学生。",
+    "contactIntro": "您可以通过邮箱、电话联系牟昭阳，或访问其 GitHub、LinkedIn 等社交平台。",
+    "skillsIntro": "他掌握 Python、MATLAB、C++、Java、PyTorch、TensorFlow、Star-CCM+、ANSYS Fluent、OpenFOAM、STM32、Arduino 等。",
+    "defaultHelp": "我是牟昭阳的智能助手。您可以询问他的研究方向、项目经验、技能专长或教育背景。"
+  },
+  "social": {
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "twitter": "Twitter",
+    "researchgate": "ResearchGate",
+    "googleScholar": "Google Scholar",
+    "weibo": "微博"
+  },
+  "accessibilityLabels": {
+    "settingsTitle": "可访问性设置",
+    "高对比度模式": "高对比度模式",
+    "largeText": "大字体模式",
+    "reducedMotion": "减少动画效果",
+    "keyboardNavigation": "键盘导航增强",
+    "focusVisible": "焦点可见",
+    "textToSpeech": "文本转语音",
+    "screenReader": "屏幕阅读器",
+    "colorBlindFriendly": "色盲友好模式",
+    "readHelpMessage": "这是可访问性工具栏，您可以在这里调整网站的无障碍访问设置",
+    "stopReading": "停止朗读",
+    "readDescription": "朗读说明"
+  },
+    "activeFilters": "当前筛选:",
+    "clearAll": "清除全部",
+    "sortBy": "排序",
+    "searchResults": {
+      "found": "找到",
+      "results": "个结果",
+      "containing": "包含",
+      "showing": "显示",
+      "of": "/",
+      "items": "个项目"
     },
     "technologies": {
-      "bionics": "???",
-      "closedLoopControl": "????",
-      "networkManagement": "????",
-      "oceanEngineering": "????",
-      "realTimeControl": "????",
-      "sensorFusion": "?????",
-      "underwaterRobot": "?????"
+      "bionics": "仿生学",
+      "underwaterRobot": "水下机器人",
+      "sensorFusion": "传感器融合",
+      "realTimeControl": "实时控制",
+      "networkManagement": "网络管理",
+      "closedLoopControl": "闭环控制",
+      "oceanEngineering": "海洋工程"
     },
-    "searchResults": {
-      "found": "??",
-      "results": "???",
-      "containing": "??",
-      "showing": "??",
-      "of": "/",
-      "items": "?"
+    "timeline": {
+      "filters": "筛选",
+      "clearFilters": "清除筛选",
+      "sortBy": "排序",
+      "sortByDate": "按日期",
+      "sortByType": "按类型",
+      "sortByTitle": "按标题",
+      "loadMore": "加载更多",
+      "noItems": "暂无时间线项目",
+      "types": {
+        "education": "教育",
+        "research": "研究",
+        "publication": "论文",
+        "patent": "专利",
+        "award": "奖项",
+        "project": "项目",
+        "skill": "技能"
+      }
+    },
+    "resume": {
+      "manager": "简历管理",
+      "managerDesc": "管理和同步您的简历数据",
+      "overview": "概览",
+      "personal": "个人信息",
+      "education": "教育背景",
+      "experience": "工作经历",
+      "skills": "技能专长",
+      "achievements": "学术成就",
+      "personalInfo": "个人信息",
+      "fullName": "姓名",
+      "email": "邮箱",
+      "phone": "电话",
+      "location": "位置",
+      "bio": "简介",
+      "workExperience": "工作经历",
+      "researchExperience": "研究经历",
+      "languages": "语言能力",
+      "publications": "学术论文",
+      "patents": "发明专利",
+      "awards": "获奖荣誉",
+      "dataQuality": "数据质量",
+      "completeness": "完整性",
+      "sections": "数据模块",
+      "syncStatus": "同步状态",
+      "synced": "已同步",
+      "lastSync": "最后同步",
+      "upload": {
+        "title": "上传简历PDF",
+        "desc": "上传您的简历PDF文件，系统将自动提取和存储数据",
+        "selectFile": "选择PDF文件",
+        "uploading": "上传中...",
+        "pdfOnly": "请上传PDF文件",
+        "success": "简历上传并处理成功",
+        "error": "简历处理失败"
+      },
+      "validate": "验证数据",
+      "validationSuccess": "简历数据验证通过",
+      "validationErrors": "验证错误",
+      "validationError": "数据验证失败",
+      "sync": "同步到网站",
+      "syncing": "同步中...",
+      "syncSuccess": "简历数据同步成功",
+      "syncError": "简历数据同步失败",
+      "syncConfirm": "这将把简历数据同步到您的网站。是否继续？"
     }
   },
   "navigation": {
@@ -189,36 +375,42 @@
     "personalInfo": {
       "name": "牟昭阳",
       "nameEn": "Zhaoyang Mu",
-      "description": "专注于科学计算与机器人技术的交叉研究，致力于Transformer/Neural Operator建模CFD时空场，推动技术创新与实际应用的结合。"
-    },
-    "quickLinks": {
-      "title": "快速链接",
-      "home": "首页",
-      "research": "研究领域",
-      "projects": "项目展示",
-      "publications": "学术发表"
+      "description": "专注于科学计算与机器人技术的交叉研究，致力于 Transformer/神经算子建模 CFD 时空场与仿生水下机器人。"
     },
     "researchAreas": {
       "title": "研究领域",
       "areas": [
-        "Transformer/Neural Operator建模CFD时空场",
-        "科学计算与机器人技术",
-        "仿生感知与水下机器人",
-        "流体力学数值仿真",
-        "机械设计与控制系统"
+        "Transformer/神经算子",
+        "计算流体力学（CFD）",
+        "仿生机器人",
+        "水下感知与控制",
+        "高性能计算"
       ]
     },
+    "quickLinks": {
+      "title": "快速链接",
+      "home": "首页",
+      "research": "学术研究",
+      "projects": "项目展示",
+      "publications": "学术成果"
+    },
     "contact": {
-      "title": "联系方式",
+      "title": "联系信息",
       "email": "mzymuzhaoyang@gmail.com",
-      "phone": "+86 153 8213 0266",
-      "address": "中国，杭州（西湖大学）"
+      "address": "中国·浙江省·杭州"
     },
     "legal": {
-      "copyright": "牟昭阳。保留所有权利。",
+      "copyright": "牟昭阳（Zhaoyang Mu）保留所有权利",
       "privacy": "隐私政策",
       "terms": "使用条款",
-      "sitemap": "网站地图"
+      "sitemap": "站点地图"
+    }
+  },
+  "common": {
+    "notFound": {
+      "title": "页面未找到",
+      "description": "您访问的页面不存在或已被移动。",
+      "backHome": "返回首页"
     }
   },
   "home": {
@@ -370,39 +562,6 @@
       "minutes": "分钟",
       "wordCount": "字数",
       "words": "字"
-    },
-    "metrics": {
-      "title": "学术影响力",
-      "totalCitations": "总引用数",
-      "hIndex": "h-index",
-      "i10Index": "i10-index",
-      "totalPapers": "论文总数",
-      "yearlyCitations": "年度引用分布",
-      "citationTrend": "引用趋势",
-      "aboutHIndex": "关于h-index",
-      "hIndexDescription": "h-index是指有h篇论文分别被引用了至少h次的最大值",
-      "aboutI10Index": "关于i10-index",
-      "i10IndexDescription": "i10-index是指被引用次数超过10次的论文数量",
-      "dataSource": "数据来源",
-      "lastUpdated": "最后更新",
-      "error": "获取学术指标失败，请稍后重试",
-      "notFound": "未找到学术数据",
-      "citations": "???",
-      "year": "??"
-    },
-    "papers": {
-      "title": "学术论文",
-      "sortBy": "排序方式",
-      "filterYear": "筛选年份",
-      "allYears": "所有年份",
-      "year": "年份",
-      "citations": "引用数",
-      "citationVelocity": "引用速度",
-      "viewPaper": "查看论文",
-      "totalPapers": "论文总数",
-      "totalCitations": "总引用数",
-      "avgCitations": "平均引用",
-      "error": "获取论文数据失败，请稍后重试"
     }
   },
   "research": {
@@ -555,7 +714,7 @@
         "title": "学术影响力",
         "totalCitations": "总引用数",
         "hIndex": "h-index",
-        "i10Index": "i10-index",
+        "i10Index": "i10-index", 
         "totalPapers": "论文总数",
         "yearlyCitations": "年度引用分布",
         "citationTrend": "引用趋势",
@@ -587,6 +746,178 @@
       "title": "学术论文"
     },
     "patents": {
+      "title": "发明专利"
+    },
+    "awards": {
+      "title": "获奖荣誉"
+    },
+    "academicAchievements": "学术成就",
+    "totalCount": "共 {{count}} {{unit}}",
+    "papers": "篇",
+    "items": "项",
+    "authors": "作者",
+    "applicant": "申请人",
+    "patentNumber": "专利号",
+    "applicationDate": "申请日期",
+    "publicDate": "公开日期",
+    "certificateNumber": "证书编号",
+    "viewDetails": "查看详情",
+    "education": {
+      "master": {
+        "title": "大连海事大学 - 人工智能硕士",
+        "description": "专业：人工智能（0812J1）| 导师：徐敏义 教授 | 人工智能学院 | 预计2025.06毕业",
+        "period": "2023.08 - 2025.06（预计）",
+        "status": "在读",
+        "location": "大连"
+      },
+      "visiting": {
+        "title": "西湖大学 - 访问学生/研究助理",
+        "description": "工学院 i⁴-FSI 实验室（PI：范迪夏教授）| 方向：仿生波动鳍推进仿真（Star-CCM+ + Java Macro）",
+        "period": "2024.06 - 至今",
+        "status": "访问学者",
+        "location": "杭州"
+      },
+      "bachelor": {
+        "title": "大连海事大学 - 材料科学与工程学士",
+        "description": "专业：材料科学与工程（高分子）| GPA 3.2/4.0（82/100）| 专业排名 7/100 | 工学学士",
+        "period": "2019.09 - 2023.06",
+        "status": "已毕业",
+        "location": "大连"
+      }
+    },
+    "educationItems": {
+      "master": {
+        "title": "大连海事大学 - 人工智能硕士",
+        "description": "专业：人工智能（0812J1）| 导师：徐敏义 教授 | 人工智能学院",
+        "period": "2023.08 - 2025.06（预计）",
+        "status": "在读"
+      },
+      "visiting": {
+        "title": "西湖大学 - 访问学生/研究助理",
+        "description": "工学院 i⁴-FSI 实验室（PI：范迪夏）| 方向：仿生波动鳍推进仿真",
+        "period": "2024.06 - 至今",
+        "status": "访问学者"
+      },
+      "bachelor": {
+        "title": "大连海事大学 - 材料科学与工程学士",
+        "description": "专业：材料科学与工程（高分子）| GPA 3.2/4.0（82/100）| 专业排名 7/100",
+        "period": "2019.09 - 2023.06",
+        "status": "工学学士"
+      }
+    },
+    "status": {
+      "published": "已发表",
+      "accepted": "已接收",
+      "underReview": "审稿中",
+      "preparing": "准备中",
+      "granted": "已授权"
+    },
+    "type": {
+      "journal": "期刊论文",
+      "conference": "会议论文"
+    },
+    "patentType": {
+      "invention": "发明专利",
+      "utility": "实用新型",
+      "design": "外观设计"
+    },
+    "level": {
+      "national": "国家级",
+      "provincial": "省级",
+      "school": "校级"
+    },
+    "keywords": {
+      "scientificComputing": "科学计算",
+      "roboticsResearch": "机器人研究",
+      "artificialIntelligence": "人工智能",
+      "machineLearning": "机器学习"
+    },
+    "awardLevels": {
+      "national": "国家级",
+      "provincial": "省级",
+      "university": "校级"
+    },
+    "areas": {
+      "scientificComputing": {
+        "title": "科学计算",
+        "description": "专注于Transformer/Neural Operator建模CFD时空场，推动科学计算与人工智能的深度融合",
+        "keywords": ["Transformer", "Neural Operator", "CFD", "科学计算", "深度学习", "偏微分方程"],
+        "transformer": {
+          "title": "Transformer神经算子",
+          "description": "将Transformer架构应用于偏微分方程求解，实现跨几何泛化预测"
+        },
+        "sparseToDense": {
+          "title": "稀疏到稠密重构",
+          "description": "基于深度学习的稀疏传感器数据到稠密流场重构方法",
+          "journal": "Journal of Computational Physics",
+          "authors": ["牟昭阳", "赵磊"]
+        },
+        "damBreak": {
+          "title": "溃坝流动预测",
+          "description": "高精度溃坝流动数值模拟与预测方法研究"
+        },
+        "data": {
+          "publication1": {
+          "title": "DamFormer: Generalizing morphologies in dam break simulations using transformer model",
+          "authors": "Zhaoyang Mu, Aoming Liang, Mingming Ge, Dashuai Chen, Dixia Fan, Minyi Xu",
+          "journal": "Physics of Fluids",
+          "abstract": "本文提出了基于Transformer架构的DamFormer模型，用于溃坝流动的跨几何预测。该模型在不同几何配置下实现了高精度的流场预测，为溃坝灾害评估提供了新的技术手段。构建了多几何边界数据集，实现跨几何零样本预测，解决了传统CFD仿真计算成本高的问题。",
+          "keywords": ["Transformer", "溃坝", "CFD", "深度学习", "跨几何", "Physics of Fluids"]
+        },
+          "publication2": {
+            "title": "Rs-ModCubes: Self-reconfigurable, scalable, modular cubic robots for underwater operations",
+            "authors": "Jiaxi Zheng, Guangmin Dai, Botao He, Zhaoyang Mu, Zhaochen Meng, Tianyi Zhang, Weiming Zhi, Dixia Fan",
+            "journal": "IEEE Robotics and Automation Letters",
+            "abstract": "本发明公开了一种具有自主重构能力和多种运动模式的模块化自重构立方体机器人系统Rs-ModCubes，适用于复杂环境下的机器人应用。",
+            "keywords": ["模块化机器人", "自重构", "立方体结构", "机器人系统"]
+          },
+          "publication3": {
+            "title": "CFD-FSI Analysis of Bionic Undulating Fin Propulsion System",
+            "authors": "牟昭阳, 西湖大学研究团队",
+            "journal": "International Conference on Robotics and Automation (ICRA)",
+            "abstract": "西湖大学i⁴-FSI实验室项目。通过Star-CCM+进行仿生波动鳍推进系统CFD/FSI耦合仿真分析，Java Macro自动化参数扫描，探索仿生推进机理。",
+            "keywords": ["Star-CCM+", "CFD-FSI", "仿生推进", "Java Macro", "西湖大学"]
+          },
+          "patent1": {
+            "title": "一种模块化自重构机器人系统",
+            "authors": "牟昭阳, 发明团队",
+            "journal": "中国发明专利",
+            "abstract": "本发明公开了一种具有自主重构能力和多种运动模式的模块化自重构立方体机器人系统Rs-ModCubes，适用于复杂环境下的机器人应用。",
+            "keywords": ["模块化机器人", "自重构", "立方体结构", "机器人系统"]
+          },
+          "patent2": {
+            "title": "水下机器人仿生感知装置及感知方法",
+            "authors": "牟昭阳, 专利团队",
+            "journal": "中国发明专利",
+            "abstract": "本发明提供了一种水下机器人仿生感知装置，基于TENG技术实现对水流变化的敏感检测，结合人工侧线结构提高感知精度。",
+            "keywords": ["水下机器人", "TENG", "仿生感知", "人工侧线"]
+          },
+          "patent3": {
+            "title": "风扇阵列风洞实验平台控制系统",
+            "authors": "牟昭阳, 开发团队",
+            "journal": "中国实用新型专利",
+            "abstract": "模块化2.5m×2.5m风扇阵列，STM32多板PWM/TACH闭环控制，VLAN/DHCP网络管理。用于流场控制和测试验证的实验平台。",
+            "keywords": ["风扇阵列", "STM32", "PWM/TACH", "VLAN", "实验平台"]
+          }
+        }
+      },
+      "robotics": {
+        "title": "机器人技术",
+        "underwaterPerception": {
+          "title": "水下感知系统",
+          "description": "基于仿生原理的水下机器人环境感知与导航技术"
+        },
+        "bionicFin": {
+          "title": "仿生推进系统",
+          "description": "模拟鱼类游泳的仿生波动鳍推进装置设计与控制"
+        },
+        "modularRobot": {
+          "title": "模块化机器人",
+          "description": "基于模块化立方体的可重构机器人系统设计"
+        }
+      }
+    },
+     "patents": {
       "title": "专利申请",
       "underwaterNavigation": {
         "title": "基于仿生感知的水下导航装置及方法",
@@ -666,192 +997,6 @@
         "title": "辽宁省大学生机械创新设计大赛一等奖",
         "organization": "辽宁省教育厅",
         "description": "参赛作品：《深蓝视觉融合水下机器人》，在辽宁省大学生机械创新设计大赛中获得一等奖。"
-      }
-    },
-    "academicAchievements": "学术成就",
-    "totalCount": "共 {{count}} {{unit}}",
-    "papers": "篇",
-    "items": "项",
-    "authors": "作者",
-    "applicant": "申请人",
-    "patentNumber": "专利号",
-    "applicationDate": "申请日期",
-    "publicDate": "公开日期",
-    "certificateNumber": "证书编号",
-    "viewDetails": "查看详情",
-    "education": "????",
-    "educationItems": {
-      "master": {
-        "title": "大连海事大学 - 人工智能硕士",
-        "description": "专业：人工智能（0812J1）| 导师：徐敏义 教授 | 人工智能学院",
-        "period": "2023.08 - 2025.06（预计）",
-        "status": "在读"
-      },
-      "visiting": {
-        "title": "西湖大学 - 访问学生/研究助理",
-        "description": "工学院 i⁴-FSI 实验室（PI：范迪夏）| 方向：仿生波动鳍推进仿真",
-        "period": "2024.06 - 至今",
-        "status": "访问学者"
-      },
-      "bachelor": {
-        "title": "大连海事大学 - 材料科学与工程学士",
-        "description": "专业：材料科学与工程（高分子）| GPA 3.2/4.0（82/100）| 专业排名 7/100",
-        "period": "2019.09 - 2023.06",
-        "status": "工学学士"
-      }
-    },
-    "status": {
-      "published": "已发表",
-      "accepted": "已接收",
-      "underReview": "审稿中",
-      "preparing": "准备中",
-      "granted": "已授权"
-    },
-    "type": {
-      "journal": "期刊论文",
-      "conference": "会议论文"
-    },
-    "patentType": {
-      "invention": "发明专利",
-      "utility": "实用新型",
-      "design": "外观设计"
-    },
-    "level": {
-      "national": "国家级",
-      "provincial": "省级",
-      "school": "校级"
-    },
-    "keywords": {
-      "scientificComputing": "科学计算",
-      "roboticsResearch": "机器人研究",
-      "artificialIntelligence": "人工智能",
-      "machineLearning": "机器学习"
-    },
-    "awardLevels": {
-      "national": "国家级",
-      "provincial": "省级",
-      "university": "校级"
-    },
-    "areas": {
-      "scientificComputing": {
-        "title": "科学计算",
-        "description": "专注于Transformer/Neural Operator建模CFD时空场，推动科学计算与人工智能的深度融合",
-        "keywords": [
-          "CFD",
-          "Transformer",
-          "????",
-          "????"
-        ],
-        "transformer": {
-          "title": "Transformer神经算子",
-          "description": "将Transformer架构应用于偏微分方程求解，实现跨几何泛化预测"
-        },
-        "sparseToDense": {
-          "title": "稀疏到稠密重构",
-          "description": "基于深度学习的稀疏传感器数据到稠密流场重构方法",
-          "journal": "Journal of Computational Physics",
-          "authors": [
-            "牟昭阳",
-            "赵磊"
-          ]
-        },
-        "damBreak": {
-          "title": "溃坝流动预测",
-          "description": "高精度溃坝流动数值模拟与预测方法研究"
-        },
-        "data": {
-          "publication1": {
-            "title": "DamFormer: Generalizing morphologies in dam break simulations using transformer model",
-            "authors": "Zhaoyang Mu, Aoming Liang, Mingming Ge, Dashuai Chen, Dixia Fan, Minyi Xu",
-            "journal": "Physics of Fluids",
-            "abstract": "本文提出了基于Transformer架构的DamFormer模型，用于溃坝流动的跨几何预测。该模型在不同几何配置下实现了高精度的流场预测，为溃坝灾害评估提供了新的技术手段。构建了多几何边界数据集，实现跨几何零样本预测，解决了传统CFD仿真计算成本高的问题。",
-            "keywords": [
-              "Transformer",
-              "溃坝",
-              "CFD",
-              "深度学习",
-              "跨几何",
-              "Physics of Fluids"
-            ]
-          },
-          "publication2": {
-            "title": "Rs-ModCubes: Self-reconfigurable, scalable, modular cubic robots for underwater operations",
-            "authors": "Jiaxi Zheng, Guangmin Dai, Botao He, Zhaoyang Mu, Zhaochen Meng, Tianyi Zhang, Weiming Zhi, Dixia Fan",
-            "journal": "IEEE Robotics and Automation Letters",
-            "abstract": "本发明公开了一种具有自主重构能力和多种运动模式的模块化自重构立方体机器人系统Rs-ModCubes，适用于复杂环境下的机器人应用。",
-            "keywords": [
-              "模块化机器人",
-              "自重构",
-              "立方体结构",
-              "机器人系统"
-            ]
-          },
-          "publication3": {
-            "title": "CFD-FSI Analysis of Bionic Undulating Fin Propulsion System",
-            "authors": "牟昭阳, 西湖大学研究团队",
-            "journal": "International Conference on Robotics and Automation (ICRA)",
-            "abstract": "西湖大学i⁴-FSI实验室项目。通过Star-CCM+进行仿生波动鳍推进系统CFD/FSI耦合仿真分析，Java Macro自动化参数扫描，探索仿生推进机理。",
-            "keywords": [
-              "Star-CCM+",
-              "CFD-FSI",
-              "仿生推进",
-              "Java Macro",
-              "西湖大学"
-            ]
-          },
-          "patent1": {
-            "title": "一种模块化自重构机器人系统",
-            "authors": "牟昭阳, 发明团队",
-            "journal": "中国发明专利",
-            "abstract": "本发明公开了一种具有自主重构能力和多种运动模式的模块化自重构立方体机器人系统Rs-ModCubes，适用于复杂环境下的机器人应用。",
-            "keywords": [
-              "模块化机器人",
-              "自重构",
-              "立方体结构",
-              "机器人系统"
-            ]
-          },
-          "patent2": {
-            "title": "水下机器人仿生感知装置及感知方法",
-            "authors": "牟昭阳, 专利团队",
-            "journal": "中国发明专利",
-            "abstract": "本发明提供了一种水下机器人仿生感知装置，基于TENG技术实现对水流变化的敏感检测，结合人工侧线结构提高感知精度。",
-            "keywords": [
-              "水下机器人",
-              "TENG",
-              "仿生感知",
-              "人工侧线"
-            ]
-          },
-          "patent3": {
-            "title": "风扇阵列风洞实验平台控制系统",
-            "authors": "牟昭阳, 开发团队",
-            "journal": "中国实用新型专利",
-            "abstract": "模块化2.5m×2.5m风扇阵列，STM32多板PWM/TACH闭环控制，VLAN/DHCP网络管理。用于流场控制和测试验证的实验平台。",
-            "keywords": [
-              "风扇阵列",
-              "STM32",
-              "PWM/TACH",
-              "VLAN",
-              "实验平台"
-            ]
-          }
-        }
-      },
-      "robotics": {
-        "title": "机器人技术",
-        "underwaterPerception": {
-          "title": "水下感知系统",
-          "description": "基于仿生原理的水下机器人环境感知与导航技术"
-        },
-        "bionicFin": {
-          "title": "仿生推进系统",
-          "description": "模拟鱼类游泳的仿生波动鳍推进装置设计与控制"
-        },
-        "modularRobot": {
-          "title": "模块化机器人",
-          "description": "基于模块化立方体的可重构机器人系统设计"
-        }
       }
     }
   },
@@ -950,186 +1095,110 @@
       "programming": {
         "python": {
           "description": "PyTorch/NumPy/Pandas/Matplotlib，深度学习与科学计算",
-          "projects": [
-            "Transformer/神经算子建模",
-            "深度强化学习算法",
-            "CFD时空场预测"
-          ]
+          "projects": ["Transformer/神经算子建模", "深度强化学习算法", "CFD时空场预测"]
         },
         "java": {
           "description": "Star-CCM+ Macro/Workflow开发",
-          "projects": [
-            "CFD自动化仿真",
-            "仿生波动鳍推进仿真"
-          ]
+          "projects": ["CFD自动化仿真", "仿生波动鳍推进仿真"]
         },
         "matlab": {
           "description": "数值计算、信号处理、控制系统",
-          "projects": [
-            "流体力学仿真",
-            "控制算法设计"
-          ]
+          "projects": ["流体力学仿真", "控制算法设计"]
         },
         "javascript": {
           "description": "前端开发、全栈应用",
-          "projects": [
-            "个人网站",
-            "数据可视化平台"
-          ]
+          "projects": ["个人网站", "数据可视化平台"]
         },
         "powershell": {
           "description": "自动化脚本、系统管理",
-          "projects": [
-            "自动刷写脚本",
-            "系统配置管理"
-          ]
+          "projects": ["自动刷写脚本", "系统配置管理"]
         }
       },
       "simulation": {
         "starccm": {
           "description": "CFD/FSI仿真，Java Macro开发",
-          "projects": [
-            "仿生波动鳍推进仿真",
-            "流固耦合分析"
-          ]
+          "projects": ["仿生波动鳍推进仿真", "流固耦合分析"]
         },
         "comsol": {
           "description": "多物理场耦合仿真",
-          "projects": [
-            "流固耦合分析",
-            "传热传质仿真",
-            "校核验证"
-          ]
+          "projects": ["流固耦合分析", "传热传质仿真", "校核验证"]
         },
         "ansys": {
           "description": "工程仿真分析",
-          "projects": [
-            "结构分析",
-            "流体仿真",
-            "多物理场耦合"
-          ]
+          "projects": ["结构分析", "流体仿真", "多物理场耦合"]
         },
         "pdebench": {
           "description": "偏微分方程基准测试",
-          "projects": [
-            "Neural Operator验证",
-            "PDE求解器对比"
-          ]
+          "projects": ["Neural Operator验证", "PDE求解器对比"]
         }
       },
       "aiMl": {
         "transformer": {
           "description": "注意力机制，时空序列建模",
-          "projects": [
-            "CFD时空场预测",
-            "序列到序列学习"
-          ]
+          "projects": ["CFD时空场预测", "序列到序列学习"]
         },
         "neuralOperator": {
           "description": "FNO, DeepONet等算子学习",
-          "projects": [
-            "PDE求解",
-            "科学计算加速"
-          ]
+          "projects": ["PDE求解", "科学计算加速"]
         },
         "pytorch": {
           "description": "深度学习框架",
-          "projects": [
-            "神经网络训练",
-            "DDP/AMP并行计算"
-          ]
+          "projects": ["神经网络训练", "DDP/AMP并行计算"]
         },
         "reinforcementLearning": {
           "name": "强化学习",
           "description": "DQN, PPO等算法",
-          "projects": [
-            "仿生鱼控制策略",
-            "机器人控制"
-          ]
+          "projects": ["仿生鱼控制策略", "机器人控制"]
         },
         "computerVision": {
           "name": "计算机视觉",
           "description": "仿生感知，图像处理",
-          "projects": [
-            "水下机器人视觉",
-            "仿生感知系统"
-          ]
+          "projects": ["水下机器人视觉", "仿生感知系统"]
         }
       },
       "hardware": {
         "solidworks": {
           "description": "3D/2D设计、BOM、干涉检查",
-          "projects": [
-            "仿生鱼机器人设计",
-            "机械结构优化",
-            "装配体设计"
-          ]
+          "projects": ["仿生鱼机器人设计", "机械结构优化", "装配体设计"]
         },
         "shapr3d": {
           "description": "移动端3D建模设计",
-          "projects": [
-            "快速原型设计",
-            "概念建模"
-          ]
+          "projects": ["快速原型设计", "概念建模"]
         },
         "stm32": {
           "description": "NUCLEO-F439ZI，PWM/TACH控制",
-          "projects": [
-            "风扇阵列风洞控制系统",
-            "嵌入式控制系统",
-            "传感器接口"
-          ]
+          "projects": ["风扇阵列风洞控制系统", "嵌入式控制系统", "传感器接口"]
         },
         "tplink": {
           "name": "TP-Link L3交换机",
           "description": "网管交换机配置管理",
-          "projects": [
-            "网络架构设计",
-            "设备管理"
-          ]
+          "projects": ["网络架构设计", "设备管理"]
         }
       },
       "tools": {
         "git": {
           "description": "版本控制与协作",
-          "projects": [
-            "所有项目代码管理"
-          ]
+          "projects": ["所有项目代码管理"]
         },
         "docker": {
           "description": "容器化部署",
-          "projects": [
-            "仿真环境部署",
-            "微服务架构"
-          ]
+          "projects": ["仿真环境部署", "微服务架构"]
         },
         "linux": {
           "description": "系统管理与脚本，SLURM作业调度",
-          "projects": [
-            "服务器运维",
-            "HPC集群管理",
-            "自动化脚本"
-          ]
+          "projects": ["服务器运维", "HPC集群管理", "自动化脚本"]
         },
         "cuda": {
           "description": "GPU并行计算，DDP/AMP加速",
-          "projects": [
-            "深度学习训练加速",
-            "科学计算并行化"
-          ]
+          "projects": ["深度学习训练加速", "科学计算并行化"]
         },
         "vscode": {
           "description": "集成开发环境",
-          "projects": [
-            "日常开发工具"
-          ]
+          "projects": ["日常开发工具"]
         },
         "jupyter": {
           "description": "交互式开发",
-          "projects": [
-            "数据分析",
-            "算法原型"
-          ]
+          "projects": ["数据分析", "算法原型"]
         }
       }
     }
@@ -1246,329 +1315,257 @@
     }
   },
   "publications": {
-    "title": "学术成果",
-    "description": "我的研究成果和学术贡献",
-    "items": "个成果",
-    "stats": {
-      "total": "总计",
-      "published": "已发表",
-      "citations": "引用数",
-      "patents": "专利"
-    },
-    "search": {
-      "placeholder": "搜索论文、专利..."
-    },
-    "filters": {
-      "type": "类型",
-      "status": "状态",
-      "year": "年份",
-      "all": "全部"
-    },
-    "types": {
-      "journal": "期刊论文",
-      "conference": "会议论文",
-      "patent": "专利",
-      "invention": "发明专利",
-      "utility": "实用新型",
-      "design": "外观设计"
-    },
-    "status": {
-      "published": "已发表",
-      "accepted": "已接收",
-      "underReview": "审稿中",
-      "inPreparation": "准备中",
-      "granted": "已授权",
-      "pending": "审查中",
-      "unknown": "未知"
-    },
-    "sort": {
-      "title": "标题",
-      "year": "年份",
-      "citations": "引用数",
-      "authors": "作者",
-      "journal": "期刊"
-    },
-    "citations": "引用",
-    "modal": {
-      "authors": "作者",
-      "year": "年份",
-      "doi": "DOI",
-      "citationsCount": "引用次数",
-      "abstract": "摘要",
-      "keywords": "关键词",
-      "journal": "期刊",
-      "publishYear": "发表年份",
-      "patentNumber": "专利号",
-      "applicant": "申请人",
-      "publicDate": "公开日期",
-      "organization": "颁发机构",
-      "awardDate": "获奖日期",
-      "certificateNumber": "证书编号",
-      "publicationDetail": "论文详情",
-      "patentDetail": "专利详情",
+      "title": "学术成果",
+      "description": "我的研究成果和学术贡献",
+      "items": "个成果",
+      "stats": {
+        "total": "总计",
+        "published": "已发表",
+        "citations": "引用数",
+        "patents": "专利"
+      },
+      "search": {
+        "placeholder": "搜索论文、专利..."
+      },
+      "filters": {
+        "type": "类型",
+        "status": "状态",
+        "year": "年份",
+        "all": "全部"
+      },
+      "types": {
+        "journal": "期刊论文",
+        "conference": "会议论文",
+        "patent": "专利",
+        "invention": "发明专利",
+        "utility": "实用新型",
+        "design": "外观设计"
+      },
+      "status": {
+        "published": "已发表",
+        "accepted": "已接收",
+        "underReview": "审稿中",
+        "inPreparation": "准备中",
+        "granted": "已授权",
+        "pending": "审查中",
+        "unknown": "未知"
+      },
+      "sort": {
+        "title": "标题",
+        "year": "年份",
+        "citations": "引用数",
+        "authors": "作者",
+        "journal": "期刊"
+      },
+      "citations": "引用",
+      "modal": {
+        "authors": "作者",
+        "year": "年份",
+        "doi": "DOI",
+        "citationsCount": "引用次数",
+        "abstract": "摘要",
+        "keywords": "关键词",
+        "journal": "期刊",
+        "publishYear": "发表年份",
+        "patentNumber": "专利号",
+        "applicant": "申请人",
+        "publicDate": "公开日期",
+        "organization": "颁发机构",
+        "awardDate": "获奖日期",
+        "certificateNumber": "证书编号",
+        "publicationDetail": "论文详情",
+        "patentDetail": "专利详情",
       "awardDetail": "奖项详情",
       "publisherLink": "出版社链接"
-    },
+      },
     "publisherLink": "出版社链接",
     "levels": {
       "national": "国家级",
       "provincial": "省级",
       "university": "校级"
     },
-    "damformer": {
-      "title": "Generalizing morphologies in dam break simulations using transformer model",
-      "journal": "Physics of Fluids 37(1):016612, 2025",
-      "authors": [
-        "Zhaoyang Mu",
-        "Aoming Liang",
-        "Mingming Ge",
-        "Dashuai Chen",
-        "Dixia Fan",
-        "Minyi Xu"
-      ],
-      "description": "提出了一种基于Transformer架构的神经算子DamFormer，用于预测溃坝流动。该方法能够处理不同几何边界条件下的流体动力学问题，实现了跨几何泛化能力。发表于Physics of Fluids 37(1):016612, 2025。",
-      "doi": "10.1063/5.0187644"
-    },
-    "rsModCubes": {
-      "title": "Rs-ModCubes: Self-reconfigurable, scalable, modular cubic robots for underwater operations",
-      "journal": "IEEE Robotics and Automation Letters (RA-L)",
-      "authors": [
-        "Jiaxi Zheng",
-        "Guangmin Dai",
-        "Botao He",
-        "Zhaoyang Mu",
-        "Zhaochen Meng",
-        "Tianyi Zhang",
-        "Weiming Zhi",
-        "Dixia Fan"
-      ],
-      "description": "设计了一种自重构、可扩展的模块化立方体机器人系统，专门用于水下作业。该系统具有良好的可重构性和适应性，能够根据任务需求自主重构形态。发表于IEEE RA-L, 2025。",
-      "doi": "10.1109/LRA.2025.10891552"
-    },
-    "whiskerSensorArray": {
-      "title": "Deep-Learning-Assisted Triboelectric Whisker Sensor Array for Real-Time Motion Sensing of Unmanned Underwater Vehicle",
-      "journal": "Advanced Materials Technologies",
-      "authors": [
-        "Bo Liu",
-        "Bowen Dong",
-        "Hao Jin",
-        "Peng Zhu",
-        "Zhaoyang Mu",
-        "Yuanzheng Li",
-        "Jianhua Liu",
-        "Zhaochen Meng",
-        "Xinyue Zhou",
-        "Peng Xu",
-        "Minyi Xu"
-      ],
-      "description": "开发了一种基于仿生触须传感器阵列的水下机器人环境感知系统，模拟鱼类侧线系统的感知机制，提高了水下环境的感知能力。",
-      "doi": "10.1002/admt.202401053"
-    },
-    "whiskerSensor": {
-      "title": "Deep-learning-assisted triboelectric whisker for near field perception and online state estimation of underwater vehicle",
-      "journal": "Nano Energy",
-      "authors": [
-        "Peng Xu",
-        "Jianhua Liu",
-        "Bo Liu",
-        "Yuanzheng Li",
-        "Hao Jin",
-        "Zhaoyang Mu",
-        "Tangzhen Guan",
-        "Guangming Xie",
-        "Hao Wang",
-        "Minyi Xu"
-      ],
-      "description": "设计了一种高灵敏度的仿生触须传感器，能够检测微小的流体扰动，为水下机器人提供精确的环境感知能力。",
-      "doi": "10.1016/j.nanoen.2024.110011"
-    },
-    "sparseToDense": {
-      "title": "基于Transformer的稀疏到稠密流场重构方法",
-      "journal": "计算物理学报",
-      "authors": [
-        "牟昭阳",
-        "赵磊"
-      ],
-      "description": "提出了一种基于Transformer的稀疏传感器数据到稠密流场的重构方法，能够从有限的传感器数据中重构完整的流场信息。",
-      "doi": "10.1063/5.0123456"
-    },
-    "data": {
-      "publication1": {
-        "title": "DamFormer: A Transformer-based Model for Dam-break Flow Prediction with Cross-geometry Generalization",
-        "authors": "牟昭阳, 导师姓名, 合作者",
-        "journal": "Physics of Fluids",
-        "abstract": "本文提出了基于Transformer架构的DamFormer模型，用于溃坝流场的跨几何边界预测。该模型能够在不同几何配置下实现高精度的流场预测，为溃坝灾害评估提供了新的技术手段。构建多几何边界数据集，实现跨几何零样本预测，解决传统CFD仿真计算成本高的问题。",
-        "keywords": [
-          "Transformer",
-          "Dam-break",
-          "CFD",
-          "Deep Learning",
-          "Cross-geometry",
-          "Physics of Fluids"
-        ]
-      },
-      "publication2": {
-        "title": "Sparse→Dense Transformer: 稀疏到稠密场重建",
-        "authors": "牟昭阳, 合作研究者",
-        "journal": "Physics of Fluids",
-        "abstract": "面向CFD/环境流，稀疏传感重建高分辨率时空场。基于Transformer架构实现从稀疏观测到稠密场的智能重建，提供了一种高效的流场重建方法。",
-        "keywords": [
-          "Transformer",
-          "Neural Operator",
-          "Field Reconstruction",
-          "CFD",
-          "Environmental Flow"
-        ]
-      },
-      "publication3": {
-        "title": "CFD-FSI Analysis of Bionic Undulating Fin Propulsion System",
-        "authors": "牟昭阳, 西湖大学研究团队",
-        "journal": "International Conference on Robotics and Automation (ICRA)",
-        "abstract": "西湖大学i⁴-FSI实验室项目。通过Star-CCM+ CFD/FSI耦合仿真分析仿生波动鳍推进系统，Java Macro自动化参数扫描，探索仿生推进机理。",
-        "keywords": [
-          "Star-CCM+",
-          "CFD-FSI",
-          "Bionic Propulsion",
-          "Java Macro",
-          "Westlake University"
-        ]
-      },
-      "patent1": {
-        "title": "一种基于模块化设计的自重构机器人系统",
-        "authors": "牟昭阳, 发明团队",
-        "journal": "中国发明专利",
-        "abstract": "本发明公开了一种基于模块化设计的自重构立方体机器人系统Rs-ModCubes，具备自主重构能力和多种运动模式，适用于复杂环境下的机器人应用。",
-        "keywords": [
-          "模块化机器人",
-          "自重构",
-          "立方体结构",
-          "机器人系统"
-        ]
-      },
-      "patent2": {
-        "title": "水下机器人仿生感知装置及其感知方法",
-        "authors": "牟昭阳, 专利团队",
-        "journal": "中国发明专利",
-        "abstract": "本发明提供了一种水下机器人仿生感知装置，基于TENG技术实现对水流变化的敏感检测，结合人工侧线结构提高感知精度。",
-        "keywords": [
-          "水下机器人",
-          "TENG",
-          "仿生感知",
-          "人工侧线"
-        ]
-      },
-      "patent3": {
-        "title": "风扇阵列风洞实验平台控制系统",
-        "authors": "牟昭阳, 研发团队",
-        "journal": "中国实用新型专利",
-        "abstract": "模块化2.5m×2.5m风扇阵列，STM32多板PWM/TACH闭环控制，VLAN/DHCP网络管理。用于流场控制和测试验证的实验平台。",
-        "keywords": [
-          "风扇阵列",
-          "STM32",
-          "PWM/TACH",
-          "VLAN",
-          "实验平台"
-        ]
-      },
-      "nanoEnergy2024": {
-        "title": "Deep-learning-assisted triboelectric whisker for near field perception and online state estimation of underwater vehicle",
-        "authors": "Peng Xu, Jianhua Liu, Bo Liu, Yuanzheng Li, Hao Jin, Zhaoyang Mu, Tangzhen Guan, Guangming Xie, Hao Wang, Minyi Xu",
-        "journal": "Nano Energy",
-        "abstract": "",
-        "keywords": [
-          "Triboelectric",
-          "Underwater Whisker",
-          "Near-field Perception",
-          "Deep Learning"
-        ],
-        "doi": "10.1016/j.nanoen.2024.110011",
-        "url": "https://www.sciencedirect.com/science/article/abs/pii/S2211285524007614"
-      },
-      "amtTWSA2025": {
-        "title": "Deep-Learning-Assisted Triboelectric Whisker Sensor Array for Real-Time Motion Sensing of Unmanned Underwater Vehicle",
-        "authors": "Bo Liu, Bowen Dong, Hao Jin, Peng Zhu, Zhaoyang Mu, Yuanzheng Li, Jianhua Liu, Zhaochen Meng, Xinyue Zhou, Peng Xu, Minyi Xu",
-        "journal": "Advanced Materials Technologies",
-        "abstract": "",
-        "keywords": [
-          "Triboelectric",
-          "Sensor Array",
-          "Underwater Vehicle",
-          "Deep Learning"
-        ],
-        "doi": "10.1002/admt.202401053",
-        "url": "https://advanced.onlinelibrary.wiley.com/doi/10.1002/admt.202401053"
-      },
-      "pofDamFormer2025": {
+      "damformer": {
         "title": "Generalizing morphologies in dam break simulations using transformer model",
-        "authors": "Zhaoyang Mu, Aoming Liang, Mingming Ge, Dashuai Chen, Dixia Fan, Minyi Xu",
-        "journal": "Physics of Fluids",
-        "abstract": "",
-        "keywords": [
-          "Transformer",
-          "Dam Break",
-          "CFD",
-          "Neural Operator"
+        "journal": "Physics of Fluids 37(1):016612, 2025",
+        "authors": [
+          "Zhaoyang Mu",
+          "Aoming Liang",
+          "Mingming Ge",
+          "Dashuai Chen",
+          "Dixia Fan",
+          "Minyi Xu"
         ],
-        "doi": "",
-        "url": "https://pubs.aip.org/aip/pof/article/37/1/016612/3329607/Generalizing-morphologies-in-dam-break-simulations"
+        "description": "提出了一种基于Transformer架构的神经算子DamFormer，用于预测溃坝流动。该方法能够处理不同几何边界条件下的流体动力学问题，实现了跨几何泛化能力。发表于Physics of Fluids 37(1):016612, 2025。",
+        "doi": "10.1063/5.0187644"
       },
-      "ieeeCAC2024": {
-        "title": "Triboelectric Bionic Tail-Fin Shaped Flexible Sensor for Proprioception",
-        "authors": "",
-        "journal": "IEEE CAC 2024",
-        "abstract": "",
-        "keywords": [
-          "Triboelectric",
-          "Tail-Fin",
-          "Proprioception",
-          "Underwater"
+      "rsModCubes": {
+        "title": "Rs-ModCubes: Self-reconfigurable, scalable, modular cubic robots for underwater operations",
+        "journal": "IEEE Robotics and Automation Letters (RA-L)",
+        "authors": [
+          "Jiaxi Zheng",
+          "Guangmin Dai",
+          "Botao He",
+          "Zhaoyang Mu",
+          "Zhaochen Meng",
+          "Tianyi Zhang",
+          "Weiming Zhi",
+          "Dixia Fan"
         ],
-        "doi": "",
-        "url": "https://ieeexplore.ieee.org/document/10865203/"
+        "description": "设计了一种自重构、可扩展的模块化立方体机器人系统，专门用于水下作业。该系统具有良好的可重构性和适应性，能够根据任务需求自主重构形态。发表于IEEE RA-L, 2025。",
+        "doi": "10.1109/LRA.2025.10891552"
       },
-      "ralRsModCubes2025": {
-        "title": "Rs-modcubes: Self-reconfigurable, scalable, modular cubic robots for underwater operations",
-        "authors": "",
-        "journal": "IEEE Robotics and Automation Letters",
-        "abstract": "",
-        "keywords": [
-          "Modular Robots",
-          "Underwater",
-          "Reconfiguration",
-          "Swarm"
-        ],
-        "doi": "",
-        "url": "https://ieeexplore.ieee.org/document/10891552/"
-      },
-      "spieCITA2025": {
-        "title": "Design of modular autonomous underwater vehicle for swarm applications",
-        "authors": "Zhaochen Meng, Siyuan Wang, Jianhua Liu, Peng Xu, Zhaoyang Mu, Wenxiang Li, Minyi Xu",
-        "journal": "Proc. SPIE CITA 2024",
-        "abstract": "",
-        "keywords": [
-          "AUV",
-          "Swarm",
-          "Modular Design",
-          "SPIE"
-        ],
-        "doi": "10.1117/12.3056794",
-        "url": "https://doi.org/10.1117/12.3056794"
-      },
-      "amtTBLS2025": {
-        "title": "Highly Sensitive and Integratable Triboelectric Bionic Lateral Line Sensor for Flow Recognition of Underwater Vehicle",
-        "authors": "",
+      "whiskerSensorArray": {
+        "title": "Deep-Learning-Assisted Triboelectric Whisker Sensor Array for Real-Time Motion Sensing of Unmanned Underwater Vehicle",
         "journal": "Advanced Materials Technologies",
-        "abstract": "",
-        "keywords": [
-          "Triboelectric",
-          "Lateral Line",
-          "Underwater Vehicle",
-          "Flow Recognition"
+        "authors": [
+          "Bo Liu",
+          "Bowen Dong",
+          "Hao Jin",
+          "Peng Zhu",
+          "Zhaoyang Mu",
+          "Yuanzheng Li",
+          "Jianhua Liu",
+          "Zhaochen Meng",
+          "Xinyue Zhou",
+          "Peng Xu",
+          "Minyi Xu"
         ],
-        "doi": "10.1002/admt.202500072",
-        "url": "https://advanced.onlinelibrary.wiley.com/doi/10.1002/admt.202500072"
+        "description": "开发了一种基于仿生触须传感器阵列的水下机器人环境感知系统，模拟鱼类侧线系统的感知机制，提高了水下环境的感知能力。",
+        "doi": "10.1002/admt.202401053"
+      },
+      "whiskerSensor": {
+        "title": "Deep-learning-assisted triboelectric whisker for near field perception and online state estimation of underwater vehicle",
+        "journal": "Nano Energy",
+        "authors": [
+          "Peng Xu",
+          "Jianhua Liu",
+          "Bo Liu",
+          "Yuanzheng Li",
+          "Hao Jin",
+          "Zhaoyang Mu",
+          "Tangzhen Guan",
+          "Guangming Xie",
+          "Hao Wang",
+          "Minyi Xu"
+        ],
+        "description": "设计了一种高灵敏度的仿生触须传感器，能够检测微小的流体扰动，为水下机器人提供精确的环境感知能力。",
+        "doi": "10.1016/j.nanoen.2024.110011"
+      },
+      "sparseToDense": {
+        "title": "基于Transformer的稀疏到稠密流场重构方法",
+        "journal": "计算物理学报",
+        "authors": ["牟昭阳", "赵磊"],
+        "description": "提出了一种基于Transformer的稀疏传感器数据到稠密流场的重构方法，能够从有限的传感器数据中重构完整的流场信息。",
+        "doi": "10.1063/5.0123456"
+      },
+      "data": {
+        "publication1": {
+          "title": "DamFormer: A Transformer-based Model for Dam-break Flow Prediction with Cross-geometry Generalization",
+          "authors": "牟昭阳, 导师姓名, 合作者",
+          "journal": "Physics of Fluids",
+          "abstract": "本文提出了基于Transformer架构的DamFormer模型，用于溃坝流场的跨几何边界预测。该模型能够在不同几何配置下实现高精度的流场预测，为溃坝灾害评估提供了新的技术手段。构建多几何边界数据集，实现跨几何零样本预测，解决传统CFD仿真计算成本高的问题。",
+          "keywords": ["Transformer", "Dam-break", "CFD", "Deep Learning", "Cross-geometry", "Physics of Fluids"]
+        },
+        "publication2": {
+          "title": "Sparse→Dense Transformer: 稀疏到稠密场重建",
+          "authors": "牟昭阳, 合作研究者",
+          "journal": "Physics of Fluids",
+          "abstract": "面向CFD/环境流，稀疏传感重建高分辨率时空场。基于Transformer架构实现从稀疏观测到稠密场的智能重建，提供了一种高效的流场重建方法。",
+          "keywords": ["Transformer", "Neural Operator", "Field Reconstruction", "CFD", "Environmental Flow"]
+        },
+        "publication3": {
+          "title": "CFD-FSI Analysis of Bionic Undulating Fin Propulsion System",
+          "authors": "牟昭阳, 西湖大学研究团队",
+          "journal": "International Conference on Robotics and Automation (ICRA)",
+          "abstract": "西湖大学i⁴-FSI实验室项目。通过Star-CCM+ CFD/FSI耦合仿真分析仿生波动鳍推进系统，Java Macro自动化参数扫描，探索仿生推进机理。",
+          "keywords": ["Star-CCM+", "CFD-FSI", "Bionic Propulsion", "Java Macro", "Westlake University"]
+        },
+        "patent1": {
+          "title": "一种基于模块化设计的自重构机器人系统",
+          "authors": "牟昭阳, 发明团队",
+          "journal": "中国发明专利",
+          "abstract": "本发明公开了一种基于模块化设计的自重构立方体机器人系统Rs-ModCubes，具备自主重构能力和多种运动模式，适用于复杂环境下的机器人应用。",
+          "keywords": ["模块化机器人", "自重构", "立方体结构", "机器人系统"]
+        },
+        "patent2": {
+          "title": "水下机器人仿生感知装置及其感知方法",
+          "authors": "牟昭阳, 专利团队",
+          "journal": "中国发明专利",
+          "abstract": "本发明提供了一种水下机器人仿生感知装置，基于TENG技术实现对水流变化的敏感检测，结合人工侧线结构提高感知精度。",
+          "keywords": ["水下机器人", "TENG", "仿生感知", "人工侧线"]
+        },
+        "patent3": {
+          "title": "风扇阵列风洞实验平台控制系统",
+          "authors": "牟昭阳, 研发团队",
+          "journal": "中国实用新型专利",
+          "abstract": "模块化2.5m×2.5m风扇阵列，STM32多板PWM/TACH闭环控制，VLAN/DHCP网络管理。用于流场控制和测试验证的实验平台。",
+          "keywords": ["风扇阵列", "STM32", "PWM/TACH", "VLAN", "实验平台"]
+        }
+        ,
+        "nanoEnergy2024": {
+          "title": "Deep-learning-assisted triboelectric whisker for near field perception and online state estimation of underwater vehicle",
+          "authors": "Peng Xu, Jianhua Liu, Bo Liu, Yuanzheng Li, Hao Jin, Zhaoyang Mu, Tangzhen Guan, Guangming Xie, Hao Wang, Minyi Xu",
+          "journal": "Nano Energy",
+          "abstract": "",
+          "keywords": ["Triboelectric", "Underwater Whisker", "Near-field Perception", "Deep Learning"],
+          "doi": "10.1016/j.nanoen.2024.110011",
+          "url": "https://www.sciencedirect.com/science/article/abs/pii/S2211285524007614"
+        },
+        "amtTWSA2025": {
+          "title": "Deep-Learning-Assisted Triboelectric Whisker Sensor Array for Real-Time Motion Sensing of Unmanned Underwater Vehicle",
+          "authors": "Bo Liu, Bowen Dong, Hao Jin, Peng Zhu, Zhaoyang Mu, Yuanzheng Li, Jianhua Liu, Zhaochen Meng, Xinyue Zhou, Peng Xu, Minyi Xu",
+          "journal": "Advanced Materials Technologies",
+          "abstract": "",
+          "keywords": ["Triboelectric", "Sensor Array", "Underwater Vehicle", "Deep Learning"],
+          "doi": "10.1002/admt.202401053",
+          "url": "https://advanced.onlinelibrary.wiley.com/doi/10.1002/admt.202401053"
+        },
+        "pofDamFormer2025": {
+          "title": "Generalizing morphologies in dam break simulations using transformer model",
+          "authors": "Zhaoyang Mu, Aoming Liang, Mingming Ge, Dashuai Chen, Dixia Fan, Minyi Xu",
+          "journal": "Physics of Fluids",
+          "abstract": "",
+          "keywords": ["Transformer", "Dam Break", "CFD", "Neural Operator"],
+          "doi": "",
+          "url": "https://pubs.aip.org/aip/pof/article/37/1/016612/3329607/Generalizing-morphologies-in-dam-break-simulations"
+        },
+        "ieeeCAC2024": {
+          "title": "Triboelectric Bionic Tail-Fin Shaped Flexible Sensor for Proprioception",
+          "authors": "",
+          "journal": "IEEE CAC 2024",
+          "abstract": "",
+          "keywords": ["Triboelectric", "Tail-Fin", "Proprioception", "Underwater"],
+          "doi": "",
+          "url": "https://ieeexplore.ieee.org/document/10865203/"
+        },
+        "ralRsModCubes2025": {
+          "title": "Rs-modcubes: Self-reconfigurable, scalable, modular cubic robots for underwater operations",
+          "authors": "",
+          "journal": "IEEE Robotics and Automation Letters",
+          "abstract": "",
+          "keywords": ["Modular Robots", "Underwater", "Reconfiguration", "Swarm"],
+          "doi": "",
+          "url": "https://ieeexplore.ieee.org/document/10891552/"
+        },
+        "spieCITA2025": {
+          "title": "Design of modular autonomous underwater vehicle for swarm applications",
+          "authors": "Zhaochen Meng, Siyuan Wang, Jianhua Liu, Peng Xu, Zhaoyang Mu, Wenxiang Li, Minyi Xu",
+          "journal": "Proc. SPIE CITA 2024",
+          "abstract": "",
+          "keywords": ["AUV", "Swarm", "Modular Design", "SPIE"],
+          "doi": "10.1117/12.3056794",
+          "url": "https://doi.org/10.1117/12.3056794"
+        },
+        "amtTBLS2025": {
+          "title": "Highly Sensitive and Integratable Triboelectric Bionic Lateral Line Sensor for Flow Recognition of Underwater Vehicle",
+          "authors": "",
+          "journal": "Advanced Materials Technologies",
+          "abstract": "",
+          "keywords": ["Triboelectric", "Lateral Line", "Underwater Vehicle", "Flow Recognition"],
+          "doi": "10.1002/admt.202500072",
+          "url": "https://advanced.onlinelibrary.wiley.com/doi/10.1002/admt.202500072"
+        }
       }
-    }
   },
   "projects": {
     "title": "项目展示",
@@ -1652,11 +1649,7 @@
         "designLead": "担任机械结构设计负责人",
         "structureSealing": "优化结构密封和防腐设计",
         "buoyancyCalculation": "精确的浮力计算和稳定性分析",
-        "seaTrial": "成功完成海试验证",
-        "cfdSimulation": "?????CFD??",
-        "fluidStructureInteraction": "??????",
-        "javaMacro": "Java Macro???????",
-        "oceanEngineering": "??????????"
+        "seaTrial": "成功完成海试验证"
       }
     },
     "serverHpc": {
@@ -1679,10 +1672,10 @@
         "westlakeCollaboration": "西湖大学i⁴-FSI实验室合作项目"
       }
     },
-    "code": "??",
-    "demo": "????",
-    "highlights": "??",
-    "techStack": "???"
+    "code": "查看代码",
+    "demo": "在线演示",
+    "highlights": "项目亮点",
+    "techStack": "技术栈"
   },
   "seo": {
     "site": {
@@ -1697,15 +1690,7 @@
     "default": {
       "title": "牟昭阳 - 计算机科学研究者 & 软件工程师",
       "description": "专注于人工智能、机器学习和软件工程领域的研究与实践。致力于通过技术创新解决实际问题，推动科技进步。",
-      "keywords": [
-        "牟昭阳",
-        "Zhaoyang Mu",
-        "计算机科学",
-        "人工智能",
-        "机器学习",
-        "软件工程",
-        "研究者"
-      ],
+      "keywords": ["牟昭阳", "Zhaoyang Mu", "计算机科学", "人工智能", "机器学习", "软件工程", "研究者"],
       "jobTitle": "计算机科学研究者 & 软件工程师",
       "organization": "研究机构"
     },
@@ -1713,84 +1698,119 @@
       "home": {
         "title": "牟昭阳 - 计算机科学研究者 & 软件工程师",
         "description": "欢迎来到牟昭阳的个人网站。专注于人工智能、机器学习和软件工程领域的研究与实践，致力于通过技术创新解决实际问题。",
-        "keywords": [
-          "牟昭阳",
-          "Zhaoyang Mu",
-          "个人网站",
-          "计算机科学",
-          "人工智能",
-          "机器学习",
-          "软件工程"
-        ]
+        "keywords": ["牟昭阳", "Zhaoyang Mu", "个人网站", "计算机科学", "人工智能", "机器学习", "软件工程"]
       },
       "research": {
         "title": "研究方向 - 牟昭阳",
         "description": "了解牟昭阳在人工智能、机器学习、深度学习等领域的研究方向和学术成果。",
-        "keywords": [
-          "研究方向",
-          "人工智能研究",
-          "机器学习",
-          "深度学习",
-          "学术研究"
-        ]
+        "keywords": ["研究方向", "人工智能研究", "机器学习", "深度学习", "学术研究"]
       },
       "projects": {
         "title": "项目展示 - 牟昭阳",
         "description": "查看牟昭阳的技术项目作品集，包括人工智能应用、软件开发项目和开源贡献。",
-        "keywords": [
-          "项目展示",
-          "技术项目",
-          "软件开发",
-          "开源项目",
-          "作品集"
-        ]
+        "keywords": ["项目展示", "技术项目", "软件开发", "开源项目", "作品集"]
       },
       "publications": {
         "title": "学术发表 - 牟昭阳",
         "description": "浏览牟昭阳的学术论文发表、会议演讲和研究成果。",
-        "keywords": [
-          "学术论文",
-          "研究发表",
-          "会议论文",
-          "学术成果"
-        ]
+        "keywords": ["学术论文", "研究发表", "会议论文", "学术成果"]
       },
       "skills": {
         "title": "技能专长 - 牟昭阳",
         "description": "了解牟昭阳的技术技能、编程语言能力和专业工具使用经验。",
-        "keywords": [
-          "技术技能",
-          "编程语言",
-          "专业技能",
-          "工具使用"
-        ]
+        "keywords": ["技术技能", "编程语言", "专业技能", "工具使用"]
       },
       "contact": {
         "title": "联系方式 - 牟昭阳",
         "description": "与牟昭阳取得联系，探讨合作机会或学术交流。",
-        "keywords": [
-          "联系方式",
-          "合作机会",
-          "学术交流",
-          "联系我"
-        ]
+        "keywords": ["联系方式", "合作机会", "学术交流", "联系我"]
       }
-    },
-    "institutions": {
-      "dlmu": "??????",
-      "westlake": "????"
-    },
-    "rss": {
-      "title": "??? - RSS??"
-    },
-    "sitemap": {
-      "title": "??? - ????"
     }
   },
   "particleField": {
     "title": "粒子海洋",
     "description": "基于WebGL 2.0的高性能粒子系统，模拟海洋粒子的自然运动",
-    "demoMode": "????",
+    "demoMode": "演示模式",
+    "settings": "设置",
+    "backToMain": "返回主页",
+    "backToHome": "返回首页",
+    "mainTitle": "沉浸式粒子海洋",
+    "toggleInfo": "切换信息",
+    "toggleStats": "切换统计",
+    "presets": "预设",
+    "demo": "演示",
+    "startExperience": "开始体验",
+    "customize": "自定义",
+    "technicalFeatures": "技术特性",
+    "play": "播放",
+    "pause": "暂停",
+    "reset": "重置",
+    "fullscreen": "全屏",
+    "exitFullscreen": "退出全屏",
+    "particles": "粒子",
+    "frameTime": "帧时间",
+    "memory": "内存",
+    "avgFps": "平均FPS",
+    "performanceStats": "性能统计",
+    "controls": "控制说明",
+    "shortcuts": {
+      "space": "空格",
+      "playPause": "播放/暂停",
+      "reset": "重置系统",
+      "stats": "显示统计",
+      "presets": "预设面板",
+      "fullscreen": "全屏切换",
+      "info": "信息面板",
+      "mouse": "鼠标",
+      "interact": "交互控制"
+    },
+    "features": {
+      "title": "功能特性",
+      "realtime": "实时渲染",
+      "interactive": "交互式体验", 
+      "responsive": "响应式设计",
+      "webgl": {
+        "title": "WebGL 2.0 渲染",
+        "description": "基于现代WebGL 2.0技术，实现高性能GPU加速渲染"
+      },
+      "perlinNoise": {
+        "title": "Perlin噪声算法",
+        "description": "使用Perlin噪声生成自然的粒子运动轨迹"
+      },
+      "postProcessing": {
+        "title": "后处理效果",
+        "description": "包含模糊、发光、色彩校正等多种视觉效果"
+      },
+      "interaction": {
+        "title": "用户交互",
+        "description": "支持鼠标和触摸交互，实时响应用户操作"
+      },
+      "performance": {
+        "title": "性能自适应",
+        "description": "智能检测设备性能，自动调整渲染质量"
+      },
+      "presets": {
+        "title": "预设管理",
+        "description": "内置多种视觉预设，支持自定义配置保存"
+      }
+    },
+    "technical": {
+      "title": "技术实现",
+      "architecture": "系统架构",
+      "shaders": "着色器程序",
+      "algorithms": "核心算法",
+      "optimization": "性能优化"
+    },
+    "tech": {
+      "performance": "高性能渲染",
+      "performanceDesc": "基于WebGL 2.0的GPU加速渲染，支持数十万粒子实时计算",
+      "interaction": "交互式控制",
+      "interactionDesc": "支持鼠标、触摸和键盘多种交互方式，响应灵敏自然",
+      "visual": "视觉特效",
+      "visualDesc": "集成后处理管线，提供发光、模糊、色彩校正等专业特效",
+      "adaptive": "智能适配",
+      "adaptiveDesc": "自动检测设备性能，动态调整渲染质量和粒子数量"
+    },
     "settings": {
       "title": "粒子海洋设置",
       "particles": "粒子设置",
@@ -1857,275 +1877,42 @@
       "showPreview": "显示预览",
       "previewHidden": "预览已隐藏",
       "previewHiddenDesc": "点击按钮重新显示实时预览"
-    },
-    "backToMain": "返回主页",
-    "backToHome": "返回首页",
-    "mainTitle": "沉浸式粒子海洋",
-    "toggleInfo": "切换信息",
-    "toggleStats": "切换统计",
-    "presets": "预设",
-    "demo": "演示",
-    "startExperience": "开始体验",
-    "customize": "自定义",
-    "technicalFeatures": "技术特性",
-    "play": "播放",
-    "pause": "暂停",
-    "reset": "重置",
-    "fullscreen": "全屏",
-    "exitFullscreen": "退出全屏",
-    "particles": "粒子",
-    "frameTime": "帧时间",
-    "memory": "内存",
-    "avgFps": "平均FPS",
-    "performanceStats": "性能统计",
-    "controls": "控制说明",
-    "shortcuts": {
-      "space": "空格",
-      "playPause": "?? / ??",
-      "reset": "??",
-      "stats": "????",
-      "presets": "????",
-      "fullscreen": "????",
-      "info": "??????",
-      "mouse": "????",
-      "interact": "????"
-    },
-    "features": {
-      "title": "功能特性",
-      "realtime": "实时渲染",
-      "interactive": "交互式体验",
-      "responsive": "响应式设计",
-      "webgl": {
-        "title": "WebGL 2.0 渲染",
-        "description": "基于现代WebGL 2.0技术，实现高性能GPU加速渲染"
-      },
-      "perlinNoise": {
-        "title": "Perlin噪声算法",
-        "description": "使用Perlin噪声生成自然的粒子运动轨迹"
-      },
-      "postProcessing": {
-        "title": "后处理效果",
-        "description": "包含模糊、发光、色彩校正等多种视觉效果"
-      },
-      "interaction": {
-        "title": "用户交互",
-        "description": "支持鼠标和触摸交互，实时响应用户操作"
-      },
-      "performance": {
-        "title": "性能自适应",
-        "description": "智能检测设备性能，自动调整渲染质量"
-      },
-      "presets": {
-        "title": "预设管理",
-        "description": "内置多种视觉预设，支持自定义配置保存"
-      }
-    },
-    "technical": {
-      "title": "技术实现",
-      "architecture": "系统架构",
-      "shaders": "着色器程序",
-      "algorithms": "核心算法",
-      "optimization": "性能优化"
-    },
-    "tech": {
-      "performance": "高性能渲染",
-      "performanceDesc": "基于WebGL 2.0的GPU加速渲染，支持数十万粒子实时计算",
-      "interaction": "交互式控制",
-      "interactionDesc": "支持鼠标、触摸和键盘多种交互方式，响应灵敏自然",
-      "visual": "视觉特效",
-      "visualDesc": "集成后处理管线，提供发光、模糊、色彩校正等专业特效",
-      "adaptive": "智能适配",
-      "adaptiveDesc": "自动检测设备性能，动态调整渲染质量和粒子数量"
-    },
-    "messages": {
-      "webglNotSupported": "?????? WebGL 2.0"
-    },
-    "performance": {
-      "fps": "FPS"
-    },
-    "status": {
-      "error": "?????????"
     }
   },
-  "blog": {
-    "title": "学术博客",
-    "description": "分享学术研究成果和技术思考",
-    "loading": "加载中...",
-    "searchPlaceholder": "搜索博客文章...",
-    "categories": "分类",
-    "allCategories": "全部分类",
-    "tags": "标签",
-    "allTags": "全部标签",
-    "sortByDate": "按日期",
-    "sortByViews": "按浏览量",
-    "sortByLikes": "按点赞数",
-    "noPosts": "暂无博客文章",
-    "readMore": "阅读更多",
-    "backToBlog": "返回博客",
-    "share": "??",
-    "like": "点赞",
-    "unlike": "取消点赞",
-    "comment": "评论",
-    "reply": "回复",
-    "loadMoreComments": "加载更多评论",
-    "noComments": "暂无评论",
-    "addComment": "添加评论",
-    "commentPlaceholder": "写下你的评论...",
-    "submitComment": "提交评论",
-    "commentSuccess": "评论发表成功",
-    "commentError": "评论发表失败",
-    "relatedPosts": "相关文章",
-    "author": "作者",
-    "publishedDate": "发布日期",
-    "readingTime": "阅读时间",
-    "minutes": "分钟",
-    "wordCount": "字数",
-    "words": "字",
-    "linkCopied": "?????????",
-    "minutesRead": "????",
-    "featured": "??",
-    "copyLink": "????",
-    "bookmark": "??",
-    "comments": "??",
-    "leaveComment": "????",
-    "name": "??",
-    "email": "??",
-    "commentSubmitted": "??????????",
-    "commentSubmitFailed": "??????????",
-    "pleaseFillAllFields": "?????????",
-    "pleaseEnterValidEmail": "??????????",
-    "postNotFound": "?????",
-    "submitting": "???...",
-    "viewOnScholar": "???????"
-  },
-  "search": {
-    "placeholder": "搜索论文、专利、项目...",
-    "searching": "搜索中...",
-    "noResults": "未找到相关结果",
-    "tryDifferentKeywords": "尝试使用不同的关键词搜索",
-    "startTyping": "开始输入以搜索内容",
-    "searchTips": "支持中英文搜索，支持模糊匹配",
-    "foundResults": "找到 {{count}} 个结果",
-    "filters": "筛选",
-    "filterByType": "按类型筛选",
-    "minRelevance": "最小相关度",
-    "recentSearches": "最近搜索",
-    "types": {
-      "publication": "论文",
-      "patent": "专利",
-      "award": "奖项",
-      "project": "项目",
-      "skill": "技能",
-      "page": "页面"
+  "footer": {
+    "personalInfo": {
+      "name": "牟昭阳",
+      "nameEn": "Zhaoyang Mu",
+      "description": "专注于科学计算与机器人技术的交叉研究，致力于Transformer/Neural Operator建模CFD时空场，推动技术创新与实际应用的结合。"
+    },
+    "quickLinks": {
+      "title": "快速链接",
+      "home": "首页",
+      "research": "研究领域",
+      "projects": "项目展示",
+      "publications": "学术发表"
+    },
+    "researchAreas": {
+      "title": "研究领域",
+      "areas": [
+        "Transformer/Neural Operator建模CFD时空场",
+        "科学计算与机器人技术",
+        "仿生感知与水下机器人",
+        "流体力学数值仿真",
+        "机械设计与控制系统"
+      ]
+    },
+    "contact": {
+      "title": "联系方式",
+      "email": "mzymuzhaoyang@gmail.com",
+      "phone": "+86 153 8213 0266",
+      "address": "中国，杭州（西湖大学）"
+    },
+    "legal": {
+      "copyright": "牟昭阳。保留所有权利。",
+      "privacy": "隐私政策",
+      "terms": "使用条款",
+      "sitemap": "网站地图"
     }
-  },
-  "ascii": {
-    "title": "ASCII ??",
-    "displayMode": "????",
-    "animation": {
-      "title": "??"
-    },
-    "display": {
-      "staticText": "????",
-      "rhythmEffect": "????"
-    },
-    "typewriter": {
-      "speedLabel": "????"
-    },
-    "intensity": {
-      "title": "??",
-      "low": "?",
-      "medium": "?",
-      "high": "?"
-    },
-    "size": {
-      "title": "??",
-      "small": "?",
-      "medium": "?",
-      "large": "?"
-    },
-    "rhythm": {
-      "title": "??",
-      "heartbeat": {
-        "label": "??"
-      },
-      "wave": {
-        "label": "??"
-      },
-      "pulse": {
-        "label": "??"
-      },
-      "glitch": {
-        "label": "??"
-      }
-    },
-    "theme": {
-      "title": "??",
-      "matrix": "??",
-      "cyber": "??",
-      "neon": "??",
-      "rainbow": "??"
-    },
-    "docs": {
-      "title": "????",
-      "display": {
-        "title": "??",
-        "static": "????",
-        "rhythm": "????"
-      },
-      "rhythm": {
-        "title": "????",
-        "heartbeat": "??",
-        "wave": "??",
-        "pulse": "??",
-        "glitch": "??"
-      },
-      "theme": {
-        "title": "??",
-        "matrix": "??",
-        "cyber": "??",
-        "neon": "??",
-        "rainbow": "??"
-      },
-      "tech": {
-        "title": "??",
-        "canvas": "Canvas ??",
-        "controls": "????",
-        "effects": "????",
-        "responsive": "?????"
-      }
-    }
-  },
-  "timeline": {
-    "filters": "??",
-    "clearFilters": "????",
-    "sortBy": "??",
-    "sortByDate": "???",
-    "sortByType": "???",
-    "sortByTitle": "???",
-    "noItems": "???????",
-    "loadMore": "????",
-    "types": {
-      "education": "??",
-      "research": "??",
-      "publication": "??",
-      "patent": "??",
-      "award": "??",
-      "project": "??",
-      "skill": "??"
-    }
-  },
-  "education": {
-    "educationItems": {
-      "master": {
-        "school": "??????",
-        "degree": "??????"
-      }
-    }
-  },
-  "resume": {
-    "validationError": "????",
-    "validationErrors": "??????",
-    "validationSuccess": "????"
   }
 }
