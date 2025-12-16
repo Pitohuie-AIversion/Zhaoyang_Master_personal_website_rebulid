@@ -4,6 +4,14 @@
       "title": "Page Not Found",
       "description": "The page you are looking for does not exist or has been moved.",
       "backHome": "Back to Home"
+    },
+    "searchResults": {
+      "found": "Found",
+      "results": "results",
+      "containing": "containing",
+      "showing": "Showing",
+      "of": "of",
+      "items": "items"
     }
   },
   "navigation": {
