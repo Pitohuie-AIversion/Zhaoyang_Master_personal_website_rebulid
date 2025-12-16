@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from '../../common/TranslationProvider';
 import { Upload, FileText, User, GraduationCap, Briefcase, Award, Settings, Download, Eye, Edit, Trash2, Plus, X } from 'lucide-react';
 
 interface ResumeData {
@@ -154,7 +154,14 @@ interface Award {
 }
 
 const ResumeManager: React.FC = () => {
-  const { t, i18n } = useTranslation();
+  const { t: translate, language } = useTranslation();
+  // Wrapper to keep existing call style (key, fallback) working with our translation provider
+  const t = (key: string, fallbackOrOptions?: string | { fallback?: string; returnObjects?: boolean }): any => {
+    const options = typeof fallbackOrOptions === 'string'
+      ? { fallback: fallbackOrOptions }
+      : fallbackOrOptions;
+    return (translate as any)(key, options);
+  };
   const [resumeData, setResumeData] = useState<ResumeData | null>(null);
   const [loading, setLoading] = useState(true);
   const [uploading, setUploading] = useState(false);
@@ -344,7 +351,7 @@ const ResumeManager: React.FC = () => {
     if (!resumeData?.personal_info) return null;
 
     const info = resumeData.personal_info;
-    const currentLang = i18n.language;
+    const currentLang = language;
 
     return (
       <div className="bg-white rounded-lg shadow-md p-6">
