@@ -12,8 +12,10 @@
     "preview": "vite preview",
     "test": "vitest",
     "test:coverage": "vitest run --coverage",
+    "test:i18n": "vitest run src/test/i18n",
     "scan:secrets": "node scripts/security-scan.js",
-    "check": "tsc -b --noEmit"
+    "check": "tsc -b --noEmit",
+    "i18n:validate": "node scripts/i18n-validate.js"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.39.0",

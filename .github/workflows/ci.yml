@@ -28,5 +28,11 @@ jobs:
     - name: Run Tests
       run: npm test
 
+    - name: Run i18n validation
+      run: npm run i18n:validate
+
+    - name: Run i18n tests
+      run: npm run test:i18n
+
     - name: Build
       run: npm run build
