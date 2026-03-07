@@ -32,7 +32,7 @@ const SEOOptimization: React.FC<SEOProps> = ({
   // 使用翻译键获取默认值
   const defaultTitle = title || (t('seo.default.title') as string);
   const defaultDescription = description || (t('seo.default.description') as string);
-  
+
   // 安全获取关键词，确保始终是数组
   let defaultKeywords: string[];
   try {
@@ -44,10 +44,10 @@ const SEOOptimization: React.FC<SEOProps> = ({
     } else {
       defaultKeywords = keywords || ['牟昭阳', 'Zhaoyang Mu', '计算机科学', '人工智能'];
     }
-  } catch (error) {
+  } catch (_error) {
     defaultKeywords = keywords || ['牟昭阳', 'Zhaoyang Mu', '计算机科学', '人工智能'];
   }
-  
+
   const defaultAuthor = author || (t('seo.site.author') as string);
   const siteTitle = t('seo.site.title') as string;
   const language = t('seo.site.language') as string;
@@ -68,7 +68,7 @@ const SEOOptimization: React.FC<SEOProps> = ({
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
       <meta name="language" content={language} />
-      
+
       {/* Open Graph 元数据 */}
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={defaultDescription} />
@@ -77,13 +77,13 @@ const SEOOptimization: React.FC<SEOProps> = ({
       <meta property="og:image" content={image} />
       <meta property="og:site_name" content={siteTitle} />
       <meta property="og:locale" content={locale} />
-      
+
       {/* Twitter Card 元数据 */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={defaultDescription} />
       <meta name="twitter:image" content={image} />
-      
+
       {/* 文章特定元数据 */}
       {type === 'article' && publishedTime && (
         <meta property="article:published_time" content={publishedTime} />
@@ -94,7 +94,7 @@ const SEOOptimization: React.FC<SEOProps> = ({
       {type === 'article' && defaultAuthor && (
         <meta property="article:author" content={defaultAuthor} />
       )}
-      
+
       {/* 结构化数据（受 CSP 限制，默认禁用；可通过环境变量开启） */}
       {import.meta.env.VITE_ALLOW_INLINE_JSONLD === 'true' && (
         <script type="application/ld+json">
@@ -116,15 +116,15 @@ const SEOOptimization: React.FC<SEOProps> = ({
           })}
         </script>
       )}
-      
+
       {/* 关键资源预连接（保留，不引用缺失本地字体） */}
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-      
+
       {/* 网站图标（使用已存在的 SVG） */}
       <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
       <link rel="manifest" href="/site.webmanifest" />
-      
+
       {/* 主题颜色 */}
       <meta name="theme-color" content="#ffffff" />
       <meta name="msapplication-TileColor" content="#ffffff" />

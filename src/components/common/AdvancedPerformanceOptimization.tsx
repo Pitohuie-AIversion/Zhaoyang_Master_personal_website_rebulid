@@ -40,7 +40,7 @@ export const useImagePreloader = (imageUrls: string[]) => {
         const successfullyLoaded = loaded
           .filter((result) => result.status === 'fulfilled')
           .map((result) => (result as PromiseFulfilledResult<string>).value);
-        
+
         setLoadedImages(new Set(successfullyLoaded));
       } catch (error) {
         console.warn('Some images failed to preload:', error);
@@ -104,13 +104,13 @@ export const VirtualScrollList: React.FC<{
   className?: string;
 }> = ({ items, itemHeight, containerHeight, renderItem, className = '' }) => {
   const [scrollTop, setScrollTop] = useState(0);
-  
+
   const visibleStart = Math.floor(scrollTop / itemHeight);
   const visibleEnd = Math.min(
     visibleStart + Math.ceil(containerHeight / itemHeight) + 1,
     items.length
   );
-  
+
   const visibleItems = items.slice(visibleStart, visibleEnd);
   const totalHeight = items.length * itemHeight;
   const offsetY = visibleStart * itemHeight;
@@ -289,8 +289,8 @@ export const useNetworkOptimization = () => {
     if ('connection' in navigator) {
       const connection = (navigator as Navigator & { connection?: { effectiveType?: string; downlink?: number; rtt?: number } }).connection;
       if (connection) {
-        (connection as any).addEventListener('change', updateNetworkInfo);
-        return () => (connection as any).removeEventListener('change', updateNetworkInfo);
+        (connection as unknown as EventTarget).addEventListener('change', updateNetworkInfo);
+        return () => (connection as unknown as EventTarget).removeEventListener('change', updateNetworkInfo);
       }
     }
   }, []);

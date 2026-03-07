@@ -58,7 +58,7 @@ export const AdvancedSEO: React.FC<AdvancedSEOProps> = ({
     } else {
       defaultKeywords = keywords || ['牟昭阳', 'Zhaoyang Mu', '计算机科学', '人工智能'];
     }
-  } catch (error) {
+  } catch (_error) {
     defaultKeywords = keywords || ['牟昭阳', 'Zhaoyang Mu', '计算机科学', '人工智能'];
   }
   const defaultAuthor = author || (t('seo.site.author') as string);
@@ -173,15 +173,15 @@ export const AdvancedSEO: React.FC<AdvancedSEOProps> = ({
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
       <meta name="language" content={language} />
-      
+
       {/* 规范链接 */}
       {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
-      
+
       {/* 替代语言版本 */}
       {alternates.map((alt, index) => (
         <link key={index} rel="alternate" hrefLang={alt.hreflang} href={alt.href} />
       ))}
-      
+
       {/* Open Graph 元数据 */}
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={defaultDescription} />
@@ -190,7 +190,7 @@ export const AdvancedSEO: React.FC<AdvancedSEOProps> = ({
       <meta property="og:image" content={image} />
       <meta property="og:site_name" content={defaultSiteName} />
       <meta property="og:locale" content={defaultLocale} />
-      
+
       {/* 文章特定Open Graph */}
       {type === 'article' && (
         <>
@@ -203,7 +203,7 @@ export const AdvancedSEO: React.FC<AdvancedSEOProps> = ({
           ))}
         </>
       )}
-      
+
       {/* Twitter Card 元数据 */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={fullTitle} />
@@ -211,48 +211,48 @@ export const AdvancedSEO: React.FC<AdvancedSEOProps> = ({
       <meta name="twitter:image" content={image} />
       <meta name="twitter:site" content="@zhaoyang_mou" />
       <meta name="twitter:creator" content="@zhaoyang_mou" />
-      
+
       {/* Facebook App ID */}
       <meta property="fb:app_id" content="YOUR_FACEBOOK_APP_ID" />
-      
+
       {/* 移动设备优化 */}
       <meta name="format-detection" content="telephone=no" />
       <meta name="msapplication-TileColor" content="#3b82f6" />
       {/* 移除缺失的 msapplication 图标 */}
       <meta name="theme-color" content="#3b82f6" />
-      
+
       {/* Apple设备优化 */}
       <meta name="apple-mobile-web-app-capable" content="yes" />
       <meta name="apple-mobile-web-app-status-bar-style" content="default" />
       <meta name="apple-mobile-web-app-title" content={defaultSiteName} />
       {/* 移除缺失的 Apple Touch 图标 */}
-      
+
       {/* 网站图标 */}
       <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
       <link rel="manifest" href="/site.webmanifest" />
-      
+
       {/* 结构化数据 */}
       <script type="application/ld+json">
         {JSON.stringify(generateSchemaData(), null, 2)}
       </script>
-      
+
       {/* 预加载关键资源 */}
       {/* 移除缺失的本地字体预加载 */}
       <link rel="dns-prefetch" href="//fonts.googleapis.com" />
       <link rel="preconnect" href="//fonts.googleapis.com" crossOrigin="anonymous" />
       <link rel="dns-prefetch" href="//scholar.google.com" />
       <link rel="preconnect" href="//scholar.google.com" crossOrigin="anonymous" />
-      
+
       {/* 站点地图 */}
       <link rel="sitemap" type="application/xml" title={t('seo.sitemap.title') as string} href="/sitemap.xml" />
-      
+
       {/* RSS订阅 */}
       <link rel="alternate" type="application/rss+xml" title={t('seo.rss.title') as string} href="/rss.xml" />
-      
+
       {/* 安全相关 */}
       <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
       <meta name="referrer" content="strict-origin-when-cross-origin" />
-      
+
       {/* 防止重复内容 */}
       <link rel="prev" href={`${currentUrl}?page=1`} />
       <link rel="next" href={`${currentUrl}?page=3`} />
@@ -263,7 +263,7 @@ export const AdvancedSEO: React.FC<AdvancedSEOProps> = ({
 // 页面特定的SEO组件
 export const HomeSEO: React.FC = () => {
   const { t } = useTranslation();
-  
+
   return (
     <AdvancedSEO
       title={t('seo.pages.home.title') as string}
@@ -282,7 +282,7 @@ export const HomeSEO: React.FC = () => {
 
 export const ResearchSEO: React.FC = () => {
   const { t } = useTranslation();
-  
+
   return (
     <AdvancedSEO
       title={t('seo.pages.research.title') as string}
@@ -302,7 +302,7 @@ export const ResearchSEO: React.FC = () => {
 
 export const ProjectsSEO: React.FC = () => {
   const { t } = useTranslation();
-  
+
   return (
     <AdvancedSEO
       title={t('seo.pages.projects.title') as string}
@@ -322,7 +322,7 @@ export const ProjectsSEO: React.FC = () => {
 
 export const PublicationsSEO: React.FC = () => {
   const { t } = useTranslation();
-  
+
   return (
     <AdvancedSEO
       title={t('seo.pages.publications.title') as string}
@@ -342,7 +342,7 @@ export const PublicationsSEO: React.FC = () => {
 
 export const SkillsSEO: React.FC = () => {
   const { t } = useTranslation();
-  
+
   return (
     <AdvancedSEO
       title={t('seo.pages.skills.title') as string}
@@ -362,7 +362,7 @@ export const SkillsSEO: React.FC = () => {
 
 export const ContactSEO: React.FC = () => {
   const { t } = useTranslation();
-  
+
   return (
     <AdvancedSEO
       title={t('seo.pages.contact.title') as string}
@@ -411,7 +411,7 @@ export const generateRSSFeed = (language: string = 'en') => {
   const t = createTranslationFunction(language as 'en' | 'zh');
   const baseUrl = 'https://zhaoyang-mou.com';
   const now = new Date().toISOString();
-  
+
   const items = [
     {
       title: 'DamFormer Paper Published in Physics of Fluids',

@@ -125,12 +125,12 @@
     "searchHistoryTitle": "search History Title",
     "clear": "clear",
     "searchResults": {
-      "items": "items",
-      "found": "found",
-      "results": "results",
-      "containing": "containing",
-      "showing": "showing",
-      "of": "of"
+      "items": "项",
+      "found": "找到",
+      "results": "结果",
+      "containing": "包含",
+      "showing": "显示",
+      "of": "共"
     },
     "match": "match",
     "noResults": "no Results",
@@ -1962,13 +1962,13 @@
       "adaptiveDesc": "自动检测设备性能，动态调整渲染质量和粒子数量"
     },
     "status": {
-      "error": "error"
+      "error": "错误"
     },
     "messages": {
-      "webglNotSupported": "webgl Not Supported"
+      "webglNotSupported": "您的浏览器不支持WebGL"
     },
     "performance": {
-      "fps": "fps"
+      "fps": "帧率"
     }
   },
   "blog": {
@@ -2005,22 +2005,22 @@
     "minutes": "分钟",
     "wordCount": "字数",
     "words": "字",
-    "minutesRead": "minutes Read",
-    "pleaseFillAllFields": "please Fill All Fields",
-    "pleaseEnterValidEmail": "please Enter Valid Email",
-    "commentSubmitted": "comment Submitted",
-    "commentSubmitFailed": "comment Submit Failed",
-    "linkCopied": "link Copied",
-    "postNotFound": "post Not Found",
-    "featured": "featured",
-    "copyLink": "copy Link",
-    "bookmark": "bookmark",
-    "comments": "comments",
-    "leaveComment": "leave Comment",
-    "name": "name",
-    "email": "email",
-    "submitting": "submitting",
-    "viewOnScholar": "view On Scholar"
+    "minutesRead": "分钟阅读",
+    "pleaseFillAllFields": "请填写所有必填字段",
+    "pleaseEnterValidEmail": "请输入有效的邮箱地址",
+    "commentSubmitted": "评论已提交，等待审核",
+    "commentSubmitFailed": "评论提交失败，请重试",
+    "linkCopied": "链接已复制到剪贴板",
+    "postNotFound": "文章未找到",
+    "featured": "精选",
+    "copyLink": "复制链接",
+    "bookmark": "收藏",
+    "comments": "评论",
+    "leaveComment": "发表评论",
+    "name": "姓名",
+    "email": "邮箱",
+    "submitting": "提交中...",
+    "viewOnScholar": "在学术主页查看"
   },
   "education": {
     "educationItems": {

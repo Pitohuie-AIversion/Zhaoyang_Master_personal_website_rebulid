@@ -8,14 +8,14 @@ import { Helmet } from 'react-helmet-async';
 
 interface StructuredDataSEOProps {
   type: 'person' | 'article' | 'patent' | 'award' | 'organization' | 'blog';
-  data: any;
+  data: Record<string, unknown>;
   className?: string;
 }
 
-export const StructuredDataSEO: React.FC<StructuredDataSEOProps> = ({ 
-  type, 
-  data, 
-  className = '' 
+export const StructuredDataSEO: React.FC<StructuredDataSEOProps> = ({
+  type,
+  data,
+  className: _className = ''
 }) => {
   const generateStructuredData = () => {
     switch (type) {
@@ -51,7 +51,7 @@ export const StructuredDataSEO: React.FC<StructuredDataSEOProps> = ({
 };
 
 // 个人资料结构化数据
-const generatePersonSchema = (data: any) => ({
+const generatePersonSchema = (data: Record<string, unknown>) => ({
   "@context": "https://schema.org",
   "@type": "Person",
   "name": data.name,
@@ -70,11 +70,11 @@ const generatePersonSchema = (data: any) => ({
 });
 
 // 学术文章结构化数据
-const generateArticleSchema = (data: any) => ({
+const generateArticleSchema = (data: Record<string, unknown>) => ({
   "@context": "https://schema.org",
   "@type": "ScholarlyArticle",
   "headline": data.title,
-  "author": data.authors?.map((author: string) => ({
+  "author": (data.authors as string[])?.map((author: string) => ({
     "@type": "Person",
     "name": author
   })),
@@ -101,12 +101,12 @@ const generateArticleSchema = (data: any) => ({
 });
 
 // 专利结构化数据
-const generatePatentSchema = (data: any) => ({
+const generatePatentSchema = (data: Record<string, unknown>) => ({
   "@context": "https://schema.org",
   "@type": "Patent",
   "name": data.title,
   "patentNumber": data.number,
-  "inventor": data.inventors?.map((inventor: string) => ({
+  "inventor": (data.inventors as string[])?.map((inventor: string) => ({
     "@type": "Person",
     "name": inventor
   })),
@@ -120,7 +120,7 @@ const generatePatentSchema = (data: any) => ({
 });
 
 // 奖项结构化数据
-const generateAwardSchema = (data: any) => ({
+const generateAwardSchema = (data: Record<string, unknown>) => ({
   "@context": "https://schema.org",
   "@type": "Award",
   "name": data.title,
@@ -139,7 +139,7 @@ const generateAwardSchema = (data: any) => ({
 });
 
 // 组织结构化数据
-const generateOrganizationSchema = (data: any) => ({
+const generateOrganizationSchema = (data: Record<string, unknown>) => ({
   "@context": "https://schema.org",
   "@type": "Organization",
   "name": data.name,
@@ -152,7 +152,7 @@ const generateOrganizationSchema = (data: any) => ({
 });
 
 // 博客结构化数据
-const generateBlogSchema = (data: any) => ({
+const generateBlogSchema = (data: Record<string, unknown>) => ({
   "@context": "https://schema.org",
   "@type": "Blog",
   "headline": data.headline,
@@ -186,7 +186,7 @@ export const ZhaoyangMuStructuredData = () => (
           "url": "https://www.dlmu.edu.cn"
         },
         {
-          "@type": "Organization", 
+          "@type": "Organization",
           "name": "西湖大学",
           "url": "https://www.westlake.edu.cn"
         }

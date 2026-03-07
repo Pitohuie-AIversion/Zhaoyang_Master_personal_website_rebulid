@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-escape */
 export interface BlogPost {
   id: string;
   title: string;
@@ -606,7 +607,7 @@ $$A(x,t) = A_0(x) + \Delta A(x) \cdot f(C_p(x,t))$$
     // 按搜索词筛选
     if (options.search) {
       const searchLower = options.search.toLowerCase();
-      filteredPosts = filteredPosts.filter(post => 
+      filteredPosts = filteredPosts.filter(post =>
         post.title.toLowerCase().includes(searchLower) ||
         post.excerpt.toLowerCase().includes(searchLower) ||
         post.content.toLowerCase().includes(searchLower) ||
@@ -620,7 +621,7 @@ $$A(x,t) = A_0(x) + \Delta A(x) \cdot f(C_p(x,t))$$
 
     filteredPosts.sort((a, b) => {
       let aValue, bValue;
-      
+
       switch (sortBy) {
         case 'date':
           aValue = new Date(a.date).getTime();
@@ -652,7 +653,7 @@ $$A(x,t) = A_0(x) + \Delta A(x) \cdot f(C_p(x,t))$$
     // 分页
     const limit = options.limit || 10;
     const offset = options.offset || 0;
-    
+
     return filteredPosts.slice(offset, offset + limit);
   }
 
@@ -663,12 +664,12 @@ $$A(x,t) = A_0(x) + \Delta A(x) \cdot f(C_p(x,t))$$
     }
 
     const post = this.posts.find(post => post.slug === slug && post.isPublished);
-    
+
     if (post) {
       // 增加浏览量
       post.views += 1;
     }
-    
+
     return post || null;
   }
 
@@ -711,11 +712,11 @@ $$A(x,t) = A_0(x) + \Delta A(x) \cdot f(C_p(x,t))$$
     if (!currentPost) return [];
 
     const relatedPosts = this.posts
-      .filter(post => 
-        post.id !== postId && 
+      .filter(post =>
+        post.id !== postId &&
         post.isPublished &&
         (post.category === currentPost.category ||
-         post.tags.some(tag => currentPost.tags.includes(tag)))
+          post.tags.some(tag => currentPost.tags.includes(tag)))
       )
       .slice(0, limit);
 
@@ -733,7 +734,7 @@ $$A(x,t) = A_0(x) + \Delta A(x) \cdot f(C_p(x,t))$$
       post.likes += 1;
       return true;
     }
-    
+
     return false;
   }
 
@@ -775,7 +776,7 @@ $$A(x,t) = A_0(x) + \Delta A(x) \cdot f(C_p(x,t))$$
       const postDate = new Date(post.date);
       const postYear = postDate.getFullYear();
       const postMonth = postDate.getMonth() + 1;
-      
+
       if (month) {
         return postYear === year && postMonth === month && post.isPublished;
       } else {
@@ -791,7 +792,7 @@ $$A(x,t) = A_0(x) + \Delta A(x) \cdot f(C_p(x,t))$$
     }
 
     const archiveMap = new Map<string, number>();
-    
+
     this.posts
       .filter(post => post.isPublished)
       .forEach(post => {

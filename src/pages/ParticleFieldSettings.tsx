@@ -2,15 +2,15 @@ import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from '../components/common/TranslationProvider';
 import { ParticleField as ParticleFieldComponent } from '../components/ParticleField/ParticleField';
-import { 
-  ParticleFieldConfig, 
-  ConfigManager, 
+import {
+  ParticleFieldConfig,
+  ConfigManager,
   builtinPresets,
   defaultConfig,
-  ConfigPreset 
+  ConfigPreset
 } from '../utils/configManager';
 import { PerformanceMetrics, performancePresets } from '../utils/performanceMonitor';
-import { 
+import {
   ArrowLeft,
   Save,
   Upload,
@@ -56,36 +56,36 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
   const [presetDescription, setPresetDescription] = useState('');
   const [customPresets, setCustomPresets] = useState<ConfigPreset[]>([]);
   const [editingPreset, setEditingPreset] = useState<string | null>(null);
-  
+
   const configManager = useRef(new ConfigManager());
-  
+
   useEffect(() => {
     // 加载自定义预设
     const presets = configManager.current.getCustomPresets();
     setCustomPresets(presets);
   }, []);
-  
+
   const updateParticleConfig = useCallback((updates: Partial<typeof config.particle>) => {
     onConfigChange({
       ...config,
       particle: { ...config.particle, ...updates }
     });
   }, [config, onConfigChange]);
-  
+
   const updatePostProcessConfig = useCallback((updates: Partial<typeof config.postProcess>) => {
     onConfigChange({
       ...config,
       postProcess: { ...config.postProcess, ...updates }
     });
   }, [config, onConfigChange]);
-  
+
   const updateInteractionConfig = useCallback((updates: Partial<typeof config.interaction>) => {
     onConfigChange({
       ...config,
       interaction: { ...config.interaction, ...updates }
     });
   }, [config, onConfigChange]);
-  
+
   const handleSavePreset = useCallback(() => {
     if (presetName.trim()) {
       onPresetSave(presetName.trim(), presetDescription.trim());
@@ -106,22 +106,22 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
       setPresetDescription('');
     }
   }, [presetName, presetDescription, config, onPresetSave]);
-  
+
   const handleDeletePreset = useCallback((presetId: string) => {
     configManager.current.deleteCustomPreset(presetId);
     setCustomPresets(prev => prev.filter(p => p.id !== presetId));
     onPresetDelete(presetId);
   }, [onPresetDelete]);
-  
+
   const applyPerformancePreset = useCallback((level: 'low' | 'medium' | 'high' | 'ultra') => {
     const preset = performancePresets[level];
     updateParticleConfig(preset);
   }, [updateParticleConfig]);
-  
+
   const resetToDefault = useCallback(() => {
     onConfigChange(defaultConfig);
   }, [onConfigChange]);
-  
+
   const exportConfig = useCallback(() => {
     const dataStr = JSON.stringify(config, null, 2);
     const dataBlob = new Blob([dataStr], { type: 'application/json' });
@@ -132,7 +132,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
     link.click();
     URL.revokeObjectURL(url);
   }, [config]);
-  
+
   const importConfig = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {
@@ -148,57 +148,53 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
       reader.readAsText(file);
     }
   }, [onConfigChange]);
-  
+
   return (
     <div className="bg-gray-900 text-white h-full flex flex-col">
       {/* 标签页导航 */}
       <div className="flex border-b border-gray-700">
         <button
           onClick={() => setActiveTab('particles')}
-          className={`flex-1 p-3 text-sm font-medium transition-colors ${
-            activeTab === 'particles' 
-              ? 'bg-blue-600 text-white' 
+          className={`flex-1 p-3 text-sm font-medium transition-colors ${activeTab === 'particles'
+              ? 'bg-blue-600 text-white'
               : 'text-gray-300 hover:text-white hover:bg-gray-800'
-          }`}
+            }`}
         >
           <Zap className="w-4 h-4 inline mr-2" />
           {t('particleField.settings.particles')}
         </button>
         <button
           onClick={() => setActiveTab('postprocess')}
-          className={`flex-1 p-3 text-sm font-medium transition-colors ${
-            activeTab === 'postprocess' 
-              ? 'bg-blue-600 text-white' 
+          className={`flex-1 p-3 text-sm font-medium transition-colors ${activeTab === 'postprocess'
+              ? 'bg-blue-600 text-white'
               : 'text-gray-300 hover:text-white hover:bg-gray-800'
-          }`}
+            }`}
         >
           <Sliders className="w-4 h-4 inline mr-2" />
           {t('particleField.settings.postProcess')}
         </button>
         <button
           onClick={() => setActiveTab('interaction')}
-          className={`flex-1 p-3 text-sm font-medium transition-colors ${
-            activeTab === 'interaction' 
-              ? 'bg-blue-600 text-white' 
+          className={`flex-1 p-3 text-sm font-medium transition-colors ${activeTab === 'interaction'
+              ? 'bg-blue-600 text-white'
               : 'text-gray-300 hover:text-white hover:bg-gray-800'
-          }`}
+            }`}
         >
           <Gamepad2 className="w-4 h-4 inline mr-2" />
           {t('particleField.settings.interaction')}
         </button>
         <button
           onClick={() => setActiveTab('presets')}
-          className={`flex-1 p-3 text-sm font-medium transition-colors ${
-            activeTab === 'presets' 
-              ? 'bg-blue-600 text-white' 
+          className={`flex-1 p-3 text-sm font-medium transition-colors ${activeTab === 'presets'
+              ? 'bg-blue-600 text-white'
               : 'text-gray-300 hover:text-white hover:bg-gray-800'
-          }`}
+            }`}
         >
           <Palette className="w-4 h-4 inline mr-2" />
           {t('particleField.settings.presets')}
         </button>
       </div>
-      
+
       {/* 内容区域 */}
       <div className="flex-1 overflow-y-auto p-4 space-y-4">
         {/* 粒子设置 */}
@@ -222,7 +218,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
                 ))}
               </div>
             </div>
-            
+
             {/* 基础设置 */}
             <div>
               <h3 className="text-lg font-semibold mb-3">{t('particleField.settings.basic')}</h3>
@@ -241,7 +237,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
                     className="w-full"
                   />
                 </div>
-                
+
                 <div>
                   <label className="block text-sm font-medium mb-2">
                     {t('particleField.settings.spawnRate')}: {config.particle.particleCount}
@@ -256,7 +252,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
                     className="w-full"
                   />
                 </div>
-                
+
                 <div>
                   <label className="block text-sm font-medium mb-2">
                     {t('particleField.settings.lifespan')}: {config.particle.visual.opacity.toFixed(1)}
@@ -271,7 +267,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
                     className="w-full"
                   />
                 </div>
-                
+
                 <div>
                   <label className="block text-sm font-medium mb-2">
                     {t('particleField.settings.size')}: {config.particle.visual.maxSize.toFixed(1)}
@@ -288,7 +284,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
                 </div>
               </div>
             </div>
-            
+
             {/* 物理设置 */}
             <div>
               <h3 className="text-lg font-semibold mb-3">{t('particleField.settings.physics')}</h3>
@@ -307,7 +303,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
                     className="w-full"
                   />
                 </div>
-                
+
                 <div>
                   <label className="block text-sm font-medium mb-2">
                     {t('particleField.settings.damping')}: {config.particle.physics.damping.toFixed(3)}
@@ -322,7 +318,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
                     className="w-full"
                   />
                 </div>
-                
+
                 <div>
                   <label className="block text-sm font-medium mb-2">
                     {t('particleField.settings.noiseStrength')}: {config.particle.physics.turbulence.toFixed(2)}
@@ -337,7 +333,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
                     className="w-full"
                   />
                 </div>
-                
+
                 <div>
                   <label className="block text-sm font-medium mb-2">
                     {t('particleField.settings.noiseScale')}: {config.particle.noiseScale.toFixed(3)}
@@ -354,7 +350,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
                 </div>
               </div>
             </div>
-            
+
             {/* 颜色设置 */}
             <div>
               <h3 className="text-lg font-semibold mb-3">{t('particleField.settings.colors')}</h3>
@@ -381,7 +377,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
             </div>
           </div>
         )}
-        
+
         {/* 后处理设置 */}
         {activeTab === 'postprocess' && (
           <div className="space-y-6">
@@ -394,16 +390,15 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
                   </label>
                   <button
                     onClick={() => updatePostProcessConfig({ bloomEnabled: !config.postProcess.bloomEnabled })}
-                    className={`p-2 rounded ${
-                      config.postProcess.bloomEnabled 
-                        ? 'bg-blue-600 text-white' 
+                    className={`p-2 rounded ${config.postProcess.bloomEnabled
+                        ? 'bg-blue-600 text-white'
                         : 'bg-gray-600 text-gray-300'
-                    }`}
+                      }`}
                   >
                     {config.postProcess.bloomEnabled ? <Eye className="w-4 h-4" /> : <EyeOff className="w-4 h-4" />}
                   </button>
                 </div>
-                
+
                 {config.postProcess.bloomEnabled && (
                   <>
                     <div>
@@ -420,7 +415,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
                         className="w-full"
                       />
                     </div>
-                    
+
                     <div>
                       <label className="block text-sm font-medium mb-2">
                         {t('particleField.settings.blurAmount')}: {config.postProcess.blurAmount.toFixed(1)}
@@ -439,7 +434,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
                 )}
               </div>
             </div>
-            
+
             <div>
               <h3 className="text-lg font-semibold mb-3">{t('particleField.settings.colorCorrection')}</h3>
               <div className="space-y-4">
@@ -457,7 +452,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
                     className="w-full"
                   />
                 </div>
-                
+
                 <div>
                   <label className="block text-sm font-medium mb-2">
                     {t('particleField.settings.saturation')}: {config.postProcess.saturation.toFixed(2)}
@@ -472,7 +467,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
                     className="w-full"
                   />
                 </div>
-                
+
                 <div>
                   <label className="block text-sm font-medium mb-2">
                     {t('particleField.settings.colorTemperature')}: {config.postProcess.colorTemperature.toFixed(0)}K
@@ -489,7 +484,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
                 </div>
               </div>
             </div>
-            
+
             <div>
               <h3 className="text-lg font-semibold mb-3">{t('particleField.settings.effects')}</h3>
               <div className="space-y-4">
@@ -507,7 +502,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
                     className="w-full"
                   />
                 </div>
-                
+
                 <div>
                   <label className="block text-sm font-medium mb-2">
                     {t('particleField.settings.vignetteStrength')}: {config.postProcess.vignetteStrength.toFixed(2)}
@@ -526,7 +521,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
             </div>
           </div>
         )}
-        
+
         {/* 交互设置 */}
         {activeTab === 'interaction' && (
           <div className="space-y-6">
@@ -539,16 +534,15 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
                   </label>
                   <button
                     onClick={() => updateInteractionConfig({ enabled: !config.interaction.enabled })}
-                    className={`p-2 rounded ${
-                      config.interaction.enabled 
-                        ? 'bg-blue-600 text-white' 
+                    className={`p-2 rounded ${config.interaction.enabled
+                        ? 'bg-blue-600 text-white'
                         : 'bg-gray-600 text-gray-300'
-                    }`}
+                      }`}
                   >
                     {config.interaction.enabled ? <Eye className="w-4 h-4" /> : <EyeOff className="w-4 h-4" />}
                   </button>
                 </div>
-                
+
                 {config.interaction.enabled && (
                   <>
                     <div>
@@ -565,7 +559,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
                         className="w-full"
                       />
                     </div>
-                    
+
                     <div>
                       <label className="block text-sm font-medium mb-2">
                         {t('particleField.settings.mouseStrength')}: {config.interaction.mouseInfluence.toFixed(1)}
@@ -580,7 +574,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
                         className="w-full"
                       />
                     </div>
-                    
+
                     <div>
                       <label className="block text-sm font-medium mb-2">
                         {t('particleField.settings.smoothing')}: {config.interaction.dampingFactor.toFixed(2)}
@@ -599,7 +593,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
                 )}
               </div>
             </div>
-            
+
             <div>
               <h3 className="text-lg font-semibold mb-3">{t('particleField.settings.touch')}</h3>
               <div className="space-y-4">
@@ -609,16 +603,15 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
                   </label>
                   <button
                     onClick={() => updateInteractionConfig({ enableTouch: !config.interaction.enableTouch })}
-                    className={`p-2 rounded ${
-                      config.interaction.enableTouch 
-                        ? 'bg-blue-600 text-white' 
+                    className={`p-2 rounded ${config.interaction.enableTouch
+                        ? 'bg-blue-600 text-white'
                         : 'bg-gray-600 text-gray-300'
-                    }`}
+                      }`}
                   >
                     {config.interaction.enableTouch ? <Eye className="w-4 h-4" /> : <EyeOff className="w-4 h-4" />}
                   </button>
                 </div>
-                
+
                 <div>
                   <label className="block text-sm font-medium mb-2">
                     {t('particleField.settings.maxTouches')}: {config.interaction.maxTouches}
@@ -637,7 +630,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
             </div>
           </div>
         )}
-        
+
         {/* 预设管理 */}
         {activeTab === 'presets' && (
           <div className="space-y-6">
@@ -676,7 +669,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
                 ))}
               </div>
             </div>
-            
+
             {/* 自定义预设 */}
             <div>
               <div className="flex items-center justify-between mb-3">
@@ -689,7 +682,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
                   {t('particleField.settings.savePreset')}
                 </button>
               </div>
-              
+
               {customPresets.length === 0 ? (
                 <div className="text-center text-gray-400 py-8">
                   {t('particleField.settings.noCustomPresets')}
@@ -709,7 +702,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
                                 type="text"
                                 value={preset.name}
                                 onChange={(e) => {
-                                  const updated = customPresets.map(p => 
+                                  const updated = customPresets.map(p =>
                                     p.id === preset.id ? { ...p, name: e.target.value } : p
                                   );
                                   setCustomPresets(updated);
@@ -719,7 +712,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
                               <textarea
                                 value={preset.description}
                                 onChange={(e) => {
-                                  const updated = customPresets.map(p => 
+                                  const updated = customPresets.map(p =>
                                     p.id === preset.id ? { ...p, description: e.target.value } : p
                                   );
                                   setCustomPresets(updated);
@@ -735,7 +728,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
                             </div>
                           )}
                         </div>
-                        
+
                         <div className="flex items-center space-x-2 ml-4">
                           {editingPreset === preset.id ? (
                             <>
@@ -787,7 +780,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
           </div>
         )}
       </div>
-      
+
       {/* 底部操作栏 */}
       <div className="border-t border-gray-700 p-4">
         <div className="flex items-center justify-between">
@@ -800,7 +793,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
               {t('particleField.settings.reset')}
             </button>
           </div>
-          
+
           <div className="flex items-center space-x-2">
             <label className="px-3 py-2 bg-blue-600 hover:bg-blue-700 rounded text-sm cursor-pointer transition-colors">
               <Upload className="w-4 h-4 inline mr-1" />
@@ -812,7 +805,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
                 className="hidden"
               />
             </label>
-            
+
             <button
               onClick={exportConfig}
               className="px-3 py-2 bg-green-600 hover:bg-green-700 rounded text-sm transition-colors"
@@ -822,7 +815,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
             </button>
           </div>
         </div>
-        
+
         {/* 性能指标 */}
         {metrics && (
           <div className="mt-3 pt-3 border-t border-gray-700">
@@ -837,7 +830,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
           </div>
         )}
       </div>
-      
+
       {/* 保存预设对话框 */}
       {showSaveDialog && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
@@ -856,7 +849,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
                   placeholder={t('particleField.settings.enterPresetName')}
                 />
               </div>
-              
+
               <div>
                 <label className="block text-sm font-medium mb-2">
                   {t('particleField.settings.presetDescription')}
@@ -870,7 +863,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
                 />
               </div>
             </div>
-            
+
             <div className="flex items-center justify-end space-x-3 mt-6">
               <button
                 onClick={() => setShowSaveDialog(false)}
@@ -896,48 +889,47 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
 
 const ParticleFieldSettings: React.FC = () => {
   const { t } = useTranslation();
-  const particleFieldRef = useRef<HTMLCanvasElement>(null);
-  
+
   const [config, setConfig] = useState<ParticleFieldConfig | null>(null);
   const [metrics, setMetrics] = useState<PerformanceMetrics | null>(null);
   const [isPlaying, setIsPlaying] = useState(true);
   const [showPreview, setShowPreview] = useState(true);
-  
+
   const handleConfigChange = useCallback((newConfig: ParticleFieldConfig) => {
     setConfig(newConfig);
   }, []);
-  
+
   const handlePerformanceUpdate = useCallback((newMetrics: PerformanceMetrics) => {
     setMetrics(newMetrics);
   }, []);
-  
+
   const handlePresetApply = useCallback((preset: ConfigPreset) => {
     handleConfigChange(preset.config);
   }, [handleConfigChange]);
-  
+
   const handlePresetSave = useCallback(() => {
     // 预设保存逻辑已在 ControlPanel 中处理
   }, []);
-  
+
   const handlePresetDelete = useCallback(() => {
     // 预设删除逻辑已在 ControlPanel 中处理
   }, []);
-  
+
   const togglePlayback = useCallback(() => {
     setIsPlaying(prev => !prev);
   }, []);
-  
+
   const resetSystem = useCallback(() => {
     // Reset to default configuration
     if (config) {
       handleConfigChange(defaultConfig);
     }
   }, [config, handleConfigChange]);
-  
+
   const togglePreview = useCallback(() => {
     setShowPreview(prev => !prev);
   }, []);
-  
+
   return (
     <div className="min-h-screen bg-gray-100 dark:bg-gray-900">
       <div className="flex h-screen">
@@ -947,8 +939,8 @@ const ParticleFieldSettings: React.FC = () => {
           <div className="p-4 border-b border-gray-200 dark:border-gray-700">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-3">
-                <Link 
-                  to="/particle-field" 
+                <Link
+                  to="/particle-field"
                   className="p-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
                 >
                   <ArrowLeft className="w-5 h-5" />
@@ -957,15 +949,14 @@ const ParticleFieldSettings: React.FC = () => {
                   {t('particleField.settings.title')}
                 </h1>
               </div>
-              
+
               <div className="flex items-center space-x-2">
                 <button
                   onClick={togglePreview}
-                  className={`p-2 rounded transition-colors ${
-                    showPreview 
-                      ? 'bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-400' 
+                  className={`p-2 rounded transition-colors ${showPreview
+                      ? 'bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-400'
                       : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
-                  }`}
+                    }`}
                   title={showPreview ? t('particleField.settings.hidePreview') : t('particleField.settings.showPreview')}
                 >
                   {showPreview ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
@@ -973,7 +964,7 @@ const ParticleFieldSettings: React.FC = () => {
               </div>
             </div>
           </div>
-          
+
           {/* 控制面板内容 */}
           {config && (
             <ControlPanel
@@ -986,7 +977,7 @@ const ParticleFieldSettings: React.FC = () => {
             />
           )}
         </div>
-        
+
         {/* 右侧预览区域 */}
         {showPreview && (
           <div className="flex-1 relative bg-black">
@@ -998,7 +989,7 @@ const ParticleFieldSettings: React.FC = () => {
               enableControls={false}
               autoStart={true}
             />
-            
+
             {/* 预览控制覆盖层 */}
             <div className="absolute top-4 right-4 flex items-center space-x-2">
               <button
@@ -1008,7 +999,7 @@ const ParticleFieldSettings: React.FC = () => {
               >
                 {isPlaying ? <Pause className="w-5 h-5" /> : <Play className="w-5 h-5" />}
               </button>
-              
+
               <button
                 onClick={resetSystem}
                 className="p-2 bg-black/30 backdrop-blur-sm rounded-lg text-white hover:bg-black/50 transition-all duration-200"
@@ -1016,7 +1007,7 @@ const ParticleFieldSettings: React.FC = () => {
               >
                 <RotateCcw className="w-5 h-5" />
               </button>
-              
+
               <Link
                 to="/particle-field/demo"
                 className="p-2 bg-black/30 backdrop-blur-sm rounded-lg text-white hover:bg-black/50 transition-all duration-200"
@@ -1025,7 +1016,7 @@ const ParticleFieldSettings: React.FC = () => {
                 <Play className="w-5 h-5" />
               </Link>
             </div>
-            
+
             {/* 预览标签 */}
             <div className="absolute bottom-4 left-4">
               <div className="px-3 py-1 bg-black/30 backdrop-blur-sm rounded-lg text-white text-sm">
@@ -1034,7 +1025,7 @@ const ParticleFieldSettings: React.FC = () => {
             </div>
           </div>
         )}
-        
+
         {/* 无预览时的占位 */}
         {!showPreview && (
           <div className="flex-1 flex items-center justify-center bg-gray-50 dark:bg-gray-900">

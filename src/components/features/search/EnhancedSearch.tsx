@@ -91,8 +91,7 @@ export const EnhancedSearch: React.FC<EnhancedSearchProps> = ({
   const [isFocused, setIsFocused] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [searchHistory, setSearchHistory] = useState<SearchHistory[]>([]);
-  const [showResults, setShowResults] = useState(false);
-  
+
   const { t } = useTranslation();
   const debouncedQuery = useDebounce(query, 300);
 
@@ -107,13 +106,13 @@ export const EnhancedSearch: React.FC<EnhancedSearchProps> = ({
   // 保存搜索历史
   const saveToHistory = useCallback((searchQuery: string, resultCount: number) => {
     if (!searchQuery.trim()) return;
-    
+
     const newHistory: SearchHistory = {
       query: searchQuery,
       timestamp: Date.now(),
       results: resultCount
     };
-    
+
     setSearchHistory(prev => {
       const filtered = prev.filter(item => item.query !== searchQuery);
       const updated = [newHistory, ...filtered].slice(0, 5);
@@ -133,15 +132,15 @@ export const EnhancedSearch: React.FC<EnhancedSearchProps> = ({
       const titleMatch = item.title.toLowerCase().includes(queryLower);
       const descMatch = item.description.toLowerCase().includes(queryLower);
       const categoryMatch = selectedCategory === 'all' || item.category === selectedCategory;
-      
+
       if ((titleMatch || descMatch) && categoryMatch) {
         const relevance = item.relevance * (titleMatch ? 1.2 : 1.0) * (descMatch ? 1.1 : 1.0);
-        
+
         // 高亮匹配文本
         const highlights: string[] = [];
         if (titleMatch) highlights.push(item.title);
         if (descMatch) highlights.push(item.description);
-        
+
         results.push({
           ...item,
           relevance,
@@ -160,7 +159,7 @@ export const EnhancedSearch: React.FC<EnhancedSearchProps> = ({
     if (onSearch) {
       onSearch(searchResults);
     }
-    
+
     if (debouncedQuery.trim() && searchResults.length > 0) {
       saveToHistory(debouncedQuery, searchResults.length);
     }
@@ -169,7 +168,6 @@ export const EnhancedSearch: React.FC<EnhancedSearchProps> = ({
   // 清除搜索
   const clearSearch = useCallback(() => {
     setQuery('');
-    setShowResults(false);
   }, []);
 
   // 清除历史记录
@@ -218,15 +216,15 @@ export const EnhancedSearch: React.FC<EnhancedSearchProps> = ({
         />
         {query && (
           <div className="absolute inset-y-0 right-0 pr-3 flex items-center">
-              <UnifiedButton
-                variant="ghost"
-                size="sm"
-                onClick={clearSearch}
-                className="p-1"
-                aria-label={t('common.aria.clearSearch', { fallback: '清除搜索' })}
-              >
-                <X className="h-4 w-4" />
-              </UnifiedButton>
+            <UnifiedButton
+              variant="ghost"
+              size="sm"
+              onClick={clearSearch}
+              className="p-1"
+              aria-label={t('common.aria.clearSearch', { fallback: '清除搜索' })}
+            >
+              <X className="h-4 w-4" />
+            </UnifiedButton>
           </div>
         )}
       </div>
@@ -274,7 +272,6 @@ export const EnhancedSearch: React.FC<EnhancedSearchProps> = ({
                   className="flex items-center justify-between p-2 hover:bg-gray-50 dark:hover:bg-gray-700 rounded cursor-pointer"
                   onClick={() => {
                     setQuery(item.query);
-                    setShowResults(true);
                   }}
                 >
                   <span className="text-sm">{item.query}</span>
@@ -338,13 +335,13 @@ export const EnhancedSearch: React.FC<EnhancedSearchProps> = ({
 };
 
 // 搜索建议组件
-export const SearchSuggestions: React.FC<{ 
+export const SearchSuggestions: React.FC<{
   suggestions: string[];
   onSelect: (suggestion: string) => void;
   className?: string;
 }> = ({ suggestions, onSelect, className = '' }) => {
   const { t } = useTranslation();
-  
+
   if (!suggestions || suggestions.length === 0) return null;
 
   return (

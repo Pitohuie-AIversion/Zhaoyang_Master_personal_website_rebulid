@@ -2,7 +2,6 @@ import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { Search, X, Filter, TrendingUp, Clock, ExternalLink } from 'lucide-react';
 import { searchService, SearchResult, SearchOptions } from '../../../services/searchService';
 import { useTranslation } from '../../common/TranslationProvider';
-import { useResponsive } from '../../../hooks/useResponsive';
 import { SimpleMotion } from '../../animations/SimpleMotion';
 import { UnifiedButton } from '../../common/UnifiedButton';
 import { useNavigate } from 'react-router-dom';
@@ -20,16 +19,15 @@ interface SearchFilters {
   minRelevance: number;
 }
 
-export const SmartSearch: React.FC<SmartSearchProps> = ({ 
-  isOpen, 
-  onClose, 
+export const SmartSearch: React.FC<SmartSearchProps> = ({
+  isOpen,
+  onClose,
   initialQuery = '',
   placeholder
 }) => {
   const { t } = useTranslation();
-  const { isMobile } = useResponsive();
   const navigate = useNavigate();
-  
+
   const [query, setQuery] = useState(initialQuery);
   const [results, setResults] = useState<SearchResult[]>([]);
   const [suggestions, setSuggestions] = useState<string[]>([]);
@@ -41,7 +39,7 @@ export const SmartSearch: React.FC<SmartSearchProps> = ({
   });
   const [searchHistory, setSearchHistory] = useState<string[]>([]);
   const [showHistory, setShowHistory] = useState(false);
-  
+
   const searchInputRef = useRef<HTMLInputElement>(null);
   const searchTimeoutRef = useRef<NodeJS.Timeout>();
 
@@ -60,10 +58,10 @@ export const SmartSearch: React.FC<SmartSearchProps> = ({
   // 保存搜索历史
   const saveSearchHistory = useCallback((newQuery: string) => {
     if (!newQuery.trim()) return;
-    
+
     const updatedHistory = [newQuery, ...searchHistory.filter(item => item !== newQuery)]
       .slice(0, 10); // 只保留最近10条
-    
+
     setSearchHistory(updatedHistory);
     localStorage.setItem('searchHistory', JSON.stringify(updatedHistory));
   }, [searchHistory]);
@@ -76,7 +74,7 @@ export const SmartSearch: React.FC<SmartSearchProps> = ({
     }
 
     setIsLoading(true);
-    
+
     try {
       const options: SearchOptions = {
         types: filters.types,
@@ -87,7 +85,7 @@ export const SmartSearch: React.FC<SmartSearchProps> = ({
 
       const searchResults = await searchService.search(searchQuery, options);
       setResults(searchResults);
-      
+
       // 保存搜索历史
       saveSearchHistory(searchQuery);
     } catch (error) {
@@ -176,7 +174,7 @@ export const SmartSearch: React.FC<SmartSearchProps> = ({
         e.preventDefault();
         // 这里可以添加全局搜索快捷键
       }
-      
+
       if (e.key === 'Escape') {
         onClose();
       }
@@ -215,11 +213,11 @@ export const SmartSearch: React.FC<SmartSearchProps> = ({
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto">
       {/* 背景遮罩 */}
-      <div 
+      <div
         className="fixed inset-0 bg-black bg-opacity-50 transition-opacity"
         onClick={onClose}
       />
-      
+
       {/* 搜索容器 */}
       <div className="flex items-start justify-center min-h-screen pt-20 px-4">
         <SimpleMotion
@@ -394,7 +392,7 @@ export const SmartSearch: React.FC<SmartSearchProps> = ({
 
             {!isLoading && results.length > 0 && (
               <div className="p-2">
-                {results.map((result, index) => (
+                {results.map((result, _index) => (
                   <button
                     key={result.id}
                     onClick={() => handleResultClick(result)}

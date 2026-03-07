@@ -1,4 +1,5 @@
 import React from 'react';
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { render, screen } from '@testing-library/react';
 import { TranslationProvider, useTranslation } from '../../components/common/TranslationProvider';
 import en from '../../locales/en.json';

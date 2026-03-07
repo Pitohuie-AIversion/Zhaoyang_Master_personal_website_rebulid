@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, LineChart, Line, PieChart, Pie, Cell } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, LineChart, Line } from 'recharts';
 import { TrendingUp, Award, FileText, Users } from 'lucide-react';
 import { googleScholarService } from '../../../services/googleScholarService';
 import { AcademicMetricsProps, AcademicMetrics as AcademicMetricsType } from '../../../types/academic';
@@ -7,11 +7,10 @@ import { useTranslation } from '../../common/TranslationProvider';
 import { ResponsiveCard } from '../../common/ResponsiveEnhancements';
 import { PageLoader } from '../../common/LoadingComponents';
 
-const COLORS = ['#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6'];
 
-export const AcademicMetrics: React.FC<AcademicMetricsProps> = ({ 
-  scholarId = 'zhaoyang_mu', 
-  className = '', 
+export const AcademicMetrics: React.FC<AcademicMetricsProps> = ({
+  scholarId = 'zhaoyang_mu',
+  className = '',
   showCharts = true,
   refreshInterval = 3600000 // 1小时
 }) => {
@@ -134,7 +133,7 @@ export const AcademicMetrics: React.FC<AcademicMetricsProps> = ({
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="year" />
                 <YAxis />
-                <Tooltip 
+                <Tooltip
                   formatter={(value) => [value, t('academic.metrics.citations')]}
                   labelFormatter={(label) => `${t('academic.metrics.year')}: ${label}`}
                 />
@@ -153,14 +152,14 @@ export const AcademicMetrics: React.FC<AcademicMetricsProps> = ({
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="year" />
                 <YAxis />
-                <Tooltip 
+                <Tooltip
                   formatter={(value) => [value, t('academic.metrics.totalCitations')]}
                   labelFormatter={(label) => `${t('academic.metrics.year')}: ${label}`}
                 />
-                <Line 
-                  type="monotone" 
-                  dataKey="citations" 
-                  stroke="#10b981" 
+                <Line
+                  type="monotone"
+                  dataKey="citations"
+                  stroke="#10b981"
                   strokeWidth={3}
                   dot={{ fill: '#10b981', strokeWidth: 2, r: 4 }}
                 />

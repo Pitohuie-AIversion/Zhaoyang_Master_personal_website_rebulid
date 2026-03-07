@@ -1,11 +1,11 @@
 import { SimpleMotion } from '../components/animations/SimpleMotion';
-import { useState, memo } from 'react';
+import { memo } from 'react';
 import { Link } from 'react-router-dom';
 import { Mail, Download, ArrowRight, Calendar, Trophy, FileText, Folder } from 'lucide-react';
-import { PageLoader, ResearchHighlightSkeleton, NewsItemSkeleton, StatSkeleton, usePageLoading, LazyWrapper } from '../components/common/LoadingComponents';
+import { PageLoader, ResearchHighlightSkeleton, NewsItemSkeleton, usePageLoading, LazyWrapper } from '../components/common/LoadingComponents';
 import LazyImage from '../components/common/LazyImage';
 import { HomeSEO } from '../components/seo/SEOOptimization';
-import { useResponsive, ResponsiveText, ResponsiveCard, ResponsiveContainer, ResponsiveGrid } from '../components/common/ResponsiveEnhancements';
+import { useResponsive, ResponsiveCard, ResponsiveContainer } from '../components/common/ResponsiveEnhancements';
 import { useTranslation } from '../components/common/TranslationProvider';
 import { UnifiedButton } from '../components/common/UnifiedButton';
 import { ScrollReveal, HoverCard } from '../components/animations/InteractiveEffects';
@@ -34,7 +34,7 @@ const getResearchHighlights = (t: (key: string, options?: { returnObjects?: bool
     id: '1',
     title: t('home.researchHighlights.items.damformer.title'),
     description: t('home.researchHighlights.items.damformer.description'),
-    image: 'https://trae-api-us.mchost.guru/api/ide/v1/text_to_image?prompt=dam%20break%20simulation%20transformer%20model%20cross%20geometry%20generalization%20computational%20fluid%20dynamics%20scientific%20visualization&image_size=landscape_4_3',
+    image: 'https://picsum.photos/seed/damformer/600/400',
     category: t('home.researchHighlights.items.damformer.category'),
     link: '/research'
   },
@@ -42,7 +42,7 @@ const getResearchHighlights = (t: (key: string, options?: { returnObjects?: bool
     id: '2',
     title: t('home.researchHighlights.items.sparseDense.title'),
     description: t('home.researchHighlights.items.sparseDense.description'),
-    image: 'https://trae-api-us.mchost.guru/api/ide/v1/text_to_image?prompt=sparse%20to%20dense%20field%20reconstruction%20transformer%20CFD%20environmental%20flow%20sensor%20data%20visualization&image_size=landscape_4_3',
+    image: 'https://picsum.photos/seed/sparsedense/600/400',
     category: t('home.researchHighlights.items.sparseDense.category'),
     link: '/research'
   },
@@ -50,7 +50,7 @@ const getResearchHighlights = (t: (key: string, options?: { returnObjects?: bool
     id: '3',
     title: t('home.researchHighlights.items.bionicFin.title'),
     description: t('home.researchHighlights.items.bionicFin.description'),
-    image: 'https://trae-api-us.mchost.guru/api/ide/v1/text_to_image?prompt=biomimetic%20undulating%20fin%20propulsion%20simulation%20CFD%20FSI%20underwater%20robot%20blue%20ocean%20theme&image_size=landscape_4_3',
+    image: 'https://picsum.photos/seed/bionicfin/600/400',
     category: t('home.researchHighlights.items.bionicFin.category'),
     link: '/research'
   }
@@ -128,7 +128,7 @@ function Home() {
   return (
     <div className="min-h-screen relative theme-transition">
       <HomeSEO />
-      
+
       {/* 1. Hero Section - Strong F-Pattern Top Bar */}
       <section className="relative overflow-hidden pb-16 bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-blue-900 theme-transition" style={{ paddingTop: isMobile ? '120px' : isTablet ? '140px' : '160px' }}>
         <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-indigo-100/50 dark:from-gray-900/50 dark:to-blue-900/50" />
@@ -149,7 +149,7 @@ function Home() {
                     </span>
                   </h1>
                 </ScrollReveal>
-                
+
                 <ScrollReveal direction="up" delay={0.4}>
                   <h2 className="text-xl md:text-2xl text-blue-600 dark:text-blue-400 font-medium mb-6">
                     {t('home.hero.title') as string}
@@ -161,7 +161,7 @@ function Home() {
                     {t('home.hero.description') as string}
                   </p>
                 </ScrollReveal>
-                
+
                 {/* Tags as visual anchors */}
                 <div className="flex flex-wrap gap-2 sm:gap-3 mb-10">
                   {[
@@ -193,7 +193,7 @@ function Home() {
                 </ScrollReveal>
               </SimpleMotion>
             </div>
-            
+
             {/* Image - Spans 5 columns - Secondary Anchor */}
             <div className="lg:col-span-5 order-1 lg:order-2 flex justify-center lg:justify-end">
               <SimpleMotion
@@ -214,13 +214,13 @@ function Home() {
             </div>
           </div>
         </ResponsiveContainer>
-        
+
         {/* Background Grid Decoration */}
         <div className="absolute top-0 right-0 w-1/2 h-full opacity-[0.03] pointer-events-none">
           <svg viewBox="0 0 100 100" className="w-full h-full">
             <defs>
               <pattern id="grid" width="8" height="8" patternUnits="userSpaceOnUse">
-                <path d="M 8 0 L 0 0 0 8" fill="none" stroke="currentColor" strokeWidth="0.5"/>
+                <path d="M 8 0 L 0 0 0 8" fill="none" stroke="currentColor" strokeWidth="0.5" />
               </pattern>
             </defs>
             <rect width="100" height="100" fill="url(#grid)" className="text-blue-900 dark:text-white" />
@@ -232,7 +232,7 @@ function Home() {
       <section className="py-16 bg-white dark:bg-gray-900 theme-transition">
         <ResponsiveContainer maxWidth="xl" padding="lg">
           <div className="grid lg:grid-cols-12 gap-12">
-            
+
             {/* Left Column (Main Content) - Research Highlights - Spans 8 cols */}
             <div className="lg:col-span-8">
               <SimpleMotion
@@ -259,7 +259,7 @@ function Home() {
                   <LazyWrapper key={item.id} fallback={<ResearchHighlightSkeleton />}>
                     <ScrollReveal direction="up" delay={index * 0.1}>
                       <HoverCard>
-                        <ResponsiveCard 
+                        <ResponsiveCard
                           className="group overflow-hidden border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-700 transition-colors duration-300"
                           padding="none"
                         >
@@ -277,7 +277,7 @@ function Home() {
                                 </span>
                               </div>
                             </div>
-                            
+
                             {/* Content Section */}
                             <div className="md:col-span-3 p-6 flex flex-col justify-center">
                               <Link to={item.link}>
@@ -299,7 +299,7 @@ function Home() {
                   </LazyWrapper>
                 ))}
               </div>
-              
+
               <div className="mt-8 md:hidden text-center">
                 <Link to="/research">
                   <UnifiedButton variant="outline" fullWidth>
@@ -386,14 +386,14 @@ function Home() {
               {t('home.timeline.description') || '展示我的学术和职业发展轨迹'}
             </p>
           </SimpleMotion>
-          
+
           <ScrollReveal direction="up" delay={0.2}>
-            <Timeline 
+            <Timeline
               maxItems={6}
               showFilters={false}
             />
           </ScrollReveal>
-          
+
           <div className="text-center mt-10">
             <Link to="/about">
               <UnifiedButton variant="outline" icon={ArrowRight} iconPosition="right">

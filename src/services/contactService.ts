@@ -34,47 +34,48 @@ const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const PHONE_REGEX = /^\+?[1-9]\d{0,3}[\s-]?[(]?\d{1,4}[)]?[\s-]?\d{1,4}[\s-]?\d{1,9}$/;
 
 // 表单验证函数
-export const validateContactForm = (formData: ContactFormData): FormErrors => {
+export const validateContactForm = (formData: ContactFormData, t?: (key: string) => string): FormErrors => {
   const errors: FormErrors = {};
+  const tr = (key: string, fallback: string) => (t ? t(key) : fallback);
 
   // 姓名验证
   if (!formData.name.trim()) {
-    errors.name = '请输入您的姓名';
+    errors.name = tr('contact.form.validation.nameRequired', '请输入您的姓名');
   } else if (formData.name.trim().length < 2) {
-    errors.name = '姓名至少需要2个字符';
+    errors.name = tr('contact.form.validation.nameTooShort', '姓名至少需要2个字符');
   } else if (formData.name.trim().length > 50) {
-    errors.name = '姓名不能超过50个字符';
+    errors.name = tr('contact.form.validation.nameTooLong', '姓名不能超过50个字符');
   }
 
   // 邮箱验证
   if (!formData.email.trim()) {
-    errors.email = '请输入您的邮箱地址';
+    errors.email = tr('contact.form.validation.emailRequired', '请输入您的邮箱地址');
   } else if (!EMAIL_REGEX.test(formData.email.trim())) {
-    errors.email = '请输入有效的邮箱地址';
+    errors.email = tr('contact.form.validation.emailInvalid', '请输入有效的邮箱地址');
   }
 
   // 主题验证
   if (!formData.subject.trim()) {
-    errors.subject = '请输入邮件主题';
+    errors.subject = tr('contact.form.validation.subjectRequired', '请输入邮件主题');
   } else if (formData.subject.trim().length < 5) {
-    errors.subject = '主题至少需要5个字符';
+    errors.subject = tr('contact.form.validation.subjectTooShort', '主题至少需要5个字符');
   } else if (formData.subject.trim().length > 100) {
-    errors.subject = '主题不能超过100个字符';
+    errors.subject = tr('contact.form.validation.subjectTooLong', '主题不能超过100个字符');
   }
 
   // 消息内容验证
   if (!formData.message.trim()) {
-    errors.message = '请输入您的消息内容';
+    errors.message = tr('contact.form.validation.messageRequired', '请输入您的消息内容');
   } else if (formData.message.trim().length < 10) {
-    errors.message = '消息内容至少需要10个字符';
+    errors.message = tr('contact.form.validation.messageTooShort', '消息内容至少需要10个字符');
   } else if (formData.message.trim().length > 2000) {
-    errors.message = '消息内容不能超过2000个字符';
+    errors.message = tr('contact.form.validation.messageTooLong', '消息内容不能超过2000个字符');
   }
 
   // 电话号码验证（可选）
   if (formData.phone && formData.phone.trim()) {
     if (!PHONE_REGEX.test(formData.phone.trim())) {
-      errors.phone = '请输入有效的电话号码';
+      errors.phone = tr('contact.form.validation.phoneInvalid', '请输入有效的电话号码');
     }
   }
 
@@ -101,99 +102,46 @@ export const sanitizeFormData = (formData: ContactFormData): ContactFormData => 
   };
 };
 
-// 存储到 Supabase 的服务
-const saveToSupabase = async (data: ContactFormData): Promise<SubmitResponse> => {
+// 主要提交函数 - 保存到本地并引导用户发邮件
+const saveToLocalAndNotify = async (data: ContactFormData): Promise<SubmitResponse> => {
   try {
-    // 准备数据
-    const submissionData = {
-      name: data.name,
-      email: data.email,
-      subject: data.subject,
-      message: data.message,
-      phone: data.phone || null,
-      company: data.company || null,
-      collaboration_type: data.collaborationType || null,
-      budget_range: data.budget || null,  // 注意：这里使用budget_range而不是budget
-      timeline: data.timeline || null,
-      status: 'new',
-      created_at: new Date().toISOString()
-    };
+    // 模拟短暂延迟以保持体验一致
+    await new Promise(resolve => setTimeout(resolve, 800));
 
-    // 发送数据到 Supabase
-    const response = await fetch('/api/contact/submit', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(submissionData)
-    });
-
-    if (!response.ok) {
-      const errorData = await response.json().catch(() => ({ error: 'Unknown error' }));
-      throw new Error(errorData.error || `HTTP error! status: ${response.status}`);
-    }
-
-    const result = await response.json();
-    
-    return {
-      success: true,
-      message: '消息发送成功！我会尽快回复您。',
-      data: {
-        messageId: result.id || `msg_${Date.now()}`,
-        timestamp: new Date().toISOString(),
-        estimatedReplyTime: '24小时内'
-      }
-    };
-  } catch (error) {
-    console.error('Failed to save to Supabase:', error);
-    
-    // 如果是网络错误或服务器错误，回退到本地存储
-    if (error instanceof Error && (error.message.includes('Network') || error.message.includes('fetch'))) {
-      return saveToLocalStorage(data);
-    }
-    
-    throw error;
-  }
-};
-
-// 本地存储备份方案
-const saveToLocalStorage = async (data: ContactFormData): Promise<SubmitResponse> => {
-  try {
-    // 模拟网络延迟
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
     const localData = {
-      id: `local_${Date.now()}`,
+      id: `msg_${Date.now()}`,
       ...data,
       status: 'new',
       created_at: new Date().toISOString(),
-      source: 'local_backup'
+      source: 'local_storage'
     };
-    
-    // 存储到本地存储
+
+    // 持久化到 localStorage（备份）
     const existingMessages = JSON.parse(localStorage.getItem('contactMessages_backup') || '[]');
     existingMessages.push(localData);
     localStorage.setItem('contactMessages_backup', JSON.stringify(existingMessages));
-    
+
     return {
       success: true,
-      message: '消息已保存到本地（网络连接问题，稍后我会手动查看）。',
+      message: '消息已记录！请同时发送邮件至 mzymuzhaoyang@gmail.com 以确保我能及时收到。',
       data: {
         messageId: localData.id,
         timestamp: localData.created_at,
-        estimatedReplyTime: '48小时内'
+        estimatedReplyTime: '24小时内',
+        email: 'mzymuzhaoyang@gmail.com'
       }
     };
-  } catch (error) {
-    throw new Error('无法保存消息，请稍后重试');
+  } catch (_error) {
+    throw new Error('无法保存消息，请直接发送邮件至 mzymuzhaoyang@gmail.com');
   }
 };
+
 
 // 主要的表单提交函数
 export const submitContactForm = async (formData: ContactFormData, t?: (key: string) => string): Promise<SubmitResponse> => {
   try {
     // 1. 验证表单数据
-    const errors = validateContactForm(formData);
+    const errors = validateContactForm(formData, t);
     if (hasValidationErrors(errors)) {
       const errorMessages = Object.values(errors).join(', ');
       throw new Error(`表单验证失败: ${errorMessages}`);
@@ -203,24 +151,24 @@ export const submitContactForm = async (formData: ContactFormData, t?: (key: str
     const cleanData = sanitizeFormData(formData);
 
     // 3. 显示加载提示
-    toast.loading(t ? t('contact.form.submitting') : '正在发送消息...', { id: 'contact-submit' });
+    toast.loading(t ? t('contact.form.submitting') : '正在处理...', { id: 'contact-submit' });
 
-    // 4. 保存到 Supabase（新实现）
-    const result = await saveToSupabase(cleanData);
-    
+    // 4. 保存到本地并提示用户发邮件
+    const result = await saveToLocalAndNotify(cleanData);
+
     // 5. 显示成功提示
-    toast.success(result.message || (t ? t('contact.form.success') : '消息发送成功'), { id: 'contact-submit' });
-    
-    // 6. 记录提交日志（可选）
+    toast.success(result.message || (t ? t('contact.form.success') : '消息已记录'), { id: 'contact-submit' });
+
+    // 6. 记录提交日志
     logContactSubmission(cleanData, result);
-    
+
     return result;
   } catch (error) {
     const errorMessage = error instanceof Error ? error.message : (t ? t('contact.form.submitError') : '发送失败，请稍后重试');
-    
+
     // 显示错误提示
     toast.error(errorMessage, { id: 'contact-submit' });
-    
+
     return {
       success: false,
       message: errorMessage
@@ -246,17 +194,17 @@ const logContactSubmission = (formData: ContactFormData, result: SubmitResponse)
     userAgent: navigator.userAgent,
     referrer: document.referrer
   };
-  
+
   // 存储到本地存储（实际项目中可能发送到分析服务）
   try {
     const existingLogs = JSON.parse(localStorage.getItem('contactSubmissions') || '[]');
     existingLogs.push(logData);
-    
+
     // 只保留最近50条记录
     if (existingLogs.length > 50) {
       existingLogs.splice(0, existingLogs.length - 50);
     }
-    
+
     localStorage.setItem('contactSubmissions', JSON.stringify(existingLogs));
   } catch (error) {
     console.warn('Failed to log contact submission:', error);

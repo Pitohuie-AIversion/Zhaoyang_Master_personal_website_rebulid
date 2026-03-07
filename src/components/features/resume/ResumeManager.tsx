@@ -154,12 +154,14 @@ interface Award {
 }
 
 const ResumeManager: React.FC = () => {
-  const { t: translate, language } = useTranslation();
+  const { t: translate, language: _language } = useTranslation();
   // Wrapper to keep existing call style (key, fallback) working with our translation provider
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const t = (key: string, fallbackOrOptions?: string | { fallback?: string; returnObjects?: boolean }): any => {
     const options = typeof fallbackOrOptions === 'string'
       ? { fallback: fallbackOrOptions }
       : fallbackOrOptions;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return (translate as any)(key, options);
   };
   const [resumeData, setResumeData] = useState<ResumeData | null>(null);
@@ -179,7 +181,7 @@ const ResumeManager: React.FC = () => {
     try {
       const response = await fetch('/api/resume/data');
       const result = await response.json();
-      
+
       if (result.success) {
         setResumeData(result.data);
       } else {
@@ -238,12 +240,12 @@ const ResumeManager: React.FC = () => {
 
     try {
       const typedItem = editingItem as Record<string, unknown>;
-      const url = typedItem.id 
+      const url = typedItem.id
         ? `/api/resume/data/${editingSection}/${typedItem.id}`
         : `/api/resume/data/${editingSection}`;
-      
+
       const method = typedItem.id ? 'PUT' : 'POST';
-      
+
       const response = await fetch(url, {
         method: method,
         headers: {
@@ -351,7 +353,6 @@ const ResumeManager: React.FC = () => {
     if (!resumeData?.personal_info) return null;
 
     const info = resumeData.personal_info;
-    const currentLang = language;
 
     return (
       <div className="bg-white rounded-lg shadow-md p-6">
@@ -366,7 +367,7 @@ const ResumeManager: React.FC = () => {
             <Edit size={16} />
           </button>
         </div>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -374,7 +375,7 @@ const ResumeManager: React.FC = () => {
             </label>
             <p className="text-gray-900">{info.full_name}</p>
           </div>
-          
+
           {info.email && (
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -383,7 +384,7 @@ const ResumeManager: React.FC = () => {
               <p className="text-gray-900">{info.email}</p>
             </div>
           )}
-          
+
           {info.phone && (
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -392,7 +393,7 @@ const ResumeManager: React.FC = () => {
               <p className="text-gray-900">{info.phone}</p>
             </div>
           )}
-          
+
           {info.location && (
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -401,7 +402,7 @@ const ResumeManager: React.FC = () => {
               <p className="text-gray-900">{info.location}</p>
             </div>
           )}
-          
+
           {info.linkedin && (
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -412,7 +413,7 @@ const ResumeManager: React.FC = () => {
               </a>
             </div>
           )}
-          
+
           {info.github && (
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -424,7 +425,7 @@ const ResumeManager: React.FC = () => {
             </div>
           )}
         </div>
-        
+
         {info.bio && (
           <div className="mt-4">
             <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -468,7 +469,7 @@ const ResumeManager: React.FC = () => {
             {t('common.add', 'Add')}
           </button>
         </div>
-        
+
         <div className="space-y-4">
           {items.map((item) => {
             const typedItem = item as Record<string, unknown>;
@@ -493,12 +494,12 @@ const ResumeManager: React.FC = () => {
                     </button>
                   </div>
                 </div>
-              
+
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm text-gray-600">
                   {fields.map((field) => {
                     const value = typedItem[field];
                     if (!value) return null;
-                    
+
                     return (
                       <div key={field}>
                         <span className="font-medium">{field.replace('_', ' ')}: </span>
@@ -520,7 +521,7 @@ const ResumeManager: React.FC = () => {
 
     const renderFormFields = () => {
       const fields = Object.keys(editingItem).filter(key => key !== 'id' && key !== 'created_at' && key !== 'updated_at');
-      
+
       return fields.map((field) => (
         <div key={field} className="mb-4">
           <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -580,10 +581,10 @@ const ResumeManager: React.FC = () => {
               <X size={20} />
             </button>
           </div>
-          
+
           <form onSubmit={(e) => { e.preventDefault(); handleSave(); }}>
             {renderFormFields()}
-            
+
             <div className="flex items-center justify-end gap-3 mt-6">
               <button
                 type="button"
@@ -711,11 +712,10 @@ const ResumeManager: React.FC = () => {
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`flex items-center gap-2 py-4 px-1 border-b-2 font-medium text-sm transition-colors ${
-                    activeTab === tab.id
-                      ? 'border-blue-500 text-blue-600'
-                      : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
-                  }`}
+                  className={`flex items-center gap-2 py-4 px-1 border-b-2 font-medium text-sm transition-colors ${activeTab === tab.id
+                    ? 'border-blue-500 text-blue-600'
+                    : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                    }`}
                 >
                   <Icon size={16} />
                   {tab.label}

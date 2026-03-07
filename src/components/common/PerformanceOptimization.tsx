@@ -84,7 +84,7 @@ export const useResourcePreloader = () => {
           testElement.style.visibility = 'hidden';
           testElement.textContent = 'Test';
           document.body.appendChild(testElement);
-          
+
           // 字体加载完成后移除测试元素
           setTimeout(() => {
             document.body.removeChild(testElement);
@@ -96,19 +96,9 @@ export const useResourcePreloader = () => {
   };
 
   useEffect(() => {
-    // 预加载关键资源
-    const criticalImages = [
-      '/hero-bg.jpg',
-      '/profile.jpg',
-      '/research-1.jpg',
-      '/research-2.jpg',
-      '/project-1.jpg'
-    ];
-
+    // 预加载关键字体
     Promise.allSettled([
-      preloadImages(criticalImages),
-      preloadFonts(['Inter', 'system-ui', '-apple-system']),
-      new Promise(resolve => setTimeout(resolve, 1000)) // 最小加载时间
+      preloadFonts(['Inter', 'system-ui', '-apple-system'])
     ]).then(() => {
       setIsPreloading(false);
     });
@@ -176,23 +166,11 @@ export const VirtualScroll = <T,>({
   );
 };
 
-// 内存优化Hook
+// 内存优化Hook - 仅监控使用情况，不主动清理图片缓存
 export const useMemoryOptimization = () => {
+  // 不再主动清除图片 src，防止误清除 fixed/sticky 元素中的图片
   useEffect(() => {
-    // 清理未使用的图片缓存
-    const cleanupImageCache = () => {
-      const images = document.querySelectorAll('img');
-      images.forEach((img) => {
-        if (!img.offsetParent) {
-          img.src = '';
-        }
-      });
-    };
-
-    // 定期清理
-    const interval = setInterval(cleanupImageCache, 30000);
-
-    return () => clearInterval(interval);
+    // 保留 hook 接口以兼容现有调用方，但不执行危险清理
   }, []);
 };
 
@@ -207,9 +185,9 @@ export const useNetworkOptimization = () => {
     };
 
     const updateConnectionType = () => {
-      const connection = (navigator as unknown as { connection?: { effectiveType?: string }; mozConnection?: { effectiveType?: string }; webkitConnection?: { effectiveType?: string } }).connection || 
-                         (navigator as unknown as { connection?: { effectiveType?: string }; mozConnection?: { effectiveType?: string }; webkitConnection?: { effectiveType?: string } }).mozConnection || 
-                         (navigator as unknown as { connection?: { effectiveType?: string }; mozConnection?: { effectiveType?: string }; webkitConnection?: { effectiveType?: string } }).webkitConnection;
+      const connection = (navigator as unknown as { connection?: { effectiveType?: string }; mozConnection?: { effectiveType?: string }; webkitConnection?: { effectiveType?: string } }).connection ||
+        (navigator as unknown as { connection?: { effectiveType?: string }; mozConnection?: { effectiveType?: string }; webkitConnection?: { effectiveType?: string } }).mozConnection ||
+        (navigator as unknown as { connection?: { effectiveType?: string }; mozConnection?: { effectiveType?: string }; webkitConnection?: { effectiveType?: string } }).webkitConnection;
       if (connection) {
         setConnectionType(connection.effectiveType || 'unknown');
       }

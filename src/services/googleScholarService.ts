@@ -6,7 +6,7 @@ import { AcademicMetrics, PublicationMetrics, ScholarProfile } from '../types/ac
  */
 export class GoogleScholarService {
   private static instance: GoogleScholarService;
-  private cache: Map<string, { data: any; timestamp: number }> = new Map();
+  private cache: Map<string, { data: ScholarProfile | null; timestamp: number }> = new Map();
   private readonly CACHE_DURATION = 24 * 60 * 60 * 1000; // 24小时缓存
 
   static getInstance(): GoogleScholarService {
@@ -24,7 +24,7 @@ export class GoogleScholarService {
       // 检查缓存
       const cacheKey = `profile_${scholarId}`;
       const cached = this.cache.get(cacheKey);
-      
+
       if (cached && Date.now() - cached.timestamp < this.CACHE_DURATION) {
         return cached.data;
       }
@@ -32,11 +32,11 @@ export class GoogleScholarService {
       // 模拟Google Scholar数据获取
       // 实际项目中需要使用Google Scholar API或爬虫
       const profile = await this.fetchScholarData(scholarId);
-      
+
       if (profile) {
         this.cache.set(cacheKey, { data: profile, timestamp: Date.now() });
       }
-      
+
       return profile;
     } catch (error) {
       console.error('Failed to fetch Google Scholar profile:', error);
@@ -97,7 +97,7 @@ export class GoogleScholarService {
   private async fetchScholarData(scholarId: string): Promise<ScholarProfile | null> {
     // 这里使用模拟数据，实际项目中需要调用Google Scholar API
     // 由于Google Scholar没有官方API，可以考虑使用第三方服务如serpapi.com
-    
+
     await new Promise(resolve => setTimeout(resolve, 1000)); // 模拟网络延迟
 
     return {
@@ -169,9 +169,9 @@ export class GoogleScholarService {
   /**
    * 计算年度引用分布
    */
-  private calculateYearCitations(papers: any[]): { [year: string]: number } {
+  private calculateYearCitations(papers: Array<{ year: number; citations: number }>): { [year: string]: number } {
     const yearCitations: { [year: string]: number } = {};
-    
+
     papers.forEach(paper => {
       const year = paper.year.toString();
       yearCitations[year] = (yearCitations[year] || 0) + paper.citations;
@@ -183,7 +183,7 @@ export class GoogleScholarService {
   /**
    * 计算引用趋势
    */
-  private calculateCitationTrend(papers: any[]): number[] {
+  private calculateCitationTrend(papers: Array<{ year: number; citations: number }>): number[] {
     const currentYear = new Date().getFullYear();
     const trends: number[] = [];
 
@@ -200,7 +200,7 @@ export class GoogleScholarService {
   /**
    * 计算引用速度
    */
-  private calculateCitationVelocity(paper: any): number {
+  private calculateCitationVelocity(paper: { year: number; citations: number }): number {
     const currentYear = new Date().getFullYear();
     const paperAge = Math.max(1, currentYear - paper.year);
     return paper.citations / paperAge;

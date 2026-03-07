@@ -1,15 +1,15 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import DOMPurify from 'dompurify';
-import { 
-  Calendar, 
-  Clock, 
-  Eye, 
-  Heart, 
-  Tag, 
-  User, 
-  ArrowLeft, 
-  Share2, 
+import {
+  Calendar,
+  Clock,
+  Eye,
+  Heart,
+  Tag,
+  User,
+  ArrowLeft,
+  Share2,
   MessageCircle,
   ChevronLeft,
   Bookmark,
@@ -17,7 +17,6 @@ import {
 } from 'lucide-react';
 import { blogService, BlogPost as BlogPostType, BlogComment } from '../../../services/blogService';
 import { useTranslation } from '../../common/TranslationProvider';
-import { useResponsive } from '../../../hooks/useResponsive';
 import { SimpleMotion } from '../../animations/SimpleMotion';
 import { UnifiedButton } from '../../common/UnifiedButton';
 import { ResponsiveCard } from '../../common/ResponsiveEnhancements';
@@ -38,8 +37,7 @@ const BlogPost: React.FC<BlogPostProps> = ({ className = '' }) => {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
   const { t } = useTranslation();
-  const { isMobile } = useResponsive();
-  
+
   const [post, setPost] = useState<BlogPostType | null>(null);
   const [comments, setComments] = useState<BlogComment[]>([]);
   const [relatedPosts, setRelatedPosts] = useState<BlogPostType[]>([]);
@@ -56,24 +54,24 @@ const BlogPost: React.FC<BlogPostProps> = ({ className = '' }) => {
   const loadPost = useCallback(async (postSlug: string) => {
     try {
       setLoading(true);
-      
+
       // 加载文章
       const blogPost = await blogService.getPostBySlug(postSlug);
       if (!blogPost) {
         navigate('/blog');
         return;
       }
-      
+
       setPost(blogPost);
-      
+
       // 加载评论
       const postComments = await blogService.getPostComments(blogPost.id);
       setComments(postComments);
-      
+
       // 加载相关文章
       const related = await blogService.getRelatedPosts(blogPost.id, 3);
       setRelatedPosts(related);
-      
+
     } catch (error) {
       console.error('Failed to load blog post:', error);
       navigate('/blog');
@@ -90,7 +88,7 @@ const BlogPost: React.FC<BlogPostProps> = ({ className = '' }) => {
 
   const handleLike = async () => {
     if (!post || isLiked) return;
-    
+
     try {
       await blogService.likePost(post.id);
       setPost({ ...post, likes: post.likes + 1 });
@@ -103,27 +101,27 @@ const BlogPost: React.FC<BlogPostProps> = ({ className = '' }) => {
   const handleCommentSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!post) return;
-    
+
     if (!commentForm.author.trim() || !commentForm.email.trim() || !commentForm.content.trim()) {
       alert(t('blog.pleaseFillAllFields') || '请填写所有必填字段');
       return;
     }
-    
+
     if (!/\S+@\S+\.\S+/.test(commentForm.email)) {
       alert(t('blog.pleaseEnterValidEmail') || '请输入有效的邮箱地址');
       return;
     }
-    
+
     try {
       setIsSubmittingComment(true);
-      
+
       const newComment = await blogService.addComment({
         postId: post.id,
         author: commentForm.author,
         email: commentForm.email,
         content: commentForm.content
       });
-      
+
       if (newComment) {
         setComments([newComment, ...comments]);
         setCommentForm({ author: '', email: '', content: '' });
@@ -139,10 +137,10 @@ const BlogPost: React.FC<BlogPostProps> = ({ className = '' }) => {
 
   const handleShare = (platform: string) => {
     if (!post) return;
-    
+
     const url = window.location.href;
     const title = post.title;
-    
+
     switch (platform) {
       case 'twitter':
         window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(url)}`, '_blank');
@@ -176,7 +174,7 @@ const BlogPost: React.FC<BlogPostProps> = ({ className = '' }) => {
       '技术思考': 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200',
       '学习笔记': 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200'
     };
-    
+
     return colorMap[categoryName] || colorMap.blue;
   };
 
@@ -193,7 +191,7 @@ const BlogPost: React.FC<BlogPostProps> = ({ className = '' }) => {
       .replace(/\$\$(.+?)\$\$/g, '<div class="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg my-4 overflow-x-auto"><code class="text-sm">$1</code></div>')
       .replace(/\$(.+?)\$/g, '<code class="bg-gray-100 dark:bg-gray-800 px-1 py-0.5 rounded text-sm">$1</code>')
       .replace(/\|(.+?)\|/g, '<span class="border border-gray-300 dark:border-gray-600 px-2 py-1 rounded text-sm">$1</span>');
-    
+
     // 使用DOMPurify清理HTML，防止XSS攻击
     return DOMPurify.sanitize(rawHtml, {
       ALLOWED_TAGS: ['h1', 'h2', 'h3', 'p', 'strong', 'em', 'br', 'div', 'code', 'span', 'a', 'ul', 'ol', 'li', 'blockquote'],
@@ -331,7 +329,7 @@ const BlogPost: React.FC<BlogPostProps> = ({ className = '' }) => {
           >
             {post.likes} {t('blog.like') || '点赞'}
           </UnifiedButton>
-          
+
           <div className="relative">
             <UnifiedButton
               variant="outline"
@@ -341,7 +339,7 @@ const BlogPost: React.FC<BlogPostProps> = ({ className = '' }) => {
             >
               {t('blog.share') || '分享'}
             </UnifiedButton>
-            
+
             {showShareMenu && (
               <div className="absolute top-full left-0 mt-2 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 py-2 z-10">
                 <button
@@ -371,7 +369,7 @@ const BlogPost: React.FC<BlogPostProps> = ({ className = '' }) => {
               </div>
             )}
           </div>
-          
+
           <UnifiedButton
             variant="outline"
             size="sm"
@@ -404,9 +402,9 @@ const BlogPost: React.FC<BlogPostProps> = ({ className = '' }) => {
         className="mb-12"
       >
         <div className="prose prose-lg dark:prose-invert max-w-none">
-          <div 
-            dangerouslySetInnerHTML={{ 
-              __html: `<div class="mb-4">${renderMarkdown(post.content)}</div>` 
+          <div
+            dangerouslySetInnerHTML={{
+              __html: `<div class="mb-4">${renderMarkdown(post.content)}</div>`
             }}
             className="text-gray-800 dark:text-gray-200 leading-relaxed"
           />
@@ -557,7 +555,7 @@ const BlogPost: React.FC<BlogPostProps> = ({ className = '' }) => {
         >
           {t('blog.backToBlog') || '返回博客'}
         </UnifiedButton>
-        
+
         <UnifiedButton
           variant="outline"
           size="sm"

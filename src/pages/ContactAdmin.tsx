@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Search, Mail, Phone, Building, Calendar, MessageSquare } from 'lucide-react';
 import { ResponsiveCard } from '../components/common/ResponsiveEnhancements';
-import { UnifiedButton } from '../components/common/UnifiedButton';
 
 interface ContactMessage {
   id: string;
@@ -79,7 +78,7 @@ export default function ContactAdmin() {
         },
         body: JSON.stringify({ status: newStatus }),
       });
-      
+
       if (response.ok) {
         fetchMessages();
         fetchStats();
@@ -120,14 +119,14 @@ export default function ContactAdmin() {
   };
 
   const filteredMessages = messages.filter(message => {
-    const matchesSearch = 
+    const matchesSearch =
       message.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       message.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
       message.subject.toLowerCase().includes(searchTerm.toLowerCase()) ||
       message.message.toLowerCase().includes(searchTerm.toLowerCase());
-    
+
     const matchesStatus = statusFilter === 'all' || message.status === statusFilter;
-    
+
     return matchesSearch && matchesStatus;
   });
 
@@ -158,7 +157,7 @@ export default function ContactAdmin() {
             </div>
             <div className="text-2xl font-bold mt-2">{stats.total}</div>
           </ResponsiveCard>
-          
+
           <ResponsiveCard className="p-4">
             <div className="flex flex-row items-center justify-between">
               <div className="text-sm font-medium text-gray-600">新消息</div>
@@ -168,7 +167,7 @@ export default function ContactAdmin() {
             </div>
             <div className="text-2xl font-bold mt-2">{stats.byStatus.new}</div>
           </ResponsiveCard>
-          
+
           <ResponsiveCard className="p-4">
             <div className="flex flex-row items-center justify-between">
               <div className="text-sm font-medium text-gray-600">已读消息</div>
@@ -178,7 +177,7 @@ export default function ContactAdmin() {
             </div>
             <div className="text-2xl font-bold mt-2">{stats.byStatus.read}</div>
           </ResponsiveCard>
-          
+
           <ResponsiveCard className="p-4">
             <div className="flex flex-row items-center justify-between">
               <div className="text-sm font-medium text-gray-600">近30天</div>
@@ -201,10 +200,10 @@ export default function ContactAdmin() {
             className="pl-10 w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
-        <select 
-          value={statusFilter} 
+        <select
+          value={statusFilter}
           onChange={(e) => setStatusFilter(e.target.value)}
-          className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
         >
           <option value="all">全部状态</option>
           <option value="new">新消息</option>
@@ -219,11 +218,10 @@ export default function ContactAdmin() {
         <div className="space-y-4">
           <h2 className="text-xl font-semibold mb-4">消息列表 ({filteredMessages.length})</h2>
           {filteredMessages.map((message) => (
-            <ResponsiveCard 
-              key={message.id} 
-              className={`cursor-pointer transition-colors p-4 ${
-                selectedMessage?.id === message.id ? 'ring-2 ring-blue-500' : ''
-              }`}
+            <ResponsiveCard
+              key={message.id}
+              className={`cursor-pointer transition-colors p-4 ${selectedMessage?.id === message.id ? 'ring-2 ring-blue-500' : ''
+                }`}
               onClick={() => setSelectedMessage(message)}
             >
               <div className="pb-3">
@@ -280,8 +278,8 @@ export default function ContactAdmin() {
                     )}
                   </div>
                 </div>
-                <select 
-                  value={selectedMessage.status} 
+                <select
+                  value={selectedMessage.status}
                   onChange={(e) => updateMessageStatus(selectedMessage.id, e.target.value)}
                   className="px-3 py-1 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                 >
@@ -291,13 +289,13 @@ export default function ContactAdmin() {
                   <option value="archived">已归档</option>
                 </select>
               </div>
-              
+
               <div className="space-y-4">
                 <div>
                   <h4 className="font-semibold mb-2 text-gray-900">主题</h4>
                   <p className="text-gray-700">{selectedMessage.subject}</p>
                 </div>
-                
+
                 <div>
                   <h4 className="font-semibold mb-2 text-gray-900">消息内容</h4>
                   <p className="text-gray-700 whitespace-pre-wrap">{selectedMessage.message}</p>

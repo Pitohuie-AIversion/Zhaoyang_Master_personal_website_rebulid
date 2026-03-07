@@ -94,7 +94,7 @@ export const PublicationList: React.FC<PaperListProps> = ({
           </label>
           <select
             value={sortBy}
-            onChange={(e) => setSortBy(e.target.value as any)}
+            onChange={(e) => setSortBy(e.target.value as 'year' | 'citations' | 'velocity')}
             className="px-3 py-1 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
           >
             <option value="year">{t('academic.papers.year')}</option>
@@ -123,9 +123,9 @@ export const PublicationList: React.FC<PaperListProps> = ({
       {/* 论文列表 */}
       <div className="space-y-4">
         {processedPapers.map((paper, index) => (
-          <PaperCard 
-            key={index} 
-            paper={paper} 
+          <PaperCard
+            key={index}
+            paper={paper}
             showCitations={showCitations}
             showVelocity={showVelocity}
           />
@@ -158,8 +158,8 @@ export const PublicationList: React.FC<PaperListProps> = ({
 };
 
 // 论文卡片组件
-const PaperCard: React.FC<{ 
-  paper: PublicationMetrics; 
+const PaperCard: React.FC<{
+  paper: PublicationMetrics;
   showCitations: boolean;
   showVelocity: boolean;
 }> = ({ paper, showCitations, showVelocity }) => {
@@ -211,17 +211,17 @@ const PaperCard: React.FC<{
               <div className="flex items-center text-sm">
                 <TrendingUp className="w-4 h-4 mr-1 text-green-500" />
                 <span className="text-gray-600">
-                  {t('academic.papers.citations')}: 
+                  {t('academic.papers.citations')}:
                   <span className="font-semibold text-green-600">{paper.citations}</span>
                 </span>
               </div>
             )}
-            
+
             {showVelocity && (
               <div className="flex items-center text-sm">
                 <BarChart3 className="w-4 h-4 mr-1 text-blue-500" />
                 <span className="text-gray-600">
-                  {t('academic.papers.citationVelocity')}: 
+                  {t('academic.papers.citationVelocity')}:
                   <span className="font-semibold text-blue-600">
                     {paper.citationVelocity.toFixed(1)}/年
                   </span>

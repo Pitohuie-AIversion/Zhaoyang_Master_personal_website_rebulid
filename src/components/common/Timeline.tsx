@@ -1,9 +1,8 @@
 import React, { useState, useMemo } from 'react';
-import { Calendar, MapPin, Award, BookOpen, FileText, Briefcase, GraduationCap, ChevronDown, ChevronUp, Filter, ExternalLink } from 'lucide-react';
+import { Calendar, MapPin, Award, BookOpen, FileText, Briefcase, GraduationCap, Filter, ExternalLink } from 'lucide-react';
 import { SimpleMotion } from '../animations/SimpleMotion';
 import { useTranslation } from './TranslationProvider';
 import { UnifiedButton } from './UnifiedButton';
-import { useResponsive } from '../../hooks/useResponsive';
 
 interface TimelineItem {
   id: string;
@@ -34,16 +33,14 @@ interface TimelineProps {
   className?: string;
 }
 
-const Timeline: React.FC<TimelineProps> = ({ 
+const Timeline: React.FC<TimelineProps> = ({
   items: providedItems,
   maxItems = 20,
   showFilters = true,
   className = ''
 }) => {
   const { t } = useTranslation();
-  const { isMobile } = useResponsive();
   const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
-  const [expandedItems, setExpandedItems] = useState<Set<string>>(new Set());
   const [sortBy, setSortBy] = useState<'date' | 'type' | 'title'>('date');
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('desc');
 
@@ -187,7 +184,7 @@ const Timeline: React.FC<TimelineProps> = ({
   // 处理筛选
   const filteredItems = useMemo(() => {
     let filtered = items;
-    
+
     if (selectedTypes.length > 0) {
       filtered = filtered.filter(item => selectedTypes.includes(item.type));
     }
@@ -200,7 +197,7 @@ const Timeline: React.FC<TimelineProps> = ({
     const sorted = [...filteredItems].sort((a, b) => {
       switch (sortBy) {
         case 'date':
-          return sortOrder === 'desc' 
+          return sortOrder === 'desc'
             ? new Date(b.date).getTime() - new Date(a.date).getTime()
             : new Date(a.date).getTime() - new Date(b.date).getTime();
         case 'type':
@@ -218,17 +215,6 @@ const Timeline: React.FC<TimelineProps> = ({
 
     return sorted.slice(0, maxItems);
   }, [filteredItems, sortBy, sortOrder, maxItems]);
-
-  // 切换项目展开状态
-  const toggleExpanded = (id: string) => {
-    const newExpanded = new Set(expandedItems);
-    if (newExpanded.has(id)) {
-      newExpanded.delete(id);
-    } else {
-      newExpanded.add(id);
-    }
-    setExpandedItems(newExpanded);
-  };
 
   // 格式化日期
   const formatDate = (dateString: string) => {
@@ -275,11 +261,10 @@ const Timeline: React.FC<TimelineProps> = ({
                       setSelectedTypes([...selectedTypes, type]);
                     }
                   }}
-                  className={`px-3 py-1 rounded-full text-xs font-medium transition-colors ${
-                    selectedTypes.includes(type)
-                      ? 'bg-blue-500 text-white'
-                      : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
-                  }`}
+                  className={`px-3 py-1 rounded-full text-xs font-medium transition-colors ${selectedTypes.includes(type)
+                    ? 'bg-blue-500 text-white'
+                    : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
+                    }`}
                 >
                   {getTypeLabel(type)}
                 </button>
@@ -364,14 +349,13 @@ const Timeline: React.FC<TimelineProps> = ({
                     )}
                   </div>
                 </div>
-                <span className={`px-2 py-1 rounded-full text-xs font-medium ${
-                  item.type === 'education' ? 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200' :
+                <span className={`px-2 py-1 rounded-full text-xs font-medium ${item.type === 'education' ? 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200' :
                   item.type === 'publication' ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200' :
-                  item.type === 'patent' ? 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200' :
-                  item.type === 'award' ? 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200' :
-                  item.type === 'project' ? 'bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-200' :
-                  'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200'
-                }`}>
+                    item.type === 'patent' ? 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200' :
+                      item.type === 'award' ? 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200' :
+                        item.type === 'project' ? 'bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-200' :
+                          'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200'
+                  }`}>
                   {getTypeLabel(item.type)}
                 </span>
               </div>

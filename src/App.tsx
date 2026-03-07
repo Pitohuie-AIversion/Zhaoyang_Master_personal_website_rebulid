@@ -16,7 +16,7 @@ import { StructuredDataSEO } from './components/seo/StructuredDataSEO';
 import { GoogleAnalytics } from './components/seo/GoogleAnalytics';
 import './styles/accessibility.css';
 import './styles/animations.css';
-import { 
+import {
   LoadingFallback,
   LazyHome,
   LazyResearch,
@@ -170,8 +170,8 @@ function AnimatedRoutes() {
             </Suspense>
           }
         />
-        </Routes>
-      </SmartPageTransition>
+      </Routes>
+    </SmartPageTransition>
   );
 }
 
@@ -187,29 +187,29 @@ function App() {
               <div className="min-h-screen relative theme-transition" id="main-content">
                 {/* 动态背景 */}
                 <AnimatedBackground />
-                
+
                 {/* 跳转链接 */}
                 <a href="#main-content" className="skip-link">
                   {t('common.skipToMain')}
                 </a>
-                
+
                 {/* 性能监控已简化 */}
                 {/* HeaderASCII 已移动到 Navbar 中 */}
                 <Navbar />
                 <AnimatedRoutes />
                 <Footer />
-                
+
                 {/* 聊天助手 */}
                 <ChatAssistant />
-                
+
                 {/* 可访问性工具栏 */}
                 <AccessibilityToolbar />
-                
+
                 {/* 性能监控显示 */}
                 {/* 移除了性能监控显示和优化建议组件 */}
-                
+
                 {/* 结构化数据SEO */}
-                <StructuredDataSEO 
+                <StructuredDataSEO
                   type="person"
                   data={{
                     name: t('seo.site.author'),
@@ -221,9 +221,9 @@ function App() {
                     },
                     url: window.location.origin,
                     sameAs: [
-                      "https://scholar.google.com/citations?user=zhaoyang_mu",
-                      "https://orcid.org/0000-0000-0000-0000",
-                      "https://linkedin.com/in/zhaoyang-mu"
+                      "https://scholar.google.com/citations?user=T3AV5RgAAAAJ",
+                      "https://www.linkedin.com/in/zhaoyang-mou/",
+                      "https://github.com/Pitohuie"
                     ],
                     knowsAbout: [
                       t('skills.categories.aiMl'),

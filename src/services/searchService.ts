@@ -38,20 +38,20 @@ class SearchService {
         // 论文
         {
           id: 'pub-1',
-          title: 'DAMFormer: A Deep Learning Approach for Sparse-to-Dense Modeling',
-          description: 'A novel transformer-based architecture for sparse-to-dense modeling in scientific computing applications.',
+          title: 'DAMFormer: Dam Break Simulation Using Transformer for Cross-Geometry Generalization',
+          description: 'A novel transformer-based neural operator for dam break flow simulation with cross-geometry generalization in computational fluid dynamics, published in Physics of Fluids.',
           type: 'publication',
           url: '/research#publication-1',
           relevance: 0.95,
           metadata: {
             year: 2025,
             authors: ['Zhaoyang Mu', 'Co-author 1', 'Co-author 2'],
-            journal: 'Journal of Computational Physics',
+            journal: 'Physics of Fluids',
             doi: '10.1063/5.0187644'
           }
         },
         {
-          id: 'pub-2', 
+          id: 'pub-2',
           title: 'RS-ModCubes: Remote Sensing Data Processing',
           description: 'Advanced modular cube processing framework for remote sensing data analysis and visualization.',
           type: 'publication',
@@ -69,7 +69,7 @@ class SearchService {
           title: '水下机器人导航系统',
           description: '基于多传感器融合的水下机器人自主导航与定位系统。',
           type: 'patent',
-          url: '/research#patent-1', 
+          url: '/research#patent-1',
           relevance: 0.92,
           metadata: {
             patentNumber: 'CN119509546A',
@@ -86,7 +86,7 @@ class SearchService {
           relevance: 0.88,
           metadata: {
             patentNumber: 'CN119239885A',
-            organization: '研究机构', 
+            organization: '研究机构',
             year: 2024
           }
         },
@@ -113,7 +113,7 @@ class SearchService {
           relevance: 0.83,
           metadata: {
             organization: '中国人工智能学会',
-            level: 'national', 
+            level: 'national',
             year: 2022
           }
         },
@@ -135,7 +135,7 @@ class SearchService {
           title: '科学计算可视化平台',
           description: '高性能科学计算数据可视化与分析平台。',
           type: 'project',
-          url: '/projects#project-2', 
+          url: '/projects#project-2',
           relevance: 0.87,
           metadata: {
             year: 2023,
@@ -203,14 +203,6 @@ class SearchService {
 
   // 构建搜索索引
   private buildSearchIndex(data: SearchResult[]): void {
-    // 按类型分组
-    const grouped = data.reduce((acc, item) => {
-      if (!acc[item.type]) {
-        acc[item.type] = [];
-      }
-      acc[item.type].push(item);
-      return acc;
-    }, {} as Record<string, SearchResult[]>);
 
     // 为每个项目创建搜索词
     data.forEach(item => {
@@ -227,15 +219,15 @@ class SearchService {
   // 提取搜索词
   private extractSearchTerms(item: SearchResult): string[] {
     const terms: string[] = [];
-    
+
     // 标题分词
     const titleWords = item.title.toLowerCase().split(/\s+/);
     terms.push(...titleWords);
-    
+
     // 描述分词
     const descriptionWords = item.description.toLowerCase().split(/\s+/);
     terms.push(...descriptionWords);
-    
+
     // 元数据分词
     if (item.metadata) {
       if (item.metadata.authors) {
@@ -252,11 +244,11 @@ class SearchService {
         });
       }
     }
-    
+
     // 添加类型相关的词
     const typeTerms = this.getTypeTerms(item.type);
     terms.push(...typeTerms);
-    
+
     // 去重并过滤
     return [...new Set(terms)].filter(term => term.length > 1);
   }
@@ -288,7 +280,7 @@ class SearchService {
     } = options;
 
     const queryTerms = query.toLowerCase().split(/\s+/).filter(term => term.length > 1);
-    
+
     if (queryTerms.length === 0) {
       return [];
     }
@@ -298,12 +290,12 @@ class SearchService {
     // 搜索匹配
     queryTerms.forEach(term => {
       const matches = this.searchIndex.get(term) || [];
-      
+
       matches.forEach(item => {
         if (!types.includes(item.type)) return;
-        
+
         const score = this.calculateRelevance(item, queryTerms, query);
-        
+
         if (score >= minRelevance) {
           const existing = results.get(item.id);
           if (!existing || existing.score < score) {
@@ -318,9 +310,9 @@ class SearchService {
           if (this.isFuzzyMatch(term, indexTerm)) {
             items.forEach(item => {
               if (!types.includes(item.type)) return;
-              
+
               const score = this.calculateRelevance(item, queryTerms, query) * 0.7; // 降低模糊匹配分数
-              
+
               if (score >= minRelevance) {
                 const existing = results.get(item.id);
                 if (!existing || existing.score < score) {
@@ -388,7 +380,7 @@ class SearchService {
   // 模糊匹配
   private isFuzzyMatch(term1: string, term2: string): boolean {
     if (Math.abs(term1.length - term2.length) > 2) return false;
-    
+
     const distance = this.levenshteinDistance(term1, term2);
     return distance <= 2 && distance < Math.max(term1.length, term2.length) * 0.4;
   }
@@ -437,7 +429,7 @@ class SearchService {
       const allItems = Array.from(this.searchIndex.values()).flat();
       allItems.forEach(item => {
         if (suggestions.size >= limit) return;
-        
+
         const titleWords = item.title.toLowerCase().split(/\s+/);
         titleWords.forEach(word => {
           if (word.startsWith(queryLower) && suggestions.size < limit) {
