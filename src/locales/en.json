@@ -381,7 +381,19 @@
       "postNotFound": "Post not found",
       "backToBlog": "Back to Blog",
       "relatedPosts": "Related Posts",
-      "viewOnScholar": "View on Scholar Profile"
+      "viewOnScholar": "View on Scholar Profile",
+      "unlike": "取消点赞",
+      "reply": "回复",
+      "loadMoreComments": "加载更多评论",
+      "addComment": "添加评论",
+      "commentSuccess": "评论发表成功",
+      "commentError": "评论发表失败",
+      "author": "作者",
+      "publishedDate": "发布日期",
+      "readingTime": "阅读时间",
+      "minutes": "分钟",
+      "wordCount": "字数",
+      "words": "字"
     },
     "chatAssistant": {
       "title": "AI Assistant",
@@ -813,10 +825,11 @@
             ]
           }
         },
-        "keywords": {
-          "0": "0",
-          "1": "1"
-        }
+        "keywords": [
+          "Transformer",
+          "Partial Differential Equations"
+        ],
+        "description": "专注于Transformer/Neural Operator建模CFD时空场，推动科学计算与人工智能的深度融合"
       },
       "robotics": {
         "title": "Robotics",
@@ -1321,6 +1334,27 @@
           "period": "2019-2023",
           "description": "Gained solid engineering foundation and materials science expertise"
         }
+      },
+      "master": {
+        "title": "大连海事大学 - 人工智能硕士",
+        "description": "专业：人工智能（0812J1）| 导师：徐敏义 教授 | 人工智能学院 | 预计2025.06毕业",
+        "period": "2023.08 - 2025.06（预计）",
+        "status": "在读",
+        "location": "大连"
+      },
+      "visiting": {
+        "title": "西湖大学 - 访问学生/研究助理",
+        "description": "工学院 i⁴-FSI 实验室（PI：范迪夏教授）| 方向：仿生波动鳍推进仿真（Star-CCM+ + Java Macro）",
+        "period": "2024.06 - 至今",
+        "status": "访问学者",
+        "location": "杭州"
+      },
+      "bachelor": {
+        "title": "大连海事大学 - 材料科学与工程学士",
+        "description": "专业：材料科学与工程（高分子）| GPA 3.2/4.0（82/100）| 专业排名 7/100 | 工学学士",
+        "period": "2019.09 - 2023.06",
+        "status": "已毕业",
+        "location": "大连"
       }
     },
     "interests": {
@@ -2191,7 +2225,8 @@
       "algorithms": "Perlin Noise and particle physics simulation",
       "optimization": "Performance monitoring and adaptive quality control",
       "interaction": "Multi-platform input handling (mouse, touch, keyboard)",
-      "effects": "Real-time post-processing pipeline"
+      "effects": "Real-time post-processing pipeline",
+      "shaders": "着色器程序"
     },
     "status": {
       "loading": "Loading particle system...",
@@ -2248,7 +2283,19 @@
     "backToBlog": "Back to Blog",
     "relatedPosts": "Related Posts",
     "viewOnScholar": "View on Scholar Profile",
-    "linkCopied": "Link copied to clipboard"
+    "linkCopied": "Link copied to clipboard",
+    "unlike": "取消点赞",
+    "reply": "回复",
+    "loadMoreComments": "加载更多评论",
+    "addComment": "添加评论",
+    "commentSuccess": "评论发表成功",
+    "commentError": "评论发表失败",
+    "author": "作者",
+    "publishedDate": "发布日期",
+    "readingTime": "阅读时间",
+    "minutes": "分钟",
+    "wordCount": "字数",
+    "words": "字"
   },
   "search": {
     "placeholder": "Search papers, patents, projects...",
@@ -2496,7 +2543,8 @@
         "journal": "journal",
         "abstract": "abstract",
         "keywords": "keywords",
-        "url": "url"
+        "url": "url",
+        "doi": "10.1016/j.nanoen.2024.110011"
       },
       "amtTWSA2025": {
         "title": "title",
@@ -2504,7 +2552,8 @@
         "journal": "journal",
         "abstract": "abstract",
         "keywords": "keywords",
-        "url": "url"
+        "url": "url",
+        "doi": "10.1002/admt.202401053"
       },
       "pofDamFormer2025": {
         "title": "title",
@@ -2512,7 +2561,8 @@
         "journal": "journal",
         "abstract": "abstract",
         "keywords": "keywords",
-        "url": "url"
+        "url": "url",
+        "doi": ""
       },
       "ieeeCAC2024": {
         "title": "title",
@@ -2520,7 +2570,8 @@
         "journal": "journal",
         "abstract": "abstract",
         "keywords": "keywords",
-        "url": "url"
+        "url": "url",
+        "doi": ""
       },
       "ralRsModCubes2025": {
         "title": "title",
@@ -2528,7 +2579,8 @@
         "journal": "journal",
         "abstract": "abstract",
         "keywords": "keywords",
-        "url": "url"
+        "url": "url",
+        "doi": ""
       },
       "spieCITA2025": {
         "title": "title",
@@ -2536,7 +2588,8 @@
         "journal": "journal",
         "abstract": "abstract",
         "keywords": "keywords",
-        "url": "url"
+        "url": "url",
+        "doi": "10.1117/12.3056794"
       },
       "amtTBLS2025": {
         "title": "title",
@@ -2544,7 +2597,8 @@
         "journal": "journal",
         "abstract": "abstract",
         "keywords": "keywords",
-        "url": "url"
+        "url": "url",
+        "doi": "10.1002/admt.202500072"
       }
     },
     "levels": {
@@ -2628,7 +2682,8 @@
       ],
       "description": "Proposed a Transformer-based method for reconstructing dense flow fields from sparse sensor data, capable of reconstructing complete flow field information from limited sensor data.",
       "doi": "10.1063/5.0123456"
-    }
+    },
+    "publisherLink": "出版社链接"
   },
   "projects": {
     "title": "Projects",
@@ -2850,6 +2905,62 @@
         "responsive": "responsive",
         "controls": "controls",
         "effects": "effects"
+      }
+    }
+  },
+  "about": {
+    "title": "关于我",
+    "description": "了解我的学术背景、研究兴趣和职业经历",
+    "introduction": "我是牟昭阳，目前专注于计算流体力学、机器人技术和人工智能的交叉研究。我的研究兴趣包括神经算子、深度学习在科学计算中的应用、以及仿生机器人系统设计。",
+    "education": {
+      "title": "教育背景",
+      "items": {
+        "master": {
+          "degree": "工学硕士",
+          "major": "人工智能",
+          "school": "大连海事大学",
+          "period": "2023-2025",
+          "description": "专注于科学计算、机器人技术和人工智能的交叉研究"
+        },
+        "bachelor": {
+          "degree": "工学学士",
+          "major": "材料科学与工程",
+          "school": "大连海事大学",
+          "period": "2019-2023",
+          "description": "获得扎实的工程基础和材料科学专业能力"
+        }
+      }
+    },
+    "interests": {
+      "title": "研究兴趣",
+      "items": [
+        "神经算子在科学计算中的应用",
+        "Transformer架构在物理问题中的应用",
+        "仿生机器人感知系统设计",
+        "流固耦合问题的高效求解",
+        "人工智能与传统工程的结合"
+      ]
+    },
+    "collaboration": {
+      "title": "合作机会",
+      "description": "我欢迎在以下领域的合作与交流",
+      "types": {
+        "research": {
+          "title": "学术研究",
+          "description": "联合研究、论文合作、学术交流"
+        },
+        "industry": {
+          "title": "产业合作",
+          "description": "技术咨询、项目开发、产品创新"
+        },
+        "education": {
+          "title": "教育培训",
+          "description": "课程开发、培训服务、知识传授"
+        },
+        "other": {
+          "title": "其他合作",
+          "description": "定制化合作、特殊项目、其他需求"
+        }
       }
     }
   }

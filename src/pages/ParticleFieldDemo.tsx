@@ -45,7 +45,7 @@ const ParticleFieldDemo: React.FC = () => {
   const resetSystem = useCallback(() => {
     // Reset to current preset configuration
     // setConfig(builtinPresets[selectedPreset].config);
-  }, [selectedPreset]);
+  }, []);
 
   const toggleStats = useCallback(() => {
     setShowStats(prev => !prev);
@@ -167,8 +167,8 @@ const ParticleFieldDemo: React.FC = () => {
               <button
                 onClick={toggleInfo}
                 className={`p-2 rounded-lg transition-all duration-200 ${showInfo
-                    ? 'bg-blue-500/30 text-blue-300 border border-blue-400/30'
-                    : 'bg-black/30 text-white/70 hover:bg-black/50 hover:text-white'
+                  ? 'bg-blue-500/30 text-blue-300 border border-blue-400/30'
+                  : 'bg-black/30 text-white/70 hover:bg-black/50 hover:text-white'
                   }`}
                 title={t('particleField.toggleInfo')}
               >
@@ -178,8 +178,8 @@ const ParticleFieldDemo: React.FC = () => {
               <button
                 onClick={toggleStats}
                 className={`p-2 rounded-lg transition-all duration-200 ${showStats
-                    ? 'bg-green-500/30 text-green-300 border border-green-400/30'
-                    : 'bg-black/30 text-white/70 hover:bg-black/50 hover:text-white'
+                  ? 'bg-green-500/30 text-green-300 border border-green-400/30'
+                  : 'bg-black/30 text-white/70 hover:bg-black/50 hover:text-white'
                   }`}
                 title={t('particleField.toggleStats')}
               >
@@ -189,8 +189,8 @@ const ParticleFieldDemo: React.FC = () => {
               <button
                 onClick={togglePresets}
                 className={`p-2 rounded-lg transition-all duration-200 ${showPresets
-                    ? 'bg-purple-500/30 text-purple-300 border border-purple-400/30'
-                    : 'bg-black/30 text-white/70 hover:bg-black/50 hover:text-white'
+                  ? 'bg-purple-500/30 text-purple-300 border border-purple-400/30'
+                  : 'bg-black/30 text-white/70 hover:bg-black/50 hover:text-white'
                   }`}
                 title={t('particleField.presets')}
               >
@@ -284,8 +284,8 @@ const ParticleFieldDemo: React.FC = () => {
                   key={preset.id}
                   onClick={() => applyPreset(preset.id)}
                   className={`w-full text-left p-3 rounded-lg transition-all duration-200 ${selectedPreset === preset.id
-                      ? 'bg-blue-500/30 border border-blue-400/50'
-                      : 'bg-white/5 hover:bg-white/10 border border-white/10'
+                    ? 'bg-blue-500/30 border border-blue-400/50'
+                    : 'bg-white/5 hover:bg-white/10 border border-white/10'
                     }`}
                 >
                   <div className="font-medium">{preset.name}</div>

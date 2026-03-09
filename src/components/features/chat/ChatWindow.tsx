@@ -66,7 +66,7 @@ const ChatWindow: React.FC<ChatWindowProps> = ({ isOpen, onClose, onSendMessage 
         ...prev.slice(1)
       ]);
     }
-  }, [language, t]);
+  }, [language, t, messages]);
 
   const handleSendMessage = async (content: string) => {
     if (!content.trim() || isLoading) return;
@@ -86,7 +86,7 @@ const ChatWindow: React.FC<ChatWindowProps> = ({ isOpen, onClose, onSendMessage 
     try {
       // 调用API获取回复
       const response = await onSendMessage(content);
-      
+
       // 添加助手回复
       const assistantMessage: Message = {
         id: `assistant-${Date.now()}`,
@@ -99,7 +99,7 @@ const ChatWindow: React.FC<ChatWindowProps> = ({ isOpen, onClose, onSendMessage 
       setMessages(prev => [...prev, assistantMessage]);
     } catch (error) {
       console.error('Failed to send message:', error);
-      
+
       // 添加错误消息
       const errorMessage: Message = {
         id: `error-${Date.now()}`,
@@ -156,7 +156,7 @@ const ChatWindow: React.FC<ChatWindowProps> = ({ isOpen, onClose, onSendMessage 
             <p className="text-xs opacity-80">{t('research.chatAssistant.subtitle') as string}</p>
           </div>
         </div>
-        
+
         <div className="flex items-center gap-2">
           {/* 语言切换 */}
           <button
@@ -166,7 +166,7 @@ const ChatWindow: React.FC<ChatWindowProps> = ({ isOpen, onClose, onSendMessage 
           >
             <Globe className="w-4 h-4" />
           </button>
-          
+
           {/* 清空历史 */}
           <button
             onClick={handleClearHistory}
@@ -175,7 +175,7 @@ const ChatWindow: React.FC<ChatWindowProps> = ({ isOpen, onClose, onSendMessage 
           >
             <RotateCcw className="w-4 h-4" />
           </button>
-          
+
           {/* 最小化 */}
           <button
             onClick={() => setIsMinimized(!isMinimized)}
@@ -184,7 +184,7 @@ const ChatWindow: React.FC<ChatWindowProps> = ({ isOpen, onClose, onSendMessage 
           >
             {isMinimized ? <Maximize2 className="w-4 h-4" /> : <Minimize2 className="w-4 h-4" />}
           </button>
-          
+
           {/* 关闭 */}
           <button
             onClick={onClose}
@@ -201,24 +201,24 @@ const ChatWindow: React.FC<ChatWindowProps> = ({ isOpen, onClose, onSendMessage 
         <>
           {/* 快速回复 */}
           {showQuickReplies && messages.length <= 1 && (
-            <QuickReplies 
+            <QuickReplies
               onQuickReply={handleQuickReply}
               disabled={isLoading}
             />
           )}
 
           {/* 消息列表 */}
-          <div 
+          <div
             ref={messagesContainerRef}
             className="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50 dark:bg-gray-800"
           >
             {messages.map((message) => (
               <MessageBubble key={message.id} message={message} />
             ))}
-            
+
             {/* 打字指示器 */}
             <TypingIndicator visible={isLoading} />
-            
+
             <div ref={messagesEndRef} />
           </div>
 
