@@ -129,7 +129,7 @@ export const AdvancedSEO: React.FC<AdvancedSEOProps> = ({
         "sameAs": [
           "https://scholar.google.com/citations?user=YOUR_ID",
           "https://github.com/YOUR_USERNAME",
-          "https://linkedin.com/in/YOUR_USERNAME"
+          "https://www.linkedin.com/in/zhaoyang-mou/"
         ],
         "alumniOf": {
           "@type": "Organization",

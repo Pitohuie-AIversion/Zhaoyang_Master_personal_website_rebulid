@@ -1,0 +1,199 @@
+﻿
+=== en_resume ===
+Pages: 3
+--- Page 1 ---
+Resume (exportversion)
+Chinese version锛氫腑饨傜増
+Hello, I am Zhaoyang Mu, a passionate researcher in robotics and scientific computing.Currently in Hangzhou.
+Education
+M.Sc. in Artificial Intelligence 顐?812J1顐? Dalian Maritime University 顐丄ug 2023 顐?Present, expected Jun 2026顐?
+Links
+Project Page 顐丼parse鈫扗ense Transformer): https://pitohuie-aiversion.github.io/Sparse_to_Dense_Transformer/
+Personal Website: http://www.zhaoyangmu.com
+GitHub: https://github.com/Pitohuie
+LinkedIn: www.linkedin.com/in/zhaoyang-mu-283497384
+Contact
+Email: mzymuzhaoyang@gmail
+Phone: 顐?6 153 8213 026
+Google Scholar顐?ZhaoyanMu
+Introduction
+Research Interests: Scientific computing + robotics.
+Applying Transformer / Neural Operator models to CFD spatiotemporal fields, enabling zero-shot generalization across geometries and PDE acceleration.
+Research on bionic sensing for underwater robots 顐乀ENG/artificial lateral line).
+Skilled in Star-CCM顐?/ COMSOL / ANSYS for engineering simulations and SolidWorks / Shapr3D for mechanical design.
+Research / Project Experience
+DamFormer 顐?Transformer for Dam-Break Generalization 顐?024顐夘倐
+Built multi-geometry datasets and achieved cross-geometry zero-shot predictions. Published in Physics of Fluids.
+Sparse鈫扗ense Transformer 顐?Spatiotemporal Super-Resolution Reconstruction 顐丱ngoing)
+Reconstruction of high-resolution CFD/environmental spatiotemporal fields from sparse sensors.
+Bionic Undulating-Fin Propulsion Simulation 顐乄estlake University) 顐丣un 2024 顐?Present)
+R esume ( e xpor t v ersion)
+1
+--- Page 2 ---
+Advisor: Prof. Minyi Xu, School of Artificial Intelligence
+B.Eng. in Materials Science & Engineering 顐丳olymer), Dalian Maritime University 顐丼ep 2019 顐?Jun 2023顐?
+GPA顐?3.2/4.0 顐?2/100顐? Rank: 7/100
+Visiting Student / Research Assistant, i鈦搭倛FSI Lab, School of Engineering, Westlake University 顐丳I顐?Dixia Fan) (Jun 2024 顐?Present)
+Focus: Bionic undulating-fin propulsion simulation (Star-CCM顐?顐?Java Macro, with cross-validation in ANSYS/COMSOL when needed)
+Skills
+Programming / ML顐?Python 顐丳yTorch, NumPy, Pandas, Matplotlib), Java 顐丼tar-CCM顐?Macro/Workflow); Transformer, Neural Operator
+Simulation / Numerical顐?Star-CCM顐?顐丆FD/FSI顐? COMSOL, ANSYS; PDEBench
+Mechanical / 3D Design顐?SolidWorks, Shapr3D (3D/2D modeling, BOM, interference checking)
+Hardware / Control顐?STM32 NUCLEO顐團439ZI, PWM/TACH feedback, TP顐圠ink L3 managed switch, PowerShell flashing automation
+Server / HPC顐?Linux, SLURM, PyTorch DDP/AMP, CUDA, NCCL, Weights & Biases
+Research Tools顐?LaTeX, Overleaf, Git, data visualization
+CFD/FSI simulations in Star-CCM顐? automated parameter sweeps with Java Macro.
+Fan-Wall Wind Tunnel 顐?1顐?1 / 10顐?0 Modular Array) 顐?023 顐?Present)
+2.5 m 顐?2.5 m modular array; STM32 multi-board PWM/TACH closed-loop system; VLAN/DHCP network management.
+Ocean Observation Buoy 顐?Lead Mechanical Designer 顐乄estlake University) 顐?022顐?
+Responsible for structure design, sealing, corrosion prevention, buoyancy and stability calculations, BOM drawings, and tank/sea trials.
+Server / HPC Training & Deployment 顐?023 顐?Present)
+PyTorch DDP/AMP, SLURM job arrays, Miniconda environment, CUDA setup, and W&B experiment logging.
+Publications 
+Published in Physics of Fluids, IEEE RA顐圠, Advanced Materials Technologies, Nano Energy, CAC, and other journals/conferences 顐?0顐?papers in total).
+Selected Publications:
+Generalizing morphologies in dam break simulations using transformer model 鈥?Physics of Fluids 37顐?顐傤倰016612, 2025
+Rs-ModCubes: Self-reconfigurable, scalable, modular cubic robots for underwater operations 鈥?IEEE RA顐圠, 2025
+Deep-Learning-Assisted Triboelectric Whisker Sensor Array鈥?鈥?Advanced Materials Technologies, 2025
+Deep-learning-assisted triboelectric whisker鈥?鈥?Nano Energy 129顐?10011, 2024
+Patents
+CN119509546A | Dynamic Environmental Perception and Navigation Device & Method for Underwater Robots 顐丳ublished: 2024顐?1顐?6顐?
+Applicant: Westlake University
+CN119239885A | Underwater Robot Based on Vector Octa-Thruster Layout 顐丳ublished: 2024顐?1顐?6顐?
+Applicant: Westlake University
+CN119142488A | Undulating-Fin Propulsion Based Underwater Robot 顐丳ublished: 2024顐?1顐?6顐?
+Applicant: Westlake University
+CN118182783A | Flexible-Fin Underwater Robot with Embedded Multi-Sensors and Operation Method 顐丳ublished: 2024顐?4顐?3顐?
+Applicant: Dalian Maritime University
+CN118047007A | Ship with Intelligent Dynamic Sensing System 顐丳ublished: 2024顐?3顐?4顐?
+Applicant: Dalian Maritime University
+CN308069533S 顐丏esign Patent) | Mobile Buoy Robot 顐丳ublished: 2023顐?2顐?2顐?
+Applicant: Westlake University
+CN120217249A | Intelligent Monitoring System and Method for the Entire Water Network Process of Large Power Plants 顐丳ublished: 2025顐?3顐?6顐?
+Applicant: Huaneng 顐丟uangdong) Energy Development Co., Ltd. Yutou Power Plant
+CN120448721A | Power Plant Water Network Intelligent Monitoring Method Based on Dynamic Water Balance and ARIMA Model 顐丳ublished: 2025顐?3顐?5顐?
+Applicant: Huaneng 顐丟uangdong) Energy Development Co., Ltd. Yutou Power Plant
+R esume ( e xpor t v ersion)
+2
+--- Page 3 ---
+Languages
+English 顐丆ET顐?, CET顐?顐?
+Chinese (native)
+Interests & Hobbies
+Music Production / Arrangement
+Music homepage:
+Pitoyoung
+Additional Information
+Full Resume Details 顐丯otion Reference)
+Internships & Volunteering
+Internship | Dalian Exploration Ocean Technology Co., Ltd. 顐?022顐?023顐?
+Mechanical design and integration; ANSYS/COMSOL verification; participated in sea trials and project delivery.
+Volunteer | Society of Engineers Annual Conference 顐丠angzhou) 顐?024顐?
+Conference services and A/V support: registration, session organization, presentation switching, timing, and live streaming across multiple sessions.
+Honors & Awards
+8th China International 鈥淚nternet+水 College Students Innovation & Entrepreneurship Competition 路 Gold Award 顐丄pr 2023顐?
+Project: Kunpeng Technology 顐?Leader in Underwater Hull Inspection Robots; Certificate No.顐?202310033
+2021 China Robot Conference 顐丷oboCup China) 路 Underwater Robot 鈥淎quatic Parade水 路 First Prize 顐丱nline, Apr 15顐?7, 2022顐?
+Team: 鈥淗ada Mechanical Engineering Team One水, Dalian Maritime University; Certificate No.顐?Y2109R025A0001
+China College Student Mechanical Engineering Innovation & Creativity Competition 路 鈥淢ingshi Cup水 Micro-Nano Sensing Technology and Intelligent Application Track 路 First Prize 顐丣ul 24, 2024顐?
+Project: DeepBlue Vision-Fusion Underwater Robot; Advisor: Yiran Si; Institution: Dalian Maritime University; Certificate No.顐?MEICC05MNSI2024顐圕V1顐?06
+Liaoning Province Mechanical Innovation Design Competition 路 Bronze Award 顐丄pr 2024顐?
+Project: DeepBlue Sense 顐?TENG-based Underwater Tactile Sensor; Institution: Dalian Maritime University; Team Members: Junyue Zhou, Zhaoyang Mu, et al.; Advisors: Hao Wang, Minyi Xu, Peng Xu
+R esume ( e xpor t v ersion)
+3
+
+=== cn_resume ===
+Pages: 2
+--- Page 1 ---
+涓紙绠€鍘?(瀵煎嚭鐗堟湰)
+鑻扁絺鐗堥摼鎺ワ細English version
+饧ゅ濂斤紝鎴戞槸鐗熸槶闃筹紝饧€浣嶇儹鐖辨満鍣ㄢ紙棰嗗煙鐨勭爺绌惰€呫€傗浆鍓嶅湪鏉窞
+鏁欒偛缁忓巻
+纭曗紶锝溾紙饧櫤鑳斤紙0812J1锛夛紝饧よ繛娴蜂簨饧ゅ锛?023.08 顐?饩勪粖锛岄璁?026.06姣曚笟锛?
+瀵煎笀锛氬緪鏁忎箟 鏁欐巿锛涒紙饧櫤鑳藉闄?
+瀛︹紶锝滄潗鏂欑瀛︿笌饧▼锛堚炯鍒嗏鸡锛夛紝饧よ繛娴蜂簨饧ゅ锛?019.09 顐?2023.06锛?
+饧瀛︹紶锛汫PA 3.2/4.0锛?2/100锛夛紱涓撲笟鎺掑悕 7/100
+璧勬枡澶?
+椤光浆饣氾紙Sparse鈫扗ense Transformer锛夛細https://pitohuie-aiversion.github.io/Sparse_to_Dense_Transformer/
+涓紙饨圭珯锛歨ttp://www.zhaoyangmu.com
+GitHub锛歨ttps://github.com/Pitohuie
+Linkedin锛歸ww.linkedin.com/in/鏄槼-鐗燁倛283497384/
+鑱旂郴饨呭紡
+閭锛歮zymuzhaoyang@gmail
+鐢佃瘽锛氼倽86 153 8213 0266
+Google Scholar锛歾haoyangmu
+涓紙绠€浠?
+鐮旂┒饨呭悜锛氱瀛﹁绠?+ 鏈哄櫒饧堛€備互 Transformer / Neural Operator 寤烘ā CFD 鏃剁┖鍦猴紙璺ㄢ紡浣曢浂鏍锋湰娉涘寲銆丳DE 鍔犻€燂級涓庘綌涓嬫満鍣ㄢ紙浠库剑鎰熺煡锛圱ENG/饧堚集渚х嚎锛夛紱鍏峰 Star-CCM顐?/ COMSOL / ANSYS 饧▼浠跨湡涓?SolidWorks / Shapr3D 鏈烘璁捐鑳解紥銆?
+绉戠爺/椤光浆缁忓巻
+DamFormer锛堟簝鍧濅豢鐪熻法饧忎綍娉涘寲 Transformer锛?024顐夛級
+鏋勫缓澶氣紡浣曡竟鐣屾暟鎹泦锛岃法饧忎綍闆舵牱鏈娴嬶紝鍙戣〃浜?Physics of Fluids銆?
+Sparse鈫扗ense Transformer锛堢█鐤忓埌绋犲瘑鍦洪噸寤猴紝杩涒緩涓級
+饩悜 CFD/鐜娴侊紝绋€鐤忎紶鎰熼噸寤衡炯鍒嗚鲸鐜囨椂绌哄満銆?
+浠库剑娉㈠姩槌嶆帹杩涗豢鐪燂紙瑗挎箹饧ゅ锛?024.06 顐?饩勪粖锛?
+Star-CCM顐?CFD/FSI 浠跨湡锛孞ava Macro 饩冨姩鍖栧弬鏁版壂鎻忋€?
+饣涙墖闃靛垪饣涙礊锛團an-Wall锛夛紙2023顐夆緞浠婏級
+妯″潡鍖?2.5m脳2.5m 闃靛垪锛孲TM32 澶氭澘 PWM/TACH 闂幆锛孷LAN/DHCP 饨圭粶绠＄悊銆?
+娴锋磱瑙傛祴娴爣锛堟満姊拌璁¤礋璐ｂ紙锛岃タ婀栤激瀛︼紝2022锛?
+璐熻矗缁撴瀯銆佸瘑灏併€侀槻鑵愩€佹诞饧掕绠椼€丅OM 鍑哄浘鍙婃睜/娴疯瘯銆?
+鏈嶅姟鍣?HPC 璁粌涓庨儴缃诧紙2023顐夆緞浠婏級
+涓?饧?绠€ 鍘? ( 瀵?鍑?鐗?鏈?)
+1
+--- Page 2 ---
+璁块棶瀛︹剑/鐮旂┒鍔╃悊锝滆タ婀栤激瀛?饧闄?i鈦搭倛FSI 瀹為獙瀹わ紙PI锛氳寖杩锛夛紙2024.06 顐?饩勪粖锛?
+饨呭悜锛氫豢饨ｆ尝鍔ㄩ硩鎺ㄨ繘浠跨湡锛圫tar-CCM顐?顐?Java Macro锛涘繀瑕佹椂閰嶅悎 ANSYS/COMSOL 鏍℃牳锛?
+鎶€鑳?
+缂栫▼/ML锛歅ython锛圥yTorch/NumPy/Pandas/Matplotlib锛夛紝Java锛圫tar-CCM顐?Macro/Workflow锛夛紱Transformer銆丯eural Operator
+浠跨湡/鏁板€硷細Star-CCM顐濓紙CFD/FSI锛夛紝COMSOL锛孉NSYS锛汸DEBench
+鏈烘/涓夌淮锛歋olidWorks銆丼hapr3D锛?D/2D銆丅OM銆佲疾娑夋鏌ワ級
+纭欢/鎺у埗锛歋TM32 NUCLEO顐團439ZI锛孭WM/TACH锛孴P顐圠ink L3 饨圭浜ゆ崲鏈猴紝PowerShell 饩冨姩鍒峰啓
+鏈嶅姟鍣?HPC锛歀inux銆丼LURM銆丏DP/AMP銆丆UDA銆丯CCL銆乄&B
+绉戠爺饧叿锛歀aTeX銆丱verleaf銆丟it銆佹暟鎹彲瑙嗗寲
+璇緮 
+鑻辫锛圕ET顐?锛孋ET顐?锛?
+鍏磋叮 &鐖卞ソ
+饩充箰缂栨洸
+饩充箰饧堜富饣?Pitoyoung
+璇︾粏淇℃伅
+绠€鍘嗚缁嗗唴瀹癸紙闄勫姞寮曗饯锛?
+瀹炰範/蹇楁効
+饧よ繛鎺㈢储娴锋磱绉戞妧鏈夐檺鍏徃 瀹炰範锛?022顐?023锛?
+鏈烘璁捐涓庨泦鎴愶紝ANSYS/COMSOL 鏍℃牳锛屽弬涓庢捣璇曚氦浠樸€?
+Society of Engineers 骞翠細 蹇楁効鑰咃紙鏉窞锛?024锛?
+浼氬姟涓?AV 饨€鎸侊紝瑕嗙洊澶氬垎浼氬満銆?
+PyTorch DDP/AMP锛孲LURM锛孧iniconda锛孋UDA 鐜鎼缓涓?W&B 璁板綍銆?
+璁衡絺鍙戣〃 
+Physics of Fluids, IEEE RA顐圠, Advanced Materials Technologies, Nano Energy, CAC 绛夋湡鍒?浼氳璁衡絺锛堝叡 10顐?绡囷級
+浠ｈ〃鎬ц饨傦細
+Generalizing morphologies in dam break simulations using transformer model 鈥?Physics of Fluids 37顐?顐傤倰016612, 2025
+Rs-ModCubes: Self-reconfigurable, scalable, modular cubic robots for underwater operations 鈥?IEEE RA顐圠, 2025
+Deep-Learning-Assisted Triboelectric Whisker Sensor Array鈥?鈥?Adv. Mater. Tech., 2025
+Deep-learning-assisted triboelectric whisker鈥?鈥?Nano Energy 129顐?10011, 2024
+涓撳埄
+CN119509546A锝溾綌涓嬫満鍣ㄢ紙鍔ㄦ€佺幆澧冩劅鐭ュ拰瀵艰埅瑁呯疆鍙娾絽娉曪紙鍏紑锛?024顐?1顐?6锛?
+鐢宠饧堬細瑗挎箹饧ゅ
+CN119239885A锝滃熀浜庘疆閲忊紜鎺ㄥ竷灞€鐨勨綌涓嬫満鍣ㄢ紙锛堝叕寮€锛?024顐?1顐?6锛?
+鐢宠饧堬細瑗挎箹饧ゅ
+CN119142488A锝滃熀浜庢尝鍔ㄩ硩鎺ㄨ繘鐨勨綌涓嬫満鍣ㄢ紙锛堝叕寮€锛?024顐?1顐?6锛?
+鐢宠饧堬細瑗挎箹饧ゅ
+CN118182783A锝滃唴宓屽浼犳劅鍣ㄧ殑鏌旀€ч硩饨斾笅鏈哄櫒饧堝強杩愨緩饨呮硶锛堝叕寮€锛?024顐?4顐?3锛?
+鐢宠饧堬細饧よ繛娴蜂簨饧ゅ
+CN118047007A锝滃叿鏈夋櫤鑳藉姩鎬佹劅搴旂郴缁熺殑鑸硅埗锛堝叕寮€锛?024顐?3顐?4锛?
+鐢宠饧堬細饧よ繛娴蜂簨饧ゅ
+CN308069533S锛堝瑙傦級锝滅Щ鍔ㄥ紡娴爣鏈哄櫒饧堬紙鍏紑锛?023顐?2顐?2锛?
+鐢宠饧堬細瑗挎箹饧ゅ
+CN120217249A锝溾激鍨嬬數绔欏叏娴佺▼饨斺焦鏅鸿兘鐩戞祴绯荤粺鍙娾絽娉曪紙鍏紑锛?025顐?3顐?6锛?
+鐢宠饧堬細鍗庤兘锛堚即涓滐級鑳芥簮寮€鍙戞湁闄愬叕鍙镐笟澶寸數饧?
+CN120448721A锝滃熀浜庡姩鎬佲綌骞宠　涓?ARIMA 妯″瀷鐨勭數饧氣綌饨规櫤鑳界洃娴嬧絽娉曪紙鍏紑锛?025顐?3顐?5锛?
+鐢宠饧堬細鍗庤兘锛堚即涓滐級鑳芥簮寮€鍙戞湁闄愬叕鍙镐笟澶寸數饧?
+鑽ｈ獕璇佷功
+绗紜灞婁腑鍥藉浗闄呪€滀簰鑱斺焦+水饧ゅ饨ｅ垱鏂板垱涓氣激璧?路 饩﹀锛?023.04锛?
+椤光浆锛氥€婇膊楣忕鎶€鈥斺€斺綌涓嬭埞浣撴娴嬫満鍣ㄢ紙棰嗗啗鑰呫€嬶紱璇佷功缂栧彿锛?02310033
+2021 涓浗鏈哄櫒饧堚激浼氾紙鏆?RoboCup 涓浗璧涳級路 饨斾笅鏈哄櫒饧堚綌涓贰娓?饧€绛夊锛堢嚎涓娐?022.04.15顐?7锛?
+鍥㈤槦锛氣激杩炴捣浜嬧激瀛︹€滄捣饧ゆ満寤衡紑闃熕紱璇佷功鍙凤細Y2109R025A0001
+涓浗饧ゅ饨ｆ満姊扳集绋嬪垱鏂板垱鎰忊激璧?路 鈥滄槑饨澂水寰撼浼犳劅鎶€鏈笌鏅鸿兘搴斺饯璧涢亾 饧€绛夊锛?024.07.24锛?
+鍙傝禌浣滃搧锛氥€婃繁钃濊瑙夎瀺鍚堚綌涓嬫満鍣ㄢ紙銆嬶紱鎸囧鏁欏笀锛氬徃浜﹀唹锛涘弬璧涘鏍★細饧よ繛娴蜂簨饧ゅ锛涜瘉涔︾紪鍙凤細MEICC05MNSI2024顐圕V1顐?06
+杈藉畞鐪佲激瀛︹剑鏈烘鍒涙柊璁捐饧よ禌 路 閾滃锛?024.04锛?
+浣滃搧锛氥€婃繁钃濇櫤鎰熲€斺€斿熀浜庢懇鎿︾撼饨跺彂鐢垫満鐨勨綌涓嬭Е瑙変紶鎰熷櫒銆嬶紱鍙傝禌瀛︽牎锛氣激杩炴捣浜嬧激瀛︼紱鍙傝禌瀛︹剑锛氬懆娴氳穬銆佺墴鏄槼绛夛紱鎸囧鏁欏笀锛氱帇鏄娿€佸緪鏁忎箟銆佸緪楣?
+涓?饧?绠€ 鍘? ( 瀵?鍑?鐗?鏈?)
+2
+

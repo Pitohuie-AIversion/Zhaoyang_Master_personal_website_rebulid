@@ -108,7 +108,7 @@ function Research() {
         status: 'published',
         authors: getAuthors('publications.whiskerSensorArray.authors'),
         description: t('publications.whiskerSensorArray.description') as string,
-        doi: '10.1109/JSEN.2025.1234567',
+        doi: '10.1002/admt.202401053',
         type: 'journal'
       },
       {
@@ -264,6 +264,30 @@ function Research() {
       status: 'published',
       type: 'design',
       description: t('research.patents.mobileBuoy.description') as string
+    },
+    {
+      id: '7',
+      title: t('research.patents.powerPlantWaterNetwork.title') as string,
+      number: 'CN120217249A',
+      applicant: t('research.patents.powerPlantWaterNetwork.applicant') as string,
+      applicationDate: '2025-02-01',
+      publicDate: '2025-03-06',
+      priorityDate: '2025-02-01',
+      status: 'published',
+      type: 'invention',
+      description: t('research.patents.powerPlantWaterNetwork.description') as string
+    },
+    {
+      id: '8',
+      title: t('research.patents.powerPlantWaterBalance.title') as string,
+      number: 'CN120448721A',
+      applicant: t('research.patents.powerPlantWaterBalance.applicant') as string,
+      applicationDate: '2025-02-01',
+      publicDate: '2025-03-05',
+      priorityDate: '2025-02-01',
+      status: 'published',
+      type: 'invention',
+      description: t('research.patents.powerPlantWaterBalance.description') as string
     }
   ];
 

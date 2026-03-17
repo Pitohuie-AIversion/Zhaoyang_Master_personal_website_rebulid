@@ -531,7 +531,7 @@
       "master": {
         "title": "Dalian Maritime University - Master of Artificial Intelligence",
         "description": "Major: Artificial Intelligence (0812J1) | Supervisor: Prof. Xu Minyi | School of Artificial Intelligence",
-        "period": "2023.08 - 2025.06 (Expected)",
+        "period": "2023.08 - 2026.06 (Expected)",
         "status": "Current"
       },
       "visiting": {
@@ -1105,24 +1105,39 @@
             "title": "Vector Thruster and Its Control Method",
             "applicant": "Westlake University",
             "description": "This invention relates to a vector thruster and its control method, capable of achieving omnidirectional thrust control and improving the maneuverability of underwater robots."
+          },
+          "powerPlantWaterNetwork": {
+            "title": "Intelligent Monitoring System and Method for the Entire Water Network Process of Large Power Plants",
+            "applicant": "Huaneng (Guangdong) Energy Development Co., Ltd. Yutou Power Plant",
+             "description": "This invention relates to the monitoring of power plant water networks, disclosing a system and method to achieve real-time perception and intelligent optimization of water network operations."
+          },
+          "powerPlantWaterBalance": {
+            "title": "Power Plant Water Network Intelligent Monitoring Method Based on Dynamic Water Balance and ARIMA Model",
+            "applicant": "Huaneng (Guangdong) Energy Development Co., Ltd. Yutou Power Plant",
+            "description": "This invention discloses an intelligent monitoring method combining dynamic water balance modeling with ARIMA to improve prediction accuracy and resource efficiency."
           }
         },
         "awards": {
           "title": "Awards",
-          "nationalScholarship": {
-            "title": "National Scholarship",
+          "internetPlusGold": {
+            "title": "8th China International 'Internet+' College Students Innovation and Entrepreneurship Competition - Gold Award",
             "organization": "Ministry of Education of China",
-            "description": "Awarded for outstanding academic performance and research achievements in the field of robotics and artificial intelligence."
+            "description": "Project: Kunpeng Technology - Leader in Underwater Hull Inspection Robots."
           },
-          "excellentGraduate": {
-            "title": "Outstanding Graduate",
-            "organization": "Dalian University of Technology",
-            "description": "Recognized as an outstanding graduate for exceptional academic performance and research contributions."
+          "roboticsCompetition": {
+            "title": "2021 China Robot Conference (RoboCup China) Underwater Robot - First Prize",
+            "organization": "Chinese Association of Automation",
+            "description": "Team: 'Hada Mechanical Engineering Team One'"
           },
-          "innovationCompetition": {
-            "title": "First Prize in National Innovation Competition",
-            "organization": "Ministry of Education of China",
-            "description": "Won first prize in the national innovation competition for the bionic underwater robot project."
+          "mechanicalInnovation": {
+            "title": "China College Student Mechanical Engineering Innovation & Creativity Competition - First Prize",
+            "organization": "Chinese Mechanical Engineering Society",
+            "description": "Project: DeepBlue Vision-Fusion Underwater Robot"
+          },
+          "provincialMechanical": {
+            "title": "Liaoning Province Mechanical Innovation Design Competition - Bronze Award",
+            "organization": "Liaoning Provincial Department of Education",
+            "description": "Project: DeepBlue Sense - TENG-based Underwater Tactile Sensor"
           }
         }
       },
@@ -1337,8 +1352,8 @@
       },
       "master": {
         "title": "大连海事大学 - 人工智能硕士",
-        "description": "专业：人工智能（0812J1）| 导师：徐敏义 教授 | 人工智能学院 | 预计2025.06毕业",
-        "period": "2023.08 - 2025.06（预计）",
+        "description": "专业：人工智能（0812J1）| 导师：徐敏义 教授 | 人工智能学院 | 预计2026.06毕业",
+        "period": "2023.08 - 2026.06（预计）",
         "status": "在读",
         "location": "大连"
       },
@@ -1596,7 +1611,7 @@
       "master": {
         "title": "Dalian Maritime University - Master of Artificial Intelligence",
         "description": "Major: Artificial Intelligence (0812J1) | Supervisor: Prof. Xu Minyi | School of Artificial Intelligence",
-        "period": "2023.08 - 2025.06 (Expected)",
+        "period": "2023.08 - 2026.06 (Expected)",
         "status": "Current"
       },
       "visiting": {
@@ -2919,7 +2934,7 @@
           "degree": "工学硕士",
           "major": "人工智能",
           "school": "大连海事大学",
-          "period": "2023-2025",
+          "period": "2023-2026",
           "description": "专注于科学计算、机器人技术和人工智能的交叉研究"
         },
         "bachelor": {

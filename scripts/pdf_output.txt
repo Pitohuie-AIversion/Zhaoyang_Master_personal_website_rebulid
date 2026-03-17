@@ -1,0 +1,583 @@
+﻿python : Could not get
+ FontBBox from font de
+scriptor because None 
+cannot be parsed as 4 
+floats
+所在位置 行:1 字符: 1
++ python scripts\extra
+ct_pdf.py 2>&1 | Out-S
+tring | Set-Content -E
+ncodi ...
++ ~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~
+    + CategoryInfo    
+          : NotSpeci  
+  fied: (Could not    
+ get F...sed as 4     
+floats:String) []    ,
+ RemoteException
+    + FullyQualifiedE 
+   rrorId : NativeCo  
+  mmandError
+ 
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+Could not get FontBBox
+ from font descriptor 
+because None cannot be
+ parsed as 4 floats
+
+============================================================
+FILE: en_resume
+============================================================
+Total Pages: 3
+
+--- Page 1 ---
+ERROR: 'gbk' codec can't encode character '\u2f42' in position 41: illegal multibyte sequence
+
+============================================================
+FILE: cn_resume
+============================================================
+Total Pages: 2
+
+--- Page 1 ---
+ERROR: 'gbk' codec can't encode character '\u2f08' in position 1: illegal multibyte sequence
+
+============================================================
+FILE: all_materials
+============================================================
+Total Pages: 10
+
+--- Page 1 ---
+ERROR: 'gbk' codec can't encode character '\u2f47' in position 45: illegal multibyte sequence
+

@@ -201,7 +201,7 @@ export const ZhaoyangMuStructuredData = () => (
       socialLinks: [
         "https://scholar.google.com/citations?user=zhaoyang_mu",
         "https://github.com/zhaoyang-mu",
-        "https://linkedin.com/in/zhaoyang-mu"
+        "https://www.linkedin.com/in/zhaoyang-mou/"
       ]
     }}
   />
