@@ -1351,25 +1351,25 @@
         }
       },
       "master": {
-        "title": "大连海事大学 - 人工智能硕士",
-        "description": "专业：人工智能（0812J1）| 导师：徐敏义 教授 | 人工智能学院 | 预计2026.06毕业",
-        "period": "2023.08 - 2026.06（预计）",
-        "status": "在读",
-        "location": "大连"
+        "title": "Dalian Maritime University - Master of Artificial Intelligence",
+        "description": "Major: Artificial Intelligence (0812J1) | Supervisor: Prof. Xu Minyi | School of Artificial Intelligence | Expected Graduation: 2026.06",
+        "period": "2023.08 - 2026.06 (Expected)",
+        "status": "Current",
+        "location": "Dalian"
       },
       "visiting": {
-        "title": "西湖大学 - 访问学生/研究助理",
-        "description": "工学院 i⁴-FSI 实验室（PI：范迪夏教授）| 方向：仿生波动鳍推进仿真（Star-CCM+ + Java Macro）",
-        "period": "2024.06 - 至今",
-        "status": "访问学者",
-        "location": "杭州"
+        "title": "Westlake University - Visiting Student/Research Assistant",
+        "description": "School of Engineering i⁴-FSI Lab (PI: Prof. Fan Dixia) | Focus: Bionic Undulating Fin Propulsion Simulation (Star-CCM+ & Java Macro)",
+        "period": "2024.06 - Present",
+        "status": "Visiting Scholar",
+        "location": "Hangzhou"
       },
       "bachelor": {
-        "title": "大连海事大学 - 材料科学与工程学士",
-        "description": "专业：材料科学与工程（高分子）| GPA 3.2/4.0（82/100）| 专业排名 7/100 | 工学学士",
+        "title": "Dalian Maritime University - Bachelor of Materials Science and Engineering",
+        "description": "Major: Materials Science and Engineering (Polymer) | GPA 3.2/4.0 (82/100) | Rank 7/100 | Bachelor of Engineering",
         "period": "2019.09 - 2023.06",
-        "status": "已毕业",
-        "location": "大连"
+        "status": "Graduated",
+        "location": "Dalian"
       }
     },
     "interests": {
