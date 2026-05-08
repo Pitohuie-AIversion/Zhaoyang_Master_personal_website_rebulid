@@ -19,6 +19,70 @@ interface CharacterState {
   animationDelay: number;
 }
 
+// ZHAOYANG ASCII 艺术字（优化版）
+const asciiLines = [
+  '███████╗██╗  ██╗ █████╗  ██████╗ ██╗   ██╗ █████╗ ███╗   ██╗ ██████╗ ',
+  '╚══███╔╝██║  ██║██╔══██╗██╔═══██╗╚██╗ ██╔╝██╔══██╗████╗  ██║██╔════╝ ',
+  '  ███╔╝ ███████║███████║██║   ██║ ╚████╔╝ ███████║██╔██╗ ██║██║  ███╗',
+  ' ███╔╝  ██╔══██║██╔══██║██║   ██║  ╚██╔╝  ██╔══██║██║╚██╗██║██║   ██║',
+  '███████╗██║  ██║██║  ██║╚██████╔╝   ██║   ██║  ██║██║ ╚████║╚██████╔╝',
+  '╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝    ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═══╝ ╚═════╝ '
+];
+
+// 主题配色系统
+const themes = {
+  matrix: {
+    primary: '#00ff41',
+    secondary: '#008f11',
+    accent: '#00cc33',
+    glow: '#00ff41',
+    background: 'rgba(0, 0, 0, 0.9)'
+  },
+  cyber: {
+    primary: '#00d4ff',
+    secondary: '#0099cc',
+    accent: '#66e6ff',
+    glow: '#00d4ff',
+    background: 'rgba(0, 20, 40, 0.9)'
+  },
+  neon: {
+    primary: '#ff00ff',
+    secondary: '#cc00cc',
+    accent: '#ff66ff',
+    glow: '#ff00ff',
+    background: 'rgba(20, 0, 20, 0.9)'
+  },
+  rainbow: {
+    primary: '#ff0080',
+    secondary: '#8000ff',
+    accent: '#00ff80',
+    glow: '#ff0080',
+    background: 'rgba(10, 10, 30, 0.9)'
+  }
+};
+
+// 强度配置
+const intensityConfig = {
+  low: {
+    speed: 0.5,
+    amplitude: 0.3,
+    glowRange: [0.5, 1],
+    scaleRange: [0.9, 1.1]
+  },
+  medium: {
+    speed: 1,
+    amplitude: 0.6,
+    glowRange: [0.3, 1.2],
+    scaleRange: [0.8, 1.3]
+  },
+  high: {
+    speed: 1.5,
+    amplitude: 1,
+    glowRange: [0.1, 1.5],
+    scaleRange: [0.7, 1.5]
+  }
+};
+
 const ZhaoyangASCIIRhythm: React.FC<ZhaoyangASCIIRhythmProps> = ({
   theme = 'matrix',
   rhythmType = 'heartbeat',
@@ -32,70 +96,6 @@ const ZhaoyangASCIIRhythm: React.FC<ZhaoyangASCIIRhythmProps> = ({
   const [characterStates, setCharacterStates] = useState<CharacterState[][]>([]);
   const animationRef = useRef<number | null>(null);
   const startTimeRef = useRef<number>(0);
-
-  // ZHAOYANG ASCII 艺术字（优化版）
-  const asciiLines = [
-    '███████╗██╗  ██╗ █████╗  ██████╗ ██╗   ██╗ █████╗ ███╗   ██╗ ██████╗ ',
-    '╚══███╔╝██║  ██║██╔══██╗██╔═══██╗╚██╗ ██╔╝██╔══██╗████╗  ██║██╔════╝ ',
-    '  ███╔╝ ███████║███████║██║   ██║ ╚████╔╝ ███████║██╔██╗ ██║██║  ███╗',
-    ' ███╔╝  ██╔══██║██╔══██║██║   ██║  ╚██╔╝  ██╔══██║██║╚██╗██║██║   ██║',
-    '███████╗██║  ██║██║  ██║╚██████╔╝   ██║   ██║  ██║██║ ╚████║╚██████╔╝',
-    '╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝    ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═══╝ ╚═════╝ '
-  ];
-
-  // 主题配色系统
-  const themes = {
-    matrix: {
-      primary: '#00ff41',
-      secondary: '#008f11',
-      accent: '#00cc33',
-      glow: '#00ff41',
-      background: 'rgba(0, 0, 0, 0.9)'
-    },
-    cyber: {
-      primary: '#00d4ff',
-      secondary: '#0099cc',
-      accent: '#66e6ff',
-      glow: '#00d4ff',
-      background: 'rgba(0, 20, 40, 0.9)'
-    },
-    neon: {
-      primary: '#ff00ff',
-      secondary: '#cc00cc',
-      accent: '#ff66ff',
-      glow: '#ff00ff',
-      background: 'rgba(20, 0, 20, 0.9)'
-    },
-    rainbow: {
-      primary: '#ff0080',
-      secondary: '#8000ff',
-      accent: '#00ff80',
-      glow: '#ff0080',
-      background: 'rgba(10, 10, 30, 0.9)'
-    }
-  };
-
-  // 强度配置
-  const intensityConfig = {
-    low: {
-      speed: 0.5,
-      amplitude: 0.3,
-      glowRange: [0.5, 1],
-      scaleRange: [0.9, 1.1]
-    },
-    medium: {
-      speed: 1,
-      amplitude: 0.6,
-      glowRange: [0.3, 1.2],
-      scaleRange: [0.8, 1.3]
-    },
-    high: {
-      speed: 1.5,
-      amplitude: 1,
-      glowRange: [0.1, 1.5],
-      scaleRange: [0.7, 1.5]
-    }
-  };
 
   const currentTheme = themes[theme];
   const currentIntensity = intensityConfig[intensity];
@@ -294,7 +294,7 @@ const ZhaoyangASCIIRhythm: React.FC<ZhaoyangASCIIRhythmProps> = ({
   // 初始化和清理
   useEffect(() => {
     initializeCharacterStates();
-  }, []); // Empty dependency array to prevent infinite loop
+  }, [initializeCharacterStates]);
 
   useEffect(() => {
     if (isPlaying) {

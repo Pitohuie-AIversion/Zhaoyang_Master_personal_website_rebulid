@@ -15,6 +15,7 @@ export const AccessibilityProvider: React.FC<{ children: ReactNode }> = ({ child
   );
 };
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useAccessibility = () => {
   const context = useContext(AccessibilityContext);
   if (!context) {

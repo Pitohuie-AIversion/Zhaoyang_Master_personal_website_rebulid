@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import React, { Suspense, lazy, useEffect, useState, useCallback } from 'react';
 import { motion } from 'framer-motion';
 

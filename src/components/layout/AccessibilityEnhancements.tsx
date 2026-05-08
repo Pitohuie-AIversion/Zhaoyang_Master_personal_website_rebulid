@@ -210,6 +210,7 @@ export const AccessibilityManager: React.FC<{ children: React.ReactNode }> = ({ 
 };
 
 // 使用可访问性上下文的Hook
+// eslint-disable-next-line react-refresh/only-export-components
 export const useAccessibility = () => {
   const context = useContext(AccessibilityContext);
   if (!context) {

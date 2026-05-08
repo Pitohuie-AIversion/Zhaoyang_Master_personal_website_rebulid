@@ -358,9 +358,9 @@ export const useLazyImage = (src: string, options: {
 
   useEffect(() => {
     setupIntersectionObserver();
+    const currentImageRef = imageRef.current;
 
     return () => {
-      const currentImageRef = imageRef.current;
       if (observerRef.current && currentImageRef) {
         observerRef.current.unobserve(currentImageRef);
       }

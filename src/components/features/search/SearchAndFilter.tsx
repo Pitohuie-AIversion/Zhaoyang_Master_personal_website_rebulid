@@ -402,6 +402,7 @@ interface UseAdvancedSearchProps<T> {
   searchFieldMappers?: { [key: string]: (item: T) => string[] };
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export function useAdvancedSearch<T>({
   data,
   searchFields,

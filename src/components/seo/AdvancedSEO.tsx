@@ -379,6 +379,7 @@ export const ContactSEO: React.FC = () => {
 };
 
 // 生成站点地图的函数
+// eslint-disable-next-line react-refresh/only-export-components
 export const generateSitemap = () => {
   const baseUrl = 'https://zhaoyang-mou.com';
   const pages = [
@@ -407,6 +408,7 @@ export const generateSitemap = () => {
 };
 
 // 生成RSS订阅的函数
+// eslint-disable-next-line react-refresh/only-export-components
 export const generateRSSFeed = (language: string = 'en') => {
   const t = createTranslationFunction(language as 'en' | 'zh');
   const baseUrl = 'https://zhaoyang-mou.com';

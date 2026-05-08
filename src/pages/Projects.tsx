@@ -26,6 +26,7 @@ interface Project {
 }
 
 // 定义稳定的分类代码
+// eslint-disable-next-line react-refresh/only-export-components
 export const CATEGORY_CODES = {
   SCIENTIFIC_COMPUTING: 'scientificComputing',
   ROBOTICS_TECHNOLOGY: 'roboticsTechnology', 

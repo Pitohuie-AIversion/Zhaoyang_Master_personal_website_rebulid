@@ -150,6 +150,7 @@ export function TranslationProvider({ children }: TranslationProviderProps) {
 }
 
 // useTranslation hook
+// eslint-disable-next-line react-refresh/only-export-components
 export const useTranslation = () => {
   const context = useContext(TranslationContext);
   if (!context) {

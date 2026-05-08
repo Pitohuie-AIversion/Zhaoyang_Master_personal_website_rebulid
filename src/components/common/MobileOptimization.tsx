@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import React, { useState, useEffect, useCallback } from 'react';
 import { useTranslation } from './TranslationProvider';
 import { X, ChevronUp, Wifi, WifiOff, Battery } from 'lucide-react';

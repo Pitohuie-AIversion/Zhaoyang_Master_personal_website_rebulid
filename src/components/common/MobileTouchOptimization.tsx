@@ -24,6 +24,7 @@ interface TouchGesture {
 }
 
 // 触摸手势识别Hook
+// eslint-disable-next-line react-refresh/only-export-components
 export const useTouchGestures = (config: Partial<TouchGestureConfig> = {}) => {
   const { isMobile, isTablet } = useResponsive();
   const [gesture, setGesture] = useState<TouchGesture | null>(null);
@@ -33,14 +34,14 @@ export const useTouchGestures = (config: Partial<TouchGestureConfig> = {}) => {
   const lastTouchDistance = useRef<number>(0);
   const lastTouchAngle = useRef<number>(0);
 
-  const finalConfig: TouchGestureConfig = {
+  const finalConfig: TouchGestureConfig = React.useMemo(() => ({
     enableSwipe: true,
     enablePinch: true,
     enableRotate: false,
     swipeThreshold: 50,
     pinchThreshold: 10,
     ...config
-  };
+  }), [config]);
 
   // 计算两点距离
   const getDistance = (p1: TouchPoint, p2: TouchPoint): number => {
@@ -53,7 +54,7 @@ export const useTouchGestures = (config: Partial<TouchGestureConfig> = {}) => {
   // };
 
   // 识别滑动手势
-  const recognizeSwipe = (startPoints: TouchPoint[], endPoints: TouchPoint[]): TouchGesture | null => {
+  const recognizeSwipe = React.useCallback((startPoints: TouchPoint[], endPoints: TouchPoint[]): TouchGesture | null => {
     if (!finalConfig.enableSwipe || startPoints.length !== 1 || endPoints.length !== 1) return null;
 
     const start = startPoints[0];
@@ -76,10 +77,10 @@ export const useTouchGestures = (config: Partial<TouchGestureConfig> = {}) => {
       direction,
       duration: Date.now() - touchStartTime.current
     };
-  };
+  }, [finalConfig]);
 
   // 识别缩放手势
-  const recognizePinch = (startPoints: TouchPoint[], endPoints: TouchPoint[]): TouchGesture | null => {
+  const recognizePinch = React.useCallback((startPoints: TouchPoint[], endPoints: TouchPoint[]): TouchGesture | null => {
     if (!finalConfig.enablePinch || startPoints.length !== 2 || endPoints.length !== 2) return null;
 
     const startDistance = getDistance(startPoints[0], startPoints[1]);
@@ -93,7 +94,7 @@ export const useTouchGestures = (config: Partial<TouchGestureConfig> = {}) => {
       scale,
       duration: Date.now() - touchStartTime.current
     };
-  };
+  }, [finalConfig]);
 
   // 触摸开始
   const handleTouchStart = useCallback((e: TouchEvent) => {

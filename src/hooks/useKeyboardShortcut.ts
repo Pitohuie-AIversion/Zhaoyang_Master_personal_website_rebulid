@@ -12,8 +12,7 @@ interface KeyboardShortcutOptions {
 
 export const useKeyboardShortcut = (
   callback: () => void,
-  options: KeyboardShortcutOptions,
-  deps: React.DependencyList = []
+  options: KeyboardShortcutOptions
 ) => {
   const {
     targetKey,
@@ -63,10 +62,7 @@ export const useKeyboardShortcut = (
     };
   }, [handleKeyPress]);
 
-  // 重新注册事件监听器当依赖项改变时
-  useEffect(() => {
-    // 这个 effect 会在 deps 改变时重新运行
-  }, deps);
+
 };
 
 // 常用快捷键预设
