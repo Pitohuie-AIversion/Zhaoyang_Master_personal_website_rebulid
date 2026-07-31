@@ -1194,11 +1194,11 @@
     "patents": {
       "title": "专利申请",
       "underwaterNavigation": {
-        "title": "基于仿生感知的水下导航装置及方法",
+        "title": "一种水下机器人动态环境感知和导航装置及方法",
         "applicant": "西湖大学",
         "number": "CN119509546A",
         "status": "审查中",
-        "description": "本发明公开了一种基于仿生感知的水下导航装置及方法，通过模拟鱼类的侧线系统实现水下环境的精确感知和导航。"
+        "description": "通过多源传感、数据处理、路径规划与动态避障，实现复杂水下环境的实时感知和自主导航。"
       },
       "vectorThruster": {
         "title": "矢量推进器及其控制方法",
@@ -1274,6 +1274,7 @@
       }
     },
     "academicAchievements": "学术成就",
+    "educationSectionTitle": "教育背景",
     "totalCount": "共 {{count}} {{unit}}",
     "papers": "篇",
     "items": "项",

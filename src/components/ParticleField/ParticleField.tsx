@@ -24,14 +24,18 @@ export interface ParticleFieldProps {
   onConfigChange?: (config: ParticleFieldConfig) => void;
   enableControls?: boolean;
   autoStart?: boolean;
+  isPlaying?: boolean;
 }
 
 export const ParticleField = React.forwardRef<HTMLCanvasElement, ParticleFieldProps>(({
   config,
   className = '',
-  onPerformanceUpdate
+  onPerformanceUpdate,
+  autoStart = true,
+  isPlaying
 }, ref) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const initialConfigRef = useRef(config);
   const { t } = useTranslation();
   
   // 系统组件引用
@@ -72,7 +76,8 @@ export const ParticleField = React.forwardRef<HTMLCanvasElement, ParticleFieldPr
       console.log('Initializing particle system with canvas size:', canvas.width, 'x', canvas.height);
 
       // 使用 config.particle 或默认配置
-      const particleConfig = config?.particle || defaultParticleConfig;
+      const initialConfig = initialConfigRef.current;
+      const particleConfig = initialConfig?.particle || defaultParticleConfig;
       
       // 创建粒子系统
       const bounds = { width: canvas.width, height: canvas.height };
@@ -82,7 +87,7 @@ export const ParticleField = React.forwardRef<HTMLCanvasElement, ParticleFieldPr
       rendererRef.current = new ParticleRenderer(gl, particleSystemRef.current, defaultRenderConfig);
       
       // 创建交互控制器
-      const interactionConfig = config?.interaction || {
+      const interactionConfig = initialConfig?.interaction || {
         mouseInfluence: 1.0,
         touchInfluence: 1.0,
         interactionRadius: 100,
@@ -107,7 +112,7 @@ export const ParticleField = React.forwardRef<HTMLCanvasElement, ParticleFieldPr
       setLoading(false);
       return false;
     }
-  }, [config]);
+  }, []);
 
   const renderFrame = useCallback((currentTime: number) => {
     if (!particleSystemRef.current || !rendererRef.current || !interactionControllerRef.current) {
@@ -198,10 +203,7 @@ export const ParticleField = React.forwardRef<HTMLCanvasElement, ParticleFieldPr
   // 初始化效果
   useEffect(() => {
     const init = async () => {
-      const success = await initializeParticleSystem();
-      if (success) {
-        startAnimation();
-      }
+      await initializeParticleSystem();
     };
     
     init();
@@ -209,7 +211,17 @@ export const ParticleField = React.forwardRef<HTMLCanvasElement, ParticleFieldPr
     return () => {
       stopAnimation();
     };
-  }, [initializeParticleSystem, startAnimation, stopAnimation]);
+  }, [initializeParticleSystem, stopAnimation]);
+
+  useEffect(() => {
+    if (!isInitialized) return;
+
+    if (isPlaying ?? autoStart) {
+      startAnimation();
+    } else {
+      stopAnimation();
+    }
+  }, [autoStart, isInitialized, isPlaying, startAnimation, stopAnimation]);
 
   // 窗口大小变化处理
   useEffect(() => {
@@ -224,7 +236,21 @@ export const ParticleField = React.forwardRef<HTMLCanvasElement, ParticleFieldPr
     if (particleSystemRef.current && isInitialized && config?.particle) {
       particleSystemRef.current.updateConfig(config.particle);
     }
+
+    if (interactionControllerRef.current && isInitialized && config?.interaction) {
+      interactionControllerRef.current.updateConfig(config.interaction);
+    }
   }, [config, isInitialized]);
+
+  const setCanvasRef = useCallback((node: HTMLCanvasElement | null) => {
+    canvasRef.current = node;
+
+    if (typeof ref === 'function') {
+      ref(node);
+    } else if (ref) {
+      ref.current = node;
+    }
+  }, [ref]);
 
   // 清理效果
   useEffect(() => {
@@ -267,7 +293,7 @@ export const ParticleField = React.forwardRef<HTMLCanvasElement, ParticleFieldPr
   return (
     <div className={`particle-field ${className}`}>
       <canvas
-        ref={ref || canvasRef}
+        ref={setCanvasRef}
         className="particle-canvas"
         style={{
           width: '100%',

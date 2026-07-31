@@ -698,6 +698,7 @@
   "research": {
     "title": "About Me",
     "academicAchievements": "Academic Achievements",
+    "educationSectionTitle": "Education",
     "totalCount": "Total {{count}} {{unit}}",
     "papers": "papers",
     "items": "items",
@@ -858,11 +859,11 @@
     },
     "patents": {
       "underwaterNavigation": {
-        "title": "Underwater Navigation Device and Method Based on Bionic Perception",
+        "title": "Dynamic Environment Perception and Navigation Device and Method for an Underwater Robot",
         "applicant": "Westlake University",
         "number": "CN119509546A",
         "status": "Pending",
-        "description": "This invention discloses an underwater navigation device and method based on bionic perception, achieving precise underwater environmental perception and navigation by simulating fish lateral line systems."
+        "description": "Combines multi-source sensing, data processing, path planning, and dynamic obstacle avoidance for real-time perception and autonomous navigation in complex underwater environments."
       },
       "vectorThruster": {
         "title": "Vector Thruster and Its Control Method",

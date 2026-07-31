@@ -153,10 +153,10 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
   return (
     <div className="bg-gray-900 text-white h-full flex flex-col">
       {/* 标签页导航 */}
-      <div className="flex border-b border-gray-700">
+      <div className="flex overflow-x-auto border-b border-gray-700">
         <button
           onClick={() => setActiveTab('particles')}
-          className={`flex-1 p-3 text-sm font-medium transition-colors ${activeTab === 'particles'
+          className={`min-w-32 flex-none lg:min-w-0 lg:flex-1 p-3 text-sm font-medium transition-colors ${activeTab === 'particles'
               ? 'bg-blue-600 text-white'
               : 'text-gray-300 hover:text-white hover:bg-gray-800'
             }`}
@@ -166,7 +166,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
         </button>
         <button
           onClick={() => setActiveTab('postprocess')}
-          className={`flex-1 p-3 text-sm font-medium transition-colors ${activeTab === 'postprocess'
+          className={`min-w-32 flex-none lg:min-w-0 lg:flex-1 p-3 text-sm font-medium transition-colors ${activeTab === 'postprocess'
               ? 'bg-blue-600 text-white'
               : 'text-gray-300 hover:text-white hover:bg-gray-800'
             }`}
@@ -176,7 +176,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
         </button>
         <button
           onClick={() => setActiveTab('interaction')}
-          className={`flex-1 p-3 text-sm font-medium transition-colors ${activeTab === 'interaction'
+          className={`min-w-32 flex-none lg:min-w-0 lg:flex-1 p-3 text-sm font-medium transition-colors ${activeTab === 'interaction'
               ? 'bg-blue-600 text-white'
               : 'text-gray-300 hover:text-white hover:bg-gray-800'
             }`}
@@ -186,7 +186,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
         </button>
         <button
           onClick={() => setActiveTab('presets')}
-          className={`flex-1 p-3 text-sm font-medium transition-colors ${activeTab === 'presets'
+          className={`min-w-32 flex-none lg:min-w-0 lg:flex-1 p-3 text-sm font-medium transition-colors ${activeTab === 'presets'
               ? 'bg-blue-600 text-white'
               : 'text-gray-300 hover:text-white hover:bg-gray-800'
             }`}
@@ -834,8 +834,8 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
 
       {/* 保存预设对话框 */}
       {showSaveDialog && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-          <div className="bg-gray-800 rounded-lg p-6 w-96 border border-gray-600">
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+          <div className="bg-gray-800 rounded-lg p-6 w-full max-w-sm border border-gray-600">
             <h3 className="text-lg font-semibold mb-4">{t('particleField.settings.savePreset')}</h3>
             <div className="space-y-4">
               <div>
@@ -891,7 +891,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
 const ParticleFieldSettings: React.FC = () => {
   const { t } = useTranslation();
 
-  const [config, setConfig] = useState<ParticleFieldConfig | null>(null);
+  const [config, setConfig] = useState<ParticleFieldConfig>(defaultConfig);
   const [metrics, setMetrics] = useState<PerformanceMetrics | null>(null);
   const [isPlaying, setIsPlaying] = useState(true);
   const [showPreview, setShowPreview] = useState(true);
@@ -921,22 +921,19 @@ const ParticleFieldSettings: React.FC = () => {
   }, []);
 
   const resetSystem = useCallback(() => {
-    // Reset to default configuration
-    if (config) {
-      handleConfigChange(defaultConfig);
-    }
-  }, [config, handleConfigChange]);
+    handleConfigChange(defaultConfig);
+  }, [handleConfigChange]);
 
   const togglePreview = useCallback(() => {
     setShowPreview(prev => !prev);
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-100 dark:bg-gray-900">
+    <div className="min-h-screen bg-gray-100 dark:bg-gray-900 pt-16">
       <ParticleFieldSettingsSEO />
-      <div className="flex h-screen">
+      <div className="flex min-h-[calc(100dvh-4rem)] flex-col lg:flex-row">
         {/* 左侧控制面板 */}
-        <div className="w-96 bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 flex flex-col">
+        <div className="flex max-h-[60dvh] w-full flex-col border-b border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-800 lg:max-h-none lg:w-96 lg:flex-shrink-0 lg:border-b-0 lg:border-r">
           {/* 头部 */}
           <div className="p-4 border-b border-gray-200 dark:border-gray-700">
             <div className="flex items-center justify-between">
@@ -968,25 +965,24 @@ const ParticleFieldSettings: React.FC = () => {
           </div>
 
           {/* 控制面板内容 */}
-          {config && (
-            <ControlPanel
-              config={config}
-              onConfigChange={handleConfigChange}
-              onPresetApply={handlePresetApply}
-              onPresetSave={handlePresetSave}
-              onPresetDelete={handlePresetDelete}
-              metrics={metrics || undefined}
-            />
-          )}
+          <ControlPanel
+            config={config}
+            onConfigChange={handleConfigChange}
+            onPresetApply={handlePresetApply}
+            onPresetSave={handlePresetSave}
+            onPresetDelete={handlePresetDelete}
+            metrics={metrics || undefined}
+          />
         </div>
 
         {/* 右侧预览区域 */}
         {showPreview && (
-          <div className="flex-1 relative bg-black">
+          <div className="relative min-h-[40dvh] flex-1 bg-black lg:min-h-0">
             {/* 粒子场预览 */}
             <ParticleFieldComponent
               className="w-full h-full"
-              onConfigChange={setConfig}
+              config={config}
+              isPlaying={isPlaying}
               onPerformanceUpdate={handlePerformanceUpdate}
               enableControls={false}
               autoStart={true}

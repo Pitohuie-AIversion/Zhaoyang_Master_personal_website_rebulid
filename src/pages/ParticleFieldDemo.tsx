@@ -21,7 +21,6 @@ import {
 const ParticleFieldDemo: React.FC = () => {
   const { t } = useTranslation();
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [config, setConfig] = useState<ParticleFieldConfig>(builtinPresets[0].config);
   const [isPlaying, setIsPlaying] = useState(true);
   const [metrics, setMetrics] = useState<PerformanceMetrics | null>(null);
@@ -44,9 +43,9 @@ const ParticleFieldDemo: React.FC = () => {
   }, []);
 
   const resetSystem = useCallback(() => {
-    // Reset to current preset configuration
-    // setConfig(builtinPresets[selectedPreset].config);
-  }, []);
+    const preset = builtinPresets.find(item => item.id === selectedPreset);
+    setConfig(preset?.config || builtinPresets[0].config);
+  }, [selectedPreset]);
 
   const toggleStats = useCallback(() => {
     setShowStats(prev => !prev);
@@ -69,7 +68,7 @@ const ParticleFieldDemo: React.FC = () => {
   const applyPreset = useCallback((presetId: string) => {
     const preset = builtinPresets.find(p => p.id === presetId);
     if (preset) {
-      // setConfig(preset.config);
+      setConfig(preset.config);
       setSelectedPreset(presetId);
       setShowPresets(false);
     }
@@ -139,6 +138,8 @@ const ParticleFieldDemo: React.FC = () => {
       <div className="absolute inset-0 z-0">
         <ParticleFieldComponent
           className="w-full h-full"
+          config={config}
+          isPlaying={isPlaying}
           onConfigChange={handleConfigChange}
           onPerformanceUpdate={handlePerformanceUpdate}
           enableControls={false}
