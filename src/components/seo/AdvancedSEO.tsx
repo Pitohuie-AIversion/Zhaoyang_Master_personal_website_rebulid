@@ -127,8 +127,8 @@ export const AdvancedSEO: React.FC<AdvancedSEOProps> = ({
         "url": currentUrl,
         "image": image,
         "sameAs": [
-          "https://scholar.google.com/citations?user=YOUR_ID",
-          "https://github.com/YOUR_USERNAME",
+          "https://scholar.google.com/citations?user=T3AV5RgAAAAJ",
+          "https://github.com/Pitohuie",
           "https://www.linkedin.com/in/zhaoyang-mou/"
         ],
         "alumniOf": {
@@ -212,9 +212,6 @@ export const AdvancedSEO: React.FC<AdvancedSEOProps> = ({
       <meta name="twitter:site" content="@zhaoyang_mou" />
       <meta name="twitter:creator" content="@zhaoyang_mou" />
 
-      {/* Facebook App ID */}
-      <meta property="fb:app_id" content="YOUR_FACEBOOK_APP_ID" />
-
       {/* 移动设备优化 */}
       <meta name="format-detection" content="telephone=no" />
       <meta name="msapplication-TileColor" content="#3b82f6" />
@@ -253,9 +250,6 @@ export const AdvancedSEO: React.FC<AdvancedSEOProps> = ({
       <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
       <meta name="referrer" content="strict-origin-when-cross-origin" />
 
-      {/* 防止重复内容 */}
-      <link rel="prev" href={`${currentUrl}?page=1`} />
-      <link rel="next" href={`${currentUrl}?page=3`} />
     </Helmet>
   );
 };

@@ -24,6 +24,125 @@ export interface SearchOptions {
   fuzzy?: boolean;
 }
 
+const SEARCH_CONTENT: SearchResult[] = [
+  {
+    id: 'pub-damformer',
+    title: 'Generalizing morphologies in dam break simulations using transformer model',
+    description: 'DamFormer applies a Transformer neural operator to cross-geometry dam-break flow prediction.',
+    type: 'publication',
+    url: '/research',
+    relevance: 0.95,
+    metadata: {
+      year: 2025,
+      authors: ['Zhaoyang Mu', 'Aoming Liang', 'Mingming Ge', 'Dashuai Chen', 'Dixia Fan', 'Minyi Xu'],
+      journal: 'Physics of Fluids',
+      doi: '10.1063/5.0187644',
+      tags: ['Transformer', 'CFD', 'dam break', '论文', '溃坝']
+    }
+  },
+  {
+    id: 'pub-rs-modcubes',
+    title: 'Rs-ModCubes: Self-reconfigurable, scalable, modular cubic robots for underwater operations',
+    description: 'Self-reconfigurable modular cubic robots designed for scalable underwater operations.',
+    type: 'publication',
+    url: '/research',
+    relevance: 0.92,
+    metadata: {
+      year: 2025,
+      authors: ['Jiaxi Zheng', 'Guangmin Dai', 'Botao He', 'Zhaoyang Mu', 'Zhaochen Meng', 'Tianyi Zhang', 'Weiming Zhi', 'Dixia Fan'],
+      journal: 'IEEE Robotics and Automation Letters',
+      doi: '10.1109/LRA.2025.10891552',
+      tags: ['modular robot', 'underwater', 'self-reconfiguration', '论文', '水下机器人']
+    }
+  },
+  {
+    id: 'patent-underwater-navigation',
+    title: 'Dynamic Environment Perception and Navigation Device and Method for an Underwater Robot',
+    description: 'Multi-source sensing, path planning, and dynamic obstacle avoidance for underwater navigation.',
+    type: 'patent',
+    url: '/research',
+    relevance: 0.9,
+    metadata: {
+      patentNumber: 'CN119509546A',
+      organization: 'Westlake University',
+      tags: ['patent', 'underwater navigation', '专利', '水下机器人', '西湖大学']
+    }
+  },
+  {
+    id: 'award-internet-plus',
+    title: 'Gold Award in the 8th China International “Internet+” College Students Innovation and Entrepreneurship Competition',
+    description: 'Gold award for the Kunpeng Technology underwater hull inspection robot project.',
+    type: 'award',
+    url: '/research',
+    relevance: 0.86,
+    metadata: {
+      organization: 'Ministry of Education',
+      level: 'national',
+      tags: ['award', 'robotics', '金奖', '互联网+', '水下机器人']
+    }
+  },
+  {
+    id: 'project-damformer',
+    title: 'DamFormer: Transformer-based Dam-break Flow Prediction',
+    description: 'Scientific-computing project for high-accuracy, cross-geometry flow prediction.',
+    type: 'project',
+    url: '/projects',
+    relevance: 0.9,
+    metadata: {
+      year: 2024,
+      tags: ['PyTorch', 'Transformer', 'CFD', '科学计算', '溃坝']
+    }
+  },
+  {
+    id: 'project-sparse-to-dense',
+    title: 'Sparse-to-Dense Flow Field Reconstruction',
+    description: 'Transformer neural operator for reconstructing dense flow fields from sparse sensor data.',
+    type: 'project',
+    url: '/projects',
+    relevance: 0.88,
+    metadata: {
+      year: 2024,
+      tags: ['PyTorch', 'neural operator', 'flow field', '科学计算', '流场重构']
+    }
+  },
+  {
+    id: 'skill-python',
+    title: 'Python and scientific computing',
+    description: 'Python development for machine learning, numerical simulation, and scientific computing.',
+    type: 'skill',
+    url: '/skills',
+    relevance: 0.82,
+    metadata: { tags: ['Python', 'PyTorch', 'machine learning', '技能', '科学计算'] }
+  },
+  {
+    id: 'page-home',
+    title: 'Home / 首页',
+    description: 'Zhaoyang Mu personal academic website and research overview.',
+    type: 'page',
+    url: '/',
+    relevance: 0.75,
+    metadata: { tags: ['home', '首页', '牟昭阳'] }
+  },
+  {
+    id: 'page-publications',
+    title: 'Publications / 论文',
+    description: 'Peer-reviewed publications and academic output.',
+    type: 'page',
+    url: '/publications',
+    relevance: 0.8,
+    metadata: { tags: ['papers', 'publications', '论文', '学术成果'] }
+  },
+  {
+    id: 'page-contact',
+    title: 'Contact / 联系',
+    description: 'Contact information and collaboration enquiries.',
+    type: 'page',
+    url: '/contact',
+    relevance: 0.72,
+    metadata: { tags: ['contact', 'email', '联系', '合作'] }
+  }
+];
+
 class SearchService {
   private searchIndex: Map<string, SearchResult[]> = new Map();
   private isInitialized = false;
@@ -33,167 +152,8 @@ class SearchService {
     if (this.isInitialized) return;
 
     try {
-      // 这里可以从API获取数据，现在使用模拟数据
-      const mockData: SearchResult[] = [
-        // 论文
-        {
-          id: 'pub-1',
-          title: 'DAMFormer: Dam Break Simulation Using Transformer for Cross-Geometry Generalization',
-          description: 'A novel transformer-based neural operator for dam break flow simulation with cross-geometry generalization in computational fluid dynamics, published in Physics of Fluids.',
-          type: 'publication',
-          url: '/research#publication-1',
-          relevance: 0.95,
-          metadata: {
-            year: 2025,
-            authors: ['Zhaoyang Mu', 'Co-author 1', 'Co-author 2'],
-            journal: 'Physics of Fluids',
-            doi: '10.1063/5.0187644'
-          }
-        },
-        {
-          id: 'pub-2',
-          title: 'RS-ModCubes: Remote Sensing Data Processing',
-          description: 'Advanced modular cube processing framework for remote sensing data analysis and visualization.',
-          type: 'publication',
-          url: '/research#publication-2',
-          relevance: 0.90,
-          metadata: {
-            year: 2025,
-            authors: ['Zhaoyang Mu', 'Co-author 3'],
-            journal: 'Remote Sensing Journal'
-          }
-        },
-        // 专利
-        {
-          id: 'pat-1',
-          title: '水下机器人导航系统',
-          description: '基于多传感器融合的水下机器人自主导航与定位系统。',
-          type: 'patent',
-          url: '/research#patent-1',
-          relevance: 0.92,
-          metadata: {
-            patentNumber: 'CN119509546A',
-            organization: '研究机构',
-            year: 2024
-          }
-        },
-        {
-          id: 'pat-2',
-          title: '矢量推进器控制方法',
-          description: '新型矢量推进器控制算法，提高水下机器人机动性能。',
-          type: 'patent',
-          url: '/research#patent-2',
-          relevance: 0.88,
-          metadata: {
-            patentNumber: 'CN119239885A',
-            organization: '研究机构',
-            year: 2024
-          }
-        },
-        // 奖项
-        {
-          id: 'awd-1',
-          title: '互联网+大学生创新创业大赛金奖',
-          description: '基于人工智能的水下机器人系统获得国家级金奖。',
-          type: 'award',
-          url: '/research#award-1',
-          relevance: 0.85,
-          metadata: {
-            organization: '教育部',
-            level: 'national',
-            year: 2023
-          }
-        },
-        {
-          id: 'awd-2',
-          title: '全国机器人大赛一等奖',
-          description: '在复杂环境下的机器人控制算法获得全国一等奖。',
-          type: 'award',
-          url: '/research#award-2',
-          relevance: 0.83,
-          metadata: {
-            organization: '中国人工智能学会',
-            level: 'national',
-            year: 2022
-          }
-        },
-        // 项目
-        {
-          id: 'prj-1',
-          title: '智能水下机器人系统',
-          description: '集成感知、决策、控制于一体的智能水下机器人平台开发。',
-          type: 'project',
-          url: '/projects#project-1',
-          relevance: 0.90,
-          metadata: {
-            year: 2024,
-            tags: ['机器人', '人工智能', '水下探测']
-          }
-        },
-        {
-          id: 'prj-2',
-          title: '科学计算可视化平台',
-          description: '高性能科学计算数据可视化与分析平台。',
-          type: 'project',
-          url: '/projects#project-2',
-          relevance: 0.87,
-          metadata: {
-            year: 2023,
-            tags: ['科学计算', '数据可视化', '高性能计算']
-          }
-        },
-        // 技能
-        {
-          id: 'skl-1',
-          title: 'Python编程',
-          description: '高级Python开发，包括科学计算、机器学习、Web开发等。',
-          type: 'skill',
-          url: '/skills#skill-1',
-          relevance: 0.80,
-          metadata: {
-            tags: ['编程语言', '科学计算', '机器学习']
-          }
-        },
-        {
-          id: 'skl-2',
-          title: '机器学习与深度学习',
-          description: '掌握主流机器学习算法和深度学习框架。',
-          type: 'skill',
-          url: '/skills#skill-2',
-          relevance: 0.85,
-          metadata: {
-            tags: ['人工智能', '深度学习', 'TensorFlow', 'PyTorch']
-          }
-        },
-        // 页面
-        {
-          id: 'page-home',
-          title: '首页',
-          description: '牟昭阳个人学术网站首页，展示个人简介和最新动态。',
-          type: 'page',
-          url: '/',
-          relevance: 0.75
-        },
-        {
-          id: 'page-research',
-          title: '学术研究',
-          description: '展示学术研究成果，包括论文、专利、奖项等。',
-          type: 'page',
-          url: '/research',
-          relevance: 0.80
-        },
-        {
-          id: 'page-projects',
-          title: '项目作品',
-          description: '个人项目作品集，展示技术能力和创新成果。',
-          type: 'page',
-          url: '/projects',
-          relevance: 0.78
-        }
-      ];
-
       // 构建搜索索引
-      this.buildSearchIndex(mockData);
+      this.buildSearchIndex(SEARCH_CONTENT);
       this.isInitialized = true;
     } catch (error) {
       console.error('Failed to initialize search service:', error);

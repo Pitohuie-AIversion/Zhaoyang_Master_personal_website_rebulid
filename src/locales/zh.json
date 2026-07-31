@@ -1188,7 +1188,7 @@
           "Lei Zhao"
         ],
         "description": "Proposed a Transformer-based method for reconstructing dense flow fields from sparse sensor data, capable of reconstructing complete flow field information from limited sensor data.",
-        "doi": "10.1063/5.0123456"
+        "doi": ""
       }
     },
     "patents": {
@@ -2176,12 +2176,12 @@
         "赵磊"
       ],
       "description": "提出了一种基于Transformer的稀疏传感器数据到稠密流场的重构方法，能够从有限的传感器数据中重构完整的流场信息。",
-      "doi": "10.1063/5.0123456"
+      "doi": ""
     },
     "data": {
       "publication1": {
         "title": "DamFormer: A Transformer-based Model for Dam-break Flow Prediction with Cross-geometry Generalization",
-        "authors": "牟昭阳, 导师姓名, 合作者",
+        "authors": "Zhaoyang Mu, Aoming Liang, Mingming Ge, Dashuai Chen, Dixia Fan, Minyi Xu",
         "journal": "Physics of Fluids",
         "abstract": "本文提出了基于Transformer架构的DamFormer模型，用于溃坝流场的跨几何边界预测。该模型能够在不同几何配置下实现高精度的流场预测，为溃坝灾害评估提供了新的技术手段。构建多几何边界数据集，实现跨几何零样本预测，解决传统CFD仿真计算成本高的问题。",
         "keywords": [

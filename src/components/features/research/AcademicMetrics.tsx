@@ -9,7 +9,7 @@ import { PageLoader } from '../../common/LoadingComponents';
 const AcademicCharts = lazy(() => import('./AcademicCharts'));
 
 export const AcademicMetrics: React.FC<AcademicMetricsProps> = ({
-  scholarId = 'zhaoyang_mu',
+  scholarId = 'T3AV5RgAAAAJ',
   className = '',
   showCharts = true,
   refreshInterval = 3600000 // 1小时

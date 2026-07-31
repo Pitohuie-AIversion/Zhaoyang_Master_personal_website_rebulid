@@ -32,7 +32,25 @@ export default defineConfig(({ command, mode }) => {
       },
       workbox: {
         cleanupOutdatedCaches: true,
-        globPatterns: ['**/*.{js,css,html,ico,png,svg,json,pdf}']
+        globPatterns: ['**/*.{js,css,html,ico,png,svg,json,pdf}'],
+        globIgnores: [
+          '**/assets/js/charts-*.js',
+          '**/assets/js/ParticleField-*.js',
+          '**/assets/js/ParticleFieldSettings-*.js'
+        ],
+        runtimeCaching: [
+          {
+            urlPattern: /\/assets\/js\/(?:charts|ParticleField|ParticleFieldSettings)-[^/]+\.js$/,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'optional-visualization-chunks',
+              expiration: {
+                maxEntries: 6,
+                maxAgeSeconds: 30 * 24 * 60 * 60
+              }
+            }
+          }
+        ]
       }
     })
   ],

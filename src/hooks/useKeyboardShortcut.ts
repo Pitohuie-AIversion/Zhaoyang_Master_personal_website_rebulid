@@ -67,7 +67,6 @@ export const useKeyboardShortcut = (
 
 // 常用快捷键预设
 export const commonShortcuts = {
-  search: { targetKey: 'k', ctrlKey: true, metaKey: true }, // Ctrl+K / Cmd+K
   escape: { targetKey: 'Escape' },
   enter: { targetKey: 'Enter' },
   save: { targetKey: 's', ctrlKey: true, metaKey: true }, // Ctrl+S / Cmd+S
@@ -80,5 +79,6 @@ export const commonShortcuts = {
 
 // 全局搜索快捷键 Hook
 export const useGlobalSearchShortcut = (onSearchOpen: () => void) => {
-  return useKeyboardShortcut(onSearchOpen, commonShortcuts.search);
+  useKeyboardShortcut(onSearchOpen, { targetKey: 'k', ctrlKey: true });
+  useKeyboardShortcut(onSearchOpen, { targetKey: 'k', metaKey: true });
 };

@@ -198,9 +198,9 @@ export const ZhaoyangMuStructuredData = () => (
       description: "专注于科学计算、机器人技术和人工智能交叉领域研究，在Transformer神经算子、CFD仿真、水下机器人等方面有深入研究",
       image: "https://zhaoyang-mu.vercel.app/me_Nero_AI_Image_Upscaler_Photo_Face.jpeg",
       knowsAbout: ["人工智能", "机器学习", "计算流体力学", "水下机器人", "神经算子", "仿生学"],
-      socialLinks: [
-        "https://scholar.google.com/citations?user=zhaoyang_mu",
-        "https://github.com/zhaoyang-mu",
+      sameAs: [
+        "https://scholar.google.com/citations?user=T3AV5RgAAAAJ",
+        "https://github.com/Pitohuie",
         "https://www.linkedin.com/in/zhaoyang-mou/"
       ]
     }}
