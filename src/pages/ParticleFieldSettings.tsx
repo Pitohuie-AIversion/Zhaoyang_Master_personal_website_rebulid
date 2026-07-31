@@ -116,8 +116,23 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
 
   const applyPerformancePreset = useCallback((level: 'low' | 'medium' | 'high' | 'ultra') => {
     const preset = performancePresets[level];
-    updateParticleConfig(preset);
-  }, [updateParticleConfig]);
+    onConfigChange({
+      ...config,
+      particle: {
+        ...config.particle,
+        particleCount: preset.particleCount,
+        performanceLevel: preset.quality
+      },
+      postProcess: {
+        ...config.postProcess,
+        bloomEnabled: preset.bloomEnabled
+      },
+      performance: {
+        ...config.performance,
+        preset: level
+      }
+    });
+  }, [config, onConfigChange]);
 
   const resetToDefault = useCallback(() => {
     onConfigChange(defaultConfig);
@@ -229,7 +244,9 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
                 {Object.entries(performancePresets).map(([level, preset]) => (
                   <button
                     key={level}
+                    type="button"
                     onClick={() => applyPerformancePreset(level as 'low' | 'medium' | 'high' | 'ultra')}
+                    aria-pressed={config.performance.preset === level}
                     className="p-3 bg-gray-800 hover:bg-gray-700 rounded-lg text-left transition-colors"
                   >
                     <div className="font-medium capitalize">{level}</div>
@@ -251,6 +268,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
                   </label>
                   <input
                     type="range"
+                    aria-label={t('particleField.settings.maxParticles') as string}
                     min="100"
                     max="50000"
                     step="100"
@@ -262,28 +280,14 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
 
                 <div>
                   <label className="block text-sm font-medium mb-2">
-                    {t('particleField.settings.spawnRate')}: {config.particle.particleCount}
+                    {t('particleField.settings.opacity')}: {config.particle.visual.opacity.toFixed(2)}
                   </label>
                   <input
                     type="range"
-                    min="1"
-                    max="100"
-                    step="1"
-                    value={config.particle.particleCount}
-                    onChange={(e) => updateParticleConfig({ particleCount: parseInt(e.target.value) })}
-                    className="w-full"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium mb-2">
-                    {t('particleField.settings.lifespan')}: {config.particle.visual.opacity.toFixed(1)}
-                  </label>
-                  <input
-                    type="range"
-                    min="1"
-                    max="20"
-                    step="0.5"
+                    aria-label={t('particleField.settings.opacity') as string}
+                    min="0.1"
+                    max="1"
+                    step="0.05"
                     value={config.particle.visual.opacity}
                     onChange={(e) => updateParticleConfig({ visual: { ...config.particle.visual, opacity: parseFloat(e.target.value) } })}
                     className="w-full"
@@ -296,6 +300,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
                   </label>
                   <input
                     type="range"
+                    aria-label={t('particleField.settings.size') as string}
                     min="0.5"
                     max="10"
                     step="0.1"
@@ -317,6 +322,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
                   </label>
                   <input
                     type="range"
+                    aria-label={t('particleField.settings.gravity') as string}
                     min="-0.1"
                     max="0.1"
                     step="0.001"
@@ -332,6 +338,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
                   </label>
                   <input
                     type="range"
+                    aria-label={t('particleField.settings.damping') as string}
                     min="0.9"
                     max="1.0"
                     step="0.001"
@@ -347,6 +354,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
                   </label>
                   <input
                     type="range"
+                    aria-label={t('particleField.settings.noiseStrength') as string}
                     min="0"
                     max="2"
                     step="0.01"
@@ -362,6 +370,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
                   </label>
                   <input
                     type="range"
+                    aria-label={t('particleField.settings.noiseScale') as string}
                     min="0.001"
                     max="0.01"
                     step="0.0001"
@@ -382,16 +391,18 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
                     {t('particleField.settings.colorScheme')}
                   </label>
                   <select
+                    aria-label={t('particleField.settings.colorScheme') as string}
                     value={config.particle.colorScheme}
                     onChange={(e) => updateParticleConfig({ colorScheme: e.target.value as 'ocean' | 'fire' | 'electric' | 'cosmic' | 'storm' | 'abyss' | 'aurora' | 'monochrome' })}
                     className="w-full p-2 bg-gray-800 border border-gray-600 rounded"
                   >
-                    <option value="blue">{t('particleField.settings.colorOptions.blue') as string}</option>
-                    <option value="rainbow">{t('particleField.settings.colorOptions.rainbow') as string}</option>
+                    <option value="ocean">{t('particleField.settings.colorOptions.ocean') as string}</option>
                     <option value="fire">{t('particleField.settings.colorOptions.fire') as string}</option>
-                    <option value="ice">{t('particleField.settings.colorOptions.ice') as string}</option>
-                    <option value="forest">{t('particleField.settings.colorOptions.forest') as string}</option>
-                    <option value="sunset">{t('particleField.settings.colorOptions.sunset') as string}</option>
+                    <option value="electric">{t('particleField.settings.colorOptions.electric') as string}</option>
+                    <option value="cosmic">{t('particleField.settings.colorOptions.cosmic') as string}</option>
+                    <option value="storm">{t('particleField.settings.colorOptions.storm') as string}</option>
+                    <option value="abyss">{t('particleField.settings.colorOptions.abyss') as string}</option>
+                    <option value="aurora">{t('particleField.settings.colorOptions.aurora') as string}</option>
                     <option value="monochrome">{t('particleField.settings.colorOptions.monochrome') as string}</option>
                   </select>
                 </div>
@@ -411,7 +422,10 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
                     {t('particleField.settings.enableBloom')}
                   </label>
                   <button
+                    type="button"
                     onClick={() => updatePostProcessConfig({ bloomEnabled: !config.postProcess.bloomEnabled })}
+                    aria-label={t('particleField.settings.enableBloom') as string}
+                    aria-pressed={config.postProcess.bloomEnabled}
                     className={`p-2 rounded ${config.postProcess.bloomEnabled
                         ? 'bg-blue-600 text-white'
                         : 'bg-gray-600 text-gray-300'
@@ -429,6 +443,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
                       </label>
                       <input
                         type="range"
+                        aria-label={t('particleField.settings.bloomIntensity') as string}
                         min="0"
                         max="2"
                         step="0.01"
@@ -444,6 +459,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
                       </label>
                       <input
                         type="range"
+                        aria-label={t('particleField.settings.blurAmount') as string}
                         min="0"
                         max="10"
                         step="0.1"
@@ -466,6 +482,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
                   </label>
                   <input
                     type="range"
+                    aria-label={t('particleField.settings.contrast') as string}
                     min="0.5"
                     max="2"
                     step="0.01"
@@ -481,6 +498,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
                   </label>
                   <input
                     type="range"
+                    aria-label={t('particleField.settings.saturation') as string}
                     min="0"
                     max="2"
                     step="0.01"
@@ -496,6 +514,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
                   </label>
                   <input
                     type="range"
+                    aria-label={t('particleField.settings.colorTemperature') as string}
                     min="2000"
                     max="10000"
                     step="100"
@@ -516,6 +535,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
                   </label>
                   <input
                     type="range"
+                    aria-label={t('particleField.settings.noiseAmount') as string}
                     min="0"
                     max="0.1"
                     step="0.001"
@@ -531,6 +551,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
                   </label>
                   <input
                     type="range"
+                    aria-label={t('particleField.settings.vignetteStrength') as string}
                     min="0"
                     max="1"
                     step="0.01"
@@ -555,7 +576,10 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
                     {t('particleField.settings.enableMouse')}
                   </label>
                   <button
+                    type="button"
                     onClick={() => updateInteractionConfig({ enabled: !config.interaction.enabled })}
+                    aria-label={t('particleField.settings.enableMouse') as string}
+                    aria-pressed={config.interaction.enabled}
                     className={`p-2 rounded ${config.interaction.enabled
                         ? 'bg-blue-600 text-white'
                         : 'bg-gray-600 text-gray-300'
@@ -573,6 +597,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
                       </label>
                       <input
                         type="range"
+                        aria-label={t('particleField.settings.mouseRadius') as string}
                         min="50"
                         max="500"
                         step="10"
@@ -588,6 +613,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
                       </label>
                       <input
                         type="range"
+                        aria-label={t('particleField.settings.mouseStrength') as string}
                         min="0"
                         max="10"
                         step="0.1"
@@ -603,6 +629,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
                       </label>
                       <input
                         type="range"
+                        aria-label={t('particleField.settings.smoothing') as string}
                         min="0.1"
                         max="1"
                         step="0.01"
@@ -624,7 +651,10 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
                     {t('particleField.settings.enableTouch')}
                   </label>
                   <button
+                    type="button"
                     onClick={() => updateInteractionConfig({ enableTouch: !config.interaction.enableTouch })}
+                    aria-label={t('particleField.settings.enableTouch') as string}
+                    aria-pressed={config.interaction.enableTouch}
                     className={`p-2 rounded ${config.interaction.enableTouch
                         ? 'bg-blue-600 text-white'
                         : 'bg-gray-600 text-gray-300'
@@ -640,6 +670,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
                   </label>
                   <input
                     type="range"
+                    aria-label={t('particleField.settings.maxTouches') as string}
                     min="1"
                     max="10"
                     step="1"
@@ -722,6 +753,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
                             <div className="space-y-2">
                               <input
                                 type="text"
+                                aria-label={t('particleField.settings.presetName') as string}
                                 value={preset.name}
                                 onChange={(e) => {
                                   const updated = customPresets.map(p =>
@@ -732,6 +764,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
                                 className="w-full p-2 bg-gray-700 border border-gray-600 rounded text-sm"
                               />
                               <textarea
+                                aria-label={t('particleField.settings.presetDescription') as string}
                                 value={preset.description}
                                 onChange={(e) => {
                                   const updated = customPresets.map(p =>
@@ -755,6 +788,8 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
                           {editingPreset === preset.id ? (
                             <>
                               <button
+                                type="button"
+                                aria-label={t('particleField.settings.save') as string}
                                 onClick={() => {
                                   configManager.current.updateCustomPreset(preset.id, preset);
                                   setEditingPreset(null);
@@ -764,6 +799,8 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
                                 <Check className="w-4 h-4" />
                               </button>
                               <button
+                                type="button"
+                                aria-label={t('particleField.settings.cancel') as string}
                                 onClick={() => setEditingPreset(null)}
                                 className="p-1 text-red-400 hover:text-red-300"
                               >
@@ -779,12 +816,16 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
                                 {t('particleField.settings.apply')}
                               </button>
                               <button
+                                type="button"
+                                aria-label={t('particleField.settings.edit') as string}
                                 onClick={() => setEditingPreset(preset.id)}
                                 className="p-1 text-gray-400 hover:text-white"
                               >
                                 <Edit3 className="w-4 h-4" />
                               </button>
                               <button
+                                type="button"
+                                aria-label={t('particleField.settings.delete') as string}
                                 onClick={() => handleDeletePreset(preset.id)}
                                 className="p-1 text-red-400 hover:text-red-300"
                               >
@@ -865,6 +906,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
                 </label>
                 <input
                   type="text"
+                  aria-label={t('particleField.settings.presetName') as string}
                   value={presetName}
                   onChange={(e) => setPresetName(e.target.value)}
                   className="w-full p-2 bg-gray-700 border border-gray-600 rounded"
@@ -877,6 +919,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
                   {t('particleField.settings.presetDescription')}
                 </label>
                 <textarea
+                  aria-label={t('particleField.settings.presetDescription') as string}
                   value={presetDescription}
                   onChange={(e) => setPresetDescription(e.target.value)}
                   className="w-full p-2 bg-gray-700 border border-gray-600 rounded resize-none"
@@ -962,6 +1005,7 @@ const ParticleFieldSettings: React.FC = () => {
                 <Link
                   to="/particle-field"
                   className="p-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+                  aria-label={t('particleField.backToMain') as string}
                 >
                   <ArrowLeft className="w-5 h-5" />
                 </Link>
@@ -1035,6 +1079,7 @@ const ParticleFieldSettings: React.FC = () => {
                 to="/particle-field/demo"
                 className="p-2 bg-black/30 backdrop-blur-sm rounded-lg text-white hover:bg-black/50 transition-all duration-200"
                 title={t('particleField.demoMode')}
+                aria-label={t('particleField.demoMode') as string}
               >
                 <Play className="w-5 h-5" />
               </Link>

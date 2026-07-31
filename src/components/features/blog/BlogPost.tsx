@@ -144,13 +144,13 @@ const BlogPost: React.FC<BlogPostProps> = ({ className = '' }) => {
 
     switch (platform) {
       case 'twitter':
-        window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(url)}`, '_blank');
+        window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(url)}`, '_blank', 'noopener,noreferrer');
         break;
       case 'linkedin':
-        window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`, '_blank');
+        window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`, '_blank', 'noopener,noreferrer');
         break;
       case 'weibo':
-        window.open(`https://service.weibo.com/share/share.php?title=${encodeURIComponent(title)}&url=${encodeURIComponent(url)}`, '_blank');
+        window.open(`https://service.weibo.com/share/share.php?title=${encodeURIComponent(title)}&url=${encodeURIComponent(url)}`, '_blank', 'noopener,noreferrer');
         break;
       default:
         navigator.clipboard.writeText(url);
@@ -575,7 +575,7 @@ const BlogPost: React.FC<BlogPostProps> = ({ className = '' }) => {
           variant="outline"
           size="sm"
           icon={<ExternalLink className="w-4 h-4" />}
-          onClick={() => window.open('https://scholar.google.com/citations?user=zhaoyang_mu', '_blank')}
+          onClick={() => window.open('https://scholar.google.com/citations?user=T3AV5RgAAAAJ', '_blank', 'noopener,noreferrer')}
         >
           {t('blog.viewOnScholar') || '在学术主页查看'}
         </UnifiedButton>

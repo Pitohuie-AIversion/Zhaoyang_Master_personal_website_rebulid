@@ -216,6 +216,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, items }
             aria-hidden="true"
           />
           <motion.div
+            id="mobile-navigation"
             initial={{ x: '100%' }}
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
@@ -383,6 +384,14 @@ export const ResponsiveCard: React.FC<ResponsiveCardProps> = ({
     <motion.div
       whileHover={hover ? { y: -2 } : {}}
       onClick={onClick}
+      role={onClick ? 'button' : undefined}
+      tabIndex={onClick ? 0 : undefined}
+      onKeyDown={onClick ? (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          onClick();
+        }
+      } : undefined}
       className={`
         ${backgroundClasses}
         rounded-lg shadow-md 

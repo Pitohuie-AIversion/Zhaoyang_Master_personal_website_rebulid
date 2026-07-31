@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { SimpleMotion } from '../components/animations/SimpleMotion';
 import { ExternalLink, Github, Search, X } from 'lucide-react';
 import { ProjectCardSkeleton, LazyWrapper } from '../components/common/LoadingComponents';
@@ -124,6 +124,23 @@ const getYearOptions = (t: (key: string, options?: { returnObjects?: boolean; fa
 
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+
+  useEffect(() => {
+    if (!selectedProject) return;
+
+    const previousOverflow = document.body.style.overflow;
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setSelectedProject(null);
+    };
+
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [selectedProject]);
   const { isMobile, isTablet } = useResponsive();
   const { t } = useTranslation();
   
@@ -332,6 +349,15 @@ export default function Projects() {
                   <div 
                     className="cursor-pointer p-4 sm:p-6" 
                     onClick={() => setSelectedProject(project)}
+                    role="button"
+                    tabIndex={0}
+                    aria-label={project.title}
+                    onKeyDown={(event) => {
+                      if (event.key === 'Enter' || event.key === ' ') {
+                        event.preventDefault();
+                        setSelectedProject(project);
+                      }
+                    }}
                   >
                   <div className="relative">
                     <LazyImage
@@ -388,6 +414,9 @@ export default function Projects() {
               animate={{ scale: 1, opacity: 1 }}
               className="bg-white dark:bg-gray-800 rounded-lg max-w-4xl w-full max-h-[95vh] sm:max-h-[90vh] overflow-y-auto border border-gray-200 dark:border-gray-700 theme-transition"
               onClick={(e) => e.stopPropagation()}
+              role="dialog"
+              ariaModal
+              ariaLabelledby="project-dialog-title"
             >
               <div className="relative">
                 <LazyImage
@@ -401,6 +430,7 @@ export default function Projects() {
                   variant="ghost"
                   size="sm"
                   icon={<X className="w-4 h-4 sm:w-5 sm:h-5" />}
+                  ariaLabel={t('common.close') as string}
                   className="absolute top-2 sm:top-3 right-2 sm:right-3 bg-white dark:bg-gray-800 bg-opacity-90 dark:bg-opacity-90 hover:bg-opacity-100 dark:hover:bg-opacity-100"
                 />
               </div>
@@ -444,7 +474,7 @@ export default function Projects() {
                     )}
                   </div>
                 </div>
-                <h2 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-3 theme-transition leading-tight">{selectedProject.title}</h2>
+                <h2 id="project-dialog-title" className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-3 theme-transition leading-tight">{selectedProject.title}</h2>
                 <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 mb-5 theme-transition leading-relaxed">{selectedProject.description}</p>
                 
                 <div className="mb-6">

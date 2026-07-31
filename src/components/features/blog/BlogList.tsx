@@ -143,6 +143,7 @@ export const BlogList: React.FC<BlogListProps> = ({
               <input
                 type="text"
                 placeholder={t('blog.searchPlaceholder') || '搜索博客文章...'}
+                aria-label={t('blog.searchPlaceholder') || '搜索博客文章'}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"

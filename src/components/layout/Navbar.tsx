@@ -131,7 +131,10 @@ export default function Navbar() {
               variant="ghost"
               size="sm"
               onClick={() => setIsOpen(!isOpen)}
-              ariaLabel={t('common.menu')}
+              ariaLabel={t(isOpen ? 'common.aria.closeMenu' : 'common.menu')}
+              ariaExpanded={isOpen}
+              ariaControls="mobile-navigation"
+              ariaHaspopup="dialog"
               className="p-2 w-10 h-10 flex items-center justify-center xl:hidden"
             >
               {isOpen ? <X size={20} /> : <Menu size={20} />}

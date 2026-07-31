@@ -157,6 +157,7 @@ const ParticleFieldDemo: React.FC = () => {
                 to="/particle-field"
                 className="p-2 bg-black/30 backdrop-blur-sm rounded-lg text-white/80 hover:text-white hover:bg-black/50 transition-all duration-200"
                 title={t('particleField.backToMain')}
+                aria-label={t('particleField.backToMain')}
               >
                 <ArrowLeft className="w-5 h-5" />
               </Link>
@@ -209,7 +210,8 @@ const ParticleFieldDemo: React.FC = () => {
               <Link
                 to="/particle-field/settings"
                 className="p-2 bg-black/30 backdrop-blur-sm rounded-lg text-white/70 hover:text-white hover:bg-black/50 transition-all duration-200"
-                title={t('particleField.settings')}
+                title={t('particleField.navigation.settings')}
+                aria-label={t('particleField.navigation.settings')}
               >
                 <Settings className="w-5 h-5" />
               </Link>
