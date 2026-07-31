@@ -7,7 +7,7 @@ import { HomeSEO } from '../components/seo/SEOOptimization';
 import { ResponsiveCard, ResponsiveContainer } from '../components/common/ResponsiveEnhancements';
 import { useTranslation } from '../components/common/TranslationProvider';
 import { ScrollReveal, HoverCard } from '../components/animations/InteractiveEffects';
-import Timeline from '../components/common/Timeline';
+import Timeline, { type TimelineItem } from '../components/common/Timeline';
 import profileImage from '../assets/me_Nero_AI_Image_Upscaler_Photo_Face.jpeg';
 
 interface ResearchHighlight {
@@ -71,20 +71,13 @@ const getNewsItems = (t: (key: string, options?: { returnObjects?: boolean; fall
   },
   {
     id: '3',
-    date: '2024-11',
-    title: t('home.latestNews.items.underwaterPatents.title'),
-    description: t('home.latestNews.items.underwaterPatents.description'),
-    type: 'award'
-  },
-  {
-    id: '4',
     date: '2024-07',
     title: t('home.latestNews.items.mechanicalCompetition.title'),
     description: t('home.latestNews.items.mechanicalCompetition.description'),
     type: 'award'
   },
   {
-    id: '5',
+    id: '4',
     date: '2024-06',
     title: t('home.latestNews.items.westlakeVisit.title'),
     description: t('home.latestNews.items.westlakeVisit.description'),
@@ -93,10 +86,76 @@ const getNewsItems = (t: (key: string, options?: { returnObjects?: boolean; fall
 ];
 
 const getStats = (t: (key: string, options?: { returnObjects?: boolean; fallback?: string }) => string) => [
-  { label: t('home.stats.publications'), value: '10+' },
+  { label: t('home.stats.publications'), value: '7' },
   { label: t('home.stats.projects'), value: '6' },
-  { label: t('home.stats.patents'), value: '8' },
+  { label: t('home.stats.patents'), value: '6' },
   { label: t('home.stats.awards'), value: '4' }
+];
+
+const getTimelineItems = (
+  t: (key: string, options?: { returnObjects?: boolean; fallback?: string }) => string
+): TimelineItem[] => [
+  {
+    id: 'damformer-2025',
+    title: t('publications.data.pofDamFormer2025.title'),
+    description: t('publications.data.pofDamFormer2025.authors'),
+    date: '2025',
+    type: 'publication',
+    organization: t('publications.data.pofDamFormer2025.journal'),
+    tags: ['Transformer', 'CFD', 'Neural Operator'],
+    metadata: { url: t('publications.data.pofDamFormer2025.url') },
+    isHighlighted: true
+  },
+  {
+    id: 'rs-modcubes-2025',
+    title: t('publications.data.ralRsModCubes2025.title'),
+    description: t('publications.data.ralRsModCubes2025.authors'),
+    date: '2025',
+    type: 'publication',
+    organization: t('publications.data.ralRsModCubes2025.journal'),
+    tags: ['Modular Robots', 'Underwater', 'Reconfiguration'],
+    metadata: { url: t('publications.data.ralRsModCubes2025.url') }
+  },
+  {
+    id: 'twsa-2025',
+    title: t('publications.data.amtTWSA2025.title'),
+    description: t('publications.data.amtTWSA2025.authors'),
+    date: '2025',
+    type: 'publication',
+    organization: t('publications.data.amtTWSA2025.journal'),
+    tags: ['Triboelectric', 'Sensor Array', 'Underwater Vehicle'],
+    metadata: { url: t('publications.data.amtTWSA2025.url') }
+  },
+  {
+    id: 'auv-swarm-2025',
+    title: t('publications.data.spieCITA2025.title'),
+    description: t('publications.data.spieCITA2025.authors'),
+    date: '2025',
+    type: 'publication',
+    organization: t('publications.data.spieCITA2025.journal'),
+    tags: ['AUV', 'Swarm', 'Modular Design'],
+    metadata: { url: t('publications.data.spieCITA2025.url') }
+  },
+  {
+    id: 'nano-energy-2024',
+    title: t('publications.data.nanoEnergy2024.title'),
+    description: t('publications.data.nanoEnergy2024.authors'),
+    date: '2024',
+    type: 'publication',
+    organization: t('publications.data.nanoEnergy2024.journal'),
+    tags: ['Triboelectric', 'Underwater Whisker', 'Deep Learning'],
+    metadata: { url: t('publications.data.nanoEnergy2024.url') }
+  },
+  {
+    id: 'tail-fin-2024',
+    title: t('publications.data.ieeeCAC2024.title'),
+    description: t('publications.data.ieeeCAC2024.authors'),
+    date: '2024',
+    type: 'publication',
+    organization: t('publications.data.ieeeCAC2024.journal'),
+    tags: ['Triboelectric', 'Tail-Fin', 'Proprioception'],
+    metadata: { url: t('publications.data.ieeeCAC2024.url') }
+  }
 ];
 
 const researchVisuals = {
@@ -157,6 +216,7 @@ function Home() {
   const researchHighlights = getResearchHighlights(t as (key: string, options?: { returnObjects?: boolean; fallback?: string }) => string);
   const newsItems = getNewsItems(t as (key: string, options?: { returnObjects?: boolean; fallback?: string }) => string);
   const stats = getStats(t as (key: string, options?: { returnObjects?: boolean; fallback?: string }) => string);
+  const timelineItems = getTimelineItems(t as (key: string, options?: { returnObjects?: boolean; fallback?: string }) => string);
 
   return (
     <div className="min-h-screen relative theme-transition">
@@ -243,6 +303,7 @@ function Home() {
                   <LazyImage
                     src={profileImage}
                     alt={t('home.hero.name') as string}
+                    priority
                     className="relative z-10 h-72 w-full max-w-sm rounded-3xl border-4 border-white object-cover object-top shadow-2xl shadow-blue-950/20 dark:border-slate-800 sm:h-80 lg:h-96 lg:w-96"
                   />
                 </div>
@@ -414,6 +475,7 @@ function Home() {
 
           <ScrollReveal direction="up" delay={0.2}>
             <Timeline
+              items={timelineItems}
               maxItems={6}
               showFilters={false}
             />

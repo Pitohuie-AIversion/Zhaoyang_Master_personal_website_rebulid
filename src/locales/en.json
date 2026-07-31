@@ -2918,21 +2918,21 @@
   },
   "timeline": {
     "types": {
-      "education": "education",
-      "research": "research",
-      "publication": "publication",
-      "patent": "patent",
-      "award": "award",
-      "project": "project",
-      "skill": "skill"
+      "education": "Education",
+      "research": "Research",
+      "publication": "Publication",
+      "patent": "Patent",
+      "award": "Award",
+      "project": "Project",
+      "skill": "Skill"
     },
-    "filters": "filters",
-    "clearFilters": "clear Filters",
-    "sortBy": "sort By",
-    "sortByDate": "sort By Date",
-    "sortByType": "sort By Type",
-    "sortByTitle": "sort By Title",
-    "noItems": "no Items",
+    "filters": "Filter",
+    "clearFilters": "Clear filters",
+    "sortBy": "Sort by",
+    "sortByDate": "Date",
+    "sortByType": "Type",
+    "sortByTitle": "Title",
+    "noItems": "No timeline entries",
     "loadMore": "Load more"
   },
   "resume": {

@@ -33,7 +33,7 @@ const SEOOptimization: React.FC<SEOProps> = ({
   description,
   keywords,
   image = '/favicon.svg',
-  url = window.location.href,
+  url = `${window.location.origin}${window.location.pathname}`,
   type = 'website',
   author,
   publishedTime,
@@ -67,6 +67,11 @@ const SEOOptimization: React.FC<SEOProps> = ({
   const locale = t('seo.site.locale') as string;
   const jobTitle = t('seo.default.jobTitle') as string;
   const organization = t('seo.default.organization') as string;
+  const canonicalUrl = new URL(url, window.location.origin);
+  canonicalUrl.search = '';
+  canonicalUrl.hash = '';
+  const canonicalHref = canonicalUrl.href;
+  const absoluteImage = new URL(image, window.location.origin).href;
 
   const fullTitle =
     defaultTitle === siteTitle || defaultTitle.includes(defaultAuthor)
@@ -84,14 +89,14 @@ const SEOOptimization: React.FC<SEOProps> = ({
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
       <meta name="language" content={language} />
-      <link rel="canonical" href={url} />
+      <link rel="canonical" href={canonicalHref} />
 
       {/* Open Graph 元数据 */}
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={defaultDescription} />
       <meta property="og:type" content={type} />
-      <meta property="og:url" content={url} />
-      <meta property="og:image" content={image} />
+      <meta property="og:url" content={canonicalHref} />
+      <meta property="og:image" content={absoluteImage} />
       <meta property="og:site_name" content={siteTitle} />
       <meta property="og:locale" content={locale} />
 
@@ -99,7 +104,7 @@ const SEOOptimization: React.FC<SEOProps> = ({
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={defaultDescription} />
-      <meta name="twitter:image" content={image} />
+      <meta name="twitter:image" content={absoluteImage} />
 
       {/* 文章特定元数据 */}
       {type === 'article' && publishedTime && (
@@ -119,9 +124,9 @@ const SEOOptimization: React.FC<SEOProps> = ({
             "@context": "https://schema.org",
             "@type": type === 'profile' ? 'Person' : 'WebSite',
             "name": defaultAuthor,
-            "url": url,
+            "url": canonicalHref,
             "description": defaultDescription,
-            "image": image,
+            "image": absoluteImage,
             ...(type === 'profile' && {
               "jobTitle": jobTitle,
               "worksFor": {
@@ -134,13 +139,8 @@ const SEOOptimization: React.FC<SEOProps> = ({
         </script>
       )}
 
-      {/* 关键资源预连接（保留，不引用缺失本地字体） */}
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-
       {/* 网站图标（使用已存在的 SVG） */}
       <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-      <link rel="manifest" href="/site.webmanifest" />
 
       {/* 主题颜色 */}
       <meta name="theme-color" content="#ffffff" />

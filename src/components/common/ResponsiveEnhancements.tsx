@@ -253,6 +253,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, items }
                     <Link
                       to={item.href}
                       onClick={onClose}
+                      aria-current={item.isActive ? 'page' : undefined}
                       className={`flex items-center space-x-4 px-5 py-4 rounded-xl text-base font-medium transition-all duration-200 break-words ${
                         item.isActive
                           ? 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 shadow-sm'

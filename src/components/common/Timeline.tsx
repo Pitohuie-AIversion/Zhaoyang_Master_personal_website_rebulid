@@ -4,7 +4,7 @@ import { SimpleMotion } from '../animations/SimpleMotion';
 import { useTranslation } from './TranslationProvider';
 import { UnifiedButton } from './UnifiedButton';
 
-interface TimelineItem {
+export interface TimelineItem {
   id: string;
   title: string;
   description: string;
@@ -39,119 +39,12 @@ const Timeline: React.FC<TimelineProps> = ({
   showFilters = true,
   className = ''
 }) => {
-  const { t } = useTranslation();
+  const { t, language } = useTranslation();
   const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
   const [sortBy, setSortBy] = useState<'date' | 'type' | 'title'>('date');
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('desc');
 
-  // 默认时间线数据
-  const defaultItems: TimelineItem[] = [
-    {
-      id: '1',
-      title: 'DAMFormer: A Deep Learning Approach for Sparse-to-Dense Modeling',
-      description: 'Published a novel transformer-based architecture for sparse-to-dense modeling in scientific computing applications.',
-      date: '2025-01',
-      type: 'publication',
-      organization: 'Journal of Computational Physics',
-      metadata: {
-        doi: '10.1063/5.0187644',
-        citations: 15,
-        impact: 3.1,
-        url: 'https://doi.org/10.1063/5.0187644'
-      },
-      tags: ['Deep Learning', 'Scientific Computing', 'Transformer'],
-      isHighlighted: true
-    },
-    {
-      id: '2',
-      title: 'RS-ModCubes: Remote Sensing Data Processing Framework',
-      description: 'Developed advanced modular cube processing framework for remote sensing data analysis and visualization.',
-      date: '2025-01',
-      type: 'publication',
-      organization: 'Remote Sensing Journal',
-      metadata: {
-        citations: 8,
-        impact: 2.8
-      },
-      tags: ['Remote Sensing', 'Data Processing', 'Visualization']
-    },
-    {
-      id: '3',
-      title: 'Underwater Robot Navigation System',
-      description: 'Patented innovative underwater robot autonomous navigation and positioning system based on multi-sensor fusion.',
-      date: '2024-11',
-      type: 'patent',
-      organization: 'Research Institution',
-      metadata: {
-        patentNumber: 'CN119509546A'
-      },
-      tags: ['Underwater Robotics', 'Navigation', 'Sensor Fusion']
-    },
-    {
-      id: '4',
-      title: 'Vector Thruster Control Algorithm',
-      description: 'Developed novel vector thruster control algorithm to improve underwater robot maneuverability.',
-      date: '2024-11',
-      type: 'patent',
-      organization: 'Research Institution',
-      metadata: {
-        patentNumber: 'CN119239885A'
-      },
-      tags: ['Vector Thruster', 'Control Algorithm', 'Maneuverability']
-    },
-    {
-      id: '5',
-      title: 'Gold Award - Internet+ Innovation Competition',
-      description: 'Won national gold award for AI-based underwater robot system.',
-      date: '2023-04',
-      type: 'award',
-      organization: 'Ministry of Education',
-      location: 'China',
-      metadata: {
-        certificateNumber: '202310033'
-      },
-      tags: ['AI', 'Underwater Robotics', 'Innovation'],
-      isHighlighted: true
-    },
-    {
-      id: '6',
-      title: 'Master of Science - Computer Science',
-      description: 'Completed master\'s degree with focus on artificial intelligence and robotics.',
-      date: '2023-06',
-      type: 'education',
-      organization: 'Top University',
-      location: 'China',
-      metadata: {
-        gpa: 3.8
-      },
-      tags: ['Computer Science', 'AI', 'Robotics']
-    },
-    {
-      id: '7',
-      title: 'Intelligent Underwater Robot System',
-      description: 'Led development of integrated perception, decision-making, and control platform for underwater robots.',
-      date: '2024-06',
-      type: 'project',
-      organization: 'Research Lab',
-      metadata: {
-        url: 'https://github.com/zhaoyang-mu/underwater-robot'
-      },
-      tags: ['Underwater Robotics', 'Perception', 'Decision Making']
-    },
-    {
-      id: '8',
-      title: 'Advanced Python Programming',
-      description: 'Mastered advanced Python development including scientific computing, machine learning, and web development.',
-      date: '2022-12',
-      type: 'skill',
-      metadata: {
-        level: 'Expert'
-      },
-      tags: ['Python', 'Scientific Computing', 'Machine Learning', 'Web Development']
-    }
-  ];
-
-  const items = providedItems || defaultItems;
+  const items = useMemo(() => providedItems ?? [], [providedItems]);
 
   // 类型图标映射
   const getTypeIcon = (type: string) => {
@@ -218,8 +111,9 @@ const Timeline: React.FC<TimelineProps> = ({
 
   // 格式化日期
   const formatDate = (dateString: string) => {
+    if (/^\d{4}$/.test(dateString)) return dateString;
     const date = new Date(dateString + '-01');
-    return date.toLocaleDateString('zh-CN', { year: 'numeric', month: 'short' });
+    return date.toLocaleDateString(language === 'zh' ? 'zh-CN' : 'en-US', { year: 'numeric', month: 'short' });
   };
 
   // 类型标签
@@ -361,9 +255,11 @@ const Timeline: React.FC<TimelineProps> = ({
               </div>
 
               {/* 描述 */}
-              <p className="text-gray-700 dark:text-gray-300 mb-3 leading-relaxed">
-                {item.description}
-              </p>
+              {item.description && (
+                <p className="text-gray-700 dark:text-gray-300 mb-3 leading-relaxed">
+                  {item.description}
+                </p>
+              )}
 
               {/* 元数据 */}
               {item.metadata && (
@@ -428,7 +324,7 @@ const Timeline: React.FC<TimelineProps> = ({
                     rel="noopener noreferrer"
                     className="text-blue-600 dark:text-blue-400 hover:underline text-sm flex items-center gap-1"
                   >
-                    查看详情
+                    {t('research.viewDetails') as string}
                     <ExternalLink className="w-3 h-3" />
                   </a>
                 </div>

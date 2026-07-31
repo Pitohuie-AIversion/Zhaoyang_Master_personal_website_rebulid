@@ -46,6 +46,19 @@ const LazyChatAssistant = React.lazy(() => import('./components/features/chat/Ch
 function AnimatedRoutes() {
   const location = useLocation();
   const { t } = useTranslation();
+  const previousPathRef = React.useRef(location.pathname);
+
+  React.useEffect(() => {
+    if (previousPathRef.current === location.pathname) return;
+    previousPathRef.current = location.pathname;
+
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+    const focusFrame = window.requestAnimationFrame(() => {
+      document.getElementById('main-content')?.focus({ preventScroll: true });
+    });
+
+    return () => window.cancelAnimationFrame(focusFrame);
+  }, [location.pathname]);
 
   return (
     <SmartPageTransition>

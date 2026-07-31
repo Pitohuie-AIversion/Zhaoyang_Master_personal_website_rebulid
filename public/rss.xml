@@ -3,33 +3,30 @@
   <channel>
     <title>牟昭阳 - 个人学术网站</title>
     <link>https://zhaoyang-mou.com</link>
-    <description>个人学术网站最新更新</description>
+    <description>牟昭阳个人学术网站的最新研究成果</description>
     <language>zh-CN</language>
-    <lastBuildDate>2025-11-29T00:00:00Z</lastBuildDate>
+    <lastBuildDate>Fri, 31 Jul 2026 00:00:00 GMT</lastBuildDate>
     <atom:link href="https://zhaoyang-mou.com/rss.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title><![CDATA[DamFormer Paper Published in Physics of Fluids]]></title>
-      <description><![CDATA[Our latest research on dam break simulation using transformer architecture has been published in Physics of Fluids.]]></description>
-      <link>https://zhaoyang-mou.com/publications</link>
-      <guid isPermaLink="true">https://zhaoyang-mou.com/publications</guid>
-      <pubDate>2025-01-15T00:00:00Z</pubDate>
+      <title><![CDATA[Generalizing morphologies in dam break simulations using transformer model]]></title>
+      <description><![CDATA[A Transformer-based study of cross-geometry dam-break flow prediction, published in Physics of Fluids.]]></description>
+      <link>https://pubs.aip.org/aip/pof/article/37/1/016612/3329607/Generalizing-morphologies-in-dam-break-simulations</link>
+      <guid isPermaLink="true">https://pubs.aip.org/aip/pof/article/37/1/016612/3329607/Generalizing-morphologies-in-dam-break-simulations</guid>
       <category>Publication</category>
     </item>
     <item>
-      <title><![CDATA[Rs-ModCubes Paper Accepted by IEEE RA-L]]></title>
-      <description><![CDATA[Our innovative approach to sparse-to-dense field reconstruction has been accepted by IEEE Robotics and Automation Letters.]]></description>
-      <link>https://zhaoyang-mou.com/publications</link>
-      <guid isPermaLink="true">https://zhaoyang-mou.com/publications</guid>
-      <pubDate>2025-01-10T00:00:00Z</pubDate>
+      <title><![CDATA[Rs-ModCubes: Self-reconfigurable, scalable, modular cubic robots for underwater operations]]></title>
+      <description><![CDATA[Research on self-reconfigurable modular cubic robots for underwater operations, published in IEEE Robotics and Automation Letters.]]></description>
+      <link>https://ieeexplore.ieee.org/document/10891552/</link>
+      <guid isPermaLink="true">https://ieeexplore.ieee.org/document/10891552/</guid>
       <category>Publication</category>
     </item>
     <item>
-      <title><![CDATA[New Patent Granted for Underwater Robotics]]></title>
-      <description><![CDATA[A new patent has been granted for our biomimetic underwater propulsion system.]]></description>
-      <link>https://zhaoyang-mou.com/publications</link>
-      <guid isPermaLink="true">https://zhaoyang-mou.com/publications</guid>
-      <pubDate>2024-11-20T00:00:00Z</pubDate>
-      <category>Patent</category>
+      <title><![CDATA[Deep-learning-assisted triboelectric whisker for near field perception and online state estimation of underwater vehicle]]></title>
+      <description><![CDATA[Research on triboelectric whisker sensing for underwater vehicles, published in Nano Energy.]]></description>
+      <link>https://www.sciencedirect.com/science/article/abs/pii/S2211285524007614</link>
+      <guid isPermaLink="true">https://www.sciencedirect.com/science/article/abs/pii/S2211285524007614</guid>
+      <category>Publication</category>
     </item>
   </channel>
 </rss>

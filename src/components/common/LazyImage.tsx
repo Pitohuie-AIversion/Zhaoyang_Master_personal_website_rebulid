@@ -7,6 +7,7 @@ interface LazyImageProps {
   className?: string;
   placeholder?: string;
   blurDataURL?: string;
+  priority?: boolean;
   onLoad?: () => void;
   onError?: () => void;
 }
@@ -17,17 +18,23 @@ const LazyImage: React.FC<LazyImageProps> = ({
   className = '',
   placeholder,
   blurDataURL,
+  priority = false,
   onLoad,
   onError
 }) => {
   const { t } = useTranslation();
   const [isLoaded, setIsLoaded] = useState(false);
-  const [isInView, setIsInView] = useState(false);
+  const [isInView, setIsInView] = useState(priority);
   const [hasError, setHasError] = useState(false);
   const imgRef = useRef<HTMLImageElement>(null);
   const observerRef = useRef<IntersectionObserver | null>(null);
 
   useEffect(() => {
+    if (priority) {
+      setIsInView(true);
+      return;
+    }
+
     const currentRef = imgRef.current;
     
     if (currentRef) {
@@ -50,7 +57,7 @@ const LazyImage: React.FC<LazyImageProps> = ({
     return () => {
       observerRef.current?.disconnect();
     };
-  }, []);
+  }, [priority]);
 
   const handleLoad = () => {
     setIsLoaded(true);
@@ -73,13 +80,15 @@ const LazyImage: React.FC<LazyImageProps> = ({
           {placeholder ? (
             <img
               src={placeholder}
-              alt={t('common.loading')}
+              alt=""
+              aria-hidden="true"
               className="w-full h-full object-cover filter blur-sm"
             />
           ) : (
             <img
               src={defaultPlaceholder}
-              alt={t('common.loading')}
+              alt=""
+              aria-hidden="true"
               className="w-full h-full object-cover"
             />
           )}
@@ -91,6 +100,9 @@ const LazyImage: React.FC<LazyImageProps> = ({
         <img
           src={src}
           alt={alt}
+          loading={priority ? 'eager' : 'lazy'}
+          decoding="async"
+          {...(priority ? { fetchpriority: 'high' } : {})}
           className={`w-full h-full object-cover transition-opacity duration-500 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
           onLoad={handleLoad}
           onError={handleError}

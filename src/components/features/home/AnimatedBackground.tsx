@@ -23,6 +23,8 @@ const AnimatedBackground: React.FC = () => {
 
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
+    const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let prefersReducedMotion = reducedMotionQuery.matches;
 
     const resizeCanvas = () => {
       canvas.width = window.innerWidth;
@@ -127,39 +129,76 @@ const AnimatedBackground: React.FC = () => {
       });
     };
 
-    const animate = () => {
+    const renderFrame = (shouldAdvance: boolean) => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      
-      updateParticles();
+
+      if (shouldAdvance) updateParticles();
       drawConnections();
-      
       particlesRef.current.forEach(drawParticle);
-      
+    };
+
+    const stopAnimation = () => {
+      if (animationRef.current !== undefined) {
+        cancelAnimationFrame(animationRef.current);
+        animationRef.current = undefined;
+      }
+    };
+
+    const animate = () => {
+      renderFrame(true);
       animationRef.current = requestAnimationFrame(animate);
+    };
+
+    const startAnimation = () => {
+      stopAnimation();
+
+      if (document.hidden || prefersReducedMotion) {
+        renderFrame(false);
+        return;
+      }
+
+      animate();
     };
 
     resizeCanvas();
     createParticles();
-    animate();
+    startAnimation();
 
     const handleResize = () => {
       resizeCanvas();
       createParticles();
+      startAnimation();
+    };
+
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        stopAnimation();
+      } else {
+        startAnimation();
+      }
+    };
+
+    const handleReducedMotionChange = (event: MediaQueryListEvent) => {
+      prefersReducedMotion = event.matches;
+      startAnimation();
     };
 
     window.addEventListener('resize', handleResize);
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    reducedMotionQuery.addEventListener('change', handleReducedMotionChange);
 
     return () => {
       window.removeEventListener('resize', handleResize);
-      if (animationRef.current) {
-        cancelAnimationFrame(animationRef.current);
-      }
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+      reducedMotionQuery.removeEventListener('change', handleReducedMotionChange);
+      stopAnimation();
     };
   }, [isDark]);
 
   return (
     <canvas
       ref={canvasRef}
+      aria-hidden="true"
       className="fixed inset-0 -z-10 pointer-events-none"
       style={{
         background: isDark 

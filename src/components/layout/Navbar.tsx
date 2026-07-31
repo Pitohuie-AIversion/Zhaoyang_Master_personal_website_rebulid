@@ -96,6 +96,7 @@ export default function Navbar() {
                 <Link
                   key={item.key}
                   to={item.href}
+                  aria-current={isActive(item.href) ? 'page' : undefined}
                   className={`relative px-2.5 py-2 rounded-lg text-sm font-medium theme-transition group whitespace-nowrap ${
                     isActive(item.href)
                       ? 'text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20'
