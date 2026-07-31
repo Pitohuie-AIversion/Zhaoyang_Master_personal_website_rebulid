@@ -1,4 +1,11 @@
 /* eslint-disable no-useless-escape */
+import {
+  localizeBlogCategory,
+  localizeBlogPost,
+  localizeBlogTag,
+  type BlogLanguage
+} from './blogLocalization';
+
 export interface BlogPost {
   id: string;
   title: string;
@@ -51,6 +58,7 @@ export interface BlogComment {
 }
 
 export interface BlogSearchOptions {
+  language?: BlogLanguage;
   category?: string;
   tag?: string;
   author?: string;
@@ -587,7 +595,8 @@ $$A(x,t) = A_0(x) + \Delta A(x) \cdot f(C_p(x,t))$$
       await this.initialize();
     }
 
-    let filteredPosts = this.posts;
+    const language = options.language || 'zh';
+    let filteredPosts = this.posts.map((post) => localizeBlogPost(post, language));
 
     // 筛选已发布的文章
     if (!options.includeUnpublished) {
@@ -658,7 +667,7 @@ $$A(x,t) = A_0(x) + \Delta A(x) \cdot f(C_p(x,t))$$
   }
 
   // 获取单篇文章
-  async getPostBySlug(slug: string): Promise<BlogPost | null> {
+  async getPostBySlug(slug: string, language: BlogLanguage = 'zh'): Promise<BlogPost | null> {
     if (!this.isInitialized) {
       await this.initialize();
     }
@@ -670,40 +679,65 @@ $$A(x,t) = A_0(x) + \Delta A(x) \cdot f(C_p(x,t))$$
       post.views += 1;
     }
 
-    return post || null;
+    return post ? localizeBlogPost(post, language) : null;
   }
 
   // 获取分类列表
-  async getCategories(): Promise<BlogCategory[]> {
+  async getCategories(language: BlogLanguage = 'zh'): Promise<BlogCategory[]> {
     if (!this.isInitialized) {
       await this.initialize();
     }
 
-    return this.categories;
+    return this.categories.map((category) => {
+      const postCount = this.posts.filter(
+        (post) => post.isPublished && post.category === category.name
+      ).length;
+      return localizeBlogCategory({ ...category, postCount }, language);
+    });
   }
 
   // 获取标签列表
-  async getTags(): Promise<BlogTag[]> {
+  async getTags(language: BlogLanguage = 'zh'): Promise<BlogTag[]> {
     if (!this.isInitialized) {
       await this.initialize();
     }
 
-    return this.tags;
+    const tagNames = [...new Set(
+      this.posts
+        .filter((post) => post.isPublished)
+        .flatMap((post) => post.tags)
+    )];
+
+    return tagNames.map((name, index) => {
+      const configuredTag = this.tags.find((tag) => tag.name === name);
+      const tag: BlogTag = {
+        id: configuredTag?.id || `dynamic-${index + 1}`,
+        name,
+        slug: configuredTag?.slug || `tag-${index + 1}`,
+        postCount: this.posts.filter((post) => post.isPublished && post.tags.includes(name)).length
+      };
+      return localizeBlogTag(tag, language);
+    });
   }
 
   // 获取特色文章
-  async getFeaturedPosts(limit: number = 3): Promise<BlogPost[]> {
+  async getFeaturedPosts(limit: number = 3, language: BlogLanguage = 'zh'): Promise<BlogPost[]> {
     if (!this.isInitialized) {
       await this.initialize();
     }
 
     return this.posts
       .filter(post => post.isPublished && post.isFeatured)
-      .slice(0, limit);
+      .slice(0, limit)
+      .map((post) => localizeBlogPost(post, language));
   }
 
   // 获取相关文章
-  async getRelatedPosts(postId: string, limit: number = 3): Promise<BlogPost[]> {
+  async getRelatedPosts(
+    postId: string,
+    limit: number = 3,
+    language: BlogLanguage = 'zh'
+  ): Promise<BlogPost[]> {
     if (!this.isInitialized) {
       await this.initialize();
     }
@@ -720,7 +754,7 @@ $$A(x,t) = A_0(x) + \Delta A(x) \cdot f(C_p(x,t))$$
       )
       .slice(0, limit);
 
-    return relatedPosts;
+    return relatedPosts.map((post) => localizeBlogPost(post, language));
   }
 
   // 点赞文章
@@ -767,7 +801,11 @@ $$A(x,t) = A_0(x) + \Delta A(x) \cdot f(C_p(x,t))$$
   }
 
   // 按归档日期获取文章
-  async getPostsByArchive(year: number, month?: number): Promise<BlogPost[]> {
+  async getPostsByArchive(
+    year: number,
+    month?: number,
+    language: BlogLanguage = 'zh'
+  ): Promise<BlogPost[]> {
     if (!this.isInitialized) {
       await this.initialize();
     }
@@ -782,7 +820,7 @@ $$A(x,t) = A_0(x) + \Delta A(x) \cdot f(C_p(x,t))$$
       } else {
         return postYear === year && post.isPublished;
       }
-    });
+    }).map((post) => localizeBlogPost(post, language));
   }
 
   // 获取归档信息

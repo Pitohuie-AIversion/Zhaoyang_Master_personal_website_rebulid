@@ -29,7 +29,7 @@ export const BlogList: React.FC<BlogListProps> = ({
   tag,
   className = ''
 }) => {
-  const { t } = useTranslation();
+  const { t, language } = useTranslation();
   const { isMobile: _isMobile } = useResponsive();
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [categories, setCategories] = useState<BlogCategory[]>([]);
@@ -46,6 +46,7 @@ export const BlogList: React.FC<BlogListProps> = ({
     try {
       // 加载博客文章
       const options = {
+        language,
         category: selectedCategory || undefined,
         tag: selectedTag || undefined,
         search: searchQuery || undefined,
@@ -59,8 +60,8 @@ export const BlogList: React.FC<BlogListProps> = ({
 
       // 加载分类和标签
       const [blogCategories, blogTags] = await Promise.all([
-        blogService.getCategories(),
-        blogService.getTags()
+        blogService.getCategories(language),
+        blogService.getTags(language)
       ]);
       
       setCategories(blogCategories);
@@ -70,11 +71,17 @@ export const BlogList: React.FC<BlogListProps> = ({
     } finally {
       setLoading(false);
     }
-  }, [selectedCategory, selectedTag, searchQuery, sortBy, sortOrder, maxPosts]);
+  }, [language, selectedCategory, selectedTag, searchQuery, sortBy, sortOrder, maxPosts]);
 
   useEffect(() => {
     loadData();
-  }, [selectedCategory, selectedTag, searchQuery, sortBy, sortOrder, loadData]);
+  }, [loadData]);
+
+  useEffect(() => {
+    setSelectedCategory('');
+    setSelectedTag('');
+    setSearchQuery('');
+  }, [language]);
 
   const handleLike = async (postId: string) => {
     try {
@@ -88,7 +95,7 @@ export const BlogList: React.FC<BlogListProps> = ({
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
-    return date.toLocaleDateString('zh-CN', {
+    return date.toLocaleDateString(language === 'zh' ? 'zh-CN' : 'en-US', {
       year: 'numeric',
       month: 'long',
       day: 'numeric'

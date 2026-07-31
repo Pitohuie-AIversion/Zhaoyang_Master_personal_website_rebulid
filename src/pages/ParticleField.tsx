@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { ParticleField as ParticleFieldComponent } from '../components/ParticleField/ParticleField';
 import { ParticleFieldConfig } from '../utils/configManager';
 import { PerformanceMetrics } from '../utils/performanceMonitor';
-import { Settings, Play, Monitor, Palette } from 'lucide-react';
+import { Play, Monitor, Palette } from 'lucide-react';
 import { useTranslation } from '../components/common/TranslationProvider';
 
 const ParticleField: React.FC = () => {
@@ -39,62 +39,14 @@ const ParticleField: React.FC = () => {
       
       {/* 内容覆盖层 */}
       <div className="relative z-10 min-h-screen flex flex-col">
-        {/* 顶部导航栏 */}
-        <nav className="p-6 bg-black/20 backdrop-blur-sm border-b border-white/10">
-          <div className="max-w-7xl mx-auto flex items-center justify-between">
-            <div className="flex items-center space-x-4">
-              <Link 
-                to="/" 
-                className="text-white/80 hover:text-white transition-colors duration-200"
-              >
-                ← {t('particleField.backToHome')}
-              </Link>
-              <div className="w-px h-6 bg-white/20"></div>
-              <h1 className="text-2xl font-bold text-white">
-                {t('particleField.title')}
-              </h1>
-            </div>
-            
-            <div className="flex items-center space-x-3">
-              <button
-                onClick={toggleStats}
-                className={`p-2 rounded-lg transition-all duration-200 ${
-                  showStats 
-                    ? 'bg-blue-500/30 text-blue-300 border border-blue-400/30' 
-                    : 'bg-white/10 text-white/70 hover:bg-white/20 hover:text-white'
-                }`}
-                title={t('particleField.toggleStats')}
-              >
-                <Monitor className="w-5 h-5" />
-              </button>
-              
-              <Link
-                to="/particle-field/demo"
-                className="px-4 py-2 bg-blue-500/20 text-blue-300 rounded-lg border border-blue-400/30 hover:bg-blue-500/30 transition-all duration-200"
-              >
-                <Play className="w-4 h-4 inline mr-2" />
-                {t('particleField.demo')}
-              </Link>
-              
-              <Link
-                to="/particle-field/settings"
-                className="px-4 py-2 bg-purple-500/20 text-purple-300 rounded-lg border border-purple-400/30 hover:bg-purple-500/30 transition-all duration-200"
-              >
-                <Settings className="w-4 h-4 inline mr-2" />
-                {t('particleField.settings')}
-              </Link>
-            </div>
-          </div>
-        </nav>
-        
         {/* 主要内容区域 */}
-        <main className="flex-1 flex items-center justify-center p-6">
+        <div className="flex-1 flex items-center justify-center p-6 pt-12">
           <div className="max-w-4xl mx-auto text-center">
             {/* 标题区域 */}
             <div className="mb-12">
-              <h2 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
+              <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
                 {t('particleField.mainTitle')}
-              </h2>
+              </h1>
               <p className="text-xl md:text-2xl text-white/80 mb-8 leading-relaxed">
                 {t('particleField.description')}
               </p>
@@ -135,6 +87,16 @@ const ParticleField: React.FC = () => {
                 <Palette className="w-5 h-5 inline mr-2" />
                 {t('particleField.customize')}
               </Link>
+
+              <button
+                type="button"
+                onClick={toggleStats}
+                aria-pressed={showStats}
+                className="px-8 py-4 bg-white/10 text-white rounded-xl font-semibold text-lg hover:bg-white/20 transition-all duration-300 backdrop-blur-sm border border-white/20 hover:border-white/40"
+              >
+                <Monitor className="w-5 h-5 inline mr-2" />
+                {t('particleField.toggleStats')}
+              </button>
             </div>
             
             {/* 技术说明 */}
@@ -182,7 +144,7 @@ const ParticleField: React.FC = () => {
               </div>
             </div>
           </div>
-        </main>
+        </div>
         
         {/* 性能统计面板 */}
         {showStats && metrics && (

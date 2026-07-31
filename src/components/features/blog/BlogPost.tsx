@@ -36,7 +36,7 @@ interface CommentFormData {
 const BlogPost: React.FC<BlogPostProps> = ({ className = '' }) => {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
-  const { t } = useTranslation();
+  const { t, language } = useTranslation();
 
   const [post, setPost] = useState<BlogPostType | null>(null);
   const [comments, setComments] = useState<BlogComment[]>([]);
@@ -56,7 +56,7 @@ const BlogPost: React.FC<BlogPostProps> = ({ className = '' }) => {
       setLoading(true);
 
       // 加载文章
-      const blogPost = await blogService.getPostBySlug(postSlug);
+      const blogPost = await blogService.getPostBySlug(postSlug, language);
       if (!blogPost) {
         navigate('/blog');
         return;
@@ -69,7 +69,7 @@ const BlogPost: React.FC<BlogPostProps> = ({ className = '' }) => {
       setComments(postComments);
 
       // 加载相关文章
-      const related = await blogService.getRelatedPosts(blogPost.id, 3);
+      const related = await blogService.getRelatedPosts(blogPost.id, 3, language);
       setRelatedPosts(related);
 
     } catch (error) {
@@ -78,7 +78,7 @@ const BlogPost: React.FC<BlogPostProps> = ({ className = '' }) => {
     } finally {
       setLoading(false);
     }
-  }, [navigate]);
+  }, [language, navigate]);
 
   useEffect(() => {
     if (slug) {
@@ -160,7 +160,7 @@ const BlogPost: React.FC<BlogPostProps> = ({ className = '' }) => {
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
-    return date.toLocaleDateString('zh-CN', {
+    return date.toLocaleDateString(language === 'zh' ? 'zh-CN' : 'en-US', {
       year: 'numeric',
       month: 'long',
       day: 'numeric'
@@ -170,12 +170,16 @@ const BlogPost: React.FC<BlogPostProps> = ({ className = '' }) => {
   const getCategoryColor = (categoryName: string) => {
     const colorMap: Record<string, string> = {
       '学术研究': 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200',
+      'Academic Research': 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200',
       '项目开发': 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200',
+      'Project Development': 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200',
       '技术思考': 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200',
-      '学习笔记': 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200'
+      'Technical Perspectives': 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200',
+      '学习笔记': 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200',
+      'Learning Notes': 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200'
     };
 
-    return colorMap[categoryName] || colorMap.blue;
+    return colorMap[categoryName] || colorMap['学术研究'];
   };
 
   const renderMarkdown = (content: string) => {
@@ -183,7 +187,7 @@ const BlogPost: React.FC<BlogPostProps> = ({ className = '' }) => {
     const rawHtml = content
       .replace(/^### (.*$)/gim, '<h3 class="text-lg font-semibold mt-4 mb-2">$1</h3>')
       .replace(/^## (.*$)/gim, '<h2 class="text-xl font-bold mt-6 mb-3">$1</h2>')
-      .replace(/^# (.*$)/gim, '<h1 class="text-2xl font-bold mt-8 mb-4">$1</h1>')
+      .replace(/^# (.*$)/gim, '<h2 class="text-2xl font-bold mt-8 mb-4">$1</h2>')
       .replace(/\*\*(.+?)\*\*/g, '<strong class="font-bold">$1</strong>')
       .replace(/\*(.+?)\*/g, '<em class="italic">$1</em>')
       .replace(/\n\n/g, '</p><p class="mb-4">')

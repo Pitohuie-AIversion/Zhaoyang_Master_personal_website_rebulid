@@ -4,15 +4,12 @@ import tsconfigPaths from "vite-tsconfig-paths";
 import { VitePWA } from 'vite-plugin-pwa';
 
 // https://vite.dev/config/
-export default defineConfig({
+export default defineConfig(({ command, mode }) => {
+  const isDevelopment = command === 'serve' && mode === 'development';
+
+  return {
   plugins: [
-    react({
-      babel: {
-        plugins: [
-          'react-dev-locator',
-        ],
-      },
-    }),
+    react(),
     tsconfigPaths(),
     VitePWA({
       registerType: 'autoUpdate',
@@ -80,7 +77,7 @@ export default defineConfig({
     // 新增：启用构建分析
     reportCompressedSize: true,
     // 安全：生产环境禁用sourcemap，开发环境启用
-    sourcemap: process.env.NODE_ENV !== 'production'
+    sourcemap: isDevelopment
   },
   // 优化依赖预构建
   optimizeDeps: {
@@ -116,4 +113,5 @@ export default defineConfig({
       ]
     }
   }
+}
 })

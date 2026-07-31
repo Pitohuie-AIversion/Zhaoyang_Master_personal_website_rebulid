@@ -184,7 +184,7 @@ function App() {
           <GoogleAnalytics />
           <AccessibilityManager>
             <ThemeTransition>
-              <div className="min-h-screen relative theme-transition" id="main-content">
+              <div className="min-h-screen relative theme-transition">
                 {/* 动态背景 */}
                 <AnimatedBackground />
 
@@ -196,7 +196,9 @@ function App() {
                 {/* 性能监控已简化 */}
                 {/* HeaderASCII 已移动到 Navbar 中 */}
                 <Navbar />
-                <AnimatedRoutes />
+                <main id="main-content" tabIndex={-1}>
+                  <AnimatedRoutes />
+                </main>
                 <Footer />
 
                 {/* 聊天助手 */}

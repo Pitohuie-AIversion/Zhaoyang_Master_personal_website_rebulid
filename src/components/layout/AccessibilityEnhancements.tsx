@@ -225,7 +225,7 @@ export const AccessibilityButton: React.FC<{
   className?: string;
   variant?: 'compact' | 'full';
   showText?: boolean;
-}> = ({ className = '', showText = false }) => {
+}> = ({ className = '', variant = 'compact', showText = false }) => {
   const { config, updateConfig, speakText, stopSpeaking, isSpeaking } = useAccessibility();
   const [isOpen, setIsOpen] = useState(false);
   const { t } = useTranslation();
@@ -251,7 +251,7 @@ export const AccessibilityButton: React.FC<{
   };
   
   return (
-    <div className={`relative ${className}`}>
+    <div className={`${variant === 'compact' ? 'relative' : ''} ${className}`}>
       <button
         onClick={() => setIsOpen(!isOpen)}
         aria-label={t('common.aria.accessibilitySettings') as string}
@@ -263,7 +263,9 @@ export const AccessibilityButton: React.FC<{
       </button>
       
       {isOpen && (
-        <div className="absolute top-12 right-0 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 shadow-xl min-w-80 z-50">
+        <div className={`absolute z-50 w-[min(20rem,calc(100vw-2rem))] rounded-xl border border-gray-200 bg-white p-4 shadow-xl dark:border-gray-700 dark:bg-gray-800 ${
+          variant === 'full' ? 'bottom-12 right-0' : 'top-12 right-0'
+        }`}>
           <h3 className="font-semibold mb-4 text-gray-900 dark:text-gray-100 flex items-center">
             <Eye className="w-4 h-4 mr-2" />
             {t('common.accessibilityLabels.settingsTitle') as string}
@@ -420,7 +422,7 @@ export const AccessibilityButton: React.FC<{
 
 // 保留原有的 AccessibilityToolbar 组件以保持向后兼容
 export const AccessibilityToolbar: React.FC<{ className?: string }> = ({ className = '' }) => {
-  return <AccessibilityButton className={`fixed top-20 left-4 z-40 ${className}`} variant="full" />;
+  return <AccessibilityButton className={`fixed bottom-24 right-6 z-40 ${className}`} variant="full" />;
 };
 
 // 可访问的按钮组件

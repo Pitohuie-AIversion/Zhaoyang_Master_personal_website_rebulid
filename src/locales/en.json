@@ -5,24 +5,24 @@
       "description": "The page you are looking for does not exist or has been moved.",
       "backHome": "Back to Home"
     },
-    "loading": "loading",
-    "skipToMain": "skip To Main",
+    "loading": "Loading…",
+    "skipToMain": "Skip to main content",
     "aria": {
-      "themeToggleLight": "theme Toggle Light",
-      "themeToggleDark": "theme Toggle Dark",
-      "chooseTheme": "choose Theme",
-      "closeMenu": "close Menu",
-      "backToTop": "back To Top",
-      "clearSearch": "clear Search",
-      "accessibilitySettings": "accessibility Settings",
-      "socialLinks": "social Links",
-      "visitSocial": "visit Social"
+      "themeToggleLight": "Switch to light mode",
+      "themeToggleDark": "Switch to dark mode",
+      "chooseTheme": "Choose theme",
+      "closeMenu": "Close menu",
+      "backToTop": "Back to top",
+      "clearSearch": "Clear search",
+      "accessibilitySettings": "Accessibility settings",
+      "socialLinks": "Social links",
+      "visitSocial": "Visit social profile"
     },
-    "noData": "no Data",
-    "error": "error",
-    "menu": "menu",
-    "close": "close",
-    "logoAlt": "logo Alt",
+    "noData": "No data",
+    "error": "Something went wrong",
+    "menu": "Open menu",
+    "close": "Close",
+    "logoAlt": "Zhaoyang Mu website logo",
     "shareCancelled": "share Cancelled",
     "linkCopied": "link Copied",
     "backToTop": "back To Top",
@@ -31,18 +31,18 @@
     "readingMode": "reading Mode",
     "share": "share",
     "accessibilityLabels": {
-      "reducedMotion": "reduced Motion",
-      "highContrast": "high Contrast",
-      "largeText": "large Text",
-      "screenReader": "screen Reader",
-      "keyboardNavigation": "keyboard Navigation",
-      "focusVisible": "focus Visible",
-      "colorBlindFriendly": "color Blind Friendly",
-      "textToSpeech": "text To Speech",
-      "settingsTitle": "settings Title",
-      "readHelpMessage": "read Help Message",
-      "stopReading": "stop Reading",
-      "readDescription": "read Description"
+      "reducedMotion": "Reduce motion",
+      "highContrast": "High contrast",
+      "largeText": "Large text",
+      "screenReader": "Screen reader",
+      "keyboardNavigation": "Keyboard navigation",
+      "focusVisible": "Visible focus",
+      "colorBlindFriendly": "Color-vision friendly",
+      "textToSpeech": "Text to speech",
+      "settingsTitle": "Accessibility settings",
+      "readHelpMessage": "Read accessibility help",
+      "stopReading": "Stop reading",
+      "readDescription": "Read description"
     },
     "autoScroll": "auto Scroll",
     "keyboard": {
@@ -66,6 +66,15 @@
       "defaultHelp": "default Help"
     },
     "relatedLinks": "related Links",
+    "adminAuth": {
+      "title": "Admin Access",
+      "contactDescription": "Enter the ADMIN_TOKEN to view contact messages.",
+      "resumeDescription": "Enter the ADMIN_TOKEN to manage resume data.",
+      "tokenRequired": "Admin token is required.",
+      "tokenInvalid": "Admin token is invalid or the server is not configured.",
+      "unlock": "Unlock",
+      "lock": "Lock"
+    },
     "resume": {
       "upload": {
         "pdfOnly": "pdf Only",
@@ -137,20 +146,20 @@
     "tryDifferentKeywords": "try Different Keywords",
     "searchSuggestions": "search Suggestions",
     "clearAllFilters": "clear All Filters",
-    "sortBy": "sort By",
+    "sortBy": "Sort by",
     "activeFilters": "active Filters",
     "clearAll": "clear All",
-    "open": "open",
-    "accessibility": "accessibility",
+    "open": "Open",
+    "accessibility": "Accessibility",
     "languageOptions": {
-      "switchToEnglish": "switch To English",
-      "switchToChinese": "switch To Chinese",
-      "englishShort": "english Short",
-      "chineseShort": "chinese Short",
-      "chinese": "chinese",
-      "english": "english"
+      "switchToEnglish": "Switch to English",
+      "switchToChinese": "Switch to Chinese",
+      "englishShort": "EN",
+      "chineseShort": "中",
+      "chinese": "中文",
+      "english": "English"
     },
-    "search": "search",
+    "search": "Search",
     "breadcrumb": {
       "home": "home",
       "research": "research",
@@ -159,9 +168,9 @@
       "skills": "skills",
       "contact": "contact"
     },
-    "settings": "settings",
-    "viewAll": "view All",
-    "readMore": "read More",
+    "settings": "Settings",
+    "viewAll": "View all",
+    "readMore": "Read more",
     "technologies": {
       "bionics": "bionics",
       "underwaterRobot": "underwater Robot",
@@ -2160,14 +2169,14 @@
       "r": "R - Reset",
       "f": "F - Toggle Fullscreen",
       "esc": "Esc - Exit Fullscreen",
-      "playPause": "play Pause",
-      "reset": "reset",
-      "stats": "stats",
-      "presets": "presets",
-      "fullscreen": "fullscreen",
-      "info": "info",
-      "mouse": "mouse",
-      "interact": "interact"
+      "playPause": "Play / pause",
+      "reset": "Reset system",
+      "stats": "Performance stats",
+      "presets": "Preset panel",
+      "fullscreen": "Toggle fullscreen",
+      "info": "Information panel",
+      "mouse": "Mouse",
+      "interact": "Interactive control"
     },
     "backToMain": "Back to Main",
     "backToHome": "Back to Home",
@@ -2241,7 +2250,7 @@
       "optimization": "Performance monitoring and adaptive quality control",
       "interaction": "Multi-platform input handling (mouse, touch, keyboard)",
       "effects": "Real-time post-processing pipeline",
-      "shaders": "着色器程序"
+      "shaders": "Shader programs"
     },
     "status": {
       "loading": "Loading particle system...",
@@ -2259,7 +2268,7 @@
       "presetSaved": "Preset saved successfully",
       "presetDeleted": "Preset deleted successfully"
     },
-    "demoMode": "demo Mode"
+    "demoMode": "Demo Mode"
   },
   "blog": {
     "title": "Academic Blog",
@@ -2839,7 +2848,7 @@
     "sortByType": "sort By Type",
     "sortByTitle": "sort By Title",
     "noItems": "no Items",
-    "loadMore": "load More"
+    "loadMore": "Load more"
   },
   "resume": {
     "validationSuccess": "validation Success",
@@ -2847,79 +2856,109 @@
     "validationError": "validation Error"
   },
   "ascii": {
-    "title": "title",
-    "displayMode": "display Mode",
+    "title": "ASCII Rhythm Lab",
+    "displayMode": "Display mode",
     "display": {
-      "staticText": "static Text",
-      "rhythmEffect": "rhythm Effect"
+      "staticText": "Static text",
+      "rhythmEffect": "Rhythm effect"
     },
     "theme": {
-      "title": "title",
-      "matrix": "matrix",
-      "cyber": "cyber",
-      "neon": "neon",
-      "rainbow": "rainbow"
+      "title": "Color theme",
+      "matrix": "Matrix green",
+      "cyber": "Cyber blue",
+      "neon": "Neon purple",
+      "rainbow": "Rainbow"
     },
     "rhythm": {
-      "title": "title",
+      "title": "Rhythm type",
       "heartbeat": {
-        "label": "label"
+        "label": "Heartbeat",
+        "desc": "A pulse inspired by a heartbeat"
       },
       "wave": {
-        "label": "label"
+        "label": "Wave",
+        "desc": "A flowing wave across the text"
       },
       "pulse": {
-        "label": "label"
+        "label": "Pulse",
+        "desc": "A steady full-line pulse"
       },
       "glitch": {
-        "label": "label"
+        "label": "Glitch",
+        "desc": "A randomized digital glitch"
       }
     },
     "animation": {
-      "title": "title"
+      "title": "Animation type",
+      "typewriter": {
+        "label": "Typewriter",
+        "desc": "Reveal the text one character at a time"
+      },
+      "wave": {
+        "label": "Wave",
+        "desc": "Move the characters in a wave"
+      },
+      "pulse": {
+        "label": "Pulse",
+        "desc": "Pulse the complete line"
+      },
+      "glitch": {
+        "label": "Glitch",
+        "desc": "Distort individual characters"
+      }
     },
     "intensity": {
-      "title": "title",
-      "low": "low",
-      "medium": "medium",
-      "high": "high"
+      "title": "Effect intensity",
+      "low": "Low",
+      "medium": "Medium",
+      "high": "High"
     },
     "size": {
-      "title": "title",
-      "small": "small",
-      "medium": "medium",
-      "large": "large"
+      "title": "Display size",
+      "small": "Small",
+      "medium": "Medium",
+      "large": "Large"
     },
     "typewriter": {
-      "speedLabel": "speed Label"
+      "speedLabel": "Typing speed"
+    },
+    "controls": {
+      "play": "Play",
+      "pause": "Pause",
+      "reset": "Reset"
+    },
+    "status": {
+      "theme": "Theme",
+      "rhythm": "Rhythm",
+      "intensity": "Intensity"
     },
     "docs": {
-      "title": "title",
+      "title": "Guide",
       "display": {
-        "title": "title",
-        "static": "static",
-        "rhythm": "rhythm"
+        "title": "Display modes",
+        "static": "Show fixed ASCII text",
+        "rhythm": "Animate the text with the selected rhythm"
       },
       "theme": {
-        "title": "title",
-        "matrix": "matrix",
-        "cyber": "cyber",
-        "neon": "neon",
-        "rainbow": "rainbow"
+        "title": "Color themes",
+        "matrix": "Classic matrix green",
+        "cyber": "Electric cyber blue",
+        "neon": "Vivid neon purple",
+        "rainbow": "Animated rainbow gradient"
       },
       "rhythm": {
-        "title": "title",
-        "heartbeat": "heartbeat",
-        "wave": "wave",
-        "pulse": "pulse",
-        "glitch": "glitch"
+        "title": "Rhythm effects",
+        "heartbeat": "Heartbeat-inspired pulse",
+        "wave": "Flowing wave motion",
+        "pulse": "Steady pulse effect",
+        "glitch": "Random digital glitches"
       },
       "tech": {
-        "title": "title",
-        "canvas": "canvas",
-        "responsive": "responsive",
-        "controls": "controls",
-        "effects": "effects"
+        "title": "Technical highlights",
+        "canvas": "High-performance rendering",
+        "responsive": "Responsive layout",
+        "controls": "Real-time controls",
+        "effects": "Multiple visual effects"
       }
     }
   },

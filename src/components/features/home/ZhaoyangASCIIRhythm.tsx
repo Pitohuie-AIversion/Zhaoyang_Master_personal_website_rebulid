@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
+import { useTranslation } from '../../common/TranslationProvider';
 
 interface ZhaoyangASCIIRhythmProps {
   theme?: 'matrix' | 'cyber' | 'neon' | 'rainbow';
@@ -92,6 +93,7 @@ const ZhaoyangASCIIRhythm: React.FC<ZhaoyangASCIIRhythmProps> = ({
   className = '',
   transparent = false
 }) => {
+  const { t } = useTranslation();
   const [isPlaying, setIsPlaying] = useState(autoPlay);
   const [characterStates, setCharacterStates] = useState<CharacterState[][]>([]);
   const animationRef = useRef<number | null>(null);
@@ -450,10 +452,10 @@ const ZhaoyangASCIIRhythm: React.FC<ZhaoyangASCIIRhythmProps> = ({
       {showControls && (
         <div className="controls">
           <button className="control-btn" onClick={togglePlayback}>
-            {isPlaying ? '⏸️ 暂停' : '▶️ 播放'}
+            {isPlaying ? `⏸️ ${t('ascii.controls.pause')}` : `▶️ ${t('ascii.controls.play')}`}
           </button>
           <button className="control-btn" onClick={resetAnimation}>
-            🔄 重置
+            🔄 {t('ascii.controls.reset')}
           </button>
         </div>
       )}
@@ -461,7 +463,7 @@ const ZhaoyangASCIIRhythm: React.FC<ZhaoyangASCIIRhythmProps> = ({
       {/* 开发环境下的调试信息 - 生产环境中隐藏 */}
       {process.env.NODE_ENV === 'development' && (
         <div className="rhythm-info">
-          主题: {theme} | 律动: {rhythmType} | 强度: {intensity}
+          {t('ascii.status.theme')}: {theme} | {t('ascii.status.rhythm')}: {rhythmType} | {t('ascii.status.intensity')}: {intensity}
         </div>
       )}
     </div>

@@ -184,6 +184,17 @@ export const SmartSearch: React.FC<SmartSearchProps> = ({
     return () => document.removeEventListener('keydown', handleKeyDown);
   }, [onClose]);
 
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [isOpen]);
+
   if (!isOpen) return null;
 
   const getResultIcon = (type: SearchResult['type']) => {
@@ -211,7 +222,12 @@ export const SmartSearch: React.FC<SmartSearchProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto">
+    <div
+      className="fixed inset-0 z-[80] overflow-y-auto"
+      role="dialog"
+      aria-modal="true"
+      aria-label={t('common.search') as string}
+    >
       {/* 背景遮罩 */}
       <div
         className="fixed inset-0 bg-black bg-opacity-50 transition-opacity"

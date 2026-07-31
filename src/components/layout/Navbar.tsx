@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Search } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -6,12 +6,11 @@ import { ThemeToggle } from '../common/DarkModeProvider';
 import { LanguageToggle } from './LanguageToggle';
 import { UnifiedButton } from '../common/UnifiedButton';
 import { AccessibilityButton } from './AccessibilityEnhancements';
-import { Home, Microscope, Briefcase, FileText, Wrench, Mail, Terminal, BookOpen, FileText as ResumeIcon } from 'lucide-react';
-import { useResponsive, MobileMenu } from '../common/ResponsiveEnhancements';
+import { Home, Microscope, Briefcase, FileText, Wrench, Mail, Terminal, BookOpen } from 'lucide-react';
+import { MobileMenu } from '../common/ResponsiveEnhancements';
 import { useTranslation } from '../common/TranslationProvider';
 import { SmartSearch } from '../features/search/SmartSearch';
 import { useGlobalSearchShortcut } from '../../hooks/useKeyboardShortcut';
-import ZhaoyangASCIIRhythm from '../features/home/ZhaoyangASCIIRhythm';
 
 // 导航项配置（使用翻译键）
 const navigationConfig = [
@@ -22,8 +21,7 @@ const navigationConfig = [
   { key: 'navigation.blog', href: '/blog', icon: BookOpen },
   { key: 'navigation.skills', href: '/skills', icon: Wrench },
   { key: 'navigation.contact', href: '/contact', icon: Mail },
-  { key: 'navigation.ascii-demo', href: '/ascii-demo', icon: Terminal },
-  { key: 'navigation.resume-manager', href: '/resume-manager', icon: ResumeIcon }
+  { key: 'navigation.ascii-demo', href: '/ascii-demo', icon: Terminal }
 ];
 
 export default function Navbar() {
@@ -31,7 +29,6 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const location = useLocation();
-  const { isMobile, isTablet } = useResponsive();
   const { t } = useTranslation();
   
   // 全局搜索快捷键
@@ -70,88 +67,42 @@ export default function Navbar() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6 }}
-      className={`fixed left-0 right-0 z-50 transition-all duration-300 top-0 pointer-events-auto ${
+      className={`fixed left-0 right-0 z-[70] transition-all duration-300 top-0 pointer-events-auto ${
         scrolled
-          ? 'navbar-dark border-b border-primary-dark theme-transition'
-          : 'bg-transparent'
+          ? 'bg-white/95 dark:bg-gray-950/95 border-b border-gray-200/80 dark:border-gray-800 shadow-sm backdrop-blur-xl'
+          : 'bg-white/75 dark:bg-gray-950/70 border-b border-transparent backdrop-blur-lg'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="flex items-center justify-between h-14">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link
             to="/"
-            className="flex items-center space-x-2 group flex-shrink-0"
+            className="flex items-center gap-2.5 group flex-shrink-0 rounded-lg focus-visible:outline-none"
           >
-            <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
+            <div className="w-9 h-9 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-xl flex items-center justify-center shadow-sm shadow-blue-600/20 transition-transform group-hover:-rotate-3">
               <img src="/favicon.svg" alt={t('common.logoAlt')} className="w-full h-full object-contain" />
             </div>
-            {/* ASCII Logo for different screen sizes */}
-            <div className="hidden lg:block">
-              <div className="h-10 flex items-center overflow-hidden max-w-[140px]">
-                <div 
-                  className="transform-gpu"
-                  style={{
-                    transform: 'scale(0.2)',
-                    transformOrigin: 'left center'
-                  }}
-                >
-                  <ZhaoyangASCIIRhythm 
-                    theme="matrix"
-                    rhythmType="pulse"
-                    intensity="low"
-                    autoPlay={true}
-                    showControls={false}
-                    transparent={true}
-                    className="opacity-85"
-                  />
-                </div>
-              </div>
-            </div>
-            {/* Simplified ASCII for tablet */}
-            <div className="hidden sm:block lg:hidden">
-              <div className="h-8 flex items-center overflow-hidden max-w-[200px]">
-                <div 
-                  className="transform-gpu"
-                  style={{
-                    transform: 'scale(0.15)',
-                    transformOrigin: 'left center'
-                  }}
-                >
-                  <ZhaoyangASCIIRhythm 
-                    theme="matrix"
-                    rhythmType="pulse"
-                    intensity="low"
-                    autoPlay={true}
-                    showControls={false}
-                    transparent={true}
-                    className="opacity-80"
-                  />
-                </div>
-              </div>
-            </div>
-            {/* Text fallback for mobile */}
-            <div className="block sm:hidden">
-              <div className="text-lg font-semibold text-primary-dark theme-transition">{t('home.hero.name') as string}</div>
+            <div className="hidden sm:block leading-tight">
+              <div className="text-sm font-bold tracking-tight text-primary-dark theme-transition">Zhaoyang Mu</div>
+              <div className="text-[11px] text-tertiary-dark theme-transition">{t('home.hero.name') as string}</div>
             </div>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-1 flex-1 justify-center">
+          <div className="hidden xl:flex items-center space-x-0.5 flex-1 justify-center">
             {navigation.map((item) => {
-              const IconComponent = item.icon;
               return (
                 <Link
                   key={item.key}
                   to={item.href}
-                  className={`relative px-3 py-2 rounded-md text-sm font-medium theme-transition group ${
+                  className={`relative px-2.5 py-2 rounded-lg text-sm font-medium theme-transition group whitespace-nowrap ${
                     isActive(item.href)
                       ? 'text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20'
                       : 'text-secondary-dark hover:text-primary-dark hover:bg-gray-100 dark:hover:bg-gray-700'
                   }`}
                 >
                   <span className="flex items-center space-x-2">
-                    <IconComponent className="w-4 h-4" />
                     <span>{item.name}</span>
                   </span>
                 </Link>
@@ -166,23 +117,24 @@ export default function Navbar() {
                 size="sm"
                 icon={<Search className="w-4 h-4" />}
                 onClick={() => setIsSearchOpen(true)}
-              title={t('common.search')}
+                title={t('common.search')}
+                ariaLabel={t('common.search')}
                 className="hidden sm:flex"
               />
             <LanguageToggle variant="compact" showText={false} />
-            <AccessibilityButton variant="compact" showText={false} />
+            <div className="hidden md:block">
+              <AccessibilityButton variant="compact" showText={false} />
+            </div>
             <ThemeToggle />
-            {(isMobile || isTablet) && (
-              <UnifiedButton
-                variant="ghost"
-                size="sm"
-                onClick={() => setIsOpen(!isOpen)}
-                aria-label={t('common.menu')}
-                className="p-2 w-10 h-10 flex items-center justify-center"
-              >
-                {isOpen ? <X size={20} /> : <Menu size={20} />}
-              </UnifiedButton>
-            )}
+            <UnifiedButton
+              variant="ghost"
+              size="sm"
+              onClick={() => setIsOpen(!isOpen)}
+              ariaLabel={t('common.menu')}
+              className="p-2 w-10 h-10 flex items-center justify-center xl:hidden"
+            >
+              {isOpen ? <X size={20} /> : <Menu size={20} />}
+            </UnifiedButton>
           </div>
         </div>
       </div>

@@ -56,6 +56,7 @@ export const LanguageToggle: React.FC<LanguageToggleProps> = ({
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
       title={language === 'zh' ? (t('common.languageOptions.switchToEnglish') as string) : (t('common.languageOptions.switchToChinese') as string)}
+      aria-label={language === 'zh' ? (t('common.languageOptions.switchToEnglish') as string) : (t('common.languageOptions.switchToChinese') as string)}
     >
       {/* 背景动画 */}
       <motion.div
