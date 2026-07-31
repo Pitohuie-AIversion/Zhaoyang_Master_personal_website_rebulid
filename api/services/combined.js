@@ -101,7 +101,7 @@ export class ResumeSyncService {
         const filePath = path.join(resumeDir, filename);
         const stats = fs.statSync(filePath);
         
-        const { data, error } = await this.supabase
+        const { error } = await this.supabase
           .from('resume_files')
           .upsert({
             filename,
@@ -168,7 +168,7 @@ export class SecureKeyManager {
    */
   encryptApiKey(apiKey) {
     const iv = crypto.randomBytes(16);
-    const cipher = crypto.createCipher('aes-256-cbc', this.encryptionKey);
+    const cipher = crypto.createCipheriv('aes-256-cbc', this.encryptionKey, iv);
     let encrypted = cipher.update(apiKey, 'utf8', 'hex');
     encrypted += cipher.final('hex');
     return iv.toString('hex') + ':' + encrypted;
@@ -180,7 +180,7 @@ export class SecureKeyManager {
   decryptApiKey(encryptedKey) {
     const [ivHex, encrypted] = encryptedKey.split(':');
     const iv = Buffer.from(ivHex, 'hex');
-    const decipher = crypto.createDecipher('aes-256-cbc', this.encryptionKey);
+    const decipher = crypto.createDecipheriv('aes-256-cbc', this.encryptionKey, iv);
     let decrypted = decipher.update(encrypted, 'hex', 'utf8');
     decrypted += decipher.final('utf8');
     return decrypted;
@@ -355,7 +355,7 @@ export class SecurityLogger {
     try {
       if (!supabase) return;
 
-      const { data, error } = await supabase
+      const { error } = await supabase
         .from('security_logs')
         .insert([{
           ip_address: req.ip || req.connection.remoteAddress,

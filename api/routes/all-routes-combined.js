@@ -3,10 +3,42 @@ import rateLimit from 'express-rate-limit';
 import { createClient } from '@supabase/supabase-js';
 import OpenAI from 'openai';
 import multer from 'multer';
+import crypto from 'crypto';
 import { SecureKeyManager, utils } from '../utils/combined.js';
 import resumeRoutes from './resume-routes.js'; // Import separated resume routes
 
 const router = express.Router();
+const CONTACT_TABLE = 'contact_messages';
+const USE_LOCAL_PROXY = process.env.NODE_ENV !== 'production' && process.env.USE_LOCAL_PROXY === 'true';
+
+function isValidAdminToken(token) {
+  const expectedToken = process.env.ADMIN_TOKEN;
+  if (!expectedToken || !token) return false;
+
+  const expected = Buffer.from(expectedToken);
+  const actual = Buffer.from(token);
+  return expected.length === actual.length && crypto.timingSafeEqual(expected, actual);
+}
+
+function requireAdmin(req, res, next) {
+  if (!process.env.ADMIN_TOKEN) {
+    return res.status(503).json({
+      error: 'Admin access is not configured',
+      code: 'ADMIN_NOT_CONFIGURED'
+    });
+  }
+
+  const authHeader = req.get('Authorization') || '';
+  const [scheme, token] = authHeader.split(' ');
+  if (scheme !== 'Bearer' || !isValidAdminToken(token)) {
+    return res.status(401).json({
+      error: 'Admin authorization required',
+      code: 'ADMIN_AUTH_REQUIRED'
+    });
+  }
+
+  return next();
+}
 
 // 全局初始化
 let supabase = null;
@@ -27,8 +59,8 @@ try {
   console.error('❌ Failed to initialize global services:', error.message);
 }
 
-// Pass supabase to resume routes
-router.use('/resume', (req, res, next) => {
+// Pass supabase to protected resume routes
+router.use('/resume', requireAdmin, (req, res, next) => {
   req.supabase = supabase;
   next();
 }, resumeRoutes);
@@ -46,16 +78,20 @@ async function initializeOpenAI() {
     const openaiKey = await keyManager.getApiKey('openai_api_key');
     if (openaiKey && openaiKey !== 'your-openai-api-key-here') {
       // 使用代理配置
-      const { HttpsProxyAgent } = await import('https-proxy-agent');
-      const proxyAgent = new HttpsProxyAgent('http://127.0.0.1:59010');
-      
-      openai = new OpenAI({ 
+      const openaiOptions = {
         apiKey: openaiKey,
         timeout: 30000,
-        maxRetries: 2,
-        httpAgent: proxyAgent,
-        httpsAgent: proxyAgent
-      });
+        maxRetries: 2
+      };
+
+      if (USE_LOCAL_PROXY) {
+        const { HttpsProxyAgent } = await import('https-proxy-agent');
+        const proxyAgent = new HttpsProxyAgent('http://127.0.0.1:59010');
+        openaiOptions.httpAgent = proxyAgent;
+        openaiOptions.httpsAgent = proxyAgent;
+      }
+
+      openai = new OpenAI(openaiOptions);
       console.log('✅ OpenAI client initialized successfully');
       return openai;
     }
@@ -98,7 +134,7 @@ const uploadRateLimit = createRateLimit(15 * 60 * 1000, 20, 'Too many upload req
 // ==================== 聊天路由 ====================
 
 // 聊天完成接口
-router.post('/chat/completions', chatRateLimit, async (req, res) => {
+const handleChatCompletions = async (req, res) => {
   try {
     const client = await initializeOpenAI();
     if (!client) {
@@ -121,9 +157,17 @@ router.post('/chat/completions', chatRateLimit, async (req, res) => {
       ? '你是一个 helpful AI assistant。请用中文回复，保持回答简洁专业。'
       : 'You are a helpful AI assistant. Please respond in English, keeping answers concise and professional.';
 
+    const contextMessages = Array.isArray(context)
+      ? context
+          .filter(item => typeof item === 'string' && item.trim().length > 0)
+          .map(item => ({ role: 'user', content: item.trim() }))
+      : typeof context === 'string' && context.trim().length > 0
+        ? [{ role: 'user', content: context.trim() }]
+        : [];
+
     const messages = [
       { role: 'system', content: systemPrompt },
-      ...(context ? [{ role: 'user', content: context }] : []),
+      ...contextMessages,
       { role: 'user', content: message.trim() }
     ];
 
@@ -147,12 +191,22 @@ router.post('/chat/completions', chatRateLimit, async (req, res) => {
 
     console.log(`✅ Chat response generated (${language}):`, response.substring(0, 100) + '...');
 
-    res.json({
+    const payload = {
       response,
       sessionId,
       timestamp: new Date().toISOString(),
       usage: completion.usage
-    });
+    };
+
+    if (req.compatChatMessage) {
+      return res.json({
+        ...payload,
+        reply: response,
+        relatedLinks: []
+      });
+    }
+
+    return res.json(payload);
 
   } catch (error) {
     console.error('❌ Chat completion error:', error.message);
@@ -180,20 +234,33 @@ router.post('/chat/completions', chatRateLimit, async (req, res) => {
       });
     }
   }
+};
+
+router.post('/chat/completions', chatRateLimit, handleChatCompletions);
+router.post('/chat/message', chatRateLimit, (req, res) => {
+  req.compatChatMessage = true;
+  return handleChatCompletions(req, res);
 });
 
 // ==================== 联系表单路由 ====================
 
 // 提交联系表单
 router.post('/contact/submit', contactRateLimit, async (req, res) => {
+  const requestLanguage = req.body?.language === 'zh' ? 'zh' : 'en';
   try {
     const {
       name,
       email,
+      phone,
+      company,
       subject,
       message,
-      category = 'general',
-      language = 'en'
+      collaborationType,
+      collaboration_type,
+      budget,
+      budget_range,
+      timeline,
+      language = requestLanguage
     } = req.body;
 
     // 验证必填字段
@@ -213,7 +280,8 @@ router.post('/contact/submit', contactRateLimit, async (req, res) => {
     }
 
     // 验证消息长度
-    if (message.length < 10 || message.length > 2000) {
+    const cleanMessage = String(message).trim();
+    if (cleanMessage.length < 10 || cleanMessage.length > 2000) {
       return res.status(400).json({ 
         error: language === 'zh' ? '消息长度必须在10-2000字符之间' : 'Message must be between 10-2000 characters',
         code: 'INVALID_MESSAGE_LENGTH'
@@ -227,23 +295,26 @@ router.post('/contact/submit', contactRateLimit, async (req, res) => {
       });
     }
 
-    console.log(`📧 Processing contact form (${language}):`, { name, email, subject, category });
+    console.log(`📧 Processing contact form (${language}):`, { name, email, subject });
 
     // 插入联系数据
     const { data, error } = await supabase
-      .from('contacts')
+      .from(CONTACT_TABLE)
       .insert([{
-        name: name.trim(),
-        email: email.trim().toLowerCase(),
-        subject: subject.trim(),
-        message: message.trim(),
-        category: category,
-        language: language,
-        ip_address: utils.getClientIp(req),
-        user_agent: req.get('User-Agent') || 'unknown',
+        name: String(name).trim(),
+        email: String(email).trim().toLowerCase(),
+        phone: phone ? String(phone).trim() : null,
+        company: company ? String(company).trim() : null,
+        subject: String(subject).trim(),
+        message: cleanMessage,
+        collaboration_type: collaborationType || collaboration_type || null,
+        budget_range: budget || budget_range || null,
+        timeline: timeline || null,
         created_at: new Date().toISOString(),
         status: 'new'
-      }]);
+      }])
+      .select('*')
+      .single();
 
     if (error) {
       console.error('❌ Database insert error:', error);
@@ -263,7 +334,7 @@ router.post('/contact/submit', contactRateLimit, async (req, res) => {
   } catch (error) {
     console.error('❌ Contact form submission error:', error.message);
     
-    const errorMessage = language === 'zh' 
+    const errorMessage = requestLanguage === 'zh'
       ? '提交失败，请稍后重试' 
       : 'Submission failed, please try again later';
     
@@ -275,7 +346,7 @@ router.post('/contact/submit', contactRateLimit, async (req, res) => {
 });
 
 // 获取联系消息列表（简易分页）
-router.get('/contact/messages', async (req, res) => {
+router.get('/contact/messages', requireAdmin, async (req, res) => {
   try {
     const { page = 1, pageSize = 20 } = req.query;
     if (!supabase) {
@@ -284,7 +355,7 @@ router.get('/contact/messages', async (req, res) => {
     const from = (parseInt(page) - 1) * parseInt(pageSize);
     const to = from + parseInt(pageSize) - 1;
     const { data, error, count } = await supabase
-      .from('contacts')
+      .from(CONTACT_TABLE)
       .select('*', { count: 'exact' })
       .order('created_at', { ascending: false })
       .range(from, to);
@@ -297,13 +368,13 @@ router.get('/contact/messages', async (req, res) => {
 });
 
 // 联系消息统计
-router.get('/contact/stats', async (req, res) => {
+router.get('/contact/stats', requireAdmin, async (req, res) => {
   try {
     if (!supabase) {
       return res.status(503).json({ error: 'Service temporarily unavailable', code: 'SERVICE_UNAVAILABLE' });
     }
     const { data, error } = await supabase
-      .from('contacts')
+      .from(CONTACT_TABLE)
       .select('status');
     if (error) throw error;
     const byStatus = { new: 0, read: 0, replied: 0, archived: 0 };
@@ -314,7 +385,7 @@ router.get('/contact/stats', async (req, res) => {
     const recentThreshold = new Date();
     recentThreshold.setDate(recentThreshold.getDate() - 30);
     const { data: recentData } = await supabase
-      .from('contacts')
+      .from(CONTACT_TABLE)
       .select('id, created_at')
       .gte('created_at', recentThreshold.toISOString());
     res.json({ stats: { total: (data || []).length, byStatus, recentCount: (recentData || []).length } });
@@ -325,7 +396,7 @@ router.get('/contact/stats', async (req, res) => {
 });
 
 // 更新联系消息状态
-router.patch('/contact/messages/:id/status', async (req, res) => {
+router.patch('/contact/messages/:id/status', requireAdmin, async (req, res) => {
   try {
     const { id } = req.params;
     const { status } = req.body;
@@ -336,7 +407,7 @@ router.patch('/contact/messages/:id/status', async (req, res) => {
       return res.status(400).json({ error: 'Invalid status', code: 'INVALID_STATUS' });
     }
     const { data, error } = await supabase
-      .from('contacts')
+      .from(CONTACT_TABLE)
       .update({ status, updated_at: new Date().toISOString() })
       .eq('id', id)
       .select('*')
@@ -352,7 +423,8 @@ router.patch('/contact/messages/:id/status', async (req, res) => {
 // ==================== 文件上传路由 ====================
 
 // 上传文件接口
-router.post('/upload/file', uploadRateLimit, upload.single('file'), async (req, res) => {
+router.post('/upload/file', requireAdmin, uploadRateLimit, upload.single('file'), async (req, res) => {
+  const requestLanguage = req.body?.language === 'zh' ? 'zh' : 'en';
   try {
     if (!req.file) {
       return res.status(400).json({ 
@@ -361,7 +433,7 @@ router.post('/upload/file', uploadRateLimit, upload.single('file'), async (req, 
       });
     }
 
-    const { category = 'general', language = 'en' } = req.body;
+    const { category = 'general', language = requestLanguage } = req.body;
     const file = req.file;
 
     console.log(`📁 Processing file upload (${language}):`, {
@@ -389,7 +461,7 @@ router.post('/upload/file', uploadRateLimit, upload.single('file'), async (req, 
     console.error('❌ File upload error:', error.message);
     
     res.status(500).json({ 
-      error: language === 'zh' ? '文件上传失败' : 'File upload failed',
+      error: requestLanguage === 'zh' ? '文件上传失败' : 'File upload failed',
       code: 'UPLOAD_FAILED'
     });
   }
@@ -512,7 +584,7 @@ router.post('/session/create', async (req, res) => {
     }
 
     const sessionId = utils.generateUUID();
-    const { data, error } = await supabase
+    const { error } = await supabase
       .from('sessions')
       .insert([{
         session_id: sessionId,
@@ -562,7 +634,7 @@ router.put('/session/:sessionId/activity', async (req, res) => {
       });
     }
 
-    const { data, error } = await supabase
+    const { error } = await supabase
       .from('sessions')
       .update({ last_activity: new Date().toISOString() })
       .eq('session_id', sessionId);

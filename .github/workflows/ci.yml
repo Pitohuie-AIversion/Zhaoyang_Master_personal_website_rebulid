@@ -1,38 +1,65 @@
 name: CI
 
 on:
+  workflow_dispatch:
   push:
-    branches: [ main ]
+    branches: [master, main]
   pull_request:
-    branches: [ main ]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
-  test:
+  verify:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
 
     steps:
-    - uses: actions/checkout@v3
+    - name: Check out repository
+      uses: actions/checkout@v4
 
-    - name: Use Node.js
-      uses: actions/setup-node@v3
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
       with:
-        node-version: '22.x'
+        node-version: 22
         cache: 'npm'
 
-    - name: Install dependencies
+    - name: Install locked dependencies
       run: npm ci
 
-    - name: Run Linting
+    - name: Type-check
+      run: npm run check
+
+    - name: Lint
       run: npm run lint
 
-    - name: Run Tests
-      run: npm test
+    - name: Test with coverage
+      run: npm run test:coverage
 
-    - name: Run i18n validation
+    - name: Smoke-test API health and metrics
+      run: npm run test:api
+
+    - name: Upload coverage report
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: coverage-report
+        path: coverage/
+        if-no-files-found: warn
+        retention-days: 14
+
+    - name: Validate translations
       run: npm run i18n:validate
 
-    - name: Run i18n tests
-      run: npm run test:i18n
+    - name: Scan repository for committed secrets
+      run: npm run scan:secrets
 
-    - name: Build
+    - name: Audit production dependencies
+      run: npm run audit:prod
+
+    - name: Build production bundle
       run: npm run build

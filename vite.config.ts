@@ -58,8 +58,6 @@ export default defineConfig(({ command, mode }) => {
     rollupOptions: {
       output: {
         manualChunks: {
-          // 将React相关库分离到单独的chunk
-          'react-vendor': ['react', 'react-dom'],
           // 将路由相关库分离
           'router': ['react-router-dom'],
           // 将UI组件库分离

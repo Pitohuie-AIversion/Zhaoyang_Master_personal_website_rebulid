@@ -4,7 +4,6 @@
  */
 
 import crypto from 'crypto';
-import { createClient } from '@supabase/supabase-js';
 
 /**
  * 安全密钥管理器
@@ -331,7 +330,7 @@ export const utils = {
     if (typeof obj === 'object') {
       const cloned = {};
       for (const key in obj) {
-        if (obj.hasOwnProperty(key)) {
+        if (Object.prototype.hasOwnProperty.call(obj, key)) {
           cloned[key] = this.deepClone(obj[key]);
         }
       }

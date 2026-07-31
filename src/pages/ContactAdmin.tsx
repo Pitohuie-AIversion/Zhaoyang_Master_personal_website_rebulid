@@ -1,6 +1,13 @@
 import { useState, useEffect } from 'react';
 import { Search, Mail, Phone, Building, Calendar, MessageSquare } from 'lucide-react';
 import { ResponsiveCard } from '../components/common/ResponsiveEnhancements';
+import { useTranslation } from '../components/common/TranslationProvider';
+import {
+  clearStoredAdminToken,
+  getAdminAuthHeaders,
+  getStoredAdminToken,
+  storeAdminToken,
+} from '../utils/adminAuth';
 
 interface ContactMessage {
   id: string;
@@ -30,22 +37,63 @@ interface ContactStats {
 }
 
 export default function ContactAdmin() {
+  const { t } = useTranslation();
   const [messages, setMessages] = useState<ContactMessage[]>([]);
   const [stats, setStats] = useState<ContactStats | null>(null);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
   const [statusFilter, setStatusFilter] = useState<string>('all');
   const [selectedMessage, setSelectedMessage] = useState<ContactMessage | null>(null);
+  const [adminToken, setAdminToken] = useState(getStoredAdminToken);
+  const [tokenInput, setTokenInput] = useState('');
+  const [authError, setAuthError] = useState('');
 
   useEffect(() => {
-    fetchMessages();
-    fetchStats();
-  }, []);
+    if (adminToken) {
+      fetchMessages();
+      fetchStats();
+    } else {
+      setLoading(false);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [adminToken]);
+
+  const handleAdminLogin = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (!tokenInput.trim()) {
+      setAuthError(t('common.adminAuth.tokenRequired'));
+      return;
+    }
+    setAuthError('');
+    setLoading(true);
+    setAdminToken(storeAdminToken(tokenInput));
+    setTokenInput('');
+  };
+
+  const handleAuthFailure = () => {
+    clearStoredAdminToken();
+    setAdminToken('');
+    setAuthError(t('common.adminAuth.tokenInvalid'));
+  };
+
+  const handleAdminLogout = () => {
+    clearStoredAdminToken();
+    setAdminToken('');
+    setMessages([]);
+    setStats(null);
+    setSelectedMessage(null);
+  };
 
   const fetchMessages = async () => {
     try {
       setLoading(true);
-      const response = await fetch('/api/contact/messages');
+      const response = await fetch('/api/contact/messages', {
+        headers: getAdminAuthHeaders(adminToken),
+      });
+      if (response.status === 401 || response.status === 503) {
+        handleAuthFailure();
+        return;
+      }
       const data = await response.json();
       if (data.data) {
         setMessages(data.data);
@@ -59,7 +107,13 @@ export default function ContactAdmin() {
 
   const fetchStats = async () => {
     try {
-      const response = await fetch('/api/contact/stats');
+      const response = await fetch('/api/contact/stats', {
+        headers: getAdminAuthHeaders(adminToken),
+      });
+      if (response.status === 401 || response.status === 503) {
+        handleAuthFailure();
+        return;
+      }
       const data = await response.json();
       if (data.stats) {
         setStats(data.stats);
@@ -75,6 +129,7 @@ export default function ContactAdmin() {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
+          ...getAdminAuthHeaders(adminToken),
         },
         body: JSON.stringify({ status: newStatus }),
       });
@@ -87,6 +142,31 @@ export default function ContactAdmin() {
       console.error('更新状态失败:', error);
     }
   };
+
+  if (!adminToken) {
+    return (
+      <div className="container mx-auto p-6 min-h-screen flex items-center justify-center">
+        <form onSubmit={handleAdminLogin} className="w-full max-w-md bg-white rounded-lg shadow p-6 space-y-4">
+          <div>
+            <h1 className="text-2xl font-bold text-gray-900">{t('common.adminAuth.title')}</h1>
+            <p className="text-sm text-gray-600 mt-1">{t('common.adminAuth.contactDescription')}</p>
+          </div>
+          <input
+            type="password"
+            value={tokenInput}
+            onChange={(event) => setTokenInput(event.target.value)}
+            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="ADMIN_TOKEN"
+            autoComplete="current-password"
+          />
+          {authError && <p className="text-sm text-red-600">{authError}</p>}
+          <button type="submit" className="w-full px-4 py-2 rounded-md bg-blue-600 text-white hover:bg-blue-700">
+            {t('common.adminAuth.unlock')}
+          </button>
+        </form>
+      </div>
+    );
+  }
 
   const getStatusBadgeClass = (status: string) => {
     switch (status) {
@@ -143,7 +223,12 @@ export default function ContactAdmin() {
   return (
     <div className="container mx-auto p-6 max-w-7xl">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold mb-2">联系信息管理</h1>
+        <div className="flex items-center justify-between gap-4">
+          <h1 className="text-3xl font-bold mb-2">联系信息管理</h1>
+          <button onClick={handleAdminLogout} className="px-3 py-2 rounded-md bg-gray-200 text-gray-800 hover:bg-gray-300">
+            {t('common.adminAuth.lock')}
+          </button>
+        </div>
         <p className="text-gray-600">查看和管理通过网站联系表单收到的所有信息</p>
       </div>
 
