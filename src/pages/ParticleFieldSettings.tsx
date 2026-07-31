@@ -1,6 +1,7 @@
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from '../components/common/TranslationProvider';
+import { ParticleFieldSettingsSEO } from '../components/seo/SEOOptimization';
 import { ParticleField as ParticleFieldComponent } from '../components/ParticleField/ParticleField';
 import {
   ParticleFieldConfig,
@@ -932,6 +933,7 @@ const ParticleFieldSettings: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gray-100 dark:bg-gray-900">
+      <ParticleFieldSettingsSEO />
       <div className="flex h-screen">
         {/* 左侧控制面板 */}
         <div className="w-96 bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 flex flex-col">

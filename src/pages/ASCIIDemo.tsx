@@ -7,6 +7,7 @@ import ZhaoyangASCIIRhythm from '../components/features/home/ZhaoyangASCIIRhythm
 import { ResponsiveContainer } from '../components/common/ResponsiveEnhancements';
 import { useResponsive } from '../components/common/ResponsiveEnhancements';
 import SimpleMotion from '../components/animations/SimpleMotion';
+import { ASCIIDemoSEO } from '../components/seo/SEOOptimization';
 
 type Theme = 'matrix' | 'cyber' | 'neon' | 'rainbow';
 type RhythmType = 'heartbeat' | 'wave' | 'pulse' | 'glitch';
@@ -57,28 +58,29 @@ const ASCIIDemo: React.FC = () => {
   };
 
   const themeOptions: { value: Theme; label: string; color: string }[] = [
-    { value: 'matrix', label: 'Matrix 绿', color: '#00ff41' },
-    { value: 'cyber', label: 'Cyber 蓝', color: '#00d4ff' },
-    { value: 'neon', label: 'Neon 紫', color: '#ff00ff' },
-    { value: 'rainbow', label: '彩虹', color: 'linear-gradient(45deg, #ff0080, #8000ff, #00ff80)' }
+    { value: 'matrix', label: t('ascii.theme.matrix') as string, color: '#00ff41' },
+    { value: 'cyber', label: t('ascii.theme.cyber') as string, color: '#00d4ff' },
+    { value: 'neon', label: t('ascii.theme.neon') as string, color: '#ff00ff' },
+    { value: 'rainbow', label: t('ascii.theme.rainbow') as string, color: 'linear-gradient(45deg, #ff0080, #8000ff, #00ff80)' }
   ];
 
   const rhythmOptions: { value: RhythmType; label: string; description: string }[] = [
-    { value: 'heartbeat', label: '心跳', description: '模拟心跳节拍的律动' },
-    { value: 'wave', label: '波浪', description: '流动的波浪效果' },
-    { value: 'pulse', label: '脉冲', description: '规律的脉冲闪烁' },
-    { value: 'glitch', label: '故障', description: '随机的故障效果' }
+    { value: 'heartbeat', label: t('ascii.rhythm.heartbeat.label') as string, description: t('ascii.rhythm.heartbeat.desc') as string },
+    { value: 'wave', label: t('ascii.rhythm.wave.label') as string, description: t('ascii.rhythm.wave.desc') as string },
+    { value: 'pulse', label: t('ascii.rhythm.pulse.label') as string, description: t('ascii.rhythm.pulse.desc') as string },
+    { value: 'glitch', label: t('ascii.rhythm.glitch.label') as string, description: t('ascii.rhythm.glitch.desc') as string }
   ];
 
   const animationOptions: { value: AnimationType; label: string; description: string }[] = [
-    { value: 'typewriter', label: '打字机', description: '逐字显示效果' },
-    { value: 'wave', label: '波浪', description: '字符波浪动画' },
-    { value: 'pulse', label: '脉冲', description: '整行脉冲效果' },
-    { value: 'glitch', label: '故障', description: '字符故障效果' }
+    { value: 'typewriter', label: t('ascii.animation.typewriter.label') as string, description: t('ascii.animation.typewriter.desc') as string },
+    { value: 'wave', label: t('ascii.animation.wave.label') as string, description: t('ascii.animation.wave.desc') as string },
+    { value: 'pulse', label: t('ascii.animation.pulse.label') as string, description: t('ascii.animation.pulse.desc') as string },
+    { value: 'glitch', label: t('ascii.animation.glitch.label') as string, description: t('ascii.animation.glitch.desc') as string }
   ];
 
   return (
     <div className="min-h-screen relative theme-transition">
+      <ASCIIDemoSEO />
       {/* Header */}
       <div className="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700 theme-transition mt-14">
         <ResponsiveContainer>

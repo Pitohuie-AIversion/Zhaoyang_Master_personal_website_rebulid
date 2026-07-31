@@ -5,6 +5,7 @@ import { ParticleFieldConfig } from '../utils/configManager';
 import { PerformanceMetrics } from '../utils/performanceMonitor';
 import { Play, Monitor, Palette } from 'lucide-react';
 import { useTranslation } from '../components/common/TranslationProvider';
+import { ParticleFieldSEO } from '../components/seo/SEOOptimization';
 
 const ParticleField: React.FC = () => {
   const { t } = useTranslation();
@@ -26,6 +27,7 @@ const ParticleField: React.FC = () => {
   
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 relative overflow-hidden">
+      <ParticleFieldSEO />
       {/* 粒子场背景 */}
       <div className="absolute inset-0 z-0">
         <ParticleFieldComponent

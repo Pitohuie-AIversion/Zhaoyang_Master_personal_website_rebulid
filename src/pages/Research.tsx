@@ -10,6 +10,7 @@ import { ResponsiveContainer } from '../components/common/ResponsiveEnhancements
 import AcademicMetrics from '../components/features/research/AcademicMetrics';
 import PublicationList from '../components/features/research/PublicationList';
 import { StructuredDataSEO } from '../components/seo/StructuredDataSEO';
+import { ResearchSEO } from '../components/seo/SEOOptimization';
 
 interface Publication {
   id: string;
@@ -387,6 +388,7 @@ function Research() {
   
   return (
     <div className="min-h-screen relative theme-transition">
+      <ResearchSEO />
       <ResponsiveContainer 
         maxWidth="xl" 
         padding="lg"

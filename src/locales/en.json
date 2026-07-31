@@ -23,13 +23,13 @@
     "menu": "Open menu",
     "close": "Close",
     "logoAlt": "Zhaoyang Mu website logo",
-    "shareCancelled": "share Cancelled",
-    "linkCopied": "link Copied",
-    "backToTop": "back To Top",
-    "theme": "theme",
-    "fontSize": "font Size",
-    "readingMode": "reading Mode",
-    "share": "share",
+    "shareCancelled": "Sharing cancelled",
+    "linkCopied": "Link copied to clipboard",
+    "backToTop": "Back to top",
+    "theme": "Theme",
+    "fontSize": "Font size",
+    "readingMode": "Reading mode",
+    "share": "Share",
     "accessibilityLabels": {
       "reducedMotion": "Reduce motion",
       "highContrast": "High contrast",
@@ -2060,6 +2060,55 @@
           "Collaboration Opportunities",
           "Academic Exchange",
           "Contact Me"
+        ]
+      },
+      "blog": {
+        "title": "Academic Blog",
+        "description": "Research notes and technical perspectives on scientific computing, fluid dynamics, artificial intelligence, and robotics.",
+        "keywords": [
+          "Academic Blog",
+          "Scientific Computing",
+          "Fluid Dynamics",
+          "Artificial Intelligence",
+          "Robotics"
+        ]
+      },
+      "asciiDemo": {
+        "title": "ASCII Rhythm Lab",
+        "description": "Explore an interactive ASCII typography lab with responsive themes, rhythms, and animation controls.",
+        "keywords": [
+          "ASCII Art",
+          "Interactive Typography",
+          "Web Animation",
+          "Creative Coding"
+        ]
+      },
+      "particleField": {
+        "title": "Interactive Particle Ocean",
+        "description": "Explore a real-time interactive particle ocean built with WebGL, adaptive rendering, and configurable visual effects.",
+        "keywords": [
+          "WebGL",
+          "Particle System",
+          "Creative Coding",
+          "Interactive Visualization"
+        ]
+      },
+      "particleFieldDemo": {
+        "title": "Particle Ocean Demo",
+        "description": "Try the full-screen particle ocean demo with live playback, presets, statistics, and keyboard controls.",
+        "keywords": [
+          "WebGL Demo",
+          "Particle Animation",
+          "Interactive Demo"
+        ]
+      },
+      "particleFieldSettings": {
+        "title": "Particle Ocean Settings",
+        "description": "Configure particle behavior, post-processing, interaction, performance presets, and custom visual profiles.",
+        "keywords": [
+          "Particle Configuration",
+          "WebGL Settings",
+          "Visual Effects"
         ]
       }
     },

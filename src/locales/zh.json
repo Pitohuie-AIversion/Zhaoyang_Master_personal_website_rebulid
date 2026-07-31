@@ -2637,6 +2637,55 @@
           "学术交流",
           "联系我"
         ]
+      },
+      "blog": {
+        "title": "学术博客",
+        "description": "分享科学计算、流体力学、人工智能与机器人领域的研究笔记和技术思考。",
+        "keywords": [
+          "学术博客",
+          "科学计算",
+          "流体力学",
+          "人工智能",
+          "机器人"
+        ]
+      },
+      "asciiDemo": {
+        "title": "ASCII 律动实验室",
+        "description": "体验支持响应式主题、律动效果与动画控制的交互式 ASCII 字体实验室。",
+        "keywords": [
+          "ASCII 艺术",
+          "交互字体",
+          "网页动画",
+          "创意编程"
+        ]
+      },
+      "particleField": {
+        "title": "交互式粒子海洋",
+        "description": "探索基于 WebGL、支持自适应渲染与可配置视觉效果的实时交互粒子海洋。",
+        "keywords": [
+          "WebGL",
+          "粒子系统",
+          "创意编程",
+          "交互可视化"
+        ]
+      },
+      "particleFieldDemo": {
+        "title": "粒子海洋演示",
+        "description": "体验带有播放控制、预设、性能统计和键盘快捷键的全屏粒子海洋演示。",
+        "keywords": [
+          "WebGL 演示",
+          "粒子动画",
+          "交互演示"
+        ]
+      },
+      "particleFieldSettings": {
+        "title": "粒子海洋设置",
+        "description": "配置粒子行为、后期处理、交互方式、性能预设和自定义视觉方案。",
+        "keywords": [
+          "粒子配置",
+          "WebGL 设置",
+          "视觉效果"
+        ]
       }
     },
     "institutions": {

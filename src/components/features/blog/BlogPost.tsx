@@ -22,6 +22,7 @@ import { UnifiedButton } from '../../common/UnifiedButton';
 import { ResponsiveCard } from '../../common/ResponsiveEnhancements';
 import LazyImage from '../../common/LazyImage';
 import { StructuredDataSEO } from '../../seo/StructuredDataSEO';
+import SEOOptimization from '../../seo/SEOOptimization';
 
 interface BlogPostProps {
   className?: string;
@@ -232,6 +233,16 @@ const BlogPost: React.FC<BlogPostProps> = ({ className = '' }) => {
 
   return (
     <div className={`max-w-4xl mx-auto px-4 py-8 ${className}`}>
+      <SEOOptimization
+        title={post.title}
+        description={post.excerpt}
+        keywords={post.tags}
+        image={post.coverImage}
+        type="article"
+        author={post.author}
+        publishedTime={post.date}
+        modifiedTime={post.updatedDate || post.date}
+      />
       {/* SEO结构化数据 */}
       <StructuredDataSEO
         type="article"

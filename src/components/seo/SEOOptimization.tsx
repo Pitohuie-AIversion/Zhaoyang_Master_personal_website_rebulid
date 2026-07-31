@@ -15,6 +15,19 @@ interface SEOProps {
   robots?: string;
 }
 
+type SEOPage =
+  | 'home'
+  | 'research'
+  | 'projects'
+  | 'publications'
+  | 'skills'
+  | 'contact'
+  | 'blog'
+  | 'asciiDemo'
+  | 'particleField'
+  | 'particleFieldDemo'
+  | 'particleFieldSettings';
+
 const SEOOptimization: React.FC<SEOProps> = ({
   title,
   description,
@@ -55,7 +68,10 @@ const SEOOptimization: React.FC<SEOProps> = ({
   const jobTitle = t('seo.default.jobTitle') as string;
   const organization = t('seo.default.organization') as string;
 
-  const fullTitle = defaultTitle === siteTitle ? defaultTitle : `${defaultTitle} | ${siteTitle}`;
+  const fullTitle =
+    defaultTitle === siteTitle || defaultTitle.includes(defaultAuthor)
+      ? defaultTitle
+      : `${defaultTitle} | ${siteTitle}`;
 
   return (
     <Helmet>
@@ -68,6 +84,7 @@ const SEOOptimization: React.FC<SEOProps> = ({
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
       <meta name="language" content={language} />
+      <link rel="canonical" href={url} />
 
       {/* Open Graph 元数据 */}
       <meta property="og:title" content={fullTitle} />
@@ -134,75 +151,33 @@ const SEOOptimization: React.FC<SEOProps> = ({
 
 export default SEOOptimization;
 
-// 页面特定的SEO组件
-export const HomeSEO: React.FC = () => {
+interface PageSEOProps {
+  page: SEOPage;
+  type?: SEOProps['type'];
+}
+
+export const PageSEO: React.FC<PageSEOProps> = ({ page, type = 'website' }) => {
   const { t } = useTranslation();
+  const translatedKeywords = t(`seo.pages.${page}.keywords`, { returnObjects: true });
+
   return (
     <SEOOptimization
-      title={t('seo.pages.home.title') as string}
-      description={t('seo.pages.home.description') as string}
-      // 使用默认关键词，因为页面特定关键词不存在
-      type="profile"
+      title={t(`seo.pages.${page}.title`) as string}
+      description={t(`seo.pages.${page}.description`) as string}
+      keywords={Array.isArray(translatedKeywords) ? translatedKeywords : undefined}
+      type={type}
     />
   );
 };
 
-export const ResearchSEO: React.FC = () => {
-  const { t } = useTranslation();
-  return (
-    <SEOOptimization
-      title={t('seo.pages.research.title') as string}
-      description={t('seo.pages.research.description') as string}
-      // 使用默认关键词，因为页面特定关键词不存在
-      type="website"
-    />
-  );
-};
-
-export const ProjectsSEO: React.FC = () => {
-  const { t } = useTranslation();
-  return (
-    <SEOOptimization
-      title={t('seo.pages.projects.title') as string}
-      description={t('seo.pages.projects.description') as string}
-      // 使用默认关键词，因为页面特定关键词不存在
-      type="website"
-    />
-  );
-};
-
-export const PublicationsSEO: React.FC = () => {
-  const { t } = useTranslation();
-  return (
-    <SEOOptimization
-      title={t('seo.pages.publications.title') as string}
-      description={t('seo.pages.publications.description') as string}
-      // 使用默认关键词，因为页面特定关键词不存在
-      type="website"
-    />
-  );
-};
-
-export const SkillsSEO: React.FC = () => {
-  const { t } = useTranslation();
-  return (
-    <SEOOptimization
-      title={t('seo.pages.skills.title') as string}
-      description={t('seo.pages.skills.description') as string}
-      // 使用默认关键词，因为页面特定关键词不存在
-      type="website"
-    />
-  );
-};
-
-export const ContactSEO: React.FC = () => {
-  const { t } = useTranslation();
-  return (
-    <SEOOptimization
-      title={t('seo.pages.contact.title') as string}
-      description={t('seo.pages.contact.description') as string}
-      // 使用默认关键词，因为页面特定关键词不存在
-      type="website"
-    />
-  );
-};
+export const HomeSEO: React.FC = () => <PageSEO page="home" type="profile" />;
+export const ResearchSEO: React.FC = () => <PageSEO page="research" />;
+export const ProjectsSEO: React.FC = () => <PageSEO page="projects" />;
+export const PublicationsSEO: React.FC = () => <PageSEO page="publications" />;
+export const SkillsSEO: React.FC = () => <PageSEO page="skills" />;
+export const ContactSEO: React.FC = () => <PageSEO page="contact" />;
+export const BlogSEO: React.FC = () => <PageSEO page="blog" />;
+export const ASCIIDemoSEO: React.FC = () => <PageSEO page="asciiDemo" />;
+export const ParticleFieldSEO: React.FC = () => <PageSEO page="particleField" />;
+export const ParticleFieldDemoSEO: React.FC = () => <PageSEO page="particleFieldDemo" />;
+export const ParticleFieldSettingsSEO: React.FC = () => <PageSEO page="particleFieldSettings" />;

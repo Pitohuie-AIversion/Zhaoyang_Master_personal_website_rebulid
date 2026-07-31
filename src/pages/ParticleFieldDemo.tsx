@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from '../components/common/TranslationProvider';
+import { ParticleFieldDemoSEO } from '../components/seo/SEOOptimization';
 import { ParticleField as ParticleFieldComponent } from '../components/ParticleField/ParticleField';
 import { ParticleFieldConfig, builtinPresets } from '../utils/configManager';
 import { PerformanceMetrics } from '../utils/performanceMonitor';
@@ -133,6 +134,7 @@ const ParticleFieldDemo: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-black relative overflow-hidden">
+      <ParticleFieldDemoSEO />
       {/* 粒子场全屏背景 */}
       <div className="absolute inset-0 z-0">
         <ParticleFieldComponent
