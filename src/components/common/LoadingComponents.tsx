@@ -1,11 +1,19 @@
 /* eslint-disable react-refresh/only-export-components */
 import { motion } from 'framer-motion';
 import React from 'react';
+import { useTranslation } from './TranslationProvider';
 
 // 页面加载动画组件
 export const PageLoader: React.FC = () => {
+  const { t } = useTranslation();
+
   return (
-    <div className="fixed inset-0 bg-white z-50 flex items-center justify-center">
+    <div
+      className="fixed inset-0 bg-white z-50 flex items-center justify-center"
+      role="status"
+      aria-live="polite"
+      aria-busy="true"
+    >
       <div className="text-center">
         {/* 主加载动画 */}
         <motion.div
@@ -21,7 +29,7 @@ export const PageLoader: React.FC = () => {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2 }}
         >
-          加载中...
+          {t('common.loading') as string}
         </motion.p>
         
         {/* 进度条 */}

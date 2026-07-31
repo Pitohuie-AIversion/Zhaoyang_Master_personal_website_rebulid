@@ -172,8 +172,10 @@ const ParticleFieldDemo: React.FC = () => {
                 className={`p-2 rounded-lg transition-all duration-200 ${showInfo
                   ? 'bg-blue-500/30 text-blue-300 border border-blue-400/30'
                   : 'bg-black/30 text-white/70 hover:bg-black/50 hover:text-white'
-                  }`}
+                }`}
                 title={t('particleField.toggleInfo')}
+                aria-label={t('particleField.toggleInfo')}
+                aria-pressed={showInfo}
               >
                 <Info className="w-5 h-5" />
               </button>
@@ -183,8 +185,10 @@ const ParticleFieldDemo: React.FC = () => {
                 className={`p-2 rounded-lg transition-all duration-200 ${showStats
                   ? 'bg-green-500/30 text-green-300 border border-green-400/30'
                   : 'bg-black/30 text-white/70 hover:bg-black/50 hover:text-white'
-                  }`}
+                }`}
                 title={t('particleField.toggleStats')}
+                aria-label={t('particleField.toggleStats')}
+                aria-pressed={showStats}
               >
                 <Monitor className="w-5 h-5" />
               </button>
@@ -194,8 +198,10 @@ const ParticleFieldDemo: React.FC = () => {
                 className={`p-2 rounded-lg transition-all duration-200 ${showPresets
                   ? 'bg-purple-500/30 text-purple-300 border border-purple-400/30'
                   : 'bg-black/30 text-white/70 hover:bg-black/50 hover:text-white'
-                  }`}
+                }`}
                 title={t('particleField.presets')}
+                aria-label={t('particleField.presets')}
+                aria-pressed={showPresets}
               >
                 <Palette className="w-5 h-5" />
               </button>
@@ -218,6 +224,7 @@ const ParticleFieldDemo: React.FC = () => {
               onClick={togglePlayback}
               className="p-3 bg-black/30 backdrop-blur-sm rounded-full text-white hover:bg-black/50 transition-all duration-200"
               title={isPlaying ? t('particleField.pause') : t('particleField.play')}
+              aria-label={isPlaying ? t('particleField.pause') : t('particleField.play')}
             >
               {isPlaying ? <Pause className="w-6 h-6" /> : <Play className="w-6 h-6" />}
             </button>
@@ -226,6 +233,7 @@ const ParticleFieldDemo: React.FC = () => {
               onClick={resetSystem}
               className="p-3 bg-black/30 backdrop-blur-sm rounded-full text-white hover:bg-black/50 transition-all duration-200"
               title={t('particleField.reset')}
+              aria-label={t('particleField.reset')}
             >
               <RotateCcw className="w-6 h-6" />
             </button>
@@ -234,6 +242,8 @@ const ParticleFieldDemo: React.FC = () => {
               onClick={toggleFullscreen}
               className="p-3 bg-black/30 backdrop-blur-sm rounded-full text-white hover:bg-black/50 transition-all duration-200"
               title={isFullscreen ? t('particleField.exitFullscreen') : t('particleField.fullscreen')}
+              aria-label={isFullscreen ? t('particleField.exitFullscreen') : t('particleField.fullscreen')}
+              aria-pressed={isFullscreen}
             >
               {isFullscreen ? <Minimize2 className="w-6 h-6" /> : <Maximize2 className="w-6 h-6" />}
             </button>

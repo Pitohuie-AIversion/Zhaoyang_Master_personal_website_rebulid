@@ -11,7 +11,6 @@ import AnimatedBackground from './components/features/home/AnimatedBackground';
 // import HeaderASCII from './components/layout/HeaderASCII'; // 已移动到 Navbar 中
 import { AccessibilityManager, AccessibilityToolbar } from './components/layout/AccessibilityEnhancements';
 import { ThemeTransition } from './components/common/DarkModeProvider';
-import ChatAssistant from './components/features/chat/ChatAssistant';
 import { StructuredDataSEO } from './components/seo/StructuredDataSEO';
 import { GoogleAnalytics } from './components/seo/GoogleAnalytics';
 import './styles/accessibility.css';
@@ -42,6 +41,7 @@ const LazyBlogPost = React.lazy(() => import('./components/features/blog/BlogPos
 // 简历管理页面
 const LazyResumeManager = React.lazy(() => import('./components/features/resume/ResumeManager'));
 const LazyNotFound = React.lazy(() => import('./pages/NotFound'));
+const LazyChatAssistant = React.lazy(() => import('./components/features/chat/ChatAssistant'));
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -202,7 +202,9 @@ function App() {
                 <Footer />
 
                 {/* 聊天助手 */}
-                <ChatAssistant />
+                <Suspense fallback={null}>
+                  <LazyChatAssistant />
+                </Suspense>
 
                 {/* 可访问性工具栏 */}
                 <AccessibilityToolbar />
@@ -218,8 +220,7 @@ function App() {
                     alternateName: t('seo.site.author') === '牟昭阳' ? 'Zhaoyang Mu' : '牟昭阳',
                     jobTitle: t('home.hero.title'),
                     affiliation: {
-                      name: t('seo.default.organization'),
-                      url: "https://example-institution.com"
+                      name: t('seo.default.organization')
                     },
                     url: window.location.origin,
                     sameAs: [

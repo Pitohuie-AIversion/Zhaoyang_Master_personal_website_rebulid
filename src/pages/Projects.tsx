@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { SimpleMotion } from '../components/animations/SimpleMotion';
 import { ExternalLink, Github, Search, X } from 'lucide-react';
-import { PageLoader, ProjectCardSkeleton, usePageLoading, LazyWrapper } from '../components/common/LoadingComponents';
+import { ProjectCardSkeleton, LazyWrapper } from '../components/common/LoadingComponents';
 import { UnifiedButton } from '../components/common/UnifiedButton';
 import LazyImage from '../components/common/LazyImage';
 import { SearchInput, FilterDropdown, SortDropdown, ActiveFilters, SearchStats, useAdvancedSearch } from '../components/features/search/SearchAndFilter';
@@ -124,7 +124,6 @@ const getYearOptions = (t: (key: string, options?: { returnObjects?: boolean; fa
 
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-  const { isLoading } = usePageLoading(true);
   const { isMobile, isTablet } = useResponsive();
   const { t } = useTranslation();
   
@@ -205,10 +204,6 @@ export default function Projects() {
     { value: 'category', label: t('projects.sort.category') as string, direction: 'asc' as const },
     { value: 'status', label: t('projects.sort.status') as string, direction: 'asc' as const }
   ];
-
-  if (isLoading) {
-    return <PageLoader />;
-  }
 
   return (
     <div className="min-h-screen relative theme-transition">

@@ -2612,66 +2612,101 @@
         }
       },
       "nanoEnergy2024": {
-        "title": "title",
-        "authors": "authors",
-        "journal": "journal",
-        "abstract": "abstract",
-        "keywords": "keywords",
-        "url": "url",
+        "title": "Deep-learning-assisted triboelectric whisker for near field perception and online state estimation of underwater vehicle",
+        "authors": "Peng Xu, Jianhua Liu, Bo Liu, Yuanzheng Li, Hao Jin, Zhaoyang Mu, Tangzhen Guan, Guangming Xie, Hao Wang, Minyi Xu",
+        "journal": "Nano Energy",
+        "abstract": "",
+        "keywords": [
+          "Triboelectric",
+          "Underwater Whisker",
+          "Near-field Perception",
+          "Deep Learning"
+        ],
+        "url": "https://www.sciencedirect.com/science/article/abs/pii/S2211285524007614",
         "doi": "10.1016/j.nanoen.2024.110011"
       },
       "amtTWSA2025": {
-        "title": "title",
-        "authors": "authors",
-        "journal": "journal",
-        "abstract": "abstract",
-        "keywords": "keywords",
-        "url": "url",
+        "title": "Deep-Learning-Assisted Triboelectric Whisker Sensor Array for Real-Time Motion Sensing of Unmanned Underwater Vehicle",
+        "authors": "Bo Liu, Bowen Dong, Hao Jin, Peng Zhu, Zhaoyang Mu, Yuanzheng Li, Jianhua Liu, Zhaochen Meng, Xinyue Zhou, Peng Xu, Minyi Xu",
+        "journal": "Advanced Materials Technologies",
+        "abstract": "",
+        "keywords": [
+          "Triboelectric",
+          "Sensor Array",
+          "Underwater Vehicle",
+          "Deep Learning"
+        ],
+        "url": "https://advanced.onlinelibrary.wiley.com/doi/10.1002/admt.202401053",
         "doi": "10.1002/admt.202401053"
       },
       "pofDamFormer2025": {
-        "title": "title",
-        "authors": "authors",
-        "journal": "journal",
-        "abstract": "abstract",
-        "keywords": "keywords",
-        "url": "url",
+        "title": "Generalizing morphologies in dam break simulations using transformer model",
+        "authors": "Zhaoyang Mu, Aoming Liang, Mingming Ge, Dashuai Chen, Dixia Fan, Minyi Xu",
+        "journal": "Physics of Fluids",
+        "abstract": "",
+        "keywords": [
+          "Transformer",
+          "Dam Break",
+          "CFD",
+          "Neural Operator"
+        ],
+        "url": "https://pubs.aip.org/aip/pof/article/37/1/016612/3329607/Generalizing-morphologies-in-dam-break-simulations",
         "doi": ""
       },
       "ieeeCAC2024": {
-        "title": "title",
-        "authors": "authors",
-        "journal": "journal",
-        "abstract": "abstract",
-        "keywords": "keywords",
-        "url": "url",
+        "title": "Triboelectric Bionic Tail-Fin Shaped Flexible Sensor for Proprioception",
+        "authors": "",
+        "journal": "IEEE CAC 2024",
+        "abstract": "",
+        "keywords": [
+          "Triboelectric",
+          "Tail-Fin",
+          "Proprioception",
+          "Underwater"
+        ],
+        "url": "https://ieeexplore.ieee.org/document/10865203/",
         "doi": ""
       },
       "ralRsModCubes2025": {
-        "title": "title",
-        "authors": "authors",
-        "journal": "journal",
-        "abstract": "abstract",
-        "keywords": "keywords",
-        "url": "url",
+        "title": "Rs-modcubes: Self-reconfigurable, scalable, modular cubic robots for underwater operations",
+        "authors": "",
+        "journal": "IEEE Robotics and Automation Letters",
+        "abstract": "",
+        "keywords": [
+          "Modular Robots",
+          "Underwater",
+          "Reconfiguration",
+          "Swarm"
+        ],
+        "url": "https://ieeexplore.ieee.org/document/10891552/",
         "doi": ""
       },
       "spieCITA2025": {
-        "title": "title",
-        "authors": "authors",
-        "journal": "journal",
-        "abstract": "abstract",
-        "keywords": "keywords",
-        "url": "url",
+        "title": "Design of modular autonomous underwater vehicle for swarm applications",
+        "authors": "Zhaochen Meng, Siyuan Wang, Jianhua Liu, Peng Xu, Zhaoyang Mu, Wenxiang Li, Minyi Xu",
+        "journal": "Proc. SPIE CITA 2024",
+        "abstract": "",
+        "keywords": [
+          "AUV",
+          "Swarm",
+          "Modular Design",
+          "SPIE"
+        ],
+        "url": "https://doi.org/10.1117/12.3056794",
         "doi": "10.1117/12.3056794"
       },
       "amtTBLS2025": {
-        "title": "title",
-        "authors": "authors",
-        "journal": "journal",
-        "abstract": "abstract",
-        "keywords": "keywords",
-        "url": "url",
+        "title": "Highly Sensitive and Integratable Triboelectric Bionic Lateral Line Sensor for Flow Recognition of Underwater Vehicle",
+        "authors": "",
+        "journal": "Advanced Materials Technologies",
+        "abstract": "",
+        "keywords": [
+          "Triboelectric",
+          "Lateral Line",
+          "Underwater Vehicle",
+          "Flow Recognition"
+        ],
+        "url": "https://advanced.onlinelibrary.wiley.com/doi/10.1002/admt.202500072",
         "doi": "10.1002/admt.202500072"
       }
     },

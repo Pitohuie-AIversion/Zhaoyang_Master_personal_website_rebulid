@@ -153,8 +153,12 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
   return (
     <div className="bg-gray-900 text-white h-full flex flex-col">
       {/* 标签页导航 */}
-      <div className="flex overflow-x-auto border-b border-gray-700">
+      <div className="flex overflow-x-auto border-b border-gray-700" role="tablist">
         <button
+          id="particle-settings-tab-particles"
+          role="tab"
+          aria-selected={activeTab === 'particles'}
+          aria-controls="particle-settings-panel"
           onClick={() => setActiveTab('particles')}
           className={`min-w-32 flex-none lg:min-w-0 lg:flex-1 p-3 text-sm font-medium transition-colors ${activeTab === 'particles'
               ? 'bg-blue-600 text-white'
@@ -165,6 +169,10 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
           {t('particleField.settings.particles')}
         </button>
         <button
+          id="particle-settings-tab-postprocess"
+          role="tab"
+          aria-selected={activeTab === 'postprocess'}
+          aria-controls="particle-settings-panel"
           onClick={() => setActiveTab('postprocess')}
           className={`min-w-32 flex-none lg:min-w-0 lg:flex-1 p-3 text-sm font-medium transition-colors ${activeTab === 'postprocess'
               ? 'bg-blue-600 text-white'
@@ -175,6 +183,10 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
           {t('particleField.settings.postProcess')}
         </button>
         <button
+          id="particle-settings-tab-interaction"
+          role="tab"
+          aria-selected={activeTab === 'interaction'}
+          aria-controls="particle-settings-panel"
           onClick={() => setActiveTab('interaction')}
           className={`min-w-32 flex-none lg:min-w-0 lg:flex-1 p-3 text-sm font-medium transition-colors ${activeTab === 'interaction'
               ? 'bg-blue-600 text-white'
@@ -185,6 +197,10 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
           {t('particleField.settings.interaction')}
         </button>
         <button
+          id="particle-settings-tab-presets"
+          role="tab"
+          aria-selected={activeTab === 'presets'}
+          aria-controls="particle-settings-panel"
           onClick={() => setActiveTab('presets')}
           className={`min-w-32 flex-none lg:min-w-0 lg:flex-1 p-3 text-sm font-medium transition-colors ${activeTab === 'presets'
               ? 'bg-blue-600 text-white'
@@ -197,7 +213,12 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
       </div>
 
       {/* 内容区域 */}
-      <div className="flex-1 overflow-y-auto p-4 space-y-4">
+      <div
+        id="particle-settings-panel"
+        role="tabpanel"
+        aria-labelledby={`particle-settings-tab-${activeTab}`}
+        className="flex-1 overflow-y-auto p-4 space-y-4"
+      >
         {/* 粒子设置 */}
         {activeTab === 'particles' && (
           <div className="space-y-6">
@@ -955,8 +976,10 @@ const ParticleFieldSettings: React.FC = () => {
                   className={`p-2 rounded transition-colors ${showPreview
                       ? 'bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-400'
                       : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
-                    }`}
+                  }`}
                   title={showPreview ? t('particleField.settings.hidePreview') : t('particleField.settings.showPreview')}
+                  aria-label={showPreview ? t('particleField.settings.hidePreview') : t('particleField.settings.showPreview')}
+                  aria-pressed={showPreview}
                 >
                   {showPreview ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                 </button>
@@ -994,6 +1017,7 @@ const ParticleFieldSettings: React.FC = () => {
                 onClick={togglePlayback}
                 className="p-2 bg-black/30 backdrop-blur-sm rounded-lg text-white hover:bg-black/50 transition-all duration-200"
                 title={isPlaying ? t('particleField.pause') : t('particleField.play')}
+                aria-label={isPlaying ? t('particleField.pause') : t('particleField.play')}
               >
                 {isPlaying ? <Pause className="w-5 h-5" /> : <Play className="w-5 h-5" />}
               </button>
@@ -1002,6 +1026,7 @@ const ParticleFieldSettings: React.FC = () => {
                 onClick={resetSystem}
                 className="p-2 bg-black/30 backdrop-blur-sm rounded-lg text-white hover:bg-black/50 transition-all duration-200"
                 title={t('particleField.reset')}
+                aria-label={t('particleField.reset')}
               >
                 <RotateCcw className="w-5 h-5" />
               </button>
