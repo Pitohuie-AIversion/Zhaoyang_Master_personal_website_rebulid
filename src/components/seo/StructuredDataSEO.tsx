@@ -39,7 +39,6 @@ export const StructuredDataSEO: React.FC<StructuredDataSEOProps> = ({
   const structuredData = generateStructuredData();
 
   if (!structuredData) return null;
-  if (import.meta.env.VITE_ALLOW_INLINE_JSONLD !== 'true') return null;
 
   return (
     <Helmet>
@@ -53,20 +52,24 @@ export const StructuredDataSEO: React.FC<StructuredDataSEOProps> = ({
 // 个人资料结构化数据
 const generatePersonSchema = (data: Record<string, unknown>) => ({
   "@context": "https://schema.org",
-  "@type": "Person",
-  "name": data.name,
-  "jobTitle": data.jobTitle,
-  "affiliation": data.affiliation,
+  "@type": "ProfilePage",
   "url": data.url,
-  "email": data.email,
-  "telephone": data.telephone,
-  "address": data.address,
-  "alumniOf": data.alumniOf,
-  "worksFor": data.worksFor,
-  "sameAs": data.sameAs,
-  "description": data.description,
-  "image": data.image,
-  "knowsAbout": data.knowsAbout
+  "mainEntity": {
+    "@type": "Person",
+    "@id": `${String(data.url || 'https://www.zhaoyangmu.cloud/')}#person`,
+    "name": data.name,
+    "alternateName": data.alternateName,
+    "jobTitle": data.jobTitle,
+    "affiliation": data.affiliation,
+    "url": data.url,
+    "email": data.email,
+    "alumniOf": data.alumniOf,
+    "worksFor": data.worksFor,
+    "sameAs": data.sameAs,
+    "description": data.description,
+    "image": data.image,
+    "knowsAbout": data.knowsAbout
+  }
 });
 
 // 学术文章结构化数据
@@ -170,7 +173,7 @@ export const ZhaoyangMuStructuredData = () => (
       name: "牟昭阳 (Zhaoyang Mu)",
       jobTitle: "人工智能硕士研究生 & 访问学生",
       affiliation: "大连海事大学 & 西湖大学",
-      url: "https://zhaoyang-mu.vercel.app",
+      url: "https://www.zhaoyangmu.cloud/",
       email: "mzymuzhaoyang@gmail.com",
       telephone: "+86 153 8213 0266",
       address: {
@@ -196,7 +199,7 @@ export const ZhaoyangMuStructuredData = () => (
         "name": "大连海事大学人工智能学院"
       },
       description: "专注于科学计算、机器人技术和人工智能交叉领域研究，在Transformer神经算子、CFD仿真、水下机器人等方面有深入研究",
-      image: "https://zhaoyang-mu.vercel.app/me_Nero_AI_Image_Upscaler_Photo_Face.jpeg",
+      image: "https://www.zhaoyangmu.cloud/favicon.svg",
       knowsAbout: ["人工智能", "机器学习", "计算流体力学", "水下机器人", "神经算子", "仿生学"],
       sameAs: [
         "https://scholar.google.com/citations?user=T3AV5RgAAAAJ",

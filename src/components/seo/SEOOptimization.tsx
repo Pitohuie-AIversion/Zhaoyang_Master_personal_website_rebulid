@@ -2,6 +2,8 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useTranslation } from '../common/TranslationProvider';
 
+const SITE_ORIGIN = 'https://www.zhaoyangmu.cloud';
+
 interface SEOProps {
   title?: string;
   description?: string;
@@ -33,7 +35,7 @@ const SEOOptimization: React.FC<SEOProps> = ({
   description,
   keywords,
   image = '/favicon.svg',
-  url = `${window.location.origin}${window.location.pathname}`,
+  url = `${SITE_ORIGIN}${window.location.pathname}`,
   type = 'website',
   author,
   publishedTime,
@@ -67,11 +69,11 @@ const SEOOptimization: React.FC<SEOProps> = ({
   const locale = t('seo.site.locale') as string;
   const jobTitle = t('seo.default.jobTitle') as string;
   const organization = t('seo.default.organization') as string;
-  const canonicalUrl = new URL(url, window.location.origin);
+  const canonicalUrl = new URL(url, SITE_ORIGIN);
   canonicalUrl.search = '';
   canonicalUrl.hash = '';
   const canonicalHref = canonicalUrl.href;
-  const absoluteImage = new URL(image, window.location.origin).href;
+  const absoluteImage = new URL(image, SITE_ORIGIN).href;
 
   const fullTitle =
     defaultTitle === siteTitle || defaultTitle.includes(defaultAuthor)

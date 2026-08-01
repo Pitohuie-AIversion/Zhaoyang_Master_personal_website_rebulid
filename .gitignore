@@ -38,5 +38,7 @@ coverage
 eslint-report.json
 eslint-final.txt
 missing-*.txt
+.playwright-cli/
+output/
 tmp/
 temp/

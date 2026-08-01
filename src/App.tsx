@@ -231,7 +231,7 @@ function App() {
                 {/* 性能监控已简化 */}
                 {/* HeaderASCII 已移动到 Navbar 中 */}
                 <Navbar />
-                <main id="main-content" tabIndex={-1}>
+                <main id="main-content" tabIndex={-1} className="min-h-[calc(100vh-4rem)]">
                   <AnimatedRoutes />
                 </main>
                 <Footer />
@@ -257,11 +257,13 @@ function App() {
                     affiliation: {
                       name: t('seo.default.organization')
                     },
-                    url: window.location.origin,
+                    url: 'https://www.zhaoyangmu.cloud/',
+                    image: 'https://www.zhaoyangmu.cloud/favicon.svg',
                     sameAs: [
                       "https://scholar.google.com/citations?user=T3AV5RgAAAAJ",
                       "https://www.linkedin.com/in/zhaoyang-mou/",
-                      "https://github.com/Pitohuie"
+                      "https://github.com/Pitohuie",
+                      "https://www.researchgate.net/profile/Zhaoyang-Mou"
                     ],
                     knowsAbout: [
                       t('skills.categories.aiMl'),

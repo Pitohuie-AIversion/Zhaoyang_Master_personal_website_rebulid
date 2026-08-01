@@ -8,6 +8,8 @@ interface LazyImageProps {
   placeholder?: string;
   blurDataURL?: string;
   priority?: boolean;
+  width?: number;
+  height?: number;
   onLoad?: () => void;
   onError?: () => void;
 }
@@ -19,6 +21,8 @@ const LazyImage: React.FC<LazyImageProps> = ({
   placeholder,
   blurDataURL,
   priority = false,
+  width,
+  height,
   onLoad,
   onError
 }) => {
@@ -100,6 +104,8 @@ const LazyImage: React.FC<LazyImageProps> = ({
         <img
           src={src}
           alt={alt}
+          width={width}
+          height={height}
           loading={priority ? 'eager' : 'lazy'}
           decoding="async"
           {...(priority ? { fetchpriority: 'high' } : {})}

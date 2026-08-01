@@ -76,7 +76,7 @@ function Research() {
         status: 'published',
         authors: getAuthors('publications.damformer.authors'),
         description: t('publications.damformer.description') as string,
-        doi: '10.1063/5.0187644',
+        doi: '10.1063/5.0245680',
         type: 'journal'
       },
       {
@@ -87,7 +87,7 @@ function Research() {
         status: 'published',
         authors: getAuthors('publications.rsModCubes.authors'),
         description: t('publications.rsModCubes.description') as string,
-        doi: '10.1109/LRA.2025.10891552',
+        doi: '10.1109/LRA.2025.3543139',
         type: 'journal'
       },
       {

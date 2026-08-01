@@ -2,11 +2,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>牟昭阳 - 个人学术网站</title>
-    <link>https://zhaoyang-mou.com</link>
+    <link>https://www.zhaoyangmu.cloud</link>
     <description>牟昭阳个人学术网站的最新研究成果</description>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 31 Jul 2026 00:00:00 GMT</lastBuildDate>
-    <atom:link href="https://zhaoyang-mou.com/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 01 Aug 2026 00:00:00 GMT</lastBuildDate>
+    <atom:link href="https://www.zhaoyangmu.cloud/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title><![CDATA[Generalizing morphologies in dam break simulations using transformer model]]></title>
       <description><![CDATA[A Transformer-based study of cross-geometry dam-break flow prediction, published in Physics of Fluids.]]></description>

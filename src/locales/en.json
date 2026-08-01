@@ -285,8 +285,8 @@
       "description": "Stay updated with my latest research progress and academic activities",
       "items": {
         "damformerPaper": {
-          "title": "DamFormer Paper Accepted by Physics of Fluids",
-          "description": "Research on Transformer applications in dam-break flow prediction accepted by top-tier journal (January 2025)",
+          "title": "DamFormer Paper Published in Physics of Fluids",
+          "description": "Research on cross-geometry dam-break flow prediction published in Physics of Fluids (January 2025)",
           "date": "2025-01-01"
         },
         "rsModCubes": {
@@ -1168,7 +1168,7 @@
           "Minyi Xu"
         ],
         "description": "Proposed a Transformer-based neural operator DamFormer for predicting dam-break flows. This method can handle fluid dynamics problems under different geometric boundary conditions and achieve cross-geometric generalization capabilities.",
-        "doi": "10.1063/5.0187644"
+        "doi": "10.1063/5.0245680"
       },
       "rsModCubes": {
         "title": "Rs-ModCubes: Self-reconfigurable, scalable, modular cubic robots for underwater operations",
@@ -1184,7 +1184,7 @@
           "Dixia Fan"
         ],
         "description": "Designed a reconfigurable robot system based on improved modular cubes with good reconfigurability and adaptability, capable of autonomously reconfiguring morphology according to task requirements.",
-        "doi": "10.1109/LRA.2025.10891552"
+        "doi": "10.1109/LRA.2025.3543139"
       },
       "whiskerSensorArray": {
         "title": "Deep-Learning-Assisted Triboelectric Whisker Sensor Array for Real-Time Motion Sensing of Unmanned Underwater Vehicle",
@@ -2729,7 +2729,7 @@
         "Minyi Xu"
       ],
       "description": "Proposed a Transformer-based neural operator DamFormer for predicting dam-break flows. This method can handle fluid dynamics problems under different geometric boundary conditions and achieve cross-geometric generalization capabilities.",
-      "doi": "10.1063/5.0187644"
+      "doi": "10.1063/5.0245680"
     },
     "rsModCubes": {
       "title": "Rs-ModCubes: Self-reconfigurable, scalable, modular cubic robots for underwater operations",
@@ -2745,7 +2745,7 @@
         "Dixia Fan"
       ],
       "description": "Designed a reconfigurable robot system based on improved modular cubes with good reconfigurability and adaptability, capable of autonomously reconfiguring morphology according to task requirements.",
-      "doi": "10.1109/LRA.2025.10891552"
+      "doi": "10.1109/LRA.2025.3543139"
     },
     "whiskerSensorArray": {
       "title": "Deep-Learning-Assisted Triboelectric Whisker Sensor Array for Real-Time Motion Sensing of Unmanned Underwater Vehicle",

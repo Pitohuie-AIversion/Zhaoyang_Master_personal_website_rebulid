@@ -36,7 +36,7 @@ const SEARCH_CONTENT: SearchResult[] = [
       year: 2025,
       authors: ['Zhaoyang Mu', 'Aoming Liang', 'Mingming Ge', 'Dashuai Chen', 'Dixia Fan', 'Minyi Xu'],
       journal: 'Physics of Fluids',
-      doi: '10.1063/5.0187644',
+      doi: '10.1063/5.0245680',
       tags: ['Transformer', 'CFD', 'dam break', '论文', '溃坝']
     }
   },
@@ -51,7 +51,7 @@ const SEARCH_CONTENT: SearchResult[] = [
       year: 2025,
       authors: ['Jiaxi Zheng', 'Guangmin Dai', 'Botao He', 'Zhaoyang Mu', 'Zhaochen Meng', 'Tianyi Zhang', 'Weiming Zhi', 'Dixia Fan'],
       journal: 'IEEE Robotics and Automation Letters',
-      doi: '10.1109/LRA.2025.10891552',
+      doi: '10.1109/LRA.2025.3543139',
       tags: ['modular robot', 'underwater', 'self-reconfiguration', '论文', '水下机器人']
     }
   },

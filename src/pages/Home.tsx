@@ -85,13 +85,6 @@ const getNewsItems = (t: (key: string, options?: { returnObjects?: boolean; fall
   }
 ];
 
-const getStats = (t: (key: string, options?: { returnObjects?: boolean; fallback?: string }) => string) => [
-  { label: t('home.stats.publications'), value: '7' },
-  { label: t('home.stats.projects'), value: '6' },
-  { label: t('home.stats.patents'), value: '6' },
-  { label: t('home.stats.awards'), value: '4' }
-];
-
 const getTimelineItems = (
   t: (key: string, options?: { returnObjects?: boolean; fallback?: string }) => string
 ): TimelineItem[] => [
@@ -215,7 +208,6 @@ function Home() {
   // Get translated data
   const researchHighlights = getResearchHighlights(t as (key: string, options?: { returnObjects?: boolean; fallback?: string }) => string);
   const newsItems = getNewsItems(t as (key: string, options?: { returnObjects?: boolean; fallback?: string }) => string);
-  const stats = getStats(t as (key: string, options?: { returnObjects?: boolean; fallback?: string }) => string);
   const timelineItems = getTimelineItems(t as (key: string, options?: { returnObjects?: boolean; fallback?: string }) => string);
 
   return (
@@ -304,6 +296,8 @@ function Home() {
                     src={profileImage}
                     alt={t('home.hero.name') as string}
                     priority
+                    width={384}
+                    height={384}
                     className="relative z-10 h-72 w-full max-w-sm rounded-3xl border-4 border-white object-cover object-top shadow-2xl shadow-blue-950/20 dark:border-slate-800 sm:h-80 lg:h-96 lg:w-96"
                   />
                 </div>
@@ -435,20 +429,13 @@ function Home() {
                   ))}
                 </div>
 
-                {/* Quick Stats in Sidebar */}
-                <div className="mt-12 p-6 bg-gray-50 dark:bg-gray-800/50 rounded-xl border border-gray-100 dark:border-gray-700">
-                  <h3 className="text-sm font-bold text-gray-900 dark:text-white uppercase tracking-wider mb-4">
-                    {t('home.researchAchievements') as string}
-                  </h3>
-                  <div className="grid grid-cols-2 gap-4">
-                    {stats.map((stat) => (
-                      <div key={stat.label} className="text-center p-2">
-                        <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">{stat.value}</div>
-                        <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">{stat.label}</div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
+                <Link
+                  to="/publications"
+                  className="mt-10 inline-flex w-full items-center justify-center gap-2 rounded-xl border border-gray-300 px-5 py-3 font-semibold text-primary-dark transition hover:border-blue-500 hover:text-blue-600 dark:border-gray-700"
+                >
+                  {t('navigation.publications') as string}
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
               </div>
             </div>
 

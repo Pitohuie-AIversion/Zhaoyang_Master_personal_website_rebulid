@@ -16,7 +16,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "vitest",
-    "test:api": "node scripts/smoke-api.js",
+    "test:api": "node scripts/smoke-api.js && node scripts/smoke-api-serverless.js",
     "test:run": "vitest run",
     "test:coverage": "vitest run --coverage",
     "test:i18n": "vitest run src/test/i18n",

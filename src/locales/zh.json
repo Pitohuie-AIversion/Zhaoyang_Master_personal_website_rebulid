@@ -285,8 +285,8 @@
       "description": "了解我的最新研究进展和学术活动",
       "items": {
         "damformerPaper": {
-          "title": "DamFormer Paper Accepted by Physics of Fluids",
-          "description": "关于Transformer在溃坝流动预测中应用的研究成果被顶级期刊接收（2025年1月）",
+          "title": "DamFormer 论文发表于 Physics of Fluids",
+          "description": "跨几何溃坝流动预测研究发表于 Physics of Fluids（2025年1月）",
           "date": "2025-01-01"
         },
         "rsModCubes": {
@@ -1125,7 +1125,7 @@
           "Minyi Xu"
         ],
         "description": "Proposed a Transformer-based neural operator DamFormer for predicting dam-break flows. This method can handle fluid dynamics problems under different geometric boundary conditions and achieve cross-geometric generalization capabilities.",
-        "doi": "10.1063/5.0187644"
+        "doi": "10.1063/5.0245680"
       },
       "rsModCubes": {
         "title": "Rs-ModCubes: Self-reconfigurable, scalable, modular cubic robots for underwater operations",
@@ -1141,7 +1141,7 @@
           "Dixia Fan"
         ],
         "description": "Designed a reconfigurable robot system based on improved modular cubes with good reconfigurability and adaptability, capable of autonomously reconfiguring morphology according to task requirements.",
-        "doi": "10.1109/LRA.2025.10891552"
+        "doi": "10.1109/LRA.2025.3543139"
       },
       "whiskerSensorArray": {
         "title": "Deep-Learning-Assisted Triboelectric Whisker Sensor Array for Real-Time Motion Sensing of Unmanned Underwater Vehicle",
@@ -2113,7 +2113,7 @@
         "Minyi Xu"
       ],
       "description": "提出了一种基于Transformer架构的神经算子DamFormer，用于预测溃坝流动。该方法能够处理不同几何边界条件下的流体动力学问题，实现了跨几何泛化能力。发表于Physics of Fluids 37(1):016612, 2025。",
-      "doi": "10.1063/5.0187644"
+      "doi": "10.1063/5.0245680"
     },
     "rsModCubes": {
       "title": "Rs-ModCubes: Self-reconfigurable, scalable, modular cubic robots for underwater operations",
@@ -2129,7 +2129,7 @@
         "Dixia Fan"
       ],
       "description": "设计了一种自重构、可扩展的模块化立方体机器人系统，专门用于水下作业。该系统具有良好的可重构性和适应性，能够根据任务需求自主重构形态。发表于IEEE RA-L, 2025。",
-      "doi": "10.1109/LRA.2025.10891552"
+      "doi": "10.1109/LRA.2025.3543139"
     },
     "whiskerSensorArray": {
       "title": "Deep-Learning-Assisted Triboelectric Whisker Sensor Array for Real-Time Motion Sensing of Unmanned Underwater Vehicle",
