@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from '../components/common/TranslationProvider';
+import { ParticleFieldDemoSEO } from '../components/seo/SEOOptimization';
 import { ParticleField as ParticleFieldComponent } from '../components/ParticleField/ParticleField';
 import { ParticleFieldConfig, builtinPresets } from '../utils/configManager';
 import { PerformanceMetrics } from '../utils/performanceMonitor';
@@ -20,7 +21,6 @@ import {
 const ParticleFieldDemo: React.FC = () => {
   const { t } = useTranslation();
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [config, setConfig] = useState<ParticleFieldConfig>(builtinPresets[0].config);
   const [isPlaying, setIsPlaying] = useState(true);
   const [metrics, setMetrics] = useState<PerformanceMetrics | null>(null);
@@ -43,9 +43,9 @@ const ParticleFieldDemo: React.FC = () => {
   }, []);
 
   const resetSystem = useCallback(() => {
-    // Reset to current preset configuration
-    // setConfig(builtinPresets[selectedPreset].config);
-  }, []);
+    const preset = builtinPresets.find(item => item.id === selectedPreset);
+    setConfig(preset?.config || builtinPresets[0].config);
+  }, [selectedPreset]);
 
   const toggleStats = useCallback(() => {
     setShowStats(prev => !prev);
@@ -68,7 +68,7 @@ const ParticleFieldDemo: React.FC = () => {
   const applyPreset = useCallback((presetId: string) => {
     const preset = builtinPresets.find(p => p.id === presetId);
     if (preset) {
-      // setConfig(preset.config);
+      setConfig(preset.config);
       setSelectedPreset(presetId);
       setShowPresets(false);
     }
@@ -133,10 +133,13 @@ const ParticleFieldDemo: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-black relative overflow-hidden">
+      <ParticleFieldDemoSEO />
       {/* 粒子场全屏背景 */}
       <div className="absolute inset-0 z-0">
         <ParticleFieldComponent
           className="w-full h-full"
+          config={config}
+          isPlaying={isPlaying}
           onConfigChange={handleConfigChange}
           onPerformanceUpdate={handlePerformanceUpdate}
           enableControls={false}
@@ -154,6 +157,7 @@ const ParticleFieldDemo: React.FC = () => {
                 to="/particle-field"
                 className="p-2 bg-black/30 backdrop-blur-sm rounded-lg text-white/80 hover:text-white hover:bg-black/50 transition-all duration-200"
                 title={t('particleField.backToMain')}
+                aria-label={t('particleField.backToMain')}
               >
                 <ArrowLeft className="w-5 h-5" />
               </Link>
@@ -169,8 +173,10 @@ const ParticleFieldDemo: React.FC = () => {
                 className={`p-2 rounded-lg transition-all duration-200 ${showInfo
                   ? 'bg-blue-500/30 text-blue-300 border border-blue-400/30'
                   : 'bg-black/30 text-white/70 hover:bg-black/50 hover:text-white'
-                  }`}
+                }`}
                 title={t('particleField.toggleInfo')}
+                aria-label={t('particleField.toggleInfo')}
+                aria-pressed={showInfo}
               >
                 <Info className="w-5 h-5" />
               </button>
@@ -180,8 +186,10 @@ const ParticleFieldDemo: React.FC = () => {
                 className={`p-2 rounded-lg transition-all duration-200 ${showStats
                   ? 'bg-green-500/30 text-green-300 border border-green-400/30'
                   : 'bg-black/30 text-white/70 hover:bg-black/50 hover:text-white'
-                  }`}
+                }`}
                 title={t('particleField.toggleStats')}
+                aria-label={t('particleField.toggleStats')}
+                aria-pressed={showStats}
               >
                 <Monitor className="w-5 h-5" />
               </button>
@@ -191,8 +199,10 @@ const ParticleFieldDemo: React.FC = () => {
                 className={`p-2 rounded-lg transition-all duration-200 ${showPresets
                   ? 'bg-purple-500/30 text-purple-300 border border-purple-400/30'
                   : 'bg-black/30 text-white/70 hover:bg-black/50 hover:text-white'
-                  }`}
+                }`}
                 title={t('particleField.presets')}
+                aria-label={t('particleField.presets')}
+                aria-pressed={showPresets}
               >
                 <Palette className="w-5 h-5" />
               </button>
@@ -200,7 +210,8 @@ const ParticleFieldDemo: React.FC = () => {
               <Link
                 to="/particle-field/settings"
                 className="p-2 bg-black/30 backdrop-blur-sm rounded-lg text-white/70 hover:text-white hover:bg-black/50 transition-all duration-200"
-                title={t('particleField.settings')}
+                title={t('particleField.navigation.settings')}
+                aria-label={t('particleField.navigation.settings')}
               >
                 <Settings className="w-5 h-5" />
               </Link>
@@ -215,6 +226,7 @@ const ParticleFieldDemo: React.FC = () => {
               onClick={togglePlayback}
               className="p-3 bg-black/30 backdrop-blur-sm rounded-full text-white hover:bg-black/50 transition-all duration-200"
               title={isPlaying ? t('particleField.pause') : t('particleField.play')}
+              aria-label={isPlaying ? t('particleField.pause') : t('particleField.play')}
             >
               {isPlaying ? <Pause className="w-6 h-6" /> : <Play className="w-6 h-6" />}
             </button>
@@ -223,6 +235,7 @@ const ParticleFieldDemo: React.FC = () => {
               onClick={resetSystem}
               className="p-3 bg-black/30 backdrop-blur-sm rounded-full text-white hover:bg-black/50 transition-all duration-200"
               title={t('particleField.reset')}
+              aria-label={t('particleField.reset')}
             >
               <RotateCcw className="w-6 h-6" />
             </button>
@@ -231,6 +244,8 @@ const ParticleFieldDemo: React.FC = () => {
               onClick={toggleFullscreen}
               className="p-3 bg-black/30 backdrop-blur-sm rounded-full text-white hover:bg-black/50 transition-all duration-200"
               title={isFullscreen ? t('particleField.exitFullscreen') : t('particleField.fullscreen')}
+              aria-label={isFullscreen ? t('particleField.exitFullscreen') : t('particleField.fullscreen')}
+              aria-pressed={isFullscreen}
             >
               {isFullscreen ? <Minimize2 className="w-6 h-6" /> : <Maximize2 className="w-6 h-6" />}
             </button>

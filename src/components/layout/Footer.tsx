@@ -61,7 +61,7 @@ export default function Footer() {
   ].filter(area => area && !area.startsWith('footer.'));
 
   return (
-    <footer className="bg-secondary-dark border-t border-primary-dark theme-transition">
+    <footer className="border-t border-gray-200 bg-slate-50 theme-transition dark:border-gray-800 dark:bg-gray-950">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-8">
           {/* 个人信息 */}
@@ -73,7 +73,7 @@ export default function Footer() {
             className="lg:col-span-2"
           >
             <div className="flex items-center space-x-3 mb-6">
-              <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg mx-auto mb-2 flex items-center justify-center">
+              <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-blue-600 to-indigo-600">
                 <img src="/favicon.svg" alt={t('common.logoAlt') as string} className="w-full h-full object-contain" />
               </div>
               <div>
@@ -99,7 +99,7 @@ export default function Footer() {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 bg-gray-800 rounded-md flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-700 transition-all duration-200"
+                  className="flex h-10 w-10 items-center justify-center rounded-lg bg-gray-200 text-gray-600 transition-all duration-200 hover:-translate-y-0.5 hover:bg-blue-600 hover:text-white dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-blue-600 dark:hover:text-white"
                   aria-label={
                     link.name === 'GitHub' ? (t('common.social.github') as string) :
                     link.name === 'LinkedIn' ? (t('common.social.linkedin') as string) :
@@ -151,7 +151,7 @@ export default function Footer() {
                 </svg>
                 <a
                   href={`mailto:${t('footer.contact.email') as string}`}
-                  className="text-secondary-dark hover:text-blue-600 dark:hover:text-blue-400 theme-transition"
+                  className="break-all text-secondary-dark hover:text-blue-600 dark:hover:text-blue-400 theme-transition"
                 >
                   {t('footer.contact.email') as string}
                 </a>
@@ -179,14 +179,8 @@ export default function Footer() {
             <p className="text-tertiary-dark theme-transition text-sm mb-4 md:mb-0">
               &copy; {currentYear} {t('footer.legal.copyright') as string}
             </p>
-            <div className="flex space-x-6 text-sm text-tertiary-dark theme-transition">
-              <a href="#" className="hover:text-blue-600 dark:hover:text-blue-400 theme-transition">
-                {t('footer.legal.privacy') as string}
-              </a>
-              <a href="#" className="hover:text-blue-600 dark:hover:text-blue-400 theme-transition">
-                {t('footer.legal.terms') as string}
-              </a>
-              <a href="#" className="hover:text-blue-600 dark:hover:text-blue-400 theme-transition">
+            <div className="text-sm text-tertiary-dark theme-transition">
+              <a href="/sitemap.xml" className="hover:text-blue-600 dark:hover:text-blue-400 theme-transition">
                 {t('footer.legal.sitemap') as string}
               </a>
             </div>

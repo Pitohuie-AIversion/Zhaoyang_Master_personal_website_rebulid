@@ -1,8 +1,7 @@
 import { SimpleMotion } from '../components/animations/SimpleMotion';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from '../components/common/TranslationProvider';
 import { SearchInput, FilterDropdown, SortDropdown, ActiveFilters, SearchStats, useAdvancedSearch } from '../components/features/search/SearchAndFilter';
-import { UnifiedButton } from '../components/common/UnifiedButton';
 import { useResponsive } from '../hooks/useResponsive';
 import { PublicationsSEO } from '../components/seo/SEOOptimization';
 
@@ -65,7 +64,6 @@ export default function Publications() {
       status: 'published',
       abstract: t('publications.data.pofDamFormer2025.abstract') as string,
       keywords: (t('publications.data.pofDamFormer2025.keywords', { returnObjects: true }) as unknown as string[] || []),
-      citations: 0,
       url: t('publications.data.pofDamFormer2025.url') as string
     },
     {
@@ -78,7 +76,6 @@ export default function Publications() {
       status: 'published',
       abstract: t('publications.data.ieeeCAC2024.abstract') as string,
       keywords: (t('publications.data.ieeeCAC2024.keywords', { returnObjects: true }) as unknown as string[] || []),
-      citations: 0,
       url: t('publications.data.ieeeCAC2024.url') as string
     },
     {
@@ -91,7 +88,6 @@ export default function Publications() {
       status: 'published',
       abstract: t('publications.data.ralRsModCubes2025.abstract') as string,
       keywords: (t('publications.data.ralRsModCubes2025.keywords', { returnObjects: true }) as unknown as string[] || []),
-      citations: 0,
       url: t('publications.data.ralRsModCubes2025.url') as string
     },
     {
@@ -128,6 +124,18 @@ export default function Publications() {
     'conference': t('publications.types.conference'),
     'patent': t('publications.types.patent')
   };
+  const hasCitationData = publications.some(publication => publication.citations !== undefined);
+
+  useEffect(() => {
+    if (!selectedPublication) return;
+
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setSelectedPublication(null);
+    };
+
+    document.addEventListener('keydown', closeOnEscape);
+    return () => document.removeEventListener('keydown', closeOnEscape);
+  }, [selectedPublication]);
   
   // 使用高级搜索Hook
   const {
@@ -181,7 +189,7 @@ export default function Publications() {
     { value: 'citations', label: t('publications.sort.citations') as string },
     { value: 'authors', label: t('publications.sort.authors') as string },
     { value: 'journal', label: t('publications.sort.journal') as string }
-  ];
+  ].filter(option => option.value !== 'citations' || hasCitationData);
 
   const getStatusColor = (status: string) => {
     switch (status) {
@@ -257,7 +265,7 @@ export default function Publications() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12"
+          className={`grid grid-cols-2 ${hasCitationData ? 'md:grid-cols-4' : 'md:grid-cols-3'} gap-4 mb-12`}
         >
           <div className="bg-gray-50 rounded-lg p-4 text-center border border-gray-200">
             <div className="text-2xl font-bold text-gray-900 mb-1">{stats.total}</div>
@@ -267,10 +275,12 @@ export default function Publications() {
             <div className="text-2xl font-bold text-gray-900 mb-1">{stats.published}</div>
             <div className="text-sm text-gray-600">{t('publications.stats.published') as string}</div>
           </div>
-          <div className="bg-gray-50 rounded-lg p-4 text-center border border-gray-200">
-            <div className="text-2xl font-bold text-gray-900 mb-1">{stats.citations}</div>
-            <div className="text-sm text-gray-600">{t('publications.stats.citations') as string}</div>
-          </div>
+          {hasCitationData && (
+            <div className="bg-gray-50 rounded-lg p-4 text-center border border-gray-200">
+              <div className="text-2xl font-bold text-gray-900 mb-1">{stats.citations}</div>
+              <div className="text-sm text-gray-600">{t('publications.stats.citations') as string}</div>
+            </div>
+          )}
           <div className="bg-gray-50 rounded-lg p-4 text-center border border-gray-200">
             <div className="text-2xl font-bold text-gray-900 mb-1">{stats.patents}</div>
             <div className="text-sm text-gray-600">{t('publications.stats.patents') as string}</div>
@@ -351,11 +361,14 @@ export default function Publications() {
           {filteredPublications.map((publication, index) => (
             <SimpleMotion
               key={publication.id}
+              as="button"
+              type="button"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="card-dark rounded-lg border border-gray-200 dark:border-gray-600 p-6 hover:border-gray-300 dark:hover:border-gray-500 theme-transition duration-200 cursor-pointer"
+              className="card-dark w-full rounded-lg border border-gray-200 dark:border-gray-600 p-6 text-left hover:border-gray-300 dark:hover:border-gray-500 theme-transition duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
               onClick={() => setSelectedPublication(publication)}
+              ariaLabel={publication.title}
             >
               <div className="flex items-start justify-between mb-4">
                 <div className="flex items-center gap-3">
@@ -380,9 +393,13 @@ export default function Publications() {
               </div>
               
               <h3 className="text-lg font-semibold text-primary-dark theme-transition mb-2">{publication.title}</h3>
-              <p className="text-sm text-secondary-dark theme-transition mb-2">{publication.authors}</p>
+              {publication.authors && (
+                <p className="text-sm text-secondary-dark theme-transition mb-2">{publication.authors}</p>
+              )}
               <p className="text-sm text-primary-dark theme-transition font-medium mb-3">{publication.journal}</p>
-              <p className="text-sm text-secondary-dark theme-transition mb-3 line-clamp-2">{publication.abstract}</p>
+              {publication.abstract && (
+                <p className="text-sm text-secondary-dark theme-transition mb-3 line-clamp-2">{publication.abstract}</p>
+              )}
               
               <div className="flex flex-wrap gap-2">
                 {Array.isArray(publication.keywords) && publication.keywords.slice(0, 4).map((keyword, keywordIndex) => (
@@ -414,6 +431,9 @@ export default function Publications() {
               animate={{ scale: 1, opacity: 1 }}
               className="bg-white rounded-lg max-w-3xl w-full max-h-[90vh] overflow-y-auto border border-gray-200"
               onClick={(e) => e.stopPropagation()}
+              role="dialog"
+              ariaModal
+              ariaLabelledby="publication-dialog-title"
             >
               <div className="p-6">
                 <div className="flex items-start justify-between mb-6">
@@ -428,18 +448,21 @@ export default function Publications() {
                       {getStatusText(selectedPublication.status) as string}
                     </span>
                   </div>
-                  <UnifiedButton
+                  <button
+                    type="button"
+                    autoFocus
                     onClick={() => setSelectedPublication(null)}
-                    variant="ghost"
-                    size="sm"
-                    className="w-8 h-8 bg-gray-100 hover:bg-gray-200"
+                    className="flex h-8 w-8 items-center justify-center rounded-md bg-gray-100 text-gray-600 transition-colors hover:bg-gray-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
+                    aria-label={t('common.close') as string}
                   >
                     ×
-                  </UnifiedButton>
+                  </button>
                 </div>
                 
-                <h2 className="text-xl font-bold text-gray-900 mb-3">{selectedPublication.title}</h2>
-                <p className="text-sm text-gray-600 mb-2"><strong>{t('publications.modal.authors') as string}:</strong> {selectedPublication.authors}</p>
+                <h2 id="publication-dialog-title" className="text-xl font-bold text-gray-900 mb-3">{selectedPublication.title}</h2>
+                {selectedPublication.authors && (
+                  <p className="text-sm text-gray-600 mb-2"><strong>{t('publications.modal.authors') as string}:</strong> {selectedPublication.authors}</p>
+                )}
                 <p className="text-sm text-gray-900 font-medium mb-2">{selectedPublication.journal}</p>
                 <p className="text-sm text-gray-600 mb-3"><strong>{t('publications.modal.year') as string}:</strong> {selectedPublication.year}</p>
                 
@@ -454,10 +477,12 @@ export default function Publications() {
                   <p className="text-gray-600 mb-4"><strong>{t('publications.modal.citationsCount') as string}:</strong> {selectedPublication.citations}</p>
                 )}
                 
-                <div className="mb-5">
-                  <h3 className="text-base font-semibold text-gray-900 mb-2">{t('publications.modal.abstract') as string}</h3>
-                  <p className="text-sm text-gray-700 leading-relaxed">{selectedPublication.abstract}</p>
-                </div>
+                {selectedPublication.abstract && (
+                  <div className="mb-5">
+                    <h3 className="text-base font-semibold text-gray-900 mb-2">{t('publications.modal.abstract') as string}</h3>
+                    <p className="text-sm text-gray-700 leading-relaxed">{selectedPublication.abstract}</p>
+                  </div>
+                )}
                 
                 <div>
                   <h3 className="text-base font-semibold text-gray-900 mb-2">{t('publications.modal.keywords') as string}</h3>

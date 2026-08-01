@@ -41,6 +41,8 @@ export const SmartSearch: React.FC<SmartSearchProps> = ({
   const [showHistory, setShowHistory] = useState(false);
 
   const searchInputRef = useRef<HTMLInputElement>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const previouslyFocusedRef = useRef<HTMLElement | null>(null);
   const searchTimeoutRef = useRef<NodeJS.Timeout>();
 
   // 加载搜索历史
@@ -160,29 +162,63 @@ export const SmartSearch: React.FC<SmartSearchProps> = ({
     localStorage.removeItem('searchHistory');
   };
 
-  // 聚焦搜索输入框
+  // Keep keyboard focus inside the modal and restore it when the modal closes.
   useEffect(() => {
-    if (isOpen && searchInputRef.current) {
-      searchInputRef.current.focus();
-    }
-  }, [isOpen]);
+    if (!isOpen) return;
 
-  // 键盘快捷键
-  useEffect(() => {
+    previouslyFocusedRef.current = document.activeElement instanceof HTMLElement
+      ? document.activeElement
+      : null;
+    searchInputRef.current?.focus();
+
     const handleKeyDown = (e: KeyboardEvent) => {
-      if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+      if (e.key === 'Escape') {
         e.preventDefault();
-        // 这里可以添加全局搜索快捷键
+        onClose();
+        return;
       }
 
-      if (e.key === 'Escape') {
-        onClose();
+      if (e.key === 'Tab' && dialogRef.current) {
+        const focusable = Array.from(
+          dialogRef.current.querySelectorAll<HTMLElement>(
+            'button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [href], [tabindex]:not([tabindex="-1"])'
+          )
+        ).filter(element => !element.hasAttribute('hidden'));
+
+        if (focusable.length === 0) {
+          e.preventDefault();
+          return;
+        }
+
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
       }
     };
 
     document.addEventListener('keydown', handleKeyDown);
-    return () => document.removeEventListener('keydown', handleKeyDown);
-  }, [onClose]);
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+      previouslyFocusedRef.current?.focus();
+    };
+  }, [isOpen, onClose]);
+
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [isOpen]);
 
   if (!isOpen) return null;
 
@@ -211,7 +247,13 @@ export const SmartSearch: React.FC<SmartSearchProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto">
+    <div
+      ref={dialogRef}
+      className="fixed inset-0 z-[80] overflow-y-auto"
+      role="dialog"
+      aria-modal="true"
+      aria-label={t('common.search') as string}
+    >
       {/* 背景遮罩 */}
       <div
         className="fixed inset-0 bg-black bg-opacity-50 transition-opacity"

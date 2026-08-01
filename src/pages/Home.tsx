@@ -1,22 +1,20 @@
 import { SimpleMotion } from '../components/animations/SimpleMotion';
 import { memo } from 'react';
 import { Link } from 'react-router-dom';
-import { Mail, Download, ArrowRight, Calendar, Trophy, FileText, Folder } from 'lucide-react';
-import { PageLoader, ResearchHighlightSkeleton, NewsItemSkeleton, usePageLoading, LazyWrapper } from '../components/common/LoadingComponents';
+import { Mail, Download, ArrowRight, Calendar, Trophy, FileText, Folder, Waves, Network, Bot } from 'lucide-react';
 import LazyImage from '../components/common/LazyImage';
 import { HomeSEO } from '../components/seo/SEOOptimization';
-import { useResponsive, ResponsiveCard, ResponsiveContainer } from '../components/common/ResponsiveEnhancements';
+import { ResponsiveCard, ResponsiveContainer } from '../components/common/ResponsiveEnhancements';
 import { useTranslation } from '../components/common/TranslationProvider';
-import { UnifiedButton } from '../components/common/UnifiedButton';
 import { ScrollReveal, HoverCard } from '../components/animations/InteractiveEffects';
-import Timeline from '../components/common/Timeline';
+import Timeline, { type TimelineItem } from '../components/common/Timeline';
 import profileImage from '../assets/me_Nero_AI_Image_Upscaler_Photo_Face.jpeg';
 
 interface ResearchHighlight {
   id: string;
   title: string;
   description: string;
-  image: string;
+  visual: 'flow' | 'network' | 'robot';
   category: string;
   link: string;
 }
@@ -34,7 +32,7 @@ const getResearchHighlights = (t: (key: string, options?: { returnObjects?: bool
     id: '1',
     title: t('home.researchHighlights.items.damformer.title'),
     description: t('home.researchHighlights.items.damformer.description'),
-    image: 'https://picsum.photos/seed/damformer/600/400',
+    visual: 'flow',
     category: t('home.researchHighlights.items.damformer.category'),
     link: '/research'
   },
@@ -42,7 +40,7 @@ const getResearchHighlights = (t: (key: string, options?: { returnObjects?: bool
     id: '2',
     title: t('home.researchHighlights.items.sparseDense.title'),
     description: t('home.researchHighlights.items.sparseDense.description'),
-    image: 'https://picsum.photos/seed/sparsedense/600/400',
+    visual: 'network',
     category: t('home.researchHighlights.items.sparseDense.category'),
     link: '/research'
   },
@@ -50,7 +48,7 @@ const getResearchHighlights = (t: (key: string, options?: { returnObjects?: bool
     id: '3',
     title: t('home.researchHighlights.items.bionicFin.title'),
     description: t('home.researchHighlights.items.bionicFin.description'),
-    image: 'https://picsum.photos/seed/bionicfin/600/400',
+    visual: 'robot',
     category: t('home.researchHighlights.items.bionicFin.category'),
     link: '/research'
   }
@@ -73,20 +71,13 @@ const getNewsItems = (t: (key: string, options?: { returnObjects?: boolean; fall
   },
   {
     id: '3',
-    date: '2024-11',
-    title: t('home.latestNews.items.underwaterPatents.title'),
-    description: t('home.latestNews.items.underwaterPatents.description'),
-    type: 'award'
-  },
-  {
-    id: '4',
     date: '2024-07',
     title: t('home.latestNews.items.mechanicalCompetition.title'),
     description: t('home.latestNews.items.mechanicalCompetition.description'),
     type: 'award'
   },
   {
-    id: '5',
+    id: '4',
     date: '2024-06',
     title: t('home.latestNews.items.westlakeVisit.title'),
     description: t('home.latestNews.items.westlakeVisit.description'),
@@ -94,12 +85,112 @@ const getNewsItems = (t: (key: string, options?: { returnObjects?: boolean; fall
   }
 ];
 
-const getStats = (t: (key: string, options?: { returnObjects?: boolean; fallback?: string }) => string) => [
-  { label: t('home.stats.publications'), value: '10+', icon: '📄' },
-  { label: t('home.stats.projects'), value: '6', icon: '🔬' },
-  { label: t('home.stats.patents'), value: '8', icon: '💡' },
-  { label: t('home.stats.awards'), value: '4', icon: '🏆' }
+const getTimelineItems = (
+  t: (key: string, options?: { returnObjects?: boolean; fallback?: string }) => string
+): TimelineItem[] => [
+  {
+    id: 'damformer-2025',
+    title: t('publications.data.pofDamFormer2025.title'),
+    description: t('publications.data.pofDamFormer2025.authors'),
+    date: '2025',
+    type: 'publication',
+    organization: t('publications.data.pofDamFormer2025.journal'),
+    tags: ['Transformer', 'CFD', 'Neural Operator'],
+    metadata: { url: t('publications.data.pofDamFormer2025.url') },
+    isHighlighted: true
+  },
+  {
+    id: 'rs-modcubes-2025',
+    title: t('publications.data.ralRsModCubes2025.title'),
+    description: t('publications.data.ralRsModCubes2025.authors'),
+    date: '2025',
+    type: 'publication',
+    organization: t('publications.data.ralRsModCubes2025.journal'),
+    tags: ['Modular Robots', 'Underwater', 'Reconfiguration'],
+    metadata: { url: t('publications.data.ralRsModCubes2025.url') }
+  },
+  {
+    id: 'twsa-2025',
+    title: t('publications.data.amtTWSA2025.title'),
+    description: t('publications.data.amtTWSA2025.authors'),
+    date: '2025',
+    type: 'publication',
+    organization: t('publications.data.amtTWSA2025.journal'),
+    tags: ['Triboelectric', 'Sensor Array', 'Underwater Vehicle'],
+    metadata: { url: t('publications.data.amtTWSA2025.url') }
+  },
+  {
+    id: 'auv-swarm-2025',
+    title: t('publications.data.spieCITA2025.title'),
+    description: t('publications.data.spieCITA2025.authors'),
+    date: '2025',
+    type: 'publication',
+    organization: t('publications.data.spieCITA2025.journal'),
+    tags: ['AUV', 'Swarm', 'Modular Design'],
+    metadata: { url: t('publications.data.spieCITA2025.url') }
+  },
+  {
+    id: 'nano-energy-2024',
+    title: t('publications.data.nanoEnergy2024.title'),
+    description: t('publications.data.nanoEnergy2024.authors'),
+    date: '2024',
+    type: 'publication',
+    organization: t('publications.data.nanoEnergy2024.journal'),
+    tags: ['Triboelectric', 'Underwater Whisker', 'Deep Learning'],
+    metadata: { url: t('publications.data.nanoEnergy2024.url') }
+  },
+  {
+    id: 'tail-fin-2024',
+    title: t('publications.data.ieeeCAC2024.title'),
+    description: t('publications.data.ieeeCAC2024.authors'),
+    date: '2024',
+    type: 'publication',
+    organization: t('publications.data.ieeeCAC2024.journal'),
+    tags: ['Triboelectric', 'Tail-Fin', 'Proprioception'],
+    metadata: { url: t('publications.data.ieeeCAC2024.url') }
+  }
 ];
+
+const researchVisuals = {
+  flow: {
+    icon: Waves,
+    gradient: 'from-blue-600 via-cyan-600 to-sky-400',
+    accent: 'bg-cyan-200/30'
+  },
+  network: {
+    icon: Network,
+    gradient: 'from-indigo-700 via-blue-600 to-violet-500',
+    accent: 'bg-violet-200/25'
+  },
+  robot: {
+    icon: Bot,
+    gradient: 'from-slate-800 via-blue-800 to-cyan-600',
+    accent: 'bg-blue-200/25'
+  }
+} as const;
+
+const ResearchVisual = ({ item, index }: { item: ResearchHighlight; index: number }) => {
+  const visual = researchVisuals[item.visual];
+  const Icon = visual.icon;
+
+  return (
+    <div
+      className={`relative h-48 md:h-full min-h-48 overflow-hidden bg-gradient-to-br ${visual.gradient}`}
+      aria-hidden="true"
+    >
+      <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,.35) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.35) 1px, transparent 1px)', backgroundSize: '28px 28px' }} />
+      <div className={`absolute -right-10 -top-12 h-40 w-40 rounded-full blur-2xl ${visual.accent}`} />
+      <div className="absolute inset-0 flex items-center justify-center">
+        <div className="flex h-20 w-20 items-center justify-center rounded-3xl border border-white/25 bg-white/10 shadow-2xl backdrop-blur-md">
+          <Icon className="h-10 w-10 text-white" strokeWidth={1.5} />
+        </div>
+      </div>
+      <span className="absolute bottom-4 right-5 font-mono text-4xl font-semibold tracking-tighter text-white/25">
+        0{index + 1}
+      </span>
+    </div>
+  );
+};
 
 // Icon mapping for news types
 const NewsIcon = ({ type }: { type: NewsItem['type'] }) => {
@@ -112,52 +203,46 @@ const NewsIcon = ({ type }: { type: NewsItem['type'] }) => {
 };
 
 function Home() {
-  const { isLoading } = usePageLoading(true);
-  const { isMobile, isTablet } = useResponsive();
   const { t, language } = useTranslation();
 
   // Get translated data
   const researchHighlights = getResearchHighlights(t as (key: string, options?: { returnObjects?: boolean; fallback?: string }) => string);
   const newsItems = getNewsItems(t as (key: string, options?: { returnObjects?: boolean; fallback?: string }) => string);
-  const stats = getStats(t as (key: string, options?: { returnObjects?: boolean; fallback?: string }) => string);
-
-  if (isLoading) {
-    return <PageLoader />;
-  }
+  const timelineItems = getTimelineItems(t as (key: string, options?: { returnObjects?: boolean; fallback?: string }) => string);
 
   return (
     <div className="min-h-screen relative theme-transition">
       <HomeSEO />
 
       {/* 1. Hero Section - Strong F-Pattern Top Bar */}
-      <section className="relative overflow-hidden pb-16 bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-blue-900 theme-transition" style={{ paddingTop: isMobile ? '120px' : isTablet ? '140px' : '160px' }}>
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-indigo-100/50 dark:from-gray-900/50 dark:to-blue-900/50" />
-        <ResponsiveContainer maxWidth="xl" padding="lg" className="relative z-30">
-          <div className="grid lg:grid-cols-12 gap-12 items-center">
+      <section className="relative overflow-hidden bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 pb-16 pt-28 dark:from-gray-950 dark:via-slate-950 dark:to-blue-950 sm:pt-32 lg:pb-24 lg:pt-36 theme-transition">
+        <div className="absolute inset-0 bg-gradient-to-br from-white/30 to-transparent dark:from-blue-950/10" />
+        <ResponsiveContainer maxWidth="xl" padding="md" className="relative z-30">
+          <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
             {/* Text Content - Spans 7 columns - Primary Focus */}
-            <div className="lg:col-span-7 order-2 lg:order-1">
+            <div className="order-1 lg:col-span-7">
               <SimpleMotion
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6 }}
               >
                 <ScrollReveal direction="up" delay={0.2}>
-                  <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary-dark theme-transition mb-4 leading-tight break-words">
+                  <h1 className="mb-5 break-words text-4xl font-bold leading-[1.08] tracking-tight text-primary-dark theme-transition sm:text-5xl lg:text-6xl">
                     {t('home.hero.name') as string}
-                    <span className="block text-2xl md:text-3xl lg:text-4xl text-secondary-dark theme-transition font-normal mt-2">
+                    <span className="mt-2 block text-2xl font-medium tracking-normal text-secondary-dark theme-transition sm:text-3xl lg:text-4xl">
                       {t('home.hero.nameEn') as string}
                     </span>
                   </h1>
                 </ScrollReveal>
 
                 <ScrollReveal direction="up" delay={0.4}>
-                  <h2 className="text-xl md:text-2xl text-blue-600 dark:text-blue-400 font-medium mb-6">
+                  <h2 className="mb-6 max-w-2xl text-lg font-semibold leading-relaxed text-blue-700 dark:text-blue-300 sm:text-xl">
                     {t('home.hero.title') as string}
                   </h2>
                 </ScrollReveal>
 
                 <ScrollReveal direction="up" delay={0.6}>
-                  <p className="text-base md:text-lg text-secondary-dark theme-transition mb-8 leading-loose max-w-2xl">
+                  <p className="mb-8 max-w-2xl text-base leading-8 text-secondary-dark theme-transition sm:text-lg">
                     {t('home.hero.description') as string}
                   </p>
                 </ScrollReveal>
@@ -178,16 +263,19 @@ function Home() {
                 </div>
 
                 <ScrollReveal direction="up" delay={0.8}>
-                  <div className="flex flex-wrap gap-4">
-                    <Link to="/research">
-                      <UnifiedButton variant="primary" size="lg" icon={ArrowRight} iconPosition="right">
-                        {t('home.hero.buttons.research') as string}
-                      </UnifiedButton>
+                  <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                    <Link
+                      to="/research"
+                      className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-blue-600 px-6 py-3.5 font-semibold text-white shadow-lg shadow-blue-600/20 transition hover:-translate-y-0.5 hover:bg-blue-700 hover:shadow-xl focus-visible:outline-none"
+                    >
+                      {t('home.hero.buttons.research') as string}
+                      <ArrowRight className="h-4 w-4" />
                     </Link>
-                    <Link to="/projects">
-                      <UnifiedButton variant="outline" size="lg">
-                        {t('home.hero.buttons.projects') as string}
-                      </UnifiedButton>
+                    <Link
+                      to="/projects"
+                      className="inline-flex min-h-12 items-center justify-center rounded-xl border border-slate-300 bg-white/60 px-6 py-3.5 font-semibold text-slate-800 backdrop-blur-sm transition hover:-translate-y-0.5 hover:border-blue-400 hover:bg-white dark:border-slate-700 dark:bg-slate-900/50 dark:text-slate-100 dark:hover:border-blue-500 dark:hover:bg-slate-900 focus-visible:outline-none"
+                    >
+                      {t('home.hero.buttons.projects') as string}
                     </Link>
                   </div>
                 </ScrollReveal>
@@ -195,7 +283,7 @@ function Home() {
             </div>
 
             {/* Image - Spans 5 columns - Secondary Anchor */}
-            <div className="lg:col-span-5 order-1 lg:order-2 flex justify-center lg:justify-end">
+            <div className="order-2 flex justify-center lg:col-span-5 lg:justify-end">
               <SimpleMotion
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -207,7 +295,10 @@ function Home() {
                   <LazyImage
                     src={profileImage}
                     alt={t('home.hero.name') as string}
-                    className="relative rounded-2xl shadow-2xl border-4 border-white dark:border-gray-800 w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 object-cover z-10"
+                    priority
+                    width={384}
+                    height={384}
+                    className="relative z-10 h-72 w-full max-w-sm rounded-3xl border-4 border-white object-cover object-top shadow-2xl shadow-blue-950/20 dark:border-slate-800 sm:h-80 lg:h-96 lg:w-96"
                   />
                 </div>
               </SimpleMotion>
@@ -256,23 +347,17 @@ function Home() {
 
               <div className="space-y-8">
                 {researchHighlights.map((item, index) => (
-                  <LazyWrapper key={item.id} fallback={<ResearchHighlightSkeleton />}>
-                    <ScrollReveal direction="up" delay={index * 0.1}>
+                    <ScrollReveal key={item.id} direction="up" delay={index * 0.1}>
                       <HoverCard>
                         <ResponsiveCard
                           className="group overflow-hidden border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-700 transition-colors duration-300"
                           padding="none"
                         >
                           <div className="grid md:grid-cols-5 gap-0">
-                            {/* Image Section */}
-                            <div className="md:col-span-2 relative h-48 md:h-auto overflow-hidden">
-                              <LazyImage
-                                src={item.image}
-                                alt={item.title}
-                                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                              />
+                            <div className="md:col-span-2 relative overflow-hidden">
+                              <ResearchVisual item={item} index={index} />
                               <div className="absolute top-3 left-3">
-                                <span className="px-2 py-1 bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm text-xs font-semibold text-blue-600 dark:text-blue-400 rounded">
+                                <span className="rounded-md border border-white/20 bg-slate-950/45 px-2.5 py-1 text-xs font-semibold text-white backdrop-blur-md">
                                   {item.category}
                                 </span>
                               </div>
@@ -288,7 +373,7 @@ function Home() {
                               <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-4 line-clamp-3">
                                 {item.description}
                               </p>
-                              <div className="mt-auto pt-4 flex items-center text-sm font-medium text-blue-600 dark:text-blue-400 opacity-0 group-hover:opacity-100 transform translate-x-[-10px] group-hover:translate-x-0 transition-all duration-300">
+                              <div className="mt-auto flex translate-x-0 items-center pt-4 text-sm font-medium text-blue-600 opacity-100 transition-all duration-300 dark:text-blue-400 md:-translate-x-2 md:opacity-0 md:group-hover:translate-x-0 md:group-hover:opacity-100">
                                 {t('common.readMore') || 'Read More'} <ArrowRight className="w-4 h-4 ml-1" />
                               </div>
                             </div>
@@ -296,16 +381,13 @@ function Home() {
                         </ResponsiveCard>
                       </HoverCard>
                     </ScrollReveal>
-                  </LazyWrapper>
                 ))}
               </div>
 
               <div className="mt-8 md:hidden text-center">
-                <Link to="/research">
-                  <UnifiedButton variant="outline" fullWidth>
+                  <Link to="/research" className="inline-flex w-full items-center justify-center rounded-xl border border-gray-300 px-5 py-3 font-semibold text-primary-dark transition hover:border-blue-500 hover:text-blue-600 dark:border-gray-700">
                     {t('common.viewAll') as string}
-                  </UnifiedButton>
-                </Link>
+                  </Link>
               </div>
             </div>
 
@@ -325,8 +407,7 @@ function Home() {
 
                 <div className="space-y-4">
                   {newsItems.map((item, index) => (
-                    <LazyWrapper key={item.id} fallback={<NewsItemSkeleton />}>
-                      <ScrollReveal direction="left" delay={0.3 + index * 0.1}>
+                      <ScrollReveal key={item.id} direction="left" delay={0.3 + index * 0.1}>
                         <div className="group relative pl-6 border-l-2 border-gray-200 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-500 transition-colors duration-300 py-1">
                           <div className="absolute -left-[5px] top-2 w-2.5 h-2.5 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-blue-500 transition-colors duration-300" />
                           <div className="text-xs text-gray-500 dark:text-gray-400 mb-1 flex items-center">
@@ -337,32 +418,24 @@ function Home() {
                               {item.type}
                             </span>
                           </div>
-                          <h4 className="text-sm font-semibold text-gray-900 dark:text-gray-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors leading-snug mb-1">
+                          <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors leading-snug mb-1">
                             {item.title}
-                          </h4>
+                          </h3>
                           <p className="text-xs text-gray-500 dark:text-gray-400 line-clamp-2 leading-relaxed">
                             {item.description}
                           </p>
                         </div>
                       </ScrollReveal>
-                    </LazyWrapper>
                   ))}
                 </div>
 
-                {/* Quick Stats in Sidebar */}
-                <div className="mt-12 p-6 bg-gray-50 dark:bg-gray-800/50 rounded-xl border border-gray-100 dark:border-gray-700">
-                  <h3 className="text-sm font-bold text-gray-900 dark:text-white uppercase tracking-wider mb-4">
-                    {t('home.researchAchievements') as string}
-                  </h3>
-                  <div className="grid grid-cols-2 gap-4">
-                    {stats.map((stat) => (
-                      <div key={stat.label} className="text-center p-2">
-                        <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">{stat.value}</div>
-                        <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">{stat.label}</div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
+                <Link
+                  to="/publications"
+                  className="mt-10 inline-flex w-full items-center justify-center gap-2 rounded-xl border border-gray-300 px-5 py-3 font-semibold text-primary-dark transition hover:border-blue-500 hover:text-blue-600 dark:border-gray-700"
+                >
+                  {t('navigation.publications') as string}
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
               </div>
             </div>
 
@@ -389,23 +462,25 @@ function Home() {
 
           <ScrollReveal direction="up" delay={0.2}>
             <Timeline
+              items={timelineItems}
               maxItems={6}
               showFilters={false}
             />
           </ScrollReveal>
 
           <div className="text-center mt-10">
-            <Link to="/about">
-              <UnifiedButton variant="outline" icon={ArrowRight} iconPosition="right">
-                {t('common.viewAll') || 'View Full Timeline'}
-              </UnifiedButton>
+            <Link to="/research" className="inline-flex items-center gap-2 rounded-xl border border-gray-300 px-5 py-3 font-semibold text-primary-dark transition hover:border-blue-500 hover:text-blue-600 dark:border-gray-700">
+              {t('common.viewAll') || 'View Full Timeline'}
+              <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
         </ResponsiveContainer>
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-blue-600 dark:bg-blue-900 theme-transition text-white">
+      <section className="relative overflow-hidden bg-gradient-to-br from-blue-700 via-blue-600 to-indigo-700 py-20 text-white theme-transition dark:from-blue-950 dark:via-blue-900 dark:to-indigo-950">
+        <div className="absolute -left-24 -top-24 h-64 w-64 rounded-full bg-cyan-300/10 blur-3xl" aria-hidden="true" />
+        <div className="absolute -bottom-28 right-0 h-72 w-72 rounded-full bg-indigo-300/15 blur-3xl" aria-hidden="true" />
         <ResponsiveContainer maxWidth="xl" className="text-center">
           <SimpleMotion
             initial={{ opacity: 0, scale: 0.95 }}
@@ -418,23 +493,18 @@ function Home() {
             <p className="text-blue-100 text-lg mb-10 max-w-2xl mx-auto">
               {t('home.collaborationDesc') as string}
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/contact">
-                <button className="px-8 py-4 bg-white text-blue-600 font-bold rounded-full shadow-lg hover:bg-blue-50 hover:scale-105 transition-all duration-300 flex items-center justify-center mx-auto sm:mx-0">
-                  <Mail className="w-5 h-5 mr-2" />
-                  {t('home.contactMe') as string}
-                </button>
+            <div className="flex flex-col justify-center gap-4 sm:flex-row">
+              <Link to="/contact" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-white px-7 py-3.5 font-bold text-blue-700 shadow-lg transition hover:-translate-y-0.5 hover:bg-blue-50">
+                <Mail className="h-5 w-5" />
+                {t('home.contactMe') as string}
               </Link>
               <a
                 href={language === 'zh' ? '/cn_resume.pdf' : '/en_resume.pdf'}
-                target="_blank"
-                rel="noopener noreferrer"
                 download
+                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-white/60 bg-white/5 px-7 py-3.5 font-bold text-white backdrop-blur-sm transition hover:-translate-y-0.5 hover:bg-white/15"
               >
-                <button className="px-8 py-4 bg-transparent border-2 border-white text-white font-bold rounded-full hover:bg-white/10 transition-all duration-300 flex items-center justify-center mx-auto sm:mx-0">
-                  <Download className="w-5 h-5 mr-2" />
-                  {t('home.downloadResume') as string}
-                </button>
+                <Download className="h-5 w-5" />
+                {t('home.downloadResume') as string}
               </a>
             </div>
           </SimpleMotion>

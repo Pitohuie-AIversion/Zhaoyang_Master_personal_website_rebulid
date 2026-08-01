@@ -1,5 +1,6 @@
 import React, { Suspense } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { GlobalOptimizationManager } from './components/common/GlobalOptimizationManager';
 import { ThemeProvider } from './components/common/DarkModeProvider';
 import { useTranslation } from './components/common/TranslationProvider';
@@ -11,7 +12,6 @@ import AnimatedBackground from './components/features/home/AnimatedBackground';
 // import HeaderASCII from './components/layout/HeaderASCII'; // 已移动到 Navbar 中
 import { AccessibilityManager, AccessibilityToolbar } from './components/layout/AccessibilityEnhancements';
 import { ThemeTransition } from './components/common/DarkModeProvider';
-import ChatAssistant from './components/features/chat/ChatAssistant';
 import { StructuredDataSEO } from './components/seo/StructuredDataSEO';
 import { GoogleAnalytics } from './components/seo/GoogleAnalytics';
 import './styles/accessibility.css';
@@ -42,10 +42,39 @@ const LazyBlogPost = React.lazy(() => import('./components/features/blog/BlogPos
 // 简历管理页面
 const LazyResumeManager = React.lazy(() => import('./components/features/resume/ResumeManager'));
 const LazyNotFound = React.lazy(() => import('./pages/NotFound'));
+const LazyChatAssistant = React.lazy(() => import('./components/features/chat/ChatAssistant'));
+
+function PrivateRouteSEO({ description }: { description: string }) {
+  const { t } = useTranslation();
+  const title = `${t('common.adminAuth.title') as string} | ${t('seo.site.title') as string}`;
+  const canonical = `${window.location.origin}${window.location.pathname}`;
+
+  return (
+    <Helmet>
+      <title>{title}</title>
+      <meta name="description" content={description} />
+      <meta name="robots" content="noindex, nofollow" />
+      <link rel="canonical" href={canonical} />
+    </Helmet>
+  );
+}
 
 function AnimatedRoutes() {
   const location = useLocation();
   const { t } = useTranslation();
+  const previousPathRef = React.useRef(location.pathname);
+
+  React.useEffect(() => {
+    if (previousPathRef.current === location.pathname) return;
+    previousPathRef.current = location.pathname;
+
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+    const focusFrame = window.requestAnimationFrame(() => {
+      document.getElementById('main-content')?.focus({ preventScroll: true });
+    });
+
+    return () => window.cancelAnimationFrame(focusFrame);
+  }, [location.pathname]);
 
   return (
     <SmartPageTransition>
@@ -134,6 +163,9 @@ function AnimatedRoutes() {
           path="/contact-admin"
           element={
             <Suspense fallback={<LoadingFallback message={t('common.loading') as string} />}>
+              <PrivateRouteSEO
+                description={t('common.adminAuth.contactDescription') as string}
+              />
               <LazyContactViewer />
             </Suspense>
           }
@@ -158,6 +190,9 @@ function AnimatedRoutes() {
           path="/resume-manager"
           element={
             <Suspense fallback={<LoadingFallback message={t('common.loading') as string} />}>
+              <PrivateRouteSEO
+                description={t('common.adminAuth.resumeDescription') as string}
+              />
               <LazyResumeManager />
             </Suspense>
           }
@@ -184,7 +219,7 @@ function App() {
           <GoogleAnalytics />
           <AccessibilityManager>
             <ThemeTransition>
-              <div className="min-h-screen relative theme-transition" id="main-content">
+              <div className="min-h-screen relative theme-transition">
                 {/* 动态背景 */}
                 <AnimatedBackground />
 
@@ -196,11 +231,15 @@ function App() {
                 {/* 性能监控已简化 */}
                 {/* HeaderASCII 已移动到 Navbar 中 */}
                 <Navbar />
-                <AnimatedRoutes />
+                <main id="main-content" tabIndex={-1} className="min-h-[calc(100vh-4rem)]">
+                  <AnimatedRoutes />
+                </main>
                 <Footer />
 
                 {/* 聊天助手 */}
-                <ChatAssistant />
+                <Suspense fallback={null}>
+                  <LazyChatAssistant />
+                </Suspense>
 
                 {/* 可访问性工具栏 */}
                 <AccessibilityToolbar />
@@ -216,14 +255,15 @@ function App() {
                     alternateName: t('seo.site.author') === '牟昭阳' ? 'Zhaoyang Mu' : '牟昭阳',
                     jobTitle: t('home.hero.title'),
                     affiliation: {
-                      name: t('seo.default.organization'),
-                      url: "https://example-institution.com"
+                      name: t('seo.default.organization')
                     },
-                    url: window.location.origin,
+                    url: 'https://www.zhaoyangmu.cloud/',
+                    image: 'https://www.zhaoyangmu.cloud/favicon.svg',
                     sameAs: [
                       "https://scholar.google.com/citations?user=T3AV5RgAAAAJ",
                       "https://www.linkedin.com/in/zhaoyang-mou/",
-                      "https://github.com/Pitohuie"
+                      "https://github.com/Pitohuie",
+                      "https://www.researchgate.net/profile/Zhaoyang-Mou"
                     ],
                     knowsAbout: [
                       t('skills.categories.aiMl'),

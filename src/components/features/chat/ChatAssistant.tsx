@@ -112,7 +112,7 @@ const ChatAssistant: React.FC<ChatAssistantProps> = ({ className = '' }) => {
         localStorage.setItem('chat_session_id', sessionId);
       }
 
-      const response = await fetch('/api/chat/message', {
+      const response = await fetch('/api/chat/completions', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -132,7 +132,7 @@ const ChatAssistant: React.FC<ChatAssistantProps> = ({ className = '' }) => {
       const data = await response.json();
 
       return {
-        reply: data.reply,
+        reply: data.response || data.reply,
         relatedLinks: data.relatedLinks || []
       };
     } catch (error) {

@@ -30,7 +30,7 @@ export const PublicationList: React.FC<PaperListProps> = ({
     const fetchPapers = async () => {
       try {
         setLoading(true);
-        const data = await googleScholarService.getPublicationMetrics('zhaoyang_mu');
+        const data = await googleScholarService.getPublicationMetrics('T3AV5RgAAAAJ');
         setPapers(data);
         setError(null);
       } catch (err) {

@@ -1,6 +1,6 @@
 /* eslint-disable react-refresh/only-export-components */
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
 // 响应式断点Hook
@@ -181,37 +181,51 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, items }
   const { t } = useTranslation();
   
   useEffect(() => {
+    const previousOverflow = document.body.style.overflow;
+
     if (isOpen) {
       document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
     }
 
     return () => {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = previousOverflow;
     };
   }, [isOpen]);
 
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') onClose();
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen, onClose]);
+
   return (
-    <>
-      {/* 背景遮罩 */}
+    <AnimatePresence>
       {isOpen && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden"
-          onClick={onClose}
-        />
-      )}
-      
-      {/* 菜单内容 */}
-      <motion.div
-        initial={{ x: '100%' }}
-        animate={{ x: isOpen ? 0 : '100%' }}
-        transition={{ type: 'tween', ease: 'easeInOut', duration: 0.3 }}
-        className="fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-white dark:bg-gray-900 shadow-xl z-50 lg:hidden overflow-y-auto"
-      >
+        <>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-gray-950/60 backdrop-blur-sm z-40 xl:hidden"
+            onClick={onClose}
+            aria-hidden="true"
+          />
+          <motion.div
+            id="mobile-navigation"
+            initial={{ x: '100%' }}
+            animate={{ x: 0 }}
+            exit={{ x: '100%' }}
+            transition={{ type: 'tween', ease: 'easeInOut', duration: 0.25 }}
+            className="fixed top-0 right-0 h-dvh w-80 max-w-[88vw] bg-white dark:bg-gray-950 shadow-2xl z-50 xl:hidden overflow-y-auto"
+            role="dialog"
+            aria-modal="true"
+            aria-label={t('common.menu')}
+          >
         <div className="p-6 h-full flex flex-col">
           {/* 关闭按钮 */}
           <div className="flex justify-end mb-8">
@@ -240,6 +254,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, items }
                     <Link
                       to={item.href}
                       onClick={onClose}
+                      aria-current={item.isActive ? 'page' : undefined}
                       className={`flex items-center space-x-4 px-5 py-4 rounded-xl text-base font-medium transition-all duration-200 break-words ${
                         item.isActive
                           ? 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 shadow-sm'
@@ -265,8 +280,10 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, items }
             </div>
           </div>
         </div>
-      </motion.div>
-    </>
+          </motion.div>
+        </>
+      )}
+    </AnimatePresence>
   );
 };
 
@@ -367,6 +384,14 @@ export const ResponsiveCard: React.FC<ResponsiveCardProps> = ({
     <motion.div
       whileHover={hover ? { y: -2 } : {}}
       onClick={onClick}
+      role={onClick ? 'button' : undefined}
+      tabIndex={onClick ? 0 : undefined}
+      onKeyDown={onClick ? (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          onClick();
+        }
+      } : undefined}
       className={`
         ${backgroundClasses}
         rounded-lg shadow-md 

@@ -253,19 +253,21 @@ export default function Contact() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <GradientText
-              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 leading-tight break-words"
-              gradient="from-blue-600 via-purple-600 to-pink-600"
-            >
-              {t('contact.title') as string}
-            </GradientText>
+            <h1 className="mb-8">
+              <GradientText
+                className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight break-words"
+                gradient="from-blue-600 via-purple-600 to-pink-600"
+              >
+                {t('contact.title') as string}
+              </GradientText>
+            </h1>
             <p className="text-base md:text-lg lg:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-loose break-words hyphens-auto">
               {t('contact.description') as string}
             </p>
           </SimpleMotion>
         </AnimationContainer>
 
-        <main className="grid grid-cols-1 xl:grid-cols-2 gap-6 sm:gap-8 lg:gap-10 xl:gap-12 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 sm:gap-8 lg:gap-10 xl:gap-12 max-w-7xl mx-auto">
           {/* 联系信息区域 */}
           <section className="space-y-6 order-2 xl:order-1">
             <SimpleMotion
@@ -440,7 +442,7 @@ export default function Contact() {
                     </AnimationContainer>
 
                     <AnimationContainer delay={0.6}>
-                      <form onSubmit={handleSubmit} className="space-y-6">
+                      <form onSubmit={handleSubmit} noValidate className="space-y-6">
                         {/* 基本信息 */}
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                           {/* 姓名 */}
@@ -452,6 +454,9 @@ export default function Contact() {
                               type="text"
                               id="name"
                               name="name"
+                              required
+                              aria-invalid={Boolean(errors.name)}
+                              aria-describedby={errors.name ? 'name-error' : undefined}
                               value={formData.name}
                               onChange={handleInputChange}
                               className={`w-full px-4 py-3 border-2 rounded-xl transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-blue-500/20 ${
@@ -465,6 +470,7 @@ export default function Contact() {
                               <SimpleMotion 
                                 initial={{ opacity: 0, y: -10 }}
                                 animate={{ opacity: 1, y: 0 }}
+                                id="name-error"
                                 className="mt-2 text-sm text-red-500 flex items-center"
                                 as="p"
                               >
@@ -483,6 +489,9 @@ export default function Contact() {
                               type="email"
                               id="email"
                               name="email"
+                              required
+                              aria-invalid={Boolean(errors.email)}
+                              aria-describedby={errors.email ? 'email-error' : undefined}
                               value={formData.email}
                               onChange={handleInputChange}
                               className={`w-full px-4 py-3 border-2 rounded-xl transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-blue-500/20 ${
@@ -496,6 +505,7 @@ export default function Contact() {
                               <SimpleMotion 
                                 initial={{ opacity: 0, y: -10 }}
                                 animate={{ opacity: 1, y: 0 }}
+                                id="email-error"
                                 className="mt-2 text-xs sm:text-sm text-red-500 flex items-center leading-tight break-words"
                                 as="p"
                               >
@@ -515,6 +525,9 @@ export default function Contact() {
                             type="text"
                             id="subject"
                             name="subject"
+                            required
+                            aria-invalid={Boolean(errors.subject)}
+                            aria-describedby={errors.subject ? 'subject-error' : undefined}
                             value={formData.subject}
                             onChange={handleInputChange}
                             className={`w-full px-4 py-3 border-2 rounded-xl transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-blue-500/20 ${
@@ -528,6 +541,7 @@ export default function Contact() {
                             <SimpleMotion 
                               initial={{ opacity: 0, y: -10 }}
                               animate={{ opacity: 1, y: 0 }}
+                              id="subject-error"
                               className="mt-2 text-xs sm:text-sm text-red-500 flex items-center leading-tight break-words"
                               as="p"
                             >
@@ -594,6 +608,9 @@ export default function Contact() {
                           <textarea
                             id="message"
                             name="message"
+                            required
+                            aria-invalid={Boolean(errors.message)}
+                            aria-describedby={errors.message ? 'message-error' : undefined}
                             rows={6}
                             value={formData.message}
                             onChange={handleInputChange}
@@ -608,6 +625,7 @@ export default function Contact() {
                             <SimpleMotion 
                               initial={{ opacity: 0, y: -10 }}
                               animate={{ opacity: 1, y: 0 }}
+                              id="message-error"
                               className="mt-2 text-xs sm:text-sm text-red-500 flex items-center leading-tight break-words"
                               as="p"
                             >
@@ -656,7 +674,7 @@ export default function Contact() {
               </article>
             </SimpleMotion>
           </section>
-        </main>
+        </div>
       </ResponsiveContainer>
     </div>
   );

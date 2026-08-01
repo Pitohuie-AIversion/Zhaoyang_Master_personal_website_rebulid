@@ -4,6 +4,8 @@ import { Helmet } from 'react-helmet-async';
 import { useTranslation } from '../common/TranslationProvider';
 import { useLocation } from 'react-router-dom';
 
+const SITE_ORIGIN = 'https://www.zhaoyangmu.cloud';
+
 interface AdvancedSEOProps {
   title?: string;
   description?: string;
@@ -64,7 +66,7 @@ export const AdvancedSEO: React.FC<AdvancedSEOProps> = ({
   const defaultAuthor = author || (t('seo.site.author') as string);
   const defaultLocale = locale || (language === 'zh' ? 'zh_CN' : 'en_US');
   const defaultSiteName = siteName || (t('seo.site.title') as string);
-  const currentUrl = canonicalUrl || `${window.location.origin}${location.pathname}`;
+  const currentUrl = canonicalUrl || `${SITE_ORIGIN}${location.pathname}`;
 
   const fullTitle = defaultTitle === defaultSiteName ? defaultTitle : `${defaultTitle} | ${defaultSiteName}`;
 
@@ -77,12 +79,12 @@ export const AdvancedSEO: React.FC<AdvancedSEOProps> = ({
       "@context": "https://schema.org",
       "@type": "WebSite",
       "name": defaultSiteName,
-      "url": window.location.origin,
+      "url": SITE_ORIGIN,
       "description": defaultDescription,
       "publisher": {
         "@type": "Organization",
         "name": defaultSiteName,
-        "url": window.location.origin
+        "url": SITE_ORIGIN
       },
       "inLanguage": defaultLocale
     });
@@ -105,7 +107,7 @@ export const AdvancedSEO: React.FC<AdvancedSEOProps> = ({
         "publisher": {
           "@type": "Organization",
           "name": defaultSiteName,
-          "url": window.location.origin
+          "url": SITE_ORIGIN
         },
         "mainEntityOfPage": {
           "@type": "WebPage",
@@ -127,8 +129,8 @@ export const AdvancedSEO: React.FC<AdvancedSEOProps> = ({
         "url": currentUrl,
         "image": image,
         "sameAs": [
-          "https://scholar.google.com/citations?user=YOUR_ID",
-          "https://github.com/YOUR_USERNAME",
+          "https://scholar.google.com/citations?user=T3AV5RgAAAAJ",
+          "https://github.com/Pitohuie",
           "https://www.linkedin.com/in/zhaoyang-mou/"
         ],
         "alumniOf": {
@@ -212,9 +214,6 @@ export const AdvancedSEO: React.FC<AdvancedSEOProps> = ({
       <meta name="twitter:site" content="@zhaoyang_mou" />
       <meta name="twitter:creator" content="@zhaoyang_mou" />
 
-      {/* Facebook App ID */}
-      <meta property="fb:app_id" content="YOUR_FACEBOOK_APP_ID" />
-
       {/* 移动设备优化 */}
       <meta name="format-detection" content="telephone=no" />
       <meta name="msapplication-TileColor" content="#3b82f6" />
@@ -253,9 +252,6 @@ export const AdvancedSEO: React.FC<AdvancedSEOProps> = ({
       <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
       <meta name="referrer" content="strict-origin-when-cross-origin" />
 
-      {/* 防止重复内容 */}
-      <link rel="prev" href={`${currentUrl}?page=1`} />
-      <link rel="next" href={`${currentUrl}?page=3`} />
     </Helmet>
   );
 };
@@ -381,7 +377,7 @@ export const ContactSEO: React.FC = () => {
 // 生成站点地图的函数
 // eslint-disable-next-line react-refresh/only-export-components
 export const generateSitemap = () => {
-  const baseUrl = 'https://zhaoyang-mou.com';
+  const baseUrl = SITE_ORIGIN;
   const pages = [
     { url: '/', lastmod: new Date().toISOString(), changefreq: 'daily', priority: 1.0 },
     { url: '/research', lastmod: new Date().toISOString(), changefreq: 'weekly', priority: 0.9 },
@@ -411,7 +407,7 @@ export const generateSitemap = () => {
 // eslint-disable-next-line react-refresh/only-export-components
 export const generateRSSFeed = (language: string = 'en') => {
   const t = createTranslationFunction(language as 'en' | 'zh');
-  const baseUrl = 'https://zhaoyang-mou.com';
+  const baseUrl = SITE_ORIGIN;
   const now = new Date().toISOString();
 
   const items = [

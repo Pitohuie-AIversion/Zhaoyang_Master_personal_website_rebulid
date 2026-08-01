@@ -17,6 +17,8 @@ interface ResourceLoadTiming {
   type: 'image' | 'script' | 'stylesheet' | 'font' | 'other';
 }
 
+const pageModules = import.meta.glob<{ default: React.ComponentType }>('../pages/**/*.tsx');
+
 // 性能监控Hook
 export const usePerformanceMonitor = () => {
   const [metrics, setMetrics] = useState<PerformanceMetrics | null>(null);
@@ -399,8 +401,14 @@ export const useCodeSplitting = (componentPath: string, options: {
     setError(null);
 
     try {
-      const module = await import(/* webpackChunkName: "[request]" */ `../pages/${componentPath}`);
-      setComponent(() => module.default || module);
+      const normalizedPath = componentPath.replace(/^\.\//, '').replace(/\.tsx$/, '');
+      const loadPage = pageModules[`../pages/${normalizedPath}.tsx`];
+      if (!loadPage) {
+        throw new Error(`Unknown page component: ${componentPath}`);
+      }
+
+      const module = await loadPage();
+      setComponent(() => module.default);
       setIsLoading(false);
       retryCountRef.current = 0;
     } catch (err) {

@@ -261,11 +261,13 @@ export const LoadingFallback: React.FC<{ message?: string }> = ({ message = '加
   <motion.div
     initial={{ opacity: 0 }}
     animate={{ opacity: 1 }}
-    className="min-h-screen flex items-center justify-center bg-white"
+    className="min-h-[70vh] flex items-center justify-center bg-white dark:bg-gray-950"
+    role="status"
+    aria-live="polite"
   >
     <div className="text-center">
       <div className="w-8 h-8 border-4 border-blue-600 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-      <p className="text-gray-600">{message}</p>
+      <p className="text-gray-600 dark:text-gray-300">{message}</p>
     </div>
   </motion.div>
 );

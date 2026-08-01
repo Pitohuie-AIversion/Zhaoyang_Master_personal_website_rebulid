@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from '../../common/TranslationProvider';
 import { Upload, FileText, User, GraduationCap, Briefcase, Award, Settings, Download, Eye, Edit, Trash2, Plus, X } from 'lucide-react';
+import {
+  clearStoredAdminToken,
+  getAdminAuthHeaders,
+  getStoredAdminToken,
+  storeAdminToken,
+} from '../../../utils/adminAuth';
 
 interface ResumeData {
   personal_info: PersonalInfo | null;
@@ -171,15 +177,55 @@ const ResumeManager: React.FC = () => {
   const [editingItem, setEditingItem] = useState<Record<string, unknown> | null>(null);
   const [editingSection, setEditingSection] = useState<string>('');
   const [syncing, setSyncing] = useState(false);
+  const [adminToken, setAdminToken] = useState(getStoredAdminToken);
+  const [tokenInput, setTokenInput] = useState('');
+  const [authError, setAuthError] = useState('');
 
   // Fetch resume data on component mount
   useEffect(() => {
-    fetchResumeData();
-  }, []);
+    if (adminToken) {
+      fetchResumeData();
+    } else {
+      setLoading(false);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [adminToken]);
+
+  const handleAdminLogin = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (!tokenInput.trim()) {
+      setAuthError(t('common.adminAuth.tokenRequired', 'Admin token is required.'));
+      return;
+    }
+    setAuthError('');
+    setLoading(true);
+    setAdminToken(storeAdminToken(tokenInput));
+    setTokenInput('');
+  };
+
+  const handleAuthFailure = () => {
+    clearStoredAdminToken();
+    setAdminToken('');
+    setAuthError(t('common.adminAuth.tokenInvalid', 'Admin token is invalid or the server is not configured.'));
+  };
+
+  const handleAdminLogout = () => {
+    clearStoredAdminToken();
+    setAdminToken('');
+    setResumeData(null);
+    setEditingItem(null);
+    setEditingSection('');
+  };
 
   const fetchResumeData = async () => {
     try {
-      const response = await fetch('/api/resume/data');
+      const response = await fetch('/api/resume/data', {
+        headers: getAdminAuthHeaders(adminToken),
+      });
+      if (response.status === 401 || response.status === 503) {
+        handleAuthFailure();
+        return;
+      }
       const result = await response.json();
 
       if (result.success) {
@@ -210,6 +256,7 @@ const ResumeManager: React.FC = () => {
     try {
       const response = await fetch('/api/resume/upload', {
         method: 'POST',
+        headers: getAdminAuthHeaders(adminToken),
         body: formData,
       });
 
@@ -250,6 +297,7 @@ const ResumeManager: React.FC = () => {
         method: method,
         headers: {
           'Content-Type': 'application/json',
+          ...getAdminAuthHeaders(adminToken),
         },
         body: JSON.stringify(typedItem),
       });
@@ -278,6 +326,7 @@ const ResumeManager: React.FC = () => {
     try {
       const response = await fetch(`/api/resume/data/${section}/${id}`, {
         method: 'DELETE',
+        headers: getAdminAuthHeaders(adminToken),
       });
 
       const result = await response.json();
@@ -305,6 +354,7 @@ const ResumeManager: React.FC = () => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          ...getAdminAuthHeaders(adminToken),
         },
       });
 
@@ -329,6 +379,7 @@ const ResumeManager: React.FC = () => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          ...getAdminAuthHeaders(adminToken),
         },
       });
 
@@ -618,6 +669,31 @@ const ResumeManager: React.FC = () => {
     { id: 'achievements', label: t('common.resume.achievements', 'Achievements'), icon: Award },
   ];
 
+  if (!adminToken) {
+    return (
+      <div className="max-w-md mx-auto p-6 min-h-[60vh] flex items-center">
+        <form onSubmit={handleAdminLogin} className="w-full bg-white rounded-lg shadow-md p-6 space-y-4">
+          <div>
+            <h1 className="text-2xl font-bold text-gray-900">{t('common.adminAuth.title', 'Admin Access')}</h1>
+            <p className="text-sm text-gray-600 mt-1">{t('common.adminAuth.resumeDescription', 'Enter the ADMIN_TOKEN to manage resume data.')}</p>
+          </div>
+          <input
+            type="password"
+            value={tokenInput}
+            onChange={(event) => setTokenInput(event.target.value)}
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="ADMIN_TOKEN"
+            autoComplete="current-password"
+          />
+          {authError && <p className="text-sm text-red-600">{authError}</p>}
+          <button type="submit" className="w-full px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700">
+            {t('common.adminAuth.unlock', 'Unlock')}
+          </button>
+        </form>
+      </div>
+    );
+  }
+
   if (loading) {
     return (
       <div className="flex items-center justify-center h-64">
@@ -629,9 +705,14 @@ const ResumeManager: React.FC = () => {
   return (
     <div className="max-w-6xl mx-auto p-6">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">
-          {t('common.resume.manager', 'Resume Manager')}
-        </h1>
+        <div className="flex items-center justify-between gap-4">
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">
+            {t('common.resume.manager', 'Resume Manager')}
+          </h1>
+          <button onClick={handleAdminLogout} className="px-3 py-2 rounded-lg bg-gray-200 text-gray-800 hover:bg-gray-300">
+            {t('common.adminAuth.lock', 'Lock')}
+          </button>
+        </div>
         <p className="text-gray-600">
           {t('common.resume.managerDesc', 'Manage and synchronize your resume data')}
         </p>

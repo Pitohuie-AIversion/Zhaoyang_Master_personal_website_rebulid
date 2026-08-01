@@ -1,5 +1,4 @@
-import { useState, useEffect } from 'react';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, LineChart, Line } from 'recharts';
+import { lazy, Suspense, useState, useEffect } from 'react';
 import { TrendingUp, Award, FileText, Users } from 'lucide-react';
 import { googleScholarService } from '../../../services/googleScholarService';
 import { AcademicMetricsProps, AcademicMetrics as AcademicMetricsType } from '../../../types/academic';
@@ -7,9 +6,10 @@ import { useTranslation } from '../../common/TranslationProvider';
 import { ResponsiveCard } from '../../common/ResponsiveEnhancements';
 import { PageLoader } from '../../common/LoadingComponents';
 
+const AcademicCharts = lazy(() => import('./AcademicCharts'));
 
 export const AcademicMetrics: React.FC<AcademicMetricsProps> = ({
-  scholarId = 'zhaoyang_mu',
+  scholarId = 'T3AV5RgAAAAJ',
   className = '',
   showCharts = true,
   refreshInterval = 3600000 // 1小时
@@ -122,51 +122,16 @@ export const AcademicMetrics: React.FC<AcademicMetricsProps> = ({
 
       {/* 图表展示 */}
       {showCharts && (
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          {/* 年度引用分布 */}
-          <ResponsiveCard className="p-4">
-            <h3 className="text-lg font-semibold mb-4 text-gray-900">
-              {t('academic.metrics.yearlyCitations')}
-            </h3>
-            <ResponsiveContainer width="100%" height={250}>
-              <BarChart data={yearlyData}>
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="year" />
-                <YAxis />
-                <Tooltip
-                  formatter={(value) => [value, t('academic.metrics.citations')]}
-                  labelFormatter={(label) => `${t('academic.metrics.year')}: ${label}`}
-                />
-                <Bar dataKey="citations" fill="#3b82f6" radius={[4, 4, 0, 0]} />
-              </BarChart>
-            </ResponsiveContainer>
-          </ResponsiveCard>
-
-          {/* 引用趋势 */}
-          <ResponsiveCard className="p-4">
-            <h3 className="text-lg font-semibold mb-4 text-gray-900">
-              {t('academic.metrics.citationTrend')}
-            </h3>
-            <ResponsiveContainer width="100%" height={250}>
-              <LineChart data={trendData}>
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="year" />
-                <YAxis />
-                <Tooltip
-                  formatter={(value) => [value, t('academic.metrics.totalCitations')]}
-                  labelFormatter={(label) => `${t('academic.metrics.year')}: ${label}`}
-                />
-                <Line
-                  type="monotone"
-                  dataKey="citations"
-                  stroke="#10b981"
-                  strokeWidth={3}
-                  dot={{ fill: '#10b981', strokeWidth: 2, r: 4 }}
-                />
-              </LineChart>
-            </ResponsiveContainer>
-          </ResponsiveCard>
-        </div>
+        <Suspense
+          fallback={
+            <div
+              className="h-64 rounded-lg bg-gray-100 dark:bg-gray-800 animate-pulse"
+              aria-hidden="true"
+            />
+          }
+        >
+          <AcademicCharts yearlyData={yearlyData} trendData={trendData} />
+        </Suspense>
       )}
 
       {/* 详细说明 */}

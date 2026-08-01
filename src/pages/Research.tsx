@@ -7,9 +7,8 @@ import { useTranslation } from '../components/common/TranslationProvider';
 import { ResearchAnalytics } from '../components/features/research/ResearchAnalytics';
 import { ResearchDetailModal } from '../components/features/research/ResearchDetailModal';
 import { ResponsiveContainer } from '../components/common/ResponsiveEnhancements';
-import AcademicMetrics from '../components/features/research/AcademicMetrics';
-import PublicationList from '../components/features/research/PublicationList';
 import { StructuredDataSEO } from '../components/seo/StructuredDataSEO';
+import { ResearchSEO } from '../components/seo/SEOOptimization';
 
 interface Publication {
   id: string;
@@ -61,18 +60,9 @@ function Research() {
   const getPublications = (): Publication[] => {
     // 辅助函数：安全地获取作者数组
     const getAuthors = (key: string): string[] => {
-      const authors = t(key);
+      const authors = t(key, { returnObjects: true });
       if (Array.isArray(authors)) {
-        return authors;
-      }
-      // 如果是字符串，尝试解析为数组
-      if (typeof authors === 'string') {
-        try {
-          const parsed = JSON.parse(authors);
-          return Array.isArray(parsed) ? parsed : [authors];
-        } catch {
-          return [authors];
-        }
+        return authors.filter((author): author is string => typeof author === 'string');
       }
       return [];
     };
@@ -86,7 +76,7 @@ function Research() {
         status: 'published',
         authors: getAuthors('publications.damformer.authors'),
         description: t('publications.damformer.description') as string,
-        doi: '10.1063/5.0187644',
+        doi: '10.1063/5.0245680',
         type: 'journal'
       },
       {
@@ -97,7 +87,7 @@ function Research() {
         status: 'published',
         authors: getAuthors('publications.rsModCubes.authors'),
         description: t('publications.rsModCubes.description') as string,
-        doi: '10.1109/LRA.2025.1234567',
+        doi: '10.1109/LRA.2025.3543139',
         type: 'journal'
       },
       {
@@ -121,72 +111,6 @@ function Research() {
         description: t('publications.whiskerSensor.description') as string,
         doi: '10.1016/j.nanoen.2024.110011',
         type: 'journal'
-      },
-      {
-        id: '5',
-        title: t('publications.sparseToDense.title') as string,
-        journal: t('publications.sparseToDense.journal') as string,
-        year: 2024,
-        status: 'under_review',
-        authors: getAuthors('publications.sparseToDense.authors'),
-        description: t('publications.sparseToDense.description') as string,
-        doi: '10.1063/5.0123456',
-        type: 'journal'
-      },
-      {
-        id: '6',
-        title: 'CFD-FSI Analysis of Bionic Undulating Fin Propulsion System',
-        journal: 'International Conference on Robotics and Automation (ICRA)',
-        year: 2025,
-        status: 'accepted',
-        authors: ['牟昭阳', '西湖大学研究团队'],
-        description: '西湖大学i⁴-FSI实验室项目。通过Star-CCM+ CFD/FSI耦合仿真分析仿生波动鳍推进系统，Java Macro自动化参数扫描，探索仿生推进机理。',
-        doi: '10.1109/ICRA.2025.1234567',
-        type: 'conference'
-      },
-      {
-        id: '7',
-        title: 'Transformer-based Neural Operator for Underwater Robot Control',
-        journal: 'IEEE Transactions on Robotics',
-        year: 2024,
-        status: 'under_review',
-        authors: ['牟昭阳', '合作研究者'],
-        description: '基于Transformer的神经算子在水下机器人控制中的应用研究，实现了复杂环境下的智能控制策略。',
-        doi: '10.1109/TRO.2024.1234567',
-        type: 'journal'
-      },
-      {
-        id: '8',
-        title: 'Multi-modal Sensor Fusion for Underwater Environmental Perception',
-        journal: 'Sensors',
-        year: 2024,
-        status: 'published',
-        authors: ['牟昭阳', '王强', '陈华'],
-        description: '多模态传感器融合技术在水下环境感知中的应用，提高了水下机器人的环境适应能力。',
-        doi: '10.3390/s24123456',
-        type: 'journal'
-      },
-      {
-        id: '9',
-        title: 'Efficient CFD Simulation Using Neural Operators',
-        journal: 'Computer Physics Communications',
-        year: 2024,
-        status: 'published',
-        authors: ['牟昭阳', '赵磊'],
-        description: '基于神经算子的CFD高效仿真方法，显著提高了计算效率，为工程应用提供了新的解决方案。',
-        doi: '10.1016/j.cpc.2024.1234567',
-        type: 'journal'
-      },
-      {
-        id: '10',
-        title: 'Bionic Design and Optimization of Underwater Propulsion Systems',
-        journal: 'Bioinspiration & Biomimetics',
-        year: 2024,
-        status: 'under_review',
-        authors: ['牟昭阳', '研究团队'],
-        description: '水下推进系统的仿生设计与优化研究，结合生物学原理和工程技术，开发了新型推进系统。',
-        doi: '10.1088/1748-3190/abcd123',
-        type: 'journal'
       }
     ];
   };
@@ -196,11 +120,11 @@ function Research() {
     {
       id: '1',
       title: t('research.patents.underwaterNavigation.title') as string,
-      number: 'CN119509546A',
+      number: t('research.patents.underwaterNavigation.number') as string,
       applicant: t('research.patents.underwaterNavigation.applicant') as string,
-      applicationDate: '2024-07-15',
-      publicDate: '2024-11-06',
-      priorityDate: '2024-07-15',
+      applicationDate: '2024-11-06',
+      publicDate: '2025-02-25',
+      priorityDate: '2024-11-06',
       status: 'published',
       type: 'invention',
       description: t('research.patents.underwaterNavigation.description') as string
@@ -208,7 +132,7 @@ function Research() {
     {
       id: '2',
       title: t('research.patents.vectorThruster.title') as string,
-      number: 'CN119239885A',
+      number: t('research.patents.vectorThruster.number') as string,
       applicant: t('research.patents.vectorThruster.applicant') as string,
       applicationDate: '2024-06-20',
       publicDate: '2024-11-06',
@@ -220,7 +144,7 @@ function Research() {
     {
       id: '3',
       title: t('research.patents.undulatingFin.title') as string,
-      number: 'CN119142488A',
+      number: t('research.patents.undulatingFin.number') as string,
       applicant: t('research.patents.undulatingFin.applicant') as string,
       applicationDate: '2024-05-10',
       publicDate: '2024-11-06',
@@ -232,7 +156,7 @@ function Research() {
     {
       id: '4',
       title: t('research.patents.flexibleFin.title') as string,
-      number: 'CN118182783A',
+      number: t('research.patents.flexibleFin.number') as string,
       applicant: t('research.patents.flexibleFin.applicant') as string,
       applicationDate: '2023-10-25',
       publicDate: '2024-04-23',
@@ -244,7 +168,7 @@ function Research() {
     {
       id: '5',
       title: t('research.patents.smartShip.title') as string,
-      number: 'CN118047007A',
+      number: t('research.patents.smartShip.number') as string,
       applicant: t('research.patents.smartShip.applicant') as string,
       applicationDate: '2023-09-15',
       publicDate: '2024-03-14',
@@ -256,7 +180,7 @@ function Research() {
     {
       id: '6',
       title: t('research.patents.mobileBuoy.title') as string,
-      number: 'CN308069533S',
+      number: t('research.patents.mobileBuoy.number') as string,
       applicant: t('research.patents.mobileBuoy.applicant') as string,
       applicationDate: '2022-08-30',
       publicDate: '2023-02-22',
@@ -264,30 +188,6 @@ function Research() {
       status: 'published',
       type: 'design',
       description: t('research.patents.mobileBuoy.description') as string
-    },
-    {
-      id: '7',
-      title: t('research.patents.powerPlantWaterNetwork.title') as string,
-      number: 'CN120217249A',
-      applicant: t('research.patents.powerPlantWaterNetwork.applicant') as string,
-      applicationDate: '2025-02-01',
-      publicDate: '2025-03-06',
-      priorityDate: '2025-02-01',
-      status: 'published',
-      type: 'invention',
-      description: t('research.patents.powerPlantWaterNetwork.description') as string
-    },
-    {
-      id: '8',
-      title: t('research.patents.powerPlantWaterBalance.title') as string,
-      number: 'CN120448721A',
-      applicant: t('research.patents.powerPlantWaterBalance.applicant') as string,
-      applicationDate: '2025-02-01',
-      publicDate: '2025-03-05',
-      priorityDate: '2025-02-01',
-      status: 'published',
-      type: 'invention',
-      description: t('research.patents.powerPlantWaterBalance.description') as string
     }
   ];
 
@@ -387,6 +287,7 @@ function Research() {
   
   return (
     <div className="min-h-screen relative theme-transition">
+      <ResearchSEO />
       <ResponsiveContainer 
         maxWidth="xl" 
         padding="lg"
@@ -428,6 +329,7 @@ function Research() {
                 <input
                   type="text"
                   placeholder={t('research.searchPlaceholder') as string}
+                  aria-label={t('research.searchPlaceholder') as string}
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                   className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white text-gray-900 break-words"
@@ -535,27 +437,6 @@ function Research() {
         >
           <h2 className="text-2xl font-semibold text-primary-dark theme-transition mb-8 text-center">{t('research.academicAchievements') as string}</h2>
 
-          {/* Google Scholar学术指标 */}
-          <div className="mb-12">
-            <h3 className="text-xl font-semibold text-primary-dark theme-transition mb-6 text-center">
-              {t('academic.metrics.title')}
-            </h3>
-            <AcademicMetrics scholarId="zhaoyang_mu" showCharts={true} />
-          </div>
-
-          {/* 学术论文列表 */}
-          <div className="mb-12">
-            <h3 className="text-xl font-semibold text-primary-dark theme-transition mb-6 text-center">
-              {t('academic.papers.title')}
-            </h3>
-            <PublicationList 
-              papers={[]} 
-              maxItems={10} 
-              showCitations={true} 
-              showVelocity={true} 
-            />
-          </div>
-
           {showAnalytics ? (
             <ResearchAnalytics 
               publications={publications}
@@ -655,7 +536,14 @@ function Research() {
                       {patent.description}
                     </p>
                     <div className="flex flex-wrap items-center gap-2 mb-3">
-                      <span className="text-sm font-medium text-gray-700">{t('research.patentNumber') as string}: {patent.number}</span>
+                      <a
+                        href={`https://patents.google.com/patent/${patent.number}/zh`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm font-medium text-blue-600 hover:underline"
+                      >
+                        {t('research.patentNumber') as string}: {patent.number}
+                      </a>
                       <span className="text-sm text-gray-500">·</span>
                       <span className="text-sm text-gray-600">{t('research.applicant') as string}: {patent.applicant}</span>
                       <span className="text-sm text-gray-500">·</span>
@@ -748,7 +636,7 @@ function Research() {
           <div className="card-dark rounded-lg shadow-md-dark p-6 theme-transition">
             <div className="flex items-center mb-6">
               <GraduationCap className="w-6 h-6 text-green-500 mr-3" />
-              <h3 className="text-xl font-semibold text-primary-dark theme-transition">{t('research.education') as string}</h3>
+              <h3 className="text-xl font-semibold text-primary-dark theme-transition">{t('research.educationSectionTitle') as string}</h3>
             </div>
             <div className="space-y-6">
               <SimpleMotion
@@ -878,7 +766,7 @@ function Research() {
             "@type": "Organization",
             name: patent.applicant
           },
-          filingDate: patent.publicDate,
+          filingDate: patent.applicationDate,
           abstract: patent.description,
           patentStatus: patent.status === 'granted' ? 'Granted' : 'Pending'
         }}
