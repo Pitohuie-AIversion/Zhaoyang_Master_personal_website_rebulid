@@ -206,7 +206,7 @@ const BlogPost: React.FC<BlogPostProps> = ({ className = '' }) => {
 
   if (loading) {
     return (
-      <div className={`flex items-center justify-center py-12 ${className}`}>
+      <div className={`flex items-center justify-center py-12 pt-24 ${className}`}>
         <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500"></div>
         <span className="ml-3 text-gray-600 dark:text-gray-400">
           {t('blog.loading') || '加载中...'}
@@ -217,7 +217,7 @@ const BlogPost: React.FC<BlogPostProps> = ({ className = '' }) => {
 
   if (!post) {
     return (
-      <div className={`text-center py-12 ${className}`}>
+      <div className={`text-center py-12 pt-24 ${className}`}>
         <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">
           {t('blog.postNotFound') || '文章未找到'}
         </h2>
@@ -232,7 +232,7 @@ const BlogPost: React.FC<BlogPostProps> = ({ className = '' }) => {
   }
 
   return (
-    <div className={`max-w-4xl mx-auto px-4 py-8 ${className}`}>
+    <div className={`max-w-4xl mx-auto px-4 py-8 pt-24 ${className}`}>
       <SEOOptimization
         title={post.title}
         description={post.excerpt}

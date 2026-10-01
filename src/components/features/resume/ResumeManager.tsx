@@ -671,22 +671,22 @@ const ResumeManager: React.FC = () => {
 
   if (!adminToken) {
     return (
-      <div className="max-w-md mx-auto p-6 min-h-[60vh] flex items-center">
-        <form onSubmit={handleAdminLogin} className="w-full bg-white rounded-lg shadow-md p-6 space-y-4">
+      <div className="max-w-md mx-auto p-6 min-h-[60vh] pt-24 flex items-center">
+        <form onSubmit={handleAdminLogin} className="w-full bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 space-y-4 border border-gray-200 dark:border-gray-700 theme-transition">
           <div>
-            <h1 className="text-2xl font-bold text-gray-900">{t('common.adminAuth.title', 'Admin Access')}</h1>
-            <p className="text-sm text-gray-600 mt-1">{t('common.adminAuth.resumeDescription', 'Enter the ADMIN_TOKEN to manage resume data.')}</p>
+            <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{t('common.adminAuth.title', 'Admin Access')}</h1>
+            <p className="text-sm text-gray-600 dark:text-gray-300 mt-1">{t('common.adminAuth.resumeDescription', 'Enter the ADMIN_TOKEN to manage resume data.')}</p>
           </div>
           <input
             type="password"
             value={tokenInput}
             onChange={(event) => setTokenInput(event.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
             placeholder="ADMIN_TOKEN"
             autoComplete="current-password"
           />
-          {authError && <p className="text-sm text-red-600">{authError}</p>}
-          <button type="submit" className="w-full px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700">
+          {authError && <p className="text-sm text-red-600 dark:text-red-400">{authError}</p>}
+          <button type="submit" className="w-full px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition-colors">
             {t('common.adminAuth.unlock', 'Unlock')}
           </button>
         </form>
@@ -696,36 +696,36 @@ const ResumeManager: React.FC = () => {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center h-64">
+      <div className="flex items-center justify-center h-64 pt-24">
         <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
       </div>
     );
   }
 
   return (
-    <div className="max-w-6xl mx-auto p-6">
+    <div className="max-w-6xl mx-auto p-6 pt-24 min-h-screen text-gray-900 dark:text-gray-100 theme-transition">
       <div className="mb-8">
         <div className="flex items-center justify-between gap-4">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">
+          <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
             {t('common.resume.manager', 'Resume Manager')}
           </h1>
-          <button onClick={handleAdminLogout} className="px-3 py-2 rounded-lg bg-gray-200 text-gray-800 hover:bg-gray-300">
+          <button onClick={handleAdminLogout} className="px-3 py-2 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors">
             {t('common.adminAuth.lock', 'Lock')}
           </button>
         </div>
-        <p className="text-gray-600">
+        <p className="text-gray-600 dark:text-gray-400">
           {t('common.resume.managerDesc', 'Manage and synchronize your resume data')}
         </p>
       </div>
 
       {/* Upload Section */}
-      <div className="bg-white rounded-lg shadow-md p-6 mb-6">
+      <div className="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-lg shadow-md p-6 mb-6">
         <div className="flex items-center justify-between">
           <div>
-            <h3 className="text-lg font-semibold text-gray-800 mb-2">
+            <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-2">
               {t('common.resume.upload.title', 'Upload Resume PDF')}
             </h3>
-            <p className="text-gray-600 text-sm">
+            <p className="text-gray-600 dark:text-gray-300 text-sm">
               {t('common.resume.upload.desc', 'Upload your resume PDF to extract and store data automatically')}
             </p>
           </div>
@@ -784,8 +784,8 @@ const ResumeManager: React.FC = () => {
       </div>
 
       {/* Tabs */}
-      <div className="bg-white rounded-lg shadow-md mb-6">
-        <div className="border-b border-gray-200">
+      <div className="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-lg shadow-md mb-6">
+        <div className="border-b border-gray-200 dark:border-gray-700">
           <nav className="flex space-x-8 px-6">
             {tabs.map((tab) => {
               const Icon = tab.icon;
@@ -794,8 +794,8 @@ const ResumeManager: React.FC = () => {
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
                   className={`flex items-center gap-2 py-4 px-1 border-b-2 font-medium text-sm transition-colors ${activeTab === tab.id
-                    ? 'border-blue-500 text-blue-600'
-                    : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                    ? 'border-blue-500 text-blue-600 dark:text-blue-400'
+                    : 'border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 hover:border-gray-300 dark:hover:border-gray-600'
                     }`}
                 >
                   <Icon size={16} />

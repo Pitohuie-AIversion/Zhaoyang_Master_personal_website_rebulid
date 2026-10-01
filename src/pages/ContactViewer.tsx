@@ -143,22 +143,22 @@ export default function ContactViewer() {
 
   if (!adminToken) {
     return (
-      <div className="min-h-screen bg-gray-50 p-6 flex items-center justify-center">
-        <form onSubmit={handleAdminLogin} className="w-full max-w-md bg-white rounded-lg shadow p-6 space-y-4">
+      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 p-6 pt-24 flex items-center justify-center theme-transition">
+        <form onSubmit={handleAdminLogin} className="w-full max-w-md bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 space-y-4 border border-gray-200 dark:border-gray-700">
           <div>
-            <h1 className="text-2xl font-bold text-gray-900">{t('common.adminAuth.title')}</h1>
-            <p className="text-sm text-gray-600 mt-1">{t('common.adminAuth.contactDescription')}</p>
+            <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{t('common.adminAuth.title')}</h1>
+            <p className="text-sm text-gray-600 dark:text-gray-300 mt-1">{t('common.adminAuth.contactDescription')}</p>
           </div>
           <input
             type="password"
             value={tokenInput}
             onChange={(event) => setTokenInput(event.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
             placeholder="ADMIN_TOKEN"
             autoComplete="current-password"
           />
-          {authError && <p className="text-sm text-red-600">{authError}</p>}
-          <button type="submit" className="w-full px-4 py-2 rounded-md bg-blue-600 text-white hover:bg-blue-700">
+          {authError && <p className="text-sm text-red-600 dark:text-red-400">{authError}</p>}
+          <button type="submit" className="w-full px-4 py-2 rounded-md bg-blue-600 text-white hover:bg-blue-700 transition-colors">
             {t('common.adminAuth.unlock')}
           </button>
         </form>
@@ -184,15 +184,15 @@ export default function ContactViewer() {
   const getStatusColor = (status: string) => {
     switch (status) {
       case 'new':
-        return 'bg-blue-100 text-blue-800';
+        return 'bg-blue-100 text-blue-800 dark:bg-blue-900/50 dark:text-blue-300';
       case 'read':
-        return 'bg-gray-100 text-gray-800';
+        return 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300';
       case 'replied':
-        return 'bg-green-100 text-green-800';
+        return 'bg-green-100 text-green-800 dark:bg-green-900/50 dark:text-green-300';
       case 'archived':
-        return 'bg-red-100 text-red-800';
+        return 'bg-red-100 text-red-800 dark:bg-red-900/50 dark:text-red-300';
       default:
-        return 'bg-gray-100 text-gray-800';
+        return 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300';
     }
   };
 
@@ -210,10 +210,10 @@ export default function ContactViewer() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50 p-6">
+      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 p-6 pt-24">
         <div className="max-w-7xl mx-auto">
           <div className="flex items-center justify-center h-64">
-            <div className="text-lg text-gray-600">加载中...</div>
+            <div className="text-lg text-gray-600 dark:text-gray-300">加载中...</div>
           </div>
         </div>
       </div>
@@ -221,56 +221,56 @@ export default function ContactViewer() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 p-6">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 p-6 pt-24 text-gray-900 dark:text-gray-100 transition-colors">
       <div className="max-w-7xl mx-auto">
         {/* 页面标题 */}
         <div className="mb-8">
           <div className="flex items-center justify-between gap-4">
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">联系信息管理</h1>
-            <button onClick={handleAdminLogout} className="px-3 py-2 rounded-md bg-gray-200 text-gray-800 hover:bg-gray-300">
+            <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">联系信息管理</h1>
+            <button onClick={handleAdminLogout} className="px-3 py-2 rounded-md bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors">
               {t('common.adminAuth.lock')}
             </button>
           </div>
-          <p className="text-gray-600">查看和管理通过网站联系表单收到的所有信息</p>
+          <p className="text-gray-600 dark:text-gray-400">查看和管理通过网站联系表单收到的所有信息</p>
         </div>
 
         {/* 统计卡片 */}
         {stats && (
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-            <div className="bg-white rounded-lg shadow p-6">
+            <div className="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-lg shadow p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-gray-600">总消息数</p>
-                  <p className="text-2xl font-bold text-gray-900">{stats.total}</p>
+                  <p className="text-sm font-medium text-gray-600 dark:text-gray-400">总消息数</p>
+                  <p className="text-2xl font-bold text-gray-900 dark:text-white">{stats.total}</p>
                 </div>
-                <div className="bg-blue-100 rounded-full p-3">
-                  <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="bg-blue-100 dark:bg-blue-900/40 rounded-full p-3">
+                  <svg className="w-6 h-6 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
                   </svg>
                 </div>
               </div>
             </div>
             
-            <div className="bg-white rounded-lg shadow p-6">
+            <div className="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-lg shadow p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-gray-600">新消息</p>
-                  <p className="text-2xl font-bold text-blue-600">{stats.byStatus.new}</p>
+                  <p className="text-sm font-medium text-gray-600 dark:text-gray-400">新消息</p>
+                  <p className="text-2xl font-bold text-blue-600 dark:text-blue-400">{stats.byStatus.new}</p>
                 </div>
-                <div className="bg-blue-100 rounded-full p-3">
-                  <span className="text-blue-600 font-bold">!</span>
+                <div className="bg-blue-100 dark:bg-blue-900/40 rounded-full p-3">
+                  <span className="text-blue-600 dark:text-blue-400 font-bold">!</span>
                 </div>
               </div>
             </div>
             
-            <div className="bg-white rounded-lg shadow p-6">
+            <div className="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-lg shadow p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-gray-600">已读消息</p>
-                  <p className="text-2xl font-bold text-gray-600">{stats.byStatus.read}</p>
+                  <p className="text-sm font-medium text-gray-600 dark:text-gray-400">已读消息</p>
+                  <p className="text-2xl font-bold text-gray-600 dark:text-gray-300">{stats.byStatus.read}</p>
                 </div>
-                <div className="bg-gray-100 rounded-full p-3">
-                  <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="bg-gray-100 dark:bg-gray-700 rounded-full p-3">
+                  <svg className="w-6 h-6 text-gray-600 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                   </svg>
@@ -278,14 +278,14 @@ export default function ContactViewer() {
               </div>
             </div>
             
-            <div className="bg-white rounded-lg shadow p-6">
+            <div className="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-lg shadow p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-gray-600">近30天</p>
-                  <p className="text-2xl font-bold text-green-600">{stats.recentCount}</p>
+                  <p className="text-sm font-medium text-gray-600 dark:text-gray-400">近30天</p>
+                  <p className="text-2xl font-bold text-green-600 dark:text-green-400">{stats.recentCount}</p>
                 </div>
-                <div className="bg-green-100 rounded-full p-3">
-                  <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="bg-green-100 dark:bg-green-900/40 rounded-full p-3">
+                  <svg className="w-6 h-6 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                   </svg>
                 </div>
@@ -295,24 +295,24 @@ export default function ContactViewer() {
         )}
 
         {/* 搜索和筛选 */}
-        <div className="bg-white rounded-lg shadow p-6 mb-8">
+        <div className="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-lg shadow p-6 mb-8">
           <div className="flex flex-col md:flex-row gap-4">
             <div className="flex-1">
-              <label className="block text-sm font-medium text-gray-700 mb-2">搜索</label>
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">搜索</label>
               <input
                 type="text"
                 placeholder="搜索姓名、邮箱、主题或内容..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
             <div className="md:w-48">
-              <label className="block text-sm font-medium text-gray-700 mb-2">状态筛选</label>
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">状态筛选</label>
               <select
                 value={statusFilter}
                 onChange={(e) => setStatusFilter(e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
                 <option value="all">全部状态</option>
                 <option value="new">新消息</option>
@@ -327,31 +327,31 @@ export default function ContactViewer() {
         {/* 主要内容区域 */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* 消息列表 */}
-          <div className="bg-white rounded-lg shadow">
-            <div className="p-6 border-b border-gray-200">
-              <h2 className="text-xl font-semibold text-gray-900">消息列表 ({filteredMessages.length})</h2>
+          <div className="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-lg shadow">
+            <div className="p-6 border-b border-gray-200 dark:border-gray-700">
+              <h2 className="text-xl font-semibold text-gray-900 dark:text-white">消息列表 ({filteredMessages.length})</h2>
             </div>
-            <div className="divide-y divide-gray-200 max-h-96 overflow-y-auto">
+            <div className="divide-y divide-gray-200 dark:divide-gray-700 max-h-96 overflow-y-auto">
               {filteredMessages.map((message) => (
                 <div
                   key={message.id}
-                  className={`p-4 cursor-pointer hover:bg-gray-50 transition-colors ${
-                    selectedMessage?.id === message.id ? 'bg-blue-50 border-r-2 border-blue-500' : ''
+                  className={`p-4 cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors ${
+                    selectedMessage?.id === message.id ? 'bg-blue-50 dark:bg-blue-900/30 border-r-2 border-blue-500' : ''
                   }`}
                   onClick={() => setSelectedMessage(message)}
                 >
                   <div className="flex items-start justify-between">
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2 mb-1">
-                        <h3 className="text-sm font-medium text-gray-900 truncate">{message.name}</h3>
+                        <h3 className="text-sm font-medium text-gray-900 dark:text-white truncate">{message.name}</h3>
                         <span className={`px-2 py-1 text-xs rounded-full ${getStatusColor(message.status)}`}>
                           {getStatusLabel(message.status)}
                         </span>
                       </div>
-                      <p className="text-sm text-gray-600 truncate">{message.email}</p>
-                      <p className="text-sm text-gray-900 font-medium mt-1 truncate">{message.subject}</p>
-                      <p className="text-sm text-gray-600 mt-1 line-clamp-2">{message.message.substring(0, 100)}...</p>
-                      <p className="text-xs text-gray-400 mt-2">
+                      <p className="text-sm text-gray-600 dark:text-gray-400 truncate">{message.email}</p>
+                      <p className="text-sm text-gray-900 dark:text-gray-200 font-medium mt-1 truncate">{message.subject}</p>
+                      <p className="text-sm text-gray-600 dark:text-gray-400 mt-1 line-clamp-2">{message.message.substring(0, 100)}...</p>
+                      <p className="text-xs text-gray-400 dark:text-gray-500 mt-2">
                         {new Date(message.created_at).toLocaleString('zh-CN')}
                       </p>
                     </div>
@@ -359,7 +359,7 @@ export default function ContactViewer() {
                 </div>
               ))}
               {filteredMessages.length === 0 && (
-                <div className="p-8 text-center text-gray-500">
+                <div className="p-8 text-center text-gray-500 dark:text-gray-400">
                   <svg className="w-12 h-12 mx-auto mb-4 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
                   </svg>
@@ -370,9 +370,9 @@ export default function ContactViewer() {
           </div>
 
           {/* 消息详情 */}
-          <div className="bg-white rounded-lg shadow">
-            <div className="p-6 border-b border-gray-200">
-              <h2 className="text-xl font-semibold text-gray-900">消息详情</h2>
+          <div className="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-lg shadow">
+            <div className="p-6 border-b border-gray-200 dark:border-gray-700">
+              <h2 className="text-xl font-semibold text-gray-900 dark:text-white">消息详情</h2>
             </div>
             {selectedMessage ? (
               <div className="p-6 space-y-6">
@@ -380,13 +380,13 @@ export default function ContactViewer() {
                 <div>
                   <div className="flex items-start justify-between mb-4">
                     <div>
-                      <h3 className="text-lg font-medium text-gray-900">{selectedMessage.name}</h3>
-                      <p className="text-sm text-gray-600">{selectedMessage.email}</p>
+                      <h3 className="text-lg font-medium text-gray-900 dark:text-white">{selectedMessage.name}</h3>
+                      <p className="text-sm text-gray-600 dark:text-gray-400">{selectedMessage.email}</p>
                     </div>
                     <select
                       value={selectedMessage.status}
                       onChange={(e) => updateMessageStatus(selectedMessage.id, e.target.value)}
-                      className="px-3 py-1 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="px-3 py-1 text-sm border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                     >
                       <option value="new">新消息</option>
                       <option value="read">已读</option>
@@ -400,7 +400,7 @@ export default function ContactViewer() {
                       <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                       </svg>
-                      <span className="text-sm text-gray-700">{selectedMessage.phone}</span>
+                      <span className="text-sm text-gray-700 dark:text-gray-300">{selectedMessage.phone}</span>
                     </div>
                   )}
                   
@@ -409,46 +409,46 @@ export default function ContactViewer() {
                       <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                       </svg>
-                      <span className="text-sm text-gray-700">{selectedMessage.company}</span>
+                      <span className="text-sm text-gray-700 dark:text-gray-300">{selectedMessage.company}</span>
                     </div>
                   )}
                 </div>
 
                 {/* 主题 */}
                 <div>
-                  <h4 className="text-sm font-medium text-gray-900 mb-2">主题</h4>
-                  <p className="text-gray-700">{selectedMessage.subject}</p>
+                  <h4 className="text-sm font-medium text-gray-900 dark:text-white mb-2">主题</h4>
+                  <p className="text-gray-700 dark:text-gray-300">{selectedMessage.subject}</p>
                 </div>
 
                 {/* 消息内容 */}
                 <div>
-                  <h4 className="text-sm font-medium text-gray-900 mb-2">消息内容</h4>
-                  <div className="bg-gray-50 rounded-lg p-4">
-                    <p className="text-gray-700 whitespace-pre-wrap">{selectedMessage.message}</p>
+                  <h4 className="text-sm font-medium text-gray-900 dark:text-white mb-2">消息内容</h4>
+                  <div className="bg-gray-50 dark:bg-gray-900/60 rounded-lg p-4">
+                    <p className="text-gray-700 dark:text-gray-300 whitespace-pre-wrap">{selectedMessage.message}</p>
                   </div>
                 </div>
 
                 {/* 合作详情 */}
                 {(selectedMessage.collaboration_type || selectedMessage.budget_range || selectedMessage.timeline) && (
-                  <div className="bg-blue-50 rounded-lg p-4">
-                    <h4 className="text-sm font-medium text-gray-900 mb-3">合作详情</h4>
+                  <div className="bg-blue-50 dark:bg-blue-950/40 border border-blue-100 dark:border-blue-900/50 rounded-lg p-4">
+                    <h4 className="text-sm font-medium text-gray-900 dark:text-white mb-3">合作详情</h4>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                       {selectedMessage.collaboration_type && (
                         <div>
-                          <div className="text-xs font-medium text-gray-600">合作类型</div>
-                          <div className="text-sm text-gray-900">{selectedMessage.collaboration_type}</div>
+                          <div className="text-xs font-medium text-gray-600 dark:text-gray-400">合作类型</div>
+                          <div className="text-sm text-gray-900 dark:text-white">{selectedMessage.collaboration_type}</div>
                         </div>
                       )}
                       {selectedMessage.budget_range && (
                         <div>
-                          <div className="text-xs font-medium text-gray-600">预算范围</div>
-                          <div className="text-sm text-gray-900">{selectedMessage.budget_range}</div>
+                          <div className="text-xs font-medium text-gray-600 dark:text-gray-400">预算范围</div>
+                          <div className="text-sm text-gray-900 dark:text-white">{selectedMessage.budget_range}</div>
                         </div>
                       )}
                       {selectedMessage.timeline && (
                         <div>
-                          <div className="text-xs font-medium text-gray-600">时间周期</div>
-                          <div className="text-sm text-gray-900">{selectedMessage.timeline}</div>
+                          <div className="text-xs font-medium text-gray-600 dark:text-gray-400">时间周期</div>
+                          <div className="text-sm text-gray-900 dark:text-white">{selectedMessage.timeline}</div>
                         </div>
                       )}
                     </div>
@@ -456,13 +456,13 @@ export default function ContactViewer() {
                 )}
 
                 {/* 时间信息 */}
-                <div className="text-xs text-gray-500">
+                <div className="text-xs text-gray-500 dark:text-gray-400">
                   <p>创建时间: {new Date(selectedMessage.created_at).toLocaleString('zh-CN')}</p>
                   <p>更新时间: {new Date(selectedMessage.updated_at).toLocaleString('zh-CN')}</p>
                 </div>
               </div>
             ) : (
-              <div className="p-8 text-center text-gray-500">
+              <div className="p-8 text-center text-gray-500 dark:text-gray-400">
                 <svg className="w-16 h-16 mx-auto mb-4 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
                 </svg>
