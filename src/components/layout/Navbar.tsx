@@ -29,7 +29,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const location = useLocation();
-  const { t } = useTranslation();
+  const { t, language } = useTranslation();
   
   // 全局搜索快捷键
   useGlobalSearchShortcut(() => setIsSearchOpen(true));
@@ -84,26 +84,30 @@ export default function Navbar() {
               <img src="/favicon.svg" alt={t('common.logoAlt')} className="w-full h-full object-contain" />
             </div>
             <div className="hidden sm:block leading-tight">
-              <div className="text-sm font-bold tracking-tight text-primary-dark theme-transition">Zhaoyang Mu</div>
-              <div className="text-[11px] text-tertiary-dark theme-transition">{t('home.hero.name') as string}</div>
+              <div className="text-sm font-bold tracking-tight text-primary-dark theme-transition">
+                {language === 'zh' ? '牟昭阳' : 'Zhaoyang Mu'}
+              </div>
+              <div className="text-[11px] text-tertiary-dark theme-transition">
+                {language === 'zh' ? 'Zhaoyang Mu' : '牟昭阳'}
+              </div>
             </div>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden xl:flex items-center space-x-0.5 flex-1 justify-center">
+          <div className="hidden lg:flex items-center space-x-0.5 xl:space-x-1 flex-1 justify-center">
             {navigation.map((item) => {
               return (
                 <Link
                   key={item.key}
                   to={item.href}
                   aria-current={isActive(item.href) ? 'page' : undefined}
-                  className={`relative px-2.5 py-2 rounded-lg text-sm font-medium theme-transition group whitespace-nowrap ${
+                  className={`relative px-2 xl:px-2.5 py-1.5 xl:py-2 rounded-lg text-xs xl:text-sm font-medium theme-transition group whitespace-nowrap ${
                     isActive(item.href)
                       ? 'text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20'
                       : 'text-secondary-dark hover:text-primary-dark hover:bg-gray-100 dark:hover:bg-gray-700'
                   }`}
                 >
-                  <span className="flex items-center space-x-2">
+                  <span className="flex items-center space-x-1 xl:space-x-2">
                     <span>{item.name}</span>
                   </span>
                 </Link>
@@ -135,7 +139,7 @@ export default function Navbar() {
               ariaExpanded={isOpen}
               ariaControls="mobile-navigation"
               ariaHaspopup="dialog"
-              className="p-2 w-10 h-10 flex items-center justify-center xl:hidden"
+              className="p-2 w-10 h-10 flex items-center justify-center lg:hidden"
             >
               {isOpen ? <X size={20} /> : <Menu size={20} />}
             </UnifiedButton>

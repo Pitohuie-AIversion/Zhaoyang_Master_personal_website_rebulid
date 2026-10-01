@@ -42,7 +42,7 @@ const ParticleField: React.FC = () => {
       {/* 内容覆盖层 */}
       <div className="relative z-10 min-h-screen flex flex-col">
         {/* 主要内容区域 */}
-        <div className="flex-1 flex items-center justify-center p-6 pt-12">
+        <div className="flex-1 flex items-center justify-center p-6 pt-20">
           <div className="max-w-4xl mx-auto text-center">
             {/* 标题区域 */}
             <div className="mb-12">

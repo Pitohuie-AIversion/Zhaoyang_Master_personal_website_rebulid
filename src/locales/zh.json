@@ -58,14 +58,14 @@
       "googleScholar": "google Scholar"
     },
     "chat": {
-      "researchIntro": "research Intro",
-      "projectsIntro": "projects Intro",
-      "educationIntro": "education Intro",
-      "contactIntro": "contact Intro",
-      "skillsIntro": "skills Intro",
-      "defaultHelp": "default Help"
+      "researchIntro": "牟昭阳的主要研究方向包括科学计算与机器人技术的交叉领域，特别专注于使用 Transformer 和 Neural Operator 建模 CFD 时空场。他在溃坝流动预测、稀疏到稠密流场重构等课题中取得重要成果。",
+      "projectsIntro": "他主导和参与了多个重要项目，包括 DamFormer 溃坝流动预测系统、Rs-ModCubes 模块化水下自重构机器人、仿生波动鳍推进仿真系统以及风扇阵列风洞实验平台等，涵盖科学计算、流体仿真与软硬件协同开发。",
+      "educationIntro": "牟昭阳目前是大连海事大学人工智能专业的硕士研究生（导师：徐敏义教授），同时也是西湖大学工学院 i⁴-FSI 实验室的访问学生（合作导师：范迪夏教授）。本科毕业于大连海事大学材料科学与工程专业。",
+      "contactIntro": "您可以通过以下方式联系牟昭阳：\n📧 邮箱：mzymuzhaoyang@gmail.com\n📱 电话：+86 153 8213 0266\n🏠 地址：中国 杭州（西湖大学工学院）\n您也可以访问他的 GitHub、LinkedIn 和 Google Scholar 主页。",
+      "skillsIntro": "他掌握多种核心技术与工具：\n💻 编程：Python, MATLAB, C++, TypeScript\n🔬 仿真：Star-CCM+, ANSYS Fluent, OpenFOAM\n🤖 AI/ML：PyTorch, TensorFlow, Transformer, Neural Operator\n⚙️ 硬件与系统：STM32, 传感器集成, Linux HPC 集群管理",
+      "defaultHelp": "您好！我是牟昭阳的智能学术助手，可以为您介绍他的学术背景、科研成果、项目经历和技能专长。请问有什么我可以协助您的？"
     },
-    "relatedLinks": "related Links",
+    "relatedLinks": "相关链接",
     "adminAuth": {
       "title": "管理员访问",
       "contactDescription": "输入 ADMIN_TOKEN 查看联系消息。",
@@ -910,32 +910,34 @@
         "unknown": "Unknown"
       },
       "sort": {
-        "title": "Title",
-        "year": "Year",
-        "citations": "Citations",
-        "authors": "Authors",
-        "journal": "Journal"
+        "title": "标题",
+        "year": "年份",
+        "citations": "引用数",
+        "authors": "作者",
+        "journal": "期刊"
       },
-      "citations": "Citations",
+      "citations": "引用数",
       "modal": {
-        "authors": "Authors",
-        "year": "Year",
+        "authors": "作者",
+        "year": "年份",
         "doi": "DOI",
-        "citationsCount": "Citations",
-        "abstract": "Abstract",
-        "keywords": "Keywords",
-        "journal": "Journal",
-        "publishYear": "Publication Year",
-        "patentNumber": "Patent Number",
-        "applicant": "Applicant",
-        "publicDate": "Publication Date",
-        "organization": "Organization",
-        "awardDate": "Award Date",
-        "certificateNumber": "Certificate Number",
-        "publicationDetail": "Publication Details",
-        "patentDetail": "Patent Details",
-        "awardDetail": "Award Details",
-        "publisherLink": "Publisher Link"
+        "citationsCount": "引用次数",
+        "abstract": "摘要",
+        "keywords": "关键词",
+        "journal": "期刊/会议",
+        "publishYear": "发表年份",
+        "patentNumber": "专利号",
+        "applicant": "申请人",
+        "publicDate": "公开日期",
+        "organization": "颁奖机构",
+        "awardDate": "获奖日期",
+        "certificateNumber": "证书编号",
+        "publicationDetail": "成果详情",
+        "patentDetail": "专利详情",
+        "awardDetail": "获奖详情",
+        "publisherLink": "出版商链接",
+        "copyCitation": "复制引用",
+        "citationCopied": "已复制到剪贴板！"
       },
       "data": {
         "publication1": {
@@ -1980,6 +1982,20 @@
           "flexible": "时间灵活"
         }
       },
+      "validation": {
+        "nameRequired": "请输入您的姓名",
+        "nameTooShort": "姓名至少需要2个字符",
+        "nameTooLong": "姓名不能超过50个字符",
+        "emailRequired": "请输入您的邮箱地址",
+        "emailInvalid": "请输入有效的邮箱地址",
+        "subjectRequired": "请输入主题",
+        "subjectTooShort": "主题至少需要5个字符",
+        "subjectTooLong": "主题不能超过100个字符",
+        "messageRequired": "请输入消息内容",
+        "messageTooShort": "消息内容至少需要10个字符",
+        "messageTooLong": "消息内容不能超过2000个字符",
+        "phoneInvalid": "请输入有效的电话号码"
+      },
       "validationError": "请检查表单输入",
       "submitError": "提交失败，请重试",
       "submitting": "提交中...",
@@ -2093,7 +2109,9 @@
       "publicationDetail": "论文详情",
       "patentDetail": "专利详情",
       "awardDetail": "奖项详情",
-      "publisherLink": "出版社链接"
+      "publisherLink": "出版社链接",
+      "copyCitation": "复制引用",
+      "citationCopied": "已复制到剪贴板！"
     },
     "publisherLink": "出版社链接",
     "levels": {

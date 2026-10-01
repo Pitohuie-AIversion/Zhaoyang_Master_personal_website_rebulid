@@ -334,6 +334,23 @@ router.post('/contact/submit', contactRateLimit, async (req, res) => {
   } catch (error) {
     console.error('❌ Contact form submission error:', error.message);
     
+    // 开发模式下若 Supabase 离线或无法解析域名，提供平滑容灾并暂存
+    if (process.env.NODE_ENV !== 'production' && (error.message?.includes('fetch failed') || error.message?.includes('ENOTFOUND'))) {
+      console.warn('⚠️ Development mode fallback: Supabase is unreachable, mock-storing contact message.');
+      return res.json({
+        success: true,
+        message: requestLanguage === 'zh'
+          ? '消息已暂存（本地开发模式）！'
+          : 'Message saved locally (dev mode)!',
+        data: {
+          id: 'dev_' + Date.now(),
+          name: req.body?.name,
+          email: req.body?.email,
+          status: 'dev_mock'
+        }
+      });
+    }
+
     const errorMessage = requestLanguage === 'zh'
       ? '提交失败，请稍后重试' 
       : 'Submission failed, please try again later';

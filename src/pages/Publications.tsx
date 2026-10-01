@@ -1,5 +1,6 @@
 import { SimpleMotion } from '../components/animations/SimpleMotion';
 import { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { useTranslation } from '../components/common/TranslationProvider';
 import { SearchInput, FilterDropdown, SortDropdown, ActiveFilters, SearchStats, useAdvancedSearch } from '../components/features/search/SearchAndFilter';
 import { useResponsive } from '../hooks/useResponsive';
@@ -26,6 +27,14 @@ export default function Publications() {
   const { t } = useTranslation();
   const { isMobile, isTablet } = useResponsive();
   const [selectedPublication, setSelectedPublication] = useState<Publication | null>(null);
+  const [copiedCitation, setCopiedCitation] = useState<boolean>(false);
+
+  const handleCopyCitation = (pub: Publication) => {
+    const citationText = `${pub.authors} (${pub.year}). ${pub.title}. ${pub.journal}${pub.doi ? `. https://doi.org/${pub.doi}` : ''}`;
+    navigator.clipboard.writeText(citationText);
+    setCopiedCitation(true);
+    setTimeout(() => setCopiedCitation(false), 2000);
+  };
   
   const publications: Publication[] = [
     {
@@ -372,10 +381,10 @@ export default function Publications() {
             >
               <div className="flex items-start justify-between mb-4">
                 <div className="flex items-center gap-3">
-                  <div className="text-blue-600">
+                  <div className="text-blue-600 dark:text-blue-400">
                     {getTypeIcon(publication.type)}
                   </div>
-                  <span className="text-xs font-medium text-gray-600 bg-gray-100 px-2 py-1 rounded">
+                  <span className="text-xs font-medium text-gray-600 dark:text-gray-300 bg-gray-100 dark:bg-slate-700 px-2 py-1 rounded">
                     {typeLabels[publication.type as keyof typeof typeLabels] as string}
                   </span>
                   <span className={`px-2 py-1 rounded text-xs font-medium ${getStatusColor(publication.status)}`}>
@@ -383,9 +392,9 @@ export default function Publications() {
                   </span>
                 </div>
                 <div className="text-right">
-                  <div className="text-sm text-gray-500">{publication.year}</div>
+                  <div className="text-sm text-gray-500 dark:text-gray-400">{publication.year}</div>
                   {publication.citations !== undefined && (
-                    <div className="text-sm text-gray-600 mt-1">
+                    <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">
                       {t('publications.citations') as string}: {publication.citations}
                     </div>
                   )}
@@ -419,32 +428,32 @@ export default function Publications() {
         </div>
 
         {/* 详情模态框 */}
-        {selectedPublication && (
+        {selectedPublication && createPortal(
           <SimpleMotion
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center p-4 z-50"
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-50"
             onClick={() => setSelectedPublication(null)}
           >
             <SimpleMotion
-              initial={{ scale: 0.9, opacity: 0 }}
+              initial={{ scale: 0.95, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              className="bg-white rounded-lg max-w-3xl w-full max-h-[90vh] overflow-y-auto border border-gray-200"
+              className="bg-white dark:bg-slate-900 rounded-xl max-w-3xl w-full max-h-[90vh] overflow-y-auto border border-gray-200 dark:border-slate-800 shadow-2xl"
               onClick={(e) => e.stopPropagation()}
               role="dialog"
               ariaModal
               ariaLabelledby="publication-dialog-title"
             >
-              <div className="p-6">
+              <div className="p-6 sm:p-8">
                 <div className="flex items-start justify-between mb-6">
                   <div className="flex items-center gap-3">
-                    <div className="text-blue-600">
+                    <div className="text-blue-600 dark:text-blue-400">
                       {getTypeIcon(selectedPublication.type)}
                     </div>
-                    <span className="text-sm font-medium text-gray-600 bg-gray-100 px-3 py-1 rounded">
+                    <span className="text-sm font-medium text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-slate-800 px-3 py-1 rounded-md">
                       {typeLabels[selectedPublication.type as keyof typeof typeLabels] as string}
                     </span>
-                    <span className={`px-3 py-1 rounded text-sm font-medium ${getStatusColor(selectedPublication.status)}`}>
+                    <span className={`px-3 py-1 rounded-md text-sm font-medium ${getStatusColor(selectedPublication.status)}`}>
                       {getStatusText(selectedPublication.status) as string}
                     </span>
                   </div>
@@ -452,54 +461,83 @@ export default function Publications() {
                     type="button"
                     autoFocus
                     onClick={() => setSelectedPublication(null)}
-                    className="flex h-8 w-8 items-center justify-center rounded-md bg-gray-100 text-gray-600 transition-colors hover:bg-gray-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
+                    className="flex h-8 w-8 items-center justify-center rounded-lg bg-gray-100 dark:bg-slate-800 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 hover:bg-gray-200 dark:hover:bg-slate-700 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
                     aria-label={t('common.close') as string}
                   >
                     ×
                   </button>
                 </div>
                 
-                <h2 id="publication-dialog-title" className="text-xl font-bold text-gray-900 mb-3">{selectedPublication.title}</h2>
+                <h2 id="publication-dialog-title" className="text-xl font-bold text-gray-900 dark:text-white mb-3">{selectedPublication.title}</h2>
                 {selectedPublication.authors && (
-                  <p className="text-sm text-gray-600 mb-2"><strong>{t('publications.modal.authors') as string}:</strong> {selectedPublication.authors}</p>
+                  <p className="text-sm text-gray-600 dark:text-gray-300 mb-2"><strong>{t('publications.modal.authors') as string}:</strong> {selectedPublication.authors}</p>
                 )}
-                <p className="text-sm text-gray-900 font-medium mb-2">{selectedPublication.journal}</p>
-                <p className="text-sm text-gray-600 mb-3"><strong>{t('publications.modal.year') as string}:</strong> {selectedPublication.year}</p>
+                <p className="text-sm text-gray-900 dark:text-gray-100 font-medium mb-2">{selectedPublication.journal}</p>
+                <p className="text-sm text-gray-600 dark:text-gray-300 mb-3"><strong>{t('publications.modal.year') as string}:</strong> {selectedPublication.year}</p>
                 
                 {selectedPublication.doi && (
-                  <p className="text-gray-600 mb-4"><strong>{t('publications.modal.doi') as string}:</strong> {selectedPublication.doi}</p>
+                  <p className="text-sm text-gray-600 dark:text-gray-300 mb-3"><strong>{t('publications.modal.doi') as string}:</strong> <span className="font-mono text-xs">{selectedPublication.doi}</span></p>
                 )}
                 {selectedPublication.url && (
-                  <p className="text-gray-600 mb-4"><strong>{t('publications.modal.publisherLink') as string}:</strong> <a href={selectedPublication.url} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">{selectedPublication.url}</a></p>
+                  <p className="text-sm text-gray-600 dark:text-gray-300 mb-3"><strong>{t('publications.modal.publisherLink') as string}:</strong> <a href={selectedPublication.url} target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline break-all">{selectedPublication.url}</a></p>
                 )}
                 
                 {selectedPublication.citations !== undefined && (
-                  <p className="text-gray-600 mb-4"><strong>{t('publications.modal.citationsCount') as string}:</strong> {selectedPublication.citations}</p>
+                  <p className="text-sm text-gray-600 dark:text-gray-300 mb-4"><strong>{t('publications.modal.citationsCount') as string}:</strong> {selectedPublication.citations}</p>
                 )}
                 
                 {selectedPublication.abstract && (
                   <div className="mb-5">
-                    <h3 className="text-base font-semibold text-gray-900 mb-2">{t('publications.modal.abstract') as string}</h3>
-                    <p className="text-sm text-gray-700 leading-relaxed">{selectedPublication.abstract}</p>
+                    <h3 className="text-base font-semibold text-gray-900 dark:text-white mb-2">{t('publications.modal.abstract') as string}</h3>
+                    <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">{selectedPublication.abstract}</p>
                   </div>
                 )}
                 
                 <div>
-                  <h3 className="text-base font-semibold text-gray-900 mb-2">{t('publications.modal.keywords') as string}</h3>
+                  <h3 className="text-base font-semibold text-gray-900 dark:text-white mb-2">{t('publications.modal.keywords') as string}</h3>
                   <div className="flex flex-wrap gap-2">
                     {Array.isArray(selectedPublication.keywords) && selectedPublication.keywords.map((keyword) => (
                       <span
                         key={keyword}
-                        className="bg-gray-50 text-gray-600 px-3 py-1 rounded text-sm"
+                        className="bg-gray-100 dark:bg-slate-800 text-gray-700 dark:text-gray-300 px-3 py-1 rounded-md text-sm"
                       >
                         {keyword}
                       </span>
                     ))}
                   </div>
                 </div>
+
+                {/* 快捷操作栏 */}
+                <div className="flex flex-wrap items-center gap-3 pt-6 mt-6 border-t border-gray-200 dark:border-slate-800">
+                  <button
+                    type="button"
+                    onClick={() => handleCopyCitation(selectedPublication)}
+                    className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 hover:bg-blue-100 dark:hover:bg-blue-900/50 transition-colors"
+                  >
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+                    </svg>
+                    {copiedCitation ? (t('publications.modal.citationCopied') as string) : (t('publications.modal.copyCitation') as string)}
+                  </button>
+
+                  {selectedPublication.url && (
+                    <a
+                      href={selectedPublication.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg bg-gray-100 dark:bg-slate-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-slate-700 transition-colors"
+                    >
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                      </svg>
+                      {t('publications.modal.publisherLink') as string}
+                    </a>
+                  )}
+                </div>
               </div>
             </SimpleMotion>
-          </SimpleMotion>
+          </SimpleMotion>,
+          document.body
         )}
       </div>
     </div>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from '../components/common/TranslationProvider';
-import { Send, CheckCircle, XCircle, Building, Clock, DollarSign, AlertCircle, ArrowLeft } from 'lucide-react';
+import { Send, CheckCircle, XCircle, Building, Clock, DollarSign, AlertCircle, ArrowLeft, Mail } from 'lucide-react';
 import { ContactSEO } from '../components/seo/SEOOptimization';
 import { SimpleMotion } from '../components/animations/SimpleMotion';
 import { useResponsive } from '../components/common/ResponsiveEnhancements';
@@ -28,7 +28,7 @@ import { useSearchParams } from 'react-router-dom';
 type SubmitStatus = 'idle' | 'loading' | 'success' | 'error';
 
 export default function Contact() {
-  const { t } = useTranslation();
+  const { t, language } = useTranslation();
   const { isMobile } = useResponsive();
   const [searchParams] = useSearchParams();
 
@@ -128,7 +128,7 @@ export default function Contact() {
 
   // 表单验证
   const validateForm = (): FormErrors => {
-    return validateContactForm(formData);
+    return validateContactForm(formData, t as (key: string) => string);
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -267,9 +267,9 @@ export default function Contact() {
           </SimpleMotion>
         </AnimationContainer>
 
-        <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 sm:gap-8 lg:gap-10 xl:gap-12 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-10 xl:gap-12 max-w-7xl mx-auto">
           {/* 联系信息区域 */}
-          <section className="space-y-6 order-2 xl:order-1">
+          <section className="space-y-6 order-2 lg:order-1">
             <SimpleMotion
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
@@ -355,7 +355,7 @@ export default function Contact() {
           </section>
 
           {/* 联系表单区域 */}
-          <section className="space-y-6 order-1 xl:order-2">
+          <section className="space-y-6 order-1 lg:order-2">
             <SimpleMotion
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
@@ -651,22 +651,31 @@ export default function Contact() {
                       </form>
                     </AnimationContainer>
 
-                     {/* 错误状态反馈 - 成功状态已移至上方独立视图 */}
+                     {/* 错误状态反馈 - 包含一键通过邮件客户端发送容灾按钮 */}
                      {submitStatus === 'error' && submitMessage && (
                        <SimpleMotion
                          initial={{ opacity: 0, y: 20, scale: 0.95 }}
                          animate={{ opacity: 1, y: 0, scale: 1 }}
-                         className="mt-6 p-6 rounded-xl flex items-center shadow-lg bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-300 border-2 border-red-200 dark:border-red-800"
+                         className="mt-6 p-6 rounded-xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-lg bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-300 border-2 border-red-200 dark:border-red-800"
                        >
-                         <div className="p-2 rounded-full mr-4 bg-red-100 dark:bg-red-800/30">
-                           <XCircle className="w-6 h-6" />
+                         <div className="flex items-center">
+                           <div className="p-2 rounded-full mr-4 bg-red-100 dark:bg-red-800/30 flex-shrink-0">
+                             <XCircle className="w-6 h-6" />
+                           </div>
+                           <div>
+                             <h4 className="font-semibold mb-1">
+                               {t('contact.form.error') as string}
+                             </h4>
+                             <p className="text-sm opacity-90">{submitMessage}</p>
+                           </div>
                          </div>
-                         <div>
-                           <h4 className="font-semibold mb-1">
-                             {t('contact.form.error') as string}
-                           </h4>
-                           <p className="text-sm opacity-90">{submitMessage}</p>
-                         </div>
+                         <a
+                           href={`mailto:${t('contact.info.email') as string}?subject=${encodeURIComponent(formData.subject || (language === 'zh' ? '学术咨询' : 'Academic Inquiry'))}&body=${encodeURIComponent(`${language === 'zh' ? '姓名' : 'Name'}: ${formData.name}\n${language === 'zh' ? '邮箱' : 'Email'}: ${formData.email}\n\n${language === 'zh' ? '内容' : 'Message'}:\n${formData.message}`)}`}
+                           className="inline-flex items-center px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-medium transition-colors shadow-sm whitespace-nowrap self-stretch sm:self-auto justify-center"
+                         >
+                           <Mail className="w-4 h-4 mr-2" />
+                           {language === 'zh' ? '使用邮件客户端发送' : 'Send via Email Client'}
+                         </a>
                        </SimpleMotion>
                      )}
                   </>

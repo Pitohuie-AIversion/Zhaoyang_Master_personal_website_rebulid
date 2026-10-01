@@ -180,13 +180,18 @@ class SearchService {
   private extractSearchTerms(item: SearchResult): string[] {
     const terms: string[] = [];
 
+    const tokenize = (text: string) =>
+      text
+        .toLowerCase()
+        .replace(/[,.:;!?'"()[\]{}/\\_-]/g, ' ')
+        .split(/\s+/)
+        .filter(term => term.length > 1);
+
     // 标题分词
-    const titleWords = item.title.toLowerCase().split(/\s+/);
-    terms.push(...titleWords);
+    terms.push(...tokenize(item.title));
 
     // 描述分词
-    const descriptionWords = item.description.toLowerCase().split(/\s+/);
-    terms.push(...descriptionWords);
+    terms.push(...tokenize(item.description));
 
     // 元数据分词
     if (item.metadata) {
@@ -239,7 +244,11 @@ class SearchService {
       fuzzy = true
     } = options;
 
-    const queryTerms = query.toLowerCase().split(/\s+/).filter(term => term.length > 1);
+    const queryTerms = query
+      .toLowerCase()
+      .replace(/[,.:;!?'"()[\]{}/\\_-]/g, ' ')
+      .split(/\s+/)
+      .filter(term => term.length > 1);
 
     if (queryTerms.length === 0) {
       return [];

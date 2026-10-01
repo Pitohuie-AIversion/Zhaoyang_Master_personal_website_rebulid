@@ -1,5 +1,6 @@
 /* eslint-disable react-refresh/only-export-components */
 import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
@@ -203,7 +204,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, items }
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isOpen, onClose]);
 
-  return (
+  return createPortal(
     <AnimatePresence>
       {isOpen && (
         <>
@@ -211,7 +212,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, items }
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-gray-950/60 backdrop-blur-sm z-40 xl:hidden"
+            className="fixed inset-0 bg-gray-950/60 backdrop-blur-sm z-[90] lg:hidden"
             onClick={onClose}
             aria-hidden="true"
           />
@@ -221,7 +222,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, items }
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
             transition={{ type: 'tween', ease: 'easeInOut', duration: 0.25 }}
-            className="fixed top-0 right-0 h-dvh w-80 max-w-[88vw] bg-white dark:bg-gray-950 shadow-2xl z-50 xl:hidden overflow-y-auto"
+            className="fixed top-0 right-0 h-dvh w-80 max-w-[88vw] bg-white dark:bg-gray-950 shadow-2xl z-[100] lg:hidden overflow-y-auto"
             role="dialog"
             aria-modal="true"
             aria-label={t('common.menu')}
@@ -283,7 +284,8 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, items }
           </motion.div>
         </>
       )}
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body
   );
 };
 

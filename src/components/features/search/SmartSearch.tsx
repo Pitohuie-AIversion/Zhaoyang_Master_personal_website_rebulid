@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
+import { createPortal } from 'react-dom';
 import { Search, X, Filter, TrendingUp, Clock, ExternalLink } from 'lucide-react';
 import { searchService, SearchResult, SearchOptions } from '../../../services/searchService';
 import { useTranslation } from '../../common/TranslationProvider';
@@ -246,10 +247,10 @@ export const SmartSearch: React.FC<SmartSearchProps> = ({
     return labels[type] || type;
   };
 
-  return (
+  return createPortal(
     <div
       ref={dialogRef}
-      className="fixed inset-0 z-[80] overflow-y-auto"
+      className="fixed inset-0 z-[100] overflow-y-auto"
       role="dialog"
       aria-modal="true"
       aria-label={t('common.search') as string}
@@ -527,6 +528,7 @@ export const SmartSearch: React.FC<SmartSearchProps> = ({
           )}
         </SimpleMotion>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 };

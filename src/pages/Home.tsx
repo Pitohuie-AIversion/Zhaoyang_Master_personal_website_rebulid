@@ -229,9 +229,11 @@ function Home() {
                 <ScrollReveal direction="up" delay={0.2}>
                   <h1 className="mb-5 break-words text-4xl font-bold leading-[1.08] tracking-tight text-primary-dark theme-transition sm:text-5xl lg:text-6xl">
                     {t('home.hero.name') as string}
-                    <span className="mt-2 block text-2xl font-medium tracking-normal text-secondary-dark theme-transition sm:text-3xl lg:text-4xl">
-                      {t('home.hero.nameEn') as string}
-                    </span>
+                    {t('home.hero.nameEn') && t('home.hero.name') !== t('home.hero.nameEn') && (
+                      <span className="mt-2 block text-2xl font-medium tracking-normal text-secondary-dark theme-transition sm:text-3xl lg:text-4xl">
+                        {t('home.hero.nameEn') as string}
+                      </span>
+                    )}
                   </h1>
                 </ScrollReveal>
 

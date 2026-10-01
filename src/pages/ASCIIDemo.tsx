@@ -82,7 +82,7 @@ const ASCIIDemo: React.FC = () => {
     <div className="min-h-screen relative theme-transition">
       <ASCIIDemoSEO />
       {/* Header */}
-      <div className="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700 theme-transition mt-14">
+      <div className="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700 theme-transition mt-16">
         <ResponsiveContainer>
           <div className="flex items-center justify-between py-4">
             <div className="flex items-center gap-4">

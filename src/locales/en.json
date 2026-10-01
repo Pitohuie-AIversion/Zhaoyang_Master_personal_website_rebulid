@@ -58,14 +58,14 @@
       "googleScholar": "google Scholar"
     },
     "chat": {
-      "researchIntro": "research Intro",
-      "projectsIntro": "projects Intro",
-      "educationIntro": "education Intro",
-      "contactIntro": "contact Intro",
-      "skillsIntro": "skills Intro",
-      "defaultHelp": "default Help"
+      "researchIntro": "Zhaoyang Mu's research focuses on the intersection of scientific computing and robotics, specializing in Transformer and Neural Operator modeling for CFD spatiotemporal fields, dam-break flow prediction, and sparse-to-dense flow field reconstruction.",
+      "projectsIntro": "He has led and contributed to key projects including the DamFormer dam-break flow prediction system, Rs-ModCubes modular underwater self-reconfigurable robots, bionic undulating fin propulsion systems, and a fan-array wind tunnel experimental platform.",
+      "educationIntro": "Zhaoyang Mu is currently an AI Master's student at Dalian Maritime University (advised by Prof. Minyi Xu) and a visiting student at the i⁴-FSI Lab, School of Engineering, Westlake University (PI: Prof. Dixia Fan). He received his B.S. in Materials Science and Engineering from Dalian Maritime University.",
+      "contactIntro": "You can reach Zhaoyang Mu via:\n📧 Email: mzymuzhaoyang@gmail.com\n📱 Phone: +86 153 8213 0266\n🏠 Address: Hangzhou, China (Westlake University)\nYou can also explore his GitHub, LinkedIn, and Google Scholar profiles.",
+      "skillsIntro": "He has extensive expertise across multiple domains:\n💻 Programming: Python, MATLAB, C++, TypeScript\n🔬 Simulation: Star-CCM+, ANSYS Fluent, OpenFOAM\n🤖 AI/ML: PyTorch, TensorFlow, Transformer, Neural Operators\n⚙️ Hardware: STM32, Sensor Integration, Linux HPC Cluster Management",
+      "defaultHelp": "Hello! I am Zhaoyang Mu's academic AI assistant. I can introduce his research, projects, publications, and technical skills. How can I help you today?"
     },
-    "relatedLinks": "related Links",
+    "relatedLinks": "Related Links",
     "adminAuth": {
       "title": "Admin Access",
       "contactDescription": "Enter the ADMIN_TOKEN to view contact messages.",
@@ -234,7 +234,7 @@
     "hero": {
       "greeting": "Hello, I'm",
       "name": "Zhaoyang Mu",
-      "nameEn": "Zhaoyang Mu",
+      "nameEn": "牟昭阳",
       "title": "AI Master Student at Dalian Maritime University & Visiting Student at Westlake University",
       "description": "Focused on the intersection of scientific computing and robotics, dedicated to Transformer/Neural Operator modeling of CFD spatiotemporal fields, advancing technological innovation and practical applications. Currently in Hangzhou conducting bionic undulating fin propulsion simulation research.",
       "tags": {
@@ -978,7 +978,9 @@
         "publicationDetail": "Publication Details",
         "patentDetail": "Patent Details",
         "awardDetail": "Award Details",
-        "publisherLink": "Publisher Link"
+        "publisherLink": "Publisher Link",
+        "copyCitation": "Copy Citation",
+        "citationCopied": "Copied to clipboard!"
       },
       "data": {
         "publication1": {
@@ -1921,6 +1923,20 @@
           "flexible": "Flexible timeline"
         }
       },
+      "validation": {
+        "nameRequired": "Please enter your name.",
+        "nameTooShort": "Name must be at least 2 characters.",
+        "nameTooLong": "Name cannot exceed 50 characters.",
+        "emailRequired": "Please enter your email address.",
+        "emailInvalid": "Please enter a valid email address.",
+        "subjectRequired": "Please enter a subject.",
+        "subjectTooShort": "Subject must be at least 5 characters.",
+        "subjectTooLong": "Subject cannot exceed 100 characters.",
+        "messageRequired": "Please enter your message.",
+        "messageTooShort": "Message must be at least 10 characters.",
+        "messageTooLong": "Message cannot exceed 2000 characters.",
+        "phoneInvalid": "Please enter a valid phone number."
+      },
       "validationError": "Please check form inputs",
       "submitError": "Submission failed, please try again",
       "submitting": "Submitting...",
@@ -2456,7 +2472,9 @@
       "publicationDetail": "Publication Details",
       "patentDetail": "Patent Details",
       "awardDetail": "Award Details",
-      "publisherLink": "Publisher Link"
+      "publisherLink": "Publisher Link",
+      "copyCitation": "Copy Citation",
+      "citationCopied": "Copied to clipboard!"
     },
     "data": {
       "publication1": {

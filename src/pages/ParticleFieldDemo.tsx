@@ -150,7 +150,7 @@ const ParticleFieldDemo: React.FC = () => {
       {/* 控制界面覆盖层 */}
       <div className="relative z-10 min-h-screen">
         {/* 顶部控制栏 */}
-        <div className={`absolute top-0 left-0 right-0 p-4 bg-gradient-to-b from-black/50 to-transparent transition-all duration-300 ${isFullscreen ? 'opacity-0 hover:opacity-100' : ''}`}>
+        <div className={`absolute ${isFullscreen ? 'top-0' : 'top-16'} left-0 right-0 p-4 bg-gradient-to-b from-black/50 to-transparent transition-all duration-300 ${isFullscreen ? 'opacity-0 hover:opacity-100' : ''}`}>
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
               <Link
