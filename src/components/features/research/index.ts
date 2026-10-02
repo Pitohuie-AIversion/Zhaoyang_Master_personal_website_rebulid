@@ -9,3 +9,5 @@ export { ResearchEducationSection } from './ResearchEducationSection';
 export { ResearchPublicationsSection } from './ResearchPublicationsSection';
 export { ResearchPatentsSection } from './ResearchPatentsSection';
 export { ResearchAwardsSection } from './ResearchAwardsSection';
+export { ResearchStructuredData } from './ResearchStructuredData';
+export * from './researchData';

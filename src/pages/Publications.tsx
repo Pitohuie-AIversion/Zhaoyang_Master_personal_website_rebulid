@@ -11,14 +11,16 @@ import {
 } from '../components/features/search/SearchAndFilter';
 import { useResponsive } from '../hooks/useResponsive';
 import { PublicationsSEO } from '../components/seo/SEOOptimization';
-import { BookOpen, FileText, Award } from 'lucide-react';
-import { PublicationItem } from '../types';
+import type { PublicationItem } from '../types';
 import {
   PublicationCard,
   PublicationDetailModal,
+  getPublicationsList,
+  PUBLICATION_TYPES,
+  getTypeIcon,
+  getStatusColor,
+  getStatusText,
 } from '../components/features/publications';
-
-const types = ['全部', 'journal', 'conference', 'patent'];
 
 export default function Publications() {
   const { t } = useTranslation();
@@ -36,119 +38,7 @@ export default function Publications() {
   };
 
   const publications: PublicationItem[] = useMemo(
-    () => [
-      {
-        id: 1,
-        title: t('publications.data.nanoEnergy2024.title') as string,
-        authors: t('publications.data.nanoEnergy2024.authors') as string,
-        journal: t('publications.data.nanoEnergy2024.journal') as string,
-        year: '2024',
-        type: 'journal',
-        status: 'published',
-        abstract: t('publications.data.nanoEnergy2024.abstract') as string,
-        keywords:
-          (t('publications.data.nanoEnergy2024.keywords', {
-            returnObjects: true,
-          }) as unknown as string[]) || [],
-        doi: '10.1016/j.nanoen.2024.110011',
-        url: t('publications.data.nanoEnergy2024.url') as string,
-      },
-      {
-        id: 2,
-        title: t('publications.data.amtTWSA2025.title') as string,
-        authors: t('publications.data.amtTWSA2025.authors') as string,
-        journal: t('publications.data.amtTWSA2025.journal') as string,
-        year: '2025',
-        type: 'journal',
-        status: 'published',
-        abstract: t('publications.data.amtTWSA2025.abstract') as string,
-        keywords:
-          (t('publications.data.amtTWSA2025.keywords', {
-            returnObjects: true,
-          }) as unknown as string[]) || [],
-        doi: '10.1002/admt.202401053',
-        url: t('publications.data.amtTWSA2025.url') as string,
-      },
-      {
-        id: 3,
-        title: t('publications.data.pofDamFormer2025.title') as string,
-        authors: t('publications.data.pofDamFormer2025.authors') as string,
-        journal: t('publications.data.pofDamFormer2025.journal') as string,
-        year: '2025',
-        type: 'journal',
-        status: 'published',
-        abstract: t('publications.data.pofDamFormer2025.abstract') as string,
-        keywords:
-          (t('publications.data.pofDamFormer2025.keywords', {
-            returnObjects: true,
-          }) as unknown as string[]) || [],
-        doi: '10.1063/5.0245680',
-        url: t('publications.data.pofDamFormer2025.url') as string,
-      },
-      {
-        id: 4,
-        title: t('publications.data.ieeeCAC2024.title') as string,
-        authors: t('publications.data.ieeeCAC2024.authors') as string,
-        journal: t('publications.data.ieeeCAC2024.journal') as string,
-        year: '2024',
-        type: 'conference',
-        status: 'published',
-        abstract: t('publications.data.ieeeCAC2024.abstract') as string,
-        keywords:
-          (t('publications.data.ieeeCAC2024.keywords', {
-            returnObjects: true,
-          }) as unknown as string[]) || [],
-        url: t('publications.data.ieeeCAC2024.url') as string,
-      },
-      {
-        id: 5,
-        title: t('publications.data.ralRsModCubes2025.title') as string,
-        authors: t('publications.data.ralRsModCubes2025.authors') as string,
-        journal: t('publications.data.ralRsModCubes2025.journal') as string,
-        year: '2025',
-        type: 'journal',
-        status: 'published',
-        abstract: t('publications.data.ralRsModCubes2025.abstract') as string,
-        keywords:
-          (t('publications.data.ralRsModCubes2025.keywords', {
-            returnObjects: true,
-          }) as unknown as string[]) || [],
-        doi: '10.1109/LRA.2025.3543139',
-        url: t('publications.data.ralRsModCubes2025.url') as string,
-      },
-      {
-        id: 6,
-        title: t('publications.data.spieCITA2025.title') as string,
-        authors: t('publications.data.spieCITA2025.authors') as string,
-        journal: t('publications.data.spieCITA2025.journal') as string,
-        year: '2025',
-        type: 'conference',
-        status: 'published',
-        abstract: t('publications.data.spieCITA2025.abstract') as string,
-        keywords:
-          (t('publications.data.spieCITA2025.keywords', {
-            returnObjects: true,
-          }) as unknown as string[]) || [],
-        doi: '10.1117/12.3056794',
-        url: t('publications.data.spieCITA2025.url') as string,
-      },
-      {
-        id: 7,
-        title: t('publications.data.amtTBLS2025.title') as string,
-        authors: t('publications.data.amtTBLS2025.authors') as string,
-        journal: t('publications.data.amtTBLS2025.journal') as string,
-        year: '2025',
-        type: 'journal',
-        status: 'published',
-        abstract: t('publications.data.amtTBLS2025.abstract') as string,
-        keywords:
-          (t('publications.data.amtTBLS2025.keywords', {
-            returnObjects: true,
-          }) as unknown as string[]) || [],
-        doi: '10.1002/admt.202500072',
-        url: t('publications.data.amtTBLS2025.url') as string,
-      },
-    ],
+    () => getPublicationsList(t),
     [t]
   );
 
@@ -209,47 +99,8 @@ export default function Publications() {
     },
   });
 
-  const getTypeIcon = (type: string) => {
-    switch (type) {
-      case 'journal':
-        return <BookOpen className="w-5 h-5" />;
-      case 'conference':
-        return <FileText className="w-5 h-5" />;
-      case 'patent':
-        return <Award className="w-5 h-5" />;
-      default:
-        return <FileText className="w-5 h-5" />;
-    }
-  };
-
-  const getStatusColor = (status: string) => {
-    switch (status) {
-      case 'published':
-        return 'bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-300';
-      case 'under_review':
-        return 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/40 dark:text-yellow-300';
-      case 'in_preparation':
-        return 'bg-blue-100 text-blue-800 dark:bg-blue-900/40 dark:text-blue-300';
-      default:
-        return 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300';
-    }
-  };
-
-  const getStatusText = (status: string) => {
-    switch (status) {
-      case 'published':
-        return t('publications.status.published') as string;
-      case 'under_review':
-        return t('publications.status.underReview') as string;
-      case 'in_preparation':
-        return t('publications.status.inPreparation') as string;
-      default:
-        return status;
-    }
-  };
-
   const filterOptions = {
-    type: types.slice(1).map((type) => ({
+    type: PUBLICATION_TYPES.slice(1).map((type) => ({
       value: type,
       label: typeLabels[type as keyof typeof typeLabels] || type,
     })),
@@ -367,7 +218,7 @@ export default function Publications() {
               onClick={() => setSelectedPublication(publication)}
               getTypeIcon={getTypeIcon}
               getStatusColor={getStatusColor}
-              getStatusText={getStatusText}
+              getStatusText={(status) => getStatusText(status, t)}
               typeLabels={typeLabels}
             />
           ))}
@@ -379,7 +230,7 @@ export default function Publications() {
           onClose={() => setSelectedPublication(null)}
           getTypeIcon={getTypeIcon}
           getStatusColor={getStatusColor}
-          getStatusText={getStatusText}
+          getStatusText={(status) => getStatusText(status, t)}
           typeLabels={typeLabels}
           copiedCitation={copiedCitation}
           onCopyCitation={handleCopyCitation}

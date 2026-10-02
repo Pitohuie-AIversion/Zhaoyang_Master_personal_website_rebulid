@@ -6,3 +6,5 @@ export type { ProjectDetailModalProps } from './ProjectDetailModal';
 
 export { ProjectFilterBar } from './ProjectFilterBar';
 export type { ProjectFilterBarProps } from './ProjectFilterBar';
+
+export * from './projectsData';
