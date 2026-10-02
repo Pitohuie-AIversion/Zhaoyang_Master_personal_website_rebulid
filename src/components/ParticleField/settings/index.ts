@@ -15,3 +15,8 @@ export type { SavePresetModalProps } from './SavePresetModal';
 
 export { ControlPanel } from './ControlPanel';
 export type { ControlPanelProps } from './ControlPanel';
+
+export { ControlPanelTabs, type ControlPanelTabsProps, type ControlPanelTabType } from './ControlPanelTabs';
+export { ControlPanelFooter, type ControlPanelFooterProps } from './ControlPanelFooter';
+export { useControlPanelPresets, type UseControlPanelPresetsOptions } from './useControlPanelPresets';
+export { useControlPanelActions, type UseControlPanelActionsOptions } from './useControlPanelActions';
