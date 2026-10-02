@@ -174,6 +174,8 @@ export const clearContactSubmissionHistory = (): void => {
   }
 };
 
+export type FormFieldConfig = ReturnType<typeof getFormFieldConfig>;
+
 export const getFormFieldConfig = (t: (key: string) => string) => {
   const tr = (key: string, fallback: string) => translate(t, key, fallback);
 
