@@ -21,7 +21,9 @@ describe('production site integrity', () => {
       projectFile('src/locales/zh.json'),
       projectFile('src/locales/en.json'),
       projectFile('src/pages/Research.tsx'),
+      projectFile('src/components/features/research/researchData.ts'),
       projectFile('src/services/searchService.ts'),
+      projectFile('src/services/search/searchData.ts'),
     ].join('\n');
 
     expect(searchableSources).toContain('10.1063/5.0245680');
