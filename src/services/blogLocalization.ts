@@ -1,6 +1,6 @@
-import type { BlogCategory, BlogPost, BlogTag } from './blogService';
+import type { BlogCategory, BlogPost, BlogTag, BlogLanguage } from '../types';
 
-export type BlogLanguage = 'zh' | 'en';
+export type { BlogLanguage };
 
 const categoryTranslations: Record<string, { name: string; description: string }> = {
   'academic-research': {

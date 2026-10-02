@@ -1,28 +1,6 @@
-export interface SearchResult {
-  id: string;
-  title: string;
-  description: string;
-  type: 'publication' | 'patent' | 'award' | 'project' | 'skill' | 'page';
-  url: string;
-  relevance: number;
-  metadata?: {
-    year?: number;
-    authors?: string[];
-    journal?: string;
-    patentNumber?: string;
-    organization?: string;
-    level?: string;
-    tags?: string[];
-    doi?: string;
-  };
-}
+import type { SearchResult, SearchOptions, SearchType } from '../types';
 
-export interface SearchOptions {
-  limit?: number;
-  types?: SearchResult['type'][];
-  minRelevance?: number;
-  fuzzy?: boolean;
-}
+export type { SearchResult, SearchOptions, SearchType };
 
 const SEARCH_CONTENT: SearchResult[] = [
   {

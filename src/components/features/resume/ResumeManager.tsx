@@ -1,167 +1,26 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useTranslation } from '../../common/TranslationProvider';
-import { Upload, FileText, User, GraduationCap, Briefcase, Award, Settings, Download, Eye, Edit, Trash2, Plus, X } from 'lucide-react';
-import {
-  clearStoredAdminToken,
-  getAdminAuthHeaders,
-  getStoredAdminToken,
-  storeAdminToken,
-} from '../../../utils/adminAuth';
+import { Eye, User, GraduationCap, Briefcase, Settings, Award } from 'lucide-react';
+import { getAdminAuthHeaders } from '../../../utils/adminAuth';
+import { AdminGate } from '../../common/AdminGate';
+import { ResumeToolbar } from './ResumeToolbar';
+import { PersonalInfoCard } from './PersonalInfoCard';
+import { ResumeSectionTable } from './ResumeSectionTable';
+import { ResumeEditModal } from './ResumeEditModal';
+import type { ResumeData, PersonalInfo } from '../../../types';
 
-interface ResumeData {
-  personal_info: PersonalInfo | null;
-  education: Education[];
-  work_experience: WorkExperience[];
-  research_experience: ResearchExperience[];
-  skills: Skill[];
-  languages: Language[];
-  certifications: Certification[];
-  professional_activities: ProfessionalActivity[];
-  publications: Publication[];
-  patents: Patent[];
-  awards: Award[];
+interface ResumeManagerContentProps {
+  adminToken: string;
+  onLogout: () => void;
+  onAuthFailure: () => void;
 }
 
-interface PersonalInfo {
-  id: string;
-  full_name: string;
-  english_name?: string;
-  chinese_name?: string;
-  email?: string;
-  phone?: string;
-  location?: string;
-  website?: string;
-  linkedin?: string;
-  github?: string;
-  bio?: string;
-  bio_en?: string;
-}
-
-interface Education {
-  id: string;
-  degree: string;
-  degree_en?: string;
-  major: string;
-  major_en?: string;
-  school: string;
-  school_en?: string;
-  start_date?: string;
-  end_date?: string;
-  gpa?: number;
-  description?: string;
-  description_en?: string;
-  supervisor?: string;
-  location?: string;
-  status?: string;
-}
-
-interface WorkExperience {
-  id: string;
-  position: string;
-  position_en?: string;
-  company: string;
-  company_en?: string;
-  start_date?: string;
-  end_date?: string;
-  is_current?: boolean;
-  location?: string;
-  description?: string;
-  description_en?: string;
-  achievements?: string[];
-}
-
-interface ResearchExperience {
-  id: string;
-  title: string;
-  title_en?: string;
-  institution: string;
-  institution_en?: string;
-  lab_name?: string;
-  supervisor?: string;
-  start_date?: string;
-  end_date?: string;
-  is_current?: boolean;
-  description?: string;
-  description_en?: string;
-  keywords?: string[];
-}
-
-interface Skill {
-  id: string;
-  category: string;
-  skill_name: string;
-  skill_name_en?: string;
-  proficiency_level?: string;
-  years_of_experience?: number;
-  description?: string;
-  is_primary?: boolean;
-}
-
-interface Language {
-  id: string;
-  language: string;
-  language_en?: string;
-  proficiency?: string;
-  is_native?: boolean;
-}
-
-interface Certification {
-  id: string;
-  name: string;
-  name_en?: string;
-  issuing_organization?: string;
-  issue_date?: string;
-  credential_id?: string;
-  description?: string;
-  is_active?: boolean;
-}
-
-interface ProfessionalActivity {
-  id: string;
-  activity_type: string;
-  title: string;
-  title_en?: string;
-  organization?: string;
-  date?: string;
-  description?: string;
-  is_invited?: boolean;
-}
-
-interface Publication {
-  id: string;
-  title: string;
-  authors: string[];
-  journal?: string;
-  year?: number;
-  doi?: string;
-  abstract?: string;
-  status?: string;
-}
-
-interface Patent {
-  id: string;
-  title: string;
-  patent_number: string;
-  applicant?: string;
-  public_date?: string;
-  status?: string;
-  type?: string;
-  description?: string;
-}
-
-interface Award {
-  id: string;
-  title: string;
-  organization?: string;
-  award_date?: string;
-  level?: string;
-  description?: string;
-  certificate_number?: string;
-}
-
-const ResumeManager: React.FC = () => {
-  const { t: translate, language: _language } = useTranslation();
-  // Wrapper to keep existing call style (key, fallback) working with our translation provider
+const ResumeManagerContent: React.FC<ResumeManagerContentProps> = ({
+  adminToken,
+  onLogout,
+  onAuthFailure,
+}) => {
+  const { t: translate } = useTranslation();
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const t = (key: string, fallbackOrOptions?: string | { fallback?: string; returnObjects?: boolean }): any => {
     const options = typeof fallbackOrOptions === 'string'
@@ -170,6 +29,7 @@ const ResumeManager: React.FC = () => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return (translate as any)(key, options);
   };
+
   const [resumeData, setResumeData] = useState<ResumeData | null>(null);
   const [loading, setLoading] = useState(true);
   const [uploading, setUploading] = useState(false);
@@ -177,53 +37,15 @@ const ResumeManager: React.FC = () => {
   const [editingItem, setEditingItem] = useState<Record<string, unknown> | null>(null);
   const [editingSection, setEditingSection] = useState<string>('');
   const [syncing, setSyncing] = useState(false);
-  const [adminToken, setAdminToken] = useState(getStoredAdminToken);
-  const [tokenInput, setTokenInput] = useState('');
-  const [authError, setAuthError] = useState('');
 
-  // Fetch resume data on component mount
-  useEffect(() => {
-    if (adminToken) {
-      fetchResumeData();
-    } else {
-      setLoading(false);
-    }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [adminToken]);
-
-  const handleAdminLogin = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    if (!tokenInput.trim()) {
-      setAuthError(t('common.adminAuth.tokenRequired', 'Admin token is required.'));
-      return;
-    }
-    setAuthError('');
-    setLoading(true);
-    setAdminToken(storeAdminToken(tokenInput));
-    setTokenInput('');
-  };
-
-  const handleAuthFailure = () => {
-    clearStoredAdminToken();
-    setAdminToken('');
-    setAuthError(t('common.adminAuth.tokenInvalid', 'Admin token is invalid or the server is not configured.'));
-  };
-
-  const handleAdminLogout = () => {
-    clearStoredAdminToken();
-    setAdminToken('');
-    setResumeData(null);
-    setEditingItem(null);
-    setEditingSection('');
-  };
-
-  const fetchResumeData = async () => {
+  const fetchResumeData = useCallback(async () => {
     try {
+      setLoading(true);
       const response = await fetch('/api/resume/data', {
         headers: getAdminAuthHeaders(adminToken),
       });
       if (response.status === 401 || response.status === 503) {
-        handleAuthFailure();
+        onAuthFailure();
         return;
       }
       const result = await response.json();
@@ -238,7 +60,11 @@ const ResumeManager: React.FC = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [adminToken, onAuthFailure]);
+
+  useEffect(() => {
+    fetchResumeData();
+  }, [fetchResumeData]);
 
   const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -264,7 +90,7 @@ const ResumeManager: React.FC = () => {
 
       if (result.success) {
         alert(t('common.resume.upload.success', 'Resume uploaded and processed successfully'));
-        fetchResumeData(); // Refresh data
+        fetchResumeData();
       } else {
         alert(t('common.resume.upload.error', 'Failed to process resume') + ': ' + result.message);
       }
@@ -273,7 +99,7 @@ const ResumeManager: React.FC = () => {
       alert(t('common.resume.upload.error', 'Failed to upload resume'));
     } finally {
       setUploading(false);
-      event.target.value = ''; // Reset file input
+      event.target.value = '';
     }
   };
 
@@ -282,24 +108,21 @@ const ResumeManager: React.FC = () => {
     setEditingSection(section);
   };
 
-  const handleSave = async () => {
-    if (!editingItem || !editingSection) return;
-
+  const handleSave = async (updatedItem: Record<string, unknown>, section: string) => {
     try {
-      const typedItem = editingItem as Record<string, unknown>;
-      const url = typedItem.id
-        ? `/api/resume/data/${editingSection}/${typedItem.id}`
-        : `/api/resume/data/${editingSection}`;
+      const url = updatedItem.id
+        ? `/api/resume/data/${section}/${updatedItem.id}`
+        : `/api/resume/data/${section}`;
 
-      const method = typedItem.id ? 'PUT' : 'POST';
+      const method = updatedItem.id ? 'PUT' : 'POST';
 
       const response = await fetch(url, {
-        method: method,
+        method,
         headers: {
           'Content-Type': 'application/json',
           ...getAdminAuthHeaders(adminToken),
         },
-        body: JSON.stringify(typedItem),
+        body: JSON.stringify(updatedItem),
       });
 
       const result = await response.json();
@@ -308,7 +131,7 @@ const ResumeManager: React.FC = () => {
         alert(t('common.saveSuccess', 'Saved successfully'));
         setEditingItem(null);
         setEditingSection('');
-        fetchResumeData(); // Refresh data
+        fetchResumeData();
       } else {
         alert(t('common.saveError', 'Failed to save') + ': ' + result.message);
       }
@@ -333,7 +156,7 @@ const ResumeManager: React.FC = () => {
 
       if (result.success) {
         alert(t('common.deleteSuccess', 'Deleted successfully'));
-        fetchResumeData(); // Refresh data
+        fetchResumeData();
       } else {
         alert(t('common.deleteError', 'Failed to delete') + ': ' + result.message);
       }
@@ -400,266 +223,6 @@ const ResumeManager: React.FC = () => {
     }
   };
 
-  const renderPersonalInfo = () => {
-    if (!resumeData?.personal_info) return null;
-
-    const info = resumeData.personal_info;
-
-    return (
-      <div className="bg-white rounded-lg shadow-md p-6">
-        <div className="flex items-center justify-between mb-4">
-          <h3 className="text-xl font-semibold text-gray-800">
-            {t('common.resume.personalInfo', 'Personal Information')}
-          </h3>
-          <button
-            onClick={() => handleEdit('personal_info', info)}
-            className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
-          >
-            <Edit size={16} />
-          </button>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              {t('common.resume.fullName', 'Full Name')}
-            </label>
-            <p className="text-gray-900">{info.full_name}</p>
-          </div>
-
-          {info.email && (
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
-                {t('common.resume.email', 'Email')}
-              </label>
-              <p className="text-gray-900">{info.email}</p>
-            </div>
-          )}
-
-          {info.phone && (
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
-                {t('common.resume.phone', 'Phone')}
-              </label>
-              <p className="text-gray-900">{info.phone}</p>
-            </div>
-          )}
-
-          {info.location && (
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
-                {t('common.resume.location', 'Location')}
-              </label>
-              <p className="text-gray-900">{info.location}</p>
-            </div>
-          )}
-
-          {info.linkedin && (
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
-                {t('common.social.linkedin') as string}
-              </label>
-              <a href={info.linkedin} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
-                {info.linkedin}
-              </a>
-            </div>
-          )}
-
-          {info.github && (
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
-                {t('common.social.github') as string}
-              </label>
-              <a href={info.github} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
-                {info.github}
-              </a>
-            </div>
-          )}
-        </div>
-
-        {info.bio && (
-          <div className="mt-4">
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              {t('common.resume.bio', 'Bio')}
-            </label>
-            <p className="text-gray-900 whitespace-pre-wrap">{info.bio}</p>
-          </div>
-        )}
-      </div>
-    );
-  };
-
-  const renderSection = (title: string, items: unknown[], sectionKey: string, fields: string[]) => {
-    if (!items || items.length === 0) {
-      return (
-        <div className="bg-white rounded-lg shadow-md p-6">
-          <div className="flex items-center justify-between mb-4">
-            <h3 className="text-xl font-semibold text-gray-800">{title}</h3>
-            <button
-              onClick={() => handleEdit(sectionKey, {})}
-              className="flex items-center gap-2 px-3 py-1 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
-            >
-              <Plus size={16} />
-              {t('common.add', 'Add')}
-            </button>
-          </div>
-          <p className="text-gray-500 text-center py-8">{t('common.noData', 'No data available')}</p>
-        </div>
-      );
-    }
-
-    return (
-      <div className="bg-white rounded-lg shadow-md p-6">
-        <div className="flex items-center justify-between mb-4">
-          <h3 className="text-xl font-semibold text-gray-800">{title}</h3>
-          <button
-            onClick={() => handleEdit(sectionKey, {})}
-            className="flex items-center gap-2 px-3 py-1 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
-          >
-            <Plus size={16} />
-            {t('common.add', 'Add')}
-          </button>
-        </div>
-
-        <div className="space-y-4">
-          {items.map((item) => {
-            const typedItem = item as Record<string, unknown>;
-            return (
-              <div key={typedItem.id as string} className="border border-gray-200 rounded-lg p-4">
-                <div className="flex items-center justify-between mb-2">
-                  <h4 className="font-medium text-gray-900">
-                    {typedItem.title as string || typedItem.degree as string || typedItem.position as string || typedItem.skill_name as string || typedItem.language as string || typedItem.name as string}
-                  </h4>
-                  <div className="flex items-center gap-2">
-                    <button
-                      onClick={() => handleEdit(sectionKey, item)}
-                      className="p-1 text-blue-600 hover:bg-blue-50 rounded transition-colors"
-                    >
-                      <Edit size={14} />
-                    </button>
-                    <button
-                      onClick={() => handleDelete(sectionKey, typedItem.id as string)}
-                      className="p-1 text-red-600 hover:bg-red-50 rounded transition-colors"
-                    >
-                      <Trash2 size={14} />
-                    </button>
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm text-gray-600">
-                  {fields.map((field) => {
-                    const value = typedItem[field];
-                    if (!value) return null;
-
-                    return (
-                      <div key={field}>
-                        <span className="font-medium">{field.replace('_', ' ')}: </span>
-                        <span>{Array.isArray(value) ? value.join(', ') : String(value)}</span>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-    );
-  };
-
-  const renderEditingModal = () => {
-    if (!editingItem || !editingSection) return null;
-
-    const renderFormFields = () => {
-      const fields = Object.keys(editingItem).filter(key => key !== 'id' && key !== 'created_at' && key !== 'updated_at');
-
-      return fields.map((field) => (
-        <div key={field} className="mb-4">
-          <label className="block text-sm font-medium text-gray-700 mb-1">
-            {field.replace('_', ' ').replace(/\b\w/g, l => l.toUpperCase())}
-          </label>
-          {Array.isArray(editingItem[field]) ? (
-            <textarea
-              value={editingItem[field].join(', ')}
-              onChange={(e) => setEditingItem({
-                ...editingItem,
-                [field]: e.target.value.split(',').map(s => s.trim()).filter(s => s)
-              })}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              rows={3}
-            />
-          ) : typeof editingItem[field] === 'boolean' ? (
-            <select
-              value={editingItem[field] ? 'true' : 'false'}
-              onChange={(e) => setEditingItem({
-                ...editingItem,
-                [field]: e.target.value === 'true'
-              })}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-            >
-              <option value="true">{t('common.confirmYes', { fallback: 'Yes' }) as string}</option>
-              <option value="false">{t('common.confirmNo', { fallback: 'No' }) as string}</option>
-            </select>
-          ) : (
-            <input
-              type="text"
-              value={(editingItem as Record<string, unknown>)[field] as string || ''}
-              onChange={(e) => setEditingItem({
-                ...(editingItem as Record<string, unknown>),
-                [field]: e.target.value
-              })}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-          )}
-        </div>
-      ));
-    };
-
-    return (
-      <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-        <div className="bg-white rounded-lg p-6 w-full max-w-2xl max-h-[80vh] overflow-y-auto">
-          <div className="flex items-center justify-between mb-4">
-            <h3 className="text-lg font-semibold text-gray-800">
-              {(editingItem as Record<string, unknown>).id ? (t('common.edit', { fallback: 'Edit' }) as string) : (t('common.add', { fallback: 'Add' }) as string)} {editingSection}
-            </h3>
-            <button
-              onClick={() => {
-                setEditingItem(null);
-                setEditingSection('');
-              }}
-              className="p-2 text-gray-500 hover:bg-gray-100 rounded-lg transition-colors"
-            >
-              <X size={20} />
-            </button>
-          </div>
-
-          <form onSubmit={(e) => { e.preventDefault(); handleSave(); }}>
-            {renderFormFields()}
-
-            <div className="flex items-center justify-end gap-3 mt-6">
-              <button
-                type="button"
-                onClick={() => {
-                  setEditingItem(null);
-                  setEditingSection('');
-                }}
-                className="px-4 py-2 text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors"
-              >
-                {t('common.cancel', 'Cancel')}
-              </button>
-              <button
-                type="submit"
-                className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
-              >
-                {t('common.save', 'Save')}
-              </button>
-            </div>
-          </form>
-        </div>
-      </div>
-    );
-  };
-
   const tabs = [
     { id: 'overview', label: t('common.resume.overview', 'Overview'), icon: Eye },
     { id: 'personal', label: t('common.resume.personal', 'Personal'), icon: User },
@@ -668,31 +231,6 @@ const ResumeManager: React.FC = () => {
     { id: 'skills', label: t('common.resume.skills', 'Skills'), icon: Settings },
     { id: 'achievements', label: t('common.resume.achievements', 'Achievements'), icon: Award },
   ];
-
-  if (!adminToken) {
-    return (
-      <div className="max-w-md mx-auto p-6 min-h-[60vh] pt-24 flex items-center">
-        <form onSubmit={handleAdminLogin} className="w-full bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 space-y-4 border border-gray-200 dark:border-gray-700 theme-transition">
-          <div>
-            <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{t('common.adminAuth.title', 'Admin Access')}</h1>
-            <p className="text-sm text-gray-600 dark:text-gray-300 mt-1">{t('common.adminAuth.resumeDescription', 'Enter the ADMIN_TOKEN to manage resume data.')}</p>
-          </div>
-          <input
-            type="password"
-            value={tokenInput}
-            onChange={(event) => setTokenInput(event.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
-            placeholder="ADMIN_TOKEN"
-            autoComplete="current-password"
-          />
-          {authError && <p className="text-sm text-red-600 dark:text-red-400">{authError}</p>}
-          <button type="submit" className="w-full px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition-colors">
-            {t('common.adminAuth.unlock', 'Unlock')}
-          </button>
-        </form>
-      </div>
-    );
-  }
 
   if (loading) {
     return (
@@ -704,253 +242,220 @@ const ResumeManager: React.FC = () => {
 
   return (
     <div className="max-w-6xl mx-auto p-6 pt-24 min-h-screen text-gray-900 dark:text-gray-100 theme-transition">
-      <div className="mb-8">
-        <div className="flex items-center justify-between gap-4">
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
-            {t('common.resume.manager', 'Resume Manager')}
-          </h1>
-          <button onClick={handleAdminLogout} className="px-3 py-2 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors">
-            {t('common.adminAuth.lock', 'Lock')}
-          </button>
-        </div>
+      <div className="mb-6">
+        <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
+          {t('common.resume.manager', 'Resume Manager')}
+        </h1>
         <p className="text-gray-600 dark:text-gray-400">
           {t('common.resume.managerDesc', 'Manage and synchronize your resume data')}
         </p>
       </div>
 
-      {/* Upload Section */}
-      <div className="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-lg shadow-md p-6 mb-6">
-        <div className="flex items-center justify-between">
-          <div>
-            <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-2">
-              {t('common.resume.upload.title', 'Upload Resume PDF')}
-            </h3>
-            <p className="text-gray-600 dark:text-gray-300 text-sm">
-              {t('common.resume.upload.desc', 'Upload your resume PDF to extract and store data automatically')}
-            </p>
-          </div>
-          <div className="flex items-center gap-3">
-            <button
-              onClick={handleValidate}
-              className="flex items-center gap-2 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
-            >
-              <FileText size={16} />
-              {t('common.resume.validate', 'Validate Data')}
-            </button>
-            <button
-              onClick={handleSync}
-              disabled={syncing}
-              className="flex items-center gap-2 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-            >
-              {syncing ? (
-                <>
-                  <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
-                  {t('common.resume.syncing', 'Syncing...')}
-                </>
-              ) : (
-                <>
-                  <Download size={16} />
-                  {t('common.resume.sync', 'Sync with Website')}
-                </>
-              )}
-            </button>
-            <div className="relative">
-              <input
-                type="file"
-                accept=".pdf"
-                onChange={handleFileUpload}
-                disabled={uploading}
-                className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-              />
-              <button
-                disabled={uploading}
-                className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-              >
-                {uploading ? (
-                  <>
-                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
-                    {t('common.resume.upload.uploading', 'Uploading...')}
-                  </>
-                ) : (
-                  <>
-                    <Upload size={16} />
-                    {t('common.resume.upload.selectFile', 'Select PDF File')}
-                  </>
-                )}
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
+      {/* Toolbar actions */}
+      <ResumeToolbar
+        uploading={uploading}
+        syncing={syncing}
+        onFileUpload={handleFileUpload}
+        onSync={handleSync}
+        onValidate={handleValidate}
+        onLogout={onLogout}
+      />
 
-      {/* Tabs */}
-      <div className="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-lg shadow-md mb-6">
-        <div className="border-b border-gray-200 dark:border-gray-700">
-          <nav className="flex space-x-8 px-6">
-            {tabs.map((tab) => {
-              const Icon = tab.icon;
-              return (
-                <button
-                  key={tab.id}
-                  onClick={() => setActiveTab(tab.id)}
-                  className={`flex items-center gap-2 py-4 px-1 border-b-2 font-medium text-sm transition-colors ${activeTab === tab.id
+      {/* Tab navigation */}
+      <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-md mb-6 overflow-x-auto">
+        <nav className="flex space-x-6 px-6 min-w-max">
+          {tabs.map((tab) => {
+            const Icon = tab.icon;
+            return (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                className={`flex items-center gap-2 py-4 px-1 border-b-2 font-medium text-sm transition-colors ${
+                  activeTab === tab.id
                     ? 'border-blue-500 text-blue-600 dark:text-blue-400'
                     : 'border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 hover:border-gray-300 dark:hover:border-gray-600'
-                    }`}
-                >
-                  <Icon size={16} />
-                  {tab.label}
-                </button>
-              );
-            })}
-          </nav>
-        </div>
+                }`}
+              >
+                <Icon size={16} />
+                {tab.label}
+              </button>
+            );
+          })}
+        </nav>
       </div>
 
-      {/* Content */}
+      {/* Active Tab Content */}
       <div className="space-y-6">
         {activeTab === 'overview' && (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div className="bg-white rounded-lg shadow-md p-6">
-              <div className="flex items-center justify-between">
-                <h3 className="text-lg font-semibold text-gray-800">
-                  {t('common.resume.dataQuality', 'Data Quality')}
-                </h3>
-                <FileText className="text-blue-600" size={20} />
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 border border-gray-200 dark:border-gray-700">
+              <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-4">
+                {t('common.resume.dataQuality', 'Data Quality')}
+              </h3>
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-sm text-gray-600 dark:text-gray-400">
+                  {t('common.resume.completeness', 'Completeness')}
+                </span>
+                <span className="text-sm font-semibold text-gray-900 dark:text-white">85%</span>
               </div>
-              <div className="mt-4">
-                <div className="flex items-center justify-between mb-2">
-                  <span className="text-sm text-gray-600">
-                    {t('common.resume.completeness', 'Completeness')}
-                  </span>
-                  <span className="text-sm font-medium text-gray-900">85%</span>
+              <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                <div className="bg-blue-600 h-2 rounded-full" style={{ width: '85%' }}></div>
+              </div>
+            </div>
+
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 border border-gray-200 dark:border-gray-700">
+              <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-4">
+                {t('common.resume.sections', 'Sections')}
+              </h3>
+              <div className="space-y-2 text-sm">
+                <div className="flex justify-between">
+                  <span className="text-gray-600 dark:text-gray-400">{t('common.resume.personalInfo', 'Personal Info')}</span>
+                  <span className="text-gray-900 dark:text-white">{resumeData?.personal_info ? '✓' : '○'}</span>
                 </div>
-                <div className="w-full bg-gray-200 rounded-full h-2">
-                  <div className="bg-blue-600 h-2 rounded-full" style={{ width: '85%' }}></div>
+                <div className="flex justify-between">
+                  <span className="text-gray-600 dark:text-gray-400">{t('common.resume.education', 'Education')}</span>
+                  <span className="text-gray-900 dark:text-white">{resumeData?.education?.length || 0} {t('common.items', 'items')}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-600 dark:text-gray-400">{t('common.resume.experience', 'Experience')}</span>
+                  <span className="text-gray-900 dark:text-white">{resumeData?.work_experience?.length || 0} {t('common.items', 'items')}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-600 dark:text-gray-400">{t('common.resume.skills', 'Skills')}</span>
+                  <span className="text-gray-900 dark:text-white">{resumeData?.skills?.length || 0} {t('common.items', 'items')}</span>
                 </div>
               </div>
             </div>
 
-            <div className="bg-white rounded-lg shadow-md p-6">
-              <div className="flex items-center justify-between">
-                <h3 className="text-lg font-semibold text-gray-800">
-                  {t('common.resume.sections', 'Sections')}
-                </h3>
-                <Settings className="text-green-600" size={20} />
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 border border-gray-200 dark:border-gray-700">
+              <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-4">
+                {t('common.resume.syncStatus', 'Sync Status')}
+              </h3>
+              <div className="flex items-center gap-2 text-green-600 dark:text-green-400">
+                <div className="w-2.5 h-2.5 bg-green-600 dark:bg-green-400 rounded-full animate-pulse"></div>
+                <span className="text-sm font-medium">{t('common.resume.synced', 'Synchronized')}</span>
               </div>
-              <div className="mt-4 space-y-2">
-                <div className="flex justify-between">
-                  <span className="text-sm text-gray-600">{t('common.resume.personalInfo', 'Personal Info')}</span>
-                  <span className="text-sm text-gray-900">{resumeData?.personal_info ? '✓' : '○'}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-sm text-gray-600">{t('common.resume.education', 'Education')}</span>
-                  <span className="text-sm text-gray-900">{resumeData?.education?.length || 0} {t('common.items', 'items')}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-sm text-gray-600">{t('common.resume.experience', 'Experience')}</span>
-                  <span className="text-sm text-gray-900">{resumeData?.work_experience?.length || 0} {t('common.items', 'items')}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-sm text-gray-600">{t('common.resume.skills', 'Skills')}</span>
-                  <span className="text-sm text-gray-900">{resumeData?.skills?.length || 0} {t('common.items', 'items')}</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-white rounded-lg shadow-md p-6">
-              <div className="flex items-center justify-between">
-                <h3 className="text-lg font-semibold text-gray-800">
-                  {t('common.resume.syncStatus', 'Sync Status')}
-                </h3>
-                <Award className="text-purple-600" size={20} />
-              </div>
-              <div className="mt-4">
-                <div className="flex items-center gap-2 text-green-600">
-                  <div className="w-2 h-2 bg-green-600 rounded-full"></div>
-                  <span className="text-sm">{t('common.resume.synced', 'Synchronized')}</span>
-                </div>
-                <p className="text-xs text-gray-500 mt-2">
-                  {t('common.resume.lastSync', 'Last sync')}: {new Date().toLocaleDateString()}
-                </p>
-              </div>
+              <p className="text-xs text-gray-500 dark:text-gray-400 mt-2">
+                {t('common.resume.lastSync', 'Last sync')}: {new Date().toLocaleDateString()}
+              </p>
             </div>
           </div>
         )}
 
-        {activeTab === 'personal' && renderPersonalInfo()}
+        {activeTab === 'personal' && (
+          <PersonalInfoCard
+            info={resumeData?.personal_info || null}
+            onEdit={(info) => handleEdit('personal_info', info as unknown as PersonalInfo)}
+          />
+        )}
 
         {activeTab === 'education' && (
-          renderSection(
-            t('common.resume.education', 'Education'),
-            resumeData?.education || [],
-            'education',
-            ['degree', 'major', 'school', 'start_date', 'end_date', 'gpa', 'description']
-          )
+          <ResumeSectionTable
+            title={t('common.resume.education', 'Education')}
+            items={resumeData?.education || []}
+            sectionKey="education"
+            fields={['degree', 'major', 'school', 'start_date', 'end_date', 'gpa', 'description']}
+            onEdit={handleEdit}
+            onDelete={handleDelete}
+          />
         )}
 
         {activeTab === 'experience' && (
           <div className="space-y-6">
-            {renderSection(
-              t('common.resume.workExperience', 'Work Experience'),
-              resumeData?.work_experience || [],
-              'work_experience',
-              ['position', 'company', 'start_date', 'end_date', 'location', 'description']
-            )}
-            {renderSection(
-              t('common.resume.researchExperience', 'Research Experience'),
-              resumeData?.research_experience || [],
-              'research_experience',
-              ['title', 'institution', 'lab_name', 'supervisor', 'start_date', 'end_date', 'description']
-            )}
+            <ResumeSectionTable
+              title={t('common.resume.workExperience', 'Work Experience')}
+              items={resumeData?.work_experience || []}
+              sectionKey="work_experience"
+              fields={['position', 'company', 'start_date', 'end_date', 'location', 'description']}
+              onEdit={handleEdit}
+              onDelete={handleDelete}
+            />
+            <ResumeSectionTable
+              title={t('common.resume.researchExperience', 'Research Experience')}
+              items={resumeData?.research_experience || []}
+              sectionKey="research_experience"
+              fields={['title', 'institution', 'lab_name', 'supervisor', 'start_date', 'end_date', 'description']}
+              onEdit={handleEdit}
+              onDelete={handleDelete}
+            />
           </div>
         )}
 
         {activeTab === 'skills' && (
           <div className="space-y-6">
-            {renderSection(
-              t('common.resume.skills', 'Skills'),
-              resumeData?.skills || [],
-              'skills',
-              ['skill_name', 'category', 'proficiency_level', 'years_of_experience', 'description']
-            )}
-            {renderSection(
-              t('common.resume.languages', 'Languages'),
-              resumeData?.languages || [],
-              'languages',
-              ['language', 'proficiency', 'is_native']
-            )}
+            <ResumeSectionTable
+              title={t('common.resume.skills', 'Skills')}
+              items={resumeData?.skills || []}
+              sectionKey="skills"
+              fields={['skill_name', 'category', 'proficiency_level', 'years_of_experience', 'description']}
+              onEdit={handleEdit}
+              onDelete={handleDelete}
+            />
+            <ResumeSectionTable
+              title={t('common.resume.languages', 'Languages')}
+              items={resumeData?.languages || []}
+              sectionKey="languages"
+              fields={['language', 'proficiency', 'is_native']}
+              onEdit={handleEdit}
+              onDelete={handleDelete}
+            />
           </div>
         )}
 
         {activeTab === 'achievements' && (
           <div className="space-y-6">
-            {renderSection(
-              t('common.resume.publications', 'Publications'),
-              resumeData?.publications || [],
-              'publications',
-              ['title', 'journal', 'year', 'doi', 'status']
-            )}
-            {renderSection(
-              t('common.resume.patents', 'Patents'),
-              resumeData?.patents || [],
-              'patents',
-              ['title', 'patent_number', 'applicant', 'public_date', 'status']
-            )}
-            {renderSection(
-              t('common.resume.awards', 'Awards'),
-              resumeData?.awards || [],
-              'awards',
-              ['title', 'organization', 'award_date', 'level', 'description']
-            )}
+            <ResumeSectionTable
+              title={t('common.resume.publications', 'Publications')}
+              items={resumeData?.publications || []}
+              sectionKey="publications"
+              fields={['title', 'journal', 'year', 'doi', 'status']}
+              onEdit={handleEdit}
+              onDelete={handleDelete}
+            />
+            <ResumeSectionTable
+              title={t('common.resume.patents', 'Patents')}
+              items={resumeData?.patents || []}
+              sectionKey="patents"
+              fields={['title', 'patent_number', 'applicant', 'public_date', 'status']}
+              onEdit={handleEdit}
+              onDelete={handleDelete}
+            />
+            <ResumeSectionTable
+              title={t('common.resume.awards', 'Awards')}
+              items={resumeData?.awards || []}
+              sectionKey="awards"
+              fields={['title', 'organization', 'award_date', 'level', 'description']}
+              onEdit={handleEdit}
+              onDelete={handleDelete}
+            />
           </div>
         )}
       </div>
 
       {/* Editing Modal */}
-      {renderEditingModal()}
+      <ResumeEditModal
+        editingItem={editingItem}
+        editingSection={editingSection}
+        onClose={() => {
+          setEditingItem(null);
+          setEditingSection('');
+        }}
+        onSave={handleSave}
+      />
     </div>
   );
 };
 
-export default ResumeManager;
+export default function ResumeManager() {
+  return (
+    <AdminGate descriptionKey="common.adminAuth.resumeDescription">
+      {({ token, logout, triggerAuthFailure }) => (
+        <ResumeManagerContent
+          adminToken={token}
+          onLogout={logout}
+          onAuthFailure={triggerAuthFailure}
+        />
+      )}
+    </AdminGate>
+  );
+}

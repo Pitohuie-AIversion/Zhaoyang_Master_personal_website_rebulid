@@ -111,7 +111,6 @@ export const useResourcePreloader = () => {
   return { isPreloading, preloadImages, preloadFonts };
 };
 
-// 性能监控组件已移至AdvancedPerformanceOptimization.tsx以避免重复
 
 // 虚拟滚动组件
 interface VirtualScrollProps<T> {
@@ -207,54 +206,8 @@ export const useNetworkOptimization = () => {
   return { networkStatus, connectionType };
 };
 
-// 错误边界组件
-interface ErrorBoundaryState {
-  hasError: boolean;
-  error?: Error;
-}
-
-export class ErrorBoundary extends React.Component<
-  React.PropsWithChildren<Record<string, unknown>>,
-  ErrorBoundaryState
-> {
-  constructor(props: React.PropsWithChildren<Record<string, unknown>>) {
-    super(props);
-    this.state = { hasError: false };
-  }
-
-  static getDerivedStateFromError(error: Error): ErrorBoundaryState {
-    return { hasError: true, error };
-  }
-
-  componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
-    console.error('错误边界捕获到错误:', error, errorInfo);
-  }
-
-  render() {
-    if (this.state.hasError) {
-      return (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          className="min-h-screen flex items-center justify-center bg-gray-50"
-        >
-          <div className="text-center p-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">出现了一些问题</h2>
-            <p className="text-gray-600 mb-6">页面加载时遇到错误，请刷新页面重试。</p>
-            <button
-              onClick={() => window.location.reload()}
-              className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
-            >
-              刷新页面
-            </button>
-          </div>
-        </motion.div>
-      );
-    }
-
-    return this.props.children;
-  }
-}
+// 统一使用 src/components/common/ErrorBoundary.tsx
+export { ErrorBoundary } from './ErrorBoundary';
 
 // 加载状态管理
 export const LoadingFallback: React.FC<{ message?: string }> = ({ message = '加载中...' }) => (

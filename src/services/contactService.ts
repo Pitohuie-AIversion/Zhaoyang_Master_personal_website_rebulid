@@ -1,30 +1,18 @@
 import { toast } from 'sonner';
 
-export interface ContactFormData {
-  name: string;
-  email: string;
-  subject: string;
-  message: string;
-  collaborationType?: string;
-  phone?: string;
-  company?: string;
-  budget?: string;
-  timeline?: string;
-}
+import type {
+  ContactFormData,
+  FormErrors,
+  SubmitResponse,
+  CollaborationType
+} from '../types';
 
-export interface FormErrors {
-  name?: string;
-  email?: string;
-  subject?: string;
-  message?: string;
-  phone?: string;
-}
-
-export interface SubmitResponse {
-  success: boolean;
-  message: string;
-  data?: Record<string, unknown>;
-}
+export type {
+  ContactFormData,
+  FormErrors,
+  SubmitResponse,
+  CollaborationType
+};
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const PHONE_REGEX = /^\+?[1-9]\d{0,3}[\s-]?[(]?\d{1,4}[)]?[\s-]?\d{1,4}[\s-]?\d{1,9}$/;

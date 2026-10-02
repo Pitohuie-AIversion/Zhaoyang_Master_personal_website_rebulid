@@ -74,14 +74,20 @@ docker compose --profile monitoring up --build -d
 
 第二条命令会额外启动 Prometheus（`:9090`）与 Grafana（`:3001`）。生产部署前必须通过平台密钥管理注入 `.env.example` 中的服务端变量。
 
-详细流程与故障处理见：
+详细架构、开发流程与运维处理见文档中心：
 
-- [运维手册](./docs/OPERATIONS.md)
-- [部署说明](./docs/DEPLOYMENT.md)
-- [自托管架构](./docs/SELF_HOSTED_ARCHITECTURE.md)
-- [贡献指南](./CONTRIBUTING.md)
-- [安全策略](./SECURITY.md)
-- [安全审计例外](./docs/SECURITY_EXCEPTIONS.md)
+- [📖 开发与运维文档中心](./docs/README.md)
+- [🏛️ 系统全景架构设计](./docs/ARCHITECTURE.md)
+- [💻 本地开发与工程规范](./docs/DEVELOPMENT.md)
+- [🔌 RESTful API 接口规范](./docs/API.md)
+- [🎨 前端架构与设计系统](./docs/FRONTEND_GUIDE.md)
+- [🗄️ 数据库模型与迁移指南](./docs/DATABASE.md)
+- [🚀 生产部署实战指南](./docs/DEPLOYMENT.md)
+- [🛠️ 运维手册 (SRE)](./docs/OPERATIONS.md)
+- [🛡️ Cloudflare 优化配置](./docs/CLOUDFLARE_OPTIMIZATION_GUIDE.md)
+- [📋 贡献指南](./CONTRIBUTING.md)
+- [🔒 安全策略](./SECURITY.md)
+- [⚠️ 安全审计例外](./docs/SECURITY_EXCEPTIONS.md)
 
 ## 目录
 
