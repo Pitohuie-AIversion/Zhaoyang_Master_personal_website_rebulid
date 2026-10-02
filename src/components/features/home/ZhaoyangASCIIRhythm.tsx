@@ -1,88 +1,12 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React from 'react';
 import { useTranslation } from '../../common/TranslationProvider';
+import {
+  ZhaoyangASCIIRhythmProps,
+  useAsciiAnimation,
+  AsciiControls
+} from './ascii';
 
-interface ZhaoyangASCIIRhythmProps {
-  theme?: 'matrix' | 'cyber' | 'neon' | 'rainbow';
-  rhythmType?: 'heartbeat' | 'wave' | 'pulse' | 'glitch' | 'typewriter' | 'matrix-rain';
-  intensity?: 'low' | 'medium' | 'high';
-  autoPlay?: boolean;
-  showControls?: boolean;
-  className?: string;
-  transparent?: boolean;
-}
-
-interface CharacterState {
-  char: string;
-  opacity: number;
-  scale: number;
-  color: string;
-  glowIntensity: number;
-  animationDelay: number;
-}
-
-// ZHAOYANG ASCII 艺术字（优化版）
-const asciiLines = [
-  '███████╗██╗  ██╗ █████╗  ██████╗ ██╗   ██╗ █████╗ ███╗   ██╗ ██████╗ ',
-  '╚══███╔╝██║  ██║██╔══██╗██╔═══██╗╚██╗ ██╔╝██╔══██╗████╗  ██║██╔════╝ ',
-  '  ███╔╝ ███████║███████║██║   ██║ ╚████╔╝ ███████║██╔██╗ ██║██║  ███╗',
-  ' ███╔╝  ██╔══██║██╔══██║██║   ██║  ╚██╔╝  ██╔══██║██║╚██╗██║██║   ██║',
-  '███████╗██║  ██║██║  ██║╚██████╔╝   ██║   ██║  ██║██║ ╚████║╚██████╔╝',
-  '╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝    ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═══╝ ╚═════╝ '
-];
-
-// 主题配色系统
-const themes = {
-  matrix: {
-    primary: '#00ff41',
-    secondary: '#008f11',
-    accent: '#00cc33',
-    glow: '#00ff41',
-    background: 'rgba(0, 0, 0, 0.9)'
-  },
-  cyber: {
-    primary: '#00d4ff',
-    secondary: '#0099cc',
-    accent: '#66e6ff',
-    glow: '#00d4ff',
-    background: 'rgba(0, 20, 40, 0.9)'
-  },
-  neon: {
-    primary: '#ff00ff',
-    secondary: '#cc00cc',
-    accent: '#ff66ff',
-    glow: '#ff00ff',
-    background: 'rgba(20, 0, 20, 0.9)'
-  },
-  rainbow: {
-    primary: '#ff0080',
-    secondary: '#8000ff',
-    accent: '#00ff80',
-    glow: '#ff0080',
-    background: 'rgba(10, 10, 30, 0.9)'
-  }
-};
-
-// 强度配置
-const intensityConfig = {
-  low: {
-    speed: 0.5,
-    amplitude: 0.3,
-    glowRange: [0.5, 1],
-    scaleRange: [0.9, 1.1]
-  },
-  medium: {
-    speed: 1,
-    amplitude: 0.6,
-    glowRange: [0.3, 1.2],
-    scaleRange: [0.8, 1.3]
-  },
-  high: {
-    speed: 1.5,
-    amplitude: 1,
-    glowRange: [0.1, 1.5],
-    scaleRange: [0.7, 1.5]
-  }
-};
+export type { ZhaoyangASCIIRhythmProps } from './ascii';
 
 const ZhaoyangASCIIRhythm: React.FC<ZhaoyangASCIIRhythmProps> = ({
   theme = 'matrix',
@@ -94,225 +18,18 @@ const ZhaoyangASCIIRhythm: React.FC<ZhaoyangASCIIRhythmProps> = ({
   transparent = false
 }) => {
   const { t } = useTranslation();
-  const [isPlaying, setIsPlaying] = useState(autoPlay);
-  const [characterStates, setCharacterStates] = useState<CharacterState[][]>([]);
-  const animationRef = useRef<number | null>(null);
-  const startTimeRef = useRef<number>(0);
-
-  const currentTheme = themes[theme];
-  const currentIntensity = intensityConfig[intensity];
-
-  // 初始化字符状态
-  const initializeCharacterStates = useCallback(() => {
-    const states = asciiLines.map((line, lineIndex) =>
-      line.split('').map((char, charIndex) => ({
-        char,
-        opacity: char === ' ' ? 0 : 0.9,
-        scale: 1,
-        color: themes[theme].primary,
-        glowIntensity: 2,
-        animationDelay: (lineIndex * 0.1 + charIndex * 0.01) * 1000
-      }))
-    );
-    setCharacterStates(states);
-  }, [theme]); // Only depend on theme, not the entire currentTheme object
-
-  // 心跳律动效果
-  const applyHeartbeatEffect = useCallback((time: number) => {
-    const beatInterval = 1000; // 1秒一次心跳
-    const beatPhase = (time % beatInterval) / beatInterval;
-    const heartbeat = Math.abs(Math.sin(beatPhase * Math.PI * 2)) * currentIntensity.amplitude;
-    
-    setCharacterStates(prev => 
-      prev.map((line, lineIndex) =>
-        line.map((charState, charIndex) => {
-          if (charState.char === ' ') return charState;
-          
-          const delay = (lineIndex + charIndex) * 0.1;
-          const phase = (beatPhase + delay) % 1;
-          const intensity = Math.abs(Math.sin(phase * Math.PI)) * heartbeat;
-          
-          return {
-            ...charState,
-            scale: 1 + intensity * 0.3,
-            glowIntensity: 1 + intensity,
-            opacity: 0.7 + intensity * 0.3
-          };
-        })
-      )
-    );
-  }, [currentIntensity.amplitude]);
-
-  // 波浪律动效果
-  const applyWaveEffect = useCallback((time: number) => {
-    const waveSpeed = currentIntensity.speed * 0.003;
-    
-    setCharacterStates(prev => 
-      prev.map((line, lineIndex) =>
-        line.map((charState, charIndex) => {
-          if (charState.char === ' ') return charState;
-          
-          const wave = Math.sin(time * waveSpeed + lineIndex * 0.5 + charIndex * 0.1);
-          const intensity = (wave + 1) / 2 * currentIntensity.amplitude;
-          
-          return {
-            ...charState,
-            scale: 1 + intensity * 0.2,
-            glowIntensity: 0.5 + intensity,
-            color: intensity > 0.7 ? currentTheme.accent : currentTheme.primary
-          };
-        })
-      )
-    );
-  }, [currentIntensity.speed, currentIntensity.amplitude, currentTheme.accent, currentTheme.primary]);
-
-  // 脉冲律动效果
-  const applyPulseEffect = useCallback((time: number) => {
-    const pulseSpeed = currentIntensity.speed * 0.002;
-    
-    setCharacterStates(prev => 
-      prev.map((line, lineIndex) =>
-        line.map((charState) => {
-          if (charState.char === ' ') return charState;
-          
-          const pulse = Math.abs(Math.sin(time * pulseSpeed + lineIndex * 0.3));
-          const intensity = pulse * currentIntensity.amplitude;
-          
-          return {
-            ...charState,
-            scale: 1 + intensity * 0.4,
-            glowIntensity: 0.3 + intensity * 1.2,
-            opacity: 0.6 + intensity * 0.4
-          };
-        })
-      )
-    );
-  }, [currentIntensity.speed, currentIntensity.amplitude]);
-
-  // 故障律动效果
-  const applyGlitchEffect = useCallback(() => {
-    const glitchChance = 0.05 * currentIntensity.amplitude;
-    
-    setCharacterStates(prev => 
-      prev.map((line) =>
-        line.map((charState) => {
-          if (charState.char === ' ') return charState;
-          
-          const shouldGlitch = Math.random() < glitchChance;
-          
-          if (shouldGlitch) {
-            return {
-              ...charState,
-              scale: 1 + (Math.random() - 0.5) * 0.6,
-              color: Math.random() > 0.5 ? currentTheme.secondary : currentTheme.accent,
-              glowIntensity: Math.random() * 2,
-              opacity: 0.5 + Math.random() * 0.5
-            };
-          }
-          
-          return {
-            ...charState,
-            scale: 1,
-            color: currentTheme.primary,
-            glowIntensity: 1,
-            opacity: 1
-          };
-        })
-      )
-    );
-  }, [currentIntensity.amplitude, currentTheme.secondary, currentTheme.accent, currentTheme.primary]);
-
-  // 彩虹律动效果（仅限rainbow主题）
-  const applyRainbowEffect = useCallback((time: number) => {
-    if (theme !== 'rainbow') return;
-    
-    const rainbowSpeed = currentIntensity.speed * 0.001;
-    
-    setCharacterStates(prev => 
-      prev.map((line, lineIndex) =>
-        line.map((charState, charIndex) => {
-          if (charState.char === ' ') return charState;
-          
-          const hue = (time * rainbowSpeed + lineIndex * 30 + charIndex * 10) % 360;
-          const saturation = 80 + Math.sin(time * 0.002) * 20;
-          const lightness = 50 + Math.sin(time * 0.003 + charIndex * 0.1) * 20;
-          
-          return {
-            ...charState,
-            color: `hsl(${hue}, ${saturation}%, ${lightness}%)`,
-            glowIntensity: 1 + Math.sin(time * 0.002 + charIndex * 0.1) * 0.5,
-            scale: 1 + Math.sin(time * 0.001 + lineIndex * 0.2) * 0.1
-          };
-        })
-      )
-    );
-  }, [theme, currentIntensity.speed]);
-
-  // 动画循环
-  const animate = useCallback((timestamp: number) => {
-    if (!startTimeRef.current) startTimeRef.current = timestamp;
-    const elapsed = timestamp - startTimeRef.current;
-    
-    // setCurrentFrame(elapsed); // This function doesn't exist, so we'll remove it
-    
-    switch (rhythmType) {
-      case 'heartbeat':
-        applyHeartbeatEffect(elapsed);
-        break;
-      case 'wave':
-        applyWaveEffect(elapsed);
-        break;
-      case 'pulse':
-        applyPulseEffect(elapsed);
-        break;
-      case 'glitch':
-        applyGlitchEffect(); // Remove the elapsed parameter
-        break;
-      default:
-        break;
-    }
-    
-    if (theme === 'rainbow') {
-      applyRainbowEffect(elapsed);
-    }
-    
-    if (isPlaying) {
-      animationRef.current = requestAnimationFrame(animate);
-    }
-  }, [rhythmType, theme, isPlaying, applyHeartbeatEffect, applyWaveEffect, applyPulseEffect, applyGlitchEffect, applyRainbowEffect]);
-
-  // 控制播放/暂停
-  const togglePlayback = () => {
-    setIsPlaying(prev => !prev);
-  };
-
-  // 重置动画
-  const resetAnimation = () => {
-    startTimeRef.current = 0;
-    // setCurrentFrame(0); // This function doesn't exist, so we'll remove it
-    initializeCharacterStates();
-  };
-
-  // 初始化和清理
-  useEffect(() => {
-    initializeCharacterStates();
-  }, [initializeCharacterStates]);
-
-  useEffect(() => {
-    if (isPlaying) {
-      animationRef.current = requestAnimationFrame(animate);
-    } else {
-      if (animationRef.current) {
-        cancelAnimationFrame(animationRef.current);
-      }
-    }
-    
-    return () => {
-      if (animationRef.current) {
-        cancelAnimationFrame(animationRef.current);
-      }
-    };
-  }, [isPlaying, animate]);
+  const {
+    isPlaying,
+    characterStates,
+    currentTheme,
+    togglePlayback,
+    resetAnimation
+  } = useAsciiAnimation({
+    theme,
+    rhythmType,
+    intensity,
+    autoPlay
+  });
 
   return (
     <div className={`zhaoyang-ascii-rhythm ${className}`}>
@@ -450,14 +167,11 @@ const ZhaoyangASCIIRhythm: React.FC<ZhaoyangASCIIRhythmProps> = ({
       </div>
 
       {showControls && (
-        <div className="controls">
-          <button className="control-btn" onClick={togglePlayback}>
-            {isPlaying ? `⏸️ ${t('ascii.controls.pause')}` : `▶️ ${t('ascii.controls.play')}`}
-          </button>
-          <button className="control-btn" onClick={resetAnimation}>
-            🔄 {t('ascii.controls.reset')}
-          </button>
-        </div>
+        <AsciiControls
+          isPlaying={isPlaying}
+          onTogglePlayback={togglePlayback}
+          onResetAnimation={resetAnimation}
+        />
       )}
 
       {/* 开发环境下的调试信息 - 生产环境中隐藏 */}
@@ -471,4 +185,3 @@ const ZhaoyangASCIIRhythm: React.FC<ZhaoyangASCIIRhythmProps> = ({
 };
 
 export default ZhaoyangASCIIRhythm;
-export type { ZhaoyangASCIIRhythmProps };
