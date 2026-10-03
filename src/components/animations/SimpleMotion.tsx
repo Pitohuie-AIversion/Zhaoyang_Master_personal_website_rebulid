@@ -13,6 +13,12 @@ interface SimpleMotionProps {
   style?: React.CSSProperties;
   id?: string;
   key?: string | number;
+  type?: 'button' | 'submit' | 'reset';
+  role?: string;
+  tabIndex?: number;
+  ariaLabel?: string;
+  ariaModal?: boolean;
+  ariaLabelledby?: string;
 }
 
 export const SimpleMotion: React.FC<SimpleMotionProps> = ({
@@ -24,9 +30,20 @@ export const SimpleMotion: React.FC<SimpleMotionProps> = ({
   onMouseLeave,
   style,
   id,
-  ...props
+  type,
+  role,
+  tabIndex,
+  ariaLabel,
+  ariaModal,
+  ariaLabelledby,
+  initial: _initial,
+  animate: _animate,
+  transition: _transition
 }) => {
   const ElementComponent = Component as React.ElementType;
+  void _initial;
+  void _animate;
+  void _transition;
   
   return (
     <ElementComponent
@@ -36,7 +53,12 @@ export const SimpleMotion: React.FC<SimpleMotionProps> = ({
       onMouseLeave={onMouseLeave}
       style={style}
       id={id}
-      {...props}
+      type={type}
+      role={role}
+      tabIndex={tabIndex}
+      aria-label={ariaLabel}
+      aria-modal={ariaModal}
+      aria-labelledby={ariaLabelledby}
     >
       {children}
     </ElementComponent>

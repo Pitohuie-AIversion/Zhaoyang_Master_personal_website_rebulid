@@ -54,8 +54,8 @@ const ChatAssistant: React.FC<ChatAssistantProps> = ({ className = '' }) => {
     if (lowerMessage.includes('联系') || lowerMessage.includes('contact')) {
       return t('common.chat.contactIntro', {
         fallback: language === 'zh'
-          ? '您可以通过以下方式联系牟昭阳：\n📧 邮箱：muzhaoyang@dlmu.edu.cn\n📱 电话：+86 159-4095-5159\n🏠 地址：大连市甘井子区凌海路1号 大连海事大学\n您也可以访问他的GitHub、LinkedIn等社交媒体平台。'
-          : 'You can contact Zhaoyang Mu through:\n📧 Email: muzhaoyang@dlmu.edu.cn\n📱 Phone: +86 159-4095-5159\n🏠 Address: No.1 Linghai Road, Ganjingzi District, Dalian, Dalian Maritime University\nYou can also visit his GitHub, LinkedIn and other social media platforms.'
+          ? '您可以通过以下方式联系牟昭阳：\n📧 邮箱：mzymuzhaoyang@gmail.com\n📱 电话：+86 153 8213 0266\n🏠 地址：中国 杭州（西湖大学工学院）\n您也可以访问他的 GitHub、LinkedIn 和 Google Scholar 主页。'
+          : 'You can contact Zhaoyang Mu through:\n📧 Email: mzymuzhaoyang@gmail.com\n📱 Phone: +86 153 8213 0266\n🏠 Address: Hangzhou, China (Westlake University)\nYou can also visit his GitHub, LinkedIn, and Google Scholar profiles.'
       }) as string;
     }
 
@@ -112,7 +112,7 @@ const ChatAssistant: React.FC<ChatAssistantProps> = ({ className = '' }) => {
         localStorage.setItem('chat_session_id', sessionId);
       }
 
-      const response = await fetch('/api/chat/message', {
+      const response = await fetch('/api/chat/completions', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -132,7 +132,7 @@ const ChatAssistant: React.FC<ChatAssistantProps> = ({ className = '' }) => {
       const data = await response.json();
 
       return {
-        reply: data.reply,
+        reply: data.response || data.reply,
         relatedLinks: data.relatedLinks || []
       };
     } catch (error) {
