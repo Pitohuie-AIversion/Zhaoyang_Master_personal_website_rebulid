@@ -1,7 +1,5 @@
-export { PublicationCard } from './PublicationCard';
-export type { PublicationCardProps } from './PublicationCard';
-
-export { PublicationDetailModal } from './PublicationDetailModal';
-export type { PublicationDetailModalProps } from './PublicationDetailModal';
-
+export * from './PublicationCard';
+export * from './PublicationDetailModal';
 export * from './publicationsData';
+export * from './usePublicationSearch';
+export * from './PublicationsFilterSection';

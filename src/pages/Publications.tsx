@@ -1,72 +1,25 @@
-import { useEffect, useState, useMemo } from 'react';
 import { SimpleMotion } from '../components/animations/SimpleMotion';
-import { useTranslation } from '../components/common/TranslationProvider';
-import {
-  SearchInput,
-  FilterDropdown,
-  SortDropdown,
-  ActiveFilters,
-  SearchStats,
-  useAdvancedSearch,
-} from '../components/features/search/SearchAndFilter';
 import { useResponsive } from '../hooks/useResponsive';
 import { PublicationsSEO } from '../components/seo/SEOOptimization';
-import type { PublicationItem } from '../types';
 import {
   PublicationCard,
   PublicationDetailModal,
-  getPublicationsList,
-  PUBLICATION_TYPES,
+  PublicationsFilterSection,
+  usePublicationSearch,
   getTypeIcon,
   getStatusColor,
   getStatusText,
 } from '../components/features/publications';
 
 export default function Publications() {
-  const { t } = useTranslation();
   const { isMobile, isTablet } = useResponsive();
-  const [selectedPublication, setSelectedPublication] = useState<PublicationItem | null>(null);
-  const [copiedCitation, setCopiedCitation] = useState<boolean>(false);
-
-  const handleCopyCitation = (pub: PublicationItem) => {
-    const citationText = `${pub.authors} (${pub.year}). ${pub.title}. ${pub.journal}${
-      pub.doi ? `. https://doi.org/${pub.doi}` : ''
-    }`;
-    navigator.clipboard.writeText(citationText);
-    setCopiedCitation(true);
-    setTimeout(() => setCopiedCitation(false), 2000);
-  };
-
-  const publications: PublicationItem[] = useMemo(
-    () => getPublicationsList(t),
-    [t]
-  );
-
-  const typeLabels = useMemo(
-    () => ({
-      全部: t('publications.filters.all') as string,
-      journal: t('publications.types.journal') as string,
-      conference: t('publications.types.conference') as string,
-      patent: t('publications.types.patent') as string,
-    }),
-    [t]
-  );
-
-  const hasCitationData = publications.some((publication) => publication.citations !== undefined);
-
-  useEffect(() => {
-    if (!selectedPublication) return;
-
-    const closeOnEscape = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') setSelectedPublication(null);
-    };
-
-    document.addEventListener('keydown', closeOnEscape);
-    return () => document.removeEventListener('keydown', closeOnEscape);
-  }, [selectedPublication]);
-
-  // 使用高级搜索Hook
   const {
+    t,
+    typeLabels,
+    selectedPublication,
+    setSelectedPublication,
+    copiedCitation,
+    handleCopyCitation,
     searchTerm,
     setSearchTerm,
     filters,
@@ -75,58 +28,12 @@ export default function Publications() {
     clearAllFilters,
     sortBy,
     setSortBy,
-    filteredData: filteredPublications,
+    filteredPublications,
     totalCount,
     filteredCount,
-  } = useAdvancedSearch({
-    data: publications,
-    searchFields: ['title', 'authors', 'journal', 'abstract', 'keywords', 'doi'],
-    filterFields: {
-      type: (item: PublicationItem) => item.type,
-      status: (item: PublicationItem) => item.status,
-      year: (item: PublicationItem) => item.year,
-    },
-    sortFields: {
-      year: (item: PublicationItem) => parseInt(item.year) || 0,
-      title: (item: PublicationItem) => item.title,
-      citations: (item: PublicationItem) => item.citations || 0,
-    },
-    searchFieldMappers: {
-      type: (item: PublicationItem) => {
-        const typeLabel = typeLabels[item.type as keyof typeof typeLabels];
-        return typeLabel ? [typeLabel] : [];
-      },
-    },
-  });
-
-  const filterOptions = {
-    type: PUBLICATION_TYPES.slice(1).map((type) => ({
-      value: type,
-      label: typeLabels[type as keyof typeof typeLabels] || type,
-    })),
-    status: [
-      { value: 'published', label: t('publications.status.published') as string },
-      { value: 'under_review', label: t('publications.status.underReview') as string },
-      { value: 'in_preparation', label: t('publications.status.inPreparation') as string },
-    ],
-    year: Array.from(new Set(publications.map((p) => p.year)))
-      .sort((a, b) => parseInt(b) - parseInt(a))
-      .map((year) => ({ value: year, label: year })),
-  };
-
-  const sortOptions = [
-    { value: 'year', label: t('publications.sort.year') as string, direction: 'desc' as const },
-    { value: 'title', label: t('publications.sort.title') as string, direction: 'asc' as const },
-    ...(hasCitationData
-      ? [
-          {
-            value: 'citations',
-            label: t('publications.sort.citations') as string,
-            direction: 'desc' as const,
-          },
-        ]
-      : []),
-  ];
+    filterOptions,
+    sortOptions,
+  } = usePublicationSearch();
 
   return (
     <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8 theme-transition">
@@ -153,59 +60,41 @@ export default function Publications() {
           </div>
 
           {/* 搜索和筛选区域 */}
-          <div className="space-y-4 mb-8">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-              <div className="md:col-span-2">
-                <SearchInput
-                  value={searchTerm}
-                  onChange={setSearchTerm}
-                  placeholder={t('publications.searchPlaceholder') as string}
-                />
-              </div>
-
-              <FilterDropdown
-                title={t('publications.type') as string}
-                options={filterOptions.type}
-                selectedValues={filters.type || []}
-                onChange={(values) => updateFilter('type', values)}
-              />
-
-              <SortDropdown
-                options={sortOptions}
-                selectedSort={sortBy}
-                onChange={setSortBy}
-              />
-            </div>
-
-            <ActiveFilters
-              filters={filters}
-              onRemoveFilter={removeFilter}
-              onClearAll={clearAllFilters}
-              filterLabels={{
-                type: t('publications.type') as string,
-                status: t('publications.statusLabel') as string,
-                year: t('publications.year') as string,
-              }}
-              optionLabels={{
-                type: {
-                  journal: t('publications.types.journal') as string,
-                  conference: t('publications.types.conference') as string,
-                  patent: t('publications.types.patent') as string,
-                },
-                status: {
-                  published: t('publications.status.published') as string,
-                  under_review: t('publications.status.underReview') as string,
-                  in_preparation: t('publications.status.inPreparation') as string,
-                },
-              }}
-            />
-            <SearchStats
-              totalResults={totalCount}
-              filteredResults={filteredCount}
-              searchTerm={searchTerm}
-              itemsText={t('publications.items') as string}
-            />
-          </div>
+          <PublicationsFilterSection
+            searchTerm={searchTerm}
+            onSearchChange={setSearchTerm}
+            searchPlaceholder={t('publications.searchPlaceholder') as string}
+            typeTitle={t('publications.type') as string}
+            typeOptions={filterOptions.type}
+            selectedTypeValues={filters.type || []}
+            onTypeChange={(values) => updateFilter('type', values)}
+            sortOptions={sortOptions}
+            selectedSort={sortBy}
+            onSortChange={setSortBy}
+            filters={filters}
+            onRemoveFilter={removeFilter}
+            onClearAll={clearAllFilters}
+            filterLabels={{
+              type: t('publications.type') as string,
+              status: t('publications.statusLabel') as string,
+              year: t('publications.year') as string,
+            }}
+            optionLabels={{
+              type: {
+                journal: t('publications.types.journal') as string,
+                conference: t('publications.types.conference') as string,
+                patent: t('publications.types.patent') as string,
+              },
+              status: {
+                published: t('publications.status.published') as string,
+                under_review: t('publications.status.underReview') as string,
+                in_preparation: t('publications.status.inPreparation') as string,
+              },
+            }}
+            totalCount={totalCount}
+            filteredCount={filteredCount}
+            itemsText={t('publications.items') as string}
+          />
         </SimpleMotion>
 
         {/* 成果列表 */}
