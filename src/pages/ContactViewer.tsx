@@ -1,13 +1,13 @@
-import { useState, useEffect, useCallback } from 'react';
-import { getAdminAuthHeaders } from '../utils/adminAuth';
 import { useTranslation } from '../components/common/TranslationProvider';
 import { AdminGate } from '../components/common/AdminGate';
-import type { ContactMessage, ContactStats } from '../types';
 import {
   ContactStatsCards,
   ContactMessageFilterBar,
   ContactMessageList,
-  ContactMessageDetail
+  ContactMessageDetail,
+  getStatusColor,
+  getStatusLabel,
+  useContactViewer,
 } from '../components/features/contact/admin';
 
 interface ContactViewerContentProps {
@@ -16,123 +16,20 @@ interface ContactViewerContentProps {
   onAuthFailure: () => void;
 }
 
-const getStatusColor = (status: string) => {
-  switch (status) {
-    case 'new':
-      return 'bg-blue-100 text-blue-800 dark:bg-blue-900/50 dark:text-blue-300';
-    case 'read':
-      return 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300';
-    case 'replied':
-      return 'bg-green-100 text-green-800 dark:bg-green-900/50 dark:text-green-300';
-    case 'archived':
-      return 'bg-red-100 text-red-800 dark:bg-red-900/50 dark:text-red-300';
-    default:
-      return 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300';
-  }
-};
-
-const getStatusLabel = (status: string) => {
-  switch (status) {
-    case 'new':
-      return '新消息';
-    case 'read':
-      return '已读';
-    case 'replied':
-      return '已回复';
-    case 'archived':
-      return '已归档';
-    default:
-      return status;
-  }
-};
-
 function ContactViewerContent({ adminToken, onLogout, onAuthFailure }: ContactViewerContentProps) {
   const { t } = useTranslation();
-  const [messages, setMessages] = useState<ContactMessage[]>([]);
-  const [stats, setStats] = useState<ContactStats | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [searchTerm, setSearchTerm] = useState('');
-  const [statusFilter, setStatusFilter] = useState<string>('all');
-  const [selectedMessage, setSelectedMessage] = useState<ContactMessage | null>(null);
-
-  const fetchMessages = useCallback(async () => {
-    try {
-      setLoading(true);
-      const response = await fetch('/api/contact/messages', {
-        headers: getAdminAuthHeaders(adminToken),
-      });
-      if (response.status === 401 || response.status === 503) {
-        onAuthFailure();
-        return;
-      }
-      const data = await response.json();
-      if (data.data) {
-        setMessages(data.data);
-      }
-    } catch (error) {
-      console.error('获取联系信息失败:', error);
-    } finally {
-      setLoading(false);
-    }
-  }, [adminToken, onAuthFailure]);
-
-  const fetchStats = useCallback(async () => {
-    try {
-      const response = await fetch('/api/contact/stats', {
-        headers: getAdminAuthHeaders(adminToken),
-      });
-      if (response.status === 401 || response.status === 503) {
-        onAuthFailure();
-        return;
-      }
-      const data = await response.json();
-      if (data.stats) {
-        setStats(data.stats);
-      }
-    } catch (error) {
-      console.error('获取统计数据失败:', error);
-    }
-  }, [adminToken, onAuthFailure]);
-
-  useEffect(() => {
-    fetchMessages();
-    fetchStats();
-  }, [fetchMessages, fetchStats]);
-
-  const updateMessageStatus = async (messageId: string, newStatus: string) => {
-    try {
-      const response = await fetch(`/api/contact/messages/${messageId}/status`, {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
-          ...getAdminAuthHeaders(adminToken),
-        },
-        body: JSON.stringify({ status: newStatus }),
-      });
-      
-      if (response.ok) {
-        fetchMessages();
-        fetchStats();
-        if (selectedMessage && selectedMessage.id === messageId) {
-          setSelectedMessage({ ...selectedMessage, status: newStatus as ContactMessage['status'] });
-        }
-      }
-    } catch (error) {
-      console.error('更新状态失败:', error);
-    }
-  };
-
-  const filteredMessages = messages.filter(message => {
-    const matchesSearch = 
-      message.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      message.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      message.subject.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      message.message.toLowerCase().includes(searchTerm.toLowerCase());
-    
-    const matchesStatus = statusFilter === 'all' || message.status === statusFilter;
-    
-    return matchesSearch && matchesStatus;
-  });
+  const {
+    filteredMessages,
+    stats,
+    loading,
+    searchTerm,
+    setSearchTerm,
+    statusFilter,
+    setStatusFilter,
+    selectedMessage,
+    setSelectedMessage,
+    updateMessageStatus,
+  } = useContactViewer({ adminToken, onAuthFailure });
 
   if (loading) {
     return (
