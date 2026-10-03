@@ -1,19 +1,14 @@
-import { useEffect, useState, useMemo } from 'react';
 import { SimpleMotion } from '../components/animations/SimpleMotion';
 import { Search } from 'lucide-react';
-import { SearchStats, useAdvancedSearch } from '../components/features/search/SearchAndFilter';
+import { SearchStats } from '../components/features/search/SearchAndFilter';
 import { useResponsive } from '../hooks/useResponsive';
-import { useTranslation } from '../components/common/TranslationProvider';
 import { ResponsiveContainer } from '../components/common/ResponsiveEnhancements';
 import { ProjectsSEO } from '../components/seo/SEOOptimization';
-import type { Project } from '../types';
 import {
   ProjectCard,
   ProjectDetailModal,
   ProjectFilterBar,
-  getProjects,
-  getCategories,
-  getYearOptions,
+  useProjectsPage,
   getStatusColor,
   getStatusText,
   CATEGORY_CODES,
@@ -22,100 +17,26 @@ import {
 export { CATEGORY_CODES };
 
 export default function Projects() {
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-
-  useEffect(() => {
-    if (!selectedProject) return;
-
-    const previousOverflow = document.body.style.overflow;
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') setSelectedProject(null);
-    };
-
-    document.body.style.overflow = 'hidden';
-    window.addEventListener('keydown', handleKeyDown);
-
-    return () => {
-      document.body.style.overflow = previousOverflow;
-      window.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [selectedProject]);
-
   const { isMobile, isTablet } = useResponsive();
-  const { t } = useTranslation();
-
-  const categories = useMemo(
-    () =>
-      getCategories(
-        t as (key: string, options?: { returnObjects?: boolean; fallback?: string }) => string
-      ),
-    [t]
-  );
-  const yearOptions = useMemo(
-    () =>
-      getYearOptions(
-        t as (key: string, options?: { returnObjects?: boolean; fallback?: string }) => string
-      ),
-    [t]
-  );
-  const projects = useMemo(
-    () =>
-      getProjects(
-        t as (key: string, options?: { returnObjects?: boolean; fallback?: string }) => string
-      ),
-    [t]
-  );
-
-  // 使用高级搜索Hook
   const {
+    t,
+    categories,
+    yearOptions,
+    filterOptions,
+    sortOptions,
     searchTerm,
     setSearchTerm,
     filters,
     sortBy,
     setSortBy,
-    filteredData: filteredProjects,
+    filteredProjects,
     updateFilter,
     removeFilter,
     totalCount,
     filteredCount,
-  } = useAdvancedSearch({
-    data: projects,
-    searchFields: ['title', 'description', 'technologies', 'category'],
-    filterFields: {
-      category: (item: Project) => item.category,
-      status: (item: Project) => item.status,
-      year: (item: Project) => item.year,
-    },
-    sortFields: {
-      title: (item: Project) => item.title,
-      year: (item: Project) => item.year,
-      category: (item: Project) => item.category,
-      status: (item: Project) => item.status,
-    },
-    searchFieldMappers: {
-      category: (item: Project) => {
-        const categoryOption = categories.find((cat) => cat.value === item.category);
-        return categoryOption ? [categoryOption.label] : [];
-      },
-    },
-  });
-
-  const filterOptions = {
-    category: categories.slice(1),
-    status: [
-      { value: 'completed', label: getStatusText('completed', t as (key: string) => string) },
-      { value: 'ongoing', label: getStatusText('ongoing', t as (key: string) => string) },
-      { value: 'planned', label: getStatusText('planned', t as (key: string) => string) },
-    ],
-    year: yearOptions.slice(1).map((year) => ({ value: year, label: year })),
-  };
-
-  const sortOptions = [
-    { value: 'title', label: t('projects.sort.title') as string, direction: 'asc' as const },
-    { value: 'year', label: t('projects.sort.year') as string, direction: 'desc' as const },
-    { value: 'category', label: t('projects.sort.category') as string, direction: 'asc' as const },
-    { value: 'status', label: t('projects.sort.status') as string, direction: 'asc' as const },
-  ];
+    selectedProject,
+    setSelectedProject,
+  } = useProjectsPage();
 
   return (
     <div className="min-h-screen relative theme-transition">

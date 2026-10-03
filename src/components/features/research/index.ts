@@ -1,13 +1,17 @@
-export { default as AcademicCharts } from './AcademicCharts';
-export { AcademicMetrics } from './AcademicMetrics';
-export { PublicationList } from './PublicationList';
-export { ResearchAnalytics } from './ResearchAnalytics';
-export { ResearchDetailModal } from './ResearchDetailModal';
 export { ResearchAreasSection } from './ResearchAreasSection';
 export { ResearchFilterBar } from './ResearchFilterBar';
-export { ResearchEducationSection } from './ResearchEducationSection';
 export { ResearchPublicationsSection } from './ResearchPublicationsSection';
 export { ResearchPatentsSection } from './ResearchPatentsSection';
 export { ResearchAwardsSection } from './ResearchAwardsSection';
+export { ResearchEducationSection } from './ResearchEducationSection';
+export { ResearchAnalytics } from './ResearchAnalytics';
+export { ResearchDetailModal } from './ResearchDetailModal';
 export { ResearchStructuredData } from './ResearchStructuredData';
-export * from './researchData';
+export { useResearchPage } from './useResearchPage';
+export {
+  getPublications,
+  getPatents,
+  getAwards,
+  getStatusColor,
+  getLevelColor,
+} from './researchData';

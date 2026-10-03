@@ -1,10 +1,12 @@
 export { ProjectCard } from './ProjectCard';
-export type { ProjectCardProps } from './ProjectCard';
-
 export { ProjectDetailModal } from './ProjectDetailModal';
-export type { ProjectDetailModalProps } from './ProjectDetailModal';
-
 export { ProjectFilterBar } from './ProjectFilterBar';
-export type { ProjectFilterBarProps } from './ProjectFilterBar';
-
-export * from './projectsData';
+export { useProjectsPage } from './useProjectsPage';
+export {
+  getProjects,
+  getCategories,
+  getYearOptions,
+  getStatusColor,
+  getStatusText,
+  CATEGORY_CODES,
+} from './projectsData';
