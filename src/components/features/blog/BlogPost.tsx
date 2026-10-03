@@ -1,9 +1,6 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import DOMPurify from 'dompurify';
+import React from 'react';
+import { useParams } from 'react-router-dom';
 import { ArrowLeft, ChevronLeft, ExternalLink } from 'lucide-react';
-import { blogService, BlogPost as BlogPostType, BlogComment } from '../../../services/blogService';
-import { useTranslation } from '../../common/TranslationProvider';
 import { SimpleMotion } from '../../animations/SimpleMotion';
 import { UnifiedButton } from '../../common/UnifiedButton';
 import { StructuredDataSEO } from '../../seo/StructuredDataSEO';
@@ -11,6 +8,7 @@ import SEOOptimization from '../../seo/SEOOptimization';
 import { BlogArticleHeader } from './BlogArticleHeader';
 import { BlogCommentsSection } from './BlogCommentsSection';
 import { BlogRelatedPosts } from './BlogRelatedPosts';
+import { useBlogPost, renderMarkdown, formatBlogDate } from './post-view';
 
 interface BlogPostProps {
   className?: string;
@@ -18,109 +16,23 @@ interface BlogPostProps {
 
 const BlogPost: React.FC<BlogPostProps> = ({ className = '' }) => {
   const { slug } = useParams<{ slug: string }>();
-  const navigate = useNavigate();
-  const { t, language } = useTranslation();
+  const {
+    post,
+    comments,
+    setComments,
+    relatedPosts,
+    loading,
+    isLiked,
+    showShareMenu,
+    setShowShareMenu,
+    handleLike,
+    handleShare,
+    language,
+    t,
+    navigate,
+  } = useBlogPost(slug);
 
-  const [post, setPost] = useState<BlogPostType | null>(null);
-  const [comments, setComments] = useState<BlogComment[]>([]);
-  const [relatedPosts, setRelatedPosts] = useState<BlogPostType[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [isLiked, setIsLiked] = useState(false);
-  const [showShareMenu, setShowShareMenu] = useState(false);
-
-  const loadPost = useCallback(async (postSlug: string) => {
-    try {
-      setLoading(true);
-
-      const blogPost = await blogService.getPostBySlug(postSlug, language);
-      if (!blogPost) {
-        navigate('/blog');
-        return;
-      }
-
-      setPost(blogPost);
-
-      const postComments = await blogService.getPostComments(blogPost.id);
-      setComments(postComments);
-
-      const related = await blogService.getRelatedPosts(blogPost.id, 3, language);
-      setRelatedPosts(related);
-    } catch (error) {
-      console.error('Failed to load blog post:', error);
-      navigate('/blog');
-    } finally {
-      setLoading(false);
-    }
-  }, [language, navigate]);
-
-  useEffect(() => {
-    if (slug) {
-      loadPost(slug);
-    }
-  }, [slug, loadPost]);
-
-  const handleLike = async () => {
-    if (!post || isLiked) return;
-
-    try {
-      await blogService.likePost(post.id);
-      setPost({ ...post, likes: post.likes + 1 });
-      setIsLiked(true);
-    } catch (error) {
-      console.error('Failed to like post:', error);
-    }
-  };
-
-  const handleShare = (platform: string) => {
-    if (!post) return;
-
-    const url = window.location.href;
-    const title = post.title;
-
-    switch (platform) {
-      case 'twitter':
-        window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(url)}`, '_blank', 'noopener,noreferrer');
-        break;
-      case 'linkedin':
-        window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`, '_blank', 'noopener,noreferrer');
-        break;
-      case 'weibo':
-        window.open(`https://service.weibo.com/share/share.php?title=${encodeURIComponent(title)}&url=${encodeURIComponent(url)}`, '_blank', 'noopener,noreferrer');
-        break;
-      default:
-        navigator.clipboard.writeText(url);
-        alert(t('blog.linkCopied') || '链接已复制到剪贴板');
-    }
-    setShowShareMenu(false);
-  };
-
-  const formatDate = (dateString: string) => {
-    const date = new Date(dateString);
-    return date.toLocaleDateString(language === 'zh' ? 'zh-CN' : 'en-US', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-    });
-  };
-
-  const renderMarkdown = (content: string) => {
-    const rawHtml = content
-      .replace(/^### (.*$)/gim, '<h3 class="text-lg font-semibold mt-4 mb-2">$1</h3>')
-      .replace(/^## (.*$)/gim, '<h2 class="text-xl font-bold mt-6 mb-3">$1</h2>')
-      .replace(/^# (.*$)/gim, '<h2 class="text-2xl font-bold mt-8 mb-4">$1</h2>')
-      .replace(/\*\*(.+?)\*\*/g, '<strong class="font-bold">$1</strong>')
-      .replace(/\*(.+?)\*/g, '<em class="italic">$1</em>')
-      .replace(/\n\n/g, '</p><p class="mb-4">')
-      .replace(/\n/g, '<br>')
-      .replace(/\$\$(.+?)\$\$/g, '<div class="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg my-4 overflow-x-auto"><code class="text-sm">$1</code></div>')
-      .replace(/\$(.+?)\$/g, '<code class="bg-gray-100 dark:bg-gray-800 px-1 py-0.5 rounded text-sm">$1</code>')
-      .replace(/\|(.+?)\|/g, '<span class="border border-gray-300 dark:border-gray-600 px-2 py-1 rounded text-sm">$1</span>');
-
-    return DOMPurify.sanitize(rawHtml, {
-      ALLOWED_TAGS: ['h1', 'h2', 'h3', 'p', 'strong', 'em', 'br', 'div', 'code', 'span', 'a', 'ul', 'ol', 'li', 'blockquote'],
-      ALLOWED_ATTR: ['class', 'href', 'target', 'rel']
-    });
-  };
+  const formatDate = (dateString: string) => formatBlogDate(dateString, language);
 
   if (loading) {
     return (
@@ -168,7 +80,7 @@ const BlogPost: React.FC<BlogPostProps> = ({ className = '' }) => {
           description: post.excerpt,
           author: {
             name: post.author,
-            url: window.location.origin
+            url: window.location.origin,
           },
           datePublished: post.date,
           dateModified: post.updatedDate || post.date,
@@ -176,7 +88,7 @@ const BlogPost: React.FC<BlogPostProps> = ({ className = '' }) => {
           articleSection: post.category,
           keywords: post.tags.join(', '),
           wordCount: post.content.split(/\s+/).length,
-          url: window.location.href
+          url: window.location.href,
         }}
       />
 
@@ -214,7 +126,7 @@ const BlogPost: React.FC<BlogPostProps> = ({ className = '' }) => {
         <div className="prose prose-lg dark:prose-invert max-w-none">
           <div
             dangerouslySetInnerHTML={{
-              __html: `<div class="mb-4">${renderMarkdown(post.content)}</div>`
+              __html: `<div class="mb-4">${renderMarkdown(post.content)}</div>`,
             }}
             className="text-gray-800 dark:text-gray-200 leading-relaxed"
           />
