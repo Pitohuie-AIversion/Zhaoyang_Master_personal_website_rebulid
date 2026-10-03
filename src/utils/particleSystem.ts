@@ -3,14 +3,13 @@
  * 负责粒子的生成、更新、对象池和状态同步
  */
 
-import { Vector2, perlinNoise } from './perlinNoise';
+import { Vector2 } from './perlinNoise';
 import {
   type ParticleSystemConfig,
   type ColorScheme,
   defaultParticleConfig,
   performancePresets,
   themePresets,
-  getParticleColor,
 } from './particlePresets';
 import {
   computeNoiseForce,
@@ -18,21 +17,16 @@ import {
   computeTurbulenceForce,
   wrapBoundaries,
 } from './particlePhysics';
+import {
+  type Particle,
+  type ParticlePerformanceMetrics,
+  createEmptyParticle,
+  spawnParticleFromPool,
+  serializeParticlesToBuffer,
+} from './particle-system-core';
 
-export type { ParticleSystemConfig, ColorScheme };
+export type { ParticleSystemConfig, ColorScheme, Particle, ParticlePerformanceMetrics };
 export { defaultParticleConfig, performancePresets, themePresets };
-
-export interface Particle {
-  position: Vector2;
-  velocity: Vector2;
-  acceleration: Vector2;
-  life: number;
-  maxLife: number;
-  size: number;
-  color: [number, number, number];
-  mass: number;
-  id: number;
-}
 
 export class ParticleSystem {
   private particles: Particle[] = [];
@@ -45,7 +39,7 @@ export class ParticleSystem {
   private isPaused: boolean = false;
 
   // 性能监控指标
-  private performanceMetrics = {
+  private performanceMetrics: ParticlePerformanceMetrics = {
     fps: 0,
     frameTime: 0,
     particleCount: 0,
@@ -67,7 +61,7 @@ export class ParticleSystem {
 
     // 预分配粒子池
     for (let i = 0; i < this.config.particleCount * 1.5; i++) {
-      this.particlePool.push(this.createParticle());
+      this.particlePool.push(createEmptyParticle(this.nextParticleId++));
     }
 
     // 创建初始活跃粒子
@@ -76,49 +70,14 @@ export class ParticleSystem {
     }
   }
 
-  /**
-   * 创建新粒子对象
-   */
-  private createParticle(): Particle {
-    return {
-      position: new Vector2(),
-      velocity: new Vector2(),
-      acceleration: new Vector2(),
-      life: 1.0,
-      maxLife: 1.0,
-      size: 1.0,
-      color: [1, 1, 1],
-      mass: 1.0,
-      id: this.nextParticleId++,
-    };
-  }
-
-  /**
-   * 从对象池取出并重新生成粒子属性
-   */
   private spawnParticle(): Particle {
-    const particle = this.particlePool.pop() || this.createParticle();
-
-    particle.position = new Vector2(
-      Math.random() * this.bounds.width,
-      Math.random() * this.bounds.height
+    return spawnParticleFromPool(
+      this.particlePool,
+      this.bounds,
+      this.time,
+      this.config,
+      () => this.nextParticleId++
     );
-
-    const noiseX = perlinNoise.noise2D(particle.position.x * 0.01, this.time * 0.1);
-    const noiseY = perlinNoise.noise2D(particle.position.y * 0.01, this.time * 0.1 + 100);
-
-    particle.velocity = new Vector2(noiseX * 2, noiseY * 2);
-    particle.acceleration = new Vector2(0, 0);
-
-    particle.life = 1.0;
-    particle.maxLife = 0.5 + Math.random() * 1.5;
-
-    const { minSize, maxSize } = this.config.visual;
-    particle.size = minSize + Math.random() * (maxSize - minSize);
-    particle.mass = 0.5 + Math.random() * 1.5;
-    particle.color = getParticleColor(this.config.colorScheme);
-
-    return particle;
   }
 
   /**
@@ -220,31 +179,11 @@ export class ParticleSystem {
     this.bounds = { width, height };
   }
 
-  /**
-   * 序列化为 WebGL 顶点的平铺 Float32Array (每个粒子 9 个浮点数: x, y, vx, vy, life, size, r, g, b)
-   */
   getParticleData(): Float32Array {
-    const data = new Float32Array(this.particles.length * 9);
-
-    for (let i = 0; i < this.particles.length; i++) {
-      const particle = this.particles[i];
-      const offset = i * 9;
-
-      data[offset] = particle.position.x;
-      data[offset + 1] = particle.position.y;
-      data[offset + 2] = particle.velocity.x;
-      data[offset + 3] = particle.velocity.y;
-      data[offset + 4] = particle.life;
-      data[offset + 5] = particle.size;
-      data[offset + 6] = particle.color[0];
-      data[offset + 7] = particle.color[1];
-      data[offset + 8] = particle.color[2];
-    }
-
-    return data;
+    return serializeParticlesToBuffer(this.particles);
   }
 
-  getPerformanceMetrics() {
+  getPerformanceMetrics(): ParticlePerformanceMetrics {
     return { ...this.performanceMetrics };
   }
 

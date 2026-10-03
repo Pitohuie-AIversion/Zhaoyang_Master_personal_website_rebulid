@@ -1,10 +1,12 @@
 import {
   InteractionState,
   InteractionConfig,
-  defaultInteractionConfig
+  defaultInteractionConfig,
 } from './types';
 import { MouseTracker } from './mouseTracker';
 import { TouchTracker } from './touchTracker';
+import { EventBinder } from './eventBinder';
+import { calculateInteractionStrength } from './strengthCalculator';
 
 export class InteractionController {
   private canvas: HTMLCanvasElement;
@@ -12,8 +14,8 @@ export class InteractionController {
   private state: InteractionState;
   private isEnabled = true;
 
-  // 事件监听器引用，用于清理
-  private eventListeners: Map<string, EventListener> = new Map();
+  // 事件监听器管理器
+  private eventBinder = new EventBinder();
 
   // 鼠标历史与速度跟踪器
   private mouseTracker = new MouseTracker(10);
@@ -31,7 +33,7 @@ export class InteractionController {
       isMouseDown: false,
       touchPoints: [],
       interactionStrength: 0,
-      interactionRadius: config.interactionRadius
+      interactionRadius: config.interactionRadius,
     };
 
     this.setupEventListeners();
@@ -40,52 +42,53 @@ export class InteractionController {
   private setupEventListeners(): void {
     // 鼠标事件
     if (this.config.enableMouse) {
-      this.addEventListeners([
-        ['mousemove', this.handleMouseMove.bind(this)],
-        ['mousedown', this.handleMouseDown.bind(this)],
-        ['mouseup', this.handleMouseUp.bind(this)],
-        ['mouseleave', this.handleMouseLeave.bind(this)],
-        ['wheel', this.handleWheel.bind(this)]
-      ]);
+      this.eventBinder.bindMultiple(
+        [
+          ['mousemove', this.handleMouseMove.bind(this)],
+          ['mousedown', this.handleMouseDown.bind(this)],
+          ['mouseup', this.handleMouseUp.bind(this)],
+          ['mouseleave', this.handleMouseLeave.bind(this)],
+          ['wheel', this.handleWheel.bind(this)],
+        ],
+        this.canvas
+      );
     }
 
     // 触摸事件
     if (this.config.enableTouch) {
-      this.addEventListeners([
-        ['touchstart', this.handleTouchStart.bind(this)],
-        ['touchmove', this.handleTouchMove.bind(this)],
-        ['touchend', this.handleTouchEnd.bind(this)],
-        ['touchcancel', this.handleTouchCancel.bind(this)]
-      ]);
+      this.eventBinder.bindMultiple(
+        [
+          ['touchstart', this.handleTouchStart.bind(this)],
+          ['touchmove', this.handleTouchMove.bind(this)],
+          ['touchend', this.handleTouchEnd.bind(this)],
+          ['touchcancel', this.handleTouchCancel.bind(this)],
+        ],
+        this.canvas
+      );
     }
 
     // 键盘事件
     if (this.config.enableKeyboard) {
-      this.addEventListeners([
-        ['keydown', this.handleKeyDown.bind(this)],
-        ['keyup', this.handleKeyUp.bind(this)]
-      ], window);
+      this.eventBinder.bindMultiple(
+        [
+          ['keydown', this.handleKeyDown.bind(this)],
+          ['keyup', this.handleKeyUp.bind(this)],
+        ],
+        window
+      );
     }
 
-    // 窗口事件
-    this.addEventListeners([
-      ['resize', this.handleResize.bind(this)]
-    ], window);
+    // 窗口尺寸事件
+    this.eventBinder.bind(window, 'resize', this.handleResize.bind(this));
   }
 
-  private addEventListeners(events: [string, EventListener][], target: EventTarget = this.canvas): void {
-    events.forEach(([event, handler]) => {
-      target.addEventListener(event, handler, { passive: false });
-      this.eventListeners.set(`${target === window ? 'window' : 'canvas'}_${event}`, handler);
-    });
-  }
-
-  private handleMouseMove(event: MouseEvent): void {
+  private handleMouseMove(event: Event): void {
     if (!this.isEnabled) return;
+    const mouseEvent = event as MouseEvent;
 
     const rect = this.canvas.getBoundingClientRect();
-    const x = event.clientX - rect.left;
-    const y = event.clientY - rect.top;
+    const x = mouseEvent.clientX - rect.left;
+    const y = mouseEvent.clientY - rect.top;
 
     this.updateMousePosition(x, y);
     this.updateInteractionStrength();
@@ -93,7 +96,7 @@ export class InteractionController {
     this.mouseTracker.record(x, y);
   }
 
-  private handleMouseDown(event: MouseEvent): void {
+  private handleMouseDown(event: Event): void {
     if (!this.isEnabled) return;
 
     this.state.isMouseDown = true;
@@ -113,35 +116,39 @@ export class InteractionController {
     this.state.interactionStrength = 0;
   }
 
-  private handleWheel(event: WheelEvent): void {
+  private handleWheel(event: Event): void {
     if (!this.isEnabled) return;
+    const wheelEvent = event as WheelEvent;
 
     // 滚轮控制交互半径
-    const delta = event.deltaY > 0 ? -10 : 10;
+    const delta = wheelEvent.deltaY > 0 ? -10 : 10;
     this.config.interactionRadius = Math.max(50, Math.min(300, this.config.interactionRadius + delta));
     this.state.interactionRadius = this.config.interactionRadius;
 
-    event.preventDefault();
+    wheelEvent.preventDefault();
   }
 
-  private handleTouchStart(event: TouchEvent): void {
+  private handleTouchStart(event: Event): void {
     if (!this.isEnabled) return;
+    const touchEvent = event as TouchEvent;
 
-    this.updateTouchPoints(event.touches);
-    event.preventDefault();
+    this.updateTouchPoints(touchEvent.touches);
+    touchEvent.preventDefault();
   }
 
-  private handleTouchMove(event: TouchEvent): void {
+  private handleTouchMove(event: Event): void {
     if (!this.isEnabled) return;
+    const touchEvent = event as TouchEvent;
 
-    this.updateTouchPoints(event.touches);
-    event.preventDefault();
+    this.updateTouchPoints(touchEvent.touches);
+    touchEvent.preventDefault();
   }
 
-  private handleTouchEnd(event: TouchEvent): void {
+  private handleTouchEnd(event: Event): void {
     if (!this.isEnabled) return;
+    const touchEvent = event as TouchEvent;
 
-    this.updateTouchPoints(event.touches);
+    this.updateTouchPoints(touchEvent.touches);
   }
 
   private handleTouchCancel(): void {
@@ -149,17 +156,19 @@ export class InteractionController {
     this.state.interactionStrength = 0;
   }
 
-  private handleKeyDown(event: KeyboardEvent): void {
+  private handleKeyDown(event: Event): void {
     if (!this.isEnabled) return;
+    const keyEvent = event as KeyboardEvent;
 
-    this.pressedKeys.add(event.code);
+    this.pressedKeys.add(keyEvent.code);
     this.handleKeyboardInteraction();
   }
 
-  private handleKeyUp(event: KeyboardEvent): void {
+  private handleKeyUp(event: Event): void {
     if (!this.isEnabled) return;
+    const keyEvent = event as KeyboardEvent;
 
-    this.pressedKeys.delete(event.code);
+    this.pressedKeys.delete(keyEvent.code);
     this.handleKeyboardInteraction();
   }
 
@@ -173,7 +182,7 @@ export class InteractionController {
     const rect = this.canvas.getBoundingClientRect();
     this.state.normalizedMousePosition = {
       x: rect.width > 0 ? x / rect.width : 0,
-      y: rect.height > 0 ? y / rect.height : 0
+      y: rect.height > 0 ? y / rect.height : 0,
     };
   }
 
@@ -189,26 +198,12 @@ export class InteractionController {
   }
 
   private updateInteractionStrength(): void {
-    let strength = 0;
-
-    // 鼠标交互强度
-    if (this.config.enableMouse && this.state.isMouseDown) {
-      strength += this.config.mouseInfluence;
-    }
-
-    // 触摸交互强度
-    if (this.config.enableTouch && this.state.touchPoints.length > 0) {
-      const touchStrength = this.state.touchPoints.reduce((sum, touch) => sum + touch.force, 0);
-      strength += touchStrength * this.config.touchInfluence;
-    }
-
-    // 键盘交互强度
-    if (this.config.enableKeyboard && this.pressedKeys.size > 0) {
-      strength += this.pressedKeys.size * 0.1;
-    }
-
-    // 应用阻尼
-    this.state.interactionStrength = strength * this.config.dampingFactor;
+    this.state.interactionStrength = calculateInteractionStrength(
+      this.config,
+      this.state.isMouseDown,
+      this.state.touchPoints,
+      this.pressedKeys.size
+    );
   }
 
   private handleKeyboardInteraction(): void {
@@ -260,19 +255,15 @@ export class InteractionController {
   }
 
   public isInteracting(): boolean {
-    return this.state.isMouseDown ||
-           this.state.touchPoints.length > 0 ||
-           this.pressedKeys.size > 0;
+    return (
+      this.state.isMouseDown ||
+      this.state.touchPoints.length > 0 ||
+      this.pressedKeys.size > 0
+    );
   }
 
   public dispose(): void {
-    this.eventListeners.forEach((handler, key) => {
-      const [target, event] = key.split('_');
-      const targetElement = target === 'window' ? window : this.canvas;
-      targetElement.removeEventListener(event, handler);
-    });
-
-    this.eventListeners.clear();
+    this.eventBinder.dispose();
     this.mouseTracker.clear();
     this.pressedKeys.clear();
     this.state.touchPoints = [];

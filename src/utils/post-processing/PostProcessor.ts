@@ -1,5 +1,10 @@
 import { WebGLRenderer } from '../webgl';
 import { type PostProcessConfig, defaultPostProcessConfig } from './postProcessorConfig';
+import { createFullscreenQuad } from './quadGeometry';
+import {
+  createMainFramebuffer,
+  createBloomFramebuffers,
+} from './postProcessorBuffers';
 
 export class PostProcessor {
   private gl: WebGL2RenderingContext;
@@ -47,35 +52,9 @@ export class PostProcessor {
       throw new Error('Failed to link post-process program');
     }
 
-    this.createQuadGeometry();
-  }
-
-  private createQuadGeometry(): void {
-    // 全屏四边形顶点数据 (位置 + UV)
-    const quadVertices = new Float32Array([
-      // 位置      UV
-      -1, -1,    0, 0,
-       1, -1,    1, 0,
-      -1,  1,    0, 1,
-       1,  1,    1, 1,
-    ]);
-
-    this.quadVAO = this.gl.createVertexArray();
-    this.quadVBO = this.gl.createBuffer();
-
-    this.gl.bindVertexArray(this.quadVAO);
-    this.gl.bindBuffer(this.gl.ARRAY_BUFFER, this.quadVBO);
-    this.gl.bufferData(this.gl.ARRAY_BUFFER, quadVertices, this.gl.STATIC_DRAW);
-
-    // 位置属性
-    this.gl.enableVertexAttribArray(0);
-    this.gl.vertexAttribPointer(0, 2, this.gl.FLOAT, false, 16, 0);
-
-    // UV 属性
-    this.gl.enableVertexAttribArray(1);
-    this.gl.vertexAttribPointer(1, 2, this.gl.FLOAT, false, 16, 8);
-
-    this.gl.bindVertexArray(null);
+    const { vao, vbo } = createFullscreenQuad(this.gl);
+    this.quadVAO = vao;
+    this.quadVBO = vbo;
   }
 
   resize(width: number, height: number): void {
@@ -84,97 +63,16 @@ export class PostProcessor {
     this.width = width;
     this.height = height;
 
-    this.createFramebuffers();
-  }
-
-  private createFramebuffers(): void {
-    // 清理旧的帧缓冲区
     this.cleanup();
 
-    // 创建主帧缓冲区
-    this.createMainFramebuffer();
+    const main = createMainFramebuffer(this.gl, this.width, this.height);
+    this.mainFramebuffer = main.framebuffer;
+    this.mainTexture = main.texture;
+    this.mainDepthBuffer = main.depthBuffer;
 
-    // 创建 Bloom 效果的多级帧缓冲区
-    this.createBloomFramebuffers();
-  }
-
-  private createMainFramebuffer(): void {
-    this.mainFramebuffer = this.gl.createFramebuffer();
-    this.mainTexture = this.gl.createTexture();
-    this.mainDepthBuffer = this.gl.createRenderbuffer();
-
-    // 设置颜色纹理
-    this.gl.bindTexture(this.gl.TEXTURE_2D, this.mainTexture);
-    this.gl.texImage2D(
-      this.gl.TEXTURE_2D, 0, this.gl.RGBA16F,
-      this.width, this.height, 0,
-      this.gl.RGBA, this.gl.FLOAT, null
-    );
-    this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_MIN_FILTER, this.gl.LINEAR);
-    this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_MAG_FILTER, this.gl.LINEAR);
-    this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_WRAP_S, this.gl.CLAMP_TO_EDGE);
-    this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_WRAP_T, this.gl.CLAMP_TO_EDGE);
-
-    // 设置深度缓冲区
-    this.gl.bindRenderbuffer(this.gl.RENDERBUFFER, this.mainDepthBuffer);
-    this.gl.renderbufferStorage(this.gl.RENDERBUFFER, this.gl.DEPTH_COMPONENT24, this.width, this.height);
-
-    // 绑定到帧缓冲区
-    this.gl.bindFramebuffer(this.gl.FRAMEBUFFER, this.mainFramebuffer);
-    this.gl.framebufferTexture2D(
-      this.gl.FRAMEBUFFER, this.gl.COLOR_ATTACHMENT0,
-      this.gl.TEXTURE_2D, this.mainTexture, 0
-    );
-    this.gl.framebufferRenderbuffer(
-      this.gl.FRAMEBUFFER, this.gl.DEPTH_ATTACHMENT,
-      this.gl.RENDERBUFFER, this.mainDepthBuffer
-    );
-
-    if (this.gl.checkFramebufferStatus(this.gl.FRAMEBUFFER) !== this.gl.FRAMEBUFFER_COMPLETE) {
-      throw new Error('Main framebuffer is not complete');
-    }
-
-    this.gl.bindFramebuffer(this.gl.FRAMEBUFFER, null);
-  }
-
-  private createBloomFramebuffers(): void {
-    this.bloomFramebuffers = [];
-    this.bloomTextures = [];
-
-    for (let i = 0; i < this.bloomLevels; i++) {
-      const scale = Math.pow(0.5, i + 1);
-      const levelWidth = Math.max(1, Math.floor(this.width * scale));
-      const levelHeight = Math.max(1, Math.floor(this.height * scale));
-
-      const framebuffer = this.gl.createFramebuffer();
-      const texture = this.gl.createTexture();
-
-      this.gl.bindTexture(this.gl.TEXTURE_2D, texture);
-      this.gl.texImage2D(
-        this.gl.TEXTURE_2D, 0, this.gl.RGBA16F,
-        levelWidth, levelHeight, 0,
-        this.gl.RGBA, this.gl.FLOAT, null
-      );
-      this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_MIN_FILTER, this.gl.LINEAR);
-      this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_MAG_FILTER, this.gl.LINEAR);
-      this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_WRAP_S, this.gl.CLAMP_TO_EDGE);
-      this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_WRAP_T, this.gl.CLAMP_TO_EDGE);
-
-      this.gl.bindFramebuffer(this.gl.FRAMEBUFFER, framebuffer);
-      this.gl.framebufferTexture2D(
-        this.gl.FRAMEBUFFER, this.gl.COLOR_ATTACHMENT0,
-        this.gl.TEXTURE_2D, texture, 0
-      );
-
-      if (this.gl.checkFramebufferStatus(this.gl.FRAMEBUFFER) !== this.gl.FRAMEBUFFER_COMPLETE) {
-        throw new Error(`Bloom framebuffer ${i} is not complete`);
-      }
-
-      this.bloomFramebuffers.push(framebuffer);
-      this.bloomTextures.push(texture);
-    }
-
-    this.gl.bindFramebuffer(this.gl.FRAMEBUFFER, null);
+    const bloom = createBloomFramebuffers(this.gl, this.width, this.height, this.bloomLevels);
+    this.bloomFramebuffers = bloom.framebuffers;
+    this.bloomTextures = bloom.textures;
   }
 
   beginRender(): void {
@@ -227,7 +125,6 @@ export class PostProcessor {
   }
 
   private cleanup(): void {
-    // 清理主帧缓冲区
     if (this.mainFramebuffer) {
       this.gl.deleteFramebuffer(this.mainFramebuffer);
       this.mainFramebuffer = null;
@@ -241,9 +138,8 @@ export class PostProcessor {
       this.mainDepthBuffer = null;
     }
 
-    // 清理 Bloom 帧缓冲区
-    this.bloomFramebuffers.forEach(fb => this.gl.deleteFramebuffer(fb));
-    this.bloomTextures.forEach(tex => this.gl.deleteTexture(tex));
+    this.bloomFramebuffers.forEach((fb) => this.gl.deleteFramebuffer(fb));
+    this.bloomTextures.forEach((tex) => this.gl.deleteTexture(tex));
     this.bloomFramebuffers = [];
     this.bloomTextures = [];
   }
