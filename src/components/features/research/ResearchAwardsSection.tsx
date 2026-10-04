@@ -21,11 +21,13 @@ export const ResearchAwardsSection: React.FC<ResearchAwardsSectionProps> = ({
   return (
     <div className="card-dark rounded-lg shadow-md-dark p-6 mb-8 theme-transition">
       <div className="flex items-center mb-6">
-        <Award className="w-6 h-6 text-yellow-500 mr-3" />
-        <h3 className="text-xl font-semibold text-primary-dark theme-transition">
+        <div className="w-10 h-10 rounded-lg bg-amber-50 dark:bg-amber-900/40 text-amber-600 dark:text-amber-400 flex items-center justify-center mr-3 flex-shrink-0 theme-transition">
+          <Award className="w-5 h-5" />
+        </div>
+        <h3 className="text-xl md:text-2xl font-semibold text-primary-dark theme-transition">
           {t('research.awards.title') as string}
         </h3>
-        <span className="ml-auto text-sm text-secondary-dark theme-transition">
+        <span className="ml-auto text-sm text-secondary-dark theme-transition font-medium">
           {(t('research.totalCount') as string)
             .replace('{{count}}', awards.length.toString())
             .replace('{{unit}}', t('research.items') as string)}

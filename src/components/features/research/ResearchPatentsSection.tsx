@@ -21,11 +21,13 @@ export const ResearchPatentsSection: React.FC<ResearchPatentsSectionProps> = ({
   return (
     <div className="card-dark rounded-lg shadow-md-dark p-6 mb-8 theme-transition">
       <div className="flex items-center mb-6">
-        <FileText className="w-6 h-6 text-purple-500 mr-3" />
-        <h3 className="text-xl font-semibold text-primary-dark theme-transition">
+        <div className="w-10 h-10 rounded-lg bg-purple-50 dark:bg-purple-900/40 text-purple-600 dark:text-purple-400 flex items-center justify-center mr-3 flex-shrink-0 theme-transition">
+          <FileText className="w-5 h-5" />
+        </div>
+        <h3 className="text-xl md:text-2xl font-semibold text-primary-dark theme-transition">
           {t('research.patents.title') as string}
         </h3>
-        <span className="ml-auto text-sm text-secondary-dark theme-transition">
+        <span className="ml-auto text-sm text-secondary-dark theme-transition font-medium">
           {(t('research.totalCount') as string)
             .replace('{{count}}', patents.length.toString())
             .replace('{{unit}}', t('research.items') as string)}

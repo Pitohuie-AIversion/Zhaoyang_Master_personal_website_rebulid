@@ -21,11 +21,13 @@ export const ResearchPublicationsSection: React.FC<ResearchPublicationsSectionPr
   return (
     <div className="card-dark rounded-lg shadow-md-dark p-4 sm:p-6 mb-8 theme-transition">
       <div className="flex items-center mb-6">
-        <BookOpen className="w-6 h-6 text-blue-500 mr-3" />
-        <h3 className="text-xl font-semibold text-primary-dark theme-transition">
+        <div className="w-10 h-10 rounded-lg bg-blue-50 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400 flex items-center justify-center mr-3 flex-shrink-0 theme-transition">
+          <BookOpen className="w-5 h-5" />
+        </div>
+        <h3 className="text-xl md:text-2xl font-semibold text-primary-dark theme-transition">
           {t('research.publications.title') as string}
         </h3>
-        <span className="ml-auto text-sm text-secondary-dark theme-transition">
+        <span className="ml-auto text-sm text-secondary-dark theme-transition font-medium">
           {(t('research.totalCount') as string)
             .replace('{{count}}', publications.length.toString())
             .replace('{{unit}}', t('research.papers') as string)}
