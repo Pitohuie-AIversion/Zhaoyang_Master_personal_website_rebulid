@@ -19,7 +19,7 @@ export const ResearchAwardsSection: React.FC<ResearchAwardsSectionProps> = ({
   const { t } = useTranslation();
 
   return (
-    <div className="card-dark rounded-lg shadow-md-dark p-6 mb-8 theme-transition">
+    <div className="card-dark rounded-lg shadow-md-dark p-4 sm:p-6 mb-8 theme-transition">
       <div className="flex items-center mb-6">
         <div className="w-10 h-10 rounded-lg bg-amber-50 dark:bg-amber-900/40 text-amber-600 dark:text-amber-400 flex items-center justify-center mr-3 flex-shrink-0 theme-transition">
           <Award className="w-5 h-5" />

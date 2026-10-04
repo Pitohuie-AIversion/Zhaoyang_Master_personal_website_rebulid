@@ -19,7 +19,7 @@ export const ResearchPatentsSection: React.FC<ResearchPatentsSectionProps> = ({
   const { t } = useTranslation();
 
   return (
-    <div className="card-dark rounded-lg shadow-md-dark p-6 mb-8 theme-transition">
+    <div className="card-dark rounded-lg shadow-md-dark p-4 sm:p-6 mb-8 theme-transition">
       <div className="flex items-center mb-6">
         <div className="w-10 h-10 rounded-lg bg-purple-50 dark:bg-purple-900/40 text-purple-600 dark:text-purple-400 flex items-center justify-center mr-3 flex-shrink-0 theme-transition">
           <FileText className="w-5 h-5" />
