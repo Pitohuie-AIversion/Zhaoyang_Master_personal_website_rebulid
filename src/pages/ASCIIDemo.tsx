@@ -47,19 +47,24 @@ const ASCIIDemo: React.FC = () => {
               </Link>
               <div className="h-6 w-px bg-gray-300 dark:bg-gray-600" />
               <h1 className="text-xl font-bold text-gray-900 dark:text-white">
-                {t('ascii.title', { fallback: 'ASCII 演示' }) as string}
+                {t('ascii.title') as string}
               </h1>
             </div>
             <div className="flex items-center gap-2">
               <button
+                type="button"
                 onClick={() => setIsPlaying(!isPlaying)}
+                aria-label={isPlaying ? (t('particleField.pause') as string) : (t('particleField.play') as string)}
+                aria-pressed={isPlaying}
                 className="flex items-center gap-2 px-3 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
               >
                 {isPlaying ? <Pause size={16} /> : <Play size={16} />}
                 {isPlaying ? (t('particleField.pause') as string) : (t('particleField.play') as string)}
               </button>
               <button
+                type="button"
                 onClick={resetDemo}
+                aria-label={t('particleField.settings.reset') as string}
                 className="flex items-center gap-2 px-3 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors"
               >
                 <RotateCcw size={16} />
