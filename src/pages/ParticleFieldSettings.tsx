@@ -44,7 +44,7 @@ const ParticleFieldSettings: React.FC = () => {
                   <ArrowLeft className="w-5 h-5" />
                 </Link>
                 <h1 className="text-xl font-bold text-gray-900 dark:text-white">
-                  {t('particleField.settings.title')}
+                  {t('particleField.settings.title') as string}
                 </h1>
               </div>
 

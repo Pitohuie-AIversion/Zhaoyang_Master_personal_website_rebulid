@@ -95,10 +95,10 @@ export default function Projects() {
               <div className="text-gray-400 mb-4">
                 <Search className="w-12 h-12 mx-auto" />
               </div>
-              <h3 className="text-lg md:text-xl font-medium text-gray-900 mb-2 leading-snug">
+              <h3 className="text-lg md:text-xl font-medium text-gray-900 dark:text-white mb-2 leading-snug">
                 {t('projects.noResults') as string}
               </h3>
-              <p className="text-gray-600">{t('projects.noResultsDesc') as string}</p>
+              <p className="text-gray-600 dark:text-gray-400">{t('projects.noResultsDesc') as string}</p>
             </div>
           ) : null}
           {filteredProjects.map((project, index) => (
