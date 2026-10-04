@@ -72,6 +72,7 @@
       "resumeDescription": "Enter the ADMIN_TOKEN to manage resume data.",
       "tokenRequired": "Admin token is required.",
       "tokenInvalid": "Admin token is invalid or the server is not configured.",
+      "tokenPlaceholder": "Enter ADMIN_TOKEN",
       "unlock": "Unlock",
       "lock": "Lock"
     },

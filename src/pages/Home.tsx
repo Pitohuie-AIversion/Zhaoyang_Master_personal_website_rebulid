@@ -53,10 +53,10 @@ function Home() {
             className="text-center mb-12"
           >
             <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">
-              {t('home.timeline.title') || '学术历程'}
+              {t('home.timeline.title') as string}
             </h2>
             <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-              {t('home.timeline.description') || '展示我的学术和职业发展轨迹'}
+              {t('home.timeline.description') as string}
             </p>
           </SimpleMotion>
 
@@ -73,7 +73,7 @@ function Home() {
               to="/research"
               className="inline-flex items-center gap-2 rounded-xl border border-gray-300 px-5 py-3 font-semibold text-primary-dark transition hover:border-blue-500 hover:text-blue-600 dark:border-gray-700"
             >
-              {t('common.viewAll') || 'View Full Timeline'}
+              {t('common.viewAll') as string}
               <ArrowRight className="h-4 w-4" />
             </Link>
           </div>

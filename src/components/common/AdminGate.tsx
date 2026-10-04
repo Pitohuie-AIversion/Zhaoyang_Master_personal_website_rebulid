@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Lock } from 'lucide-react';
 import { useTranslation } from './TranslationProvider';
 import {
   clearStoredAdminToken,
@@ -55,20 +56,26 @@ export const AdminGate: React.FC<AdminGateProps> = ({
           onSubmit={handleAdminLogin}
           className="w-full max-w-md bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 space-y-4 border border-gray-200 dark:border-gray-700 theme-transition"
         >
-          <div>
-            <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
-              {t('common.adminAuth.title') as string}
-            </h1>
-            <p className="text-sm text-gray-600 dark:text-gray-300 mt-1">
-              {t(descriptionKey) as string}
-            </p>
+          <div className="flex items-center space-x-3 mb-2">
+            <div className="w-10 h-10 rounded-lg bg-blue-50 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400 flex items-center justify-center flex-shrink-0 theme-transition" aria-hidden="true">
+              <Lock className="w-5 h-5" />
+            </div>
+            <div>
+              <h1 className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white leading-tight">
+                {t('common.adminAuth.title') as string}
+              </h1>
+              <p className="text-sm text-gray-600 dark:text-gray-300 mt-0.5">
+                {t(descriptionKey) as string}
+              </p>
+            </div>
           </div>
           <input
             type="password"
             value={tokenInput}
             onChange={(event) => setTokenInput(event.target.value)}
             className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
-            placeholder="ADMIN_TOKEN"
+            placeholder={t('common.adminAuth.tokenPlaceholder', { fallback: 'ADMIN_TOKEN' }) as string}
+            aria-label={t('common.adminAuth.tokenPlaceholder', { fallback: 'ADMIN_TOKEN' }) as string}
             autoComplete="current-password"
           />
           {authError && <p className="text-sm text-red-600 dark:text-red-400">{authError}</p>}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Edit } from 'lucide-react';
+import { Edit, User } from 'lucide-react';
 import { useTranslation } from '../../common/TranslationProvider';
 import type { PersonalInfo } from '../../../types';
 
@@ -14,15 +14,21 @@ export const PersonalInfoCard: React.FC<PersonalInfoCardProps> = ({ info, onEdit
   if (!info) return null;
 
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 border border-gray-200 dark:border-gray-700 theme-transition mb-8">
-      <div className="flex items-center justify-between mb-4">
-        <h3 className="text-xl font-semibold text-gray-800 dark:text-white">
-          {t('common.resume.personalInfo', { fallback: 'Personal Information' }) as string}
-        </h3>
+    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 sm:p-6 border border-gray-200 dark:border-gray-700 theme-transition mb-8">
+      <div className="flex items-center justify-between mb-6">
+        <div className="flex items-center">
+          <div className="w-10 h-10 rounded-lg bg-blue-50 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400 flex items-center justify-center mr-3 flex-shrink-0 theme-transition" aria-hidden="true">
+            <User className="w-5 h-5" />
+          </div>
+          <h3 className="text-xl font-semibold text-gray-800 dark:text-white">
+            {t('common.resume.personalInfo', { fallback: 'Personal Information' }) as string}
+          </h3>
+        </div>
         <button
           onClick={() => onEdit(info)}
           className="p-2 text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/30 rounded-lg transition-colors"
           title={t('common.edit', { fallback: 'Edit' }) as string}
+          aria-label={t('common.edit', { fallback: 'Edit' }) as string}
         >
           <Edit size={16} />
         </button>

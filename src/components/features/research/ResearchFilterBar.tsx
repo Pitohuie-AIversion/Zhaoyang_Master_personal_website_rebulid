@@ -35,6 +35,7 @@ export const ResearchFilterBar: React.FC<ResearchFilterBarProps> = ({
           <input
             type="text"
             placeholder={t('research.searchPlaceholder') as string}
+            aria-label={t('research.searchPlaceholder') as string}
             value={searchTerm}
             onChange={(e) => onSearchChange(e.target.value)}
             className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition-colors"
@@ -45,6 +46,7 @@ export const ResearchFilterBar: React.FC<ResearchFilterBarProps> = ({
         <div className="flex flex-wrap gap-2 sm:gap-3 items-center">
           <select
             value={filterType}
+            aria-label={t('research.filters.allTypes') as string}
             onChange={(e) =>
               onFilterTypeChange(e.target.value as 'all' | 'publications' | 'patents' | 'awards')
             }
@@ -59,6 +61,7 @@ export const ResearchFilterBar: React.FC<ResearchFilterBarProps> = ({
           {filterType === 'publications' && (
             <select
               value={publicationFilter}
+              aria-label={t('research.filters.allStatus') as string}
               onChange={(e) =>
                 onPublicationFilterChange(e.target.value as 'all' | 'published' | 'under_review')
               }
@@ -76,6 +79,12 @@ export const ResearchFilterBar: React.FC<ResearchFilterBarProps> = ({
             size="md"
             icon={<BarChart3 className="w-4 h-4" />}
             className="whitespace-nowrap"
+            ariaLabel={
+              showAnalytics
+                ? (t('research.analytics.hideAnalytics') as string)
+                : (t('research.analytics.showAnalytics') as string)
+            }
+            ariaExpanded={showAnalytics}
           >
             {showAnalytics
               ? (t('research.analytics.hideAnalytics') as string)

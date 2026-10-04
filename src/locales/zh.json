@@ -72,6 +72,7 @@
       "resumeDescription": "输入 ADMIN_TOKEN 管理简历数据。",
       "tokenRequired": "请填写管理员 token。",
       "tokenInvalid": "管理员 token 无效，或服务器尚未配置。",
+      "tokenPlaceholder": "请输入 ADMIN_TOKEN",
       "unlock": "解锁",
       "lock": "锁定"
     },
