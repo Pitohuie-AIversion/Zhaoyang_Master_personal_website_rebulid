@@ -53,14 +53,15 @@ const ResumeManagerContent: React.FC<ResumeManagerContentProps> = ({
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center h-64 pt-24">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+      <div className="flex items-center justify-center h-64 pt-24" role="status">
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600" aria-hidden="true"></div>
+        <span className="sr-only">{t('common.loading', 'Loading...') as string}</span>
       </div>
     );
   }
 
   return (
-    <div className="max-w-6xl mx-auto p-6 pt-24 min-h-screen text-gray-900 dark:text-gray-100 theme-transition">
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 py-6 pt-24 min-h-screen text-gray-900 dark:text-gray-100 theme-transition">
       <div className="mb-6">
         <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
           {t('common.resume.manager', 'Resume Manager')}
