@@ -1,6 +1,7 @@
 /* eslint-disable react-refresh/only-export-components */
 import React, { lazy, useEffect, useState, useRef } from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation } from './TranslationProvider';
 
 // 代码分割 - 懒加载组件
 export const LazyHome = lazy(() => import('../../pages/Home').then(module => ({ default: module.default })));
@@ -210,17 +211,22 @@ export const useNetworkOptimization = () => {
 export { ErrorBoundary } from './ErrorBoundary';
 
 // 加载状态管理
-export const LoadingFallback: React.FC<{ message?: string }> = ({ message = '加载中...' }) => (
-  <motion.div
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
-    className="min-h-[70vh] flex items-center justify-center bg-white dark:bg-gray-950"
-    role="status"
-    aria-live="polite"
-  >
-    <div className="text-center">
-      <div className="w-8 h-8 border-4 border-blue-600 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-      <p className="text-gray-600 dark:text-gray-300">{message}</p>
-    </div>
-  </motion.div>
-);
+export const LoadingFallback: React.FC<{ message?: string }> = ({ message }) => {
+  const { t } = useTranslation();
+  const displayMessage = message ?? (t('common.loading') as string);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      className="min-h-[70vh] flex items-center justify-center bg-white dark:bg-gray-950 theme-transition"
+      role="status"
+      aria-live="polite"
+    >
+      <div className="text-center">
+        <div className="w-8 h-8 border-4 border-blue-600 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+        <p className="text-gray-600 dark:text-gray-300">{displayMessage}</p>
+      </div>
+    </motion.div>
+  );
+};

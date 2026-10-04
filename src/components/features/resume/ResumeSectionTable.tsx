@@ -21,11 +21,19 @@ export const ResumeSectionTable: React.FC<ResumeSectionTableProps> = ({
 }) => {
   const { t } = useTranslation();
 
+  const getFieldLabel = (field: string): string => {
+    const key = `common.resume.fields.${field}`;
+    const translated = t(key);
+    if (translated && translated !== key) return translated as string;
+    return field.replace(/_/g, ' ').replace(/\b\w/g, (l) => l.toUpperCase());
+  };
+
   const renderHeader = () => (
     <div className="flex items-center justify-between mb-4">
       <h3 className="text-xl font-semibold text-gray-800 dark:text-white">{title}</h3>
       <button
         onClick={() => onEdit(sectionKey, {})}
+        aria-label={t('common.add', { fallback: 'Add' }) as string}
         className="flex items-center gap-1.5 px-3 py-1.5 bg-green-600 hover:bg-green-700 text-white rounded-lg transition-colors text-sm font-medium shadow-sm"
       >
         <Plus size={15} />
@@ -36,7 +44,7 @@ export const ResumeSectionTable: React.FC<ResumeSectionTableProps> = ({
 
   if (!items || items.length === 0) {
     return (
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 border border-gray-200 dark:border-gray-700 theme-transition mb-6">
+      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 sm:p-6 border border-gray-200 dark:border-gray-700 theme-transition mb-6">
         {renderHeader()}
         <p className="text-gray-500 dark:text-gray-400 text-center py-8">
           {t('common.noData', { fallback: 'No data available' }) as string}
@@ -46,7 +54,7 @@ export const ResumeSectionTable: React.FC<ResumeSectionTableProps> = ({
   }
 
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 border border-gray-200 dark:border-gray-700 theme-transition mb-6">
+    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 sm:p-6 border border-gray-200 dark:border-gray-700 theme-transition mb-6">
       {renderHeader()}
 
       <div className="space-y-4">
@@ -59,7 +67,7 @@ export const ResumeSectionTable: React.FC<ResumeSectionTableProps> = ({
             typedItem.skill_name ||
             typedItem.language ||
             typedItem.name ||
-            'Untitled'
+            (t('common.untitled', { fallback: 'Untitled' }) as string)
           ) as string;
 
           return (
@@ -76,6 +84,7 @@ export const ResumeSectionTable: React.FC<ResumeSectionTableProps> = ({
                     onClick={() => onEdit(sectionKey, item)}
                     className="p-1.5 text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/30 rounded transition-colors"
                     title={t('common.edit', { fallback: 'Edit' }) as string}
+                    aria-label={t('common.edit', { fallback: 'Edit' }) as string}
                   >
                     <Edit size={14} />
                   </button>
@@ -83,6 +92,7 @@ export const ResumeSectionTable: React.FC<ResumeSectionTableProps> = ({
                     onClick={() => onDelete(sectionKey, typedItem.id as string)}
                     className="p-1.5 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/30 rounded transition-colors"
                     title={t('common.delete', { fallback: 'Delete' }) as string}
+                    aria-label={t('common.delete', { fallback: 'Delete' }) as string}
                   >
                     <Trash2 size={14} />
                   </button>
@@ -97,7 +107,7 @@ export const ResumeSectionTable: React.FC<ResumeSectionTableProps> = ({
                   return (
                     <div key={field}>
                       <span className="font-medium text-gray-700 dark:text-gray-400">
-                        {field.replace(/_/g, ' ')}:{' '}
+                        {getFieldLabel(field)}:{' '}
                       </span>
                       <span>{Array.isArray(value) ? value.join(', ') : String(value)}</span>
                     </div>

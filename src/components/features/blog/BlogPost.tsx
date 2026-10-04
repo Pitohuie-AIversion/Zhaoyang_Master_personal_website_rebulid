@@ -36,10 +36,10 @@ const BlogPost: React.FC<BlogPostProps> = ({ className = '' }) => {
 
   if (loading) {
     return (
-      <div className={`flex items-center justify-center py-12 pt-24 ${className}`}>
+      <div className={`flex items-center justify-center py-12 pt-24 ${className}`} role="status">
         <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500"></div>
         <span className="ml-3 text-gray-600 dark:text-gray-400">
-          {t('blog.loading') || '加载中...'}
+          {t('blog.loading') as string}
         </span>
       </div>
     );
@@ -49,13 +49,14 @@ const BlogPost: React.FC<BlogPostProps> = ({ className = '' }) => {
     return (
       <div className={`text-center py-12 pt-24 ${className}`}>
         <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">
-          {t('blog.postNotFound') || '文章未找到'}
+          {t('blog.postNotFound') as string}
         </h2>
         <UnifiedButton
           variant="primary"
           onClick={() => navigate('/blog')}
+          ariaLabel={t('blog.backToBlog') as string}
         >
-          {t('blog.backToBlog') || '返回博客'}
+          {t('blog.backToBlog') as string}
         </UnifiedButton>
       </div>
     );
@@ -99,8 +100,9 @@ const BlogPost: React.FC<BlogPostProps> = ({ className = '' }) => {
           size="sm"
           icon={<ArrowLeft className="w-4 h-4" />}
           onClick={() => navigate('/blog')}
+          ariaLabel={t('blog.backToBlog') as string}
         >
-          {t('blog.backToBlog') || '返回博客'}
+          {t('blog.backToBlog') as string}
         </UnifiedButton>
       </div>
 
