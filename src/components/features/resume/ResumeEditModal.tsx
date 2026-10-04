@@ -37,6 +37,32 @@ export const ResumeEditModal: React.FC<ResumeEditModalProps> = ({
     }
   };
 
+  const sectionTitleMap: Record<string, string> = {
+    personal_info: 'common.resume.personalInfo',
+    education: 'common.resume.education',
+    work_experience: 'common.resume.workExperience',
+    research_experience: 'common.resume.researchExperience',
+    skills: 'common.resume.skills',
+    languages: 'common.resume.languages',
+    publications: 'common.resume.publications',
+    patents: 'common.resume.patents',
+    awards: 'common.resume.awards',
+  };
+
+  const getSectionTitle = (section: string): string => {
+    const key = sectionTitleMap[section] || `common.resume.${section}`;
+    const translated = t(key);
+    if (translated && translated !== key) return translated as string;
+    return section.replace(/_/g, ' ').replace(/\b\w/g, (l) => l.toUpperCase());
+  };
+
+  const getFieldLabel = (field: string): string => {
+    const key = `common.resume.fields.${field}`;
+    const translated = t(key);
+    if (translated && translated !== key) return translated as string;
+    return field.replace(/_/g, ' ').replace(/\b\w/g, (l) => l.toUpperCase());
+  };
+
   const fields = Object.keys(formData).filter(
     (key) => key !== 'id' && key !== 'created_at' && key !== 'updated_at'
   );
@@ -49,7 +75,7 @@ export const ResumeEditModal: React.FC<ResumeEditModalProps> = ({
             {formData.id
               ? (t('common.edit', { fallback: 'Edit' }) as string)
               : (t('common.add', { fallback: 'Add' }) as string)}{' '}
-            {editingSection.replace(/_/g, ' ')}
+            {getSectionTitle(editingSection)}
           </h3>
           <button
             onClick={onClose}
@@ -63,7 +89,7 @@ export const ResumeEditModal: React.FC<ResumeEditModalProps> = ({
           {fields.map((field) => (
             <div key={field}>
               <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">
-                {field.replace(/_/g, ' ').replace(/\b\w/g, (l) => l.toUpperCase())}
+                {getFieldLabel(field)}
               </label>
 
               {Array.isArray(formData[field]) ? (
