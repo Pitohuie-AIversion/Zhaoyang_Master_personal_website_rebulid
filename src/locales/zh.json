@@ -2045,6 +2045,45 @@
       "orcid": "ORCID",
       "csdn": "CSDN",
       "scholar": "谷歌学术"
+    },
+    "admin": {
+      "title": "联系信息管理",
+      "description": "查看和管理通过网站联系表单收到的所有信息",
+      "stats": {
+        "total": "总消息数",
+        "new": "新消息",
+        "read": "已读消息",
+        "recent30Days": "近30天"
+      },
+      "filter": {
+        "searchLabel": "搜索",
+        "searchPlaceholder": "搜索姓名、邮箱、主题或内容...",
+        "statusLabel": "状态筛选",
+        "allStatuses": "全部状态"
+      },
+      "list": {
+        "title": "消息列表",
+        "noMessages": "暂无符合条件的消息"
+      },
+      "detail": {
+        "title": "消息详情",
+        "subject": "主题",
+        "content": "消息内容",
+        "collaborationDetails": "合作详情",
+        "collaborationType": "合作类型",
+        "budgetRange": "预算范围",
+        "timeline": "时间周期",
+        "createdAt": "创建时间",
+        "updatedAt": "更新时间",
+        "emptySelect": "选择一条消息查看详情",
+        "emptySelectDesc": "点击左侧的消息列表来查看详细信息"
+      },
+      "status": {
+        "new": "新消息",
+        "read": "已读",
+        "replied": "已回复",
+        "archived": "已归档"
+      }
     }
   },
   "publications": {
@@ -3000,25 +3039,34 @@
     "validationError": "validation Error"
   },
   "search": {
+    "placeholder": "搜索论文、专利、项目...",
+    "searching": "搜索中...",
+    "noResults": "未找到相关结果",
+    "tryDifferentKeywords": "尝试使用其他搜索关键词",
+    "startTyping": "输入关键词开始搜索",
+    "searchTips": "支持中英文检索与模糊匹配",
+    "foundResults": "共找到 {{count}} 条结果",
+    "filters": "筛选条件",
+    "filterByType": "按类型筛选",
+    "contentTypes": "内容类型",
+    "minRelevance": "最小相关度",
+    "recentSearches": "最近搜索",
+    "escClose": "ESC 关闭",
+    "tabNavigate": "TAB 导航",
+    "publication": "学术论文",
+    "patent": "发明专利",
+    "award": "荣誉奖项",
+    "project": "项目作品",
+    "skill": "专业技能",
+    "page": "页面导航",
     "types": {
-      "publication": "publication",
-      "patent": "patent",
-      "award": "award",
-      "project": "project",
-      "skill": "skill",
-      "page": "page"
-    },
-    "placeholder": "placeholder",
-    "filters": "filters",
-    "filterByType": "filter By Type",
-    "minRelevance": "min Relevance",
-    "recentSearches": "recent Searches",
-    "searching": "searching",
-    "noResults": "no Results",
-    "tryDifferentKeywords": "try Different Keywords",
-    "startTyping": "start Typing",
-    "searchTips": "search Tips",
-    "foundResults": "found Results"
+      "publication": "学术论文",
+      "patent": "发明专利",
+      "award": "荣誉奖项",
+      "project": "项目作品",
+      "skill": "专业技能",
+      "page": "页面导航"
+    }
   },
   "ascii": {
     "title": "ASCII 律动实验室",

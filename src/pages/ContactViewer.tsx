@@ -36,7 +36,7 @@ function ContactViewerContent({ adminToken, onLogout, onAuthFailure }: ContactVi
       <div className="min-h-screen bg-gray-50 dark:bg-gray-900 p-6 pt-24">
         <div className="max-w-7xl mx-auto">
           <div className="flex items-center justify-center h-64">
-            <div className="text-lg text-gray-600 dark:text-gray-300">加载中...</div>
+            <div className="text-lg text-gray-600 dark:text-gray-300">{t('common.loading')}</div>
           </div>
         </div>
       </div>
@@ -49,7 +49,9 @@ function ContactViewerContent({ adminToken, onLogout, onAuthFailure }: ContactVi
         {/* 页面标题 */}
         <div className="mb-8">
           <div className="flex items-center justify-between gap-4">
-            <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">联系信息管理</h1>
+            <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
+              {t('contact.admin.title') as string}
+            </h1>
             <button
               onClick={onLogout}
               className="px-3 py-2 rounded-md bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
@@ -57,7 +59,9 @@ function ContactViewerContent({ adminToken, onLogout, onAuthFailure }: ContactVi
               {t('common.adminAuth.lock')}
             </button>
           </div>
-          <p className="text-gray-600 dark:text-gray-400">查看和管理通过网站联系表单收到的所有信息</p>
+          <p className="text-gray-600 dark:text-gray-400">
+            {t('contact.admin.description') as string}
+          </p>
         </div>
 
         {/* 统计指标卡片 */}

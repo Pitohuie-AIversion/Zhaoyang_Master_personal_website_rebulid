@@ -13,7 +13,12 @@ export const getStatusColor = (status: string): string => {
   }
 };
 
-export const getStatusLabel = (status: string): string => {
+export const getStatusLabel = (status: string, t?: (key: string) => string): string => {
+  if (t) {
+    const key = `contact.admin.status.${status}`;
+    const translated = t(key);
+    if (translated && translated !== key) return translated;
+  }
   switch (status) {
     case 'new':
       return '新消息';
@@ -27,3 +32,4 @@ export const getStatusLabel = (status: string): string => {
       return status;
   }
 };
+

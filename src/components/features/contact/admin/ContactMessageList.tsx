@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from '../../../common/TranslationProvider';
 import type { ContactMessage } from '../../../../types';
 
 interface ContactMessageListProps {
@@ -6,7 +7,7 @@ interface ContactMessageListProps {
   selectedMessageId?: string;
   onSelectMessage: (message: ContactMessage) => void;
   getStatusColor: (status: string) => string;
-  getStatusLabel: (status: string) => string;
+  getStatusLabel: (status: string, t?: (key: string) => string) => string;
 }
 
 export const ContactMessageList: React.FC<ContactMessageListProps> = ({
@@ -16,11 +17,13 @@ export const ContactMessageList: React.FC<ContactMessageListProps> = ({
   getStatusColor,
   getStatusLabel
 }) => {
+  const { t, language } = useTranslation();
+
   return (
     <div className="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-lg shadow">
       <div className="p-6 border-b border-gray-200 dark:border-gray-700">
         <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
-          消息列表 ({messages.length})
+          {t('contact.admin.list.title') as string} ({messages.length})
         </h2>
       </div>
       <div className="divide-y divide-gray-200 dark:divide-gray-700 max-h-96 overflow-y-auto">
@@ -41,7 +44,7 @@ export const ContactMessageList: React.FC<ContactMessageListProps> = ({
                     {message.name}
                   </h3>
                   <span className={`px-2 py-1 text-xs rounded-full ${getStatusColor(message.status)}`}>
-                    {getStatusLabel(message.status)}
+                    {getStatusLabel(message.status, t)}
                   </span>
                 </div>
                 <p className="text-sm text-gray-600 dark:text-gray-400 truncate">{message.email}</p>
@@ -52,7 +55,7 @@ export const ContactMessageList: React.FC<ContactMessageListProps> = ({
                   {message.message.substring(0, 100)}...
                 </p>
                 <p className="text-xs text-gray-400 dark:text-gray-500 mt-2">
-                  {new Date(message.created_at).toLocaleString('zh-CN')}
+                  {new Date(message.created_at).toLocaleString(language === 'zh' ? 'zh-CN' : 'en-US')}
                 </p>
               </div>
             </div>
@@ -73,10 +76,11 @@ export const ContactMessageList: React.FC<ContactMessageListProps> = ({
                 d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"
               />
             </svg>
-            <p>暂无符合条件的消息</p>
+            <p>{t('contact.admin.list.noMessages') as string}</p>
           </div>
         )}
       </div>
     </div>
   );
 };
+

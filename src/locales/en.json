@@ -1121,7 +1121,7 @@
           "powerPlantWaterNetwork": {
             "title": "Intelligent Monitoring System and Method for the Entire Water Network Process of Large Power Plants",
             "applicant": "Huaneng (Guangdong) Energy Development Co., Ltd. Yutou Power Plant",
-             "description": "This invention relates to the monitoring of power plant water networks, disclosing a system and method to achieve real-time perception and intelligent optimization of water network operations."
+            "description": "This invention relates to the monitoring of power plant water networks, disclosing a system and method to achieve real-time perception and intelligent optimization of water network operations."
           },
           "powerPlantWaterBalance": {
             "title": "Power Plant Water Network Intelligent Monitoring Method Based on Dynamic Water Balance and ARIMA Model",
@@ -1986,6 +1986,45 @@
       "orcid": "ORCID",
       "csdn": "CSDN",
       "scholar": "Google Scholar"
+    },
+    "admin": {
+      "title": "Contact Management",
+      "description": "View and manage all inquiries received through the website contact form",
+      "stats": {
+        "total": "Total Messages",
+        "new": "New Messages",
+        "read": "Read Messages",
+        "recent30Days": "Last 30 Days"
+      },
+      "filter": {
+        "searchLabel": "Search",
+        "searchPlaceholder": "Search by name, email, subject, or content...",
+        "statusLabel": "Status Filter",
+        "allStatuses": "All Statuses"
+      },
+      "list": {
+        "title": "Message List",
+        "noMessages": "No matching messages found"
+      },
+      "detail": {
+        "title": "Message Details",
+        "subject": "Subject",
+        "content": "Message Content",
+        "collaborationDetails": "Collaboration Details",
+        "collaborationType": "Collaboration Type",
+        "budgetRange": "Budget Range",
+        "timeline": "Timeline",
+        "createdAt": "Created At",
+        "updatedAt": "Updated At",
+        "emptySelect": "Select a message to view details",
+        "emptySelectDesc": "Click a message from the list on the left to see its details"
+      },
+      "status": {
+        "new": "New",
+        "read": "Read",
+        "replied": "Replied",
+        "archived": "Archived"
+      }
     }
   },
   "seo": {
@@ -2399,8 +2438,17 @@
     "foundResults": "Found {{count}} results",
     "filters": "Filters",
     "filterByType": "Filter by type",
-    "minRelevance": "Minimum relevance",
+    "contentTypes": "Content Types",
+    "minRelevance": "Minimum Relevance",
     "recentSearches": "Recent searches",
+    "escClose": "ESC to close",
+    "tabNavigate": "TAB to navigate",
+    "publication": "Publication",
+    "patent": "Patent",
+    "award": "Award",
+    "project": "Project",
+    "skill": "Skill",
+    "page": "Page",
     "types": {
       "publication": "Publication",
       "patent": "Patent",

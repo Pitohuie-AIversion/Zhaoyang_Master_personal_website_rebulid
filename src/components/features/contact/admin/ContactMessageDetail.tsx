@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from '../../../common/TranslationProvider';
 import type { ContactMessage } from '../../../../types';
 
 interface ContactMessageDetailProps {
@@ -10,10 +11,14 @@ export const ContactMessageDetail: React.FC<ContactMessageDetailProps> = ({
   selectedMessage,
   onUpdateStatus
 }) => {
+  const { t, language } = useTranslation();
+
   return (
     <div className="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-lg shadow">
       <div className="p-6 border-b border-gray-200 dark:border-gray-700">
-        <h2 className="text-xl font-semibold text-gray-900 dark:text-white">消息详情</h2>
+        <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
+          {t('contact.admin.detail.title') as string}
+        </h2>
       </div>
       {selectedMessage ? (
         <div className="p-6 space-y-6">
@@ -29,10 +34,10 @@ export const ContactMessageDetail: React.FC<ContactMessageDetailProps> = ({
                 onChange={(e) => onUpdateStatus(selectedMessage.id, e.target.value)}
                 className="px-3 py-1 text-sm border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
-                <option value="new">新消息</option>
-                <option value="read">已读</option>
-                <option value="replied">已回复</option>
-                <option value="archived">已归档</option>
+                <option value="new">{t('contact.admin.status.new') as string}</option>
+                <option value="read">{t('contact.admin.status.read') as string}</option>
+                <option value="replied">{t('contact.admin.status.replied') as string}</option>
+                <option value="archived">{t('contact.admin.status.archived') as string}</option>
               </select>
             </div>
 
@@ -57,13 +62,17 @@ export const ContactMessageDetail: React.FC<ContactMessageDetailProps> = ({
 
           {/* 主题 */}
           <div>
-            <h4 className="text-sm font-medium text-gray-900 dark:text-white mb-2">主题</h4>
+            <h4 className="text-sm font-medium text-gray-900 dark:text-white mb-2">
+              {t('contact.admin.detail.subject') as string}
+            </h4>
             <p className="text-gray-700 dark:text-gray-300">{selectedMessage.subject}</p>
           </div>
 
           {/* 消息内容 */}
           <div>
-            <h4 className="text-sm font-medium text-gray-900 dark:text-white mb-2">消息内容</h4>
+            <h4 className="text-sm font-medium text-gray-900 dark:text-white mb-2">
+              {t('contact.admin.detail.content') as string}
+            </h4>
             <div className="bg-gray-50 dark:bg-gray-900/60 rounded-lg p-4">
               <p className="text-gray-700 dark:text-gray-300 whitespace-pre-wrap">{selectedMessage.message}</p>
             </div>
@@ -72,23 +81,31 @@ export const ContactMessageDetail: React.FC<ContactMessageDetailProps> = ({
           {/* 合作详情 */}
           {(selectedMessage.collaboration_type || selectedMessage.budget_range || selectedMessage.timeline) && (
             <div className="bg-blue-50 dark:bg-blue-950/40 border border-blue-100 dark:border-blue-900/50 rounded-lg p-4">
-              <h4 className="text-sm font-medium text-gray-900 dark:text-white mb-3">合作详情</h4>
+              <h4 className="text-sm font-medium text-gray-900 dark:text-white mb-3">
+                {t('contact.admin.detail.collaborationDetails') as string}
+              </h4>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {selectedMessage.collaboration_type && (
                   <div>
-                    <div className="text-xs font-medium text-gray-600 dark:text-gray-400">合作类型</div>
+                    <div className="text-xs font-medium text-gray-600 dark:text-gray-400">
+                      {t('contact.admin.detail.collaborationType') as string}
+                    </div>
                     <div className="text-sm text-gray-900 dark:text-white">{selectedMessage.collaboration_type}</div>
                   </div>
                 )}
                 {selectedMessage.budget_range && (
                   <div>
-                    <div className="text-xs font-medium text-gray-600 dark:text-gray-400">预算范围</div>
+                    <div className="text-xs font-medium text-gray-600 dark:text-gray-400">
+                      {t('contact.admin.detail.budgetRange') as string}
+                    </div>
                     <div className="text-sm text-gray-900 dark:text-white">{selectedMessage.budget_range}</div>
                   </div>
                 )}
                 {selectedMessage.timeline && (
                   <div>
-                    <div className="text-xs font-medium text-gray-600 dark:text-gray-400">时间周期</div>
+                    <div className="text-xs font-medium text-gray-600 dark:text-gray-400">
+                      {t('contact.admin.detail.timeline') as string}
+                    </div>
                     <div className="text-sm text-gray-900 dark:text-white">{selectedMessage.timeline}</div>
                   </div>
                 )}
@@ -98,8 +115,12 @@ export const ContactMessageDetail: React.FC<ContactMessageDetailProps> = ({
 
           {/* 时间信息 */}
           <div className="text-xs text-gray-500 dark:text-gray-400">
-            <p>创建时间: {new Date(selectedMessage.created_at).toLocaleString('zh-CN')}</p>
-            <p>更新时间: {new Date(selectedMessage.updated_at).toLocaleString('zh-CN')}</p>
+            <p>
+              {t('contact.admin.detail.createdAt') as string}: {new Date(selectedMessage.created_at).toLocaleString(language === 'zh' ? 'zh-CN' : 'en-US')}
+            </p>
+            <p>
+              {t('contact.admin.detail.updatedAt') as string}: {new Date(selectedMessage.updated_at).toLocaleString(language === 'zh' ? 'zh-CN' : 'en-US')}
+            </p>
           </div>
         </div>
       ) : (
@@ -107,10 +128,11 @@ export const ContactMessageDetail: React.FC<ContactMessageDetailProps> = ({
           <svg className="w-16 h-16 mx-auto mb-4 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
           </svg>
-          <p className="text-lg">选择一条消息查看详情</p>
-          <p className="text-sm mt-2">点击左侧的消息列表来查看详细信息</p>
+          <p className="text-lg">{t('contact.admin.detail.emptySelect') as string}</p>
+          <p className="text-sm mt-2">{t('contact.admin.detail.emptySelectDesc') as string}</p>
         </div>
       )}
     </div>
   );
 };
+

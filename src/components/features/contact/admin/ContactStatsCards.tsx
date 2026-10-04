@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from '../../../common/TranslationProvider';
 import type { ContactStats } from '../../../../types';
 
 interface ContactStatsCardsProps {
@@ -6,12 +7,16 @@ interface ContactStatsCardsProps {
 }
 
 export const ContactStatsCards: React.FC<ContactStatsCardsProps> = ({ stats }) => {
+  const { t } = useTranslation();
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
       <div className="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-lg shadow p-6">
         <div className="flex items-center justify-between">
           <div>
-            <p className="text-sm font-medium text-gray-600 dark:text-gray-400">总消息数</p>
+            <p className="text-sm font-medium text-gray-600 dark:text-gray-400">
+              {t('contact.admin.stats.total') as string}
+            </p>
             <p className="text-2xl font-bold text-gray-900 dark:text-white">{stats.total}</p>
           </div>
           <div className="bg-blue-100 dark:bg-blue-900/40 rounded-full p-3">
@@ -25,7 +30,9 @@ export const ContactStatsCards: React.FC<ContactStatsCardsProps> = ({ stats }) =
       <div className="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-lg shadow p-6">
         <div className="flex items-center justify-between">
           <div>
-            <p className="text-sm font-medium text-gray-600 dark:text-gray-400">新消息</p>
+            <p className="text-sm font-medium text-gray-600 dark:text-gray-400">
+              {t('contact.admin.stats.new') as string}
+            </p>
             <p className="text-2xl font-bold text-blue-600 dark:text-blue-400">{stats.byStatus.new}</p>
           </div>
           <div className="bg-blue-100 dark:bg-blue-900/40 rounded-full p-3">
@@ -37,7 +44,9 @@ export const ContactStatsCards: React.FC<ContactStatsCardsProps> = ({ stats }) =
       <div className="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-lg shadow p-6">
         <div className="flex items-center justify-between">
           <div>
-            <p className="text-sm font-medium text-gray-600 dark:text-gray-400">已读消息</p>
+            <p className="text-sm font-medium text-gray-600 dark:text-gray-400">
+              {t('contact.admin.stats.read') as string}
+            </p>
             <p className="text-2xl font-bold text-gray-600 dark:text-gray-300">{stats.byStatus.read}</p>
           </div>
           <div className="bg-gray-100 dark:bg-gray-700 rounded-full p-3">
@@ -52,7 +61,9 @@ export const ContactStatsCards: React.FC<ContactStatsCardsProps> = ({ stats }) =
       <div className="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-lg shadow p-6">
         <div className="flex items-center justify-between">
           <div>
-            <p className="text-sm font-medium text-gray-600 dark:text-gray-400">近30天</p>
+            <p className="text-sm font-medium text-gray-600 dark:text-gray-400">
+              {t('contact.admin.stats.recent30Days') as string}
+            </p>
             <p className="text-2xl font-bold text-green-600 dark:text-green-400">{stats.recentCount}</p>
           </div>
           <div className="bg-green-100 dark:bg-green-900/40 rounded-full p-3">
@@ -65,3 +76,4 @@ export const ContactStatsCards: React.FC<ContactStatsCardsProps> = ({ stats }) =
     </div>
   );
 };
+
