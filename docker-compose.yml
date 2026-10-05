@@ -1,14 +1,19 @@
-version: '3.8'
-
 services:
   frontend:
     build:
       context: .
       dockerfile: Dockerfile.frontend
+      args:
+        VITE_SUPABASE_URL: ${VITE_SUPABASE_URL:-}
+        VITE_SUPABASE_ANON_KEY: ${VITE_SUPABASE_ANON_KEY:-}
+        VITE_GOOGLE_ANALYTICS_ID: ${VITE_GOOGLE_ANALYTICS_ID:-}
+        VITE_ALLOW_INLINE_JSONLD: ${VITE_ALLOW_INLINE_JSONLD:-false}
     ports:
       - "80:80"
     depends_on:
-      - backend
+      backend:
+        condition: service_healthy
+    restart: unless-stopped
     networks:
       - app-network
 
@@ -18,25 +23,37 @@ services:
       dockerfile: Dockerfile.backend
     ports:
       - "3000:3000"
+    env_file:
+      - .env
     environment:
-      - NODE_ENV=production
-      # Add other env vars from .env here
+      NODE_ENV: production
+      PORT: 3000
+    restart: unless-stopped
     networks:
       - app-network
 
   prometheus:
-    image: prom/prometheus
+    image: prom/prometheus:latest
+    profiles: ["monitoring"]
     volumes:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml
     ports:
       - "9090:9090"
+    restart: unless-stopped
     networks:
       - app-network
+    depends_on:
+      backend:
+        condition: service_healthy
 
   grafana:
-    image: grafana/grafana
+    image: grafana/grafana:latest
+    profiles: ["monitoring"]
     ports:
       - "3001:3000"
+    volumes:
+      - grafana-data:/var/lib/grafana
+    restart: unless-stopped
     networks:
       - app-network
     depends_on:
@@ -45,3 +62,6 @@ services:
 networks:
   app-network:
     driver: bridge
+
+volumes:
+  grafana-data:

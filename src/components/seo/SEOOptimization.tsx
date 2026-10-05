@@ -2,6 +2,8 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useTranslation } from '../common/TranslationProvider';
 
+const SITE_ORIGIN = 'https://www.zhaoyangmu.cloud';
+
 interface SEOProps {
   title?: string;
   description?: string;
@@ -15,12 +17,25 @@ interface SEOProps {
   robots?: string;
 }
 
+type SEOPage =
+  | 'home'
+  | 'research'
+  | 'projects'
+  | 'publications'
+  | 'skills'
+  | 'contact'
+  | 'blog'
+  | 'asciiDemo'
+  | 'particleField'
+  | 'particleFieldDemo'
+  | 'particleFieldSettings';
+
 const SEOOptimization: React.FC<SEOProps> = ({
   title,
   description,
   keywords,
   image = '/favicon.svg',
-  url = window.location.href,
+  url = `${SITE_ORIGIN}${window.location.pathname}`,
   type = 'website',
   author,
   publishedTime,
@@ -54,8 +69,16 @@ const SEOOptimization: React.FC<SEOProps> = ({
   const locale = t('seo.site.locale') as string;
   const jobTitle = t('seo.default.jobTitle') as string;
   const organization = t('seo.default.organization') as string;
+  const canonicalUrl = new URL(url, SITE_ORIGIN);
+  canonicalUrl.search = '';
+  canonicalUrl.hash = '';
+  const canonicalHref = canonicalUrl.href;
+  const absoluteImage = new URL(image, SITE_ORIGIN).href;
 
-  const fullTitle = defaultTitle === siteTitle ? defaultTitle : `${defaultTitle} | ${siteTitle}`;
+  const fullTitle =
+    defaultTitle === siteTitle || defaultTitle.includes(defaultAuthor)
+      ? defaultTitle
+      : `${defaultTitle} | ${siteTitle}`;
 
   return (
     <Helmet>
@@ -68,13 +91,14 @@ const SEOOptimization: React.FC<SEOProps> = ({
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
       <meta name="language" content={language} />
+      <link rel="canonical" href={canonicalHref} />
 
       {/* Open Graph 元数据 */}
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={defaultDescription} />
       <meta property="og:type" content={type} />
-      <meta property="og:url" content={url} />
-      <meta property="og:image" content={image} />
+      <meta property="og:url" content={canonicalHref} />
+      <meta property="og:image" content={absoluteImage} />
       <meta property="og:site_name" content={siteTitle} />
       <meta property="og:locale" content={locale} />
 
@@ -82,7 +106,7 @@ const SEOOptimization: React.FC<SEOProps> = ({
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={defaultDescription} />
-      <meta name="twitter:image" content={image} />
+      <meta name="twitter:image" content={absoluteImage} />
 
       {/* 文章特定元数据 */}
       {type === 'article' && publishedTime && (
@@ -102,9 +126,9 @@ const SEOOptimization: React.FC<SEOProps> = ({
             "@context": "https://schema.org",
             "@type": type === 'profile' ? 'Person' : 'WebSite',
             "name": defaultAuthor,
-            "url": url,
+            "url": canonicalHref,
             "description": defaultDescription,
-            "image": image,
+            "image": absoluteImage,
             ...(type === 'profile' && {
               "jobTitle": jobTitle,
               "worksFor": {
@@ -117,13 +141,8 @@ const SEOOptimization: React.FC<SEOProps> = ({
         </script>
       )}
 
-      {/* 关键资源预连接（保留，不引用缺失本地字体） */}
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-
       {/* 网站图标（使用已存在的 SVG） */}
       <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-      <link rel="manifest" href="/site.webmanifest" />
 
       {/* 主题颜色 */}
       <meta name="theme-color" content="#ffffff" />
@@ -134,75 +153,33 @@ const SEOOptimization: React.FC<SEOProps> = ({
 
 export default SEOOptimization;
 
-// 页面特定的SEO组件
-export const HomeSEO: React.FC = () => {
+interface PageSEOProps {
+  page: SEOPage;
+  type?: SEOProps['type'];
+}
+
+export const PageSEO: React.FC<PageSEOProps> = ({ page, type = 'website' }) => {
   const { t } = useTranslation();
+  const translatedKeywords = t(`seo.pages.${page}.keywords`, { returnObjects: true });
+
   return (
     <SEOOptimization
-      title={t('seo.pages.home.title') as string}
-      description={t('seo.pages.home.description') as string}
-      // 使用默认关键词，因为页面特定关键词不存在
-      type="profile"
+      title={t(`seo.pages.${page}.title`) as string}
+      description={t(`seo.pages.${page}.description`) as string}
+      keywords={Array.isArray(translatedKeywords) ? translatedKeywords : undefined}
+      type={type}
     />
   );
 };
 
-export const ResearchSEO: React.FC = () => {
-  const { t } = useTranslation();
-  return (
-    <SEOOptimization
-      title={t('seo.pages.research.title') as string}
-      description={t('seo.pages.research.description') as string}
-      // 使用默认关键词，因为页面特定关键词不存在
-      type="website"
-    />
-  );
-};
-
-export const ProjectsSEO: React.FC = () => {
-  const { t } = useTranslation();
-  return (
-    <SEOOptimization
-      title={t('seo.pages.projects.title') as string}
-      description={t('seo.pages.projects.description') as string}
-      // 使用默认关键词，因为页面特定关键词不存在
-      type="website"
-    />
-  );
-};
-
-export const PublicationsSEO: React.FC = () => {
-  const { t } = useTranslation();
-  return (
-    <SEOOptimization
-      title={t('seo.pages.publications.title') as string}
-      description={t('seo.pages.publications.description') as string}
-      // 使用默认关键词，因为页面特定关键词不存在
-      type="website"
-    />
-  );
-};
-
-export const SkillsSEO: React.FC = () => {
-  const { t } = useTranslation();
-  return (
-    <SEOOptimization
-      title={t('seo.pages.skills.title') as string}
-      description={t('seo.pages.skills.description') as string}
-      // 使用默认关键词，因为页面特定关键词不存在
-      type="website"
-    />
-  );
-};
-
-export const ContactSEO: React.FC = () => {
-  const { t } = useTranslation();
-  return (
-    <SEOOptimization
-      title={t('seo.pages.contact.title') as string}
-      description={t('seo.pages.contact.description') as string}
-      // 使用默认关键词，因为页面特定关键词不存在
-      type="website"
-    />
-  );
-};
+export const HomeSEO: React.FC = () => <PageSEO page="home" type="profile" />;
+export const ResearchSEO: React.FC = () => <PageSEO page="research" />;
+export const ProjectsSEO: React.FC = () => <PageSEO page="projects" />;
+export const PublicationsSEO: React.FC = () => <PageSEO page="publications" />;
+export const SkillsSEO: React.FC = () => <PageSEO page="skills" />;
+export const ContactSEO: React.FC = () => <PageSEO page="contact" />;
+export const BlogSEO: React.FC = () => <PageSEO page="blog" />;
+export const ASCIIDemoSEO: React.FC = () => <PageSEO page="asciiDemo" />;
+export const ParticleFieldSEO: React.FC = () => <PageSEO page="particleField" />;
+export const ParticleFieldDemoSEO: React.FC = () => <PageSEO page="particleFieldDemo" />;
+export const ParticleFieldSettingsSEO: React.FC = () => <PageSEO page="particleFieldSettings" />;
