@@ -59,7 +59,7 @@ export const SocialLinks: React.FC = () => {
   ];
 
   return (
-    <article className="card-dark rounded-lg border border-gray-200 dark:border-gray-700 p-6 theme-transition">
+    <article className="card-dark rounded-lg border border-gray-200 dark:border-gray-700 p-4 sm:p-6 theme-transition">
       <h2 className="text-xl md:text-2xl font-semibold text-primary-dark theme-transition mb-4 leading-tight">
         {t('contact.academicSocial') as string}
       </h2>
@@ -71,7 +71,7 @@ export const SocialLinks: React.FC = () => {
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center p-3 sm:p-4 bg-gray-50 dark:bg-gray-800 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200 group theme-transition min-h-[60px] sm:min-h-[56px]"
-            aria-label={t('common.aria.visitSocial', { fallback: `访问我的${link.name}主页` }) as string}
+            aria-label={`${t('common.aria.visitSocial') as string} - ${link.name}`}
           >
             <div className="text-gray-600 dark:text-gray-400 mr-3 sm:mr-4 theme-transition flex-shrink-0" aria-hidden="true">
               {link.icon}

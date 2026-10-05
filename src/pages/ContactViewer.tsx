@@ -33,10 +33,11 @@ function ContactViewerContent({ adminToken, onLogout, onAuthFailure }: ContactVi
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 p-6 pt-24">
+      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 px-4 sm:px-6 py-6 pt-24 theme-transition" role="status">
         <div className="max-w-7xl mx-auto">
-          <div className="flex items-center justify-center h-64">
-            <div className="text-lg text-gray-600 dark:text-gray-300">{t('common.loading')}</div>
+          <div className="flex flex-col items-center justify-center h-64">
+            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mb-4" aria-hidden="true"></div>
+            <div className="text-base text-gray-600 dark:text-gray-300">{t('common.loading') as string}</div>
           </div>
         </div>
       </div>
@@ -44,7 +45,7 @@ function ContactViewerContent({ adminToken, onLogout, onAuthFailure }: ContactVi
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 p-6 pt-24 text-gray-900 dark:text-gray-100 transition-colors">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 px-4 sm:px-6 py-6 pt-24 text-gray-900 dark:text-gray-100 theme-transition">
       <div className="max-w-7xl mx-auto">
         {/* 页面标题 */}
         <div className="mb-8">
@@ -53,10 +54,12 @@ function ContactViewerContent({ adminToken, onLogout, onAuthFailure }: ContactVi
               {t('contact.admin.title') as string}
             </h1>
             <button
+              type="button"
               onClick={onLogout}
+              aria-label={t('common.adminAuth.lock') as string}
               className="px-3 py-2 rounded-md bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
             >
-              {t('common.adminAuth.lock')}
+              {t('common.adminAuth.lock') as string}
             </button>
           </div>
           <p className="text-gray-600 dark:text-gray-400">
