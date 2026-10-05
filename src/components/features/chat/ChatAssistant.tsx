@@ -28,51 +28,27 @@ const ChatAssistant: React.FC<ChatAssistantProps> = ({ className = '' }) => {
     const lowerMessage = message.toLowerCase();
 
     if (lowerMessage.includes('研究') || lowerMessage.includes('research')) {
-      return t('common.chat.researchIntro', {
-        fallback: language === 'zh'
-          ? '牟昭阳的主要研究方向包括科学计算和机器人技术，特别专注于使用Transformer和Neural Operator建模CFD时空场。他在溃坝流动预测、稀疏到稠密场重构等领域有重要贡献。'
-          : 'Zhaoyang Mu\'s main research areas include scientific computing and robotics, with a particular focus on using Transformer and Neural Operator for CFD spatiotemporal field modeling. He has made significant contributions in dam-break flow prediction and sparse-to-dense field reconstruction.'
-      }) as string;
+      return t('common.chat.researchIntro') as string;
     }
 
     if (lowerMessage.includes('项目') || lowerMessage.includes('project')) {
-      return t('common.chat.projectsIntro', {
-        fallback: language === 'zh'
-          ? '他参与了多个重要项目，包括DamFormer溃坝流动预测系统、Rs-ModCubes模块化机器人、仿生波动鳍推进系统、风扇阵列风洞实验平台等。这些项目涵盖了CFD仿真、机器人技术、硬件控制等多个领域。'
-          : 'He has participated in several important projects, including the DamFormer dam-break flow prediction system, Rs-ModCubes modular robots, bionic undulating fin propulsion system, and fan array wind tunnel experimental platform. These projects cover CFD simulation, robotics, hardware control, and other fields.'
-      }) as string;
+      return t('common.chat.projectsIntro') as string;
     }
 
     if (lowerMessage.includes('教育') || lowerMessage.includes('education')) {
-      return t('common.chat.educationIntro', {
-        fallback: language === 'zh'
-          ? '牟昭阳目前是大连海事大学人工智能专业的硕士研究生（2023.08-2026.06预计），导师是徐敏义教授。同时他也是西湖大学工学院i⁴-FSI实验室的访问学生（2024.06至今），PI是范迪夏教授。本科毕业于大连海事大学材料科学与工程专业。'
-          : 'Zhaoyang Mu is currently a Master\'s student in Artificial Intelligence at Dalian Maritime University (2023.08-2026.06 expected), supervised by Prof. Xu Minyi. He is also a visiting student at the i⁴-FSI Laboratory, School of Engineering, Westlake University (2024.06-present), with PI Prof. Fan Dixia. He received his bachelor\'s degree in Materials Science and Engineering from Dalian Maritime University.'
-      }) as string;
+      return t('common.chat.educationIntro') as string;
     }
 
     if (lowerMessage.includes('联系') || lowerMessage.includes('contact')) {
-      return t('common.chat.contactIntro', {
-        fallback: language === 'zh'
-          ? '您可以通过以下方式联系牟昭阳：\n📧 邮箱：mzymuzhaoyang@gmail.com\n📱 电话：+86 153 8213 0266\n🏠 地址：中国 杭州（西湖大学工学院）\n您也可以访问他的 GitHub、LinkedIn 和 Google Scholar 主页。'
-          : 'You can contact Zhaoyang Mu through:\n📧 Email: mzymuzhaoyang@gmail.com\n📱 Phone: +86 153 8213 0266\n🏠 Address: Hangzhou, China (Westlake University)\nYou can also visit his GitHub, LinkedIn, and Google Scholar profiles.'
-      }) as string;
+      return t('common.chat.contactIntro') as string;
     }
 
     if (lowerMessage.includes('技能') || lowerMessage.includes('skill')) {
-      return t('common.chat.skillsIntro', {
-        fallback: language === 'zh'
-          ? '他掌握多种编程语言和工具：\n💻 编程：Python, MATLAB, C++, Java, JavaScript\n🔬 仿真：Star-CCM+, ANSYS Fluent, OpenFOAM\n🤖 机器学习：PyTorch, TensorFlow, Transformer\n⚙️ 硬件：STM32, Arduino, 传感器集成\n🖥️ 服务器：Linux, HPC集群管理'
-          : 'He masters various programming languages and tools:\n💻 Programming: Python, MATLAB, C++, Java, JavaScript\n🔬 Simulation: Star-CCM+, ANSYS Fluent, OpenFOAM\n🤖 Machine Learning: PyTorch, TensorFlow, Transformer\n⚙️ Hardware: STM32, Arduino, Sensor Integration\n🖥️ Server: Linux, HPC Cluster Management'
-      }) as string;
+      return t('common.chat.skillsIntro') as string;
     }
 
-    return t('common.chat.defaultHelp', {
-      fallback: language === 'zh'
-        ? '感谢您的提问！我是牟昭阳的智能助手，可以为您介绍他的学术背景、研究项目、技能专长等信息。请尝试询问更具体的问题，比如他的研究方向、项目经验、教育背景等。'
-        : 'Thank you for your question! I\'m Zhaoyang Mu\'s AI assistant. I can introduce his academic background, research projects, and expertise. Please try asking more specific questions about his research areas, project experience, educational background, etc.'
-    }) as string;
-  }, [t, language]);
+    return t('common.chat.defaultHelp') as string;
+  }, [t]);
 
   // 获取相关链接
   const getRelatedLinks = useCallback((message: string) => {

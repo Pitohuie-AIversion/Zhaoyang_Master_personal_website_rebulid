@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { SimpleMotion } from '../../animations/SimpleMotion';
 import { ExternalLink, Github, X } from 'lucide-react';
 import { UnifiedButton } from '../../common/UnifiedButton';
@@ -17,13 +17,26 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
 }) => {
   const { t } = useTranslation();
 
+  useEffect(() => {
+    if (!project) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        onClose();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [project, onClose]);
+
   if (!project) return null;
 
   return (
     <SimpleMotion
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className="fixed inset-0 bg-black bg-opacity-50 dark:bg-opacity-70 flex items-center justify-center p-2 sm:p-4 z-50"
+      className="fixed inset-0 bg-black bg-opacity-50 dark:bg-opacity-70 flex items-center justify-center p-2 sm:p-4 z-50 backdrop-blur-sm"
       onClick={onClose}
     >
       <SimpleMotion
@@ -32,8 +45,8 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
         className="bg-white dark:bg-gray-800 rounded-lg max-w-4xl w-full max-h-[95vh] sm:max-h-[90vh] overflow-y-auto border border-gray-200 dark:border-gray-700 theme-transition"
         onClick={(e) => e.stopPropagation()}
         role="dialog"
-        ariaModal
-        ariaLabelledby="project-dialog-title"
+        aria-modal="true"
+        aria-labelledby="project-dialog-title"
       >
         <div className="relative">
           <LazyImage

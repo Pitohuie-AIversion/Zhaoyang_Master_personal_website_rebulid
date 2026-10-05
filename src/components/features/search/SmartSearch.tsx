@@ -82,7 +82,7 @@ export const SmartSearch: React.FC<SmartSearchProps> = ({
             ref={dialogRef}
             role="dialog"
             aria-modal="true"
-            aria-label={placeholder || (t('search.placeholder') as string) || '全局搜索'}
+            aria-label={placeholder || (t('search.placeholder') as string)}
           >
             {/* 搜索输入头部 */}
             <SearchDialogHeader

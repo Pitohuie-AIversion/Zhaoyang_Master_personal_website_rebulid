@@ -2124,6 +2124,8 @@
     "title": "学术成果",
     "description": "我的研究成果和学术贡献",
     "items": "个成果",
+    "noResults": "未找到相关学术成果",
+    "noResultsDesc": "请尝试调整搜索关键词或清除部分筛选条件",
     "stats": {
       "total": "总计",
       "published": "已发表",

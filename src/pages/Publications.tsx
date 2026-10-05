@@ -1,3 +1,4 @@
+import { Search } from 'lucide-react';
 import { SimpleMotion } from '../components/animations/SimpleMotion';
 import { useResponsive } from '../hooks/useResponsive';
 import { PublicationsSEO } from '../components/seo/SEOOptimization';
@@ -99,18 +100,32 @@ export default function Publications() {
 
         {/* 成果列表 */}
         <div className="space-y-4">
-          {filteredPublications.map((publication, index) => (
-            <PublicationCard
-              key={publication.id}
-              publication={publication}
-              index={index}
-              onClick={() => setSelectedPublication(publication)}
-              getTypeIcon={getTypeIcon}
-              getStatusColor={getStatusColor}
-              getStatusText={(status) => getStatusText(status, t)}
-              typeLabels={typeLabels}
-            />
-          ))}
+          {filteredPublications.length === 0 ? (
+            <div className="text-center py-12 card-dark rounded-xl p-8 border border-gray-200 dark:border-gray-700 theme-transition">
+              <div className="text-gray-400 mb-4 flex justify-center">
+                <Search className="w-12 h-12" />
+              </div>
+              <h3 className="text-lg md:text-xl font-medium text-gray-900 dark:text-white mb-2 leading-snug">
+                {t('publications.noResults') as string}
+              </h3>
+              <p className="text-gray-600 dark:text-gray-400 text-sm max-w-md mx-auto">
+                {t('publications.noResultsDesc') as string}
+              </p>
+            </div>
+          ) : (
+            filteredPublications.map((publication, index) => (
+              <PublicationCard
+                key={publication.id}
+                publication={publication}
+                index={index}
+                onClick={() => setSelectedPublication(publication)}
+                getTypeIcon={getTypeIcon}
+                getStatusColor={getStatusColor}
+                getStatusText={(status) => getStatusText(status, t)}
+                typeLabels={typeLabels}
+              />
+            ))
+          )}
         </div>
 
         {/* 详情模态框 */}

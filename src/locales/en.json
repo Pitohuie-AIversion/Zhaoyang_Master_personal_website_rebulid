@@ -2496,6 +2496,8 @@
     "title": "Publications",
     "description": "My research achievements and academic contributions",
     "items": "publications",
+    "noResults": "No publications found",
+    "noResultsDesc": "Try adjusting your search keywords or clearing some filters",
     "stats": {
       "total": "Total",
       "published": "Published",
