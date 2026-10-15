@@ -1,147 +1,33 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
+import {
+  type ZhaoyangASCIITextProps,
+  themes,
+  sizeConfig,
+  asciiLines,
+  simpleAsciiLines,
+  useAsciiTextAnimation,
+} from './ascii-text';
 
-interface ZhaoyangASCIITextProps {
-  theme?: 'matrix' | 'cyber' | 'neon';
-  animationType?: 'typewriter' | 'wave' | 'pulse' | 'glitch';
-  size?: 'small' | 'medium' | 'large';
-  speed?: number;
-  className?: string;
-}
+export type { ZhaoyangASCIITextProps };
 
 const ZhaoyangASCIIText: React.FC<ZhaoyangASCIITextProps> = ({
   theme = 'matrix',
   animationType = 'typewriter',
   size = 'medium',
   speed = 100,
-  className = ''
+  className = '',
 }) => {
-  const [displayedText, setDisplayedText] = useState<string[]>([]);
-  const [currentLine, setCurrentLine] = useState(0);
-  const [currentChar, setCurrentChar] = useState(0);
-  const [isComplete, setIsComplete] = useState(false);
-  const intervalRef = useRef<NodeJS.Timeout | null>(null);
-
-  // ZHAOYANG ASCII 艺术字
-  const asciiLines = [
-    '███████╗██╗  ██╗ █████╗  ██████╗ ██╗   ██╗ █████╗ ███╗   ██╗ ██████╗ ',
-    '╚══███╔╝██║  ██║██╔══██╗██╔═══██╗╚██╗ ██╔╝██╔══██╗████╗  ██║██╔════╝ ',
-    '  ███╔╝ ███████║███████║██║   ██║ ╚████╔╝ ███████║██╔██╗ ██║██║  ███╗',
-    ' ███╔╝  ██╔══██║██╔══██║██║   ██║  ╚██╔╝  ██╔══██║██║╚██╗██║██║   ██║',
-    '███████╗██║  ██║██║  ██║╚██████╔╝   ██║   ██║  ██║██║ ╚████║╚██████╔╝',
-    '╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝    ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═══╝ ╚═════╝ '
-  ];
-
-  // 简化版 ASCII 字符（用于小屏幕）
-  const simpleAsciiLines = [
-    '███████ ██   ██  █████   ██████  ██    ██  █████  ███    ██  ██████ ',
-    '     ██ ██   ██ ██   ██ ██    ██  ██  ██  ██   ██ ████   ██ ██      ',
-    '  ████  ███████ ███████ ██    ██   ████   ███████ ██ ██  ██ ██   ███',
-    ' ██     ██   ██ ██   ██ ██    ██    ██    ██   ██ ██  ██ ██ ██    ██',
-    '███████ ██   ██ ██   ██  ██████     ██    ██   ██ ██   ████  ██████ '
-  ];
-
-  // 主题配色
-  const themes = {
-    matrix: {
-      primary: '#00ff41',
-      secondary: '#008f11',
-      glow: '#00ff41',
-      background: 'rgba(0, 0, 0, 0.8)'
-    },
-    cyber: {
-      primary: '#00d4ff',
-      secondary: '#0099cc',
-      glow: '#00d4ff',
-      background: 'rgba(0, 20, 40, 0.8)'
-    },
-    neon: {
-      primary: '#ff00ff',
-      secondary: '#cc00cc',
-      glow: '#ff00ff',
-      background: 'rgba(20, 0, 20, 0.8)'
-    }
-  };
-
-  // 尺寸配置
-  const sizeConfig = {
-    small: {
-      fontSize: '0.5rem',
-      lineHeight: '0.6rem',
-      useSimple: true
-    },
-    medium: {
-      fontSize: '0.8rem',
-      lineHeight: '1rem',
-      useSimple: false
-    },
-    large: {
-      fontSize: '1.2rem',
-      lineHeight: '1.4rem',
-      useSimple: false
-    }
-  };
-
   const currentTheme = themes[theme];
   const currentSize = sizeConfig[size];
   const lines = currentSize.useSimple ? simpleAsciiLines : asciiLines;
 
-  // 打字机效果
-  useEffect(() => {
-    if (animationType === 'typewriter') {
-      if (currentLine < lines.length) {
-        if (currentChar < lines[currentLine].length) {
-          intervalRef.current = setTimeout(() => {
-            setDisplayedText(prev => {
-              const newText = [...prev];
-              if (!newText[currentLine]) newText[currentLine] = '';
-              newText[currentLine] += lines[currentLine][currentChar];
-              return newText;
-            });
-            setCurrentChar(prev => prev + 1);
-          }, speed);
-        } else {
-          setCurrentLine(prev => prev + 1);
-          setCurrentChar(0);
-        }
-      } else {
-        setIsComplete(true);
-      }
-    } else {
-      // 其他动画类型直接显示完整文本
-      setDisplayedText(lines);
-      setIsComplete(true);
-    }
-
-    return () => {
-      if (intervalRef.current) {
-        clearTimeout(intervalRef.current);
-      }
-    };
-  }, [currentLine, currentChar, animationType, speed, lines]);
-
-  // 重置动画
-  const resetAnimation = () => {
-    setDisplayedText([]);
-    setCurrentLine(0);
-    setCurrentChar(0);
-    setIsComplete(false);
-  };
-
-  // 波浪效果
-  const getWaveDelay = (lineIndex: number, charIndex: number) => {
-    if (animationType === 'wave') {
-      return (lineIndex * 0.1 + charIndex * 0.02) + 's';
-    }
-    return '0s';
-  };
-
-  // 脉冲效果
-  const getPulseDelay = (lineIndex: number) => {
-    if (animationType === 'pulse') {
-      return (lineIndex * 0.2) + 's';
-    }
-    return '0s';
-  };
+  const {
+    displayedText,
+    isComplete,
+    resetAnimation,
+    getWaveDelay,
+    getPulseDelay,
+  } = useAsciiTextAnimation({ animationType, speed, lines });
 
   return (
     <div className={`zhaoyang-ascii-container ${className}`}>
@@ -235,7 +121,7 @@ const ZhaoyangASCIIText: React.FC<ZhaoyangASCIITextProps> = ({
               animationType === 'pulse' ? 'pulse-line' : ''
             }`}
             style={{
-              '--pulse-delay': getPulseDelay(lineIndex)
+              '--pulse-delay': getPulseDelay(lineIndex),
             } as React.CSSProperties}
           >
             {animationType === 'wave' || animationType === 'glitch'
@@ -248,7 +134,7 @@ const ZhaoyangASCIIText: React.FC<ZhaoyangASCIITextProps> = ({
                       animationType === 'glitch' ? 'glitch-char' : ''
                     }`}
                     style={{
-                      '--wave-delay': getWaveDelay(lineIndex, charIndex)
+                      '--wave-delay': getWaveDelay(lineIndex, charIndex),
                     } as React.CSSProperties}
                   >
                     {char}
@@ -257,7 +143,7 @@ const ZhaoyangASCIIText: React.FC<ZhaoyangASCIITextProps> = ({
               : line}
           </div>
         ))}
-        
+
         {animationType === 'typewriter' && !isComplete && (
           <span className="typewriter-cursor">█</span>
         )}
@@ -275,7 +161,7 @@ const ZhaoyangASCIIText: React.FC<ZhaoyangASCIITextProps> = ({
               borderRadius: '4px',
               cursor: 'pointer',
               fontFamily: 'inherit',
-              fontSize: '0.8rem'
+              fontSize: '0.8rem',
             }}
           >
             重播动画
@@ -287,4 +173,3 @@ const ZhaoyangASCIIText: React.FC<ZhaoyangASCIITextProps> = ({
 };
 
 export default ZhaoyangASCIIText;
-export type { ZhaoyangASCIITextProps };

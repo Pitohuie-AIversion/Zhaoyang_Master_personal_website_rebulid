@@ -1,6 +1,5 @@
 import express from 'express';
 import multer from 'multer';
-import { utils } from '../utils/combined.js';
 
 const router = express.Router();
 
@@ -87,7 +86,8 @@ sections.forEach(section => {
   router.post(`/data/${section}`, async (req, res) => {
     try {
       const supabase = req.supabase;
-      const { id, ...data } = req.body; // Remove id if present
+      const data = { ...req.body };
+      delete data.id;
       const { data: newItem, error } = await supabase.from(tableName).insert([data]).select().single();
       if (error) throw error;
       res.json({ success: true, data: newItem });
@@ -101,7 +101,10 @@ sections.forEach(section => {
     try {
       const supabase = req.supabase;
       const { id } = req.params;
-      const { id: bodyId, created_at, updated_at, ...data } = req.body;
+      const data = { ...req.body };
+      delete data.id;
+      delete data.created_at;
+      delete data.updated_at;
       const { data: updatedItem, error } = await supabase
         .from(tableName)
         .update({ ...data, updated_at: new Date().toISOString() })

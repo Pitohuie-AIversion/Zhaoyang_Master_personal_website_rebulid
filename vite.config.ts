@@ -4,15 +4,12 @@ import tsconfigPaths from "vite-tsconfig-paths";
 import { VitePWA } from 'vite-plugin-pwa';
 
 // https://vite.dev/config/
-export default defineConfig({
+export default defineConfig(({ command, mode }) => {
+  const isDevelopment = command === 'serve' && mode === 'development';
+
+  return {
   plugins: [
-    react({
-      babel: {
-        plugins: [
-          'react-dev-locator',
-        ],
-      },
-    }),
+    react(),
     tsconfigPaths(),
     VitePWA({
       registerType: 'autoUpdate',
@@ -35,7 +32,25 @@ export default defineConfig({
       },
       workbox: {
         cleanupOutdatedCaches: true,
-        globPatterns: ['**/*.{js,css,html,ico,png,svg,json,pdf}']
+        globPatterns: ['**/*.{js,css,html,ico,png,svg,json,pdf}'],
+        globIgnores: [
+          '**/assets/js/charts-*.js',
+          '**/assets/js/ParticleField-*.js',
+          '**/assets/js/ParticleFieldSettings-*.js'
+        ],
+        runtimeCaching: [
+          {
+            urlPattern: /\/assets\/js\/(?:charts|ParticleField|ParticleFieldSettings)-[^/]+\.js$/,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'optional-visualization-chunks',
+              expiration: {
+                maxEntries: 6,
+                maxAgeSeconds: 30 * 24 * 60 * 60
+              }
+            }
+          }
+        ]
       }
     })
   ],
@@ -43,8 +58,6 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: {
-          // 将React相关库分离到单独的chunk
-          'react-vendor': ['react', 'react-dom'],
           // 将路由相关库分离
           'router': ['react-router-dom'],
           // 将UI组件库分离
@@ -80,7 +93,7 @@ export default defineConfig({
     // 新增：启用构建分析
     reportCompressedSize: true,
     // 安全：生产环境禁用sourcemap，开发环境启用
-    sourcemap: process.env.NODE_ENV !== 'production'
+    sourcemap: isDevelopment
   },
   // 优化依赖预构建
   optimizeDeps: {
@@ -116,4 +129,5 @@ export default defineConfig({
       ]
     }
   }
+}
 })

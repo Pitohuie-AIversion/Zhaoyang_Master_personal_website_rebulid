@@ -1,4 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://zhaoyang-mou.com/sitemap.xml
-
+Sitemap: https://www.zhaoyangmu.cloud/sitemap.xml

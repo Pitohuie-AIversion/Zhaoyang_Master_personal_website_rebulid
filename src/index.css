@@ -12,3 +12,28 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+html {
+  overflow-x: clip;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-width: 320px;
+  overflow-x: clip;
+}
+
+::selection {
+  background: rgb(37 99 235 / 22%);
+}
+
+:where(a, button, input, textarea, select):focus-visible {
+  outline: 3px solid rgb(37 99 235 / 70%);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}

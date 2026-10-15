@@ -3,12 +3,14 @@ import { BlogList } from '../components/features/blog/BlogList';
 import { useTranslation } from '../components/common/TranslationProvider';
 import { SimpleMotion } from '../components/animations/SimpleMotion';
 import { StructuredDataSEO } from '../components/seo/StructuredDataSEO';
+import { BlogSEO } from '../components/seo/SEOOptimization';
 
 const BlogPage: React.FC = () => {
   const { t } = useTranslation();
 
   return (
     <div className="min-h-screen">
+      <BlogSEO />
       {/* SEO结构化数据 */}
       <StructuredDataSEO
         type="blog"

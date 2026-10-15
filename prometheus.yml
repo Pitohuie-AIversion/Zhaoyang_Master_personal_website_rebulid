@@ -3,6 +3,6 @@ global:
 
 scrape_configs:
   - job_name: 'node_app'
+    metrics_path: /api/metrics
     static_configs:
-      - targets: ['backend:3000'] 
-    # Note: Backend needs to expose /metrics for this to work
+      - targets: ['backend:3000']

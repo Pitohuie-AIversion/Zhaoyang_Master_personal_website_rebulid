@@ -1,5 +1,6 @@
 import React, { lazy, Suspense } from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation } from './TranslationProvider';
 
 // 懒加载图表组件
 const LazyRadarChart = lazy(() => 
@@ -48,11 +49,14 @@ const LazyBarChart = lazy(() =>
 );
 
 // 图表加载骨架屏
-const ChartSkeleton: React.FC = () => (
-  <div className="animate-pulse h-96 bg-gray-200 rounded-lg flex items-center justify-center">
-    <div className="text-gray-400">加载图表中...</div>
-  </div>
-);
+const ChartSkeleton: React.FC = () => {
+  const { t } = useTranslation();
+  return (
+    <div className="animate-pulse h-96 bg-gray-200 dark:bg-gray-700 rounded-lg flex items-center justify-center">
+      <div className="text-gray-400 dark:text-gray-300">{t('common.loading')}</div>
+    </div>
+  );
+};
 
 // 懒加载雷达图组件
 export const LazyRadarChartComponent: React.FC<{ data: Record<string, unknown>[]; name?: string }> = ({ data, name }) => (

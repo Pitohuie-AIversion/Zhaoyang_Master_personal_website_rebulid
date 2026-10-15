@@ -11,11 +11,25 @@ export default defineConfig({
     setupFiles: './src/test/setup.ts',
     coverage: {
       provider: 'v8',
-      reporter: ['text', 'json', 'html'],
+      reportsDirectory: './coverage',
+      reporter: ['text', 'json-summary', 'html', 'lcov'],
+      include: ['src/**/*.{ts,tsx}'],
       exclude: [
-        'node_modules/',
+        'src/assets/**',
+        'src/locales/**',
+        'src/main.tsx',
+        'src/**/*.d.ts',
+        'src/**/*.test.{ts,tsx}',
+        'src/**/*.spec.{ts,tsx}',
+        'src/test/**',
         'src/test/setup.ts',
       ],
+      thresholds: {
+        statements: 0.5,
+        branches: 0.35,
+        functions: 0.4,
+        lines: 0.5,
+      },
     },
   },
 });

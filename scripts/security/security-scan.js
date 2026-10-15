@@ -4,7 +4,7 @@ import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const rootDir = path.resolve(__dirname, '..');
+const rootDir = path.resolve(__dirname, '../..');
 
 // Configuration
 const CONFIG = {
@@ -12,6 +12,8 @@ const CONFIG = {
   ignoredDirs: [
     'node_modules',
     '.git',
+    '.cache',
+    '.pytest_cache',
     'dist',
     'dist-ssr',
     '.vercel',
@@ -25,14 +27,14 @@ const CONFIG = {
     'pnpm-lock.yaml',
     '.env.example',
     '.env',
-    'scripts/security-scan.js', // Ignore self
-    'scripts/setup-secure-keys.js' // Contains encryption logic, not leaks
+    'scripts/security/security-scan.js', // Ignore self
+    'scripts/security/setup-secure-keys.js' // Contains encryption logic, not leaks
   ],
   // Patterns to search for
   patterns: [
     {
       name: 'Generic API Key',
-      regex: /(api_key|apikey|secret|token)["']?\s*[:=]\s*['"][a-zA-Z0-9_\-]{20,}['"]/i,
+      regex: /(api_key|apikey|secret|token)["']?\s*[:=]\s*['"][a-zA-Z0-9_-]{20,}['"]/i,
       severity: 'HIGH'
     },
     {
@@ -47,21 +49,35 @@ const CONFIG = {
     },
     {
       name: 'Private Key',
-      regex: /-----BEGIN PRIVATE KEY-----/,
+      regex: /-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----/,
       severity: 'CRITICAL'
     },
     {
       name: 'Supabase Service Key',
-      regex: /eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9\.[a-zA-Z0-9_\-]+\.[a-zA-Z0-9_\-]+/,
+      regex: /eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9\.[a-zA-Z0-9_-]+\.[a-zA-Z0-9_-]+/,
       severity: 'CRITICAL'
     },
     {
       name: 'OpenAI Key',
-      regex: /sk-[a-zA-Z0-9]{48}/,
+      regex: /\bsk-(?:proj-)?[a-zA-Z0-9_-]{20,}\b/,
+      severity: 'CRITICAL'
+    },
+    {
+      name: 'GitHub Token',
+      regex: /\bgh[pousr]_[a-zA-Z0-9]{36,}\b/,
+      severity: 'CRITICAL'
+    },
+    {
+      name: 'Google API Key',
+      regex: /\bAIza[a-zA-Z0-9_-]{35}\b/,
       severity: 'CRITICAL'
     }
   ]
 };
+
+const binaryExtensions = new Set([
+  '.docx', '.gif', '.ico', '.jpeg', '.jpg', '.pdf', '.png', '.webp',
+]);
 
 let issuesFound = 0;
 
@@ -86,7 +102,7 @@ function scanFile(filePath) {
           }
 
           console.error(`\x1b[31m[FAIL]\x1b[0m ${pattern.name} found in ${path.relative(rootDir, filePath)}:${index + 1}`);
-          console.error(`       Line: ${line.trim().substring(0, 100)}...`);
+          // Never echo the matching line: CI logs must not amplify a leaked secret.
           issuesFound++;
         }
       });
@@ -97,19 +113,32 @@ function scanFile(filePath) {
 }
 
 function scanDirectory(dir) {
-  const files = fs.readdirSync(dir);
+  let files;
+  try {
+    files = fs.readdirSync(dir, { withFileTypes: true });
+  } catch (error) {
+    console.warn(`Skipping unreadable directory ${path.relative(rootDir, dir)}: ${error.code || error.message}`);
+    return;
+  }
 
-  files.forEach(file => {
+  files.forEach(entry => {
+    const file = entry.name;
     const fullPath = path.join(dir, file);
-    const stat = fs.statSync(fullPath);
 
-    if (stat.isDirectory()) {
+    if (entry.isSymbolicLink()) {
+      return;
+    }
+
+    if (entry.isDirectory()) {
       if (!CONFIG.ignoredDirs.includes(file)) {
         scanDirectory(fullPath);
       }
     } else {
       const relativePath = path.relative(rootDir, fullPath).replace(/\\/g, '/');
-      if (!CONFIG.ignoredFiles.includes(file) && !CONFIG.ignoredFiles.includes(relativePath) && !file.endsWith('.map') && !file.endsWith('.png') && !file.endsWith('.jpg') && !file.endsWith('.pdf')) {
+      if (!CONFIG.ignoredFiles.includes(file)
+        && !CONFIG.ignoredFiles.includes(relativePath)
+        && !file.endsWith('.map')
+        && !binaryExtensions.has(path.extname(file).toLowerCase())) {
         scanFile(fullPath);
       }
     }

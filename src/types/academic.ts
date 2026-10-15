@@ -95,3 +95,54 @@ export interface PaperListProps {
   maxItems?: number;
   className?: string;
 }
+
+// 学术成果条目定义
+export interface AcademicPublication {
+  id: string;
+  title: string;
+  journal: string;
+  year: number;
+  status: 'published' | 'accepted' | 'under_review' | 'in_preparation';
+  authors: string[];
+  description: string;
+  doi?: string;
+  type: 'journal' | 'conference';
+}
+
+export interface PublicationItem {
+  id: number | string;
+  title: string;
+  authors: string;
+  journal: string;
+  year: string;
+  type: 'journal' | 'conference' | 'patent';
+  status: 'published' | 'under_review' | 'in_preparation';
+  abstract: string;
+  keywords: string[];
+  doi?: string;
+  url?: string;
+  citations?: number;
+}
+
+export interface AcademicPatent {
+  id: string;
+  title: string;
+  number: string;
+  applicant: string;
+  applicationDate: string;
+  publicDate: string;
+  priorityDate: string;
+  status: 'granted' | 'published' | 'pending';
+  type: 'invention' | 'utility' | 'design';
+  description: string;
+}
+
+export interface AcademicAward {
+  id: string;
+  title: string;
+  organization: string;
+  date: string;
+  level: 'national' | 'provincial' | 'university';
+  description: string;
+  certificateNumber?: string;
+}

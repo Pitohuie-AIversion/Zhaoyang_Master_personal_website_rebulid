@@ -21,6 +21,9 @@ interface UnifiedButtonProps {
   type?: 'button' | 'submit' | 'reset';
   className?: string;
   ariaLabel?: string;
+  ariaExpanded?: boolean;
+  ariaControls?: string;
+  ariaHaspopup?: React.AriaAttributes['aria-haspopup'];
   title?: string;
   as?: string;
   href?: string;
@@ -74,6 +77,9 @@ export const UnifiedButton: React.FC<UnifiedButtonProps> = ({
   type = 'button',
   className = '',
   ariaLabel,
+  ariaExpanded,
+  ariaControls,
+  ariaHaspopup,
   title,
   href,
   target,
@@ -119,7 +125,10 @@ export const UnifiedButton: React.FC<UnifiedButtonProps> = ({
     <Component
       {...componentProps}
       className={finalStyles}
-      aria-label={ariaLabel}
+      aria-label={ariaLabel || title}
+      aria-expanded={ariaExpanded}
+      aria-controls={ariaControls}
+      aria-haspopup={ariaHaspopup}
       title={title}
       whileTap={disabled || loading ? {} : { scale: 0.98 }}
       transition={{ duration: 0.1 }}

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { SimpleMotion } from '../components/animations/SimpleMotion';
 import { useTranslation } from '../components/common/TranslationProvider';
 import SEOOptimization from '../components/seo/SEOOptimization';
@@ -20,9 +21,9 @@ export default function NotFound() {
           <p className="text-lg text-secondary-dark theme-transition mb-6">
             {t('common.notFound.description') as string}
           </p>
-          <a href="/" className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200">
+          <Link to="/" className="inline-flex px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200">
             {t('common.notFound.backHome') as string}
-          </a>
+          </Link>
         </SimpleMotion>
       </div>
     </div>

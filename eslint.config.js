@@ -5,7 +5,17 @@ import reactRefresh from 'eslint-plugin-react-refresh'
 import tseslint from 'typescript-eslint'
 
 export default tseslint.config(
-  { ignores: ['dist', 'backup'] },
+  {
+    ignores: [
+      'backup',
+      'coverage',
+      'dist',
+      'node_modules',
+      '.pytest_cache',
+      'tests/legacy_scripts',
+      'tests/manual_html',
+    ],
+  },
   {
     extends: [js.configs.recommended, ...tseslint.configs.recommended],
     files: ['**/*.{ts,tsx}'],
@@ -29,6 +39,32 @@ export default tseslint.config(
           argsIgnorePattern: '^_',
           varsIgnorePattern: '^_',
           caughtErrorsIgnorePattern: '^_',
+        },
+      ],
+    },
+  },
+  {
+    extends: [js.configs.recommended],
+    files: [
+      'api/**/*.js',
+      'scripts/build-production.js',
+      'scripts/i18n-validate.js',
+      'scripts/security/security-scan.js',
+      'scripts/smoke-api.js',
+      '*.{js,mjs,cjs}',
+    ],
+    languageOptions: {
+      ecmaVersion: 'latest',
+      globals: globals.node,
+      sourceType: 'module',
+    },
+    rules: {
+      'no-unused-vars': [
+        'error',
+        {
+          argsIgnorePattern: '^_',
+          caughtErrorsIgnorePattern: '^_',
+          varsIgnorePattern: '^_',
         },
       ],
     },

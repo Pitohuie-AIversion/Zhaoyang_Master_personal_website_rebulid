@@ -29,8 +29,6 @@ export class GoogleScholarService {
         return cached.data;
       }
 
-      // 模拟Google Scholar数据获取
-      // 实际项目中需要使用Google Scholar API或爬虫
       const profile = await this.fetchScholarData(scholarId);
 
       if (profile) {
@@ -91,79 +89,11 @@ export class GoogleScholarService {
   }
 
   /**
-   * 模拟Google Scholar数据获取
-   * 实际项目中需要替换为真实的API调用
+   * Google Scholar has no official public API. Do not manufacture profile
+   * metrics when a verified data source is unavailable.
    */
-  private async fetchScholarData(scholarId: string): Promise<ScholarProfile | null> {
-    // 这里使用模拟数据，实际项目中需要调用Google Scholar API
-    // 由于Google Scholar没有官方API，可以考虑使用第三方服务如serpapi.com
-
-    await new Promise(resolve => setTimeout(resolve, 1000)); // 模拟网络延迟
-
-    return {
-      id: scholarId,
-      name: 'Zhaoyang Mu',
-      affiliation: 'Dalian Maritime University & Westlake University',
-      citations: 156,
-      hIndex: 7,
-      i10Index: 5,
-      papers: [
-        {
-          "title": "Generalizing morphologies in dam break simulations using transformer model",
-          "authors": ["Zhaoyang Mu", "Aoming Liang", "Mingming Ge", "Dashuai Chen", "Dixia Fan", "Minyi Xu"],
-          "journal": "Physics of Fluids",
-          "year": 2025,
-          "citations": 0,
-          "doi": "10.1063/5.0187644",
-          "url": "https://doi.org/10.1063/5.0187644"
-        },
-        {
-          "title": "Rs-ModCubes: Self-reconfigurable, scalable, modular cubic robots for underwater operations",
-          "authors": ["Zhaoyang Mu", "et al."],
-          "journal": "IEEE Robotics and Automation Letters",
-          "year": 2025,
-          "citations": 0,
-          "doi": "10.1109/LRA.2025.10891552",
-          "url": "https://ieeexplore.ieee.org/document/10891552/"
-        },
-        {
-          title: 'Sparse-to-Dense Transformer for Marine Flow Field Reconstruction',
-          authors: ['Zhaoyang Mu', 'Shunqi Pan', 'Zongjun Li'],
-          journal: 'Ocean Engineering',
-          year: 2024,
-          citations: 28,
-          doi: '10.1016/j.oceaneng.2024.123456',
-          url: 'https://doi.org/10.1016/j.oceaneng.2024.123456'
-        },
-        {
-          title: 'Bio-inspired Fin Propulsion System for Underwater Robots',
-          authors: ['Zhaoyang Mu', 'Zongjun Li', 'Wei Zhang'],
-          journal: 'Bioinspiration & Biomimetics',
-          year: 2024,
-          citations: 24,
-          doi: '10.1088/1748-3190/abcd12',
-          url: 'https://doi.org/10.1088/1748-3190/abcd12'
-        },
-        {
-          title: 'Transformer Neural Operators for Environmental Flow Prediction',
-          authors: ['Zhaoyang Mu', 'Shunqi Pan'],
-          journal: 'Environmental Modelling & Software',
-          year: 2023,
-          citations: 18,
-          doi: '10.1016/j.envsoft.2023.105678',
-          url: 'https://doi.org/10.1016/j.envsoft.2023.105678'
-        },
-        {
-          title: 'Underwater Robot Path Planning with Deep Reinforcement Learning',
-          authors: ['Zhaoyang Mu', 'Li Wang', 'Wei Zhang'],
-          journal: 'IEEE Access',
-          year: 2023,
-          citations: 9,
-          doi: '10.1109/ACCESS.2023.1234567',
-          url: 'https://doi.org/10.1109/ACCESS.2023.1234567'
-        }
-      ]
-    };
+  private async fetchScholarData(_scholarId: string): Promise<ScholarProfile | null> {
+    return null;
   }
 
   /**
