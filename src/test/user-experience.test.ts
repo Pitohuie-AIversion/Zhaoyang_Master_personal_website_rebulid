@@ -127,5 +127,37 @@ describe('user experience and service validation', () => {
     expect(enLocale.particleField.navigation.main).toBe('Main Display');
     expect(enLocale.particleField.navigation.settings).toBe('Configuration Panel');
   });
+
+  it('provides comprehensive bilingual resume fields and blog localization', () => {
+    // Resume fields parity
+    expect(zhLocale.common.resume.personalInfo).toBe('个人信息');
+    expect(zhLocale.common.resume.fields.title).toBe('标题');
+    expect(zhLocale.common.resume.fields.degree).toBe('学位');
+    expect(zhLocale.common.resume.fields.institution).toBe('院校/机构');
+    expect(zhLocale.common.resume.fields.website).toBe('个人主页');
+
+    expect(enLocale.common.resume.personalInfo).toBe('Personal Information');
+    expect(enLocale.common.resume.fields.title).toBe('Title');
+    expect(enLocale.common.resume.fields.degree).toBe('Degree');
+    expect(enLocale.common.resume.fields.institution).toBe('Institution');
+    expect(enLocale.common.resume.fields.website).toBe('Website');
+
+    // Blog localization parity
+    expect(zhLocale.blog.title).toBe('学术博客');
+    expect(zhLocale.blog.searchPlaceholder).toBe('搜索博客文章...');
+    expect(zhLocale.blog.sortByDate).toBe('按日期');
+    expect(zhLocale.blog.categories).toBe('分类');
+    expect(zhLocale.blog.tags).toBe('标签');
+    expect(zhLocale.blog.readMore).toBe('阅读更多');
+    expect(zhLocale.blog.like).toBe('点赞');
+
+    expect(enLocale.blog.title).toBe('Academic Blog');
+    expect(enLocale.blog.searchPlaceholder).toBe('Search blog posts...');
+    expect(enLocale.blog.sortByDate).toBe('By Date');
+    expect(enLocale.blog.categories).toBe('Categories');
+    expect(enLocale.blog.tags).toBe('Tags');
+    expect(enLocale.blog.readMore).toBe('Read More');
+    expect(enLocale.blog.like).toBe('Like');
+  });
 });
 

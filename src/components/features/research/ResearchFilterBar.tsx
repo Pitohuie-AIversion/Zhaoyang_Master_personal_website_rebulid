@@ -47,7 +47,7 @@ export const ResearchFilterBar: React.FC<ResearchFilterBarProps> = ({
               className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 p-1 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors"
               aria-label={t('common.clear', { fallback: '清除' }) as string}
             >
-              <X className="w-4 h-4" />
+              <X className="w-4 h-4" aria-hidden="true" />
             </button>
           )}
         </div>

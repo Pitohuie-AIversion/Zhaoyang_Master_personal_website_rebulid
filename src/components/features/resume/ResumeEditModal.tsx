@@ -25,6 +25,16 @@ export const ResumeEditModal: React.FC<ResumeEditModalProps> = ({
     }
   }, [editingItem]);
 
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        onClose();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [onClose]);
+
   if (!editingItem || !editingSection) return null;
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -68,10 +78,18 @@ export const ResumeEditModal: React.FC<ResumeEditModalProps> = ({
   );
 
   return (
-    <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+    <div
+      className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="resume-edit-modal-title"
+      onClick={(e) => {
+        if (e.target === e.currentTarget) onClose();
+      }}
+    >
       <div className="bg-white dark:bg-gray-800 rounded-xl shadow-2xl p-6 w-full max-w-2xl max-h-[85vh] overflow-y-auto border border-gray-200 dark:border-gray-700 theme-transition">
         <div className="flex items-center justify-between mb-5 pb-3 border-b border-gray-100 dark:border-gray-700">
-          <h3 className="text-lg font-bold text-gray-900 dark:text-white">
+          <h3 id="resume-edit-modal-title" className="text-lg font-bold text-gray-900 dark:text-white">
             {formData.id
               ? (t('common.edit', { fallback: 'Edit' }) as string)
               : (t('common.add', { fallback: 'Add' }) as string)}{' '}
@@ -79,21 +97,26 @@ export const ResumeEditModal: React.FC<ResumeEditModalProps> = ({
           </h3>
           <button
             onClick={onClose}
+            aria-label={t('common.close', { fallback: 'Close' }) as string}
             className="p-1.5 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
           >
-            <X size={18} />
+            <X size={18} aria-hidden="true" />
           </button>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           {fields.map((field) => (
             <div key={field}>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">
+              <label
+                htmlFor={`field-${field}`}
+                className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5"
+              >
                 {getFieldLabel(field)}
               </label>
 
               {Array.isArray(formData[field]) ? (
                 <textarea
+                  id={`field-${field}`}
                   value={((formData[field] as string[]) || []).join(', ')}
                   onChange={(e) =>
                     setFormData({
@@ -109,6 +132,7 @@ export const ResumeEditModal: React.FC<ResumeEditModalProps> = ({
                 />
               ) : typeof formData[field] === 'boolean' ? (
                 <select
+                  id={`field-${field}`}
                   value={formData[field] ? 'true' : 'false'}
                   onChange={(e) =>
                     setFormData({
@@ -123,6 +147,7 @@ export const ResumeEditModal: React.FC<ResumeEditModalProps> = ({
                 </select>
               ) : (
                 <input
+                  id={`field-${field}`}
                   type="text"
                   value={(formData[field] as string) || ''}
                   onChange={(e) =>

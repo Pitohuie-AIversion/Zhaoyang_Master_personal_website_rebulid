@@ -62,26 +62,26 @@ export const BlogPostCard: React.FC<BlogPostCardProps> = ({
           <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600 dark:text-gray-400 mb-3">
             {showAuthor && (
               <div className="flex items-center gap-1">
-                <User className="w-4 h-4" />
+                <User className="w-4 h-4" aria-hidden="true" />
                 <span>{post.author}</span>
               </div>
             )}
             <div className="flex items-center gap-1">
-              <Calendar className="w-4 h-4" />
+              <Calendar className="w-4 h-4" aria-hidden="true" />
               <span>{formatBlogDate(post.date, language)}</span>
             </div>
             <div className="flex items-center gap-1">
-              <Clock className="w-4 h-4" />
+              <Clock className="w-4 h-4" aria-hidden="true" />
               <span>{getReadingTimeText(post.readingTime, t)}</span>
             </div>
             {showStats && (
               <>
                 <div className="flex items-center gap-1">
-                  <Eye className="w-4 h-4" />
+                  <Eye className="w-4 h-4" aria-hidden="true" />
                   <span>{post.views}</span>
                 </div>
                 <div className="flex items-center gap-1">
-                  <Heart className="w-4 h-4" />
+                  <Heart className="w-4 h-4" aria-hidden="true" />
                   <span>{post.likes}</span>
                 </div>
               </>
@@ -117,17 +117,19 @@ export const BlogPostCard: React.FC<BlogPostCardProps> = ({
 
           {/* 操作按钮 */}
           <div className="flex items-center justify-between">
-            <Link to={`/blog/${post.slug}`}>
-              <UnifiedButton variant="primary" size="sm">
-                {t('blog.readMore') || '阅读更多'}
-              </UnifiedButton>
+            <Link
+              to={`/blog/${post.slug}`}
+              className="inline-flex items-center px-3 py-2 text-sm font-medium rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white shadow-md hover:shadow-lg transition-all"
+            >
+              {t('blog.readMore') || '阅读更多'}
             </Link>
             <UnifiedButton
               variant="ghost"
               size="sm"
-              icon={<Heart className="w-4 h-4" />}
+              icon={<Heart className="w-4 h-4" aria-hidden="true" />}
               onClick={() => onLike(post.id)}
               title={t('blog.like') || '点赞'}
+              ariaLabel={`${t('blog.like') || '点赞'} (${post.likes})`}
             >
               {post.likes}
             </UnifiedButton>

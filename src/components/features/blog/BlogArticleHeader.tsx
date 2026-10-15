@@ -92,23 +92,23 @@ export const BlogArticleHeader: React.FC<BlogArticleHeaderProps> = ({
       {/* 元信息 */}
       <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600 dark:text-gray-400 mb-6">
         <div className="flex items-center gap-1">
-          <User className="w-4 h-4" />
+          <User className="w-4 h-4" aria-hidden="true" />
           <span>{post.author}</span>
         </div>
         <div className="flex items-center gap-1">
-          <Calendar className="w-4 h-4" />
+          <Calendar className="w-4 h-4" aria-hidden="true" />
           <span>{formatDate(post.date)}</span>
         </div>
         <div className="flex items-center gap-1">
-          <Clock className="w-4 h-4" />
+          <Clock className="w-4 h-4" aria-hidden="true" />
           <span>{post.readingTime} {t('blog.minutesRead') || '分钟阅读'}</span>
         </div>
         <div className="flex items-center gap-1">
-          <Eye className="w-4 h-4" />
+          <Eye className="w-4 h-4" aria-hidden="true" />
           <span>{post.views}</span>
         </div>
         <div className="flex items-center gap-1">
-          <MessageCircle className="w-4 h-4" />
+          <MessageCircle className="w-4 h-4" aria-hidden="true" />
           <span>{commentsCount}</span>
         </div>
       </div>
@@ -118,9 +118,10 @@ export const BlogArticleHeader: React.FC<BlogArticleHeaderProps> = ({
         <UnifiedButton
           variant={isLiked ? "primary" : "outline"}
           size="sm"
-          icon={<Heart className="w-4 h-4" />}
+          icon={<Heart className="w-4 h-4" aria-hidden="true" />}
           onClick={onLike}
           disabled={isLiked}
+          ariaLabel={`${post.likes} ${t('blog.like') || '点赞'}`}
         >
           {post.likes} {t('blog.like') || '点赞'}
         </UnifiedButton>
@@ -134,7 +135,8 @@ export const BlogArticleHeader: React.FC<BlogArticleHeaderProps> = ({
         <UnifiedButton
           variant="outline"
           size="sm"
-          icon={<Bookmark className="w-4 h-4" />}
+          icon={<Bookmark className="w-4 h-4" aria-hidden="true" />}
+          ariaLabel={t('blog.bookmark') || '收藏'}
         >
           {t('blog.bookmark') || '收藏'}
         </UnifiedButton>
@@ -142,7 +144,7 @@ export const BlogArticleHeader: React.FC<BlogArticleHeaderProps> = ({
 
       {/* 标签 */}
       <div className="flex flex-wrap items-center gap-2">
-        <Tag className="w-4 h-4 text-gray-600 dark:text-gray-400" />
+        <Tag className="w-4 h-4 text-gray-600 dark:text-gray-400" aria-hidden="true" />
         {post.tags.map(tag => (
           <Link
             key={tag}

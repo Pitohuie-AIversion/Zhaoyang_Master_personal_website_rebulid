@@ -98,7 +98,7 @@ const BlogPost: React.FC<BlogPostProps> = ({ className = '' }) => {
         <UnifiedButton
           variant="ghost"
           size="sm"
-          icon={<ArrowLeft className="w-4 h-4" />}
+          icon={<ArrowLeft className="w-4 h-4" aria-hidden="true" />}
           onClick={() => navigate('/blog')}
           ariaLabel={t('blog.backToBlog') as string}
         >
@@ -154,8 +154,9 @@ const BlogPost: React.FC<BlogPostProps> = ({ className = '' }) => {
         <UnifiedButton
           variant="ghost"
           size="sm"
-          icon={<ChevronLeft className="w-4 h-4" />}
+          icon={<ChevronLeft className="w-4 h-4" aria-hidden="true" />}
           onClick={() => navigate('/blog')}
+          ariaLabel={t('blog.backToBlog') || '返回博客'}
         >
           {t('blog.backToBlog') || '返回博客'}
         </UnifiedButton>
@@ -163,8 +164,9 @@ const BlogPost: React.FC<BlogPostProps> = ({ className = '' }) => {
         <UnifiedButton
           variant="outline"
           size="sm"
-          icon={<ExternalLink className="w-4 h-4" />}
+          icon={<ExternalLink className="w-4 h-4" aria-hidden="true" />}
           onClick={() => window.open('https://scholar.google.com/citations?user=T3AV5RgAAAAJ', '_blank', 'noopener,noreferrer')}
+          ariaLabel={t('blog.viewOnScholar') || '在学术主页查看'}
         >
           {t('blog.viewOnScholar') || '在学术主页查看'}
         </UnifiedButton>
