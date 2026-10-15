@@ -182,5 +182,17 @@ describe('user experience and service validation', () => {
     expect(enLocale.research.status.underReview).toBe('Under Review');
     expect(enLocale.research.status.preparing).toBe('Preparing');
   });
+
+  it('provides bilingual smart search shortcuts and dialog localization', () => {
+    expect(zhLocale.search.placeholder).toBe('搜索论文、专利、项目...');
+    expect(zhLocale.search.recentSearches).toBe('最近搜索');
+    expect(zhLocale.search.escClose).toBe('ESC 关闭');
+    expect(zhLocale.search.tabNavigate).toBe('TAB 导航');
+
+    expect(enLocale.search.placeholder).toBe('Search papers, patents, projects...');
+    expect(enLocale.search.recentSearches).toBe('Recent searches');
+    expect(enLocale.search.escClose).toBe('ESC to close');
+    expect(enLocale.search.tabNavigate).toBe('TAB to navigate');
+  });
 });
 

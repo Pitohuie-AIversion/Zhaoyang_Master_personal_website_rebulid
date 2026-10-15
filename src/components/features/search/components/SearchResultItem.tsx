@@ -17,11 +17,13 @@ export const SearchResultItem: React.FC<SearchResultItemProps> = ({
 }) => {
   return (
     <button
+      type="button"
       onClick={onClick}
+      aria-label={`${result.title} (${getTypeLabel(result.type)})`}
       className="w-full text-left p-3 hover:bg-gray-100 dark:hover:bg-gray-700 rounded transition-colors"
     >
       <div className="flex items-start">
-        <div className="text-2xl mr-3 mt-1">
+        <div className="text-2xl mr-3 mt-1" aria-hidden="true">
           {getResultIcon(result.type)}
         </div>
         <div className="flex-1 min-w-0">
@@ -65,7 +67,7 @@ export const SearchResultItem: React.FC<SearchResultItemProps> = ({
           {result.url && (
             <div className="flex items-center gap-1 text-xs text-blue-600 dark:text-blue-400 mt-2">
               <span>{result.url}</span>
-              <ExternalLink className="w-3 h-3" />
+              <ExternalLink className="w-3 h-3" aria-hidden="true" />
             </div>
           )}
         </div>

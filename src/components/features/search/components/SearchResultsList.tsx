@@ -27,8 +27,8 @@ export const SearchResultsList: React.FC<SearchResultsListProps> = ({
   return (
     <div className="max-h-96 overflow-y-auto">
       {isLoading && (
-        <div className="p-8 text-center">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500 mx-auto mb-4" />
+        <div className="p-8 text-center" role="status">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500 mx-auto mb-4" aria-hidden="true" />
           <p className="text-gray-500 dark:text-gray-400">
             {t('search.searching') || '搜索中...'}
           </p>
@@ -60,7 +60,7 @@ export const SearchResultsList: React.FC<SearchResultsListProps> = ({
 
       {!isLoading && !query.trim() && !hasHistory && (
         <div className="p-8 text-center text-gray-500 dark:text-gray-400">
-          <TrendingUp className="w-8 h-8 mx-auto mb-2 text-gray-400" />
+          <TrendingUp className="w-8 h-8 mx-auto mb-2 text-gray-400" aria-hidden="true" />
           <p className="text-sm">
             {t('search.startTyping') || '输入关键词开始全局搜索'}
           </p>

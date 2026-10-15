@@ -22,12 +22,14 @@ export const SearchHistoryList: React.FC<SearchHistoryListProps> = ({
       <div className="p-4">
         <div className="flex items-center justify-between mb-2">
           <h4 className="text-sm font-medium text-gray-700 dark:text-gray-300">
-            <Clock className="w-4 h-4 inline mr-1" />
+            <Clock className="w-4 h-4 inline mr-1" aria-hidden="true" />
             {t('search.recentSearches') || '最近搜索'}
           </h4>
           <button
+            type="button"
             onClick={onClear}
-            className="text-xs text-red-500 hover:text-red-700"
+            aria-label={t('common.clearHistory') || '清空历史'}
+            className="text-xs text-red-500 hover:text-red-700 transition-colors"
           >
             {t('common.clear') || '清除'}
           </button>

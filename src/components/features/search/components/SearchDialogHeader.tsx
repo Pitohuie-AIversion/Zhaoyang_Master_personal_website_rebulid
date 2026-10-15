@@ -25,7 +25,7 @@ export const SearchDialogHeader = forwardRef<HTMLInputElement, SearchDialogHeade
   }, ref) => {
     return (
       <div className="flex items-center p-4 border-b border-gray-200 dark:border-gray-700">
-        <Search className="w-5 h-5 text-gray-400 mr-3 shrink-0" />
+        <Search className="w-5 h-5 text-gray-400 mr-3 shrink-0" aria-hidden="true" />
         <input
           ref={ref}
           type="text"
@@ -33,9 +33,20 @@ export const SearchDialogHeader = forwardRef<HTMLInputElement, SearchDialogHeade
           onChange={(e) => onQueryChange(e.target.value)}
           onFocus={onFocus}
           placeholder={placeholder || (t('search.placeholder') as string) || '全局搜索...'}
+          aria-label={placeholder || (t('search.placeholder') as string) || '全局搜索'}
           className="flex-1 bg-transparent border-none outline-none text-gray-900 dark:text-gray-100 placeholder-gray-400 text-lg"
         />
         <div className="flex items-center gap-2">
+          {query && (
+            <button
+              type="button"
+              onClick={() => onQueryChange('')}
+              className="p-1.5 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 transition-colors"
+              aria-label={t('common.clear') || '清除'}
+            >
+              <X className="w-4 h-4" aria-hidden="true" />
+            </button>
+          )}
           <button
             type="button"
             onClick={onToggleFilters}
@@ -44,7 +55,7 @@ export const SearchDialogHeader = forwardRef<HTMLInputElement, SearchDialogHeade
             }`}
             aria-label={t('common.filter') || '筛选'}
           >
-            <Filter className="w-5 h-5" />
+            <Filter className="w-5 h-5" aria-hidden="true" />
           </button>
           <button
             type="button"
@@ -52,7 +63,7 @@ export const SearchDialogHeader = forwardRef<HTMLInputElement, SearchDialogHeade
             className="p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-400 transition-colors"
             aria-label={t('common.close') || '关闭'}
           >
-            <X className="w-5 h-5" />
+            <X className="w-5 h-5" aria-hidden="true" />
           </button>
         </div>
       </div>
