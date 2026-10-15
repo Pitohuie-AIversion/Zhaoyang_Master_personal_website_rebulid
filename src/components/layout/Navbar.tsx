@@ -141,7 +141,7 @@ export default function Navbar() {
               ariaHaspopup="dialog"
               className="p-2 w-10 h-10 flex items-center justify-center lg:hidden"
             >
-              {isOpen ? <X size={20} /> : <Menu size={20} />}
+              {isOpen ? <X size={20} aria-hidden="true" /> : <Menu size={20} aria-hidden="true" />}
             </UnifiedButton>
           </div>
         </div>

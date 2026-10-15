@@ -103,5 +103,29 @@ describe('user experience and service validation', () => {
     expect(enLocale.contact.info.phone).toContain('153');
     expect(enLocale.research.educationSectionTitle).toBe('Education');
   });
+
+  it('provides proper academic and particle field localization without placeholders', () => {
+    // Academic localization
+    expect(zhLocale.academic.chatAssistant.title).toBe('智能助手');
+    expect(zhLocale.academic.search.placeholder).toBe('搜索论文、专利、项目...');
+    expect(zhLocale.academic.filters.publications).toBe('学术论文');
+    expect(zhLocale.academic.filters.patents).toBe('发明专利');
+    expect(zhLocale.academic.educationItems.master.title).toBe('大连海事大学 - 人工智能硕士');
+
+    expect(enLocale.academic.chatAssistant.title).toBe('AI Assistant');
+    expect(enLocale.academic.search.placeholder).toBe('Search papers, patents, projects...');
+    expect(enLocale.academic.filters.publications).toBe('Publications');
+
+    // Particle field localization
+    expect(zhLocale.particleField.status.ready).toBe('粒子系统已就绪');
+    expect(zhLocale.particleField.performance.title).toBe('性能统计');
+    expect(zhLocale.particleField.navigation.main).toBe('主显示视图');
+    expect(zhLocale.particleField.navigation.settings).toBe('参数配置面板');
+
+    expect(enLocale.particleField.status.ready).toBe('Particle system ready');
+    expect(enLocale.particleField.performance.title).toBe('Performance Statistics');
+    expect(enLocale.particleField.navigation.main).toBe('Main Display');
+    expect(enLocale.particleField.navigation.settings).toBe('Configuration Panel');
+  });
 });
 

@@ -454,8 +454,8 @@
       "lastUpdated": "最后更新",
       "error": "获取学术指标失败，请稍后重试",
       "notFound": "未找到学术数据",
-      "citations": "citations",
-      "year": "year"
+      "citations": "引用数",
+      "year": "年份"
     },
     "papers": {
       "title": "学术论文",
@@ -472,259 +472,259 @@
       "error": "获取论文数据失败，请稍后重试"
     },
     "chatAssistant": {
-      "title": "AI Assistant",
+      "title": "智能助手",
       "aiLabel": "AI",
-      "subtitle": "Academic Consultation & Navigation",
-      "placeholder": "Please enter your question...",
-      "send": "Send",
-      "typing": "Typing...",
-      "thinking": "Thinking...",
-      "close": "Close",
-      "minimize": "Minimize",
-      "maximize": "Maximize",
-      "newChat": "New Chat",
-      "clearHistory": "Clear History",
+      "subtitle": "学术咨询与导航",
+      "placeholder": "请输入您的问题...",
+      "send": "发送",
+      "typing": "正在输入...",
+      "thinking": "思考中...",
+      "close": "关闭",
+      "minimize": "最小化",
+      "maximize": "最大化",
+      "newChat": "新对话",
+      "clearHistory": "清空历史",
       "quickReplies": {
-        "research": "Research Areas",
-        "projects": "Project Experience",
-        "contact": "Contact Info",
-        "education": "Education Background",
-        "skills": "Skills & Expertise",
-        "publications": "Publications",
-        "patents": "Patent Achievements",
-        "collaboration": "Collaboration Opportunities",
+        "research": "研究方向",
+        "projects": "项目经验",
+        "contact": "联系方式",
+        "education": "教育背景",
+        "skills": "技能专长",
+        "publications": "学术论文",
+        "patents": "专利成果",
+        "collaboration": "合作机会",
         "timeline": {
-          "title": "Academic Journey",
-          "description": "Showcasing my academic and professional development trajectory"
+          "title": "学术历程",
+          "description": "展示我的学术和职业发展轨迹"
         }
       },
-      "welcomeMessage": "Hello! I'm Zhaoyang Mu's AI assistant. I can introduce his academic background, research projects, and professional skills. How can I help you?",
-      "errorMessage": "Sorry, I encountered some issues. Please try again later.",
-      "networkError": "Network connection error. Please check your network and try again.",
-      "rateLimitError": "Too many requests. Please try again later.",
-      "emptyMessage": "Please enter your question",
-      "maxLength": "Message length cannot exceed 1000 characters",
-      "sessionExpired": "Session expired. Please refresh the page to start over.",
+      "welcomeMessage": "您好！我是牟昭阳的智能助手，可以为您介绍他的学术背景、研究项目和技能专长。有什么可以帮助您的吗？",
+      "errorMessage": "抱歉，我遇到了一些问题。请稍后再试。",
+      "networkError": "网络连接异常，请检查网络后重试。",
+      "rateLimitError": "请求过于频繁，请稍后再试。",
+      "emptyMessage": "请输入您的问题",
+      "maxLength": "消息长度不能超过1000字符",
+      "sessionExpired": "会话已过期，请刷新页面重新开始",
       "language": {
-        "switch": "Switch Language",
+        "switch": "切换语言",
         "chinese": "中文",
         "english": "English"
       },
-      "quickRepliesTitle": "Quick Questions",
-      "quickRepliesDescription": "Click the buttons below to start a conversation quickly",
+      "quickRepliesTitle": "快速提问",
+      "quickRepliesDescription": "点击下方按钮快速开始对话",
       "status": {
-        "online": "Online",
-        "offline": "Offline",
-        "connecting": "Connecting...",
-        "error": "Connection Error"
+        "online": "在线",
+        "offline": "离线",
+        "connecting": "连接中...",
+        "error": "连接错误"
       },
       "messages": {
-        "welcome": "Hello! I'm Zhaoyang Mu's AI assistant. I can introduce his academic background, research projects, and professional skills. How can I help you?",
-        "error": "Sorry, I can't answer your question right now. Please try again later.",
-        "offline": "Currently in offline mode. I'll do my best to provide basic information.",
-        "tooLong": "Your message is too long. Please keep it within 1000 characters.",
-        "empty": "Please enter your question.",
-        "rateLimited": "Too many requests. Please try again later."
+        "welcome": "您好！我是牟昭阳的智能助手，可以为您介绍他的学术背景、研究项目和专业技能。请问有什么可以帮助您的吗？",
+        "error": "抱歉，我现在无法回答您的问题。请稍后再试。",
+        "offline": "当前处于离线模式，我会尽力为您提供基本信息。",
+        "tooLong": "您的消息太长了，请控制在1000字符以内。",
+        "empty": "请输入您的问题。",
+        "rateLimited": "请求过于频繁，请稍后再试。"
       },
       "actions": {
-        "copy": "Copy",
-        "copied": "Copied",
-        "retry": "Retry",
-        "feedback": "Feedback"
+        "copy": "复制",
+        "copied": "已复制",
+        "retry": "重试",
+        "feedback": "反馈"
       }
     },
     "search": {
-      "placeholder": "Search papers, patents, projects...",
-      "searching": "Searching...",
-      "noResults": "No results found",
-      "tryDifferentKeywords": "Try different search keywords",
-      "startTyping": "Start typing to search",
-      "searchTips": "Supports Chinese/English search and fuzzy matching",
-      "foundResults": "Found {{count}} results",
-      "filters": "Filters",
-      "filterByType": "Filter by type",
-      "minRelevance": "Minimum relevance",
-      "recentSearches": "Recent searches",
+      "placeholder": "搜索论文、专利、项目...",
+      "searching": "搜索中...",
+      "noResults": "未找到相关结果",
+      "tryDifferentKeywords": "尝试使用不同的关键词搜索",
+      "startTyping": "开始输入以搜索内容",
+      "searchTips": "支持中英文搜索，支持模糊匹配",
+      "foundResults": "找到 {{count}} 个结果",
+      "filters": "筛选",
+      "filterByType": "按类型筛选",
+      "minRelevance": "最小相关度",
+      "recentSearches": "最近搜索",
       "types": {
-        "publication": "Publication",
-        "patent": "Patent",
-        "award": "Award",
-        "project": "Project",
-        "skill": "Skill",
-        "page": "Page"
+        "publication": "论文",
+        "patent": "专利",
+        "award": "奖项",
+        "project": "项目",
+        "skill": "技能",
+        "page": "页面"
       }
     },
-    "filterPublications": "Publications",
-    "filterPatents": "Patents",
-    "filterAwards": "Awards",
-    "publicationFilterAll": "All Status",
-    "publicationFilterPublished": "Published",
-    "publicationFilterUnderReview": "Under Review",
+    "filterPublications": "学术论文",
+    "filterPatents": "发明专利",
+    "filterAwards": "获奖荣誉",
+    "publicationFilterAll": "全部状态",
+    "publicationFilterPublished": "已发表",
+    "publicationFilterUnderReview": "审稿中",
     "academic": {
       "metrics": {
-        "title": "Academic Impact",
-        "totalCitations": "Total Citations",
-        "hIndex": "h-index",
-        "i10Index": "i10-index",
-        "totalPapers": "Total Papers",
-        "yearlyCitations": "Yearly Citations",
-        "citationTrend": "Citation Trend",
-        "aboutHIndex": "About h-index",
-        "hIndexDescription": "h-index is the largest number h such that h publications have at least h citations",
-        "aboutI10Index": "About i10-index",
-        "i10IndexDescription": "i10-index is the number of publications with at least 10 citations",
-        "dataSource": "Data Source",
-        "lastUpdated": "Last Updated",
-        "error": "Failed to fetch academic metrics, please try again later",
-        "notFound": "No academic data found"
+        "title": "学术影响力",
+        "totalCitations": "总引用数",
+        "hIndex": "h指数",
+        "i10Index": "i10指数",
+        "totalPapers": "论文总数",
+        "yearlyCitations": "年度引用",
+        "citationTrend": "引用趋势",
+        "aboutHIndex": "关于h指数",
+        "hIndexDescription": "h指数是指有h篇论文分别被引用了至少h次的最大值",
+        "aboutI10Index": "关于i10指数",
+        "i10IndexDescription": "i10指数是指被引用次数超过10次的论文数量",
+        "dataSource": "数据来源",
+        "lastUpdated": "最后更新",
+        "error": "获取学术指标失败，请稍后重试",
+        "notFound": "未找到学术数据"
       },
       "papers": {
-        "title": "Academic Papers",
-        "sortBy": "Sort By",
-        "filterYear": "Filter Year",
-        "allYears": "All Years",
-        "year": "Year",
-        "citations": "Citations",
-        "citationVelocity": "Citation Velocity",
-        "viewPaper": "View Paper",
-        "totalPapers": "Total Papers",
-        "totalCitations": "Total Citations",
-        "avgCitations": "Avg Citations",
-        "error": "Failed to fetch papers data, please try again later"
+        "title": "学术论文",
+        "sortBy": "排序方式",
+        "filterYear": "筛选年份",
+        "allYears": "所有年份",
+        "year": "年份",
+        "citations": "引用数",
+        "citationVelocity": "引用速度",
+        "viewPaper": "查看论文",
+        "totalPapers": "论文总数",
+        "totalCitations": "总引用数",
+        "avgCitations": "平均引用",
+        "error": "获取论文数据失败，请稍后重试"
       }
     },
     "filters": {
-      "allTypes": "All Types",
-      "publications": "Publications",
-      "patents": "Patents",
-      "awards": "Awards",
-      "allStatus": "All Status",
-      "published": "Published",
-      "underReview": "Under Review"
+      "allTypes": "全部类型",
+      "publications": "学术论文",
+      "patents": "发明专利",
+      "awards": "获奖荣誉",
+      "allStatus": "全部状态",
+      "published": "已发表",
+      "underReview": "审稿中"
     },
-    "education": "Education",
+    "education": "教育经历",
     "educationItems": {
       "master": {
-        "title": "Dalian Maritime University - Master of Artificial Intelligence",
-        "description": "Major: Artificial Intelligence (0812J1) | Supervisor: Prof. Xu Minyi | School of Artificial Intelligence",
-        "period": "2023.08 - 2026.06 (Expected)",
-        "status": "Current"
+        "title": "大连海事大学 - 人工智能硕士",
+        "description": "专业：人工智能（0812J1）| 导师：徐敏义 教授 | 人工智能学院",
+        "period": "2023.08 - 2026.06（预计）",
+        "status": "在读"
       },
       "visiting": {
-        "title": "Westlake University - Visiting Student/Research Assistant",
-        "description": "School of Engineering i⁴-FSI Lab (PI: Prof. Fan Dixia) | Focus: Bionic Undulating Fin Propulsion Simulation",
-        "period": "2024.06 - Present",
-        "status": "Visiting Scholar"
+        "title": "西湖大学 - 访问学生/研究助理",
+        "description": "工学院 i⁴-FSI 实验室（PI：范迪夏）| 方向：仿生波动鳍推进仿真",
+        "period": "2024.06 - 至今",
+        "status": "访问学者"
       },
       "bachelor": {
-        "title": "Dalian Maritime University - Bachelor of Materials Science and Engineering",
-        "description": "Major: Materials Science and Engineering (Polymer) | GPA 3.2/4.0 (82/100) | Rank 7/100",
+        "title": "大连海事大学 - 材料科学与工程学士",
+        "description": "专业：材料科学与工程（高分子）| GPA 3.2/4.0（82/100）| 专业排名 7/100",
         "period": "2019.09 - 2023.06",
-        "status": "Bachelor of Engineering"
+        "status": "工学学士"
       }
     },
     "publications": {
-      "title": "Publications"
+      "title": "学术论文"
     },
     "patents": {
-      "title": "Patents"
+      "title": "发明专利"
     },
     "awards": {
-      "title": "Awards"
+      "title": "获奖荣誉"
     },
-    "academicAchievements": "Academic Achievements",
-    "totalCount": "Total {{count}} {{unit}}",
-    "items": "items",
-    "authors": "Authors",
-    "applicant": "Applicant",
+    "academicAchievements": "学术成就",
+    "totalCount": "共 {{count}} {{unit}}",
+    "items": "项",
+    "authors": "作者",
+    "applicant": "申请人",
     "areas": {
       "scientificComputing": {
-        "title": "Scientific Computing",
-        "description": "Research in computational fluid dynamics, neural operators, and high-performance computing",
+        "title": "科学计算",
+        "description": "计算流体力学、神经算子与高性能计算研究",
         "keywords": [
           "CFD",
-          "Neural Operator",
+          "神经算子",
           "Transformer",
-          "HPC"
+          "高性能计算"
         ],
         "data": {
           "patent1": {
-            "title": "Underwater Robot Dynamic Environment Perception and Navigation Device",
-            "authors": "Zhaoyang Mu, Minyi Xu, et al.",
-            "journal": "Chinese Invention Patent",
-            "abstract": "A novel underwater robot system with dynamic environment perception and navigation capabilities based on bionic principles.",
+            "title": "水下机器人动态环境感知和导航装置",
+            "authors": "牟昭阳, 徐敏义 等",
+            "journal": "中国发明专利",
+            "abstract": "一种基于仿生原理具有动态环境感知和导航能力的新型水下机器人系统。",
             "keywords": [
-              "Underwater Robot",
-              "Environment Perception",
-              "Navigation",
-              "Bionic"
+              "水下机器人",
+              "环境感知",
+              "导航",
+              "仿生"
             ]
           },
           "patent2": {
-            "title": "Fan Array Wind Tunnel Control System",
-            "authors": "Zhaoyang Mu, et al.",
-            "journal": "Chinese Utility Model Patent",
-            "abstract": "Modular 2.5m×2.5m fan array with STM32 multi-board PWM/TACH closed-loop control and VLAN/DHCP network management.",
+            "title": "风扇阵列风洞控制系统",
+            "authors": "牟昭阳 等",
+            "journal": "中国实用新型专利",
+            "abstract": "模块化2.5m×2.5m风扇阵列，STM32多板PWM/TACH闭环控制与VLAN/DHCP网络管理。",
             "keywords": [
-              "Fan Array",
+              "风扇阵列",
               "STM32",
               "PWM/TACH",
               "VLAN",
-              "Experimental Platform"
+              "实验平台"
             ]
           },
           "patent3": {
-            "title": "Marine Observation Buoy Mechanical Structure",
-            "authors": "Zhaoyang Mu, et al.",
-            "journal": "Chinese Utility Model Patent",
-            "abstract": "Optimized mechanical structure design for marine observation buoy with enhanced sealing and corrosion resistance.",
+            "title": "海洋观测浮标机械结构",
+            "authors": "牟昭阳 等",
+            "journal": "中国实用新型专利",
+            "abstract": "优化设计的海洋观测浮标机械结构，具有更强的密封性和抗腐蚀能力。",
             "keywords": [
-              "Marine Buoy",
-              "Mechanical Design",
-              "Sealing",
-              "Ocean Engineering"
+              "海洋浮标",
+              "机械设计",
+              "密封",
+              "海洋工程"
             ]
           },
           "publication1": {
-            "title": "Generalizing morphologies in dam break simulations using transformer model",
-            "authors": "Zhaoyang Mu, Minyi Xu, et al.",
+            "title": "基于Transformer模型的溃坝模拟形态泛化研究",
+            "authors": "牟昭阳, 徐敏义 等",
             "journal": "Physics of Fluids 37(1):016612, 2025",
-            "abstract": "A novel Transformer-based neural operator for cross-geometric generalization in dam-break flow prediction.",
+            "abstract": "一种用于溃坝流预测中跨几何形态泛化的新型Transformer神经算子。",
             "keywords": [
               "Transformer",
-              "Dam Break",
+              "溃坝",
               "CFD",
-              "Neural Operator"
+              "神经算子"
             ]
           },
           "publication2": {
-            "title": "Rs-ModCubes: Self-reconfigurable, scalable, modular cubic robots for underwater operations",
-            "authors": "Zhaoyang Mu, et al.",
+            "title": "Rs-ModCubes: 用于水下作业的自重构、可扩展模块化立方体机器人",
+            "authors": "牟昭阳 等",
             "journal": "IEEE Robotics and Automation Letters, 2025",
-            "abstract": "Self-reconfigurable modular cubic robots designed for underwater operations with scalable architecture.",
+            "abstract": "专为具有可扩展架构的水下作业设计的自重构模块化立方体机器人。",
             "keywords": [
-              "Modular Robots",
-              "Underwater Operations",
-              "Self-reconfiguration",
-              "Scalable"
+              "模块化机器人",
+              "水下作业",
+              "自重构",
+              "可扩展"
             ]
           },
           "publication3": {
-            "title": "Sparse-to-Dense Flow Field Reconstruction using Transformer Neural Operator",
-            "authors": "Zhaoyang Mu, et al.",
-            "journal": "Under Review",
-            "abstract": "A Transformer-based approach for reconstructing dense flow fields from sparse sensor measurements.",
+            "title": "基于Transformer神经算子的稀疏到稠密流场重构",
+            "authors": "牟昭阳 等",
+            "journal": "审稿中",
+            "abstract": "一种基于Transformer从稀疏传感器测量值重构稠密流场的方法。",
             "keywords": [
-              "Sparse Reconstruction",
-              "Flow Field",
+              "稀疏重构",
+              "流场",
               "Transformer",
-              "Neural Operator"
+              "神经算子"
             ]
           }
         },
         "sparseToDense": {
-          "authors": "Zhaoyang Mu, et al.",
-          "journal": "Under Review"
+          "authors": "牟昭阳 等",
+          "journal": "审稿中"
         }
       }
     }
@@ -2938,9 +2938,9 @@
       "shaders": "着色器程序",
       "algorithms": "核心算法",
       "optimization": "性能优化",
-      "rendering": "WebGL 2.0 shader-based particle rendering system",
-      "interaction": "Multi-platform input handling (mouse, touch, keyboard)",
-      "effects": "Real-time post-processing pipeline"
+      "rendering": "基于 WebGL 2.0 着色器的粒子渲染系统",
+      "interaction": "多平台输入交互（鼠标、触控、键盘）",
+      "effects": "实时后期特效处理管线"
     },
     "tech": {
       "performance": "高性能渲染",
@@ -2954,41 +2954,41 @@
     },
     "status": {
       "error": "错误",
-      "loading": "Loading particle system...",
-      "ready": "Particle system ready",
-      "paused": "Paused",
-      "playing": "Playing"
+      "loading": "正在加载粒子系统...",
+      "ready": "粒子系统已就绪",
+      "paused": "已暂停",
+      "playing": "运行中"
     },
     "messages": {
       "webglNotSupported": "您的浏览器不支持WebGL",
-      "performanceWarning": "Performance may be affected on this device",
-      "configSaved": "Configuration saved successfully",
-      "configLoaded": "Configuration loaded successfully",
-      "presetApplied": "Preset applied successfully",
-      "presetSaved": "Preset saved successfully",
-      "presetDeleted": "Preset deleted successfully"
+      "performanceWarning": "当前设备可能出现性能下降",
+      "configSaved": "配置已成功保存",
+      "configLoaded": "配置已成功加载",
+      "presetApplied": "预设已成功应用",
+      "presetSaved": "预设已成功保存",
+      "presetDeleted": "预设已成功删除"
     },
     "performance": {
       "fps": "帧率",
-      "title": "Performance Statistics",
-      "particles": "Particles",
-      "frameTime": "Frame Time",
-      "memory": "Memory Usage",
-      "avgFps": "Avg FPS",
-      "minFps": "Min FPS",
-      "maxFps": "Max FPS",
-      "preset": "Performance Preset"
+      "title": "性能统计",
+      "particles": "粒子数量",
+      "frameTime": "单帧耗时",
+      "memory": "显存/内存占用",
+      "avgFps": "平均帧率",
+      "minFps": "最低帧率",
+      "maxFps": "最高帧率",
+      "preset": "性能预设档位"
     },
     "navigation": {
-      "main": "Main Display",
-      "demo": "Immersive Demo",
-      "settings": "Configuration Panel"
+      "main": "主显示视图",
+      "demo": "沉浸式演示",
+      "settings": "参数配置面板"
     },
     "instructions": {
-      "title": "Control Instructions",
-      "mouse": "Mouse interaction affects particle movement",
-      "touch": "Touch interaction affects particle movement",
-      "keyboard": "Keyboard shortcuts available"
+      "title": "控制说明",
+      "mouse": "移动鼠标与粒子交互",
+      "touch": "触控屏幕与粒子交互",
+      "keyboard": "支持键盘快捷键交互"
     }
   },
   "blog": {
