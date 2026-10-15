@@ -125,7 +125,7 @@ export const UnifiedButton: React.FC<UnifiedButtonProps> = ({
     <Component
       {...componentProps}
       className={finalStyles}
-      aria-label={ariaLabel}
+      aria-label={ariaLabel || title}
       aria-expanded={ariaExpanded}
       aria-controls={ariaControls}
       aria-haspopup={ariaHaspopup}

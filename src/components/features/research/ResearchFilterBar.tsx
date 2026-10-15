@@ -1,5 +1,5 @@
 import React from 'react';
-import { Search, BarChart3 } from 'lucide-react';
+import { Search, BarChart3, X } from 'lucide-react';
 import { UnifiedButton } from '../../common/UnifiedButton';
 import { useTranslation } from '../../common/TranslationProvider';
 
@@ -31,15 +31,25 @@ export const ResearchFilterBar: React.FC<ResearchFilterBarProps> = ({
       <div className="flex flex-col md:flex-row gap-4 items-stretch md:items-center justify-between">
         {/* 搜索框 */}
         <div className="relative flex-1">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 pointer-events-none" aria-hidden="true" />
           <input
             type="text"
             placeholder={t('research.searchPlaceholder') as string}
             aria-label={t('research.searchPlaceholder') as string}
             value={searchTerm}
             onChange={(e) => onSearchChange(e.target.value)}
-            className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition-colors"
+            className="w-full pl-10 pr-10 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition-colors"
           />
+          {searchTerm && (
+            <button
+              type="button"
+              onClick={() => onSearchChange('')}
+              className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 p-1 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors"
+              aria-label={t('common.clear', { fallback: '清除' }) as string}
+            >
+              <X className="w-4 h-4" />
+            </button>
+          )}
         </div>
 
         {/* 过滤器与分析切换 */}

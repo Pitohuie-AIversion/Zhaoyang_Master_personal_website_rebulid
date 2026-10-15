@@ -5,6 +5,7 @@ import { UnifiedButton } from '../../common/UnifiedButton';
 import LazyImage from '../../common/LazyImage';
 import { useTranslation } from '../../common/TranslationProvider';
 import { Project } from '../../../types';
+import { getStatusColor, getStatusText } from './projectsData';
 
 export interface ProjectDetailModalProps {
   project: Project | null;
@@ -66,9 +67,16 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
         </div>
         <div className="p-4 sm:p-6">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
-            <div className="flex items-center gap-3">
+            <div className="flex flex-wrap items-center gap-2 sm:gap-3">
               <span className="text-xs sm:text-sm font-medium text-gray-600 bg-gray-100 dark:bg-gray-700 px-2 sm:px-3 py-1 rounded theme-transition">
                 {t(`projects.categories.${project.category}`) as string}
+              </span>
+              <span
+                className={`text-xs sm:text-sm font-medium px-2 sm:px-3 py-1 rounded theme-transition ${getStatusColor(
+                  project.status
+                )}`}
+              >
+                {getStatusText(project.status, t)}
               </span>
               <span className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 theme-transition">
                 {project.year}
@@ -123,7 +131,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
             <div className="grid grid-cols-1 gap-2">
               {project.highlights.map((highlight, index) => (
                 <div key={index} className="flex items-start">
-                  <div className="w-2 h-2 bg-blue-600 dark:bg-blue-500 rounded-full mr-3 mt-2 flex-shrink-0 theme-transition"></div>
+                  <div className="w-2 h-2 bg-blue-600 dark:bg-blue-500 rounded-full mr-3 mt-2 flex-shrink-0 theme-transition" aria-hidden="true"></div>
                   <span className="text-sm sm:text-base text-gray-700 dark:text-gray-300 theme-transition leading-relaxed">
                     {highlight}
                   </span>
