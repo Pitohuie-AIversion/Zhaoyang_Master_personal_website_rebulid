@@ -22,6 +22,7 @@ export const FooterContactInfo: React.FC = () => {
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
+            aria-hidden="true"
           >
             <path
               strokeLinecap="round"
@@ -32,6 +33,7 @@ export const FooterContactInfo: React.FC = () => {
           </svg>
           <a
             href={`mailto:${t('footer.contact.email') as string}`}
+            aria-label={`${t('common.contact') || '联系'}: ${t('footer.contact.email') as string}`}
             className="break-all text-secondary-dark hover:text-blue-600 dark:hover:text-blue-400 theme-transition"
           >
             {t('footer.contact.email') as string}
@@ -44,6 +46,7 @@ export const FooterContactInfo: React.FC = () => {
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
+              aria-hidden="true"
             >
               <path
                 strokeLinecap="round"
@@ -54,6 +57,7 @@ export const FooterContactInfo: React.FC = () => {
             </svg>
             <a
               href={`tel:${(t('footer.contact.phone') as string).replace(/\s+/g, '')}`}
+              aria-label={`${t('common.contact') || '联系'}: ${t('footer.contact.phone') as string}`}
               className="text-secondary-dark hover:text-blue-600 dark:hover:text-blue-400 theme-transition"
             >
               {t('footer.contact.phone') as string}
@@ -66,6 +70,7 @@ export const FooterContactInfo: React.FC = () => {
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
+            aria-hidden="true"
           >
             <path
               strokeLinecap="round"

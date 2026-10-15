@@ -96,9 +96,9 @@ export const ResearchPublicationsSection: React.FC<ResearchPublicationsSectionPr
                   onClick={() => onOpenModal(pub)}
                   variant="ghost"
                   size="sm"
-                  icon={<Eye className="w-4 h-4" />}
-                  title={t('research.viewDetails') as string}
-                  ariaLabel={t('research.viewDetails') as string}
+                  icon={<Eye className="w-4 h-4" aria-hidden="true" />}
+                  title={`${t('research.viewDetails') as string}: ${pub.title}`}
+                  ariaLabel={`${t('research.viewDetails') as string}: ${pub.title}`}
                 />
               </div>
             </SimpleMotion>

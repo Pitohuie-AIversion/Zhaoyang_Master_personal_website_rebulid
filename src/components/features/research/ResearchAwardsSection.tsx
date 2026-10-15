@@ -81,9 +81,9 @@ export const ResearchAwardsSection: React.FC<ResearchAwardsSectionProps> = ({
                   onClick={() => onOpenModal(award)}
                   variant="ghost"
                   size="sm"
-                  icon={<Eye className="w-4 h-4" />}
-                  title={t('research.viewDetails') as string}
-                  ariaLabel={t('research.viewDetails') as string}
+                  icon={<Eye className="w-4 h-4" aria-hidden="true" />}
+                  title={`${t('research.viewDetails') as string}: ${award.title}`}
+                  ariaLabel={`${t('research.viewDetails') as string}: ${award.title}`}
                 />
               </div>
             </SimpleMotion>

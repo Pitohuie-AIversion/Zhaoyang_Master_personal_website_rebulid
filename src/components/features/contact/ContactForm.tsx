@@ -33,7 +33,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ onSuccess }) => {
   } = useContactForm({ t, onSuccess });
 
   return (
-    <article className="card-dark rounded-lg border border-gray-200 dark:border-gray-700 p-6 theme-transition relative overflow-hidden min-h-[600px]">
+    <article className="card-dark rounded-lg border border-gray-200 dark:border-gray-700 p-4 sm:p-6 theme-transition relative overflow-hidden min-h-[600px]">
       {submitStatus === 'success' ? (
         <ContactSuccessView
           submitMessage={submitMessage}

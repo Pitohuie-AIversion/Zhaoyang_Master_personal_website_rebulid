@@ -95,9 +95,9 @@ export const ResearchPatentsSection: React.FC<ResearchPatentsSectionProps> = ({
                   onClick={() => onOpenModal(patent)}
                   variant="ghost"
                   size="sm"
-                  icon={<Eye className="w-4 h-4" />}
-                  title={t('research.viewDetails') as string}
-                  ariaLabel={t('research.viewDetails') as string}
+                  icon={<Eye className="w-4 h-4" aria-hidden="true" />}
+                  title={`${t('research.viewDetails') as string}: ${patent.title}`}
+                  ariaLabel={`${t('research.viewDetails') as string}: ${patent.title}`}
                 />
               </div>
             </SimpleMotion>

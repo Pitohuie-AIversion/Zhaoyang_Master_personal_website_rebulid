@@ -60,7 +60,7 @@ export const ContactBasicFields: React.FC<ContactBasicFieldsProps> = ({
               className="mt-2 text-sm text-red-500 flex items-center"
               as="p"
             >
-              <AlertCircle className="w-4 h-4 mr-1" />
+              <AlertCircle className="w-4 h-4 mr-1" aria-hidden="true" />
               {errors.name}
             </SimpleMotion>
           )}
@@ -98,7 +98,7 @@ export const ContactBasicFields: React.FC<ContactBasicFieldsProps> = ({
               className="mt-2 text-xs sm:text-sm text-red-500 flex items-center leading-tight break-words"
               as="p"
             >
-              <AlertCircle className="w-4 h-4 mr-1 flex-shrink-0" />
+              <AlertCircle className="w-4 h-4 mr-1 flex-shrink-0" aria-hidden="true" />
               <span className="flex-1 min-w-0">{errors.email}</span>
             </SimpleMotion>
           )}
@@ -137,7 +137,7 @@ export const ContactBasicFields: React.FC<ContactBasicFieldsProps> = ({
             className="mt-2 text-xs sm:text-sm text-red-500 flex items-center leading-tight break-words"
             as="p"
           >
-            <AlertCircle className="w-4 h-4 mr-1 flex-shrink-0" />
+            <AlertCircle className="w-4 h-4 mr-1 flex-shrink-0" aria-hidden="true" />
             <span className="flex-1 min-w-0">{errors.subject}</span>
           </SimpleMotion>
         )}

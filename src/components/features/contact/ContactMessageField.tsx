@@ -49,7 +49,7 @@ export const ContactMessageField: React.FC<ContactMessageFieldProps> = ({
           className="mt-2 text-xs sm:text-sm text-red-500 flex items-center leading-tight break-words"
           as="p"
         >
-          <AlertCircle className="w-4 h-4 mr-1 flex-shrink-0" />
+          <AlertCircle className="w-4 h-4 mr-1 flex-shrink-0" aria-hidden="true" />
           <span className="flex-1 min-w-0">{error}</span>
         </SimpleMotion>
       )}

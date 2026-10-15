@@ -159,5 +159,28 @@ describe('user experience and service validation', () => {
     expect(enLocale.blog.readMore).toBe('Read More');
     expect(enLocale.blog.like).toBe('Like');
   });
+
+  it('provides bilingual footer contact and research status integrity', () => {
+    // Footer contact
+    expect(zhLocale.footer.contact.title).toBe('联系方式');
+    expect(enLocale.footer.contact.title).toBe('Contact');
+
+    // Contact form titles
+    expect(zhLocale.contact.sendMessage).toBe('发送消息');
+    expect(enLocale.contact.sendMessage).toBe('Send a Message');
+    expect(zhLocale.contact.collaborationType).toBe('合作类型');
+    expect(enLocale.contact.collaborationType).toBe('Collaboration Type');
+
+    // Research status parity
+    expect(zhLocale.research.status.published).toBe('已发表');
+    expect(zhLocale.research.status.accepted).toBe('已接收');
+    expect(zhLocale.research.status.underReview).toBe('审稿中');
+    expect(zhLocale.research.status.preparing).toBe('准备中');
+
+    expect(enLocale.research.status.published).toBe('Published');
+    expect(enLocale.research.status.accepted).toBe('Accepted');
+    expect(enLocale.research.status.underReview).toBe('Under Review');
+    expect(enLocale.research.status.preparing).toBe('Preparing');
+  });
 });
 
