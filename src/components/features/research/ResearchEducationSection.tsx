@@ -9,7 +9,7 @@ export const ResearchEducationSection: React.FC = () => {
   return (
     <div className="card-dark rounded-lg shadow-md-dark p-4 sm:p-6 theme-transition">
       <div className="flex items-center mb-6">
-        <div className="w-10 h-10 rounded-lg bg-green-50 dark:bg-green-900/40 text-green-600 dark:text-green-400 flex items-center justify-center mr-3 flex-shrink-0 theme-transition">
+        <div className="w-10 h-10 rounded-lg bg-green-50 dark:bg-green-900/40 text-green-600 dark:text-green-400 flex items-center justify-center mr-3 flex-shrink-0 theme-transition" aria-hidden="true">
           <GraduationCap className="w-5 h-5" />
         </div>
         <h3 className="text-xl md:text-2xl font-semibold text-primary-dark theme-transition">
@@ -20,7 +20,7 @@ export const ResearchEducationSection: React.FC = () => {
         <SimpleMotion
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="border-l-4 border-blue-600 pl-6 hover:bg-gray-50 dark:hover:bg-gray-800/40 p-4 rounded-r-lg transition-colors"
+          className="border-l-4 border-blue-600 pl-4 sm:pl-6 hover:bg-gray-50 dark:hover:bg-gray-800/40 p-3 sm:p-4 rounded-r-lg transition-colors"
         >
           <h4 className="text-lg font-medium text-primary-dark theme-transition mb-2">
             {t('research.educationItems.master.title') as string}
@@ -42,7 +42,7 @@ export const ResearchEducationSection: React.FC = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="border-l-4 border-purple-600 pl-6 hover:bg-gray-50 dark:hover:bg-gray-800/40 p-4 rounded-r-lg transition-colors"
+          className="border-l-4 border-purple-600 pl-4 sm:pl-6 hover:bg-gray-50 dark:hover:bg-gray-800/40 p-3 sm:p-4 rounded-r-lg transition-colors"
         >
           <h4 className="text-lg font-medium text-primary-dark theme-transition mb-2">
             {t('research.educationItems.visiting.title') as string}
@@ -64,7 +64,7 @@ export const ResearchEducationSection: React.FC = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="border-l-4 border-green-600 pl-6 hover:bg-gray-50 dark:hover:bg-gray-800/40 p-4 rounded-r-lg transition-colors"
+          className="border-l-4 border-green-600 pl-4 sm:pl-6 hover:bg-gray-50 dark:hover:bg-gray-800/40 p-3 sm:p-4 rounded-r-lg transition-colors"
         >
           <h4 className="text-lg font-medium text-primary-dark theme-transition mb-2">
             {t('research.educationItems.bachelor.title') as string}

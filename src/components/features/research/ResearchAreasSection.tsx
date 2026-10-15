@@ -16,7 +16,7 @@ export const ResearchAreasSection: React.FC = () => {
         className="card-dark rounded-lg shadow-md-dark p-4 sm:p-6 hover:shadow-lg-dark theme-transition"
       >
         <div className="flex items-center mb-4">
-          <div className="w-10 h-10 rounded-lg bg-blue-50 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400 flex items-center justify-center mr-3 flex-shrink-0 theme-transition">
+          <div className="w-10 h-10 rounded-lg bg-blue-50 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400 flex items-center justify-center mr-3 flex-shrink-0 theme-transition" aria-hidden="true">
             <Cpu className="w-5 h-5" />
           </div>
           <h2 className="text-xl md:text-2xl font-semibold text-primary-dark theme-transition leading-tight">
@@ -59,7 +59,7 @@ export const ResearchAreasSection: React.FC = () => {
         className="card-dark rounded-lg shadow-md-dark p-4 sm:p-6 hover:shadow-lg-dark theme-transition"
       >
         <div className="flex items-center mb-4">
-          <div className="w-10 h-10 rounded-lg bg-teal-50 dark:bg-teal-900/40 text-teal-600 dark:text-teal-400 flex items-center justify-center mr-3 flex-shrink-0 theme-transition">
+          <div className="w-10 h-10 rounded-lg bg-teal-50 dark:bg-teal-900/40 text-teal-600 dark:text-teal-400 flex items-center justify-center mr-3 flex-shrink-0 theme-transition" aria-hidden="true">
             <Bot className="w-5 h-5" />
           </div>
           <h2 className="text-xl md:text-2xl font-semibold text-primary-dark theme-transition leading-tight">

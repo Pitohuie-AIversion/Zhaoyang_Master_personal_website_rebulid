@@ -45,18 +45,18 @@
       "stopReading": "Stop reading",
       "readDescription": "Read description"
     },
-    "autoScroll": "auto Scroll",
+    "autoScroll": "Auto Scroll",
     "keyboard": {
-      "shortcutsTitle": "shortcuts Title",
-      "tip": "tip"
+      "shortcutsTitle": "Keyboard Shortcuts",
+      "tip": "Tip"
     },
     "social": {
-      "twitter": "twitter",
-      "linkedin": "linkedin",
-      "weibo": "weibo",
-      "github": "github",
-      "researchgate": "researchgate",
-      "googleScholar": "google Scholar"
+      "twitter": "Twitter",
+      "linkedin": "LinkedIn",
+      "weibo": "Weibo",
+      "github": "GitHub",
+      "researchgate": "ResearchGate",
+      "googleScholar": "Google Scholar"
     },
     "chat": {
       "researchIntro": "Zhaoyang Mu's research focuses on the intersection of scientific computing and robotics, specializing in Transformer and Neural Operator modeling for CFD spatiotemporal fields, dam-break flow prediction, and sparse-to-dense flow field reconstruction.",

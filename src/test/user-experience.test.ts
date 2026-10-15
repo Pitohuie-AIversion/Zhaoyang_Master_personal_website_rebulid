@@ -71,5 +71,37 @@ describe('user experience and service validation', () => {
     expect(zhLocale.publications.modal.copyCitation).toBe('复制引用');
     expect(enLocale.publications.modal.copyCitation).toBe('Copy Citation');
   });
+
+  it('provides clean localized common actions, search hints, and social labels', () => {
+    expect(zhLocale.common.add).toBe('添加');
+    expect(zhLocale.common.edit).toBe('编辑');
+    expect(zhLocale.common.save).toBe('保存');
+    expect(zhLocale.common.clear).toBe('清除');
+    expect(zhLocale.common.searchPlaceholder).toBe('搜索...');
+    expect(zhLocale.common.autoScroll).toBe('自动滚动');
+    expect(zhLocale.common.keyboard.shortcutsTitle).toBe('快捷键指南');
+    expect(zhLocale.common.social.googleScholar).toBe('谷歌学术');
+
+    expect(enLocale.common.add).toBe('Add');
+    expect(enLocale.common.edit).toBe('Edit');
+    expect(enLocale.common.save).toBe('Save');
+    expect(enLocale.common.clear).toBe('Clear');
+    expect(enLocale.common.searchPlaceholder).toBe('Search...');
+    expect(enLocale.common.autoScroll).toBe('Auto Scroll');
+    expect(enLocale.common.keyboard.shortcutsTitle).toBe('Keyboard Shortcuts');
+    expect(enLocale.common.social.googleScholar).toBe('Google Scholar');
+  });
+
+  it('provides proper contact info and education section titles', () => {
+    expect(zhLocale.contact.contactInfo).toBe('联系信息');
+    expect(zhLocale.contact.info.email).toContain('@');
+    expect(zhLocale.contact.info.phone).toContain('153');
+    expect(zhLocale.research.educationSectionTitle).toBe('教育背景');
+
+    expect(enLocale.contact.contactInfo).toBe('Contact Information');
+    expect(enLocale.contact.info.email).toContain('@');
+    expect(enLocale.contact.info.phone).toContain('153');
+    expect(enLocale.research.educationSectionTitle).toBe('Education');
+  });
 });
 

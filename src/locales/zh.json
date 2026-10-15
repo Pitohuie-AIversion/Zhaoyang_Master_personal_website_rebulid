@@ -45,18 +45,18 @@
       "stopReading": "停止朗读",
       "readDescription": "朗读说明"
     },
-    "autoScroll": "auto Scroll",
+    "autoScroll": "自动滚动",
     "keyboard": {
-      "shortcutsTitle": "shortcuts Title",
-      "tip": "tip"
+      "shortcutsTitle": "快捷键指南",
+      "tip": "提示"
     },
     "social": {
-      "twitter": "twitter",
-      "linkedin": "linkedin",
-      "weibo": "weibo",
-      "github": "github",
-      "researchgate": "researchgate",
-      "googleScholar": "google Scholar"
+      "twitter": "Twitter",
+      "linkedin": "LinkedIn",
+      "weibo": "微博",
+      "github": "GitHub",
+      "researchgate": "ResearchGate",
+      "googleScholar": "谷歌学术"
     },
     "chat": {
       "researchIntro": "牟昭阳的主要研究方向包括科学计算与机器人技术的交叉领域，特别专注于使用 Transformer 和 Neural Operator 建模 CFD 时空场。他在溃坝流动预测、稀疏到稠密流场重构等课题中取得重要成果。",
